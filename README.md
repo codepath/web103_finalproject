@@ -1,8 +1,8 @@
-# [your app name here]
+# StudyMeet
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: Duc Nguyen & Thinh Nguyen
 
 🔗 Link to deployed app:
 
@@ -10,35 +10,39 @@ Designed and developed by: [your names here]
 
 ### Description and Purpose
 
-[text goes here]
+Allows students and tutors to meet up and study together. Students can search for tutors based on their subjects. Tutors can create a profile and list their subjects and availability. Students can then book a session with a tutor and meet up to study.
 
 ### Inspiration
 
-[text goes here]
+Some students study better in groups. Some students need help from tutors. Some students need both. This app allows students to find tutors and study together.
 
 ## Tech Stack
 
-Frontend:
+Frontend: React
 
-Backend:
+Backend: Express, PostgreSQL
 
 ## Features
 
-### [Name of Feature 1]
+### Add Tutor/Student
 
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+Tutors and students can create an account and add their information to the database.
 
 [gif goes here]
 
-### [Name of Feature 3]
+### Login/Logout
 
-[short description goes here]
+Users can login and logout of their account.
+
+[gif goes here]
+
+### Session Registration
+
+Students can register for a session with a tutor.
+
+### Tutor Search
+
+Students can search for tutors based on their subjects and availability.
 
 [gif goes here]
 
