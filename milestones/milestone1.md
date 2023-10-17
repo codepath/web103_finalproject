@@ -13,19 +13,19 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [ ] In `readme.md`: complete the **Description and Purpose** section
 - [ ] In `readme.md`: complete the **Inspiration** section
 - [ ] In `readme.md`: list all features you intend to include in your app (in future units, you will check off features as you complete them and add GIFs demonstrating the features)
-- [ ] In `planning/user_stories.md`: add all user stories
-- [ ] In this document, complete the **Reflection** section below
+- [x] In `planning/user_stories.md`: add all user stories
+- [x] In this document, complete the **Reflection** section below
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We quickly agreed upon a time to meet, held a brief but concise discussion on the features to implement, and implemented the milestone 1 features all in a timely manner.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Besides some minor inconveniences with Zoom cutting us off after 40 mins during meetings, no major challenges were faced.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We may need assistance in fleshing out the specific features we want to implement, and also in how to implement some of the more complicated features.
