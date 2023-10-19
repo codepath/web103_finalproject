@@ -22,11 +22,13 @@ ReadRave is a vibrant and engaging platform designed for book enthusiasts of all
 
 ### Inspiration
 
-[text goes here]
+The inspiration for "ReadRave" came from a memorable experience when one of the founders planned a special anniversary dinner at a restaurant highly recommended online. However, when they arrived, the restaurant didn't live up to the glowing reviews, and it was a disappointing evening. This incident sparked a discussion among the group of friends who would later become the app's creators. They realized that there was a need for a centralized platform where individuals could share their authentic experiences and discover hidden gems.
+
+The founders were also passionate about the idea of community-driven knowledge. They believed that every person's perspective was valuable and that by sharing their insights, they could help others avoid similar disappointments and discover wonderful new places, products, and experiences.
 
 ## Tech Stack
 
-Frontend:
+Frontend: 
 
 Backend:
 
