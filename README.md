@@ -1,49 +1,110 @@
-# [your app name here]
+# Sneak-Peak
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: Noel Alfaro & Mohamed Reda Falhi
 
 🔗 Link to deployed app:
+
+## Table of Contents
+
+- [Backend and Frontend Configuration](#backend-and-frontend-configuration)
+- [Backend Features](#backend-features)
+- [Frontend Features](#frontend-features)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
 
 ## About
 
 ### Description and Purpose
 
-[text goes here]
+Sneak-Peak is a web application designed to cater to sneaker enthusiasts, and newcomers.
+It is a web app built with Node.js/Express and PostgresSQL on the backend and React on the frontend.
+The purpose of this app is to allow users to be able to manage, share & showcase their shoe collections.
 
 ### Inspiration
 
-[text goes here]
+We were inspired by shoe buying apps like GOAT, which allow users to buy new and vintage shoes.
+We wanted to create an app that users can treat as their digital locker room to store & update their collections, upvote other users shoes, and highlight their favorites.
 
 ## Tech Stack
 
-Frontend:
+Frontend: React, Tailwind CSS
 
-Backend:
+Backend: Node, Express, PostgresSQL database
 
-## Features
+## Backend and Frontend Configuration
 
-### [Name of Feature 1]
+- Built using an Express backend and a React frontend.
+- Dynamic routes implemented for both frontend and backend.
+- Hosted and deployed via Railway.
 
-[short description goes here]
+## Backend Features
 
-[gif goes here]
+### Database Relationships in Postgres
 
-### [Name of Feature 2]
+- **User & Sneaker**: One-to-many relationship where each user can upload multiple shoes.
+- **User & Sneaker**: Many-to-many relationship where many users can upvote/downvote multiple shoes.
+- **User & Profile**: One-to-One relationship is established between users and their profiles. Users can customize their profiles to add additional information, enhancing their personalization within the app.
+<!-- 2. **User & SneakPeak Comments**: Many-to-many relationship with a join table to facilitate user comments on Sneak-Peak. -->
 
-[short description goes here]
+### RESTful API Endpoints
 
-[gif goes here]
+- **GET** `/shoes`: Fetch all shoe collections.
+- **POST** `/shoes`: Add a new shoe to a user's collection.
+- **PATCH** `/shoes/:id`: Update shoe details.
+- **DELETE** `/shoes/:id`: Remove a shoe from the collection.
 
-### [Name of Feature 3]
+### Database Management
 
-[short description goes here]
+- API endpoint to reset the database to its initial state.
 
-[gif goes here]
+### User log in via Github
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+- The user can log in via Github
 
-## Installation Instructions
+## Frontend Features
 
-[instructions go here]
+### Uploading a Shoe
+
+- The user should be able to fill out a form to upload a new 'Shoe' to add to their collection
+  [gif goes here]
+
+### Redirection
+
+- After creating a Shoe, users are navigated to the Sneak-Peak gallery.
+  [gif goes here]
+
+### User Interactions
+
+- Users can upvote/downvote shoes in the highlight gallery.
+  [gif goes here]
+
+### "Highlighting"
+
+- The user should be able to 'Highlight' a shoe so that their shoe can be added to the highlighted dashboard on the homepage
+  [gif goes here]
+
+### User can Edit/Delete shoe from their collection
+
+- Logged in Users edit or delete shoes listed in their collection
+  [gif goes here]
+
+### Dynamic Routing
+
+- Landing page, user profiles, individual shoe details, and Sneak-Peak Dashboard, all facilitated via React Router.
+
+### React Component Structure
+
+- Hierarchically designed components segmented into pages and component types.
+
+## Getting Started
+
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Start the server using `npm start`.
+4. Navigate to `localhost:3000` to see the app in action.
+
+## Contributing
+
+Feel free to fork the repository, make changes, and submit a pull request. We appreciate all contributions!
