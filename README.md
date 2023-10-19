@@ -10,7 +10,15 @@ Designed and developed by: Xujuan Chen & Yevheniya Solomyana
 
 ### Description and Purpose
 
-[text goes here]
+ReadRave is a vibrant and engaging platform designed for book enthusiasts of all backgrounds. Whether you're an avid reader, a casual book lover, or simply someone in search of your next great read, ReadRave is the go-to destination to connect, share, and explore the wonderful world of literature. With ReadRave, you can discover new books, express your thoughts through reviews, and connect with fellow book lovers who share your passion for reading.
+
+1. **Book Discovery**: ReadRave is your personal literary guide, helping you discover new books across a wide range of genres. Explore book recommendations and reviews from like-minded readers to find your next captivating read.
+
+2. **Share Reviews**: Express your thoughts and opinions about books you've read through detailed reviews. Help others make informed decisions and share your insights about the books you love.
+
+3. **Community Connection**: Connect with fellow book enthusiasts from around the world. Share your reading experiences, engage in discussions, and build connections with readers who share your interests.
+
+4. **Reader Ratings**: Access comprehensive book ratings and reviews to help you make informed decisions when selecting your next book. Contribute to the community by rating books you've read.
 
 ### Inspiration
 
