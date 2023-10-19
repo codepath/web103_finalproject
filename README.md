@@ -36,21 +36,21 @@ Backend:
 
 ## Features
 
-### [Name of Feature 1]
+### Book Rating and Review
 
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+Users can assign a rating, write a review, and share their thoughts about the books they've experienced.
 
 [gif goes here]
 
-### [Name of Feature 3]
+### Book Search and Filtering
 
-[short description goes here]
+Users can find books based on specific criteria, such as category, genre, author, and publication date. Users can apply multiple filters simultaneously for precise results.
+
+[gif goes here]
+
+### User Profiles
+
+Members can create user profiles to share information about their reading preferences, favorite genres, and the books they've read.
 
 [gif goes here]
 
