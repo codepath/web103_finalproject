@@ -54,7 +54,9 @@ Members can create user profiles to share information about their reading prefer
 
 [gif goes here]
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### Book Donation Locator - Stretch Feature
+
+Users can search for nearby libraries, schools, charities, or book donation centers on an interactive map. Each location should provide details such as address, contact information, and specific donation guidelines.
 
 ## Installation Instructions
 
