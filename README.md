@@ -1,8 +1,8 @@
-# [ Xujuan Chen & Yevheniya Solomyana ]
+# ReadRave
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [ Xujuan Chen & Yevheniya Solomyana ]
+Designed and developed by: Xujuan Chen & Yevheniya Solomyana
 
 🔗 Link to deployed app:
 
