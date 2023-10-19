@@ -1,8 +1,13 @@
-# [your app name here]
+# [Interview Helper] - project name goes here
+
+Other names: 
+- interview4you
+- interyou
+- interview made easy
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: [Robert Fontan, Zion Mateo]
 
 🔗 Link to deployed app:
 
@@ -18,9 +23,11 @@ Designed and developed by: [your names here]
 
 ## Tech Stack
 
-Frontend:
+Frontend: 
+React, Bootstrap
 
 Backend:
+Railway, PostgreSQL, Express, Node.js
 
 ## Features
 
