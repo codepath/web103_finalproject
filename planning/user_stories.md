@@ -27,4 +27,6 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 9. As a Newbie, I want to browse through the highlighted sneakers, so that I can learn what makes them 'Highlight' worthy.
 
-10. As a Newbie, I want to see which shoes in my collection get the most upvotes, so that I can learn which of my shoes other users like the most.
+10. As a Newbie, I want to read detailed product descriptions and specifications for each shoe, such as materials, technologies, & sizing reccommendations, so that I can learn about the shoe on a deeper level.
+
+11. As a Sneakerhead, I want to filter out the shoes shown to me based on criteria like color and brand, so that I can see how many upvotes they have.
