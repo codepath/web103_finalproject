@@ -8,7 +8,7 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 - [X] Read and understand all required features
   - [X] Understand you **must** implement **all** baseline features and **two** custom features
-- [ ] In `readme.md`: update app name
+- [X] In `readme.md`: update app name
 - [X] In `readme.md`: add all group members' names
 - [ ] In `readme.md`: complete the **Description and Purpose** section
 - [ ] In `readme.md`: complete the **Inspiration** section
