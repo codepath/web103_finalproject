@@ -22,7 +22,7 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 7. As a Reader, I want to receive personalized book recommendations based on my reading history and preferences so that I can easily find books that match my taste.
 
-8.As a Reader, I want to join book clubs and participate in literary discussions to connect with fellow readers and explore diverse perspectives on books.
+8. As a Reader, I want to join book clubs and participate in literary discussions to connect with fellow readers and explore diverse perspectives on books.
 
 9. As a Reader, I want to like or upvote reviews that I find valuable so that I can show appreciation for helpful or insightful contributions from other users.
 
