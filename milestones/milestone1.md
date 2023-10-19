@@ -30,4 +30,4 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 - Coming up with a consistent schedule to meet and assign tasks will be very important to make good progress and meet our goals
 
-- Communication of blockers and clarifying questions will help development progress smoothly
+- Communication of blockers and clarifying questions will help development progress smoothly.
