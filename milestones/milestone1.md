@@ -11,8 +11,8 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [X] In `readme.md`: update app name
 - [X] In `readme.md`: add all group members' names
 - [X] In `readme.md`: complete the **Description and Purpose** section
-- [ ] In `readme.md`: complete the **Inspiration** section
-- [ ] In `readme.md`: list all features you intend to include in your app (in future units, you will check off features as you complete them and add GIFs demonstrating the features)
+- [X] In `readme.md`: complete the **Inspiration** section
+- [X] In `readme.md`: list all features you intend to include in your app (in future units, you will check off features as you complete them and add GIFs demonstrating the features)
 - [ ] In `planning/user_stories.md`: add all user stories
 - [ ] In this document, complete the **Reflection** section below
 
