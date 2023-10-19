@@ -30,9 +30,9 @@ Join us on this extraordinary literary expedition, where the inspiration is the 
 
 ## Tech Stack
 
-Frontend: 
+Frontend: React.js
 
-Backend:
+Backend: Express, PostgreSQL
 
 ## Features
 
