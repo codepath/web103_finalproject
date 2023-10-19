@@ -8,7 +8,7 @@ Designed and developed by: Noel Alfaro & Mohamed Reda Falhi
 
 ## Table of Contents
 
-- [Backend and Frontend Configuration](#backend-and-frontend-configuration)
+- [Backend and Frontend Configuration](#baseline-features)
 - [Backend Features](#backend-features)
 - [Frontend Features](#frontend-features)
 - [Getting Started](#getting-started)
@@ -33,7 +33,7 @@ Frontend: React, Tailwind CSS
 
 Backend: Node, Express, PostgresSQL database
 
-## Backend and Frontend Configuration
+## Baseline Features
 
 - Built using an Express backend and a React frontend.
 - Dynamic routes implemented for both frontend and backend.
@@ -43,9 +43,10 @@ Backend: Node, Express, PostgresSQL database
 
 ### Database Relationships in Postgres
 
-- **User & Sneaker**: One-to-many relationship where each user can upload multiple shoes.
-- **User & Sneaker**: Many-to-many relationship where many users can upvote/downvote multiple shoes.
-- **User & Profile**: One-to-One relationship is established between users and their profiles. Users can customize their profiles to add additional information, enhancing their personalization within the app.
+**User & Sneaker**: One-to-many relationship where each user can upload multiple shoes.
+**User & Sneaker**: Many-to-many relationship where many users can upvote/downvote multiple shoes.
+**User & Profile**: One-to-One relationship is established between users and their profiles. Users can customize their profiles to add additional information, enhancing their personalization within the app.
+
 <!-- 2. **User & SneakPeak Comments**: Many-to-many relationship with a join table to facilitate user comments on Sneak-Peak. -->
 
 ### RESTful API Endpoints
@@ -57,46 +58,52 @@ Backend: Node, Express, PostgresSQL database
 
 ### Database Management
 
-- API endpoint to reset the database to its initial state.
-
-### User log in via Github
-
-- The user can log in via Github
+API endpoint to reset the database to its initial state.
 
 ## Frontend Features
 
 ### Uploading a Shoe
 
-- The user should be able to fill out a form to upload a new 'Shoe' to add to their collection
-  [gif goes here]
+The user should be able to fill out a form to upload a new 'Shoe' to add to their collection
+[gif goes here]
 
 ### Redirection
 
-- After creating a Shoe, users are navigated to the Sneak-Peak gallery.
-  [gif goes here]
+After creating a Shoe, users are navigated to the Sneak-Peak gallery.
+[gif goes here]
 
 ### User Interactions
 
-- Users can upvote/downvote shoes in the highlight gallery.
-  [gif goes here]
+Users can upvote/downvote shoes in the highlight gallery.
+[gif goes here]
 
 ### "Highlighting"
 
-- The user should be able to 'Highlight' a shoe so that their shoe can be added to the highlighted dashboard on the homepage
-  [gif goes here]
+The user should be able to 'Highlight' a shoe so that their shoe can be added to the highlighted dashboard on the homepage
+[gif goes here]
 
 ### User can Edit/Delete shoe from their collection
 
-- Logged in Users edit or delete shoes listed in their collection
-  [gif goes here]
+Logged in Users edit or delete shoes listed in their collection
+[gif goes here]
 
 ### Dynamic Routing
 
-- Landing page, user profiles, individual shoe details, and Sneak-Peak Dashboard, all facilitated via React Router.
+Landing page, user profiles, individual shoe details, and Sneak-Peak Dashboard, all facilitated via React Router.
 
 ### React Component Structure
 
-- Hierarchically designed components segmented into pages and component types.
+Hierarchically designed components segmented into pages and component types.
+
+### The Web App Gracefully Handles Errors
+
+The web app displays an error message to the user if something goes wrong.
+[gif goes here]
+
+### User log in via Github
+
+- The user can log in via Github
+  [gif goes here]
 
 ## Getting Started
 
