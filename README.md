@@ -14,7 +14,7 @@ PlayPal is a web app tailored for avid gamers and casual players. It acts as you
 
 The app features a robust database of games spanning all genres and platforms. Users can browse and search for games by title, genre, platform, and more. Staying current with the gaming world is a breeze with PlayPal. Peruse the latest gaming headlines, previews, and reviews. PlayPal takes the hassle out of game discovery. Its clean interface and wealth of gaming info empowers users to effortlessly find their next favorite game and connect with other gaming enthusiasts.
 
-The purpose of GameDiscoverer is to be the go-to platform for gamers to discover new game titles to play. Key goals include:
+The purpose of PlayPal is to be the go-to platform for gamers to discover new game titles to play. Key goals include:
 
 <ul>
     <Li>Provide an extensive database of games across all platforms & genres to enable discovery</Li>
