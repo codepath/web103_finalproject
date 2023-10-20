@@ -20,12 +20,11 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We successfully planned divided tasks, and communicated effectively, meeting project milestones ahead of schedule. We applied our CodePath course knowledge to drive development.
 
 ### 2. What were some challenges your group faced in this unit?
-
-[👉🏾👉🏾👉🏾 your answer here]
+Challenges we faced were choosing what project we wanted to work on.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We'll need support in technical troubleshooting, user testing and feedback, deployment, security and compliance, and performance optimization as we move forward with the project.
