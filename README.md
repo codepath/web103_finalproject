@@ -35,16 +35,14 @@ Railway, PostgreSQL, Express, Node.js
 The main core feature of this app. We want this app to generate technical questions for the user, as well as behavioral questions. The backbone of this operation will come from OpenAI's prompt API, however we are also considering of web-scraping websites such as Glassdoor for more technical/behavioral questions.
 [gif goes here]
 
-### [Name of Feature 2]
+### General Question library
 
-[short description goes here]
-
+We could harbor a vast collection of technical and behavioral questions that are tailored for various IT roles. Within it, we should allow for filtering and searching options based on job roles, technologies, or difficulty levels.
 [gif goes here]
 
-### [Name of Feature 3]
+### AI-Powered Feedback
 
-[short description goes here]
-
+If we have behavioral questions or even for technical questions, we could have an AI-Chat bot where when users record their answers, the bot can give real-time, responsive feedback.
 [gif goes here]
 
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
