@@ -14,18 +14,18 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [x] In `readme.md`: complete the **Inspiration** section
 - [x] In `readme.md`: list all features you intend to include in your app (in future units, you will check off features as you complete them and add GIFs demonstrating the features)
 - [x] In `planning/user_stories.md`: add all user stories
-- [ ] In this document, complete the **Reflection** section below
+- [x] In this document, complete the **Reflection** section below
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Everything went well. We had a short but productive meeting early in the week, and were able to come up with the basic concept behind our app.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We didn't have any major challenges, since we decided on on our idea pretty quickly and discussed all the relevant features during our initial group meeting. The hardest part of the process was picking a name for the app.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Right now everything is going smoothly. However, as we implement the more complex features, we'll probably have additional technical questions for our TF and for the help Slack channel.
