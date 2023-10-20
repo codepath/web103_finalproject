@@ -4,13 +4,8 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 ## Outline User Roles
 
-# Owner
-
-The "Owner" is the family board creator with administrative control. They can create, delete, add family members, and manage board settings.
-
-# Family Member
-
-A "Family Member" can interact with the family board, viewing, adding, and updating tasks without administrative privileges.
+1. Owner: The "Owner" is the family board creator with administrative control. They can create, delete, add family members, and manage board settings.
+2. A "Family Member" can interact with the family board, viewing, adding, and updating tasks without administrative privileges.
 
 ## Draft User Stories
 
