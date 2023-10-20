@@ -16,7 +16,7 @@ This guide will give you an overview of one common technique for designing techn
 3. As a user I want to be able to sort and filter searches by criteria like platform, genre, and rating so I can customize results.
 4. As a user I want to view descriptions, images, videos, and other details about a game so I can learn more before playing.
 5. As a user I want the interface to be intuitive and easy to navigate so I can use the app with minimal effort.
-6. I want the app to have a responsive design that adapts across devices like mobile, tablet, desktop
+6. As a user I want the app to have a responsive design that adapts across devices like mobile, tablet, desktop
 7. As a user I want my account information and data to be kept private and secure.
 8. As a user I want the app to load quickly and be stable so I can seamlessly discover new games.
 9. As a user, I want to be able to easily view new and upcoming game releases so I can stay up-to-date on what's coming out.
