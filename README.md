@@ -1,4 +1,4 @@
-# [your app name here]
+# Food Tracker
 
 CodePath WEB103 Final Project
 
@@ -10,11 +10,11 @@ Designed and developed by: Miho Shimizu, Jiarui Liang
 
 ### Description and Purpose
 
-[App Name] helps people manage and monitor food items they have in thier refridgerator. This app allows users to keep track of what food items they have, their quantities, and expiration dates. Users can share the information among their housemates. This food tracking system facilitates to use their food resources efficiently, reduce food waste, and plan their meals based on the ingredients they have available. It's a handy tool for households, community organizations, and anyone interested in optimizing their food inventory.
+Food Tracker helps people manage and monitor food items they have in thier refridgerator. This app allows users to keep track of what food items they have, their quantities, and expiration dates. Users can share the information among their housemates. This food tracking system facilitates to use their food resources efficiently, reduce food waste, and plan their meals based on the ingredients they have available. It's a handy tool for households, community organizations, and anyone interested in optimizing their food inventory.
 
 ### Inspiration
 
-You're all set to cook that favorite recipe, only to find that a crucial ingredient you were sure you had, has magically disappeared - thanks to a helpful housemate! (Sometimes it's your yesterday self.) We've all been there, right? That relatable frustration sparked the idea for our app. We wanted to create a handy solution for managing your pantry and fridge to avoid those letdowns. Whether you're the master chef of the house or just someone tired of unwanted surprises, [App Name] is your answer to lessen "Who used the last egg?" moments and foster a more harmonious kitchen.
+You're all set to cook that favorite recipe, only to find that a crucial ingredient you were sure you had, has magically disappeared - thanks to a helpful housemate! (Sometimes it's your yesterday self.) We've all been there, right? That relatable frustration sparked the idea for our app. We wanted to create a handy solution for managing your pantry and fridge to avoid those letdowns. Whether you're the master chef of the house or just someone tired of unwanted surprises, Food Tracker is your answer to lessen "Who used the last egg?" moments and foster a more harmonious kitchen.
 
 ## Tech Stack
 
@@ -28,17 +28,27 @@ Backend: Node.js, Express.js, PostgreSQL (Railway)
 
 Fridge is the unit of food inventory. Users can create and delete fridges. Within each fridge, users can manage food items by adding, updating, and removing. Additionally, users can manage members to share the info with by adding and removing. 
 
+- Managers can create and delete fridges.
+- Fridge should have a name and creator.
+
 [gif goes here]
 
 ### Food items
 
 Food items have attributes such as count, expiration date, and category. When the food expires, the item will be highlighted. Users can also mark missing food, so the members know that they need to buy them.
 
+- Food item should have a name, count, expiration date, and category.
+- Members can create, update, and delete food items.
+- Members can mark missing food items.
+- Members can make food items invisible.
+- Members can sort food items by expiration date.
+
 [gif goes here]
 
 ### Members
 
 Fridge members share the fridge info. Users can be a member of multiple fridges. 
+- Managers can invite and remove members.
 
 [gif goes here]
 
