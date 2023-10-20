@@ -15,11 +15,10 @@ Designed and developed by: [Robert Fontan, Zion Mateo]
 
 ### Description and Purpose
 
-[text goes here]
-
+The purpose of this app is to create a utility app that helps prospective IT workers figure out what they need to learn and accomplish in order to be an effective candidate for a given job title. The idea is to use OpenAI and web-scraping to generate technical interview questions and behavioral exercises to maximize the preparation of our user.
 ### Inspiration
 
-[text goes here]
+Inspiration comes from our own daily life, where we often try to aggregate resources that help us prepare for online assessments and interviews for a specific job.
 
 ## Tech Stack
 
@@ -31,10 +30,9 @@ Railway, PostgreSQL, Express, Node.js
 
 ## Features
 
-### [Name of Feature 1]
+### Technical + Behavioral Question Generation
 
-[short description goes here]
-
+The main core feature of this app. We want this app to generate technical questions for the user, as well as behavioral questions. The backbone of this operation will come from OpenAI's prompt API, however we are also considering of web-scraping websites such as Glassdoor for more technical/behavioral questions.
 [gif goes here]
 
 ### [Name of Feature 2]
