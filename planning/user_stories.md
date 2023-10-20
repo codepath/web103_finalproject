@@ -18,7 +18,6 @@ Reference the Writing User Stories final project guide in the course portal for 
 7. As a member, I want to get a list of items I need to buy, so that I don't need to browse the entire list of food in the fridge.
 8. As a manager, I want to delete the fridge, so that unused fridges don't float around.
 9. As a member, I want to make the food item invisible when there is no food item anymore, so that the fridge info doesn't get cluttered.
-10. As a member, I want to keep the food data even after making the food item invisible, so that I can add the food item from the history list.
-11. As a member, I want to completely remove the food data from the database, so that next time I add the food I can quickly register new information.
-12. As a member, I want to assign a category to each food item, so that the fridge info is organized by category.
-13. As a member, I want to sort food by expiration date, so that I can tell which food I should use first.
+10. As a member, I want to assign a category to each food item, so that the fridge info is organized by category.
+11. As a member, I want to sort food by expiration date, so that I can tell which food I should use first.
+12. As a member, I want to create an account, so that I can start managing fridges and the food in the fridges.
