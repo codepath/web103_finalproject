@@ -10,17 +10,24 @@ Designed and developed by: Loc Tran and Guillermo Zendejas
 
 ### Description and Purpose
 
-[text goes here]
+- A digital platform dedicated to the passionate community of cinephiles and series enthusiasts from across the globe. It offers a personalized space where users can curate, organize, and immerse themselves in a world of cinematic artistry spanning countries, timelines, and genres.
+
+- The primary purpose of CineMundo is to provide a unified, immersive platform for movies and series aficionados, enabling them to curate, organize, and cherish their cinematic experiences. The website serves to:
+
+    1. Foster Personal Connection
+    2. Promote Exploration
+    3. Centralize Information
+    4. Enhance Accessibility
 
 ### Inspiration
 
-[text goes here]
+- Film has the unique power to transcend boundaries, evoke emotions, and inspire generations. As we immerse ourselves in stories from faraway lands or times long gone, we learn more about our shared human experience. CineMundo isn't just a tool; it's a journey. A journey through diverse cultures, powerful narratives, and the magic of cinema. Our platform is a tribute to all film lovers who cherish the beauty of storytelling and the impact it holds on our souls. Here, you don’t just create a list; you curate memories, experiences, and aspirations. Welcome to the chronicles of your cinematic universe.
 
 ## Tech Stack
 
-Frontend:
+Frontend: React
 
-Backend:
+Backend: Node.js, Express.js, and PostgreSQL
 
 ## Features
 
@@ -83,4 +90,12 @@ User can delete any wishlist directly from the dashboard with a delete button.
 
 ## Installation Instructions
 
-[instructions go here]
+`git clone [http/ssh] CineMundo`
+
+`cd CineMundo`
+
+`npm install`
+
+`npm run reset` (once you have got database set up)
+
+`npm start`
