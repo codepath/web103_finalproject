@@ -10,7 +10,7 @@ Buyer: The users that are searching/shopping for sneakers.
 
 ## Draft User Stories
 
-[👉🏾👉🏾👉🏾 Include at least at least 10 user stories in this format:]
+[👉🏾👉🏾👉🏾 Include at least 10 user stories in this format:]
 
 1. As a buyer, I want to find trendy sneakers, so that I can be stylish.
 2. As a buyer, I want to search for sneakers, so that I can purchase it in the near-future.
