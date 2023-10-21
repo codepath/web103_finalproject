@@ -51,6 +51,26 @@ There will be a chat feature
 
 [gif goes here]
 
+### [Interfaces]
+
+There will be a difference in the user and admin interface
+
+[gif goes here]
+
+### [Redirection to actual resources]
+
+The application will contain links to actual internship job postings
+
+[gif goes here]
+
+### [Routings]
+
+The web app includes dynamic routes for both frontend and backend apps.
+
+[gif goes here]
+
+
+
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
 ## Installation Instructions
