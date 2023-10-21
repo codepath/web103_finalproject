@@ -4,8 +4,8 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 ## Outline User Roles
 
-Tenants (Seeking Sublets or Roommates)
-Users Seeking Housing
+- Tenants (Seeking Sublets or Roommates)
+- Users Seeking Housing
 
 
 ## Draft User Stories
