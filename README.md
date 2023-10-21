@@ -33,21 +33,21 @@ Backend: Express.js, SQL, postgreSQL
 
 ## Features
 
-### [Name of Feature 1]
+### [Sort and filter]
 
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+users will be able to filter opportunities based on a number of predefined categories
 
 [gif goes here]
 
-### [Name of Feature 3]
+### [Create, update, read and delete]
 
-[short description goes here]
+Application will be able to perform basic crud operations
+
+[gif goes here]
+
+### [Messages]
+
+There will be a chat feature
 
 [gif goes here]
 
