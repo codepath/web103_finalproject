@@ -22,36 +22,36 @@ Frontend: React.js
 Backend: PostgreSQL, Express.js, Node.js
 
 ## Features
-  - Sneaker World is programmed using Express and and ReacT and includes dynamic routes.
-  - The entire application is deployed using Railway
+1. Sneaker World is programmed using Express and and ReacT and includes dynamic routes.
+2. The entire application is deployed using Railway
 
 ### Backend
 
 Sneaker World's backend will have at least one of each of the following database relationship in Postgres:
-  - A user can select multiple sneakers to add to their cart (one-to-many)
-  - Multiple sneakers can be joined with multiple categories such as: casual, running, cross-training, etc. (many-to-many)
+3. A user can select multiple sneakers to add to their cart (one-to-many)
+4. Multiple sneakers can be joined with multiple categories such as: casual, running, cross-training, etc. (many-to-many)
 Sneaker World implements a well-designed RESTful API that:
-  - Responds to GET, POST, PATCH, and DELETE requests in order to allow for cart and orders to be properly deleted.
-  - Implements proper naming conventions for routes.
+5. Responds to GET, POST, PATCH, and DELETE requests in order to allow for cart and orders to be properly deleted.
+6. Implements proper naming conventions for routes.
 The web app implements the ability to reset the database to its default state in order to create a clean slate and create a consistent UX.
 
 [gif goes here]
 
 ### Frontend
 
-Sneaker World serves an appropriate 404 page when no matching route is defined
-The application implements a like feature without navigating out of the page
-The application uses dynamic frontend routes created with React Router.
-Sneaker World uses hierarchically designed React components that includes:
+7. Sneaker World serves an appropriate 404 page when no matching route is defined
+8. The application implements a like feature without navigating out of the page
+9. The application uses dynamic frontend routes created with React Router.
+10. Sneaker World uses hierarchically designed React components that includes:
 homepage, products, details, cart, and checkout.
-Sneaker World uses components and presenter components to streamline the application.
+11. Sneaker World uses components and presenter components to streamline the application.
 
 [gif goes here]
 
 ### Custom
 
-Sneaker World filters and/or sorts based on user preferences.
-The application gracefully handles errors.
+12. Sneaker World filters and/or sorts based on user preferences.
+13. The application gracefully handles errors.
 
 [gif goes here]
 
