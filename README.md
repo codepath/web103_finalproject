@@ -72,7 +72,19 @@ Choose two custom features to include in your app. These features will make your
 - [ ] Data submitted via a POST or PATCH request is validated before the database is updated.
 
 
-[gif goes here]
+## Video Walkthrough
+
+Here's a walkthrough of implemented required features:
+
+<img src='' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<!-- Replace this with whatever GIF tool you used! -->
+GIF created with ...  GIF tool here
+<!-- Recommended tools:
+[Kap](https://getkap.co/) for macOS
+[ScreenToGif](https://www.screentogif.com/) for Windows
+[peek](https://github.com/phw/peek) for Linux. -->
+
 
 ## Installation Instructions
 
