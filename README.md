@@ -24,25 +24,63 @@ Backend:
 
 ## Features
 
-### [Name of Feature 1]
+### Accommodation Search
 
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+Users can search for accommodations based on location, dates, and preferences.
 
 [gif goes here]
 
-### [Name of Feature 3]
+### Detailed Accommodation Listings
 
-[short description goes here]
+sers can view detailed property listings with descriptions, photos, amenities, and reviews.
 
 [gif goes here]
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### Booking Process
+
+Users can easily book accommodations with a streamlined booking process.
+
+[gif goes here]
+
+### Review Submission
+
+Users can submit and edit, and delete reviews and star ratings for accommodations they've stayed in.
+
+### Review Points System
+
+Users earn points for submitting reviews and ratings.
+
+### Points and Rewards Dashboard
+
+Users have access to a dashboard displaying their earned points and redeemed rewards.
+
+### Real-Time Reviews
+
+Users can view real-time reviews and ratings from other travelers while browsing accommodation listings.
+
+### Redeem Points for Discounts and Perks
+
+Users can use their earned points to receive discounts on future bookings and experiences within the local community that the booking is at
+
+### Property Management
+
+Hosts can create and manage property listings with descriptions, photos, and pricing.
+
+### In-App Messaging
+
+Hosts and guests can communicate through in-app messaging.
+
+### Host Verification
+
+Hosts can verify their identity and properties to build trust with users.
+
+### Calendar Availability
+
+Hosts can manage and display property availability calendars.
+
+### Cancellation Policy
+
+Hosts can set cancellation policies for their properties.
 
 ## Installation Instructions
 
