@@ -1,4 +1,4 @@
-# Family Task Management App
+# KulBoard
 
 CodePath WEB103 Final Project
 
