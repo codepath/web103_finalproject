@@ -39,17 +39,21 @@ The web app implements the ability to reset the database to its default state in
 
 ### 2. Frontend
 
-[short description goes here]
+Sneaker World serves an appropriate 404 page when no matching route is defined
+The application implements a like feature without navigating out of the page
+The application uses dynamic frontend routes created with React Router.
+Sneaker World uses hierarchically designed React components that includes:
+homepage, products, details, cart, and checkout.
+Sneaker World uses components and presenter components to streamline the application.
 
 [gif goes here]
 
 ### 3. Custom
 
-[short description goes here]
+Sneaker World filters and/or sorts based on user preferences.
+The application gracefully handles errors.
 
 [gif goes here]
-
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
 ## Installation Instructions
 
