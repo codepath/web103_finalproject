@@ -24,10 +24,14 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 [Rob - What went well was organizing it, considering we are in
 two different time zones, we made a schedule where we can meet up and work. We're on the same page with the app we want to build, and we're both excited to work on it. We also have a good idea of what we want to do for our custom features.]
 
+[Zion - We had a lot of communication between each other. For example, we had a meetup on Tuesday to discuss our vision regarding the project and the current steps we should take to actualize a good direction for our project.]
+
 ### 2. What were some challenges your group faced in this unit?
 
 [Rob - Challenges include finding a good project name, and pinpointing what features out app would have. ]
+[Zion - Similar to what Rob noted, we definitely are still working on a good app name HAHA. Also, we are 100% sure of one feature, which is the question generation, but the rest is up to further deliberation and consideration.]
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
 [Rob - Additional support could be to have a "best practices" towards building an app between people. Other than that I think we're good.]
+[Zion - Perhaps a general guide towards project building and handling logistics in a project consisting of multiple people and the compromise between ideas, schedules, and again, logistics.]
