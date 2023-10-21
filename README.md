@@ -25,7 +25,7 @@ Backend: PostgreSQL, Express.js, Node.js
   - Sneaker World is programmed using Express and and ReacT and includes dynamic routes.
   - The entire application is deployed using Railway
 
-### 1. Backend
+### Backend
 
 Sneaker World's backend will have at least one of each of the following database relationship in Postgres:
   - A user can select multiple sneakers to add to their cart (one-to-many)
@@ -37,7 +37,7 @@ The web app implements the ability to reset the database to its default state in
 
 [gif goes here]
 
-### 2. Frontend
+### Frontend
 
 Sneaker World serves an appropriate 404 page when no matching route is defined
 The application implements a like feature without navigating out of the page
@@ -48,7 +48,7 @@ Sneaker World uses components and presenter components to streamline the applica
 
 [gif goes here]
 
-### 3. Custom
+### Custom
 
 Sneaker World filters and/or sorts based on user preferences.
 The application gracefully handles errors.
