@@ -1,4 +1,4 @@
-# [Interview Helper] - project name goes here
+# [Interview Helper]
 
 Other names: 
 - interview4you
