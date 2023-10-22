@@ -46,6 +46,16 @@ Students can search for tutors based on their subjects and availability.
 
 [gif goes here]
 
+### Profile Edit
+
+Users can add a profile picture and update their bio or subjects.
+[gif goes here]
+
+### Ratings
+
+After a session, students can rate tutors. Tutors can also rate students.
+[gif goes here]
+
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
 ## Installation Instructions
