@@ -1,4 +1,4 @@
-# [Sneaker World]
+# Sneaker World
 
 CodePath WEB103 Final Project
 
