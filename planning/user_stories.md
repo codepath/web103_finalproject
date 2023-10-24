@@ -5,7 +5,7 @@ Reference the Writing User Stories final project guide in the course portal for 
 ## Outline User Roles
 
 [Customer: a user who is interested in purchasing Jewelry,
-Admin: a user who can control items to be sold]
+Admin: a user who can control items to be sold (Website Owner)]
 
 ## Draft User Stories
 
