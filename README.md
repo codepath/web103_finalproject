@@ -36,6 +36,12 @@ Backend:
 
 [gif goes here]
 
+### [Account Editing and Deletion]
+
+[Users can edit or delete their account]
+
+[gif goes here]
+
 ### [Stock browsing]
 
 [Users can browse current inventory that is updated regularly]
@@ -96,7 +102,11 @@ Backend:
 
 [gif goes here]
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### [Marked as Sold]
+
+[Upon purchase of an item, it is taken off the inventory display if there are no more available. Additionally, the number of purchases for this item is kept track of to track its popularity]
+
+[gif goes here]
 
 ## Installation Instructions
 
