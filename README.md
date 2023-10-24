@@ -10,11 +10,11 @@ Designed and developed by: [Johnny Cortez]
 
 ### Description and Purpose
 
-[This website is for my God Mother who is a Jeweler and sells Jewelry. She currently displays and sells her Jewelry on Instagram and Facebook. However, it can be difficult for users interested in buying to sift through her inventory and make purchases. This website will fix all of that and allow users to view and purchase her Jewelry in a seamless and pleasant experience.]
+[This website is for my godmother who is a Jeweler and sells Jewelry. She currently displays and sells her Jewelry on Instagram and Facebook. However, it can be difficult for users interested in buying to sift through her inventory and make purchases. This website will fix all of that and allow users to view and purchase her Jewelry in a seamless and pleasant experience.]
 
 ### Inspiration
 
-[I was once looking through my God Mother's Jewelry page on Instagram to purchase a golden necklace. I wanted a specific type of necklace that either had a holy cross or a Virgin Mary piece on it. However, it was difficult as there were so many items, but no way to filter results and know what had been sold. I had to ask my godmother directly if she had this specific necklace on hand, which felt very inefficient. I then had the idea, what if I made her a website to alleviate this issue and help her business grow by being on a more organized platform!]
+[I was once looking through my godmother's Jewelry page on Instagram to purchase a golden necklace. I wanted a specific type of necklace that either had a holy cross or a Virgin Mary piece on it. However, it was difficult as there were so many items, but no way to filter results and know what had been sold. I had to ask my godmother directly if she had this specific necklace on hand, which felt very inefficient. I then had the idea, what if I made her a website to alleviate this issue and help her business grow by being on a more organized platform!]
 
 ## Tech Stack
 
