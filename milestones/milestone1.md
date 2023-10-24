@@ -20,12 +20,12 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-[I think my vision for this project is well-defined. I know that it will be put to real-world use which gets me excited. Additionally, I feel I spent ample time thinking of features and different use cases.]
+I think my vision for this project is well-defined. I know that it will be put to real-world use which gets me excited. Additionally, I feel I spent ample time thinking of features and different use cases.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[I faced challenges finding a time to speak to my godmother to refine her exact needs for this website. I will find time for this later on in the project to refine the current features.]
+I faced challenges finding a time to speak to my godmother to refine her exact needs for this website. I will find time for this later on in the project to refine the current features.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[I believe I may need to attend CodePath office hours if I run into technical issues or even design dilemmas. I foresee needing help in schema design and backend implementation mostly]
+I believe I may need to attend CodePath office hours if I run into technical issues or even design dilemmas. I foresee needing help in schema design and backend implementation mostly
