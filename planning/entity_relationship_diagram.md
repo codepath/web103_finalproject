@@ -39,4 +39,4 @@
 
 ## Add the Entity Relationship Diagram
 
-<img src='../images/Database ER diagram.png'/>
+<img src='../images/ERD.png'/>

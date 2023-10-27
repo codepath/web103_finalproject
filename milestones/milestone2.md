@@ -24,4 +24,4 @@ Designing Wireframe and learning how to use Figma was challenging.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-We would need feeback on our database schemas.
+We would need feeback on our databse schema.
