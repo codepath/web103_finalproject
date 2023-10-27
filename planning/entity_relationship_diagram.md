@@ -4,11 +4,32 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Create the List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+**ER Diagram Tables & Relations**
+
+**Table 1: Users**
+- 1 user could be an owner of 0 or more boards
+- 1 user can be a member of 0 or more boards
+- 1 user can create 0 or more tasks
+- 1 user can accept 0 or more tasks
+
+**Table 2: Boards**
+- 1 board can have only 1 owner
+- 1 board can have 1 or more members
+- 1 board can have 0 or more tasks
+
+**Table 3: Board Members**
+- 1 board member could be only 1 user
+- 1 unique board member could be a member of 1 board
+
+**Table 4: Tasks**
+- 1 unique ask could belong to only 1 board
+- 1 task can have only 1 creator
+- 1 task can have 0 or more acceptor
+
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
+<img src="" alt="er-diagram">
 
 | Column Name | Type | Description |
 |-------------|------|-------------|
