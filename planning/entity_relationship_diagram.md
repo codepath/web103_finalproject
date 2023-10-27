@@ -8,60 +8,56 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 2. Movie
 3. Wishlist
 4. Tag
-5. Movie Tag
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
+![image info](./wireframe_images/ERD.png)
 
 ### Entities and Attributes:
 
-1. **User:**
+---
 
-| Column Name   | Type    | Description                 |
-|---------------|---------|-----------------------------|
-| user_id       | integer | primary key                 |
-| username      | text    | user's login name           |
-| password      | text    | user's password             |
-| email         | text    | user's email address        |
-| ...           | ...     | ...                         |
+### User:
 
-2. **Movie:**
+| Column Name | Type          | Description       |
+|-------------|---------------|-------------------|
+| user_id     | integer       | primary key       |
+| fullname    | varchar(100)  | user's full name  |
+| username    | varchar(50)   | user's login name |
+| password    | varchar(100)  | user's password   |
+| email       | varchar(100)  | user's email      |
+| ...         | ...           | ...               |
 
-| Column Name   | Type    | Description                 |
-|---------------|---------|-----------------------------|
-| movie_id      | integer | primary key                 |
-| title         | text    | title of the movie          |
-| director      | text    | director of the movie       |
-| actors        | text    | list of actors              |
-| published_date| date    | date the movie was published|
-| ...           | ...     | ...                         |
+### Movie:
 
-3. **Wishlist:**
+| Column Name     | Type          | Description                    |
+|-----------------|---------------|--------------------------------|
+| movie_id        | integer       | primary key                    |
+| title           | varchar(500)  | title of the movie             |
+| description     | text          | description of movie           |
+| actors          | text          | list of actors                 |
+| director        | varchar(100)  | director of the movie          |
+| published_date  | date          | date the movie was published   |
+| img_url         | text          | banner image of the movie      |
+| trailer_url     | date          | trailer URL of the movie       |
+| ...             | ...           | ...                            |
 
-| Column Name   | Type    | Description                 |
-|---------------|---------|-----------------------------|
-| wishlist_id   | integer | primary key                 |
-| user_id       | integer | foreign key (User)          |
-| name          | text    | name of the wishlist        |
-| ...           | ...     | ...                         |
+### Wishlist:
 
-4. **Tag:**
+| Column Name | Type    | Description         |
+|-------------|---------|---------------------|
+| user_id     | integer | foreign key (User)  |
+| movie_id    | integer | foreign key (Movie) |
+| ...         | ...     | ...                 |
 
-| Column Name   | Type    | Description                 |
-|---------------|---------|-----------------------------|
-| tag_id        | integer | primary key                 |
-| name          | text    | name of the tag             |
-| ...           | ...     | ...                         |
+### Tag:
 
-5. **Movie_Tag:**
+| Column Name | Type          | Description  |
+|-------------|---------------|--------------|
+| tag_id      | integer       | primary key  |
+| genre       | varchar(100)  | movie genre  |
+| ...         | ...           | ...          |
 
-| Column Name   | Type    | Description                 |
-|---------------|---------|-----------------------------|
-| movie_tag_id  | integer | primary key                 |
-| movie_id      | integer | foreign key (Movie)         |
-| tag_id        | integer | foreign key (Tag)           |
-| ...           | ...     | ...                         |
 
 #### Relationships:
 
