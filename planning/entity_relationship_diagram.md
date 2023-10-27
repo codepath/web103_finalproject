@@ -30,9 +30,3 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## Add the Entity Relationship Diagram
 
 <img src="" alt="er-diagram">
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
