@@ -38,3 +38,5 @@ Appointments.
 | tutor | integer | foreign key referencing Tutors(id) |
 | date | date | session date and time | 
 
+![image](https://github.com/FelixNgFender/web103_finalproject/assets/98554622/1868e981-68fc-49cf-9c1d-8948e33fa3be)
+
