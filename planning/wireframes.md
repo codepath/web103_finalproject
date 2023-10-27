@@ -4,18 +4,20 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+⭐Home, ⭐MyProfile, ⭐Browse, MyBooks
 
-## Wireframe 1: [page title]
+## Wireframe 1: Home
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+<img src='home.png' title='Home Page' width='' alt='Home Page Wireframe' />
 
-## Wireframe 2: [page title]
+## Wireframe 2: MyProfile
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+<img src='myprofile.png' title='MyProfile Page' width='' alt='MyProfile Page Wireframe' />
 
-## Wireframe 3: [page title]
+## Wireframe 3: Browse
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+<img src='browse.png' title='Browse Page' width='' alt='Browse Page Wireframe' />
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 4: All Pages
+
+<img src='allpages.png' title='All Pages' width='' alt='All Pages' />
