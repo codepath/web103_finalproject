@@ -22,7 +22,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 - 1 unique board member could be a member of 1 board
 
 **Table 4: Tasks**
-- 1 unique ask could belong to only 1 board
+- 1 unique task could belong to only 1 board
 - 1 task can have only 1 creator
 - 1 task can have 0 or more acceptor
 
