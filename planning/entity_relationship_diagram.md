@@ -13,9 +13,27 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 [👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
 
-| Column Name | Type | Description |
+| Readers | Type | Description |
 |-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
+| id | serial | primary key |
+| name | varchar(100) |  |
+| address | text |  |
+| tel| text |  |
+| bio| text |  |
+
+
+| Books | Type | Description |
+|-------------|------|-------------|
+| id | serial | primary key |
+| name | varchar(100) |  |
+| author | varchar(100) |  |
+| description| text |  |
+
+
+| Readers-Books | Type | Description |
+|-------------|------|-------------|
+| readerID | int| primary key, foreign key |
+| bookID | int | primary key, foreign key |
+
+
 ![image](https://github.com/XujuanChen/web103_finalproject/assets/109524796/35a3026f-47e3-4ebe-89f4-dc270586bda3)
