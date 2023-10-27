@@ -36,6 +36,12 @@ Users can add, edit, and delete tasks, specifying details such as task name, des
 
 [gif goes here]
 
+### Monthly/Daily Task Views
+
+Users can view tasks in different calendar formats as well as filter tasks based on board members to see who is assigned with which tasks.
+
+[gif goes here]
+
 ### Family Board Creation/Deletion:
 
 Owners have the ability to create and customize family boards, setting the foundation for family-wide task management.
