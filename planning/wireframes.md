@@ -4,17 +4,24 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+List of Pages
 
-## Wireframe 1: [page title]
+⭐ Homepage: Overview of the platform, login/register options.
+⭐ Student Dashboard: Displays student details, subjects of interest, and upcoming appointments.
+⭐ Tutor Dashboard: Shows tutor details, subjects they tutor in, availability dates, and scheduled appointments.
+Search Tutors: Allows students to search and filter tutors based on subjects.
+Appointment Booking: Allows students to book a tutor.
+Appointment Details: A detailed view of a specific appointment.
+Profile Management: Where users (both students and tutors) can edit their details.
+## Wireframe 1: Homepage
 
 [👉🏾👉🏾👉🏾 include wireframe 1]
 
-## Wireframe 2: [page title]
+## Wireframe 2: Student Dashboard
 
 [👉🏾👉🏾👉🏾 include wireframe 2]
 
-## Wireframe 3: [page title]
+## Wireframe 3: Tutor Dashboard
 
 [👉🏾👉🏾👉🏾 include wireframe 3]
 
