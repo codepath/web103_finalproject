@@ -5,6 +5,9 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## Create the List of Tables
 
 [👉🏾👉🏾👉🏾 List each table in your diagram]
+1. Readers table
+2. Books table
+3. Readers-Books table
 
 ## Add the Entity Relationship Diagram
 
@@ -15,3 +18,4 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | id | integer | primary key |
 | name | text | name of the shoe model |
 | ... | ... | ... |
+![image](https://github.com/XujuanChen/web103_finalproject/assets/109524796/35a3026f-47e3-4ebe-89f4-dc270586bda3)
