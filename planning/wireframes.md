@@ -4,18 +4,20 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+    1. Movies Page ⭐
+    2. Create Movie Page ⭐
+    3. Movie Details Page ⭐
+    4. Edit Movie Page
+    5. User Wishlists Page
 
-## Wireframe 1: [page title]
+## Wireframe 1: Movies Page (showing all movies)
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![image info](./wireframe_images/movies_page.png)
 
-## Wireframe 2: [page title]
+## Wireframe 2: Create Movie Page
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![image info](./wireframe_images/create_movie_page.png)
 
-## Wireframe 3: [page title]
+## Wireframe 3: Movie Detailed Page
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
-
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![image info](./wireframe_images/movie_detailed_page.png)
