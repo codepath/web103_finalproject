@@ -36,4 +36,14 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | bookID | int | primary key, foreign key |
 
 
-![image](https://github.com/XujuanChen/web103_finalproject/assets/109524796/35a3026f-47e3-4ebe-89f4-dc270586bda3)
+| Reviews| Type | Description |
+|-------------|------|-------------|
+| id | serial| primary key |
+| review | text|  |
+| readerID | int| foreign key |
+| bookID | int | foreign key |
+
+
+
+![image](https://github.com/XujuanChen/web103_finalproject/assets/109524796/747fed86-f028-4db9-ac1a-bb85f552c877)
+
