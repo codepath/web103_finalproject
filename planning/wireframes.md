@@ -7,12 +7,19 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 List of Pages
 
 ⭐ Homepage: Overview of the platform, login/register options.
+
 ⭐ Student Dashboard: Displays student details, subjects of interest, and upcoming appointments.
+
 ⭐ Tutor Dashboard: Shows tutor details, subjects they tutor in, availability dates, and scheduled appointments.
+
 Search Tutors: Allows students to search and filter tutors based on subjects.
+
 Appointment Booking: Allows students to book a tutor.
+
 Appointment Details: A detailed view of a specific appointment.
+
 Profile Management: Where users (both students and tutors) can edit their details.
+
 ## Wireframe 1: Homepage
 
 [👉🏾👉🏾👉🏾 include wireframe 1]
