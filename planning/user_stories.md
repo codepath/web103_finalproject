@@ -4,7 +4,7 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 ## Outline User Roles
 
-**Movie lovers**: a user who love to keep her favourite list of movies at a website for easier access and update everytime
+**Owner**: a user who love to keep her favourite list of movies at a website for easier access and update everytime
 
 ## Draft User Stories
 
