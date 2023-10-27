@@ -29,4 +29,4 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Add the Entity Relationship Diagram
 
-<img src="" alt="er-diagram">
+<img src="https://github.com/ManyaBondada/web103_finalproject/blob/main/planning/capstone_erd.png" alt="er-diagram">
