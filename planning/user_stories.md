@@ -23,3 +23,4 @@ Reference the Writing User Stories final project guide in the course portal for 
 8. As a tutor, I want to be able to view upcoming sessions with students, so that I can prepare for the sessions and make sure that I have the necessary materials.
 9. As a student, I want to be able to cancel a session with a tutor, in case I am unable to attend the session.
 10. As a tutor, I want to be able to cancel a session with a student, in case I am unable to attend the session.
+11. As a student, I want to be able to rate a tutor after a session, so that I can provide feedback to the tutor and help other students decide if they want to book a session with the tutor.
