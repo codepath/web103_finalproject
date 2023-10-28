@@ -15,7 +15,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ![image (6)](https://github.com/mumtazf/careerPortal/assets/80971217/a0773a45-2abc-429f-8194-1641545b7459)
 
-
+## User table
 | Column Name | Type | Description |
 |-------------|------|-------------|
 | Github_ID | text | primary key |
@@ -27,7 +27,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | Is_saved | boolean | This tells us if the job is currently saved |
 | Role | text | Student, Early career etc. |
 
-
+## company table
 | Column Name | Type | Description |
 |-------------|------|-------------|
 | Github_ID | integer | foreign key |
@@ -35,6 +35,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | Picture_URL | text | The company's background picture URL |
 | Description | text | The company's description |
 
+## post table
 | Column Name | Type | Description |
 |-------------|------|-------------|
 | Github_ID | text | foreign key |
@@ -44,6 +45,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | Likes | array | A List of users who liked the post |
 | Pending | boolean | If the admins have approved it |
 
+
+## job table
 | Column Name | Type | Description |
 |-------------|------|-------------|
 | Job_ID | text | primary key |
