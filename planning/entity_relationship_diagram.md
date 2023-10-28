@@ -10,6 +10,9 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 [👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
 
+![image (6)](https://github.com/mumtazf/careerPortal/assets/80971217/a0773a45-2abc-429f-8194-1641545b7459)
+
+
 | Column Name | Type | Description |
 |-------------|------|-------------|
 | id | integer | primary key |
