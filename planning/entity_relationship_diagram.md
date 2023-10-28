@@ -42,7 +42,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 |-------------|------|-------------|
 | id | serial| primary key |
 | review | text |  |
-| reating | int |  |
+| rating | int |  |
 | readerID | int| foreign key |
 | bookID | int | foreign key |
 
