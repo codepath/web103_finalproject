@@ -14,6 +14,7 @@ Tables:
 - Business
 - Perk
 - TravelerBookingPerk
+- Amenities
 
 ## Entity Relationship Diagram
 
