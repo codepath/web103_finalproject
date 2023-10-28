@@ -4,18 +4,23 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+1. Sign Up/Login Page
+2. Home Page (Feed of Listings)
+3. Profile Listings Page
+4. User Profile Page
+5. Favorites Page
 
-## Wireframe 1: [page title]
+## Wireframe 1: Sign Up/Login Page
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![Sign Up Page](sign_up_wireframe.png)
 
-## Wireframe 2: [page title]
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+## Wireframe 2: Home Page (Feed of Listings)
 
-## Wireframe 3: [page title]
+![Home Page - Listings](home_page_wireframe.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 3: Favorites Page
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+
+![Favorites Page - Listings](favorites_page_profiles_wireframe.png)
+
