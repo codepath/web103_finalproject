@@ -17,11 +17,14 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 ### 1. What went well during this unit?
 
 [Rob - We communicated our boundaries at the beginning of the week and were able to accomplish everything on time.]
+[Zion - Communication was fire once again. We did our own delegated tasks.]
 
 ### 2. What were some challenges your group faced in this unit?
 
 [Rob - I had some challeneges on deciding what to make for the wireframes, but I looked at some examples and was able to get a good idea of what I wanted to design.]
+[Zion - Finding the right timezone for us to talk in because we're in different states.]
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
 [Rob - Since I believe we're moving into the coding phase, I think we'll need some support on how to implement our ideas into code.]
+[Zion - Probably coding support since I'm not too versed in web-scraping.]
