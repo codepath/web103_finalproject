@@ -4,18 +4,24 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- Listings Page
+- View Listing Page
+- Host Profile Page
+- Traveler Profile Page
+- Your Perks Page
+- Edit Profile Page
+- Add Property Page
 
-## Wireframe 1: [page title]
+## Wireframe 1: Listings Page
 
 [👉🏾👉🏾👉🏾 include wireframe 1]
 
-## Wireframe 2: [page title]
+## Wireframe 2: View Listing Page
 
 [👉🏾👉🏾👉🏾 include wireframe 2]
 
-## Wireframe 3: [page title]
+## Wireframe 3: Your Perks Page
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+
+
