@@ -8,6 +8,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 1. Readers table
 2. Books table
 3. Readers-Books table
+4. Reviews table
+   
 
 ## Add the Entity Relationship Diagram
 
@@ -39,7 +41,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 | Reviews| Type | Description |
 |-------------|------|-------------|
 | id | serial| primary key |
-| review | text|  |
+| review | text |  |
+| reating | int |  |
 | readerID | int| foreign key |
 | bookID | int | foreign key |
 
