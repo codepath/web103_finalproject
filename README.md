@@ -53,7 +53,7 @@ Users can add a profile picture and update their bio or subjects.
 
 ### Ratings
 
-After a session, students can rate tutors. Tutors can also rate students.
+After a session, students can rate tutors.
 [gif goes here]
 
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]

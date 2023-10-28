@@ -6,30 +6,32 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 List of Pages
 
-⭐ Homepage: Overview of the platform, login/register options.
+⭐ Landing Page: Overview of the platform, with a call to action to sign up.
 
-⭐ Student Dashboard: Displays student details, subjects of interest, and upcoming appointments.
+⭐ Student Profile: Student details. Allows students to edit their profile and change their passwords.
 
-⭐ Tutor Dashboard: Shows tutor details, subjects they tutor in, availability dates, and scheduled appointments.
+⭐ Tutor Profile: Tutor details, subjects they tutor in, and their availability. Allows tutors to edit their profile and change their passwords.
 
-Search Tutors: Allows students to search and filter tutors based on subjects.
+⭐ Find Sessions: Allows students to book a session with a tutor in their current subject of interest.
 
-Appointment Booking: Allows students to book a tutor.
+⭐ View Sessions: Allows students and tutors to view their upcoming sessions.
 
-Appointment Details: A detailed view of a specific appointment.
+## Wireframe 1: Landing Page
 
-Profile Management: Where users (both students and tutors) can edit their details.
+![Landing page](landing_page.png)
 
-## Wireframe 1: Homepage
+## Wireframe 2: Student Profile
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![Student profile page](student_profile.png)
 
-## Wireframe 2: Student Dashboard
+## Wireframe 3: Tutor Profile
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![Tutor profile page](tutor_profile.png)
 
-## Wireframe 3: Tutor Dashboard
+## Wireframe 4: Find Sessions
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Find sessions page](find_sessions.png)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 5: View Sessions
+
+![View sessions page](view_sessions.png)
