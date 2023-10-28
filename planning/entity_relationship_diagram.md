@@ -48,5 +48,6 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 
 
-![image](https://github.com/XujuanChen/web103_finalproject/assets/109524796/747fed86-f028-4db9-ac1a-bb85f552c877)
 
+
+![image](https://github.com/XujuanChen/web103_finalproject/assets/109524796/28ab39aa-b0df-49ef-95b5-e344bd530946)
