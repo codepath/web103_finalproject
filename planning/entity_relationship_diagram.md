@@ -5,17 +5,22 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## List of Tables
 
 Tables:
+- User
 - Traveler
 - Host
+- Admin
 - Property
 - Booking
 - Invoice
 - Listing
+- ListingMessage
 - Business
+- Image
 - Perk
 - TravelerBookingPerk
-- Amenities
+- AmenitityList
 
 ## Entity Relationship Diagram
 
-![StayVue ERD (2)](https://github.com/itsgivingchaotica/stayvue/assets/91578619/c6eebc9a-392c-4f13-8566-234e86bf0831)
+![StayVue ERD (3)](https://github.com/itsgivingchaotica/stayvue/assets/91578619/29ff9f22-bfba-4bae-98ba-358e476a0f48)
+
