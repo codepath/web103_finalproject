@@ -8,4 +8,4 @@ users, items, users/saved, user/order
 
 ## Add the Entity Relationship Diagram
 
-<a href="erd.pdf">link to ERD</a>
+<img href="erd.pdf" />
