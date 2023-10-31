@@ -8,4 +8,4 @@ users, items, users/saved, user/order
 
 ## Add the Entity Relationship Diagram
 
-<iframe src="erd.pdf" ></iframe>
+<iframe src="[your-pdf-file.pdf](https://github.com/JohnnyCortez/JewelryStore/blob/795c314c83cf28736ac01ea884e6cc8137f48b9e/erd.pdf)https://github.com/JohnnyCortez/JewelryStore/blob/795c314c83cf28736ac01ea884e6cc8137f48b9e/erd.pdf" width="100%" height="600"></iframe>
