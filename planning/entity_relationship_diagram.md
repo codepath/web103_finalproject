@@ -7,5 +7,6 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 users, items, users/saved, user/order
 
 ## Add the Entity Relationship Diagram
+link:
+https://github.com/JohnnyCortez/JewelryStore/blob/main/erd.pdf
 
-<iframe src="./erd.pdf" width="100%" height="600"></iframe>
