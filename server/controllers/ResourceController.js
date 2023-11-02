@@ -1,30 +1,25 @@
-// ResourceController.js
-const { pool } = require('../config/database.js');
+import { pool } from '../config/database.js';
 
-const getAllResources = async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM "RESOURCE"');
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
+export const getAllResources = async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM "RESOURCE"');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-const createResource = async (req, res) => {
-  const { link, typeId, userId } = req.body;
-  try {
-    const result = await pool.query('INSERT INTO "RESOURCE" (link, typeId, userId) VALUES ($1, $2, $3) RETURNING *', [link, typeId, userId]);
-    res.status(201).json(result.rows[0]);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
+export const createResource = async (req, res) => {
+    const { link, typeId, userId } = req.body;
+
+    try {
+        const result = await pool.query('INSERT INTO "RESOURCE" (link, typeId, userId) VALUES ($1, $2, $3) RETURNING *', [link, typeId, userId]);
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-// Add updateResource and deleteResource functions if needed
-
-module.exports = {
-  getAllResources,
-  createResource,
-  // updateResource,
-  // deleteResource
-};
+// Implement these functions if needed
+// export const updateResource = async (req, res) => { ... };
+// export const deleteResource = async (req, res) => { ... };

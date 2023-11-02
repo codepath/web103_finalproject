@@ -1,30 +1,25 @@
-// UserController.js
-const { pool } = require('../config/database.js');
+import { pool } from '../config/database.js';
 
-const getAllUsers = async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM "USER"');
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
+export const getAllUsers = async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM "USER"');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-const createUser = async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const result = await pool.query('INSERT INTO "USER" (username, password) VALUES ($1, $2) RETURNING *', [username, password]);
-    res.status(201).json(result.rows[0]);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
+export const createUser = async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const result = await pool.query('INSERT INTO "USER" (username, password) VALUES ($1, $2) RETURNING *', [username, password]);
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
-// Add updateUser and deleteUser functions if needed
-
-module.exports = {
-  getAllUsers,
-  createUser,
-  // updateUser,
-  // deleteUser
-};
+// Implement these functions if needed
+// export const updateUser = async (req, res) => { ... };
+// export const deleteUser = async (req, res) => { ... };
