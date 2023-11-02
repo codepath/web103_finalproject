@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllPosts } from '../utilities/postService';
+import { getAllPosts } from '../services/postService';
 import Post from '../components/Post';
 
 const DiscussionBoard = () => {
