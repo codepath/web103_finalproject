@@ -1,0 +1,51 @@
+{
+    "users": [
+      {
+        "username": "john_doe",
+        "avatar_url": "https://example.com/avatar1.jpg",
+        "bio": "Love traveling and photography"
+      },
+      {
+        "username": "jane_smith",
+        "avatar_url": "https://example.com/avatar2.jpg",
+        "bio": "Avid hiker and explorer"
+      }
+    ],
+    "posts": [
+      {
+        "user_id": 1,
+        "content": "Had a fantastic time exploring the mountains!",
+        "timestamp": "2023-10-01T08:30:00"
+      },
+      {
+        "user_id": 2,
+        "content": "The scenery in New Zealand is stunning!",
+        "timestamp": "2023-10-04T09:45:00"
+      }
+    ],
+    "comments": [
+      {
+        "post_id": 1,
+        "user_id": 2,
+        "comment_text": "Looks amazing, John! Can't wait to visit myself.",
+        "timestamp": "2023-10-01T12:15:00"
+      },
+      {
+        "post_id": 2,
+        "user_id": 1,
+        "comment_text": "Beautiful photo, Jane! The landscape is breathtaking.",
+        "timestamp": "2023-10-04T11:30:00"
+      }
+    ],
+    "user_followers": [
+      {
+        "user_id": 1,
+        "follower_id": 2
+      },
+      {
+        "user_id": 2,
+        "follower_id": 1
+      }
+    ]
+  }
+  

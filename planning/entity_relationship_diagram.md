@@ -1,17 +1,50 @@
+## List of Tables:
+
+### USER
+| Column Name | Type      | Description               |
+|-------------|-----------|---------------------------|
+| id          | integer   | primary key               |
+| username    | varchar   | user's unique username   |
+| password    | varchar   | user's encrypted password|
+
+### POST
+| Column Name | Type      | Description               |
+|-------------|-----------|---------------------------|
+| id          | integer   | primary key               |
+| content     | text      | content of the post      |
+| userId      | int       | foreign key to USER       |
+
+### COMMENT
+| Column Name | Type      | Description               |
+|-------------|-----------|---------------------------|
+| id          | integer   | primary key               |
+| content     | text      | content of the comment   |
+| postId      | int       | foreign key to POST       |
+
+### RESOURCE
+| Column Name | Type      | Description               |
+|-------------|-----------|---------------------------|
+| id          | integer   | primary key               |
+| link        | varchar   | URL of the resource      |
+| typeId      | int       | foreign key to TYPE       |
+| userId      | int       | foreign key to USER       |
+
+### TYPE
+| Column Name | Type      | Description               |
+|-------------|-----------|---------------------------|
+| id          | integer   | primary key               |
+| name        | varchar   | type of the resource      |
+
+
 # Entity Relationship Diagram
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
+This ERD visually represents the relationships between the main entities in our application:
 
-## Create the List of Tables
+- **USER**: Represents the registered users of the platform.
+- **POST**: Represents the posts created by users.
+- **COMMENT**: Represents comments on posts.
+- **RESOURCE**: Represents the learning resources added by users.
+- **TYPE**: Represents the type of resource (e.g., "Videos" or "Articles").
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+<img src='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/ERD%20WEB%20DEV%20103.png' title='Video Walkthrough' width='' alt='ERD' />
 
-## Add the Entity Relationship Diagram
-
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
