@@ -1,4 +1,3 @@
-/* Home.css */
 .navbar {
     background-color: #483C32;
     display: flex;
@@ -78,6 +77,16 @@
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .login-button {
+    background-color: orange;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
   }
   
   .footer {
