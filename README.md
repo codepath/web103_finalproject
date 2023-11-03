@@ -49,8 +49,8 @@ Backend Features
     - [ ] one-to-many 
     - [ ] many-to-many with a join table 
 - [ ] The web app implements a well-designed RESTful API that:
-- [ ] Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
-- [ ] Implements proper naming conventions for routes.
+    - [ ] Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
+    - [ ] Implements proper naming conventions for routes.
 - [ ] The web app implements the ability to reset the database to its default state.
 
 
