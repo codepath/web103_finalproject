@@ -1,0 +1,89 @@
+/* Home.css */
+.navbar {
+    background-color: #483C32;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    color: white;
+  }
+  
+  .link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: white;
+    margin: 0 30px;
+    font-size: 20px;
+  }
+  
+  .logo {
+    height: 6%;
+    max-width: 6%;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .image {
+    width: 100%;
+  }
+  
+  .resource-bar {
+    background-color: #FFAA33;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .icon {
+    font-size: 36px;
+    margin-right: 10px;
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .bar2 {
+    background-color: #483C32;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .bar2-text {
+    color: white;
+    font-size: 24px;
+  }
+  
+  .join-us-button {
+    background-color: orange;
+    padding: 20px 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .footer {
+    background-color: #483C32;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
