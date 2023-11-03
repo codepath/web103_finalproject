@@ -42,7 +42,7 @@ Users can view tasks in different calendar formats as well as filter tasks based
 
 [gif goes here]
 
-### Family Board Creation/Deletion:
+### Family Board Creation/Deletion
 
 Owners have the ability to create and customize family boards, setting the foundation for family-wide task management.
 
@@ -54,7 +54,7 @@ Owners can invite and add family members to the board, allowing for collaboratio
 
 [gif goes here]
 
-### Search Functionality:
+### Search Functionality
 
 Users can search for specific tasks, family members, or previous task history within the family board.
 
