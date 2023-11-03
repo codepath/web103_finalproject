@@ -11,11 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/users", usersRouter);
-app.use("/leases", leasesRouter);
-app.use("/tenees", teneesRouter);
-app.use("/favorites_leases", favoritesLeasesRouter);
-app.use("/favorites_tenees", favoritesTeneesRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/leases", leasesRouter);
+app.use("/api/tenees", teneesRouter);
+app.use("/api/favorites_leases", favoritesLeasesRouter);
+app.use("/api/favorites_tenees", favoritesTeneesRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello World");
