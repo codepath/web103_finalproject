@@ -45,7 +45,7 @@ We could harbor a vast collection of technical and behavioral questions that are
 If we have behavioral questions or even for technical questions, we could have an AI-Chat bot where when users record their answers, the bot can give real-time, responsive feedback.
 [gif goes here]
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them] ✅✅✅
 
 ## Installation Instructions
 
