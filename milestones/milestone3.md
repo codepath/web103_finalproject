@@ -22,15 +22,24 @@ You will need to reference the GitHub Project Management guide in the course por
 ### 1. What went well during this unit?
 
 [Zion - We were able to communicate about what we wanted to get done and delegated the work]
+[Rob - We got familiar with project management in GitHub and were to plan out how we're going to get work done.]
+
 ### 2. What were some challenges your group faced in this unit?
 
+[Rob - Learning the nuances of project management in GitHub since I've never done it before.]
 [Zion - Nothing much related to this course. Just a lot of outside work.]
+
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
 [Zion - Yes.]
+[Rob - Not all tasks were completed, but we prioritized the ones that were most important for the milestone submission.]
+
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
 [Zion - The user stories that are not IT developers. I would say that we just need to keep the scope narrow and not worry about those other users.]
+[Rob - I think we're underestimating the web scraping feature and cosider it "at risk". We'll have to narrow our scope and focus on just getting the ChatGPT calls completed.]
+
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
 [Zion - Nothing in particular. Everything's chill.]
+[Rob - I think we're good.]
