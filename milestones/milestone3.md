@@ -21,20 +21,20 @@ You will need to reference the GitHub Project Management guide in the course por
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We seperated our roles into backend and frontend, and had a good plan for dividing the work.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We both got really busy with school and other responsibilities, and also we had some git issues when combining our work towars the end of the week.
 
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We didn't finish all the tasks in our sprint plan. This week it was mainly the backend that needed it to be done, but some of that may have to be extended into next week. The priority is to have data ready to be used by the frontend early next week, so we can test front end components and pages.
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-[👉🏾👉🏾👉🏾 your answer here]
+At this point, we're probably not going to use seperate movie lists. Instead, the whole app will be a movie wishlist for the user, and our data will contain movie items.
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+No additional support needed at this time. 
