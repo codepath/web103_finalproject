@@ -9,6 +9,7 @@ const createBooksTable = async () => {
             id serial PRIMARY KEY,
             name varchar(100) NOT NULL,
             author varchar(100) NOT NULL,
+            image text NOT NULL,
             description text NOT NULL
         );
     `
@@ -26,12 +27,13 @@ const seedBooksTable = async () => {
     booksData.forEach((book)=> {
         const insertQuery = {
             text: 
-            `INSERT INTO books (name, author, description) VALUES ($1, $2, $3)`
+            `INSERT INTO books (name, author, image, description) VALUES ($1, $2, $3, $4)`
         }
 
         const values = [
             book.name,
             book.author, 
+            book.image,
             book.description
         ]
 
