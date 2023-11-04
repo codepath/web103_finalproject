@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import UserRoutes from './routes/UserRoutes.js'; // Ensure the path and file extension are correct
-import PostRoutes from './routes/PostRoutes.js'; // Ensure the path and file extension are correct
-import CommentRoutes from './routes/CommentRoutes.js'; // Ensure the path and file extension are correct
-import ResourceRoutes from './routes/ResourceRoutes.js'; // Ensure the path and file extension are correct
-import TypeRoutes from './routes/TypeRoutes.js'; // Ensure the path and file extension are correct
+import UserRoutes from './routes/UserRoutes.js';
+import PostRoutes from './routes/PostRoutes.js';  
+import CommentRoutes from './routes/CommentRoutes.js';  
+import ResourceRoutes from './routes/ResourceRoutes.js';  
+import TypeRoutes from './routes/TypeRoutes.js';  
 
 const app = express();
 
@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ OnTheFly API</h1>');
+    res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ CodeFM Backend</h1>');
 });
 
-// Use specific paths for each set of routes, similar to your instructor's approach
+
 app.use('/api/users', UserRoutes);
 app.use('/api/posts', PostRoutes);
 app.use('/api/comments', CommentRoutes);
