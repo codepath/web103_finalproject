@@ -41,11 +41,11 @@ Backend: Node.js, Express.js, PostgreSQL
 
 ### Baseline Features:
 
-- [x] 1. **Express backend and React frontend**: Express for the CRUD operations on the discussion boards and React to display content and allow user interactions. 
+- ✅ 1. **Express backend and React frontend**: Express for the CRUD operations on the discussion boards and React to display content and allow user interactions. 
       <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/ExpressbackendandReactFrontend.gif' title='Video Walkthrough' width='' alt='Express React' />
 
 - [ ] 2. **Dynamic Routes**: The discussion board would have dynamic routes for individual posts or discussions. For example, `/posts/:postId`.
-- [ ] 3. **Deployment on Railway**: Railway for deployment.
+- ✅ 3. **Deployment on Railway**: Railway for deployment.
       <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/Railway%20Backend.gif' title='Video Walkthrough' width='' alt='Railway' />
 
 - [ ] 4. **One-to-many database relationship**: Connection between users and their posts on the discussion board. One user can have multiple posts.
