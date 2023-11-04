@@ -33,7 +33,7 @@ You will need to reference the GitHub Project Management guide in the course por
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-[👉🏾👉🏾👉🏾 your answer here]
+[👉🏾👉🏾👉🏾 "browse books by genre or category" may be at risk, we will see next week to keep or remove it.]
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
