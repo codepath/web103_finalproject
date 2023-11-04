@@ -25,7 +25,7 @@ time, mark, audio, video {
 }
 
 html{
-  background-image: url('../public/background.png');
+  background-image: url('/background.png');
   background-color: black;
   font-family: 'Poppins';
 }

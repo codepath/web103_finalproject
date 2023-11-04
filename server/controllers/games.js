@@ -1,4 +1,4 @@
-import pool from '../config/database.js';
+import {pool} from '../config/database.js';
 
 const getAllGames = async (req, res) => {
   try {
@@ -51,7 +51,7 @@ const deleteGame = async (req, res) => {
   }
 };
 
-export {
+export default {
     getAllGames,
     getGameById,
     createGame,

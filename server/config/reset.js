@@ -1,5 +1,5 @@
-import { pool } from '../config/database.js';
-import '../config/dotenv.js';
+import { pool } from './database.js'
+import './dotenv.js'
 import gamesData from '../data/games.js';
 
 const createGamesTable = async () => {
