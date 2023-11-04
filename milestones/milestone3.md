@@ -19,20 +19,20 @@ You will need to reference the GitHub Project Management guide in the course por
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+- The collaboration between backend and frontend elements was seamless in terms of integrating the React components with the Express server. Myesha's design for the homepage and the CreatePost page provided a strong foundation for user interaction. On the backend, the setup of a basic Express server and the configuration to serve the React application went smoothly, which was crucial for the project's infrastructure.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+- A significant challenge was distributing tasks to align with our respective strengths, particularly as Myesha focused on UI design, leaving the bulk of the backend and integration work to be addressed. Coordinating and merging our work sometimes posed delays and required extensive communication to ensure compatibility between the frontend and backend.
 
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-[👉🏾👉🏾👉🏾 your answer here]
+- While we managed to complete the basic setup for both the frontend and backend, some tasks, such as the complete integration and testing of dynamic routing and database schema optimizations, are pending. Prioritization of remaining tasks would focus on backend features critical to user interaction, like authentication and CRUD operations for the discussion board, which are central to the user experience.
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-[👉🏾👉🏾👉🏾 your answer here]
+- Currently, the user authentication is "at risk" due to its complex nature and dependency on both frontend and backend completion. If these remain at risk, we will need to reassess the task distribution, potentially seeking additional support for backend tasks to ensure timely completion.
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+- Given the workload, additional support in the form of backend development resources would be beneficial.
