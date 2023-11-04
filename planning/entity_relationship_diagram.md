@@ -46,5 +46,5 @@ This ERD visually represents the relationships between the main entities in our 
 - **RESOURCE**: Represents the learning resources added by users.
 - **TYPE**: Represents the type of resource (e.g., "Videos" or "Articles").
 
-<img src='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/ERD%20WEB%20DEV%20103.png' title='Video Walkthrough' width='' alt='ERD' />
+<img src='https://github.com/fzinnah17/CodeFM/blob/main/ERD/CodeFM%20Ultra-2023-10-29-162922.png' title='Video Walkthrough' width='' alt='ERD' />
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faUsers, faCalendar, faTrophy } from '@fortawesome/free-solid-svg-icons';
-import './Home.css'; 
+import '../css/Home.css';
 
 const Home = () => {
   return (

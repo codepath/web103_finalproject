@@ -41,47 +41,40 @@ Backend: Node.js, Express.js, PostgreSQL
 
 ### Baseline Features:
 
-1. **Express backend and React frontend**: Express for the CRUD operations on the discussion boards and React to display content and allow user interactions. 
+- ✅ 1. **Express backend and React frontend**: Express for the CRUD operations on the discussion boards and React to display content and allow user interactions. 
+      <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/ExpressbackendandReactFrontend.gif' title='Video Walkthrough' width='' alt='Express React' />
 
-2. **Dynamic Routes**: The discussion board would have dynamic routes for individual posts or discussions. For example, `/posts/:postId`.
+- [ ] 2. **Dynamic Routes**: The discussion board would have dynamic routes for individual posts or discussions. For example, `/posts/:postId`.
+- ✅ 3. **Deployment on Railway**: Railway for deployment.
+      <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/Railway%20Backend.gif' title='Video Walkthrough' width='' alt='Railway' />
 
-3. **Deployment on Railway**: Railway for deployment.
-
-4. **One-to-many database relationship**: Connection between users and their posts on the discussion board. One user can have multiple posts.
-
-5. **Many-to-many with a join table**: Users can share multiple resources, and a single resource (like a YouTube tutorial) can be saved by multiple users. This requires a join table.
-
-6. **RESTful API**:
+- [ ] 4. **One-to-many database relationship**: Connection between users and their posts on the discussion board. One user can have multiple posts.
+- [ ] 5. **Many-to-many with a join table**: Users can share multiple resources, and a single resource (like a YouTube tutorial) can be saved by multiple users. This requires a join table.
+- [ ] 6. **RESTful API**:
    - **GET**: Fetch a list of posts or resources.
    - **POST**: Create a new post on the discussion board.
    - **PATCH**: Edit an existing post.
    - **DELETE**: Remove a post.
-
-7. **Proper naming conventions for routes**: For instance:
+- [ ] 7. **Proper naming conventions for routes**: For instance:
    - GET: `/api/posts/` to get all posts.
    - POST: `/api/posts/` to create a new post.
    - PATCH: `/api/posts/:postId` to edit a specific post.
    - DELETE: `/api/posts/:postId` to delete a specific post.
-
-8. **Reset database**: A simple endpoint or script to reset the database to its default state, especially useful during testing.
-
-9. **Frontend Redirection**: After submitting a new post, redirect the user back to the list of posts or to their newly created post.
-
-10. **On-page interactions**: Users can create or edit a post on the same page without navigating to a new page.
-
-11. **Dynamic frontend routes with React Router**: Using React Router, you can create dynamic routes like `/posts/:postId` to view a specific post's details.
-
-12. **Hierarchical React components**: Break down frontend components methodically:
-   - **Page components**: `Home`, `DiscussionBoard`, `ResourceList`.
-   - **Presenter components**: `Post`, `Comment`, `ResourceItem`.
-   - **Container components**: `PostContainer`, `ResourceContainer` (handles logic).
+- [ ] 8. **Reset database**: A simple endpoint or script to reset the database to its default state, especially useful during testing.
+- [ ] 9. **Frontend Redirection**: After submitting a new post, redirect the user back to the list of posts or to their newly created post.
+- [ ] 10. **On-page interactions**: Users can create or edit a post on the same page without navigating to a new page.
+- [ ] 11. **Dynamic frontend routes with React Router**: Using React Router, you can create dynamic routes like `/posts/:postId` to view a specific post's details.
+- [ ] 12. **Hierarchical React components**: Break down frontend components methodically:
+   - [ ] **Page components**: `Home`, `DiscussionBoard`, `ResourceList`.
+   - [ ] **Presenter components**: `Post`, `Comment`, `ResourceItem`.
+   - [ ] **Container components**: `PostContainer`, `ResourceContainer` (handles logic).
 
 
 ### Custom Features:
 
-1. **Data Validation**: Validate any POST or PATCH requests to ensure that users aren't submitting empty or inappropriate content.
+- [ ] 1. **Data Validation**: Validate any POST or PATCH requests to ensure that users aren't submitting empty or inappropriate content.
   
-2. **Filtering**: Users could have the option to filter resources based on platforms or categories like "YouTube", "Leetcode", or "Articles".
+- [ ] 2. **Filtering**: Users could have the option to filter resources based on platforms or categories like "YouTube", "Leetcode", or "Articles".
 
 
 
