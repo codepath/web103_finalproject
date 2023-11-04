@@ -5,6 +5,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
+    "start": "concurrently \"cd client && vite\" \"cd server && nodemon server\"",
+    "build": "cd client && vite build",
+    "reset": "cd server/config && node --require dotenv/config reset.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
