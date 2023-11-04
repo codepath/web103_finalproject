@@ -39,8 +39,8 @@ Backend: Express, PostgreSQL
 ### Baseline Features 
 Complete all of the baseline features. These features use the core skills developed in this course, including designing a database schema, creating a server, and connecting a frontend to the server.
 
-- [ ] The web app includes an Express backend app and a React frontend app.
-- [ ] The web app includes dynamic routes for both frontend and backend apps.
+- [x] The web app includes an Express backend app and a React frontend app.
+- [x] The web app includes dynamic routes for both frontend and backend apps.
 - [ ] The web app is deployed on Railway with all pages and features working.
 
 Backend Features
