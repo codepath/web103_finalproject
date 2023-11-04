@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/books', booksRouter)
-app.get('/api/', (req, res) => {
+app.get('/*', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;"> 📚 ReadRave API</h1>')
 })
 
