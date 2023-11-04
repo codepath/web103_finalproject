@@ -9,6 +9,7 @@ build
 # Environment files
 .env
 .env.production
+.env*.local
 
 # Logs
 logs
