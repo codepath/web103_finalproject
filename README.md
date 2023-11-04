@@ -22,31 +22,35 @@ Frontend: React.js
 Backend: PostgreSQL, Express.js, Node.js
 
 ## Features
-1. Sneaker World is programmed using Express and and React and includes dynamic routes.
-2. The entire application is deployed using Railway.
+- [x] Sneaker World includes an Express backend app and a React frontend app.
+- [x] Sneaker World includes dynamic routes for both frontend and backend apps.
+- [ ] Sneaker World is deployed on Railway with all pages and features working.
 
-### Backend Features
-3. A user can select multiple sneakers to add to their cart (one-to-many database relationship in Postgres).<br>
-4. Multiple sneakers can be joined with multiple categories such as: casual, running, cross-training, etc. (many-to-many database relationship in Postgres).<br>
-5. Responds to GET, POST, PATCH, and DELETE (RESTful API) requests in order to allow for cart and orders to be properly deleted.<br>
-6. Implements proper naming conventions for routes.<br>
-7. The web app implements the ability to reset the database to its default state in order to create a clean slate and create a consistent UX.<br>
+### Backend Features     
+- [ ] The web app implements at least one of each of the following database relationship in Postgres:
+  - [x] one-to-many: the comment section can have multiple comments in the Sneakers Detail page.
+  - [ ] many-to-many with a join table
+- [ ] The web app implements a well-designed RESTful API that:
+  - [ ] Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
+  - [x] Implements proper naming conventions for routes.
+- [ ] The web app implements the ability to reset the database to its default state.
 
 [gif goes here]
 
 ### Frontend Features
-8. Sneaker World serves an appropriate 404 page when no matching route is defined.<br>
-9. The application implements a like feature without navigating out of the page.<br>
-10. The application uses dynamic frontend routes created with React Router.<br>
-11. Sneaker World uses hierarchically designed React components that includes: homepage, products, details, cart, and checkout.<br>
-12. Sneaker World uses components and presenter components to streamline the application.<br>
+- [ ] The web app implements at least one redirection.
+- [x] The web app implements at least one interaction that the user can initiate and complete on the same page without navigating to a new page: user can heart a comment
+- [x] The web app uses dynamic frontend routes created with React Router.
+- [x] The web app uses hierarchically designed React components:
+  - [x] Components are broken down into categories, including page and component types.
+  - [x] Corresponding container components and presenter components as appropriate.
 
 [gif goes here]
 
 ### Custom Features
 
-13. Sneaker World filters and/or sorts based on user preferences.<br>
-14. The application gracefully handles errors.<br>
+- [ ] Sneaker World filters and/or sorts based on user preferences.
+- [ ] The application gracefully handles errors.
 
 [gif goes here]
 
