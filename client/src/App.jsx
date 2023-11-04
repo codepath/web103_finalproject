@@ -9,6 +9,7 @@ import CreateResource from './pages/CreateResource';
 
 import './App.css';
 import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/add-resource" element={<CreateResource />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
       
           
           
