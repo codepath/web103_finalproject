@@ -1,0 +1,30 @@
+/* Card styles */
+.card {
+  background-color: white;
+  color: black;
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adding a simple shadow effect */
+  padding: 1.5em;
+  margin: 1em;
+  height: 20em;
+  width: 30em;
+}
+
+.card_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.user_info {
+  display: flex;
+}
+
+.user_info p {
+  margin-right: 1em;
+}
+
+.card_description {
+  /* Additional styles for the description */
+}
