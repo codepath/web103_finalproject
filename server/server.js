@@ -3,7 +3,7 @@ import './config/dotenv.js'
 import cors from "cors";
 import morgan from "morgan";
 
-//import router from './config/routes.js'
+import router from './config/routes.js'
 
 import setup from './Database/setup.js'
 setup()
@@ -19,7 +19,7 @@ app.use(
 app.use(express.json()); // Middleware for parsing JSON bodies from HTTP requests
 app.use(morgan("tiny"));
 
-//app.use('/', router)
+app.use('/', router)
 
 app.get('/', (req, res) => {
   res.send('<h1>Video Games API</h1>')
