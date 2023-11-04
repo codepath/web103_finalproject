@@ -22,7 +22,7 @@ const Home = () => {
         </div>
         <nav>
           <Link to="/login" className="link join-us">
-            Login
+            <button className="login-button">Login</button>
           </Link>
         </nav>
       </div>
