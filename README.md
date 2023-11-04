@@ -18,9 +18,9 @@ StayVue's mission goes beyond just booking accommodations; it's about enriching 
 
 ## Tech Stack
 
-Frontend:
+Frontend: React, Redux, TailwindCSS, Axios, Webix
 
-Backend:
+Backend: NodeJS, Express, PostgreSQL, Socket.io, Passport.js
 
 ## Features
 
