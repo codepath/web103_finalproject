@@ -70,7 +70,7 @@ const updateLeaseListing = async (req, res) => {
         utilities,
         lease_length,
         start_date,
-        pictures,
+        pictures
     } = req.body;
 
     try {
@@ -82,6 +82,7 @@ const updateLeaseListing = async (req, res) => {
             WHERE id = $14
             RETURNING *`,
             [
+                room_setup,
                 appliances,
                 amenities,
                 preference_gender,
@@ -157,7 +158,7 @@ const getLeaseListingsByUserId = async (req, res) => {
 };
 
 const getLeaseListingsByLeaseType = async (req, res) => {
-    const leaseType = req.body;
+    const leaseType = req.params.leaseType;
 
     try {
         const results = await pool.query(
