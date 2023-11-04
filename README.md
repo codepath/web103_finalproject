@@ -32,29 +32,31 @@ Rawg.io
 
 ## Tech Stack
 
-Frontend: ReactJs, Redux, Axios, Tailwind 
+Frontend: ReactJs, Zustand , Axios, Tailwind 
 
 Backend: Node.js, Express, Passport.js, Postgresql
 
 ## Features
 
-### Use Passport.js for GitHub OAuth login to restrict profile and favorites pages to logged in users
 
-Allow users to login via GitHub OAuth using Passport.js to restrict access to profile and favorites pages. [gif goes here]
-
-[gif goes here]
 
 ### PostgreSQL database with tables for games, platforms, genres, etc.
 
 Setup a PostgreSQL database with structured tables to store game data.
 
-[gif goes here]
+<img src='./client/public/feature.gif' title='db setuo' width='' alt='Video Walkthrough' />
+
 
 ### Create RESTful API routes for games, platforms, and genres that support GET, POST, PATCH, and DELETE requests
 
-Implement REST API endpoints for CRUD operations on games, platforms, genres. [gif goes here]
+Only Game Routes completed currently! Still under development!
+<img src='./client/public/api.gif' title='api setup' width='' alt='Video Walkthrough' />
 
-[gif goes here]
+### Setup Frontend 
+
+Sidebar and SearchBar done!
+<img src='./client/public/dt.gif' title='frontend setup' width='' alt='Video Walkthrough' />
+
 
 ### Validate game data entered in forms before creating/updating in database
 
@@ -119,6 +121,12 @@ Disable form buttons during submission to prevent duplicates.
 ### Display toast notifications when games are favorited, deleted, added, etc.
 
 Show toast notifications when games are favorited, deleted, added, etc.
+
+[gif goes here]
+
+### Use Passport.js for GitHub OAuth login to restrict profile and favorites pages to logged in users
+
+Allow users to login via GitHub OAuth using Passport.js to restrict access to profile and favorites pages. [gif goes here]
 
 [gif goes here]
 
