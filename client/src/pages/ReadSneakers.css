@@ -1,0 +1,18 @@
+.ReadSneakers {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#1A202C;
+}
+
+.banner {
+    text-align: center;
+}
+
+.welcome-paragraph {
+    margin-top: 20px;
+    color: #486284;
+    font-size: 16px;
+    font-weight: bold;
+}
