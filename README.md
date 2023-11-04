@@ -35,7 +35,7 @@ Backend: PostgreSQL, Express.js, Node.js
   - [x] Implements proper naming conventions for routes.
 - [ ] The web app implements the ability to reset the database to its default state.
 
-[gif goes here]
+https://imgur.com/a/UOY3gqP
 
 ### Frontend Features
 - [ ] The web app implements at least one redirection.
@@ -45,7 +45,7 @@ Backend: PostgreSQL, Express.js, Node.js
   - [x] Components are broken down into categories, including page and component types.
   - [x] Corresponding container components and presenter components as appropriate.
 
-[gif goes here]
+https://imgur.com/a/QIzs9iC
 
 ### Custom Features
 
