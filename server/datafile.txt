@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "description": "A novel about the American Dream and the Roaring Twenties."
+    },
+    {
+        "id": 2,
+        "name": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "description": "A classic story of racial injustice and moral growth in the American South."
+    },
+    {
+        "id": 3,
+        "name": "1984",
+        "author": "George Orwell",
+        "description": "A dystopian novel exploring the consequences of totalitarianism and surveillance."
+    },
+    {
+        "id": 4,
+        "name": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "description": "A beloved novel of manners and romance in early 19th-century England."
+    },
+    {
+        "id": 5,
+        "name": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "description": "A coming-of-age story about a disenchanted teenager in New York City."
+    },
+    {
+        "id": 6,
+        "name": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "description": "The first book in the popular fantasy series about a young wizard's adventures."
+    },
+    {
+        "id": 7,
+        "name": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "description": "An epic fantasy trilogy set in a richly imagined world with a quest to destroy a powerful ring."
+    },
+    {
+        "id": 8,
+        "name": "The Da Vinci Code",
+        "author": "Dan Brown",
+        "description": "A mystery thriller that unravels secrets of the Holy Grail and the Catholic Church."
+    },
+    {
+        "id": 9,
+        "name": "The Hitchhiker's Guide to the Galaxy",
+        "author": "Douglas Adams",
+        "description": "A humorous science fiction series following the adventures of Arthur Dent."
+    },
+    {
+        "id": 10,
+        "name": "The Hunger Games",
+        "author": "Suzanne Collins",
+        "description": "A dystopian series about a brutal competition among teenagers in a post-apocalyptic world."
+    }
+]
