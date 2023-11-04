@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div className="text-5xl">
-        Hi This is playpal
+        
       </div>
     </>
   )
