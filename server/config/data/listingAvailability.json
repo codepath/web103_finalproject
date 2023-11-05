@@ -1,0 +1,37 @@
+[
+  {
+    "listing_id": 1,
+    "start_availability": "2019-01-01",
+    "end_availability": "2019-01-31"
+  },
+  {
+    "listing_id": 2,
+    "start_availability": "2019-02-01",
+    "end_availability": "2019-02-28"
+  },
+  {
+    "listing_id": 3,
+    "start_availability": "2019-01-15",
+    "end_availability": "2019-01-23"
+  },
+  {
+    "listing_id": 3,
+    "start_availability": "2019-01-28",
+    "end_availability": "2019-02-02"
+  },
+  {
+    "listing_id": 4,
+    "start_availability": "2019-01-01",
+    "end_availability": "2019-01-31"
+  },
+  {
+    "listing_id": 5,
+    "start_availability": "2019-01-12",
+    "end_availability": "2019-01-30"
+  },
+  {
+    "listing_id": 6,
+    "start_availability": "2019-01-11",
+    "end_availability": "2019-01-21"
+  }
+]
