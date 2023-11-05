@@ -5,6 +5,7 @@ import path, { dirname } from "path";
 import fs from "fs";
 
 const currentPath = fileURLToPath(import.meta.url);
+
 const usersFile = fs.readFileSync(
   path.join(dirname(currentPath), "../config/data/users.json")
 );
@@ -21,15 +22,20 @@ const propertyAmenitiesFile = fs.readFileSync(
   path.join(dirname(currentPath), "../config/data/propertyAmenities.json")
 );
 
+const listingImagesFile = fs.readFileSync(
+  path.join(dirname(currentPath), "../config/data/listingImages.json")
+);
+
 const usersData = JSON.parse(usersFile);
 const propertiesData = JSON.parse(propertiesFile);
 const listingsData = JSON.parse(listingsFile);
 const listingAvailabilityData = JSON.parse(listingAvailabilityFile);
 const propertyAmenitiesData = JSON.parse(propertyAmenitiesFile);
+const listingImagesData = JSON.parse(listingImagesFile);
 
 const createUsersTable = async () => {
-  const createUsersTableQuery = await pool.query(
-    `CREATE TABLE IF NOT EXISTS users (
+  const createUsersTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
@@ -44,8 +50,8 @@ const createUsersTable = async () => {
         email VARCHAR(50) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
         is_active BOOLEAN DEFAULT true
-    )`
-  );
+    )`,
+  };
   try {
     const res = await pool.query(createUsersTableQuery);
     console.log("🎉 users table created successfully");
@@ -55,8 +61,8 @@ const createUsersTable = async () => {
 };
 
 const createPropertiesTable = async () => {
-  const createPropertiesTableQuery = await pool.query(
-    `CREATE TABLE IF NOT EXISTS properties (
+  const createPropertiesTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS properties (
         id SERIAL PRIMARY KEY,
         host_id INTEGER REFERENCES users(id) NOT NULL,
         address1 VARCHAR(255) NOT NULL,
@@ -70,8 +76,8 @@ const createPropertiesTable = async () => {
         num_baths INTEGER NOT NULL,
         num_bedrooms INTEGER NOT NULL,
         property_type VARCHAR(255) NOT NULL
-    )`
-  );
+    )`,
+  };
   try {
     const res = await pool.query(createPropertiesTableQuery);
     console.log("🎉 properties table created successfully");
@@ -81,14 +87,14 @@ const createPropertiesTable = async () => {
 };
 
 const createListingsTable = async () => {
-  const createListingsTableQuery = await pool.query(
-    `CREATE TABLE IF NOT EXISTS listings (
+  const createListingsTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS listings (
         id SERIAL PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         property_id INTEGER REFERENCES properties(id) NOT NULL,
         price_per_night MONEY NOT NULL
-    )`
-  );
+    )`,
+  };
   try {
     const res = await pool.query(createListingsTableQuery);
     console.log("🎉 listings table created successfully");
@@ -98,14 +104,14 @@ const createListingsTable = async () => {
 };
 
 const createListingAvailabilityTable = async () => {
-  const createListingAvailabilityTableQuery = await pool.query(
-    `CREATE TABLE IF NOT EXISTS listingAvailability (
+  const createListingAvailabilityTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS listingAvailability (
         id SERIAL PRIMARY KEY,
         listing_id INTEGER REFERENCES listings(id) NOT NULL,
         start_availability DATE NOT NULL,
         end_availability DATE NOT NULL
-    )`
-  );
+    )`,
+  };
   try {
     const res = await pool.query(createListingAvailabilityTableQuery);
     console.log("🎉 listingAvailability table created successfully");
@@ -115,8 +121,8 @@ const createListingAvailabilityTable = async () => {
 };
 
 const createPropertyAmenitiesTable = async () => {
-  const createPropertyAmenitiesTableQuery = await pool.query(
-    `CREATE TABLE IF NOT EXISTS propertyAmenities (
+  const createPropertyAmenitiesTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS propertyAmenities (
         id SERIAL PRIMARY KEY,
         property_id INTEGER REFERENCES properties(id) NOT NULL,
         wifi BOOLEAN NOT NULL,
@@ -139,14 +145,31 @@ const createPropertyAmenitiesTable = async () => {
         wheelchair_accessible BOOLEAN NOT NULL,
         pet_friendly BOOLEAN NOT NULL,
         smoking_allowed BOOLEAN NOT NULL
-    )`
-  );
+    )`,
+  };
 
   try {
     const res = await pool.query(createPropertyAmenitiesTableQuery);
     console.log("🎉 propertyAmenities table created successfully");
   } catch (err) {
     console.log("⚠️ error creating propertyAmenities table", err);
+  }
+};
+
+const createListingImagesTable = async () => {
+  const createListingImagesTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS listingImages (
+        id SERIAL PRIMARY KEY,
+        property_id INTEGER REFERENCES properties(id) NOT NULL,
+        image_url VARCHAR(255) NOT NULL
+    )`,
+  };
+
+  try {
+    const res = await pool.query(createListingImagesTableQuery);
+    console.log("🎉 listingImages table created successfully");
+  } catch (err) {
+    console.log("⚠️ error creating listingImages table", err);
   }
 };
 
@@ -299,9 +322,27 @@ const seedListingAvailabilityTable = async () => {
   });
 };
 
+const seedListingImagesTable = async () => {
+  await createListingImagesTable();
+
+  listingImagesData.forEach((listingImage) => {
+    const insertQuery = {
+      text: "INSERT INTO listingImages (property_id, image_url) VALUES ($1, $2)",
+    };
+
+    const values = [listingImage.property_id, listingImage.image_url];
+    try {
+      pool.query(insertQuery, values);
+      console.log(`✅ ${listingImage.image_url} added successfully`);
+    } catch (err) {
+      console.error("⚠️ error inserting listing image", err);
+    }
+  });
+};
+
 const dropAllTables = async () => {
   const dropTablesQuery =
-    "DROP TABLE IF EXISTS users, properties, listings, listingAvailability, propertyAmenities";
+    "DROP TABLE IF EXISTS users, properties, listings, listingAvailability, propertyAmenities, listingImages";
 
   try {
     await pool.query(dropTablesQuery);
@@ -315,4 +356,5 @@ const dropAllTables = async () => {
 // seedPropertiesTable();
 // seedListingsTable();
 // seedPropertyAmenitiesTable();
-seedListingAvailabilityTable();
+// seedListingAvailabilityTable();
+// seedListingImagesTable();
