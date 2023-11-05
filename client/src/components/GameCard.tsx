@@ -10,7 +10,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
         <div
             className="
         relative group flex flex-col items-center justify-center rounded-md overflow-hidden gap-x-1 bg-neutral-400/5 cursor-pointer 
-        hover:bg-neutral-400/10 transition p-2 hover:scale-105 text-white"
+        hover:bg-neutral-400/10 transition p-2 hover:scale-105 text-white max-h-[400px]"
         >
             <div
                 className="
@@ -23,7 +23,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
             >
                 <img className="object-cover" src={'/game.png'} alt="Image" />
             </div>
-            <div className="flex flex-col items-start w-full pt-4 gap-y-1">
+            <div className="flex   flex-col items-start w-full pt-4 gap-y-1">
                 <p className="font-semibold truncate w-full">{game.title}</p>
                 <p
                     className="
