@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import { useRoutes } from "react-router-dom";
+import stayvueLogo from "./assets/StayVue.png";
+import Listings from "./pages/Listings";
+import { Link } from "react-router-dom";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [listings, setListings] = useState([]);
+  const API_URL = "http://localhost:3001";
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      const response = await fetch(`${API_URL}/api`);
+      const data = await response.json();
+      setListings(data);
+    };
+    fetchListings();
+  }, []);
+
+  // Sets up routes
+  let element = useRoutes([
+    {
+      path: "/",
+      element: (
+        // user && user.id ? (
+        <Listings data={listings} />
+      ),
+      // ) : (
+      //   <Login api_url={API_URL} />
+      // ),
+    },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <header>
+        <div className="container">
+          <img src={stayvueLogo} className="stayvue-logo" alt="StayVue" />
+          <nav>
+            <ul>
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Add Listing</a>
+              </li>
+              <li>
+                <a href="#">View Perks</a>
+              </li>
+              <li>
+                <a href="#">Messages</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      {element}
+    </div>
+  );
 }
 
-export default App
+export default App;
