@@ -24,6 +24,14 @@ Backend: NodeJS, Express, PostgreSQL, Socket.io, Passport.js
 
 ## Features
 
+### Listings 
+
+- [x] Users can browse the many listings offered at StayVue through our hosts.
+
+<div>
+<img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjIzdjZyc28weW1uaTF2dzcwNXY1djAzd3E3Z2FxeWMzdXd3aTRpZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/FfQy2CUE9ofGXafJEx/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+</div>
+
 ### Accommodation Search
 
 Users can search for accommodations based on location, dates, and preferences.
@@ -32,7 +40,7 @@ Users can search for accommodations based on location, dates, and preferences.
 
 ### Detailed Accommodation Listings
 
-sers can view detailed property listings with descriptions, photos, amenities, and reviews.
+Users can view detailed property listings with descriptions, photos, amenities, and reviews.
 
 [gif goes here]
 
@@ -85,6 +93,9 @@ Hosts can set cancellation policies for their properties.
 ## Installation Instructions
 
 [instructions go here]
+
+<!-- Replace this with whatever GIF tool you used! -->
+GIFs created with <a href="https://gifcap.dev/">Gifcap</a> </h3>
 
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
