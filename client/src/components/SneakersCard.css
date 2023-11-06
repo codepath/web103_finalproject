@@ -8,13 +8,9 @@
     margin-bottom: 15px;
     width:550px;
     height: 500px;
-    /* background-size: cover; 
-    background-position: 50% 50%; */
-    background-size: 45%;
-    background-repeat: no-repeat; 
-    background-position: center; 
+    background-size: cover; 
+    background-position: 50% 50%;
     text-align: center;
-    /* background-color: #DEE5ED; */
     background-blend-mode: multiply;
     color:#1A202C;
     font-size: 15px;

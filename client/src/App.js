@@ -1,11 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom'
-// import { Link } from 'react-router-dom'
 import ReadSneakers from './pages/ReadSneakers'
 import SneakerDetails from './pages/SneakerDetails'
 import CreateComment from './pages/CreateComment'
 import About from './pages/About'
+import PageNotFound from './pages/PageNotFound'
 
 
 const App = () => {
@@ -39,6 +39,10 @@ const App = () => {
     {
       path:"/about",
       element: <About />
+    },
+    {
+      path:"/*",
+      element: <PageNotFound />
     }
   ]);
 
@@ -46,13 +50,6 @@ const App = () => {
   return ( 
 
     <div className="App">
-
-      {/* <div className="header">
-        <h1>👟 Sneaker World</h1>
-        <Link to="/"><button className="headerBtn">Sneakers</button></Link>
-        <Link to="/order"><button className="headerBtn">Order</button></Link>
-      </div> */}
-
         {element}
     </div>
 

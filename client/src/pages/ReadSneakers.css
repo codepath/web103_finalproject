@@ -10,6 +10,22 @@
     text-align: center;
 }
 
+.Sort {
+    display: flex;
+    align-items: center;
+  }
+  
+  .Sort p {
+    margin-right: 20px; 
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .Sort button {
+    margin-right: 20px; 
+  }
+
+
 .welcome-paragraph {
     margin-top: 20px;
     color: #486284;
