@@ -17,6 +17,7 @@ const CreatePost = () => {
       console.error('Failed to create post:', error);
     }
   };
+  
 
   const handleTitleChange = (e) => {
     setPost({ ...post, title: e.target.value });
