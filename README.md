@@ -22,37 +22,61 @@ Frontend: React.js
 Backend: PostgreSQL, Express.js, Node.js
 
 ## Features
+### Feature 1
 - [x] Sneaker World includes an Express backend app and a React frontend app.
+
+### Feature 2
 - [x] Sneaker World includes dynamic routes for both frontend and backend apps.
+
+### Feature 3
 - [ ] Sneaker World is deployed on Railway with all pages and features working.
 
-### Backend Features     
-- [ ] The web app implements at least one of each of the following database relationship in Postgres:
-  - [x] one-to-many: the comment section can have multiple comments in the Sneakers Detail page.
-  - [ ] many-to-many with a join table
-- [ ] The web app implements a well-designed RESTful API that:
-  - [ ] Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
-  - [x] Implements proper naming conventions for routes.
-- [ ] The web app implements the ability to reset the database to its default state.
+### Feature 4    
+- [X] (Backend Feature) The web app implements a one-to-many database relationship in Postgres: the comment section can have multiple comments in the Sneakers Detail page.
 
-https://imgur.com/a/UOY3gqP
+### Feature 5
+- [ ] (Backend Feature) The web app implements a many-to-many with a join table database relationship in Postgres: a user can make multiple orders with multiple sneakers
 
-### Frontend Features
-- [ ] The web app implements at least one redirection.
-- [x] The web app implements at least one interaction that the user can initiate and complete on the same page without navigating to a new page: user can heart a comment
-- [x] The web app uses dynamic frontend routes created with React Router.
-- [x] The web app uses hierarchically designed React components:
-  - [x] Components are broken down into categories, including page and component types.
-  - [x] Corresponding container components and presenter components as appropriate.
+### Feature 6
+- [ ] (Backend Feature) The web app implements a well-designed RESTful API that can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
+      
+### Feature 7
+- [x] Backend Feature) The web app implements a well-designed RESTful API that implements proper naming conventions for routes.
 
-https://imgur.com/a/QIzs9iC
+### Feature 8
+- [ ] (Backend Feature) The web app implements the ability to reset the database to its default state.
 
-### Custom Features
+### Feature 9
+- [x] (Frontend Feature) The web app implements at least one redirection: wrong URL takes user to the 404 page.
 
-- [ ] Sneaker World filters and/or sorts based on user preferences.
-- [ ] The application gracefully handles errors.
+### Feature 10
+- [x] (Frontend Feature) The web app implements at least one interaction that the user can initiate and complete on the same page without navigating to a new page: user can heart a comment
+
+### Feature 11
+- [x] (Frontend Feature) The web app uses dynamic frontend routes created with React Router.
+
+### Feature 12
+- [x] (Frontend Feature) The web app uses hierarchically designed React components in which components are broken down into categories, including page and component types.
+
+### Feature 13
+- [x] (Frontend Feature) The web app uses hierarchically designed React components in which corresponding container components and presenter components as appropriate.
+
+### Feature 14
+- [x] (Custom Feature) The web app allows filtering and/or sorting as appropriate for your use case: Sort features on name and price.
+
+### Feature 15
+- [ ] (Custom Feature) The web app includes a slide-out pane or modal as appropriate for your use case: An order for sneakers will include a slide-out pane.
+
 
 [gif goes here]
+
+### Milestone 3- Unit 7 Gifs
+
+Backend: https://imgur.com/a/UOY3gqP
+
+Frontend: https://imgur.com/a/QIzs9iC
+
+
 
 ## Installation Instructions
 
