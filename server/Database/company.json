@@ -1,0 +1,50 @@
+[
+    {
+      "githubId": 9,
+      "name": "Google",
+      "description": "Google is a multinational technology company that specializes in Internet-related services and products. It is known for its search engine, online advertising technologies, cloud computing, and software. Google's mission is to organize the world's information and make it universally accessible and useful.",
+      "picture_url": "https://example.com/google.jpg"
+    },
+    {
+      "githubId": 2,
+      "name": "Apple Inc.",
+      "description": "Apple Inc. is a leading American technology company known for designing, manufacturing, and marketing consumer electronics, software, and services. It is famous for products like the iPhone, iPad, Mac computers, and iOS operating systems. Apple is committed to innovation, quality, and user-friendly design.",
+      "picture_url": "https://example.com/apple.jpg"
+    },
+    {
+      "githubId": 3,
+      "name": "Amazon",
+      "description": "Amazon is a global e-commerce and cloud computing company based in Seattle. It is one of the largest online retailers, offering a wide range of products and services. Amazon Web Services (AWS) is a subsidiary that provides cloud infrastructure and computing solutions to businesses worldwide.",
+      "picture_url": "https://example.com/amazon.jpg"
+    },
+    {
+      "githubId": 4,
+      "name": "Microsoft",
+      "description": "Microsoft is a multinational technology corporation known for its software products, including the Windows operating system, Microsoft Office suite, and cloud services through Azure. The company's mission is to empower every person and organization on the planet to achieve more.",
+      "picture_url": "https://example.com/microsoft.jpg"
+    },
+    {
+      "githubId": 10,
+      "name": "Facebook",
+      "description": "Facebook is a social networking platform founded by Mark Zuckerberg. It connects billions of people worldwide and provides features like profile creation, posting updates, and sharing media. The company also owns Instagram and WhatsApp, offering diverse social communication options.",
+      "picture_url": "https://example.com/facebook.jpg"
+    },
+    {
+      "githubId": 6,
+      "name": "Tesla, Inc.",
+      "description": "Tesla, Inc. is an electric vehicle and clean energy company. It is renowned for its electric cars, energy storage solutions, and solar products. Tesla's mission is to accelerate the world's transition to sustainable energy, and it is at the forefront of the electric vehicle industry.",
+      "picture_url": "https://example.com/tesla.jpg"
+    },
+    {
+      "githubId": 7,
+      "name": "Netflix",
+      "description": "Netflix is a global streaming platform that offers a wide variety of movies, TV shows, and documentaries. It has revolutionized the entertainment industry by providing on-demand content, original productions, and personalized recommendations to subscribers worldwide.",
+      "picture_url": "https://example.com/netflix.jpg"
+    },
+    {
+      "githubId": 8,
+      "name": "Twitter",
+      "description": "Twitter is a social media platform that allows users to post and interact with short messages known as 'tweets.' It is widely used for real-time updates, news, and social networking. Twitter has had a significant impact on global communication and information sharing.",
+      "picture_url": "https://example.com/twitter.jpg"
+    }
+  ]

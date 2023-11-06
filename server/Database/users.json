@@ -1,0 +1,123 @@
+[
+  {
+    "githubId": 1,
+    "username": "user1",
+    "avatarUrl": "https://example.com/avatar1.jpg",
+    "accessToken": "token1",
+    "savedJobs": {
+      "101": true,
+      "102": true
+    },
+    "Role": "Student",
+    "is_admin": false
+  },
+  {
+    "githubId": 2,
+    "username": "user2",
+    "avatarUrl": "https://example.com/avatar2.jpg",
+    "accessToken": "token2",
+    "savedJobs": {
+      "103": true,
+      "104": true
+    },
+    "Role": "Recruiter",
+    "is_admin":false
+  },
+  
+  {
+    "githubId": 3,
+    "username": "user3",
+    "avatarUrl": "https://example.com/avatar3.jpg",
+    "accessToken": "token3",
+    "savedJobs": {
+      "105": true,
+      "106": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  },
+  {
+    "githubId": 4,
+    "username": "user4",
+    "avatarUrl": "https://example.com/avatar4.jpg",
+    "accessToken": "token4",
+    "savedJobs": {
+      "107": true,
+      "108": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  },
+  {
+    "githubId": 5,
+    "username": "user5",
+    "avatarUrl": "https://example.com/avatar5.jpg",
+    "accessToken": "token5",
+    "savedJobs": {
+      "109": true,
+      "110": true
+    },
+    "Role": "Admin",
+    "is_admin": true
+  },
+  {
+    "githubId": 6,
+    "username": "user6",
+    "avatarUrl": "https://example.com/avatar6.jpg",
+    "accessToken": "token6",
+    "savedJobs": {
+      "111": true,
+      "112": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  },
+  {
+    "githubId": 7,
+    "username": "user7",
+    "avatarUrl": "https://example.com/avatar7.jpg",
+    "accessToken": "token7",
+    "savedJobs": {
+      "113": true,
+      "114": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  },
+  {
+    "githubId": 8,
+    "username": "user8",
+    "avatarUrl": "https://example.com/avatar8.jpg",
+    "accessToken": "token8",
+    "savedJobs": {
+      "115": true,
+      "116": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  },
+  {
+    "githubId": 9,
+    "username": "user9",
+    "avatarUrl": "https://example.com/avatar9.jpg",
+    "accessToken": "token9",
+    "savedJobs": {
+      "117": true,
+      "118": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  },
+  {
+    "githubId": 10,
+    "username": "user10",
+    "avatarUrl": "https://example.com/avatar10.jpg",
+    "accessToken": "token10",
+    "savedJobs": {
+      "119": true,
+      "120": true
+    },
+    "Role": "Recruiter",
+    "is_admin": false
+  }
+]
