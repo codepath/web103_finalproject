@@ -35,7 +35,7 @@ const createUsersTable = async () => {
         city varchar(100),
         state varchar(100),
         zip varchar(100),
-        phone varchar(100),
+        phone varchar(100)
     );
     `
     try {
