@@ -1,8 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,jsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        "button-color": "#ff5470",
+        "login-color": "#fde24f",
+      },
+    },
+  },
+  variants: {
+    extend: {
+      backgroundColor: ["hover"],
+    },
   },
   plugins: [],
 };
