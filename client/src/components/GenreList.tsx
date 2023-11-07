@@ -48,10 +48,10 @@ const GenreList = () => {
         <h2 className="text-2xl text-white mt-9 mb-3 font-bold">Genres</h2>
         <ul>
           {data?.map((genre) => (
-            <li key={genre.id} className="py-2 text-white font-bold ">
+            <li key={genre.id} className="py-2 text-white font-bold  ">
               <div className="flex">
                 <button
-                  className={`text-left normal-case`}
+                  className={`text-left normal-case hover:scale-125 tansition ease-in-out duration-300 `}
                   onClick={() => console.log('hi')}
                 >
                   {genre.name}

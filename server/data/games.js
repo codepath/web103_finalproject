@@ -1,95 +1,44 @@
 const gamesData = [
     {
-      title: 'The Legend of Zelda: Breath of the Wild',
-      developer: 'Nintendo EPD',
-      publisher: 'Nintendo',
-      releaseDate: '2017-03-03', 
-      genre: 'Action-adventure',
-      platform: 'Nintendo Switch',
-      price: 59.99
-    },
-    {
-      title: 'God of War',
-      developer: 'Santa Monica Studio',
-      publisher: 'Sony Interactive Entertainment',
-      releaseDate: '2018-04-20', 
-      genre: 'Action-adventure',
-      platform: 'PlayStation 4',
-      price: 39.99
-    },
-    {
-      title: 'Red Dead Redemption 2',
-      developer: 'Rockstar Games',
+      name: 'Grand Theft Auto V',
+      developer: 'Rockstar North',
       publisher: 'Rockstar Games',
-      releaseDate: '2018-10-26', 
-      genre: 'Action-adventure',
-      platform: 'Multiplatform',
-      price: 59.99
+      releaseDate: '2013-09-17', 
+      genre: [1,2],
+      platform: [1,2,3,4,5],
+      rating: '4.47',
+      background_image:"https://media.rawg.io/media/games/2ba/2bac0e87cf45e5b508f227d281c9252a.jpg",
+      short_screenshots: [
+        {
+        "id": -1,
+        "image": "https://media.rawg.io/media/games/2ba/2bac0e87cf45e5b508f227d281c9252a.jpg"
+        },
+        {
+        "id": 99018,
+        "image": "https://media.rawg.io/media/screenshots/221/221a03c11e5ff9f765d62f60d4b4cbf5.jpg"
+        },
+        {
+        "id": 99019,
+        "image": "https://media.rawg.io/media/screenshots/173/1737ff43c14f40294011a209b1012875.jpg"
+        },
+        {
+        "id": 99020,
+        "image": "https://media.rawg.io/media/screenshots/b11/b11a2ae0664f0e8a1ef2346f99df26e1.jpg"
+        },
+        {
+        "id": 99021,
+        "image": "https://media.rawg.io/media/screenshots/9b1/9b107a790909b31918ebe2f40547cc85.jpg"
+        },
+        {
+        "id": 99022,
+        "image": "https://media.rawg.io/media/screenshots/d05/d058fc7f7fa6128916c311eb14267fed.jpg"
+        },
+        {
+        "id": 99023,
+        "image": "https://media.rawg.io/media/screenshots/415/41543dcc12dffc8e97d85a56ad42cda8.jpg"
+        }
+      ],
     },
-    {
-      title: 'Super Mario Odyssey',
-      developer: 'Nintendo',
-      publisher: 'Nintendo', 
-      releaseDate: '2017-10-27',
-      genre: 'Platform',
-      platform: 'Nintendo Switch',
-      price: 49.99
-    },
-    
-    {
-      title: 'The Witcher 3: Wild Hunt',
-      developer: 'CD Projekt Red',
-      publisher: 'CD Projekt',
-      releaseDate: '2015-05-19',
-      genre: 'Action RPG',
-      platform: 'Multiplatform', 
-      price: 39.99
-    },
-    {
-      title: 'Elden Ring',
-      developer: 'FromSoftware',
-      publisher: 'Bandai Namco',
-      releaseDate: '2022-02-25',
-      genre: 'Action RPG',
-      platform: 'Multiplatform',
-      price: 59.99
-    },
-    {  
-      title: 'Horizon Forbidden West',
-      developer: 'Guerrilla Games',
-      publisher: 'Sony Interactive Entertainment',
-      releaseDate: '2022-02-18',
-      genre: 'Action RPG',
-      platform: 'PlayStation',
-      price: 69.99
-    },
-    {
-      title: 'Pokémon Legends: Arceus',
-      developer: 'Game Freak',
-      publisher: 'Nintendo',
-      releaseDate: '2022-01-28',
-      genre: 'RPG',
-      platform: 'Nintendo Switch', 
-      price: 59.99
-    },
-    {
-      title: 'Metal Gear Solid V: The Phantom Pain',
-      developer: 'Kojima Productions',
-      publisher: 'Konami',
-      releaseDate: '2015-09-01',
-      genre: 'Action-adventure, stealth',
-      platform: 'Multiplatform',
-      price: 19.99
-    },
-    {
-      title: 'Stardew Valley',
-      developer: 'ConcernedApe',
-      publisher: 'ConcernedApe',
-      releaseDate: '2016-02-26', 
-      genre: 'Simulation, RPG',
-      platform: 'Multiplatform',
-      price: 14.99  
-    }
    
   ];
   

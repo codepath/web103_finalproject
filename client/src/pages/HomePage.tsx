@@ -28,7 +28,7 @@ const HomePage = () => {
       setGames(data);
     }
     const filteredGames = data?.filter((game: Game) =>
-      game.title.toLowerCase().includes(searchText.toLowerCase())
+      game.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredGames(filteredGames);
   }, [data, searchText]);
