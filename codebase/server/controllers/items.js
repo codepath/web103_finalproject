@@ -1,6 +1,6 @@
 import pool from '../config/database.js'
 
-const createTrip = async (req, res) => {
+const createItem = async (req, res) => {
     try{
         const { name, metal, color, price, type, description, image_url, quantity } = req.body
         const results = await pool.query(
@@ -120,7 +120,7 @@ const updateItem = async (request, response) => {
   }
 
   export default {
-    createTrip,
+    createItem,
     filterItems,
     getItems,
     getItem,
