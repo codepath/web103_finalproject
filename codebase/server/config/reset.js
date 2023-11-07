@@ -12,7 +12,7 @@ const createItemsTable = async () => {
         price money NOT NULL,
         color varchar(100),
         type varchar(100) NOT NULL,
-        metal varchar(100),
+        metal varchar(100)
     );
     `
     try {
@@ -102,8 +102,12 @@ const createUserOrderTable = async () => {
     }
 }
 
-createItemsTable()
-createUsersTable()
-createUsersSavedItemsTable()
-createUserCartItemsTable()
-createUserOrderTable()
+const create = async () => {
+    await createItemsTable()
+    await createUsersTable()
+    await createUsersSavedItemsTable()
+    await createUserCartItemsTable()
+    await createUserOrderTable()
+}
+
+create()
