@@ -4,9 +4,11 @@ import stayvueLogo from "./assets/StayVue.png";
 import Listings from "./pages/Listings";
 import { Link } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [listings, setListings] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const API_URL = "http://localhost:3001";
 
   useEffect(() => {
@@ -22,40 +24,20 @@ function App() {
   let element = useRoutes([
     {
       path: "/",
-      element: (
-        // user && user.id ? (
-        <Listings data={listings} />
-      ),
-      // ) : (
-      //   <Login api_url={API_URL} />
-      // ),
+      element: <Listings data={listings} />,
     },
   ]);
 
   return (
     <div className="App">
       <header>
-        <div className="container">
-          <img src={stayvueLogo} className="stayvue-logo" alt="StayVue" />
-          <nav>
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Add Listing</a>
-              </li>
-              <li>
-                <a href="#">View Perks</a>
-              </li>
-              <li>
-                <a href="#">Messages</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <Navbar isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       </header>
-      {element}
+      <div
+        className={`main-content ${isModalOpen ? "blur-3xl bg-white/30" : ""}`}
+      >
+        {element}
+      </div>
     </div>
   );
 }

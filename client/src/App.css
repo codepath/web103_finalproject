@@ -11,6 +11,10 @@ body {
   background-color: #fffffe;
 }
 
+.button {
+  background-color: #ff5470;
+}
+
 .container {
   position: fixed;
   display: flex;

@@ -5,8 +5,8 @@ import listingsRoutes from "./routes/listings.js";
 // import activityRoutes from "./routes/activities.js";
 // import destinationRoutes from "./routes/destinations.js";
 // import tripDestinationRoutes from "./routes/trips_destinations.js";
-// import authRoutes from "./routes/auth.js";
-// import passport from "passport";
+import authRoutes from "./routes/auth.js";
+import passport from "passport";
 // import session from "express-session";
 // import { GitHub } from "./config/auth.js";
 import "./config/dotenv.js";
@@ -47,8 +47,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.redirect("http://localhost:3000");
 });
-
-// app.use("/auth", authRoutes);
+app.use("/auth", authRoutes);
 // app.use("/api/trips", tripRoutes);
 // app.use("/api/activities", activityRoutes);
 // app.use("/api/destinations", destinationRoutes);
