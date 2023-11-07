@@ -72,12 +72,6 @@ Users can view previous purchases
 
 [gif goes here]
 
-### Item Reviews
-
-Users can leave reviews on items they've purchased
-
-[gif goes here]
-
 ### Save Items
 
 Users can save items for later purchase
@@ -92,13 +86,7 @@ Users can add items to a shopping cart which they can later checkout with
 
 ### Checkout
 
-Users can checkout their current shopping cart or checkout a single item directly which will prompt them to enter card information to purchase their item.
-
-[gif goes here]
-
-### Order Confirmation
-
-Upon purchasing an item, users will get a confirmation email with purchase details including the item, price, and delivery address
+Users can checkout their current shopping cart or checkout a single item directly
 
 [gif goes here]
 
