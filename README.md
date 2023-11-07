@@ -50,7 +50,7 @@ The web app is deployed on Railway with all pages and features working.
 The web app implements a one to many database relationship in Postgres:
 [gif goes here]
 
-### [Server routing]
+### [Server routing] ✅
 The web app implements a well-designed RESTful API that:
 1. Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.✅
 2. Implements proper naming conventions for routes.✅
