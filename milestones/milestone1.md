@@ -20,12 +20,11 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-[My team partner and I were able to collaborate in a timely manner]
+[I was able to complete all tasks in a timely manner]
 
 ### 2. What were some challenges your group faced in this unit?
 
-[We had way too many ideas for just one project, and we had to cut them off]
+[I had to streamline my ideas into something practical]
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
-
-[N/A]
+[I might need support with the github authentication]

@@ -16,12 +16,12 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-I loved the exchange of ideas with my partner
+I enjoyed creating the erd diagram
 
 ### 2. What were some challenges your group faced in this unit?
 
-We had a hard time deciding what software to use for the wireframing
+Wireframing the software was a bit complex as i am not skilled in ux design
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-We would be needing support with user experience
+I will be needing support with user experience

@@ -36,4 +36,4 @@ The create front end for posts feature is at risk
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
-I would need help in implementing a chat feature
+I would need help in implementing a github login

@@ -25,14 +25,14 @@ The purpose of Career Connect is to provide students and professionals with a pl
 As college students, we were interested in exploring how we can bring together career-related information and organize it for users. We wanted to learn how we can create a job board that allows users to save and bookmark opportunities. We also wanted to explore how to create a chat feature and implement it.
 
 
-## Tech Stack
+### Tech Stack
 
 Frontend: React
 
 Backend: Express.js, SQL, postgreSQL
 
-#### Features
-### Baseline features
+# Features
+## Baseline features
 ### [Dynamic routing]
 The web app includes dynamic routes for both frontend and backend apps.
 [gif goes here]
