@@ -25,7 +25,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
         >
           <img
             className=""
-            src={'https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg'|| ''}
+            src={game.background_image|| ''}
             alt="Image"
           />
         </div>
@@ -48,8 +48,8 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
         <div
           className="
           absolute 
-          bottom-24 
-          right-5"
+          bottom-[52px] 
+          right-1"
         >
           <PlatformMapper platforms={game.platform} />
         </div>

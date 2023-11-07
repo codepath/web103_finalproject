@@ -21,7 +21,9 @@ const PlatformMapper = ({ platforms = [] }: Props) => {
         return (
           <IconComponent
             key={platform}
-            className="mr-1 fill-neutral-300 hover:fill-pink-500 hover:scale-125 transition " // Add some margin to the right of each icon
+            className="mr-1 fill-neutral-300 hover:fill-pink-500 hover:scale-125 transition"
+            stroke="black"
+            strokeWidth="4" // Add some margin to the right of each icon
           />
         );
       })}
