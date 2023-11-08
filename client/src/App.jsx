@@ -8,15 +8,20 @@ import Browse from './pages/Browse';
 function App() {
   const [books, setBooks] = useState([]);
   
-  // useEffect(() => {
-  //   const fetchBooks = async () => {
-  //     const response = await fetch('/api/books')
-  //     const data =  await response.json()
-  //     setBooks(data)
-  //   }
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/books');
+        const data = await response.json();
+        setBooks(data);
+        console.log(data); // Log the fetched data, not 'books'
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    }
 
-  //   fetchBooks()
-  // })
+    fetchBooks();
+  }, [])
 
   // Sets up routes
   let element = useRoutes([

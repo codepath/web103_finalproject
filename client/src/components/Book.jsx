@@ -1,9 +1,11 @@
-const Book = (book) => {
+const Book = ({ book }) => {
     return (
         <>
             <div className="bookContainer">
-                {/* <img src={book.imageUrl} alt="" /> */}
-                <p>{book.title}</p>
+                <h2>{book.name}</h2>
+                <h3>{book.author}</h3>
+                <p>{book.description}</p>
+                <img src={book.image} alt="" />
             </div>
         </>
     )
