@@ -4,18 +4,34 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+List of Pages
 
-## Wireframe 1: [page title]
+⭐ Landing Page: Overview of the platform, with a call to action to sign up.
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+⭐ Student Profile: Student details. Allows students to edit their profile and change their passwords.
 
-## Wireframe 2: [page title]
+⭐ Tutor Profile: Tutor details, subjects they tutor in, and their availability. Allows tutors to edit their profile and change their passwords.
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+⭐ Find Sessions: Allows students to book a session with a tutor in their current subject of interest.
 
-## Wireframe 3: [page title]
+⭐ View Sessions: Allows students and tutors to view their upcoming sessions.
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 1: Landing Page
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![Landing page](landing_page.png)
+
+## Wireframe 2: Student Profile
+
+![Student profile page](student_profile.png)
+
+## Wireframe 3: Tutor Profile
+
+![Tutor profile page](tutor_profile.png)
+
+## Wireframe 4: Find Sessions
+
+![Find sessions page](find_sessions.png)
+
+## Wireframe 5: View Sessions
+
+![View sessions page](view_sessions.png)
