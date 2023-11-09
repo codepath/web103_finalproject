@@ -8,11 +8,11 @@ const App = () => {
   const element = useRoutes([
     {
       path: "/login",
-      element: <Login title="Login" />,
+      element: <Login />,
     },
     {
       path: "/",
-      element: <Home title="Dashboard" />,
+      element: <Home />,
     },
   ]);
 
