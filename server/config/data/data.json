@@ -7,10 +7,12 @@
     "price": 150.0,
     "size": 10.5,
     "color": "White",
-    "stockquantity": 100,
+    "stock_quantity": 100,
     "category": "Basketball",
-    "targetaudience": "Men",
-    "img_url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/bf80c9bb-3c07-4e5a-ba3f-677cc1889e4d/air-force-1-low-retro-mens-shoes-H7r1WF.png"
+    "target_audience": "Men",
+    "image_url": [
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/bf80c9bb-3c07-4e5a-ba3f-677cc1889e4d/air-force-1-low-retro-mens-shoes-H7r1WF.png"
+    ]
   },
   {
     "id": 2,
@@ -20,10 +22,12 @@
     "price": 130.0,
     "size": 10.5,
     "color": "Black",
-    "stockquantity": 80,
+    "stock_quantity": 80,
     "category": "Basketball",
-    "targetaudience": "Men",
-    "img_url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/58928cb8-74c0-4ad3-882a-4bfa65bab908/luka-2-basketball-shoes-vcXFrk.png"
+    "target_audience": "Men",
+    "image_url": [
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/58928cb8-74c0-4ad3-882a-4bfa65bab908/luka-2-basketball-shoes-vcXFrk.png"
+    ]
   },
   {
     "id": 3,
@@ -33,9 +37,11 @@
     "price": 200.0,
     "size": 10.5,
     "color": "Silver",
-    "stockquantity": 120,
+    "stock_quantity": 120,
     "category": "Basketball",
-    "targetaudience": "Men",
-    "img_url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/02fbc834-6752-4778-9a95-1973de02b0b9/lebron-xxi-akoya-basketball-shoes-lnQSsH.png"
+    "target_audience": "Men",
+    "image_url": [
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/02fbc834-6752-4778-9a95-1973de02b0b9/lebron-xxi-akoya-basketball-shoes-lnQSsH.png"
+    ]
   }
 ]

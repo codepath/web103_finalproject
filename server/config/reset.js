@@ -10,22 +10,22 @@ const sneakersFile = fs.readFileSync(
   path.join(dirname(currentPath), "../config/data/data.json")
 );
 const sneakersData = JSON.parse(sneakersFile);
-
 const createSneakersTable = async () => {
   const createSneakersTableQuery = `
-    CREATE TABLE IF NOT EXISTS sneakers (
-      id serial PRIMARY KEY,
-      name varchar(100) NOT NULL,
-      brand varchar(100) NOT NULL,
-      description text NOT NULL,
-      price money NOT NULL,
-      size numeric(7, 2) NOT NULL,
-      color varchar(50) NOT NULL,
-      stockquantity integer NOT NULL,
-      category varchar(50) NOT NULL,
-      targetaudience varchar(50) NOT NULL
-    );
+  CREATE TABLE IF NOT EXISTS sneakers (
+    id serial PRIMARY KEY,
+    name varchar(100) NOT NULL,
+    brand varchar(100) NOT NULL,
+    description text NOT NULL,
+    price money NOT NULL,
+    size numeric(7, 2) NOT NULL,
+    color varchar(50) NOT NULL,
+    stock_quantity integer NOT NULL,
+    category varchar(50) NOT NULL,
+    target_audience varchar(50) NOT NULL
+  );
   `;
+  // console.log(sneakersData);
 
   try {
     const res = await pool.query(createSneakersTableQuery);
@@ -38,10 +38,10 @@ const createSneakersTable = async () => {
 const createImagesTable = async () => {
   const createImagesTableQuery = `
       CREATE TABLE IF NOT EXISTS images (
-        imageid serial PRIMARY KEY,
-        productid integer NOT NULL,
-        imageurl text NOT NULL,
-        FOREIGN KEY(productid) REFERENCES sneakers(id)
+        id serial PRIMARY KEY,
+        product_id integer NOT NULL,
+        image_url text NOT NULL,
+        FOREIGN KEY(product_id) REFERENCES sneakers(id)
       );
     `;
 
@@ -56,9 +56,9 @@ const createImagesTable = async () => {
 const seedSneakersTable = async () => {
   await createSneakersTable();
 
-  sneakersData.forEach((sneaker) => {
+  await sneakersData.forEach((sneaker) => {
     const insertQuery = {
-      text: "INSERT INTO sneakers (name, brand, description, price, size, color, stockquantity, category, targetaudience) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
+      text: "INSERT INTO sneakers (name, brand, description, price, size, color, stock_quantity, category, target_audience) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
     };
 
     const values = [
@@ -68,9 +68,9 @@ const seedSneakersTable = async () => {
       sneaker.price,
       sneaker.size,
       sneaker.color,
-      sneaker.stockquantity,
+      sneaker.stock_quantity,
       sneaker.category,
-      sneaker.targetaudience,
+      sneaker.target_audience,
     ];
 
     try {
@@ -88,10 +88,10 @@ const seedImagesTable = async () => {
 
   sneakersData.forEach((sneaker) => {
     const insertImageQuery = {
-      text: "INSERT INTO images (productid, imageurl) VALUES ($1, $2)",
+      text: "INSERT INTO images (product_id, image_url) VALUES ($1, $2)",
     };
 
-    const imageValues = [sneaker.id, sneaker.img_url];
+    const imageValues = [sneaker.id, sneaker.image_url[0]];
 
     try {
       pool.query(insertImageQuery, imageValues);
@@ -101,15 +101,16 @@ const seedImagesTable = async () => {
     }
   });
 };
+
 const createReviewsTable = async () => {
   const createReviewsTableQuery = `
       CREATE TABLE IF NOT EXISTS reviews (
-        reviewid serial PRIMARY KEY,
-        productid integer NOT NULL,
-        userid integer NOT NULL,
+        review_id serial PRIMARY KEY,
+        product_id integer NOT NULL,
+        user_id integer NOT NULL,
         rating integer NOT NULL,
-        reviewtext text NOT NULL,
-        reviewdate date NOT NULL
+        review_text text NOT NULL,
+        review_date date NOT NULL
       );
     `;
 
@@ -122,12 +123,13 @@ const createReviewsTable = async () => {
 };
 const createUsersTable = async () => {
   const createUsersTableQuery = `
-    CREATE TABLE IF NOT EXISTS user (
+    CREATE TABLE IF NOT EXISTS users (
       id serial PRIMARY KEY,
-      googleid integer NOT NULL,
+      google_id integer UNIQUE NOT NULL,
       username varchar(100) NOT NULL,
       avatarurl varchar(500) NOT NULL,
-      accesstoken varchar(500) NOT NULL
+      access_token varchar(500) NOT NULL,
+      is_admin boolean NOT NULL
     );
   `;
 
@@ -141,15 +143,15 @@ const createUsersTable = async () => {
 
 const createUserAddressTable = async () => {
   const createUserAddressTableQuery = `
-      CREATE TABLE IF NOT EXISTS useraddress (
+      CREATE TABLE IF NOT EXISTS user_address (
         id serial PRIMARY KEY,
-        userid integer NOT NULL,
+        user_id integer NOT NULL,
         address varchar(255) NOT NULL,
         city varchar(100) NOT NULL,
-        postalcode varchar(10) NOT NULL,
+        postal_code varchar(10) NOT NULL,
         country varchar(100) NOT NULL,
         phone varchar(20) NOT NULL,
-        FOREIGN KEY(userid) REFERENCES user(id)
+        FOREIGN KEY(userid) REFERENCES users(id)
       );
     `;
 
