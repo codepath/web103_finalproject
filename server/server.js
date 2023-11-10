@@ -3,6 +3,9 @@ import path from "path";
 import favicon from "serve-favicon";
 import cors from 'cors';
 import moviesRoutes from './routes/movies.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 // Configure port number

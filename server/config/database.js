@@ -6,7 +6,11 @@ const config = {
     password: process.env.PGPASSWORD,
     host: process.env.PGHOST,
     port: process.env.PGPORT,
-    database: process.env.PGDATABASE
+    database: process.env.PGDATABASE,
+    // connectionString: process.env.DATABASE_URL,
+    // ssl: {
+    //     rejectUnauthorized: false
+    // }
 }
 
 export const pool = new pg.Pool(config)
