@@ -50,11 +50,13 @@ Backend: Node.js, Express.js, PostgreSQL
 
 - [ ] 4. **One-to-many database relationship**: Connection between users and their posts on the discussion board. One user can have multiple posts.
 - [ ] 5. **Many-to-many with a join table**: Users can share multiple resources, and a single resource (like a YouTube tutorial) can be saved by multiple users. This requires a join table.
-- [ ] 6. **RESTful API**:
+- ✅ 6. **RESTful API**:
    - **GET**: Fetch a list of posts or resources.
    - **POST**: Create a new post on the discussion board.
    - **PATCH**: Edit an existing post.
    - **DELETE**: Remove a post.
+     
+     <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/CRUD_Frontend.gif' title= 'Video Walkthrough'>
 - [ ] 7. **Proper naming conventions for routes**: For instance:
    - GET: `/api/posts/` to get all posts.
    - POST: `/api/posts/` to create a new post.
