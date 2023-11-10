@@ -20,7 +20,7 @@ function Home() {
     checkUser();
   }, []);
 
-  return <div style={{ fontSize: "100px" }}>This is Home</div>;
+  return <div style={{ fontSize: "100px" }}>This is the Home Page</div>;
 }
 
 export default Home;
