@@ -45,19 +45,19 @@ Complete all of the baseline features. These features use the core skills develo
 
 Backend Features
 
-- [ ] The web app implements at least one of each of the following database relationship in Postgres:
+- [✅] The web app implements at least one of each of the following database relationships in Postgres:
     - [ ] one-to-many 
-    - [ ] many-to-many with a join table 
-- [ ] The web app implements a well-designed RESTful API that:
-    - [ ] Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
-    - [ ] Implements proper naming conventions for routes.
+    - [✅] many-to-many with a join table 
+- [✅] The web app implements a well-designed RESTful API that:
+    - [✅] Can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
+    - [✅] Implements proper naming conventions for routes.
 - [✅] The web app implements the ability to reset the database to its default state. 
 
 
 Frontend Features
 
 - [✅] The web app implements at least one redirection. 
-- [ ] The web app implements at least one interaction that the user can initiate and complete on the same page without navigating to a new page.
+- [✅] The web app implements at least one interaction that the user can initiate and complete on the same page without navigating to a new page.
 - [✅] The web app uses dynamic frontend routes created with React Router. 
 - [ ] The web app uses hierarchically designed React components:
     - [✅] Components are broken down into categories, including page and component types. 
@@ -68,7 +68,7 @@ Frontend Features
 
 Choose two custom features to include in your app. These features will make your app stand out with a more custom look and functionality.
 
-- [ ] The web app allows filtering and/or sorting as appropriate for your use case.
+- [✅] The web app allows filtering and/or sorting as appropriate for your use case.
 - [ ] Data submitted via a POST or PATCH request is validated before the database is updated.
 
 
@@ -77,6 +77,10 @@ Choose two custom features to include in your app. These features will make your
 Here's a walkthrough of implemented required features:
 
 ![video_walkthrough](https://github.com/XujuanChen/web103_finalproject/assets/72937387/dc037daa-d615-4c2a-840e-290e18616262)
+
+
+
+https://github.com/XujuanChen/web103_finalproject/assets/109524796/7579dbf6-4ae6-4c99-8387-614a6c68e16e
 
 
 <!-- Replace this with whatever GIF tool you used! -->
