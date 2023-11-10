@@ -80,7 +80,7 @@ Here's a walkthrough of implemented required features:
 
 
 
-https://github.com/XujuanChen/web103_finalproject/assets/109524796/7579dbf6-4ae6-4c99-8387-614a6c68e16e
+![video_walkthrough](https://github.com/XujuanChen/web103_finalproject/assets/109524796/7579dbf6-4ae6-4c99-8387-614a6c68e16e)
 
 
 <!-- Replace this with whatever GIF tool you used! -->
