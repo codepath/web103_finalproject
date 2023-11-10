@@ -5,6 +5,7 @@ import booksData from '../data/books.js'
 // create books
 const createBooksTable = async () => {
     const createBooksTableQuery = `
+    DROP TABLE books CASCADE;
         CREATE TABLE IF NOT EXISTS books (
         id serial PRIMARY KEY,
         name varchar(100) NOT NULL,
