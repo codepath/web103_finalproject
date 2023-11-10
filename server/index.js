@@ -7,6 +7,7 @@ import setup from "./src/utils/setup.js";
 import passport from "passport";
 import session from "express-session";
 import { GitHub } from "./src/configs/auth.config.js";
+import { checkAuthentication } from "./src/middlewares/checkAuthentication.js";
 
 import authRouter from "./src/routes/auth.js";
 import usersRouter from "./src/routes/users.js";
@@ -49,7 +50,8 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/api/users", usersRouter);
+
+app.use("/api/users", checkAuthentication, usersRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`server listening on http://localhost:${process.env.PORT}`);
