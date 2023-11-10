@@ -10,6 +10,11 @@ const findOne = (id) => {
   return pool.query(query, [id]);
 };
 
+const findOneByGithubId = (githubId) => {
+  const query = "SELECT * FROM users WHERE github_id = $1";
+  return pool.query(query, [githubId]);
+};
+
 const create = ({ email, githubId, username, profilePicture, accessToken }) => {
   const query = `
     INSERT INTO users (email, github_id, username, profile_picture, access_token)
@@ -41,6 +46,7 @@ const remove = (id) => {
 export default {
   findAll,
   findOne,
+  findOneByGithubId,
   create,
   update,
   remove,

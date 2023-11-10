@@ -23,7 +23,7 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
   };
 
   try {
-    const results = await User.findOne(userData.id);
+    const results = await User.findOneByGithubId(userData.githubId);
     const user = results.rows[0];
 
     if (!user) {
