@@ -64,6 +64,7 @@ Backend: Node.js, Express.js, PostgreSQL
 - [ ] 8. **Reset database**: A simple endpoint or script to reset the database to its default state, especially useful during testing.
 - [ ] 9. **Frontend Redirection**: After submitting a new post, redirect the user back to the list of posts or to their newly created post.
 - ✅ 10. **On-page interactions**: Users can create or edit a post on the same page without navigating to a new page.
+  <img src= 'https://github.com/fzinnah17/CodeFM/blob/main/GIFs/CRUD_Frontend.gif'>
 - [ ] 11. **Dynamic frontend routes with React Router**: Using React Router, you can create dynamic routes like `/posts/:postId` to view a specific post's details.
 - ✅  12. **Hierarchical React components**: Break down frontend components methodically:
    - ✅  **Page components**: `Home`, `DiscussionBoard`, `ResourceList`.
