@@ -55,7 +55,7 @@ Backend: Node.js, Express.js, PostgreSQL
    - **POST**: Create a new post on the discussion board.
    - **PATCH**: Edit an existing post.
    - **DELETE**: Remove a post.    
-     <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/CRUD_Frontend.gif' title= 'Video Walkthrough'>
+     <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/CRUD_Backend.gif' title= 'Video Walkthrough'>
 - ✅  7. **Proper naming conventions for routes**: For instance:
    - GET: `/api/posts/` to get all posts.
    - POST: `/api/posts/` to create a new post.
@@ -76,12 +76,6 @@ Backend: Node.js, Express.js, PostgreSQL
 - [ ] 1. **Data Validation**: Validate any POST or PATCH requests to ensure that users aren't submitting empty or inappropriate content.
   
 - [ ] 2. **Filtering**: Users could have the option to filter resources based on platforms or categories like "YouTube", "Leetcode", or "Articles".
-
-
-
-
-
-
 
 
 ## Features to be implemented in the future
