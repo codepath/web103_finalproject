@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-const BookDetails = ({ books }) => {
+const BookDetails = () => {
     const { id } = useParams();
     const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' });
       
-    
     useEffect(() => {
-        console.log(id)
-        const result = books.find(item => item.id === parseInt(id));
-        console.log(result)
-    
-        if (result) {
-            setBook({
-                id: parseInt(result.id),
-                name: result.name,
-                author: result.author,
-                image: result.image,
-                description: result.description
-            });
-        } else {
-            // Handle the case when the book with the specified id is not found
-            console.error(`Book with id ${id} not found`);
+        const fetchBookById = async () => {
+            const response = await fetch(`http://localhost:3001/api/books/${id}`)  // http://localhost:3001/api/books/1
+            const data = await response.json()
+            setBook(data)
+            console.log(data)
         }
-    }, [books, id]);
+        fetchBookById();
+    }, [id]);
     
     return (
         <>
