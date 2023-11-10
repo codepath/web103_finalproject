@@ -92,8 +92,10 @@ const createTagsTables = async () => {
         PRIMARY KEY (movie_id, tag_id),
         FOREIGN KEY (movie_id) REFERENCES movies(movie_id) 
             ON UPDATE CASCADE
-            On DELETE CASCADE,
-        FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
       );
     `
 

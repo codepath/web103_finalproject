@@ -21,7 +21,6 @@ const getMovies = async (req, res) => {
     try {
       const results = await pool.query('SELECT * FROM movies ORDER BY movie_id ASC')
       res.status(200).json(results.rows)
-      console.log(results)
     }
     catch (error) {
 
