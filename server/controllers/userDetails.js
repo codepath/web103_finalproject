@@ -1,5 +1,21 @@
 import { pool } from '../config/database.js'
 
+// get user information
+const getUserByUserId = async (req, res) => {
+    try {
+      const id = req.params.user_id
+      const selectQuery = `
+      SELECT users.*
+      FROM users
+      WHERE users.user_id = ${id};
+      `
+      const results = await pool.query(selectQuery)
+      res.status(200).json(results.rows)
+    } catch (error) {
+      res.status(409).json( { error: error.message } )
+    }
+  }
+
 // get user associated boards
 const getBoardsByUserId = async (req, res) => {
     try {
@@ -36,6 +52,7 @@ const getTasksByUserId = async (req, res) => {
   }
 
 export default{
+    getUserByUserId,
     getBoardsByUserId,
     getTasksByUserId
 }
