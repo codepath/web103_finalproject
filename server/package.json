@@ -1,0 +1,29 @@
+{
+  "name": "studymeet-server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mock-data": "NODE_ENV=development node --require dotenv/config ./src/utils/generateMockData.js",
+    "dev": "NODE_ENV=development nodemon --require dotenv/config index.js",
+    "start": "NODE_ENV=production node --require dotenv/config index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
+    "nodemon": "^3.0.1"
+  }
+}
