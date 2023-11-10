@@ -1,4 +1,29 @@
-.carousel {
-    max-width: 400px;
-    margin: 0 auto;
+.carousel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distributes reviews evenly around the carousel */
+    align-items: center; /* Vertically aligns reviews with the carousel */
+  }
+  
+  .review {
+    flex: 1; /* Ensures reviews occupy equal space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 0 10px; 
+  }
+  
+  .carousel {
+    /* max-width: 70vh; */
+    flex: 2; /* Allocates more space to the carousel */
+    margin: 0 auto; /* Centers the carousel within the container */
+  }
+
+.carousel-image img {
+    max-width: 390px;
+    height: auto;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -31,22 +31,14 @@ const Home = (props) => {
     };
     return (
         <>
-            {/* <Navbar /> */}
-
-            <h1>Welcome to ReadRave!</h1>
+            <h1>🔥Welcome to ReadRave🔥</h1>
             <h2>📚share your reading raves with the world📚</h2>
 
-            <div>
-                <h2>Hear some reviews from our readers:</h2>
-
-                <div>
-                    <text>"I've been using ReadRave for a few months now, and I can't recommend it enough to fellow book enthusiasts."</text>
+            <div className="carousel-container">
+                <div className="review">
+                    <p>"I've been using ReadRave for a few months now, and I can't recommend it enough to fellow book enthusiasts." </p>
+                    <p>- ReadRaver 1</p>
                 </div>
-
-                <div>
-                    <text>"ReadRave is a fantastic platform for book lovers, and it has a lot of potential. I've enjoyed using it to connect with like-minded readers, and explore new book recommendations"</text>
-                </div>
-
                 <div className="carousel">
                     <Carousel
                         responsive={responsive}
@@ -56,11 +48,15 @@ const Home = (props) => {
                         removeArrowOnDeviceType={["tablet", "mobile"]}
                     >
                         {books.map((book, index) => (
-                            <div key={index}>
+                            <div key={index} className="carousel-image">
                                 <img src={book.image} alt={`Book ${index + 1}`} />
                             </div>
                         ))}
                     </Carousel>
+                </div>
+                <div className="review">
+                    <p>"ReadRave is a fantastic platform for book lovers. I've enjoyed using it to connect with like-minded readers, and explore new book recommendations." </p>
+                    <p>- ReadRaver 2</p>
                 </div>
             </div>
         </>
