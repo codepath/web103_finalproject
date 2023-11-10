@@ -23,7 +23,7 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
   };
 
   try {
-    const results = await User.findOne(userData.username);
+    const results = await User.findOne(userData.id);
     const user = results.rows[0];
 
     if (!user) {
