@@ -3,13 +3,15 @@ import { pool } from '../config/database.js'
 const createReaderBook = async (req, res) => {
     try {
         const { reader_id, book_id } = req.body
-        const result = await pool.query(`
+        const results = await pool.query(`
         INSERT INTO readersbooks (reader_id, book_id)
         VALUES ($1, $2)
         RETURNING *
         `, [reader_id, book_id])
-    } catch (error) {
         
+        res.status(201).json(results.rows[0])
+    } catch (error) {
+        res.status(409).json({ error: error.message })
     }
 }
 
@@ -44,8 +46,8 @@ const getAllReaders  = async (request, response) => {
         const query = `
         SELECT *
         FROM readers
-        INNER JOIN readersbooks ON readersbook.reader_id = readers.id
-        WHERE readerbooks.books_id = $1
+        INNER JOIN readersbooks ON readersbooks.reader_id = readers.id
+        WHERE readersbooks.book_id = $1
         `
         
         const book_id = parseInt(request.params.book_id)
