@@ -7,7 +7,7 @@ import Browse from './pages/Browse';
 
 function App() {
   const [books, setBooks] = useState([]);
-  
+
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -27,7 +27,7 @@ function App() {
   let element = useRoutes([
     {
       path: "/",
-      element: <Home data={books}/>
+      element: <Home data={books} />
     },
     {
       path: "/browse",
