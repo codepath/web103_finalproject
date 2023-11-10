@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect,
+  Routes,
+  // Redirect,
 } from 'react-router-dom'
 import Home from './pages/home'
 import NotFound from './pages/not-found'
@@ -17,11 +17,11 @@ function App() {
   return (
     <>
     <Router>
-      <Switch>
-        <Route component={Home} exact path="/" />
-        <Route component={NotFound} path="**" />
-        <Redirect to="**" />
-      </Switch>
+      <Routes>
+        <Route element={<Home />} exact path="/" />
+        <Route element={<NotFound />} path="**" />
+        {/* <Redirect to="**" /> */}
+      </Routes>
     </Router>
     </>
   )
