@@ -26,27 +26,43 @@ function App() {
   }, [])
 
   // Sets up routes
+  // let element = useRoutes([
+  //   {
+  //     path: "/",
+  //     element: <Home data={books} />
+  //   },
+  //   {
+  //     path: "/browse",
+  //     element: <Browse data={books} />
+  //   },
+  //   {
+  //     path: "/book/new",
+  //     element: <AddBook />
+  //   },
+  //   // {
+  //   //   path: "/edit/:bookId",
+  //   //   element: <EditBook data={books} />
+  //   // },
+  //   {
+  //     path: "/book/details/:bookId",
+  //     element: <BookDetails books={books} />
+  //   }
+  // ])
+
   let element = useRoutes([
     {
-      path: "/",
+      path: '/',
       element: <Home data={books} />
     },
     {
-      path: "/browse",
+      path: '/browse',
       element: <Browse data={books} />
     },
     {
-      path: "/book/new",
-      element: <AddBook />
-    },
-    // {
-    //   path: "/edit/:bookId",
-    //   element: <EditBook data={books} />
-    // },
-    {
-      path: "/browse/book/details/:bookId",
-      element: <BookDetails books={books} />
+      path: '/book/details/:id',
+      element: <BookDetails />
     }
+
   ])
 
   return (
