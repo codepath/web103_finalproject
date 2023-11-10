@@ -59,9 +59,9 @@ Frontend Features
 - [✅] The web app implements at least one redirection. 
 - [✅] The web app implements at least one interaction that the user can initiate and complete on the same page without navigating to a new page.
 - [✅] The web app uses dynamic frontend routes created with React Router. 
-- [ ] The web app uses hierarchically designed React components:
+- [✅] The web app uses hierarchically designed React components:
     - [✅] Components are broken down into categories, including page and component types. 
-    - [ ] Corresponding container components and presenter components as appropriate.
+    - [✅] Corresponding container components and presenter components as appropriate.
 
 
 ### Custom Features
