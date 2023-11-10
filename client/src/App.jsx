@@ -4,6 +4,8 @@ import './App.css'
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Browse from './pages/Browse';
+import AddBook from './pages/AddBook';
+import BookDetails from './pages/BookDetails';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -33,18 +35,18 @@ function App() {
       path: "/browse",
       element: <Browse data={books} />
     },
-    // {
-    //   path: "/book/new",
-    //   element: <AddBook />
-    // },
+    {
+      path: "/book/new",
+      element: <AddBook />
+    },
     // {
     //   path: "/edit/:bookId",
     //   element: <EditBook data={books} />
     // },
-    // {
-    //   path: "/book/details/:bookId",
-    //   element: <BookDetails data={books} />
-    // }
+    {
+      path: "/browse/book/details/:bookId",
+      element: <BookDetails books={books} />
+    }
   ])
 
   return (
