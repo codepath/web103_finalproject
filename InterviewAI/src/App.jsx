@@ -5,6 +5,9 @@ import { Link, Routes, Route, BrowserRouter} from "react-router-dom"
 import Login from './pages/Login'
 import FormSubmission from './pages/FormSubmission'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 function App() {
 
   return (
