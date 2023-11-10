@@ -1,12 +1,9 @@
 import express from "express";
 import path from "path";
 import favicon from "serve-favicon";
-import dotenv from "dotenv";
 import cors from 'cors';
+import moviesRoutes from './routes/movies.js';
 
-import router from "./routes/routes.js";
-
-// dotenv.config()
 
 // Configure port number
 const PORT = process.env.PORT || 3000;
@@ -19,9 +16,15 @@ app.use(express.json());
 // Add the cors middleware to enable CROSS ORIGIN
 app.use(cors());
 
+
+
 app.get('/', (req, res) => {
     res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">🎥 CineMundo API</h1>');
 });
+
+// Use the API endpoint
+app.use('/api/movies', moviesRoutes);
+
 
 /**
  * Determine environment and configure accordingly to produce/deploy the app
@@ -33,8 +36,6 @@ if (process.env.NODE_ENV === 'development') {
     app.use(express.static('public'));
 }
 
-// Use the API endpoint
-app.use('/api', router);
 
 /**
  * @description Start the server
