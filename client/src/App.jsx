@@ -1,23 +1,14 @@
-import { Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout";
-import { Home, StudentInfo, TutorInfo, UserHome } from "./pages";
-import { useState } from "react";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Home } from "./pages";
 
-function App() {
-  const [logIn, setLogIn] = useState(false);
+const App = () => {
   return (
-    <Routes>
-      {!logIn ? (
-        <Route path="/" element={<Home setLogIn={setLogIn} />}></Route>
-      ) : (
-        <Route path="/" element={<Layout setLogIn={setLogIn} />}>
-          <Route index element={<UserHome />} />
-          <Route path="studentInfo" element={<StudentInfo />} />
-          <Route path="tutorInfo" element={<TutorInfo />} />
-        </Route>
-      )}
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
