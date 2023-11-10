@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import validateUser from "../services/validateUser";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function Home() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -20,7 +21,12 @@ function Home() {
     checkUser();
   }, []);
 
-  return <div style={{ fontSize: "100px" }}>This is the Home Page</div>;
+  return (
+    <>
+      <Navbar />
+      <div style={{ fontSize: "100px" }}>This is the Home Page</div>
+    </>
+  );
 }
 
 export default Home;
