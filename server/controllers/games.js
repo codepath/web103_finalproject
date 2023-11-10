@@ -21,10 +21,11 @@ const getGameById = async (req, res) => {
     res.status(500).send(err.message);
   }
 };
+
 const createGame = async (req, res) => {
   try {
-    const { title, developer, publisher, release_date, genre, platform, price } = req.body;
-    const results = await pool.query('INSERT INTO games (title, developer, publisher, release_date, genre, platform, price) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [title, developer, publisher, release_date, genre, platform, price]);
+    const { name, developer, publisher, release_date, genre, platform, rating, background_image } = req.body;
+    const results = await pool.query('INSERT INTO games (name, developer, publisher, release_date, rating, background_image, genre, platform) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [name, developer, publisher, release_date, rating, background_image, `{${platform.join(",")}}`, `{${genre.join(",")}}`]);
     res.status(201).json(results.rows[0]);
   } catch (err) {
     res.status(500).send(err.message);

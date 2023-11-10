@@ -5,6 +5,7 @@ import { Game } from '../types';
 import GameCard from '../components/GameCard';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import useGameQueryStore from '../store.ts';
+import AddGameCard from '../components/AddGameCard.tsx';
 
 const HomePage = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -28,7 +29,7 @@ const HomePage = () => {
       setGames(data);
     }
     const filteredGames = data?.filter((game: Game) =>
-      game.name.toLowerCase().includes(searchText.toLowerCase())
+      game.name?.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredGames(filteredGames);
   }, [data, searchText]);
@@ -47,14 +48,16 @@ const HomePage = () => {
           {filteredGames.map((game) => (
             <GameCard game={game} />
           ))}
+          <AddGameCard />
         </div>
+          
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-8 lg:grid-cols-aside-main lg:grid-rows-main gap-4">
-      <div className="sm:hidden md:grid md:col-start-1">
+    <div className="grid grid-cols-8 lg:grid-cols-aside-main lg:grid-rows-main gap-4 ">
+      <div className="sm:hidden md:grid md:col-start-1 ">
         <GenreList />
       </div>
 
@@ -62,6 +65,7 @@ const HomePage = () => {
         {games.map((game) => (
           <GameCard game={game} />
         ))}
+        <AddGameCard />
       </div>
     </div>
   );

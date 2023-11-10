@@ -15,6 +15,5 @@ const genreData = [
     id:4,
     genre:"Puzzle"
   }
-
 ];
 export default genreData;

@@ -13,7 +13,7 @@ const createGamesTable = async () => {
       developer VARCHAR(100),
       publisher VARCHAR(100),
       release_date DATE,
-      rating DECIMAL(3,2),
+      rating VARCHAR(100),
       background_image VARCHAR(500),
       genre INTEGER[],
       platform INTEGER[]

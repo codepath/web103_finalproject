@@ -13,13 +13,13 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
       <div
         className="
         relative group flex flex-col items-center justify-center rounded-md overflow-hidden gap-x-1 bg-neutral-900/70 cursor-pointer 
-        hover:bg-slate-800/50 transition p-2 hover:scale-105 text-white max-h-[400px] tansition ease-in-out duration-300"
+        hover:bg-slate-800/50 transition p-2 hover:scale-105 text-white max-h-[400px] h-auto tansition ease-in-out duration-300"
       >
         <div
           className="
             relative 
             w-full
-            h-full 
+            h-auto
             rounded-md 
             overflow-hidden"
         >
@@ -38,7 +38,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
             className="
             text-neutral-400 
             text-sm 
-            pb-4  
+            pb-2 
             w-full 
             truncate"
           >
@@ -46,10 +46,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
           </p>
         </div>
         <div
-          className="
-          absolute 
-          bottom-[52px] 
-          right-1"
+          className="flex flex-col w-full"
         >
           <PlatformMapper platforms={game.platform} />
         </div>
