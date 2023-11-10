@@ -3,7 +3,7 @@ import { useRoutes } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import CreateBoard from "./pages/CreateBoard";
 
 const App = () => {
@@ -21,12 +21,7 @@ const App = () => {
       element: <CreateBoard />,
     },
   ]);
-  return (
-    <div className="app">
-      <Navbar />
-      {element}
-    </div>
-  );
+  return <div className="app">{element}</div>;
 };
 
 export default App;
