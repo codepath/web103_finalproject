@@ -10,7 +10,7 @@ import CreateResource from './pages/CreateResource';
 import './App.css';
 import Login from './pages/Login';
 import { AuthProvider } from './contexts/AuthContext';
-
+import PostDetail from './components/PostDetail';
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/add-resource" element={<CreateResource />} />
           <Route path="/login" element={<Login />} />
-
+          <Route path="/posts/:postId" element={<PostDetail />} />
         </Routes>
       </div>
     </AuthProvider>
