@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 // import the router from your routes file
 import userDetailsRouter from './routes/userDetails.js'
 import boardDetailsRouter from './routes/boardDetails.js'
+import authenticationRouter from './routes/authentication.js'
 
 dotenv.config()
 
@@ -26,6 +27,7 @@ else if (process.env.NODE_ENV === 'production') {
 // specify the api path for the server to use
 app.use('/api', userDetailsRouter)
 app.use('/api', boardDetailsRouter)
+app.use('/api', authenticationRouter)
 
 if (process.env.NODE_ENV === 'production') {
     app.get('/*', (_, res) =>

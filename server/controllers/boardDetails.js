@@ -57,6 +57,12 @@ const getTasksByBoardId = async (req, res) => {
     }
   }
 
+  // add user to a board
+
+  // delete user from board
+
+  // create new board
+
 export default{
     getBoardByBoardId,
     getUsersByBoardId,
