@@ -30,9 +30,31 @@ const router = express.Router();
 //   }
 // });
 
-router.post('/login', passport.authenticate('local'), (request, response, next) => {   
-    response.status(200).json({ message: 'Logged in successfully' });
-})
+router.post(
+  "/login",
+  passport.authenticate("local"),
+  (request, response, next) => {
+    response.status(200).json({ message: "Logged in successfully" });
+  }
+);
+
+router.post("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error("Error during logout:", err);
+      res.status(500).json({ error: "Internal Server Error" });
+    } else {
+      req.session.destroy((err) => {
+        if (err) {
+          console.error("Error destroying session:", err);
+          res.status(500).json({ error: "Internal Server Error" });
+        } else {
+          res.status(200).json({ message: "Logged out successfully" });
+        }
+      });
+    }
+  });
+});
 
 router.post("/register", async (request, response) => {
   try {
