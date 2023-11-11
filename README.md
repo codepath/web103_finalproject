@@ -39,6 +39,8 @@ Users can login and logout of their account.
 ### Session Registration
 
 Students can register for a session with a tutor.
+![FinalProject](https://github.com/FelixNgFender/web103_finalproject/assets/98554622/c6f4b563-d015-4208-8f8b-797fe5896b48)
+
 
 ### Tutor Search
 
