@@ -7,20 +7,45 @@ import Container from 'react-bootstrap/Container'
 
 function FormSubmission() {
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    //console.log(e) 
+    console.log(e) 
 
     const jobTitle = e.target.jobTitle.value
     const jobRole = e.target.jobRole.value
+    const jobReq = e.target.jobReq.value
+    const jobQual = e.target.jobQual.value
+    const technical = e.target.jobTechCheck.checked
+    const behavioral = e.target.jobBehaCheck.checked
     
-    console.log(jobTitle, jobRole)
+    console.log(jobTitle, jobRole, jobReq, jobQual, technical, behavioral)
 
-    // take this data and send it to the backend
 
-    // direct to results page
-  }
+    const result = await fetch('http://localhost:3000/openai-api', {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        jobTitle,
+        jobRole,
+        jobReq,
+        jobQual,
+        technical,
+        behavioral
+      })
+    })
 
+    if (!result.ok) {
+      throw new Error(`HTTP error! status: ${result.status}`)
+    }
+
+    const data = await result.json()
+
+    const interviewQuestions = data.choices[0].message.content // this is the generated interview text from the API Robert, u can play w this info
+
+    console.log(interviewQuestions);
+    }
 
   return (
     <Container className='center-container'>
