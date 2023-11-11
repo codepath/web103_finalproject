@@ -225,6 +225,8 @@
     height: var(--dl-size-size-xsmall);
   }
   .home-hero {
+    border-top: 3px solid;
+    border-bottom: 3px solid;
     flex: 0 0 auto;
     width: 100%;
     height: auto;
@@ -404,6 +406,7 @@
     padding-bottom: var(--dl-space-space-fourunits);
   }
   .home-gallery-heading {
+    margin-bottom: 0px;
     text-align: center;
     font-family: "Raleway";
     line-height: 1.6;
@@ -622,20 +625,20 @@
   }
   .home-icon10 {
     fill: var(--dl-color-secondary-gray500);
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
     margin-right: var(--dl-space-space-twounits);
   }
   .home-icon12 {
     fill: var(--dl-color-secondary-gray500);
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
     margin-right: var(--dl-space-space-twounits);
   }
   .home-icon14 {
     fill: var(--dl-color-secondary-gray500);
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
   }
   @media(max-width: 991px) {
     .home-logo {
