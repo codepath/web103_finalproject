@@ -27,7 +27,7 @@ app.use(
 // app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -47,7 +47,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.get("/", (req, res) => {
-  res.redirect("http://localhost:3000");
+  res.redirect("http://localhost:3001");
 });
 
 app.use((req, res, next) => {
