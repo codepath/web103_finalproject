@@ -14,12 +14,21 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 ## Reflection
 
 ### 1. What went well during this unit?
-We were able to add the API AI call to OpenAI for chat completion generation. I called GPT and was able to generate the interview questions, so the core functionality is done.
+Zion - We were able to add the API AI call to OpenAI for chat completion generation. I called GPT and was able to generate the interview questions, so the core functionality is done.
+
+Rob - Made the bulk of the frontend and planned out the rest of the pages
+
 ### 2. What were some challenges your group faced in this unit?
 Zion - Mainly just really busy with other obligations.
+Rob - Had tiny trouble relearning bootstrap and organizing the pages
+
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
-Yes, we did.
+Zion - Yes, we did.
+Rob - Yes, we did.
+
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
-None.
+Zion - None.
+Rob - Webscraping is at risk, but we can just use the API call to generate the questions.
+
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
-No support needed!!
+Zion & Rob - No support needed!!
