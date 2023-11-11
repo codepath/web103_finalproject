@@ -231,7 +231,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-color: var(--dl-color-primary1-blue80);
+    background-color: #0e1482;
   }
   .home-hero1 {
     width: 100%;
