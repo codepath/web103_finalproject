@@ -48,6 +48,11 @@ export const mockData = {
     { id: 6, type: 'coding', link: 'https://leetcode.com/tag/hash-table/', title: 'Hash Table' },
     { id: 6, type: 'coding', link: 'https://leetcode.com/tag/dynamic-programming/', title: 'Dynamic Programming' },
   ],
+
+  "events":[
+    { category: 'hackathon', title: 'Hackathon 1', link: 'https://example.com/hackathon1' },
+  { category: 'hackathon', title: 'Hackathon 2', link: 'https://example.com/hackathon2' },
+  ]
   // "types": [
   //   { "id": 1, "name": "Type 1" },
   //   { "id": 2, "name": "Type 2" },

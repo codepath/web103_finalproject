@@ -8,7 +8,7 @@ import ResourceList from './pages/ResourceList';
 import CreatePost from './pages/CreatePost';
 import CreateResource from './pages/CreateResource';
 import AboutUs from './pages/AboutUs'; // Import the new AboutUs component
-
+import Events from './pages/Events';
 import './App.css';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
@@ -23,6 +23,7 @@ const App = () => {
         <Route path="/resources" element={<ResourceList />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/add-resource" element={<CreateResource />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/about" element={<AboutUs />} /> {/* Add this line for the About Us page */}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
