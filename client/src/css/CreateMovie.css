@@ -1,0 +1,49 @@
+.create-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(180, 2, 12);
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px; /* Increase the size of the form */
+}
+
+.create-movie h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.create-movie form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.create-movie form label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: white; /* Match the color with your theme */
+}
+
+.create-movie form input, .create-movie form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px; /* Increase the font size */
+}
+
+.create-movie form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(100, 2, 12); /* Match the color with your theme */
+    color: white;
+    font-size: 18px; /* Increase the font size */
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.create-movie form button:hover {
+    background-color: limegreen; /* Match the color with your theme */
+}

@@ -1,17 +1,36 @@
-import React from "react";
-import { useRoutes } from "react-router-dom";
+import React from 'react'
+import { useRoutes } from 'react-router-dom'
+
+import Navigation from './components/Navigations.jsx'
+import CreateMovie from './pages/CreateMovie.jsx'
+import ViewMovies from './pages/ViewMovies.jsx'
+import EditMovie from './pages/EditMovie.jsx'
+
+import './App.css'
 
 const App = () => {
-    let element = useRoutes([
+  let element = useRoutes([
+    {
+      path: '/',
+      element: <ViewMovies title='CINEMUNDO | View' />
+    },
+    {
+      path: '/edit/:id',
+      element: <EditMovie title='CINEMUNDO | Edit' />
+    },
+    {
+      path: '/create',
+      element: <CreateMovie title='CINEMUNDO | Create' />
+    }
+  ])
 
-    ])
+  return (
+    <div className='app'>
+      <Navigation />
 
-
-    return (
-        <div className="app">
-            {element}
-        </div>
-    )
+      { element }
+    </div>
+  )
 }
 
-export default App;
+export default App
