@@ -46,13 +46,15 @@ Users can view tasks in different calendar formats as well as filter tasks based
 
 Owners have the ability to create and customize family boards, setting the foundation for family-wide task management.
 
-[gif goes here]
+<img src='https://github.com/ManyaBondada/web103_finalproject/blob/main/create%20board%20feature.gif' title='Board Creation' width='' alt='Video Walkthrough' />
 
-### Adding/Removing Family Members
+### Login/Sign Up 
 
-Owners can invite and add family members to the board, allowing for collaboration. Owners can remove family members from the board when necessary
+Users can sign up for the first time or login to a personalized page if an account already exists
 
-[gif goes here]
+<img src='https://github.com/ManyaBondada/web103_finalproject/blob/main/login%20feature.gif' title='Existing User Login' width='' alt='Video Walkthrough' />
+
+<img src='https://github.com/ManyaBondada/web103_finalproject/blob/main/sign%20up%20feature.gif' title='New User Sign Up' width='' alt='Video Walkthrough' />
 
 ### Search Functionality
 
