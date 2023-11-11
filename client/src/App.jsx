@@ -8,7 +8,6 @@ import CreatePost from './pages/CreatePost';
 import CreateResource from './pages/CreateResource';
 
 import './App.css';
-import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -24,7 +23,6 @@ const App = () => {
           <Route path="/resources" element={<ResourceList />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/add-resource" element={<CreateResource />} />
-          <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
 
         </Routes>

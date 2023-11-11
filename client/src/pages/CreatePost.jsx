@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../services/postService';
 import Navbar from '../components/Navbar';
-import './CreatePost.css'; 
+import '../css/CreatePost.css'; 
 
 const CreatePost = () => {
   const [post, setPost] = useState({ title: '', content: '' });
