@@ -1,6 +1,6 @@
-import React from "react";
 import ProfilePic from "../assets/blank-profile-image.png";
-const StudentInfo = () => {
+
+export const StudentInfo = () => {
   const handleProfileEdit = () => {};
   return (
     <div className="m-14 flex-grow border-2 rounded-lg p-2 flex text-2xl">
@@ -79,5 +79,3 @@ const StudentInfo = () => {
     </div>
   );
 };
-
-export default StudentInfo;

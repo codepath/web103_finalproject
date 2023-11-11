@@ -1,8 +1,7 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import { Navbar } from "./Navbar";
 
-const Layout = ({ setLogIn }) => {
+export const Layout = ({ setLogIn }) => {
   return (
     <div className="flex flex-col font-caveat h-screen">
       <Navbar setLogIn={setLogIn} />
@@ -10,5 +9,3 @@ const Layout = ({ setLogIn }) => {
     </div>
   );
 };
-
-export default Layout;

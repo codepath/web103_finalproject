@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ setLogIn }) => {
+export const Navbar = ({ setLogIn }) => {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -46,5 +45,3 @@ const Navbar = ({ setLogIn }) => {
     </div>
   );
 };
-
-export default Navbar;
