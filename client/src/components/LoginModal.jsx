@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 
 const LoginModal = ({ toggleLoginModal }) => {
   const [isRegistering, setIsRegistering] = useState(false);
+
+  const handleRegisterClick = () => {
+    setIsRegistering(true);
+  };
+
+  const handleLoginClick = () => {
+    setIsRegistering(false);
+  };
+
   return isRegistering ? (
     <div
       id="authentication-modal"
@@ -187,12 +196,12 @@ const LoginModal = ({ toggleLoginModal }) => {
               </button>
               <div className="text-sm font-medium text-gray-500 dark-text-gray-300">
                 Already have an account?{" "}
-                <a
-                  href="#"
-                  className="text-blue-700 hover-underline dark-text-blue-500"
+                <div
+                  className="text-blue-700 hover-underline dark-text-blue-500 cursor-pointer"
+                  onClick={handleLoginClick}
                 >
                   Login
-                </a>
+                </div>
               </div>
             </form>
           </div>
@@ -303,12 +312,13 @@ const LoginModal = ({ toggleLoginModal }) => {
               </button>
               <div className="text-sm font-medium text-gray-500 dark-text-gray-300">
                 Not registered?{" "}
-                <a
+                <div
                   href="#"
-                  className="text-blue-700 hover-underline dark-text-blue-500"
+                  className="text-blue-700 hover-underline dark-text-blue-500 cursor-pointer"
+                  onClick={handleRegisterClick}
                 >
                   Create account
-                </a>
+                </div>
               </div>
             </form>
           </div>
