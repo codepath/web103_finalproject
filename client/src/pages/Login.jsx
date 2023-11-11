@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import userInfo from "../dummydata/login";
 
 function Login() {
+  const navigate = useNavigate();
   const [isNewAttempt, setNewAttempt] = useState(true);
   const [isRegisteredUser, setRegisteredUser] = useState(false);
   const [schema, setSchema] = useState();
@@ -16,12 +19,12 @@ function Login() {
 
   const checkUserExists = () => {
     setRegisteredUser((prev) => prev);
-    if (isRegisteredUser) {
+    if (!isRegisteredUser) {
       const registerSchema = yup.object().shape({
         email: yup.string().required("Email is required!"),
         password: yup.string().required("Password is required!"),
         name: yup.string().required("Name is required!"),
-        phone: yup.string().required("Name is required!"),
+        phone: yup.string().required("Phone Number is required!"),
       });
       setSchema(registerSchema);
     } else {
@@ -54,6 +57,8 @@ function Login() {
     }
     console.log(data);
     reset();
+    navigate("/", { replace: true });
+    userInfo.token = "#####";
   };
 
   return (
