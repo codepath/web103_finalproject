@@ -163,8 +163,47 @@ const createUserAddressTable = async () => {
   }
 };
 
+const createOrdersTableQuery = async () => {
+  const createOrdersTableQuery = `
+  id serial PRIMARY KEY,
+  user_id integer NOT NULL,
+  order_date timestamp DEFAULT CURRENT_TIMESTAMP,
+  total_amount numeric(10, 2) NOT NULL,
+  status varchar(50) DEFAULT 'Pending',
+  FOREIGN KEY (user_id) REFERENCES users (id)
+  `;
+  try {
+    const res = await pool.query(createOrdersTableQuery);
+    console.log("🎉 Order table created successfully");
+  } catch (err) {
+    console.error("⚠️ error creating useraddress table", err);
+  }
+};
+
+const createOrderDetailTableQuery = async () => {
+  const createOrderDetailTableQuery = `
+CREATE TABLE IF NOT EXISTS order_details (
+  id serial PRIMARY KEY,
+  order_id integer NOT NULL,
+  sneaker_id integer NOT NULL,
+  quantity integer NOT NULL,
+  price_per_unit numeric(10, 2) NOT NULL,
+  total_price numeric(10, 2) NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders (id),
+  FOREIGN KEY (sneaker_id) REFERENCES sneakers (id)
+);`;
+  try {
+    const res = await pool.query(createOrderDetailTableQuery);
+    console.log("🎉 OrderDetail table created successfully");
+  } catch (err) {
+    console.error("⚠️ error creating useraddress table", err);
+  }
+};
+
 seedSneakersTable();
 seedImagesTable();
 createReviewsTable();
 createUsersTable;
 createUserAddressTable();
+createOrdersTableQuery();
+createOrderDetailTableQuery();
