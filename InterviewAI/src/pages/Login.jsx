@@ -1,15 +1,15 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
 
 function Login() {
 
 
-  return (
-    
+  return (    
     <div>
-        <Link to='/form'><button>Go to Form</button></Link>
-        <h1>Login</h1>
+      <h1 className='mb-5'>InterviewAI</h1>
+        <Link to='/form'><Button variant='dark'>Get Started</Button></Link>
     </div>
   )
 }
