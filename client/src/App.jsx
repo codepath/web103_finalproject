@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navigation from "./components/Navigation";
+import Navbar from "./components/Navbar";
 import Home from './pages/Home';
 import DiscussionBoard from './pages/DiscussionBoard';
 import ResourceList from './pages/ResourceList';
@@ -10,11 +10,14 @@ import CreateResource from './pages/CreateResource';
 import './App.css';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import { AuthProvider } from './contexts/AuthContext';
+
 
 const App = () => {
   return (
+    <AuthProvider>
       <div>
-        <Navigation />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<DiscussionBoard />} />
@@ -23,11 +26,10 @@ const App = () => {
           <Route path="/add-resource" element={<CreateResource />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-      
-          
-          
+
         </Routes>
       </div>
+    </AuthProvider>
   );
 }
 

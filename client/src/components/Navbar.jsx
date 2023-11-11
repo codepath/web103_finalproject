@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
+  const { isAuthenticated, user } = useAuth();
   const loginButtonStyle = {
     backgroundColor: 'orange', 
     color: 'white', 
@@ -26,9 +28,16 @@ const Navbar = () => {
         </Link>
       </div>
       <nav>
-        <Link to="/SignOut" className="link join-us">
-          <button style={loginButtonStyle}>Sign Out</button>
-        </Link>
+        {isAuthenticated ? (
+          <div>
+            <img src={user.avatarUrl} alt="User" />
+            {/* Implement logout functionality */}
+          </div>
+        ) : (
+          <Link to="/login">
+            <button style={loginButtonStyle}>Login</button>
+          </Link>
+        )}
       </nav>
     </div>
   );

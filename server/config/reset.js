@@ -2,10 +2,12 @@ import { pool } from './database.js';
 import { mockData } from '../data/mockData.js';
 
 const createUserTable = `
-CREATE TABLE IF NOT EXISTS "USER" (
+CREATE TABLE IF NOT EXISTS "GITHUBUSER" (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(255) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL
+  username text UNIQUE NOT NULL,
+  avatarurl text,
+  githubid text UNIQUE,
+  accesstoken text
 );
 `;
 
@@ -13,7 +15,7 @@ const createPostTable = `
 CREATE TABLE IF NOT EXISTS "POST" (
   id SERIAL PRIMARY KEY,
   content TEXT NOT NULL,
-  userId INTEGER REFERENCES "USER"(id)
+  userId INTEGER REFERENCES "GITHUBUSER"(id)
 );
 `;
 
@@ -37,14 +39,14 @@ CREATE TABLE IF NOT EXISTS "RESOURCE" (
   id SERIAL PRIMARY KEY,
   link VARCHAR(255) NOT NULL,
   typeId INTEGER REFERENCES "TYPE"(id),
-  userId INTEGER REFERENCES "USER"(id)
+  userId INTEGER REFERENCES "GITHUBUSER"(id)
 );
 `;
 
 const createTables = async () => {
   try {
     await pool.query(createUserTable);
-    console.log('🎉 USER table created successfully');
+    console.log('🎉 GITHUBUSER table created successfully');
     await pool.query(createPostTable);
     console.log('🎉 POST table created successfully');
     await pool.query(createCommentTable);
@@ -58,16 +60,16 @@ const createTables = async () => {
   }
 };
 
-const seedUserTable = async () => {
-  try {
-    for (const user of mockData.users) {
-      await pool.query('INSERT INTO "USER" (username, password) VALUES ($1, $2) ON CONFLICT (username) DO NOTHING', [user.username, user.password]);
-      console.log(`✅ User ${user.username} added successfully`);
-    }
-  } catch (err) {
-    console.error('⚠️ Error seeding USER table:', err);
-  }
-};
+// const seedUserTable = async () => {
+//   try {
+//     for (const user of mockData.users) {
+//       await pool.query('INSERT INTO "USER" (username, password) VALUES ($1, $2) ON CONFLICT (username) DO NOTHING', [user.username, user.password]);
+//       console.log(`✅ User ${user.username} added successfully`);
+//     }
+//   } catch (err) {
+//     console.error('⚠️ Error seeding USER table:', err);
+//   }
+// };
 
 const seedPostTable = async () => {
   try {
@@ -131,7 +133,7 @@ const seedResourceTable = async () => {
 
 const seedAllTables = async () => {
   await createTables();
-  await seedUserTable();
+  // await seedUserTable();
   await seedPostTable();
   await seedTypeTable();
   await seedResourceTable();
