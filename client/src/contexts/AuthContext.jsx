@@ -7,28 +7,31 @@ export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     isAuthenticated: false,
     user: null,
+    loading: true, // Add a loading state
   });
 
-  // Check authentication status on component mount
   useEffect(() => {
     axios.get(`${window.API_URL}/auth/login/success`, { withCredentials: true })
       .then(response => {
         if (response.data.success) {
-          setAuthState({ isAuthenticated: true, user: response.data.user });
+          setAuthState({ isAuthenticated: true, user: response.data.user, loading: false });
+        } else {
+          setAuthState({ isAuthenticated: false, user: null, loading: false });
         }
       })
       .catch(error => {
         console.error('Authentication check failed', error);
+        setAuthState({ isAuthenticated: false, user: null, loading: false });
       });
   }, []);
 
   const setAuthInfo = ({ isAuthenticated, user }) => {
-    setAuthState({ isAuthenticated, user });
+    setAuthState({ isAuthenticated, user, loading: false });
   };
 
   return (
     <AuthContext.Provider value={{ ...authState, setAuthInfo }}>
-      {children}
+      {!authState.loading && children} {/* Render children only when not loading */}
     </AuthContext.Provider>
   );
 };

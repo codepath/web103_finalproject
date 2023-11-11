@@ -9,7 +9,6 @@ const Navbar = () => {
   useEffect(() => {
     // This will cause the component to re-render when isAuthenticated changes
   }, [isAuthenticated]);
-
   const handleLogout = () => {
     axios.get(`${window.API_URL}/auth/logout`, { withCredentials: true })
       .then(() => {
@@ -20,6 +19,7 @@ const Navbar = () => {
         console.error('Logout failed', error);
       });
   };
+  
   const loginButtonStyle = {
     backgroundColor: 'orange', 
     color: 'white', 

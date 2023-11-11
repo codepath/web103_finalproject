@@ -6,9 +6,8 @@ import DiscussionBoard from './pages/DiscussionBoard';
 import ResourceList from './pages/ResourceList';
 import CreatePost from './pages/CreatePost';
 import CreateResource from './pages/CreateResource';
-
-import './App.css';
 import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import { AuthProvider } from './contexts/AuthContext';
 import PostDetail from './components/PostDetail';
 
@@ -19,12 +18,12 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/posts" element={<DiscussionBoard />} />
-          <Route path="/resources" element={<ResourceList />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/add-resource" element={<CreateResource />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/posts/:postId" element={<PostDetail />} />
+          <Route path="/posts" element={<ProtectedRoute><DiscussionBoard /></ProtectedRoute>} />
+          <Route path="/resources" element={<ProtectedRoute><ResourceList /></ProtectedRoute>} />
+          <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
+          <Route path="/add-resource" element={<ProtectedRoute><CreateResource /></ProtectedRoute>} />
+          <Route path="/posts/:postId" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
         </Routes>
       </div>
     </AuthProvider>

@@ -9,33 +9,23 @@ const Login = () => {
   const { setAuthInfo } = useAuth();
   const AUTH_URL = `${window.API_URL}/auth/github`;
 
-  // This useEffect will check if the user is already logged in when the component mounts
   useEffect(() => {
     axios.get(`${window.API_URL}/auth/login/success`, { withCredentials: true })
       .then(response => {
         if (response.data.success) {
+          console.log('Login Success:', response.data); // Add this line
           setAuthInfo({ isAuthenticated: true, user: response.data.user });
-          navigate('/'); // Redirect to home if already logged in
+          navigate('/');
         }
       })
       .catch(error => {
-        console.error('Login check failed', error);
+        if (error.response && error.response.status === 401) {
+          console.log('User is not logged in');
+        } else {
+          console.error('Login check failed', error);
+        }
       });
   }, [navigate, setAuthInfo]);
-
-  // This function could be used for a direct login API call if you have one
-  const handleLogin = () => {
-    axios.post(`${window.API_URL}/auth/login`, { /* login data */ }, { withCredentials: true })
-      .then(response => {
-        if (response.data.success) {
-          setAuthInfo({ isAuthenticated: true, user: response.data.user });
-          navigate('/'); // Redirect to home after successful login
-        }
-      })
-      .catch(error => {
-        console.error('Login failed', error);
-      });
-  };
 
   return (
     <div className="login-container">
