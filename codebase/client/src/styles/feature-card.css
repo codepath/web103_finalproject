@@ -3,12 +3,12 @@
   display: flex;
   /* padding: var(--dl-space-space-twounits); */
   position: relative;
-  align-items: flex-start;
   border-radius: var(--dl-radius-radius-radius8);
   flex-direction: row;
-  justify-content: space-between; /* Use space-between to evenly space the cards */
+  justify-content: space-between;
   background-color: var(--dl-color-gray-white);
   /* margin-bottom: var(--dl-space-space-unit); */
+  align-items: center;
 }
 
 .feature-card-container {
