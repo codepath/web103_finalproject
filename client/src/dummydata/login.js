@@ -1,7 +1,7 @@
 const userInfo = {
   username: "arpit",
   password: "12345",
-  token: "####",
+  token: "#####",
 };
 
 export default userInfo;
