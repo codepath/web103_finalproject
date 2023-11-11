@@ -68,7 +68,7 @@ const deleteMovie = async (req, res) => {
 
       // movies_tags table has "ON DELETE" keywords in query so it should be deleted as well
 
-      const results = await pool.query('DELETE FROM movies WHERE id = $1', [id])
+      const results = await pool.query('DELETE FROM movies WHERE movie_id = $1', [id])
       res.status(200).json(results.rows[0])
     }
     catch (error) {
