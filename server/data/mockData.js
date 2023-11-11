@@ -39,17 +39,14 @@ export const mockData = {
   //   { "id": 11, "content": "Comment 11 content", "postId": 11 }
   // ],
   "resources": [
-    { "id": 1, "link": "https://example1.com", "typeId": 1, "userId": 1 },
-    { "id": 2, "link": "https://example2.com", "typeId": 2, "userId": 2 },
-    { "id": 3, "link": "https://example3.com", "typeId": 3, "userId": 3 },
-    { "id": 4, "link": "https://example4.com", "typeId": 1, "userId": 4 },
-    { "id": 5, "link": "https://example5.com", "typeId": 2, "userId": 5 },
-    { "id": 6, "link": "https://example6.com", "typeId": 3, "userId": 6 },
-    { "id": 7, "link": "https://example7.com", "typeId": 1, "userId": 7 },
-    { "id": 8, "link": "https://example8.com", "typeId": 2, "userId": 8 },
-    { "id": 9, "link": "https://example9.com", "typeId": 3, "userId": 9 },
-    { "id": 10, "link": "https://example10.com", "typeId": 1, "userId": 10 },
-    { "id": 11, "link": "https://example11.com", "typeId": 2, "userId": 11 }
+    { id: 1, type: 'youtube', link: 'https://www.youtube.com/watch?v=eWRfhZUzrAc&list=PLWKjhJtqVAbnqBxcdjVGgT3uVR10bzTEB', title: 'Python (Beginner)' },
+    { id: 2, type: 'youtube', link: 'https://www.youtube.com/watch?v=8jLOx1hD3_o', title: 'C++ Beginner to Advance' },
+    { id: 3, type: 'youtube', link: 'https://www.youtube.com/watch?v=eIrMbAQSU34', title: 'Java Beginner' },
+    { id: 4, type: 'youtube', link: 'https://www.youtube.com/watch?v=Q33KBiDriJY&list=PL9ooVrP1hQOEloRCBI97ZXkWUg6MJn0Yf', title: 'Web Development Full Course' },
+    { id: 5, type: 'coding', link: 'https://leetcode.com/tag/array/', title: 'Array' },
+    { id: 6, type: 'coding', link: 'https://leetcode.com/tag/binary-tree/', title: 'Binary Tree' },
+    { id: 6, type: 'coding', link: 'https://leetcode.com/tag/hash-table/', title: 'Hash Table' },
+    { id: 6, type: 'coding', link: 'https://leetcode.com/tag/dynamic-programming/', title: 'Dynamic Programming' },
   ],
   // "types": [
   //   { "id": 1, "name": "Type 1" },

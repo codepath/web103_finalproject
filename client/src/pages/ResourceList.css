@@ -1,13 +1,25 @@
 /* ResourceList.css */
-
 .resource-list-container {
-    max-width: 800px;
-    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .orange-container {
+    background-color: orange;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center; /* Center the text within the orange container */
   }
   
   .resource-section {
     margin-bottom: 20px;
   }
   
-  /* Add additional styling as needed */
+  .resource-section h3 {
+    text-align: left;
+  }
+  
+  .resource-item {
+    margin-bottom: 10px;
+  }
   
