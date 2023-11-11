@@ -9,10 +9,16 @@ import session from "express-session";
 import "./config/dotenv.js";
 import cookieParser from "cookie-parser";
 import "./strategies/local.js";
+import { conString } from "./config/database.js";
+import connectPgSimple from "connect-pg-simple";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const memoryStore = new session.MemoryStore();
+// const memoryStore = new session.MemoryStore();
+const PostgresqlStore = connectPgSimple(session);
+const sessionStore = new PostgresqlStore({
+  conString: conString,
+});
 app.use(express.json());
 app.use(cookieParser());
 
@@ -21,7 +27,7 @@ app.use(
     secret: process.env.CLIENT_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: memoryStore,
+    store: sessionStore,
   })
 );
 // app.use(cors());
