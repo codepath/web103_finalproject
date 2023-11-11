@@ -3,6 +3,8 @@ import validateUser from "../services/validateUser";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import BoardsPopUp from "../components/BoardPopUp";
+import boardsInfo from "../dummydata/boardsData";
+import BoardSlides from "../components/BoardSlides";
 
 function Home() {
   const [showBoardsPopUp, setBoardsPopUp] = useState(false);
@@ -27,9 +29,10 @@ function Home() {
     <>
       <Navbar displayPopUp={setBoardsPopUp} />
       {showBoardsPopUp && <BoardsPopUp displayPopUp={setBoardsPopUp} />}
-      {!showBoardsPopUp && (
+      {!showBoardsPopUp && boardsInfo.length === 0 && (
         <div style={{ fontSize: "100px" }}>This is the Home Page</div>
       )}
+      {!showBoardsPopUp && boardsInfo.length > 0 && <BoardSlides />}
     </>
   );
 }
