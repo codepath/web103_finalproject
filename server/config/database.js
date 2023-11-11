@@ -9,4 +9,8 @@ const config = {
   database: process.env.PGDATABASE,
 };
 
+const conString = process.env.DATABASE_URL;
+
 export const pool = new pg.Pool(config);
+
+export { conString };
