@@ -5,6 +5,7 @@ import { Game } from '../types';
 import GameCard from '../components/GameCard';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import useGameQueryStore from '../store.ts';
+import AddGameCard from '../components/AddGameCard.tsx';
 
 const HomePage = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -22,17 +23,23 @@ const HomePage = () => {
   });
 
   const { searchText = '' } = useGameQueryStore((s) => s.gameQuery);
+  const { genreId = '' } = useGameQueryStore((s) => s.gameQuery);
 
   useEffect(() => {
     if (data) {
       setGames(data);
     }
-    const filteredGames = data?.filter((game: Game) =>
-      game.title.toLowerCase().includes(searchText.toLowerCase())
+    const filteredGames = data?.filter(
+      (game: Game) =>
+        game.name?.toLowerCase().includes(searchText.toLowerCase()) &&
+        (genreId ? game.genre.includes(Number(genreId)) : true)
     );
     setFilteredGames(filteredGames);
-  }, [data, searchText]);
+  }, [data, searchText, genreId]);
 
+  if (isError) {
+    return <div> Error Fetching games....</div>;
+  }
   if (isPending) {
     return <div>Loading...</div>;
   }
@@ -42,28 +49,31 @@ const HomePage = () => {
         <div className="sm:hidden md:grid md:col-start-1">
           <GenreList />
         </div>
-
         <div className="p-4 md:col-start-2 md:col-span-7 row-start-1 md:row-span-1 grid grid-cols-6 gap-4 sm:col-span-2 ">
           {filteredGames.map((game) => (
-            <GameCard game={game} />
+            <GameCard game={game} key={game.id} />
           ))}
+          <AddGameCard />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-8 lg:grid-cols-aside-main lg:grid-rows-main gap-4">
-      <div className="sm:hidden md:grid md:col-start-1">
-        <GenreList />
-      </div>
+    data && (
+      <div className="grid grid-cols-8 lg:grid-cols-aside-main lg:grid-rows-main gap-4 ">
+        <div className="sm:hidden md:grid md:col-start-1 ">
+          <GenreList />
+        </div>
 
-      <div className="p-4 md:col-start-2 md:col-span-7 row-start-1 grid-cols-6 gap-4 sm:col-span-1 ">
-        {games.map((game) => (
-          <GameCard game={game} />
-        ))}
+        <div className="p-4 sm:col-start-2 sm:col-span-4 md:col-start-2 md:col-span-4 row-start-1 grid-cols-6 gap-4 ">
+          {games.map((game) => (
+            <GameCard game={game} />
+          ))}
+          <AddGameCard />
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

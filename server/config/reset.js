@@ -1,28 +1,49 @@
-import { pool } from './database.js'
-import './dotenv.js'
-import gamesData from '../data/games.js';
+import { pool } from "./database.js";
+import "./dotenv.js";
+import gamesData from "../data/games.js";
+import screenShotsData from "../data/screenshots.js";
 
 const createGamesTable = async () => {
   const createTableQuery = `
     DROP TABLE IF EXISTS games;
 
-    CREATE TABLE IF NOT EXISTS games (
+    CREATE TABLE games (
       id SERIAL PRIMARY KEY,
-      title VARCHAR(255) NOT NULL,
-      developer VARCHAR(255) NOT NULL,
-      publisher VARCHAR(255) NOT NULL,
-      release_date DATE NOT NULL,
-      genre VARCHAR(50) NOT NULL,
-      platform VARCHAR(50) NOT NULL,
-      price NUMERIC(6,2) NOT NULL
-    )
+      name VARCHAR(100),
+      developer VARCHAR(100),
+      publisher VARCHAR(100),
+      release_date DATE,
+      rating VARCHAR(100),
+      background_image VARCHAR(500),
+      genre INTEGER[],
+      price VARCHAR(100),
+      platform INTEGER[]
+    );
   `;
 
   try {
     await pool.query(createTableQuery);
-    console.log('🎉 Games table created successfully');
+    console.log("🎉 Games table created successfully");
   } catch (err) {
-    console.error('⚠️ Error creating games table', err);
+    console.error("⚠️ Error creating games table", err);
+  }
+};
+
+const createScreenshotsTable = async () => {
+  const createTableQuery = `
+  DROP TABLE IF EXISTS screenshots;
+
+  CREATE TABLE screenshots (
+    screenshot_id SERIAL PRIMARY KEY,
+    game_id INT,
+    image_url VARCHAR(255)
+  );
+  `;
+  try {
+    await pool.query(createTableQuery);
+    console.log("🎉 screenshots table created successfully");
+  } catch (err) {
+    console.error("⚠️ Error creating screenshots table", err);
   }
 };
 
@@ -31,26 +52,55 @@ const seedGamesTable = async () => {
 
   gamesData.forEach((game) => {
     const insertQuery = {
-      text: 'INSERT INTO games (title, developer, publisher, release_date, genre, platform, price) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+      text: "INSERT INTO games (name, developer, publisher, release_date, rating, background_image, genre, platform, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
       values: [
-        game.title,
+        game.name,
         game.developer,
         game.publisher,
-        new Date(game.releaseDate),
-        game.genre,
-        game.platform,
+        game.releaseDate,
+        game.rating,
+        game.background_image,
+        `{${game.genre.join(",")}}`,
+        `{${game.platform.join(",")}}`,
         game.price
-      ]
+      ],
     };
 
     pool.query(insertQuery.text, insertQuery.values, (err, res) => {
       if (err) {
-        console.error('⚠️ Error inserting game', err);
+        console.error("⚠️ Error inserting game", err);
       } else {
-        console.log(`✅ ${game.title} added successfully`);
+        console.log(`✅ ${game.name} added successfully`);
+      }
+    });
+  });
+};
+
+const seedScreenshotsTable = async () => {
+  await createScreenshotsTable();
+  const insertQuery = {
+    text: `
+      INSERT INTO screenshots (game_id, image_url)
+      VALUES ($1, $2, $3)
+    `,
+    values: [],
+  };
+  screenShotsData.forEach((screen) => {
+    const insertQuery = {
+      text: `INSERT INTO screenshots (game_id, image_url)
+      VALUES ($1, $2)`,
+      values: [screen.game_id, screen.image],
+    };
+
+    pool.query(insertQuery.text, insertQuery.values, (err, res) => {
+      if (err) {
+        console.error("⚠️ Error inserting screen", err);
+      } else {
+        console.log(`✅ screenshots added successfully`);
       }
     });
   });
 };
 
 seedGamesTable();
+seedScreenshotsTable();
