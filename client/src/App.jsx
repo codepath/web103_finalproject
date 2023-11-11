@@ -1,13 +1,16 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { Home } from "./pages";
+import { Login } from "./pages";
+import { UserProvider } from "./provider";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 };
 
