@@ -11,6 +11,9 @@ import { sessionConfig } from "./src/configs/session.config.js";
 import { corsConfig } from "./src/configs/cors.config.js";
 import { checkAuthentication } from "./src/middlewares/checkAuthentication.js";
 
+import path from "path";
+import favicon from "serve-favicon";
+
 import authRouter from "./src/routes/auth.js";
 import usersRouter from "./src/routes/users.js";
 
@@ -39,6 +42,17 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
+
+if (process.env.NODE_ENV === "development") {
+  app.use(favicon(path.resolve("../", "client", "public", "vite.svg")));
+} else if (process.env.NODE_ENV === "production") {
+  app.use(favicon(path.resolve("public", "vite.svg")));
+  app.use(express.static("public"));
+}
+
+if (process.env.NODE_ENV === "production") {
+  app.get("/*", (_, res) => res.sendFile(path.resolve("public", "index.html")));
+}
 
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
