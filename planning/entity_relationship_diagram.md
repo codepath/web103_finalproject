@@ -2,16 +2,25 @@
 
 Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
 
-## Create the List of Tables
+## List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+Tables:
+- User
+- Traveler
+- Host
+- Admin
+- Property
+- Booking
+- Invoice
+- Listing
+- ListingMessage
+- Business
+- Image
+- Perk
+- TravelerBookingPerk
+- AmenitityList
 
-## Add the Entity Relationship Diagram
+## Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
+![StayVue ERD (3)](https://github.com/itsgivingchaotica/stayvue/assets/91578619/29ff9f22-bfba-4bae-98ba-358e476a0f48)
 
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
