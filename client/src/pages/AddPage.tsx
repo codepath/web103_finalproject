@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const GameForm = () => {
   const [game, setGame] = useState({
@@ -13,27 +14,35 @@ const GameForm = () => {
     platform: [],
     price: '',
   });
+  const Navigate = useNavigate();
 
   const handleCheckboxChange = (e, field) => {
+    const value = Number(e.target.value);
     if (e.target.checked) {
-      setGame({ ...game, [field]: [...game[field], e.target.value] });
+      setGame({ ...game, [field]: [...game[field], value] });
     } else {
       setGame({
         ...game,
-        [field]: game[field].filter((item) => item !== e.target.value),
+        [field]: game[field].filter((item) => item !== value),
       });
     }
   };
 
   const handleChange = (e) => {
-    setGame({ ...game, [e.target.name]: e.target.value });
+    if (e.target.name === 'rating' && e.target.value > 5) {
+      alert('Rating must be less than or equal to 5');
+    } else {
+      setGame({ ...game, [e.target.name]: e.target.value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(game);
       const response = await axios.post('/api/games', game);
       console.log(response.data);
+      Navigate('/');
     } catch (err) {
       console.error(err);
     }
@@ -117,7 +126,7 @@ const GameForm = () => {
           <label>
             <input
               type="checkbox"
-              value="2"
+              value="3"
               onChange={(e) => handleCheckboxChange(e, 'genre')}
             />{' '}
             Shooter
@@ -125,7 +134,7 @@ const GameForm = () => {
           <label>
             <input
               type="checkbox"
-              value="2"
+              value="4"
               onChange={(e) => handleCheckboxChange(e, 'genre')}
             />{' '}
             Puzzle

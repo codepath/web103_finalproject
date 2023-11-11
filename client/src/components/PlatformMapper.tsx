@@ -16,11 +16,11 @@ const PlatformMapper = ({ platforms = [] }: Props) => {
 
   return (
     <div className="flex flex-row">
-      {platforms.map((platform) => {
+      {platforms.map((platform,i) => {
         const IconComponent = iconMap[platform];
         return (
           <IconComponent
-            key={platform}
+            key={i}
             className="mr-2 fill-neutral-300 hover:fill-pink-500 hover:scale-125 transition"
             stroke="black"
             strokeWidth="4" // Add some margin to the right of each icon

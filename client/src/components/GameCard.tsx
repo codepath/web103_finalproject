@@ -9,7 +9,7 @@ interface GameItemProps {
 
 const GameCard: React.FC<GameItemProps> = ({ game }) => {
   return (
-    <Link to={'/games/' + game.name}>
+    <Link to={'/games/' + game.id}>
       <div
         className="
         relative group flex flex-col items-center justify-center rounded-md overflow-hidden gap-x-1 bg-neutral-900/70 cursor-pointer 
@@ -24,7 +24,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
             overflow-hidden"
         >
           <img
-            className=""
+            className="h-[140px]"
             src={game.background_image|| ''}
             alt="Image"
           />
