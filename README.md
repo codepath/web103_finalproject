@@ -24,31 +24,31 @@ Backend: Express.js, Node.js, Postgres
 
 ## Features
 
-### User Profiles
+### [ ] User Profiles
 
 Each family member creates their own profile within the app, allowing them to personalize their settings and manage their responsibilities.
 
 [gif goes here]
 
-### Task Management
+### [ ] Task Management
 
 Users can add, edit, and delete tasks, specifying details such as task name, description, deadline, and any special requirements. Tasks can be categorized by type (e.g., household chores, childcare, work-related).
 
 [gif goes here]
 
-### Monthly/Daily Task Views
+### [ ] Monthly/Daily Task Views
 
 Users can view tasks in different calendar formats as well as filter tasks based on board members to see who is assigned with which tasks.
 
 [gif goes here]
 
-### Family Board Creation/Deletion
+### [x] Family Board Creation/Deletion
 
 Owners have the ability to create and customize family boards, setting the foundation for family-wide task management.
 
 <img src='https://github.com/ManyaBondada/web103_finalproject/blob/main/create%20board%20feature.gif' title='Board Creation' width='' alt='Video Walkthrough' />
 
-### Login/Sign Up 
+### [x] Login/Sign Up 
 
 Users can sign up for the first time or login to a personalized page if an account already exists
 
@@ -56,7 +56,7 @@ Users can sign up for the first time or login to a personalized page if an accou
 
 <img src='https://github.com/ManyaBondada/web103_finalproject/blob/main/sign%20up%20feature.gif' title='New User Sign Up' width='' alt='Video Walkthrough' />
 
-### Search Functionality
+### [ ] Search Functionality
 
 Users can search for specific tasks, family members, or previous task history within the family board.
 
