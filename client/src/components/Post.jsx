@@ -1,5 +1,6 @@
+// Post.js
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 
 const Post = ({ post, onDelete, onEdit }) => {
   return (
