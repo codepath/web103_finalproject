@@ -16,6 +16,7 @@ const createGamesTable = async () => {
       rating VARCHAR(100),
       background_image VARCHAR(500),
       genre INTEGER[],
+      price VARCHAR(100),
       platform INTEGER[]
     );
   `;
@@ -51,7 +52,7 @@ const seedGamesTable = async () => {
 
   gamesData.forEach((game) => {
     const insertQuery = {
-      text: "INSERT INTO games (name, developer, publisher, release_date, rating, background_image, genre, platform) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      text: "INSERT INTO games (name, developer, publisher, release_date, rating, background_image, genre, platform, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
       values: [
         game.name,
         game.developer,
@@ -61,6 +62,7 @@ const seedGamesTable = async () => {
         game.background_image,
         `{${game.genre.join(",")}}`,
         `{${game.platform.join(",")}}`,
+        game.price
       ],
     };
 

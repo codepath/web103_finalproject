@@ -14,34 +14,26 @@ const GenreList = () => {
     {
       id: 1,
       name: 'Action',
-      image_background: 'https://example.com/action.jpg',
     },
     {
       id: 2,
       name: 'Adventure',
-      image_background: 'https://example.com/adventure.jpg',
     },
     {
       id: 3,
-      name: 'RPG',
-      image_background: 'https://example.com/rpg.jpg',
+      name: 'Shooter',
     },
     {
       id: 4,
-      name: 'Strategy',
-      image_background: 'https://example.com/strategy.jpg',
-    },
-    {
-      id: 5,
-      name: 'Shooter',
-      image_background: 'https://example.com/shooter.jpg',
-    },
-    {
-      id: 6,
-      name: 'Moba',
-      image_background: 'https://example.com/shooter.jpg',
-    },
+      name: 'Puzzle',
+    }
   ];
+  const resetFilters = () => {
+    setSearchText('');
+    setSelectedGenreId(0);
+  };
+  const setSearchText = useGameQueryStore(s => s.setSearchText)
+  const setSelectedGenreId = useGameQueryStore(s => s.setGenreId);
   return (
     <>
       <div className="bg-black/50 h-[calc(100vh-65px)] overflow-hidden pl-4">
@@ -52,7 +44,7 @@ const GenreList = () => {
               <div className="flex">
                 <button
                   className={`text-left normal-case hover:scale-125 tansition ease-in-out duration-300 `}
-                  onClick={() => console.log('hi')}
+                  onClick={() => setSelectedGenreId(genre.id)}
                 >
                   {genre.name}
                 </button>
@@ -60,6 +52,7 @@ const GenreList = () => {
             </li>
           ))}
         </ul>
+        <button onClick={resetFilters} className=" text-white font-bold text-left normal-case hover:scale-125 py-2 mt-4 bg-green-700 tansition ease-in-out duration-300 rounded-md px-2 ">Reset Filters</button>
       </div>
     </>
   );
