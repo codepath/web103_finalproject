@@ -28,7 +28,6 @@ const CreatePost = () => {
 
   return (
     <div>
-      <Navbar />
       <h2>Create Post</h2>
       <div className="form-container">
         <form onSubmit={handleSubmit}>

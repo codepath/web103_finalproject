@@ -60,17 +60,6 @@ const createTables = async () => {
   }
 };
 
-// const seedUserTable = async () => {
-//   try {
-//     for (const user of mockData.users) {
-//       await pool.query('INSERT INTO "USER" (username, password) VALUES ($1, $2) ON CONFLICT (username) DO NOTHING', [user.username, user.password]);
-//       console.log(`✅ User ${user.username} added successfully`);
-//     }
-//   } catch (err) {
-//     console.error('⚠️ Error seeding USER table:', err);
-//   }
-// };
-
 const seedPostTable = async () => {
   try {
     const result = await pool.query('SELECT COUNT(*) FROM "POST"');
@@ -94,7 +83,7 @@ const seedPostTable = async () => {
     }
   } catch (err) {
     console.error('⚠️ Error seeding POST table:', err);
-    throw err; // Stop the seeding process if there's an error
+    throw err;
   }
 };
 
@@ -133,7 +122,6 @@ const seedResourceTable = async () => {
 
 const seedAllTables = async () => {
   await createTables();
-  // await seedUserTable();
   await seedPostTable();
   await seedTypeTable();
   await seedResourceTable();

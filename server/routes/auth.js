@@ -32,11 +32,6 @@ router.get('/github', passport.authenticate('github', {
   scope: ['read:user']
 }))
 
-// router.get('/auth/github/callback', passport.authenticate('github', {
-//   successRedirect: '/',
-//   failureRedirect: '/login'
-// }));
-
 router.get('/github/callback', (req, res, next) => {
   passport.authenticate('github', (err, user, info) => {
     console.log('GitHub Callback Hit');
@@ -58,14 +53,5 @@ router.get('/github/callback', (req, res, next) => {
     });
   })(req, res, next);
 });
-
-
-
-
-// router.get('/auth/github/callback', (req, res) => {
-//   console.log('Callback route reached');
-//   res.send('Callback route hit');
-// });
-
 
 export default router
