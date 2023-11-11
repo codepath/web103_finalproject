@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
-import stayvueLogo from "./assets/StayVue.png";
 import Listings from "./pages/Listings";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import "./App.css";
 import Navbar from "./components/Navbar";
+import Profiles from "./pages/Profiles";
 
 function App() {
   const [listings, setListings] = useState([]);
@@ -38,6 +38,9 @@ function App() {
       >
         {element}
       </div>
+        <Routes>
+          <Route path="/profile" element = {<Profiles/>}/>
+        </Routes>
     </div>
   );
 }

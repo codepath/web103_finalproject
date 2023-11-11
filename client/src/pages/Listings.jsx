@@ -1,5 +1,6 @@
-import React from "react";
-import ListingsContainer from "../containers/ListingsContainer";
+// Listings.js
+import React from 'react';
+import ListingsContainer from '../containers/ListingsContainer';
 
 const Listings = ({ data }) => {
   return (
@@ -8,5 +9,6 @@ const Listings = ({ data }) => {
     </div>
   );
 };
+
 
 export default Listings;
