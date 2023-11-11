@@ -1,0 +1,41 @@
+.top {
+  text-align: right;
+}
+.row1-home {
+  display: flex;
+  height: 500px;
+  background-color: rgba(106, 164, 88, 0.836);
+  padding: 20px;
+  border-style: double;
+  margin-bottom: 80px;
+}
+.row2-home {
+  display: flex;
+  height: 500px;
+  background-color: rgba(211, 167, 36, 0.836);
+  padding: 20px;
+  border-style: double;
+  margin-bottom: 80px;
+}
+.row3-home {
+  display: flex;
+  height: 500px;
+  background-color: rgba(93, 164, 222, 0.836);
+  padding: 20px;
+  border-style: double;
+  margin-bottom: 80px;
+}
+.row4-home {
+  height: 200px;
+  background-color: rgba(242, 138, 204, 0.836);
+  padding: 20px;
+  border-style: double;
+  margin-bottom: 80px;
+}
+.col-home {
+  flex: 50%;
+}
+.image-home {
+  height: 80%;
+  width: 80%;
+}

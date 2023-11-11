@@ -1,0 +1,36 @@
+.row1-posts {
+  height: 300px;
+  padding-left: 30px;
+  border-radius: 16px;
+  border-color: black;
+  border-style: double;
+  border-width: 5px;
+  background-color: rgba(106, 164, 88, 0.836);
+  margin-bottom: 30px;
+}
+.row2-posts {
+  padding-left: 30px;
+  border-radius: 16px;
+  border-color: black;
+  border-style: double;
+  border-width: 5px;
+  background-color: rgba(106, 164, 88, 0.836);
+  margin-bottom: 30px;
+}
+.searchBar {
+  width: 500px;
+  height: 40px;
+  border-radius: 8px;
+}
+.row-search {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+.searchBarButton {
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: rgb(105, 180, 231);
+}

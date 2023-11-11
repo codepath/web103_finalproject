@@ -1,0 +1,30 @@
+body {
+  background-image: url("https://res.cloudinary.com/dlpitjizv/image/upload/v1685725489/impact/medium_012021_Best_Tech_Investments_for_Small_Business_Owners_Hero_scaled_20896e1c85.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login {
+  text-align: center;
+  justify-content: center;
+}
+.login-button {
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 6px;
+  border-style: double;
+  border-color: black;
+  height: 70px;
+  width: 370px;
+  margin-bottom: 30px;
+}
+.divv {
+  padding-left: 140px;
+  font-size: 20px;
+}
+.text {
+  background-color: rgba(240, 248, 255, 0.805);
+  border-radius: 16px;
+  height: 390px;
+  padding-top: 40px;
+  margin-right: 20px;
+}

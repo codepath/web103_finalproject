@@ -5,8 +5,19 @@ import company_sequelize from '../models/company_sequelize.js'
 // get all video games from the database
 const getUsers = async (req, res) => {
   try {
-    const {constraint, value} = req.body;
-    const results = await users_sequelize.findAll( constraint, value)
+    const results = await users_sequelize.findAll();
+    res.status(200).json(results.rows)
+  }
+  catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
+const getUsersByConstraint = async (req, res) => {
+  try {
+    const constraint = req.params.constraint;
+    const value = req.params.value;
+    const results = await users_sequelize.findAllByConstraint( constraint, parseInt(value));
     res.status(200).json(results.rows)
   }
   catch (error) {
@@ -16,9 +27,14 @@ const getUsers = async (req, res) => {
 
 // get video games by ID from the database
 const getUserByConstraint = async (req, res) => {
+  
+  
   try {
-    const {constraint, value} = req.body;
-    const results = await users_sequelize.findOne(constraint, value)
+    const constraint = req.params.constraint;
+    const value = req.params.value;
+    console.log(constraint, value);
+    const results = await users_sequelize.findOne(constraint, parseInt(value))
+    console.log(results.rows)
     res.status(200).json(results.rows[0])
   }
   catch (error) {
@@ -62,10 +78,21 @@ const createUser = async (req, res) => {
   }
   //now for company
 
-  const getCompany = async (req, res) => {
+  const getCompanys = async (req, res) => {
+    try {
+      
+      const results = await company_sequelize.findAll()
+      res.status(200).json(results.rows)
+    }
+    catch (error) {
+      res.status(400).json({ error: error.message })
+    }
+  }
+
+  const getCompanysByConstraint = async (req, res) => {
     try {
       const {constraint, value} = req.body;
-      const results = await company_sequelize.findAll( constraint, value)
+      const results = await company_sequelize.findAllByConstraint( constraint, value)
       res.status(200).json(results.rows)
     }
     catch (error) {
@@ -120,10 +147,21 @@ const createUser = async (req, res) => {
       }
     }
 // now for posts
-const getPost = async (req, res) => {
+
+const getPosts = async (req, res) => {
+  try {
+    const results = await post_sequelize.findAll()
+    res.status(200).json(results.rows)
+  }
+  catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+}
+
+const getPostsByConstraint = async (req, res) => {
     try {
       const {constraint, value} = req.body;
-      const results = await post_sequelize.findAll( constraint, value)
+      const results = await post_sequelize.findAllByConstraint( constraint, value)
       res.status(200).json(results.rows)
     }
     catch (error) {
@@ -182,16 +220,19 @@ const getPost = async (req, res) => {
 
 export default {
   getUsers,
+  getUsersByConstraint,
   getUserByConstraint,
   createUser,
   updateUser,
   deleteUser,
-  getCompany,
+  getCompanys,
+  getCompanysByConstraint,
   getCompanyByConstraint,
   createCompany,
   updateCompany,
   deleteCompany,
-  getPost,
+  getPosts,
+  getPostsByConstraint,
   getPostByConstraint,
   createPost,
   updatePost,
