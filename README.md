@@ -46,7 +46,7 @@ Backend: Node.js, Express.js, PostgreSQL
 
 - [ ] 2. **Dynamic Routes**: The discussion board would have dynamic routes for individual posts or discussions. For example, `/posts/:postId`.
 - ✅ 3. **Deployment on Railway**: Railway for deployment.
-      <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/Railway%20Backend.gif' title='Video Walkthrough' width='' alt='Railway' />
+      <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/Railway%20Backend.gif' title='Video Walkthrough' width='24px' alt='Railway' />
 
 - [ ] 4. **One-to-many database relationship**: Connection between users and their posts on the discussion board. One user can have multiple posts.
 - [ ] 5. **Many-to-many with a join table**: Users can share multiple resources, and a single resource (like a YouTube tutorial) can be saved by multiple users. This requires a join table.
