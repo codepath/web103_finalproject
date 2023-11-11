@@ -165,12 +165,13 @@ const createUserAddressTable = async () => {
 
 const createOrdersTableQuery = async () => {
   const createOrdersTableQuery = `
+  CREATE TABLE IF NOT EXISTS orders (
   id serial PRIMARY KEY,
   user_id integer NOT NULL,
   order_date timestamp DEFAULT CURRENT_TIMESTAMP,
   total_amount numeric(10, 2) NOT NULL,
   status varchar(50) DEFAULT 'Pending',
-  FOREIGN KEY (user_id) REFERENCES users (id)
+  FOREIGN KEY (user_id) REFERENCES users (id));
   `;
   try {
     const res = await pool.query(createOrdersTableQuery);
