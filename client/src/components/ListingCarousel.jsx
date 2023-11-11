@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TbChevronCompactLeft, TbChevronCompactRight } from "react-icons/tb";
 import { RxDotFilled } from "react-icons/rx";
+
 
 const ListingCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
