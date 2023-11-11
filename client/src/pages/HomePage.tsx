@@ -49,7 +49,6 @@ const HomePage = () => {
         <div className="sm:hidden md:grid md:col-start-1">
           <GenreList />
         </div>
-
         <div className="p-4 md:col-start-2 md:col-span-7 row-start-1 md:row-span-1 grid grid-cols-6 gap-4 sm:col-span-2 ">
           {filteredGames.map((game) => (
             <GameCard game={game} key={game.id} />

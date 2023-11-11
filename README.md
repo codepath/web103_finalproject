@@ -40,35 +40,65 @@ Backend: Node.js, Express, Passport.js, Postgresql
 
 
 
-### PostgreSQL database with tables for games, platforms, genres, etc.
+### ✅PostgreSQL database with tables for games, platforms, genres, etc. 
 
 Setup a PostgreSQL database with structured tables to store game data.
 
 <img src='./client/public/feature.gif' title='db setuo' width='' alt='Video Walkthrough' />
 
 
-### Create RESTful API routes for games, platforms, and genres that support GET, POST, PATCH, and DELETE requests
+### ✅Create RESTful API routes for games, platforms, and genres that support GET, POST, PATCH, and DELETE requests
 
 Only Game Routes completed currently! Still under development!
 <img src='./client/public/api.gif' title='api setup' width='' alt='Video Walkthrough' />
 
-### Setup Frontend 
+### ✅Setup Frontend 
 
 Sidebar and SearchBar done!
 <img src='./client/public/dt.gif' title='frontend setup' width='' alt='Video Walkthrough' />
 
+### ✅Create,Update,Delete Games
 
-### Validate game data entered in forms before creating/updating in database
+CRUD functionality for games
+
+<img src='./client/public/Add_edit_delete.gif' title='CRUD Data' width='' alt='Video Walkthrough' />
+
+
+### ✅Alert User if impossible data is entered
 
 Validate game info entered by user before inserting or updating in the database.
+<img src='./client/public/Validate_data.gif' title='Validate Data' width='' alt='Video Walkthrough' />
 
-[gif goes here]
+### ✅Data is fetched to the app using a Railway PostgreSQL database
 
-### React Router for dynamic routing to pages like Home, Games, Genres, Platforms, etc.
+Data is Fetched from Railway PostgreSQL database
+<img src='./client/public/Data_from_Db.gif' title=' Data From Db' width='' alt='Video Walkthrough' />
+
+
+### ✅React Router for dynamic routing to pages like Home, Games, Genres, Platforms, etc.
 
 Use React Router to handle routing between app pages.
 
-[gif goes here]
+<img src='./client/public/Dynamic Routes.gif' title='dynamic Router' width='' alt='Video Walkthrough' />
+
+
+### ✅Game search, filter, and sort functionality
+
+Allow searching, filtering, and sorting the games list.
+
+<img src='./client/public/Search and filter data.gif' title='Validate Data' width='' alt='Video Walkthrough' />
+
+### ✅Reset database functionality
+
+Reset databse to original state
+
+<img src='./client/public/Data_reset.gif' title='Validate Data' width='' alt='Video Walkthrough' />
+
+### ✅Break components into pages, containers, and presentational components
+
+Organize components into pages, containers, and presentational components.
+
+<img src='./client/public/Component Heirarchy.gif' title='Organize components' width='' alt='Video Walkthrough' />
 
 ### Redirect user to Login page if not authenticated when trying to access profile
 
@@ -76,41 +106,6 @@ Redirect to login page if user tries to access profile when unauthenticated.
 
 [gif goes here]
 
-### Break components into pages, containers, and presentational components
-
-Organize components into pages, containers, and presentational components.
-
-[gif goes here]
-
-### Use component hierarchy for clean structure and separation of concerns
-
-Structure components hierarchically for clean code and separation of concerns.
-
-[gif goes here]
-
-### Game search, filter, and sort functionality
-
-Allow searching, filtering, and sorting the games list.
-
-[gif goes here]
-
-### Add a slide-out navigation pane for navigation links
-
-Implement slide out navigation drawer for navigation links. 
-
-[gif goes here]
-
-### Display toast notifications when games are favorited, deleted, added, etc.
-
-Show toast notifications when games are favorited, deleted, added, etc. 
-
-[gif goes here]
-
-### Show loading spinner for game images and other page elements while loading
-
-Display loading spinner for game images and page elements. 
-
-[gif goes here]
 
 ### Disable action buttons while form is submitting to prevent duplicate submits
 
@@ -137,9 +132,9 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm run dev`             | Starts local dev server at `localhost:3000`      |
+| `pnpm run build`           | Build your production site to `./dist/`          |
+| `pnpm run preview`         | Preview your build locally, before deploying     |
 
 
