@@ -51,9 +51,25 @@ const getTasksByUserId = async (req, res) => {
     }
   }
 
+  // create new user profile
+  const createUserProfile = async (req, res) => {
+    try {
+      const {email, name, phoneNum, password } = req.body
+      const results = await pool.query(
+        `INSERT INTO users (email, name, phone_number, password) VALUES ($1, $2, $3, $4) RETURNING *`,
+         [email, name, phoneNum, password]
+        )
+        res.status(200).json(results.rows)
+      } catch (error) {
+        res.status(400).json( { error: error.message } )
+      }
+  }
+
+  // delete user profile
+
 export default{
     getUserByUserId,
     getBoardsByUserId,
-    getTasksByUserId
+    getTasksByUserId,
+    createUserProfile
 }
-
