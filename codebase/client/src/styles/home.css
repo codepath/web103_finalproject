@@ -7,12 +7,14 @@
     flex-direction: column;
   }
   .home-header {
-    width: 100%;
+    width: 96%;
     display: flex;
     align-items: center;
     padding-top: var(--dl-space-space-oneandhalfunits);
+    padding-left: 2%;
     flex-direction: column;
     padding-bottom: var(--dl-space-space-oneandhalfunits);
+    padding-right: 2%;
     background-color: #ffffff;
   }
   .home-navbar-interactive {
