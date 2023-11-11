@@ -23,4 +23,22 @@ export const createPost = async (postData) => {
   }
 };
 
-// Add other service functions for update and delete operations as needed
+export const updatePost = async (postId, updatedData) => {
+  try {
+    const response = await axios.patch(`${API_URL}/${postId}`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating post:', error);
+    throw error;
+  }
+};
+
+export const deletePost = async (postId) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    throw error;
+  }
+};
