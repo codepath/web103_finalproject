@@ -1,0 +1,25 @@
+.about-us-container {
+    background-color: rgba(255, 165, 0, 0.5); 
+    padding: 20px;
+    margin: auto;
+    width: 50%;
+    text-align: left;
+    border-radius: 10px;
+    margin-top: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .content-container {
+    line-height: 1.5;
+    font-size: 18px; 
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333; 
+    font-size: 24px; 
+  }
+  
