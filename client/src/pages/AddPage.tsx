@@ -1,8 +1,12 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GameForm = () => {
+  const [disableButton, setDisableButton] = useState(false);
   const [game, setGame] = useState({
     name: '',
     developer: '',
@@ -15,6 +19,19 @@ const GameForm = () => {
     price: '',
   });
   const Navigate = useNavigate();
+
+  const alertRatings = () =>
+    toast.error('Ratings must be less than 5!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  const alertButton = () =>
+    toast.error('Button Disabled!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  const addedGame = () =>
+    toast.success('Game Added Successfully!', {
+      position: toast.POSITION.TOP_CENTER,
+    });
 
   const handleCheckboxChange = (e, field) => {
     const value = Number(e.target.value);
@@ -30,8 +47,12 @@ const GameForm = () => {
 
   const handleChange = (e) => {
     if (e.target.name === 'rating' && e.target.value > 5) {
-      alert('Rating must be less than or equal to 5');
+      alertRatings();
+      alertButton();
+      setDisableButton(true);
+      setGame({ ...game, [e.target.name]: e.target.value });
     } else {
+      setDisableButton(false);
       setGame({ ...game, [e.target.name]: e.target.value });
     }
   };
@@ -42,6 +63,7 @@ const GameForm = () => {
       console.log(game);
       const response = await axios.post('/api/games', game);
       console.log(response.data);
+      addedGame();
       Navigate('/');
     } catch (err) {
       console.error(err);
@@ -49,18 +71,19 @@ const GameForm = () => {
   };
 
   return (
-    <div className=" text-white flex flex-col w-auto gap-10  justify-center items-center ">
-      <h1 className="text-4xl pt-4">Add a game</h1>
+    <div className=" text-white flex flex-col w-auto gap-10 pb-10  justify-center items-center ">
+      <h1 className="text-4xl pt-2">Add a game</h1>
+      <ToastContainer autoClose={1000} />
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-10 justify-center max-w-[700px] w-full  items-center"
+        className="flex flex-col gap-8 justify-center max-w-[700px] w-full  items-center"
       >
         <input
           name="name"
           value={game.name}
           onChange={handleChange}
           placeholder="Title"
-          className="max-w-[700px] w-full rounded-sm text-black font-semibold"
+          className="max-w-[700px] w-full rounded-sm text-black font-semibold focus-outline-none"
         />
 
         <input
@@ -140,6 +163,7 @@ const GameForm = () => {
             Puzzle
           </label>
         </div>
+        <ToastContainer autoClose={1000} />
         <h1 className="text-lg -m-6 rounded-lg px-1">Platforms</h1>
         <div className="max-w-[700px] w-full rounded-sm font-semibold flex justify-around">
           <label>
@@ -185,7 +209,8 @@ const GameForm = () => {
         </div>
         <button
           type="submit"
-          className="bg-neutral-600 rounded-lg py-2 px-4 text-xl -m-4 hover:scale-110 transition ease-in-out"
+          className="bg-green-600 rounded-lg py-2 px-4 text-xl -m-4 hover:scale-110 transition ease-in-out"
+          disabled={disableButton}
         >
           Submit
         </button>

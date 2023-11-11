@@ -29,9 +29,9 @@ We faced many challenger. We were facing issues with gathering data from RAWG.io
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-These are the userstories that are at risk:
--As a user, I want to be able to easily view new and upcoming game releases so I can stay up-to-date on what's coming out.
--As a user, I want the option to subscribe to an email newsletter so I can receive regular updates about new games and content.
+These are the userstories that are at risk:<br/>
+-As a user, I want to be able to easily view new and upcoming game releases so I can stay up-to-date on what's coming out.<br/>
+-As a user, I want the option to subscribe to an email newsletter so I can receive regular updates about new games and content.<br/>
 
 we will not implement the function to subscribe to email newsletter because of lack of time and we will not implement upcoming game releases functionality for the same reason.
 
