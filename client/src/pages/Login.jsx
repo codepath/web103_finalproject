@@ -1,6 +1,6 @@
 import { API_URL } from "../config";
 
-export const Home = () => {
+export const Login = () => {
   return (
     <div className="h-screen flex justify-center items-center font-caveat">
       <div className="flex flex-col gap-y-12">
@@ -10,8 +10,7 @@ export const Home = () => {
           className="p-2 rounded-md focus:outline-none border-2 text-3xl"
         />
         <button className="text-4xl bg-slate-300 rounded-md p-2 mx-20">
-          {/* TODO: Tailwind magic thing here */}
-          <a href={`${API_URL}/auth/github`}>🔒 Login via Github</a>
+          <a href={`${API_URL}/auth/github`}>🔒 Login via GitHub</a>
         </button>
       </div>
     </div>
