@@ -34,27 +34,27 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ### User Movie Dashboard
 
-User can see a list of movies they saved on the app, and can click to see movie details.
+✅ User can see a list of movies they saved on the app, and can click to see movie details.
 
-[gif goes here]
+<img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' />
 
 ### Create profile for a new movie
 
-User can create a profile for a new movie, adding movie details such as name, director, actors, etc. through user input fields.
+✅ User can create a profile for a new movie, adding movie details such as name, director, actors, etc. through user input fields.
 
-[gif goes here]
+<img src='https://i.imgur.com/jGLztqV.gif' title='Create Movie' width='800' alt='Video Walkthrough' />
 
 ### Edit movie data
 
-User can edit movie data fields for each movie.
+✅ User can edit movie data fields for each movie.
 
-[gif goes here]
+<img src='https://i.imgur.com/AXtEAkD.gif' title='Edit Movie' width='800' alt='Video Walkthrough' />
 
 ### Delete a movie
 
-User can delete a movie from the movie dashboard.
+✅ User can delete a movie from the movie dashboard.
 
-[gif goes here]
+<img src='https://i.imgur.com/e5CG7le.gif' title='Edit Movie' width='800' alt='Video Walkthrough' />
 
 ### User Wishlist Dashboard
 

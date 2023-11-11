@@ -65,16 +65,12 @@ const EditMovie = () => {
     /**
      * Function to handle data deletion
      */
-    const deleteData = async () => {
+    const deleteData = async (event) => {
+        event.preventDefault();
         try {
             const response = await fetch(`/api/movies/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                method: "DELETE"
             });
-            const data = await response.json();
-            console.log(data);
         } catch (error) {
             console.error(error);
         }
