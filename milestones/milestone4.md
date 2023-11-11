@@ -6,29 +6,29 @@ This document should be completed and submitted during **Unit 8** of this course
 
 This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
 
-- [ ] Update the status of issues in your project board as you complete them
-- [ ] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
-  - [ ] Under each feature you have completed, **include a GIF** showing feature functionality
-- [ ] In this document, complete the **Reflection** section below
+- [X] Update the status of issues in your project board as you complete them
+- [X] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
+  - [X] Under each feature you have completed, **include a GIF** showing feature functionality
+- [X] In this document, complete the **Reflection** section below
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+The setup went smoothly, and most things worked as expected.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We had trouble with GitHub authorization due to an SSL error we couldn't figure out.
 
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We didn't finish everything. The login function, being halfway done and very important, will be our main focus. Then we'll tackle the easier tasks and maybe add extra features if there's time.
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-[👉🏾👉🏾👉🏾 your answer here]
+The session calendar feature is at risk. It's tough to get it done before our deadline.
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We could really use more time.
