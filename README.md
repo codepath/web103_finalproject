@@ -68,7 +68,8 @@ Backend: PostgreSQL, Express.js, Node.js
 - [ ] (Custom Feature) The web app includes a slide-out pane or modal as appropriate for your use case: An order for sneakers will include a slide-out pane.
 
 
-[gif goes here]
+
+### Milestone 4- Unit 8 Gifs
 
 ### Milestone 3- Unit 7 Gifs
 
