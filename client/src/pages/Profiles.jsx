@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ListingCard from '../components/ListingCard';
 
 function Profiles() {
     const [activeTab, setActiveTab] = useState('user'); // 'user' or 'listings'
@@ -8,6 +9,17 @@ function Profiles() {
         email: '',
         password: '',
     });
+    const [fieldErrors, setFieldErrors] = useState({
+        firstName: false,
+        lastName: false,
+        address: false,
+        city: false,
+        state: false,
+        zipcode: false,
+        email: false,
+        password: false,
+    });
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -15,7 +27,32 @@ function Profiles() {
             ...prevUserData,
             [name]: value,
         }));
+        // Clear the error when the user starts typing in the field
+        setFieldErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: false,
+        }));
     };
+
+    const handleUpdateProfile = () => {
+        // Check for empty fields and set errors
+        const errors = {};
+        Object.entries(userData).forEach(([key, value]) => {
+            if (value.trim() === '') {
+                errors[key] = true;
+            }
+        });
+        setFieldErrors(errors);
+
+        // If no errors, proceed with updating the profile
+        if (Object.keys(errors).length === 0) {
+            // Add logic to update the profile
+            console.log('Profile updated successfully!');
+        }
+        console.log('unsuccessful')
+    };
+
+    
 
     return (
         <div className="lg:max-w-3xl mx-auto mt-16 mb-8 border-2 border-#FF385C rounded-lg p-10">
@@ -31,7 +68,9 @@ function Profiles() {
                     className={`w-full py-2 rounded-md focus:outline-none ${activeTab === 'listings' ? 'bg-red-500 text-white' : 'bg-gray-300 text-gray-700'
                         }`}
                     onClick={() => setActiveTab('listings')}
+                    
                 >
+                    <ListingCard/>r
                     Listings
                 </button>
             </div>
@@ -45,9 +84,11 @@ function Profiles() {
                                 First Name
                             </label>
                             <input
+                                required
                                 type="text"
                                 id="first-name"
                                 name="first-name"
+                                onChange={handleInputChange}
                                 className="font-medium mt-1 p-2 border-2 border-#FF385C rounded-md w-full focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Enter your first name"
                             />
@@ -58,6 +99,7 @@ function Profiles() {
                                 Last Name
                             </label>
                             <input
+                                required
                                 type="text"
                                 id="last-name"
                                 name="last-name"
@@ -73,6 +115,7 @@ function Profiles() {
                                 Address One
                             </label>
                             <input
+                                required
                                 type="address"
                                 id="address"
                                 name="address"
@@ -101,6 +144,7 @@ function Profiles() {
                                 City
                             </label>
                             <input
+                                required
                                 type="city"
                                 id="city"
                                 name="city"
@@ -114,6 +158,7 @@ function Profiles() {
                                 State
                             </label>
                             <input
+                                required
                                 type="state"
                                 id="state"
                                 name="state"
@@ -128,6 +173,7 @@ function Profiles() {
                             Zip Code
                         </label>
                         <input
+                            required
                             type="zipcode"
                             id="zipcode"
                             name="zipcode"
@@ -142,6 +188,7 @@ function Profiles() {
                                 Email
                             </label>
                             <input
+                                required
                                 type="email"
                                 id="email"
                                 name="email"
@@ -155,6 +202,7 @@ function Profiles() {
                                 Password
                             </label>
                             <input
+                                required
                                 type="password"
                                 id="password"
                                 name="password"
@@ -166,7 +214,7 @@ function Profiles() {
 
 
                     <button
-                        onClick={({ handleInputChange })}
+                        onClick={handleUpdateProfile}
                         className="mt-6 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
                     >
                         Update Profile
