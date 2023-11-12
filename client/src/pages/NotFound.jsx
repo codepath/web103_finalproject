@@ -1,8 +1,16 @@
-export const Landing = () => {
+import { useUser } from "../hooks";
+
+export const NotFound = () => {
+  const { isLoading } = useUser();
+
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <div className="h-screen flex justify-center items-center font-caveat">
       <div className="flex flex-col gap-y-12">
-        <div className="text-6xl text-center">Welcome To Study Meet</div>
+        <div className="text-6xl text-center">Page Not Found</div>
         <input
           type="text"
           className="p-2 rounded-md focus:outline-none border-2 text-3xl"

@@ -1,1 +1,3 @@
-export const publicRoutes = [];
+import { NotFound } from "../pages";
+
+export const publicRoutes = [{ path: "/*", element: <NotFound /> }];
