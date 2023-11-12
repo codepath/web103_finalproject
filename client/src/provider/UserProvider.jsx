@@ -5,6 +5,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const logout = async () => {
     const response = await fetch(`${API_URL}/auth/logout`, {
@@ -12,7 +13,6 @@ export const UserProvider = ({ children }) => {
       credentials: "include",
     });
     const data = await response.json();
-    console.log(data);
     if (data.success) {
       setUser(null);
     }
@@ -27,10 +27,10 @@ export const UserProvider = ({ children }) => {
       },
     });
     const data = await response.json();
-    console.log(data);
     if (data.success) {
       setUser(data.user);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ logout, user }}>
+    <UserContext.Provider value={{ logout, user, loading }}>
       {children}
     </UserContext.Provider>
   );

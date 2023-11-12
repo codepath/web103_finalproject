@@ -1,4 +1,3 @@
-import { pool } from "./db.config.js";
 import GitHubStrategy from "passport-github2";
 import User from "../models/user.js";
 

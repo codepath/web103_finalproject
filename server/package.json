@@ -5,9 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "mock-data": "NODE_ENV=development node --require dotenv/config ./src/utils/generateMockData.js",
-    "dev": "NODE_ENV=development nodemon --require dotenv/config index.js",
-    "start": "NODE_ENV=production node --require dotenv/config index.js"
+    "mock-data": "SET NODE_ENV=development && node --require dotenv/config ./src/utils/generateMockData.js",
+    "dev": "SET NODE_ENV=development && nodemon --require dotenv/config index.js",
+    "start": "SET NODE_ENV=production && node --require dotenv/config index.js"
   },
   "author": "",
   "license": "ISC",
