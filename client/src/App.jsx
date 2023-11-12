@@ -1,7 +1,7 @@
 // App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navigation from "./components/Navigation";
+import Navbar from "./components/Navbar";
 import Home from './pages/Home';
 import DiscussionBoard from './pages/DiscussionBoard';
 import ResourceList from './pages/ResourceList';
@@ -12,23 +12,26 @@ import Events from './pages/Events';
 import './App.css';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
+import { AuthProvider } from './contexts/AuthContext';
+import PostDetail from './components/PostDetail';
 
 const App = () => {
   return (
-    <div>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/posts" element={<DiscussionBoard />} />
-        <Route path="/resources" element={<ResourceList />} />
-        <Route path="/create-post" element={<CreatePost />} />
-        <Route path="/add-resource" element={<CreateResource />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/about" element={<AboutUs />} /> {/* Add this line for the About Us page */}
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </div>
+    <AuthProvider>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/posts" element={<ProtectedRoute><DiscussionBoard /></ProtectedRoute>} />
+          <Route path="/resources" element={<ProtectedRoute><ResourceList /></ProtectedRoute>} />
+          <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
+          <Route path="/add-resource" element={<ProtectedRoute><CreateResource /></ProtectedRoute>} />
+          <Route path="/posts/:postId" element={<ProtectedRoute><PostDetail /></ProtectedRoute>} />
+        </Routes>
+      </div>
+    </AuthProvider>
   );
 };
 

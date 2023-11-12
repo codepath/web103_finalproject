@@ -56,6 +56,45 @@ export const updatePost = async (req, res) => {
 
   
 
-// Implement these functions if needed
-// export const updatePost = async (req, res) => { ... };
-// export const deletePost = async (req, res) => { ... };
+export const getPostById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await pool.query('SELECT * FROM "POST" WHERE id = $1', [id]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        res.status(200).json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+export const updatePost = async (req, res) => {
+    const { id } = req.params;
+    const { content, userId } = req.body;
+
+    try {
+        const result = await pool.query('UPDATE "POST" SET content = $1, userId = $2 WHERE id = $3 RETURNING *', [content, userId, id]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        res.status(200).json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const result = await pool.query('DELETE FROM "POST" WHERE id = $1 RETURNING *', [id]);
+        if (result.rowCount === 0) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+        res.status(200).json({ message: 'Post deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+

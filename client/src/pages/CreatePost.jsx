@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../services/postService';
 import Navbar from '../components/Navbar';
-import './CreatePost.css'; 
+import '../css/CreatePost.css'; 
 
 const CreatePost = () => {
   const [post, setPost] = useState({ title: '', content: '' });
@@ -29,7 +29,6 @@ const CreatePost = () => {
 
   return (
     <div>
-      <Navbar />
       <h2>Create Post</h2>
       <div className="form-container">
         <form onSubmit={handleSubmit}>

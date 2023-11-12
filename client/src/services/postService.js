@@ -9,7 +9,7 @@ export const getAllPosts = async () => {
     const response = await axios.get('/api/posts'); // Assuming your API endpoint is correct
     return response.data;
   } catch (error) {
-    console.error('Error fetching posts:', error);
+    console.error('Error fetching posts:', error); //get
     throw error;
   }
 };
@@ -20,7 +20,7 @@ export const createPost = async (postData) => {
     const response = await axios.post('/api/posts', postData);
     return response.data;
   } catch (error) {
-    console.error('Error creating post:', error);
+    console.error('Error creating post:', error); //create
     throw error;
   }
 };
@@ -36,7 +36,12 @@ export const updatePost = async (postId, postData) => {
   }
 };
 
-
-
-
-// Add other service functions for update and delete operations as needed
+export const deletePost = async (postId) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting post:', error);
+    throw error;
+  }
+};

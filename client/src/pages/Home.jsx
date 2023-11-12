@@ -7,25 +7,6 @@ import '../css/Home.css';
 const Home = () => {
   return (
     <div>
-      <div className="navbar">
-        <img src="/logo.PNG" alt="Logo" className="logo" />
-        <div className="link-container">
-          <Link to="/about" className="link">
-            About Us
-          </Link>
-          <Link to="/events" className="link">
-            Events
-          </Link>
-          <Link to="/resources" className="link">
-            Resources
-          </Link>
-        </div>
-        <nav>
-          <Link to="/login" className="link join-us">
-            <button className="login-button">Login</button>
-          </Link>
-        </nav>
-      </div>
       <div className="image-container">
         <img src="/home.jpeg" alt="Image" className="image" />
         <Link to="/join" className="join-us-button">Join Us</Link>

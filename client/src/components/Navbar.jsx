@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import axios from 'axios'; // Import axios for making HTTP requests
+
 
 const Navbar = () => {
+  const { isAuthenticated, user, setAuthInfo } = useAuth();
+  useEffect(() => {
+    // This will cause the component to re-render when isAuthenticated changes
+  }, [isAuthenticated]);
+  const handleLogout = () => {
+    axios.get(`${window.API_URL}/auth/logout`, { withCredentials: true })
+      .then(() => {
+        // Update auth state
+        setAuthInfo({ isAuthenticated: false, user: null });
+      })
+      .catch(error => {
+        console.error('Logout failed', error);
+      });
+  };
+  
   const loginButtonStyle = {
     backgroundColor: 'orange', 
     color: 'white', 
@@ -26,9 +44,16 @@ const Navbar = () => {
         </Link>
       </div>
       <nav>
-        <Link to="/SignOut" className="link join-us">
-          <button style={loginButtonStyle}>Sign Out</button>
-        </Link>
+        {isAuthenticated ? (
+          <div>
+            <img src={user.avatarUrl} alt="User" />
+            <button onClick={handleLogout}>Logout</button> {/* Logout button */}
+          </div>
+        ) : (
+          <Link to="/login">
+            <button style={loginButtonStyle}>Login</button>
+          </Link>
+        )}
       </nav>
     </div>
   );
