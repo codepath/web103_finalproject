@@ -76,11 +76,9 @@ Choose two custom features to include in your app. These features will make your
 
 Here's a walkthrough of implemented required features:
 
-![video_walkthrough](https://github.com/XujuanChen/web103_finalproject/assets/72937387/dc037daa-d615-4c2a-840e-290e18616262)
 
 
-![books](https://github.com/XujuanChen/web103_finalproject/assets/109524796/3e19200a-c5f9-484c-94aa-703654ae8ada)
-
+![bookcrud](https://github.com/XujuanChen/web103_finalproject/assets/109524796/c948e060-5d60-49d5-b5fb-581f6b6a885d)
 
 
 
