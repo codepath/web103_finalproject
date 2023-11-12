@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import stayvueLogo from "../assets/StayVue.png";
 import search from "../assets/search.png";
 import LoginModal from "./LoginModal";
@@ -7,6 +8,13 @@ import DropdownMenu from "./DropdownMenu";
 
 const Navbar = ({ isModalOpen, setIsModalOpen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const user = useSelector((state) => state.user?.loggedInUser);
+
+  useEffect(() => {
+    if (user) {
+      setIsModalOpen(false);
+    }
+  }, [user]);
 
   const handleButtonClick = (label) => {
     // Add your logic here to handle button clicks
@@ -65,8 +73,7 @@ const Navbar = ({ isModalOpen, setIsModalOpen }) => {
           isDropdownOpen={isDropdownOpen}
         />
       </div>
-      {isModalOpen && 
-      <LoginModal toggleLoginModal={toggleLoginModal} />}
+      {isModalOpen && <LoginModal toggleLoginModal={toggleLoginModal} />}
     </nav>
   );
 };

@@ -49,6 +49,7 @@ const createUsersTable = async () => {
         user_name VARCHAR(50) UNIQUE NOT NULL,
         email VARCHAR(50) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
+        image_url VARCHAR(255),
         is_active BOOLEAN DEFAULT true
     )`,
   };
@@ -351,6 +352,26 @@ const dropAllTables = async () => {
     console.log("⚠️ error dropping tables", err);
   }
 };
+
+const createSessionTable = async () => {
+  const createSessionTableQuery = {
+    text: `CREATE TABLE IF NOT EXISTS "session" (
+        sid varchar NOT NULL COLLATE "default",
+        sess json NOT NULL,
+        expire timestamp(6) NOT NULL
+      )
+      WITH (OIDS=FALSE);
+      ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;`,
+  };
+
+  try {
+    const res = await pool.query(createSessionTableQuery);
+    console.log("🎉 session table created successfully");
+  } catch (err) {
+    console.log("⚠️ error creating session table", err);
+  }
+};
+
 // dropAllTables();
 // seedUsersTable();
 // seedPropertiesTable();
@@ -358,3 +379,4 @@ const dropAllTables = async () => {
 // seedPropertyAmenitiesTable();
 // seedListingAvailabilityTable();
 // seedListingImagesTable();
+// createSessionTable();
