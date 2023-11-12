@@ -32,11 +32,45 @@ const router = express.Router();
 
 router.post(
   "/login",
-  passport.authenticate("local"),
-  (request, response, next) => {
-    response.status(200).json({ message: "Logged in successfully" });
+  passport.authenticate("local", {
+    failureRedirect: "/api/auth/login/failed",
+  }),
+  async (req, res) => {
+    try {
+      // Assuming you have a users table in your database
+      const result = await pool.query(`SELECT * FROM users WHERE id = $1`, [
+        req.user.id,
+      ]);
+
+      if (!result.rows || result.rows.length === 0) {
+        return res.status(401).json({ message: "User not found" });
+      }
+
+      const user = result.rows[0];
+
+      // Now you have the full user data from the database
+      res.status(200).json({ message: "Logged in successfully", user });
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   }
 );
+
+router.get("/login/success", (req, res) => {
+  // This route will be reached when authentication is successful
+  if (req.user) {
+    res.status(200).json({ success: true, user: req.user });
+  } else {
+    // Handle the case where the user object is not available
+    res.status(401).json({ success: false, message: "User not authenticated" });
+  }
+});
+
+router.get("/login/failed", (req, res) => {
+  // This route will be reached when authentication fails
+  res.status(401).json({ success: false, message: "Authentication failed" });
+});
 
 router.post("/logout", (req, res) => {
   req.logout((err) => {
@@ -67,10 +101,12 @@ router.post("/register", async (request, response) => {
       email,
       password,
     } = request.body;
+
     const user = await pool.query(`SELECT * FROM users WHERE email = $1`, [
       email,
     ]);
-    if (user.rows > 0) {
+
+    if (user.rows.length > 0) {
       response.status(400).json({ message: "User already exists" });
     } else {
       const hashedPassword = hashPassword(password);
@@ -87,7 +123,11 @@ router.post("/register", async (request, response) => {
             hashedPassword,
           ]
         );
-        response.status(201).json(newUser.rows[0]);
+
+        // Send the user data in the response
+        response
+          .status(201)
+          .json({ message: "Registered successfully", user: newUser.rows[0] });
       } catch (error) {
         response.status(500).json({ error: error.message });
       }
