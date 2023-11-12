@@ -34,7 +34,8 @@ Tutors and students can create an account and add their information to the datab
 
 Users can login and logout of their account.
 
-[gif goes here]
+![FinalProject_LogIn_LogOut](https://github.com/FelixNgFender/web103_finalproject/assets/98554622/befd0e63-c1d3-4a07-8087-a4bd938b21ec)
+
 
 ### Session Registration
 
