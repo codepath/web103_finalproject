@@ -1,6 +1,4 @@
-import { API_URL } from "../config";
-
-export const Login = () => {
+export const Landing = () => {
   return (
     <div className="h-screen flex justify-center items-center font-caveat">
       <div className="flex flex-col gap-y-12">
@@ -10,7 +8,7 @@ export const Login = () => {
           className="p-2 rounded-md focus:outline-none border-2 text-3xl"
         />
         <button className="text-4xl bg-slate-300 rounded-md p-2 mx-20">
-          <a href={`${API_URL}/auth/github`}>🔒 Login via GitHub</a>
+          <a href={"/auth/github"}>🔒 Login via GitHub</a>
         </button>
       </div>
     </div>

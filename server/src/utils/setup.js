@@ -31,7 +31,6 @@ const createUsersTable = async () => {
         github_id INT NOT NULL,
         username VARCHAR(255) UNIQUE NOT NULL,
         profile_picture VARCHAR(255) NOT NULL,
-        access_token VARCHAR(500) NOT NULL,
         role VARCHAR(255),
         bio VARCHAR(255),
         school_id INT references schools(id),
@@ -121,7 +120,7 @@ const seedUsersTable = async () => {
   console.log("🌱 seeding users table");
   tutorsData.forEach((user) => {
     const insertQuery = {
-      text: "INSERT INTO users (email, github_id, username, profile_picture, access_token, role, bio, school_id, subject_id, year) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+      text: "INSERT INTO users (email, github_id, username, profile_picture, role, bio, school_id, subject_id, year) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
     };
 
     const values = [
@@ -129,7 +128,6 @@ const seedUsersTable = async () => {
       user.githubId,
       user.username,
       user.profilePicture,
-      user.accessToken,
       user.role,
       user.bio,
       user.schoolId,

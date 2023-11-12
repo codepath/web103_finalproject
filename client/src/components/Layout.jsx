@@ -1,11 +1,10 @@
-import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
 
-export const Layout = ({ setLogIn }) => {
+export const Layout = ({ children }) => {
   return (
     <div className="flex flex-col font-caveat h-screen">
-      <Navbar setLogIn={setLogIn} />
-      <Outlet />
+      <Navbar />
+      <div className="flex-grow">{children}</div>
     </div>
   );
 };

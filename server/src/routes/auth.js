@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
-    res.status(200).json({ success: true, user: req.user });
+    // req.user only contains the user's id
+    res.status(200).json({ success: true, user_id: req.user });
   } else {
     res.status(401).json({ success: false, message: "failure" });
   }
@@ -23,7 +24,7 @@ router.get("/logout", (req, res, next) => {
 
     req.session.destroy((err) => {
       res.clearCookie("connect.sid");
-      res.json({ status: "logout", user: {} });
+      res.json({ status: "logout", user_id: null });
     });
   });
 });
@@ -36,8 +37,8 @@ router.get(
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: process.env.CLIENT_URL,
-    failureRedirect: process.env.CLIENT_URL,
+    successRedirect: "/home",
+    failureRedirect: "/",
   })
 );
 

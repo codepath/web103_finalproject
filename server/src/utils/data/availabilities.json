@@ -1,362 +1,362 @@
 [
   {
     "tutorId": 1,
-    "timeBlock": 166
-  },
-  {
-    "tutorId": 1,
-    "timeBlock": 97
+    "timeBlock": 143
   },
   {
     "tutorId": 1,
     "timeBlock": 78
   },
   {
-    "tutorId": 2,
-    "timeBlock": 141
-  },
-  {
-    "tutorId": 2,
-    "timeBlock": 93
-  },
-  {
-    "tutorId": 2,
-    "timeBlock": 144
-  },
-  {
-    "tutorId": 3,
-    "timeBlock": 29
-  },
-  {
-    "tutorId": 3,
-    "timeBlock": 21
-  },
-  {
-    "tutorId": 3,
-    "timeBlock": 51
-  },
-  {
-    "tutorId": 4,
-    "timeBlock": 2
-  },
-  {
-    "tutorId": 4,
-    "timeBlock": 151
-  },
-  {
-    "tutorId": 4,
-    "timeBlock": 131
-  },
-  {
-    "tutorId": 5,
-    "timeBlock": 109
-  },
-  {
-    "tutorId": 5,
-    "timeBlock": 32
-  },
-  {
-    "tutorId": 5,
-    "timeBlock": 132
-  },
-  {
-    "tutorId": 6,
-    "timeBlock": 133
-  },
-  {
-    "tutorId": 6,
-    "timeBlock": 151
-  },
-  {
-    "tutorId": 6,
-    "timeBlock": 69
-  },
-  {
-    "tutorId": 7,
-    "timeBlock": 98
-  },
-  {
-    "tutorId": 7,
-    "timeBlock": 127
-  },
-  {
-    "tutorId": 7,
-    "timeBlock": 8
-  },
-  {
-    "tutorId": 8,
-    "timeBlock": 133
-  },
-  {
-    "tutorId": 8,
-    "timeBlock": 65
-  },
-  {
-    "tutorId": 8,
-    "timeBlock": 145
-  },
-  {
-    "tutorId": 9,
-    "timeBlock": 156
-  },
-  {
-    "tutorId": 9,
-    "timeBlock": 124
-  },
-  {
-    "tutorId": 9,
-    "timeBlock": 126
-  },
-  {
-    "tutorId": 10,
-    "timeBlock": 88
-  },
-  {
-    "tutorId": 10,
-    "timeBlock": 73
-  },
-  {
-    "tutorId": 10,
-    "timeBlock": 157
-  },
-  {
-    "tutorId": 11,
-    "timeBlock": 86
-  },
-  {
-    "tutorId": 11,
-    "timeBlock": 162
-  },
-  {
-    "tutorId": 11,
-    "timeBlock": 7
-  },
-  {
-    "tutorId": 12,
-    "timeBlock": 55
-  },
-  {
-    "tutorId": 12,
-    "timeBlock": 79
-  },
-  {
-    "tutorId": 12,
-    "timeBlock": 147
-  },
-  {
-    "tutorId": 13,
-    "timeBlock": 116
-  },
-  {
-    "tutorId": 13,
-    "timeBlock": 41
-  },
-  {
-    "tutorId": 13,
-    "timeBlock": 118
-  },
-  {
-    "tutorId": 14,
-    "timeBlock": 69
-  },
-  {
-    "tutorId": 14,
-    "timeBlock": 6
-  },
-  {
-    "tutorId": 14,
+    "tutorId": 1,
     "timeBlock": 77
   },
   {
-    "tutorId": 15,
-    "timeBlock": 11
+    "tutorId": 2,
+    "timeBlock": 104
   },
   {
-    "tutorId": 15,
-    "timeBlock": 4
+    "tutorId": 2,
+    "timeBlock": 146
   },
   {
-    "tutorId": 15,
-    "timeBlock": 93
-  },
-  {
-    "tutorId": 16,
-    "timeBlock": 116
-  },
-  {
-    "tutorId": 16,
-    "timeBlock": 136
-  },
-  {
-    "tutorId": 16,
-    "timeBlock": 151
-  },
-  {
-    "tutorId": 17,
+    "tutorId": 2,
     "timeBlock": 98
   },
   {
-    "tutorId": 17,
-    "timeBlock": 31
+    "tutorId": 3,
+    "timeBlock": 139
   },
   {
-    "tutorId": 17,
-    "timeBlock": 124
+    "tutorId": 3,
+    "timeBlock": 53
   },
   {
-    "tutorId": 18,
-    "timeBlock": 70
+    "tutorId": 3,
+    "timeBlock": 44
   },
   {
-    "tutorId": 18,
+    "tutorId": 4,
+    "timeBlock": 163
+  },
+  {
+    "tutorId": 4,
+    "timeBlock": 42
+  },
+  {
+    "tutorId": 4,
+    "timeBlock": 57
+  },
+  {
+    "tutorId": 5,
+    "timeBlock": 7
+  },
+  {
+    "tutorId": 5,
+    "timeBlock": 8
+  },
+  {
+    "tutorId": 5,
+    "timeBlock": 49
+  },
+  {
+    "tutorId": 6,
+    "timeBlock": 72
+  },
+  {
+    "tutorId": 6,
+    "timeBlock": 91
+  },
+  {
+    "tutorId": 6,
+    "timeBlock": 48
+  },
+  {
+    "tutorId": 7,
+    "timeBlock": 53
+  },
+  {
+    "tutorId": 7,
+    "timeBlock": 91
+  },
+  {
+    "tutorId": 7,
+    "timeBlock": 67
+  },
+  {
+    "tutorId": 8,
+    "timeBlock": 11
+  },
+  {
+    "tutorId": 8,
+    "timeBlock": 15
+  },
+  {
+    "tutorId": 8,
+    "timeBlock": 164
+  },
+  {
+    "tutorId": 9,
+    "timeBlock": 160
+  },
+  {
+    "tutorId": 9,
+    "timeBlock": 78
+  },
+  {
+    "tutorId": 9,
+    "timeBlock": 7
+  },
+  {
+    "tutorId": 10,
+    "timeBlock": 142
+  },
+  {
+    "tutorId": 10,
+    "timeBlock": 6
+  },
+  {
+    "tutorId": 10,
+    "timeBlock": 66
+  },
+  {
+    "tutorId": 11,
+    "timeBlock": 110
+  },
+  {
+    "tutorId": 11,
+    "timeBlock": 39
+  },
+  {
+    "tutorId": 11,
+    "timeBlock": 75
+  },
+  {
+    "tutorId": 12,
+    "timeBlock": 142
+  },
+  {
+    "tutorId": 12,
+    "timeBlock": 25
+  },
+  {
+    "tutorId": 12,
+    "timeBlock": 82
+  },
+  {
+    "tutorId": 13,
+    "timeBlock": 116
+  },
+  {
+    "tutorId": 13,
+    "timeBlock": 105
+  },
+  {
+    "tutorId": 13,
+    "timeBlock": 30
+  },
+  {
+    "tutorId": 14,
+    "timeBlock": 5
+  },
+  {
+    "tutorId": 14,
+    "timeBlock": 40
+  },
+  {
+    "tutorId": 14,
     "timeBlock": 46
   },
   {
+    "tutorId": 15,
+    "timeBlock": 46
+  },
+  {
+    "tutorId": 15,
+    "timeBlock": 13
+  },
+  {
+    "tutorId": 15,
+    "timeBlock": 21
+  },
+  {
+    "tutorId": 16,
+    "timeBlock": 101
+  },
+  {
+    "tutorId": 16,
+    "timeBlock": 141
+  },
+  {
+    "tutorId": 16,
+    "timeBlock": 167
+  },
+  {
+    "tutorId": 17,
+    "timeBlock": 102
+  },
+  {
+    "tutorId": 17,
+    "timeBlock": 133
+  },
+  {
+    "tutorId": 17,
+    "timeBlock": 112
+  },
+  {
     "tutorId": 18,
-    "timeBlock": 113
+    "timeBlock": 85
+  },
+  {
+    "tutorId": 18,
+    "timeBlock": 127
+  },
+  {
+    "tutorId": 18,
+    "timeBlock": 77
   },
   {
     "tutorId": 19,
-    "timeBlock": 124
+    "timeBlock": 75
   },
   {
     "tutorId": 19,
-    "timeBlock": 121
+    "timeBlock": 83
   },
   {
     "tutorId": 19,
-    "timeBlock": 136
-  },
-  {
-    "tutorId": 20,
-    "timeBlock": 2
-  },
-  {
-    "tutorId": 20,
-    "timeBlock": 99
+    "timeBlock": 87
   },
   {
     "tutorId": 20,
     "timeBlock": 155
   },
   {
-    "tutorId": 21,
-    "timeBlock": 47
+    "tutorId": 20,
+    "timeBlock": 28
   },
   {
-    "tutorId": 21,
-    "timeBlock": 18
-  },
-  {
-    "tutorId": 21,
-    "timeBlock": 116
-  },
-  {
-    "tutorId": 22,
-    "timeBlock": 85
-  },
-  {
-    "tutorId": 22,
-    "timeBlock": 107
-  },
-  {
-    "tutorId": 22,
-    "timeBlock": 115
-  },
-  {
-    "tutorId": 23,
-    "timeBlock": 129
-  },
-  {
-    "tutorId": 23,
-    "timeBlock": 101
-  },
-  {
-    "tutorId": 23,
-    "timeBlock": 135
-  },
-  {
-    "tutorId": 24,
-    "timeBlock": 33
-  },
-  {
-    "tutorId": 24,
-    "timeBlock": 80
-  },
-  {
-    "tutorId": 24,
+    "tutorId": 20,
     "timeBlock": 7
   },
   {
-    "tutorId": 25,
-    "timeBlock": 110
+    "tutorId": 21,
+    "timeBlock": 105
   },
   {
-    "tutorId": 25,
-    "timeBlock": 54
+    "tutorId": 21,
+    "timeBlock": 129
   },
   {
-    "tutorId": 25,
+    "tutorId": 21,
+    "timeBlock": 123
+  },
+  {
+    "tutorId": 22,
+    "timeBlock": 20
+  },
+  {
+    "tutorId": 22,
     "timeBlock": 33
   },
   {
-    "tutorId": 26,
-    "timeBlock": 87
+    "tutorId": 22,
+    "timeBlock": 60
+  },
+  {
+    "tutorId": 23,
+    "timeBlock": 32
+  },
+  {
+    "tutorId": 23,
+    "timeBlock": 94
+  },
+  {
+    "tutorId": 23,
+    "timeBlock": 6
+  },
+  {
+    "tutorId": 24,
+    "timeBlock": 136
+  },
+  {
+    "tutorId": 24,
+    "timeBlock": 57
+  },
+  {
+    "tutorId": 24,
+    "timeBlock": 117
+  },
+  {
+    "tutorId": 25,
+    "timeBlock": 65
+  },
+  {
+    "tutorId": 25,
+    "timeBlock": 68
+  },
+  {
+    "tutorId": 25,
+    "timeBlock": 127
   },
   {
     "tutorId": 26,
-    "timeBlock": 30
+    "timeBlock": 95
   },
   {
     "tutorId": 26,
-    "timeBlock": 37
+    "timeBlock": 110
+  },
+  {
+    "tutorId": 26,
+    "timeBlock": 105
   },
   {
     "tutorId": 27,
-    "timeBlock": 12
+    "timeBlock": 106
   },
   {
     "tutorId": 27,
-    "timeBlock": 150
+    "timeBlock": 49
   },
   {
     "tutorId": 27,
-    "timeBlock": 73
+    "timeBlock": 125
   },
   {
     "tutorId": 28,
-    "timeBlock": 31
+    "timeBlock": 97
   },
   {
     "tutorId": 28,
-    "timeBlock": 150
+    "timeBlock": 145
   },
   {
     "tutorId": 28,
-    "timeBlock": 67
+    "timeBlock": 57
   },
   {
     "tutorId": 29,
-    "timeBlock": 115
+    "timeBlock": 121
   },
   {
     "tutorId": 29,
-    "timeBlock": 85
+    "timeBlock": 55
   },
   {
     "tutorId": 29,
-    "timeBlock": 130
+    "timeBlock": 99
+  },
+  {
+    "tutorId": 30,
+    "timeBlock": 1
+  },
+  {
+    "tutorId": 30,
+    "timeBlock": 66
   },
   {
     "tutorId": 30,
     "timeBlock": 34
-  },
-  {
-    "tutorId": 30,
-    "timeBlock": 61
-  },
-  {
-    "tutorId": 30,
-    "timeBlock": 117
   }
 ]

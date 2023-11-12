@@ -13,7 +13,6 @@ for (let i = 0; i < numberOfFakeTutors; i++) {
     githubId: Math.floor(Math.random() * 1000000),
     username: faker.internet.userName(),
     profilePicture: faker.internet.avatar(),
-    accessToken: faker.internet.password(),
     role: "tutor",
     bio: faker.hacker.phrase(),
     schoolId: Math.floor(Math.random() * schoolsData.length) + 1,

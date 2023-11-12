@@ -15,26 +15,23 @@ const findOneByGithubId = (githubId) => {
   return pool.query(query, [githubId]);
 };
 
-const create = ({ email, githubId, username, profilePicture, accessToken }) => {
+const create = ({ email, githubId, username, profilePicture }) => {
   const query = `
-    INSERT INTO users (email, github_id, username, profile_picture, access_token)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO users (email, github_id, username, profile_picture)
+    VALUES ($1, $2, $3, $4)
     RETURNING *
   `;
-  return pool.query(query, [
-    email,
-    githubId,
-    username,
-    profilePicture,
-    accessToken,
-  ]);
+  return pool.query(query, [email, githubId, username, profilePicture]);
 };
 
 const update = (id, { role, bio, school_id, subject_id, year }) => {
+  console.log({ role, bio, school_id, subject_id, year });
   const query = `
     UPDATE users
     SET role = $2, bio = $3, school_id = $4, subject_id = $5, year = $6
-    WHERE id = $1`;
+    WHERE id = $1
+    RETURNING *
+  `;
   return pool.query(query, [id, role, bio, school_id, subject_id, year]);
 };
 

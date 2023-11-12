@@ -8,33 +8,31 @@ const options = {
   // callbackURL: 'http://localhost:3001/auth/github/callback'
 };
 
-const verify = async (accessToken, refreshToken, profile, callback) => {
+const verify = async (accessToken, refreshToken, profile, done) => {
   const {
-    _json: { id, avatar_url, email },
-    displayName,
+    _json: { id, avatar_url, email, name },
   } = profile;
 
   const userData = {
     email,
     githubId: id,
-    username: displayName,
+    username: name,
     profilePicture: avatar_url,
-    accessToken,
   };
 
   try {
-    const results = await User.findOneByGithubId(userData.githubId);
-    const user = results.rows[0];
+    const { rows } = await User.findOneByGithubId(userData.githubId);
+    const user = rows[0];
 
     if (!user) {
-      const results = await User.create(userData);
-      const newUser = results.rows[0];
-      return callback(null, newUser);
+      const { rows } = await User.create(userData);
+      const newUser = rows[0];
+      return done(null, newUser.id);
     }
 
-    return callback(null, user);
+    return done(null, user.id);
   } catch (error) {
-    return callback(error);
+    return done(error);
   }
 };
 
