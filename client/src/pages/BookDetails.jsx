@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import '../styles/Book.css'
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -29,6 +30,7 @@ const BookDetails = () => {
 
             </div>
             <Link to=""><button>Add to MyProfile</button></Link>
+            <Link to={`/edit/${id}`}><button>Edit Book</button></Link>
         </>
     )
 }
