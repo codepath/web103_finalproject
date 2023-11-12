@@ -3,7 +3,7 @@ import React from 'react';
 import { mockData } from '../../../server/data/mockData'; 
 import ResourceItem from '../components/ResourceItem';
 import './ResourceList.css';  // Import the CSS file
-import Navbar from '../components/Navbar';
+//import Navbar from '../components/Navbar';
 
 const ResourceList = () => {
   const groupedResources = mockData.resources.reduce((acc, resource) => {
@@ -14,7 +14,7 @@ const ResourceList = () => {
 
   return (
     <div>
-      <Navbar />
+      
       <div className="resource-list-container">
         <h2>Resource List</h2>
 
