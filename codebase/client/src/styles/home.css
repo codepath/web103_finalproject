@@ -7,7 +7,7 @@
     flex-direction: column;
   }
   .home-header {
-    width: 96%;
+    width: 100%;
     display: flex;
     align-items: center;
     padding-top: var(--dl-space-space-oneandhalfunits);
@@ -77,9 +77,9 @@
   }
   .home-buttons {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+    gap: 3%; /* Adjust the gap for spacing */
+    width: 35%;
+    justify-content: right;
   }
   .home-login {
     border-color: var(--dl-color-primary1-blue100);
@@ -686,7 +686,7 @@
       padding-right: var(--dl-space-space-threeunits);
     }
   }
-  @media(max-width: 767px) {
+  @media(max-width: 948px) {
     .home-navbar-interactive {
       padding-left: var(--dl-space-space-twounits);
       padding-right: var(--dl-space-space-twounits);

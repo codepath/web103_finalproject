@@ -12,6 +12,8 @@ import NotFound from './pages/not-found'
 import Catalog from './pages/catalog'
 import ProductView from './pages/productView'
 import Liked from './pages/liked'
+import SignIn from './pages/signIn'
+import SignUp from './pages/signUp'
 import './App.css'
 
 function App() {
@@ -33,8 +35,8 @@ function App() {
               <span className="home-nav5">Contact</span>
             </nav>
             <div className="home-buttons">
-              <button className="home-login button">Login</button>
-              <button className="home-register button">Register</button>
+              <button className="buttonLogIn">Login</button>
+              <button className="buttonLogIn">Sign Up</button>
             </div>
           </div>
           <div data-thq="thq-burger-menu" className="home-burger-menu">
@@ -61,7 +63,7 @@ function App() {
               </nav>
               <div className="home-buttons1">
                 <button className="home-login1 button">Login</button>
-                <button className="home-register1 button">Register</button>
+                <button className="home-register1 button">Sign Up</button>
               </div>
             </div>
             <div>
@@ -85,6 +87,8 @@ function App() {
         <Route element={<Catalog />} path="/catalog" />
         <Route element={<ProductView />} path="/productview" />
         <Route element={<Liked />} path="/liked" />
+        <Route element={<SignIn />} path="/signIn" />
+        <Route element={<SignUp />} path="/signUp" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>

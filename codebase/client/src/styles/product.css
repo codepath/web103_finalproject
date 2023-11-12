@@ -111,7 +111,7 @@ hr {
   border-top: 1px solid;
   opacity: 0.25;
 }
-
+/* 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -166,7 +166,7 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-}
+} */
 
 abbr[title] {
   -webkit-text-decoration: underline dotted;
@@ -182,12 +182,12 @@ address {
   line-height: inherit;
 }
 
-ol,
+/* ol,
 ul {
   padding-left: 2rem;
-}
+} */
 
-ol,
+/* ol,
 ul,
 dl {
   margin-top: 0;
@@ -199,7 +199,7 @@ ul ul,
 ol ul,
 ul ol {
   margin-bottom: 0;
-}
+} */
 
 dt {
   font-weight: 700;
@@ -244,7 +244,7 @@ sup {
   top: -0.5em;
 }
 
-a {
+/* a {
   color: var(--bs-link-color);
   text-decoration: underline;
 }
@@ -255,7 +255,7 @@ a:hover {
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
-}
+} */
 
 pre,
 code,
@@ -7581,7 +7581,7 @@ textarea.form-control-lg {
 }
 
 .my-5 {
-  margin-top: 3rem !important;
+  margin-top: 2rem !important;
   margin-bottom: 3rem !important;
 }
 
@@ -7750,12 +7750,6 @@ textarea.form-control-lg {
   padding-right: 1.5rem !important;
   padding-left: 1.5rem !important;
 }
-
-.px-5 {
-  padding-right: 3rem !important;
-  padding-left: 3rem !important;
-}
-
 .py-0 {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
