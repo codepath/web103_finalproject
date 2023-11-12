@@ -1,4 +1,5 @@
 import { pool } from './database.js';
+//import { mockData } from '../data/mockData.js';
 
 const createUserTable = `
 CREATE TABLE IF NOT EXISTS "GITHUBUSER" (
@@ -18,7 +19,45 @@ CREATE TABLE IF NOT EXISTS "POST" (
 );
 `;
 
+// Comment out or remove the following functions to prevent seeding mock data
 
+// const seedUserTable = async () => {
+//   try {
+//     for (const user of mockData.users) {
+//       await pool.query('INSERT INTO "USER" (username, password) VALUES ($1, $2) ON CONFLICT (username) DO NOTHING', [user.username, user.password]);
+//       console.log(`✅ User ${user.username} added successfully`);
+//     }
+//   } catch (err) {
+//     console.error('⚠️ Error seeding USER table:', err);
+//   }
+// };
+
+// const seedPostTable = async () => {
+//   try {
+//     const result = await pool.query('SELECT COUNT(*) FROM "POST"');
+//     const postCount = parseInt(result.rows[0].count);
+
+//     if (postCount === 0) {
+//       for (const post of mockData.posts) {
+//         const postInsertResult = await pool.query('INSERT INTO "POST" (content, userId) VALUES ($1, $2) RETURNING id', [post.content, post.userId]);
+//         const postId = postInsertResult.rows[0].id;
+
+//         if (post.comments && Array.isArray(post.comments)) {
+//           for (const comment of post.comments) {
+//             await pool.query('INSERT INTO "COMMENT" (content, postId) VALUES ($1, $2)', [comment.content, postId]);
+//             console.log(`✅ Comment on post ${postId} added successfully`);
+//           }
+//         }
+//         console.log(`✅ Post ${postId} added successfully`);
+//       }
+//     } else {
+//       console.log('Posts already exist in the database');
+//     }
+//   } catch (err) {
+//     console.error('⚠️ Error seeding POST table:', err);
+//     throw err;
+//   }
+// };
 
 const createCommentTable = `
 CREATE TABLE IF NOT EXISTS "COMMENT" (
@@ -63,8 +102,19 @@ const createTables = async () => {
 
 // Comment out or remove the calls to seeding functions to prevent seeding mock data
 
-
+// const seedAllTables = async () => {
+//   await createTables();
+//   await seedUserTable();
+//   await seedPostTable();
+//   // Add similar calls for other seeding functions here
+// };
 
 // Comment out or remove this block to prevent seeding mock data
 
-
+// seedAllTables().then(() => {
+//   console.log('All tables seeded successfully');
+// }).catch((error) => {
+//   console.error('Error seeding tables:', error);
+// }).finally(() => {
+//   pool.end();
+// });
