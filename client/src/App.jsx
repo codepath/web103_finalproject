@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Browse from './pages/Browse';
 import AddBook from './pages/AddBook';
 import BookDetails from './pages/BookDetails';
+import EditBook from './pages/EditBook';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -57,6 +58,14 @@ function App() {
     {
       path: '/browse',
       element: <Browse data={books} />
+    },
+    {
+      path: '/book/new',
+      element: <AddBook />
+    },
+    {
+      path: '/edit/:id',
+      element: <EditBook data={books} />
     },
     {
       path: '/book/details/:id',
