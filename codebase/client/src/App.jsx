@@ -10,6 +10,7 @@ import {
 import Home from './pages/home'
 import NotFound from './pages/not-found'
 import Catalog from './pages/catalog'
+import ProductView from './pages/productView'
 import './App.css'
 
 function App() {
@@ -81,6 +82,7 @@ function App() {
         <Route element={<Home />} exact path="/" />
         <Route element={<NotFound />} path="**" />
         <Route element={<Catalog />} path="/catalog" />
+        <Route element={<ProductView />} path="/productview" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>

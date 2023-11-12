@@ -23,15 +23,15 @@ const Catalog = () => {
           category="bracelet"
           title="Gold plated bracelet with heart charm" 
           price="25"
-          imgSrc="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-          imgHoverSrc="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+          imgSrc="https://images.unsplash.com/photo-1600525990321-9b74f0b86cdc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY5OTY1NDYwMXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=400"
+          imgHoverSrc="https://images.unsplash.com/photo-1600525990321-9b74f0b86cdc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY5OTY1NDYwMXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=400"
         />
         <ProductCard
           category="bracelet"
           title="Gold plated bracelet with cross charm"
           price="25"
-          imgSrc="https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-          imgHoverSrc="https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+          imgSrc="https://images.unsplash.com/photo-1614999612412-3b1dbcd68e40?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY5OTY1NDYwMXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=400"
+          imgHoverSrc="https://images.unsplash.com/photo-1614999612412-3b1dbcd68e40?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY5OTY1NDYwMXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=400"
         />
       </section>
     </>

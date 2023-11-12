@@ -233,7 +233,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-color: var(--dl-color-primary1-blue100);
+    /* background-color: var(--dl-color-primary1-blue100); */
+    background-color: black;
   }
   .home-hero1 {
     width: 100%;
@@ -247,7 +248,8 @@
     flex-direction: column;
     padding-bottom: var(--dl-space-space-sixunits);
     justify-content: center;
-    background-color: var(--dl-color-primary1-blue100);
+    /* background-color: var(--dl-color-primary1-blue100); */
+    background-color: black;
   }
   .home-container1 {
     gap: var(--dl-space-space-twounits);

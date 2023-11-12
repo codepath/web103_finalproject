@@ -8,6 +8,7 @@
     justify-content: center;
     -webkit-justify-content: center;
     max-width: 820px;
+    margin-bottom: 3%;
 }
 
 .card__like {
@@ -111,6 +112,9 @@ border-bottom-right-radius: 12px;
     font-weight: 600;
     text-decoration: none;
     color: #AD7D52;
+    margin-right: 10%;
+    pointer-events: none;
+
 }
 
 .card:hover .card__img--hover {
