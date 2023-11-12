@@ -11,6 +11,7 @@ import Home from './pages/home'
 import NotFound from './pages/not-found'
 import Catalog from './pages/catalog'
 import ProductView from './pages/productView'
+import Liked from './pages/liked'
 import './App.css'
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
         <Route element={<NotFound />} path="**" />
         <Route element={<Catalog />} path="/catalog" />
         <Route element={<ProductView />} path="/productview" />
+        <Route element={<Liked />} path="/liked" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>
