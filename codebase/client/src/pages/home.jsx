@@ -72,10 +72,10 @@ const Home = (props) => {
                 Heading="Rings"
                 SubHeading="Shop with confidence knowing your information is protected"
               ></FeatureCard>
-              <FeatureCard
+              {/* <FeatureCard
                 Heading="Watches"
                 SubHeading="Shop with confidence knowing your information is protected"
-              ></FeatureCard>
+              ></FeatureCard> */}
               <FeatureCard
                 Heading="Other Accessories"
                 SubHeading="Shop with confidence knowing your information is protected"
