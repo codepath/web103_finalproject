@@ -1,29 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { getAllResources } from '../services/resourceService';
+// ResourceList.jsx
+import React from 'react';
+import { mockData } from '../../../server/data/mockData'; 
 import ResourceItem from '../components/ResourceItem';
+import './ResourceList.css';  // Import the CSS file
+//import Navbar from '../components/Navbar';
 
 const ResourceList = () => {
-  const [resources, setResources] = useState([]);
-
-  useEffect(() => {
-    const fetchResources = async () => {
-      try {
-        const data = await getAllResources();
-        setResources(data);
-      } catch (error) {
-        console.error('Failed to fetch resources:', error);
-      }
-    };
-
-    fetchResources();
-  }, []);
+  const groupedResources = mockData.resources.reduce((acc, resource) => {
+    const category = resource.type || 'Other';
+    acc[category] = [...(acc[category] || []), resource];
+    return acc;
+  }, {});
 
   return (
     <div>
-      <h2>Resource List</h2>
-      {resources.map(resource => (
-        <ResourceItem key={resource.id} resource={resource} />
-      ))}
+      
+      <div className="resource-list-container">
+        <h2>Resource List</h2>
+
+        {/* Display each section */}
+        {Object.entries(groupedResources).map(([category, resourcesInCategory]) => (
+          <div key={category}>
+            <div className="orange-container">
+              <h3>{category === 'youtube' ? 'YouTube' : 'Coding Problems'}</h3>
+            </div>
+            {resourcesInCategory.map(resource => (
+              <ResourceItem key={resource.id} resource={resource} />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+// App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
@@ -6,6 +7,10 @@ import DiscussionBoard from './pages/DiscussionBoard';
 import ResourceList from './pages/ResourceList';
 import CreatePost from './pages/CreatePost';
 import CreateResource from './pages/CreateResource';
+import AboutUs from './pages/AboutUs'; // Import the new AboutUs component
+import Events from './pages/Events';
+import './App.css';
+
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 import { AuthProvider } from './contexts/AuthContext';
@@ -19,6 +24,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/posts" element={<ProtectedRoute><DiscussionBoard /></ProtectedRoute>} />
           <Route path="/resources" element={<ProtectedRoute><ResourceList /></ProtectedRoute>} />
           <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
@@ -28,6 +34,6 @@ const App = () => {
       </div>
     </AuthProvider>
   );
-}
+};
 
 export default App;
