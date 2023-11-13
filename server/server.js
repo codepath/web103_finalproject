@@ -12,6 +12,16 @@ import "./strategies/local.js";
 import { conString } from "./config/database.js";
 import connectPgSimple from "connect-pg-simple";
 
+const CLIENT_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.PROD_CLIENT_URL
+    : process.env.DEV_CLIENT_URL;
+
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.PROD_SERVER_URL
+    : process.env.DEV_SERVER_URL;
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 // const memoryStore = new session.MemoryStore();
@@ -33,7 +43,7 @@ app.use(
 // app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: CLIENT_URL,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -53,7 +63,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.get("/", (req, res) => {
-  res.redirect("http://localhost:3001");
+  res.redirect(CLIENT_URL);
 });
 
 app.use((req, res, next) => {
