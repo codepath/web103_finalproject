@@ -4,7 +4,8 @@ import PropertiesController from "../controllers/properties.js";
 
 const router = express.Router();
 
-router.get("/properties/:userId", PropertiesController.getUserProperties);
-router.post("/properties/new/:userId", PropertiesController.postNewProperty);
+router.get("/:userId", PropertiesController.getUserProperties);
+router.get("/view/:propertyId", PropertiesController.getPropertyById);
+router.post("/new/:userId", PropertiesController.postNewProperty);
 
 export default router;
