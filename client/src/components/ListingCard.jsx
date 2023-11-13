@@ -4,11 +4,21 @@ import { BsFillStarFill } from "react-icons/bs";
 import { format, isSameMonth } from "date-fns";
 
 const ListingCard = ({ listing }) => {
+  if (!listing || !listing.availability) {
+    console.error('Invalid or missing listing data:', listing);
+    return null; // or handle it in another way
+  }
+
   const formattedAvailability = listing.availability.map((item) => {
     const startDate = new Date(item.start_availability);
     const endDate = new Date(item.end_availability);
 
-    const startMonth = format(startDate, "MMM"); // Format month as a 3-letter abbreviation
+    if (!startDate || !endDate) {
+      console.error('Invalid date range:', item);
+      return null; // or handle it in another way
+    }
+
+    const startMonth = format(startDate, "MMM");
     const endMonth = format(endDate, "MMM");
 
     let formattedDate;
@@ -21,6 +31,11 @@ const ListingCard = ({ listing }) => {
 
     return formattedDate;
   });
+
+  if (formattedAvailability.includes(null)) {
+    console.error('Invalid date range in availability:', listing.availability);
+    return null; // or handle it in another way
+  }
 
   return (
     <div className="flexbg-white w-full max-w-sm border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
