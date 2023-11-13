@@ -5,7 +5,7 @@ import { set } from "date-fns";
 const API_URL =
   process.env.NODE_ENV === "production"
     ? import.meta.env.VITE_SERVER_URL
-    : VITE_BACKEND_URL;
+    : import.meta.env.VITE_BACKEND_URL;
 
 export const authLogIn = createAsyncThunk(
   "user/authLogIn",
@@ -63,10 +63,9 @@ export const authLogOut = createAsyncThunk(
   "user/authLogOut",
   async (_, { dispatch }) => {
     try {
-      const res = await axios.post(
-        `${API_URL}/api/auth/logout`,
-        { withCredentials: true }
-      );
+      const res = await axios.post(`${API_URL}/api/auth/logout`, {
+        withCredentials: true,
+      });
       dispatch(toggleLoggedIn());
     } catch (error) {
       console.error("Error logging out user:", error);
