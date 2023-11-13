@@ -650,7 +650,7 @@
     width: 48px;
     height: 48px;
   }
-  @media(max-width: 991px) {
+  @media(max-width: 955px) {
     .home-logo {
       font-size: 2em;
       font-family: Lato;
@@ -694,7 +694,7 @@
       padding-right: var(--dl-space-space-threeunits);
     }
   }
-  @media(max-width: 948px) {
+  @media(max-width: 960px) {
     .home-navbar-interactive {
       padding-left: var(--dl-space-space-twounits);
       padding-right: var(--dl-space-space-twounits);

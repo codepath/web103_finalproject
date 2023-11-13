@@ -64,7 +64,7 @@ function App() {
               {user ? <a href="/"><button onClick={handleLogout}className="btnWhite">Logout</button></a> : (
                 <>
                   <a href="/signIn"><button className="btnWhite">Login</button></a>
-                  <a href="/signUp"><button className="btnWhite">Sign Up</button></a>
+                  <a href="/signUp"><button className="btnWhite">SignUp</button></a>
                 </>
               )}
             </div>
@@ -93,7 +93,7 @@ function App() {
               </nav>
               <div className="home-buttons1">
                 <button className="home-login1 button">Login</button>
-                <button className="home-register1 button">Sign Up</button>
+                <button className="home-register1 button">SignUp</button>
               </div>
             </div>
             <div>
