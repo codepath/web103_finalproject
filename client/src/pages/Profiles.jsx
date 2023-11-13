@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ListingCard from '../components/ListingCard';
 import ProfileListing from './ProfileListing';
 import UserIcon from '../jsons/UserIcon.json'
 
@@ -66,6 +65,18 @@ function Profiles() {
                 >
                     User Profile
                 </button>
+
+                <button
+                    className={`w-full py-2 rounded-md focus:outline-none ${activeTab === 'properties' ? 'bg-red-500 text-white' : 'bg-gray-300 text-gray-700'
+                        }`}
+                    onClick={() => setActiveTab('properties')}
+
+                >
+                    {/* <ListingCard /> */}
+                    Properties
+                </button>
+
+                
                 <button
                     className={`w-full py-2 rounded-md focus:outline-none ${activeTab === 'listings' ? 'bg-red-500 text-white' : 'bg-gray-300 text-gray-700'
                         }`}
@@ -75,6 +86,8 @@ function Profiles() {
                     {/* <ListingCard /> */}
                     Listings
                 </button>
+
+              
             </div>
 
             {activeTab === 'user' && (
@@ -243,10 +256,15 @@ function Profiles() {
                 </div>
             )}
 
+            {activeTab === 'properties' && (
+                    <div>
+                        properties
+                    </div>
+                )}
 
 
-        </div>
-    );
+                    </div>
+                );
 }
 
 export default Profiles;
