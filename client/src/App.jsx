@@ -12,7 +12,7 @@ function App() {
   const API_URL =
     process.env.NODE_ENV === "production"
       ? import.meta.env.VITE_SERVER_URL
-      : VITE_BACKEND_URL;
+      : "http://localhost:3001";
 
   useEffect(() => {
     const fetchListings = async () => {
