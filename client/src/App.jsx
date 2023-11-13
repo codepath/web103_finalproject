@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import Listings from "./pages/Listings";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Profiles from "./pages/Profiles";
@@ -9,7 +9,10 @@ import Profiles from "./pages/Profiles";
 function App() {
   const [listings, setListings] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const API_URL = "http://localhost:3001";
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? import.meta.env.VITE_SERVER_URL
+      : VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -38,9 +41,9 @@ function App() {
       >
         {element}
       </div>
-        <Routes>
-          <Route path="/profile" element = {<Profiles/>}/>
-        </Routes>
+      <Routes>
+        <Route path="/profile" element={<Profiles />} />
+      </Routes>
     </div>
   );
 }
