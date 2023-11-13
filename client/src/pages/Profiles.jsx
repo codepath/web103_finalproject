@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ListingCard from '../components/ListingCard';
+import ProfileListing from './ProfileListing';
+import UserIcon from '../jsons/UserIcon.json'
 
 function Profiles() {
     const [activeTab, setActiveTab] = useState('user'); // 'user' or 'listings'
@@ -52,10 +54,10 @@ function Profiles() {
         console.log('unsuccessful')
     };
 
-    
+
 
     return (
-        <div className="lg:max-w-3xl mx-auto mt-16 mb-8 border-2 border-#FF385C rounded-lg p-10">
+        <div className="lg:max-w-5xl mx-auto mt-16 mb-8 border-2 border-#FF385C rounded-lg p-10">
             <div className=" flex justify-between items-center mb-6 ">
                 <button
                     className={`w-full py-2 rounded-md focus:outline-none ${activeTab === 'user' ? 'bg-red-500 text-white' : 'bg-gray-300 text-gray-700'
@@ -68,9 +70,9 @@ function Profiles() {
                     className={`w-full py-2 rounded-md focus:outline-none ${activeTab === 'listings' ? 'bg-red-500 text-white' : 'bg-gray-300 text-gray-700'
                         }`}
                     onClick={() => setActiveTab('listings')}
-                    
+
                 >
-                    <ListingCard/>r
+                    {/* <ListingCard /> */}
                     Listings
                 </button>
             </div>
@@ -78,7 +80,20 @@ function Profiles() {
             {activeTab === 'user' && (
                 <div className="grid gap-10 ">
                     <p className='text-center'> User Profile </p>
+                    <ul className="flex justify-center">
+                        {UserIcon.map(icon => (
+                            <li key={icon.id} className="">
+                                <img src={icon.avatar} alt={`avatar`} className='w-40 h-40 object-cover rounded-full mr-2' />
+                                <p>{icon.name}</p>
+                            </li>
+                        ))}
+                    </ul>
+
+
                     <div className="grid grid-cols-2 gap-4 mt-5">
+
+
+
                         <div>
                             <label className="block text-sm font-medium text-gray-600" htmlFor="first-name">
                                 First Name
@@ -222,10 +237,12 @@ function Profiles() {
                 </div>
             )}
 
-            {activeTab === 'listings' && <p className='text-center'> Listings </p>}
+            {activeTab === 'listings' && (
+                <div>
+                    <ProfileListing />
+                </div>
+            )}
 
-            {/* {activeTab === 'listings' && <Listings />} */}
-            {/* </div> */}
 
 
         </div>
