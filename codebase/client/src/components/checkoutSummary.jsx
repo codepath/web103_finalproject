@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/checkout.css';
 
 const CheckoutSummary = ({ subTotal, discount, shippingCharge, tax, total }) => {
   return (
-    <div className="card border shadow-none">
+    <div className="cardC border shadow-none">
       <div className="card-header bg-transparent border-bottom py-3 px-4">
         <h5 className="font-size-16 mb-0">Order Summary <span className="float-end">#MN0124</span></h5>
       </div>

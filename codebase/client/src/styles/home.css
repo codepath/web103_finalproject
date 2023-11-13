@@ -117,7 +117,7 @@
     width: var(--dl-size-size-xsmall);
     cursor: pointer;
     height: var(--dl-size-size-xsmall);
-    color: white
+    background-color: white
   }
   .home-mobile-menu {
     top: 0px;

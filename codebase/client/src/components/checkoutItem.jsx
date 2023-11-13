@@ -1,10 +1,11 @@
 import React from 'react';
+import '../styles/checkout.css';
 
 const checkoutItem = ({ item }) => {
   const { imageSrc, title, rating, color, price, quantity, total } = item;
 
   return (
-    <div className="card border shadow-none">
+    <div className="cardC border shadow-none">
       <div className="card-body">
         <div className="d-flex align-items-start border-bottom pb-3">
           <div className="me-4">

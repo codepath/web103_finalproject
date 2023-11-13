@@ -23,20 +23,45 @@ const Checkout = () => {
   };
 
   // const items = [itemData1, itemData2, itemData3];
-  const items = [itemData1];
+  const items = [itemData1, itemData1, itemData1];
 
   return (
-    <div className="container">
+    <>
+    <h1 className='pageTitle'>Bag</h1>
+    <div className="containerC">
       <div className="row">
-        <div className="col-xl-8">
+        {/* Left Column for Items */}
+        <div className="col-lg-8">
           {items.map((item, index) => (
             <ItemComponent key={index} item={item} />
           ))}
-          <CheckoutSummaryComponent items={items} />
         </div>
-        {/* ... (rest of your component) */}
+
+        {/* Right Column for Summary and Buttons */}
+        <div className="col-lg-4">
+          <div className="mt-5 mt-lg-0">
+            <CheckoutSummaryComponent items={items} />
+
+            {/* Continue Shopping and Checkout buttons */}
+            <div className="row my-4">
+              <div className="col-sm-6">
+                <a href="ecommerce-products.html" className="btn btn-link text-muted">
+                  <i className="mdi mdi-arrow-left me-1"></i> Continue Shopping
+                </a>
+              </div>
+              <div className="col-sm-6">
+                <div className="text-sm-end mt-2 mt-sm-0">
+                  <a href="ecommerce-checkout.html" className="btn btn-success">
+                    <i className="mdi mdi-cart-outline me-1"></i> Checkout
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    </>
   );
 };
 
