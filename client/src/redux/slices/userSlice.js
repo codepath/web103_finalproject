@@ -2,12 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { set } from "date-fns";
 
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? import.meta.env.VITE_SERVER_URL
+    : "http://localhost:3001";
+
 export const authLogIn = createAsyncThunk(
   "user/authLogIn",
   async ({ email, password }, { dispatch }) => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
+        `${API_URL}/api/auth/login`,
         { email, password },
         { withCredentials: true }
       );
@@ -31,7 +36,7 @@ export const authRegister = createAsyncThunk(
     { dispatch }
   ) => {
     console.log("attempt to register");
-    const apiUrl = `${import.meta.env.VITE_BACKEND_URL}/api/auth/register`;
+    const apiUrl = `${API_URL}/api/auth/register`;
     console.log(apiUrl);
     try {
       const res = await axios.post(
@@ -58,10 +63,9 @@ export const authLogOut = createAsyncThunk(
   "user/authLogOut",
   async (_, { dispatch }) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`,
-        { withCredentials: true }
-      );
+      const res = await axios.post(`${API_URL}/api/auth/logout`, {
+        withCredentials: true,
+      });
       dispatch(toggleLoggedIn());
     } catch (error) {
       console.error("Error logging out user:", error);
