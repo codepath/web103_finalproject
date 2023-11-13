@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  // Redirect,
-} from 'react-router-dom'
+  Navigate,
+} from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from './firebase';
+import DisplayVerificationMessage from './components/displayVerificationMessage';
 import Home from './pages/home'
 import NotFound from './pages/not-found'
 import Catalog from './pages/catalog'
@@ -19,7 +22,29 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      setUser(authUser);
+    });
 
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const handleLogout = () => {
+    event.preventDefault();
+    signOut(auth)
+      .then(() => {
+        console.log('User logged out successfully');
+      })
+      .catch((error) => {
+        console.error('Error during logout:', error.message);
+      });
+  };
+  
   return (
     <>
         <div className="home-header">
@@ -36,8 +61,12 @@ function App() {
               <span className="home-nav5">Contact</span>
             </nav>
             <div className="home-buttons">
-              <button className="btnWhite">Login</button>
-              <button className="btnWhite">Sign Up</button>
+              {user ? <a href="/"><button onClick={handleLogout}className="btnWhite">Logout</button></a> : (
+                <>
+                  <a href="/signIn"><button className="btnWhite">Login</button></a>
+                  <a href="/signUp"><button className="btnWhite">Sign Up</button></a>
+                </>
+              )}
             </div>
           </div>
           <div data-thq="thq-burger-menu" className="home-burger-menu">
@@ -89,7 +118,15 @@ function App() {
         <Route element={<ProductView />} path="/productview" />
         <Route element={<Liked />} path="/liked" />
         <Route element={<SignIn />} path="/signIn" />
-        <Route element={<SignUp />} path="/signUp" />
+        <Route path="/signUp" element={user ? (
+            user.emailVerified ? (
+              <Navigate to="/" />
+            ) : (
+              <DisplayVerificationMessage />
+            )
+          ) : (
+            <SignUp />
+          )} />       
         <Route element={<Checkout />} path="/checkout" />
         {/* <Redirect to="**" /> */}
       </Routes>

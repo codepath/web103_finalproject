@@ -51,7 +51,7 @@ const Checkout = () => {
               </div>
               <div className="col-sm-6">
                 <div className="text-sm-end mt-2 mt-sm-0">
-                  <a href="ecommerce-checkout.html" className="btn btn-success">
+                  <a href="ecommerce-checkout.html" className="buttonLogIn">
                     <i className="mdi mdi-cart-outline me-1"></i> Checkout
                   </a>
                 </div>
