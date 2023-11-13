@@ -22,7 +22,7 @@ const Home = (props) => {
               Elegant and timeless pieces for every occasion
             </span>
             <div className="home-btn-group">
-              <button className="home-hero-button1 button">Get Started</button>
+              <button className="buttonLogIn">Get Started</button>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ const Home = (props) => {
           <span className="home-gallery-sub-heading">
             Discover the perfect piece for any occasion
           </span>
-          <button className="home-banner-button button">View Collection</button>
+          <button className="buttonLogIn">View Collection</button>
           <div className="home-container4">
             <GalleryCard3
               image_src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY5OTY1NDYwMXw&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=400"

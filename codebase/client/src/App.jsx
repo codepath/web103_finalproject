@@ -14,6 +14,7 @@ import ProductView from './pages/productView'
 import Liked from './pages/liked'
 import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
+import Checkout from './pages/checkout'
 import './App.css'
 
 function App() {
@@ -35,8 +36,8 @@ function App() {
               <span className="home-nav5">Contact</span>
             </nav>
             <div className="home-buttons">
-              <button className="buttonLogIn">Login</button>
-              <button className="buttonLogIn">Sign Up</button>
+              <button className="btnWhite">Login</button>
+              <button className="btnWhite">Sign Up</button>
             </div>
           </div>
           <div data-thq="thq-burger-menu" className="home-burger-menu">
@@ -89,6 +90,7 @@ function App() {
         <Route element={<Liked />} path="/liked" />
         <Route element={<SignIn />} path="/signIn" />
         <Route element={<SignUp />} path="/signUp" />
+        <Route element={<Checkout />} path="/checkout" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>
