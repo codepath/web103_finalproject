@@ -11,40 +11,40 @@ function FormSubmission() {
     e.preventDefault()
     console.log(e) 
 
-    const jobTitle = e.target.jobTitle.value
-    const jobRole = e.target.jobRole.value
-    const jobReq = e.target.jobReq.value
-    const jobQual = e.target.jobQual.value
+    const title = e.target.jobTitle.value
+    const role = e.target.jobRole.value
+    const requirements = e.target.jobReq.value
+    const qualifications = e.target.jobQual.value
     const technical = e.target.jobTechCheck.checked
     const behavioral = e.target.jobBehaCheck.checked
     
     console.log(jobTitle, jobRole, jobReq, jobQual, technical, behavioral)
 
-
-    const result = await fetch('http://localhost:3000/openai-api', {
+    // http://localhost:3000/questions
+    const result = await fetch('http://localhost:3000/questions', {
       headers: {
         "Content-Type": "application/json"
       },
       method: 'POST',
       body: JSON.stringify({
-        jobTitle,
-        jobRole,
-        jobReq,
-        jobQual,
+        title,
+        role,
+        requirements,
+        qualifications,
         technical,
         behavioral
       })
     })
 
-    if (!result.ok) {
-      throw new Error(`HTTP error! status: ${result.status}`)
-    }
+    // if (!result.ok) {
+    //   throw new Error(`HTTP error! status: ${result.status}`)
+    // }
 
     const data = await result.json()
+    console.log('data', data)
+    // const interviewQuestions = data.choices[0].message.content // this is the generated interview text from the API Robert, u can play w this info
 
-    const interviewQuestions = data.choices[0].message.content // this is the generated interview text from the API Robert, u can play w this info
-
-    console.log(interviewQuestions);
+    // console.log(interviewQuestions);
     }
 
   return (
