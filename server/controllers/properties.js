@@ -2,12 +2,35 @@ import { pool } from "../config/database.js";
 
 const getUserProperties = async (request, response) => {
   try {
-    const userId = parseInt(request.params.id);
+    // Validate and parse userId as an integer
+    const parsedUserId = parseInt(request.params.userId);
+    if (isNaN(parsedUserId)) {
+      throw new Error("Invalid userId");
+    }
+
+    // Your SQL query with the parsed userId
     const properties = await pool.query(
-      "SELECT listings.*, ARRAY_AGG(listingsImages.image_url) AS image_urls, propertyAmenities.* FROM listings LEFT JOIN listingsImages ON listings.property_id = listingsImages.property_id JOIN propertyAmenities ON listings.property_id = propertyAmenities.property_id WHERE listings.user_id = $1 GROUP BY listings.id, propertyAmenities.property_id;",
-      [userId]
+      "SELECT properties.*, ARRAY_AGG(listingImages.image_url) AS image_urls, propertyAmenities.* FROM properties LEFT JOIN listings ON properties.id = listings.property_id LEFT JOIN listingImages ON properties.id = listingImages.property_id LEFT JOIN propertyAmenities ON properties.id = propertyAmenities.property_id WHERE properties.host_id = $1 GROUP BY properties.id, propertyAmenities.id",
+      [parsedUserId]
     );
-    response.status(200).json(properties.rows);
+
+    return response.status(200).json(properties.rows);
+  } catch (err) {
+    console.error("⚠️ error fetching user properties", err);
+    throw err; // Rethrow the error to handle it in the calling code
+  }
+};
+
+const getPropertyById = async (request, response) => {
+  console.log("hello");
+  try {
+    const propertyId = parseInt(request.params.propertyId);
+    console.log("hello world");
+    const singleProperty = await pool.query(
+      "SELECT * FROM properties WHERE id = $1",
+      [propertyId]
+    );
+    response.status(200).json(singleProperty.rows[0]);
   } catch (error) {
     response.status(409).json({ error: error.message });
   }
@@ -105,7 +128,7 @@ const postNewProperty = async (request, response) => {
     for (image of imagesArray) {
       try {
         const addedImages = await pool.query(
-          "INSERT INTO listingsImages (property_id, image_url) VALUES ($1, $2) RETURNING *",
+          "INSERT INTO listingImages (property_id, image_url) VALUES ($1, $2) RETURNING *",
           [propertyId, image]
         );
         response.json(addedImages.rows[0]);
@@ -126,4 +149,5 @@ const postNewProperty = async (request, response) => {
 export default {
   getUserProperties,
   postNewProperty,
+  getPropertyById,
 };
