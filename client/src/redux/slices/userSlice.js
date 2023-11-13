@@ -5,7 +5,7 @@ import { set } from "date-fns";
 const API_URL =
   process.env.NODE_ENV === "production"
     ? import.meta.env.VITE_SERVER_URL
-    : import.meta.env.VITE_BACKEND_URL;
+    : "http://localhost:3001";
 
 export const authLogIn = createAsyncThunk(
   "user/authLogIn",
