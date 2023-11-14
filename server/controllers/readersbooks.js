@@ -17,7 +17,7 @@ const createReaderBook = async (req, res) => {
 
 const getReadersBooks = async (req, res) => {
     try {
-        const results = await pool.query('SELECT * FROM readersbooks ORDER BY reader_id ASC')
+        const results = await pool.query('SELECT * FROM readersbooks ORDER BY book_id ASC')
         res.status(200).json(results.rows)
     } catch (error) {
         res.status(400).json( { error: error.message } )

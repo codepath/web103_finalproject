@@ -3,9 +3,9 @@ import './dotenv.js'
 import booksData from '../data/books.js'
 
 // create books
+// DROP TABLE books CASCADE;
 const createBooksTable = async () => {
     const createBooksTableQuery = `
-    DROP TABLE books CASCADE;
         CREATE TABLE IF NOT EXISTS books (
         id serial PRIMARY KEY,
         name varchar(100) NOT NULL,
@@ -72,9 +72,7 @@ const createReviewssTable = async () => {
         id serial PRIMARY KEY,
         review text NOT NULL,
         rating int DEFAULT 0,
-        reader_id int NOT NULL,
         book_id int NOT NULL,
-        FOREIGN KEY (reader_id) REFERENCES readers(id) ON UPDATE CASCADE ON DELETE CASCADE,
         FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
     `
@@ -87,35 +85,55 @@ const createReviewssTable = async () => {
     }
 }
 
+const createBooksReviewsTable = async () => {
+    const createBooksReviewsTableQuery = `
+        CREATE TABLE IF NOT EXISTS Books_Reviews (
+        book_id int NOT NULL,
+        review_id int NOT NULL,
+        PRIMARY KEY (book_id, review_id),
+        FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (review_id) REFERENCES reviews(id) ON UPDATE CASCADE ON DELETE CASCADE
+    );
+    `
 
-// seed books table
-const seedBooksTable = async () => {
-    await createBooksTable()
-    booksData.forEach((book)=> {
-        const insertQuery = {
-            text: 
-            `INSERT INTO books (name, author, image, description) VALUES ($1, $2, $3, $4)`
-        }
-
-        const values = [
-            book.name,
-            book.author, 
-            book.image,
-            book.description
-        ]
-
-        pool.query(insertQuery, values, (err, res) => {
-            if (err) {
-                console.error('⚠️ error inserting book', err)
-                return
-            }
-        
-            console.log(`✅ ${book.name} added successfully`)
-        })
-    })
+    try {
+        await pool.query(createBooksReviewsTableQuery)
+        console.log('🎉 books_reviews table created successfully')
+    } catch (err) {
+        console.error('⚠️ error creating books_reviews table', err)
+    }
 }
 
-seedBooksTable()
+// seed books table
+// const seedBooksTable = async () => {
+//     await createBooksTable()
+//     booksData.forEach((book)=> {
+//         const insertQuery = {
+//             text: 
+//             `INSERT INTO books (name, author, image, description) VALUES ($1, $2, $3, $4)`
+//         }
+
+//         const values = [
+//             book.name,
+//             book.author, 
+//             book.image,
+//             book.description
+//         ]
+
+//         pool.query(insertQuery, values, (err, res) => {
+//             if (err) {
+//                 console.error('⚠️ error inserting book', err)
+//                 return
+//             }
+        
+//             console.log(`✅ ${book.name} added successfully`)
+//         })
+//     })
+// }
+
+// seedBooksTable()
+createBooksTable()
 createReadersTable()
 createReadersBooksTable()
 createReviewssTable()
+createBooksReviewsTable()

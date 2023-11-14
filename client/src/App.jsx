@@ -7,6 +7,9 @@ import Browse from './pages/Browse';
 import AddBook from './pages/AddBook';
 import BookDetails from './pages/BookDetails';
 import EditBook from './pages/EditBook';
+import ReadReview from './pages/ReadReview';
+import AddReview from './pages/AddReview';
+import EditReview from './pages/EditReview';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -17,7 +20,6 @@ function App() {
         const response = await fetch('http://localhost:3001/api/books');
         const data = await response.json();
         setBooks(data);
-        console.log(data); // Log the fetched data, not 'books'
       } catch (error) {
         console.error("Error fetching books:", error);
       }
@@ -25,30 +27,6 @@ function App() {
 
     fetchBooks();
   }, [])
-
-  // Sets up routes
-  // let element = useRoutes([
-  //   {
-  //     path: "/",
-  //     element: <Home data={books} />
-  //   },
-  //   {
-  //     path: "/browse",
-  //     element: <Browse data={books} />
-  //   },
-  //   {
-  //     path: "/book/new",
-  //     element: <AddBook />
-  //   },
-  //   // {
-  //   //   path: "/edit/:bookId",
-  //   //   element: <EditBook data={books} />
-  //   // },
-  //   {
-  //     path: "/book/details/:bookId",
-  //     element: <BookDetails books={books} />
-  //   }
-  // ])
 
   let element = useRoutes([
     {
@@ -70,7 +48,20 @@ function App() {
     {
       path: '/book/details/:id',
       element: <BookDetails />
+    },
+    {
+      path: '/booksreviews/:id',
+      element: <ReadReview />
+    },
+    {
+      path: '/addreview/:book_id',
+      element: <AddReview />
+    },
+    {
+      path: '/editreview/:review_id',
+      element: <EditReview />
     }
+    
 
   ])
 

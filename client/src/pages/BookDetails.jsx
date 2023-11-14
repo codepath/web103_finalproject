@@ -5,7 +5,7 @@ import '../styles/Book.css'
 const BookDetails = () => {
     const { id } = useParams();
     const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' });
-      
+    
     useEffect(() => {
         const fetchBookById = async () => {
             const response = await fetch(`http://localhost:3001/api/books/${id}`)  // http://localhost:3001/api/books/1
@@ -29,8 +29,11 @@ const BookDetails = () => {
                 </div>
 
             </div>
-            <Link to=""><button>Add to MyProfile</button></Link>
+            <Link to={`/booksreviews/${id}`}><button>Read Reviews</button></Link>
+
             <Link to={`/edit/${id}`}><button>Edit Book</button></Link>
+
+            <Link to=""><button>Add to MyProfile</button></Link>
         </>
     )
 }
