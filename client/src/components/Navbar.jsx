@@ -42,6 +42,9 @@ const Navbar = () => {
         <Link to="/resources" className="link">
           Resources
         </Link>
+        <Link to="/posts" className="link">
+          Discussion Board
+        </Link>
       </div>
       <nav>
         {isAuthenticated ? (

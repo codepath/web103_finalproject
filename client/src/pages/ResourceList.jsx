@@ -2,8 +2,7 @@
 import React from 'react';
 import { mockData } from '../../../server/data/mockData'; 
 import ResourceItem from '../components/ResourceItem';
-import './ResourceList.css';  // Import the CSS file
-//import Navbar from '../components/Navbar';
+import '../css/ResourceList.css';  // Import the CSS file
 
 const ResourceList = () => {
   const groupedResources = mockData.resources.reduce((acc, resource) => {

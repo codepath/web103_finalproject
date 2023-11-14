@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
           <Route path="/posts" element={<ProtectedRoute><DiscussionBoard /></ProtectedRoute>} />
           <Route path="/resources" element={<ProtectedRoute><ResourceList /></ProtectedRoute>} />
           <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
