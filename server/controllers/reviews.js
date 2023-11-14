@@ -20,7 +20,7 @@ const createReview = async (req, res) => {
 const getReviews = async (req, res) => {
   try {
     const results = await pool.query(
-      "SELECT * FROM reviews ORDER BY reviewid ASC"
+      "SELECT * FROM reviews ORDER BY review_id ASC"
     );
     res.status(200).json(results.rows);
   } catch (error) {

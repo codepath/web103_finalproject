@@ -6,17 +6,17 @@ import './SneakerDetails.css'
 const SneakerDetails = ({data}) => {
 
     const {id} = useParams();
-    const [post, setPost] = useState({id: 0, brand_name: "", description: "", sizes: "", price: "", img_url: ""})
+    const [post, setPost] = useState({id: 0, name: "", description: "", sizes: "", price: "", image_url: ""})
     const [comments, setComments] = useState([])
 
     useEffect(() => {
         const result = data.filter(item => item.id === parseInt(id))[0];
 
-        setPost({id: parseInt(result.id), brand_name: result.brand_name, description: result.description, sizes: result.sizes, price: result.price, img_url: result.img_url});
+        setPost({id: parseInt(result.id), name: result.name, description: result.description, sizes: result.sizes, price: result.price, image_url: result.image_url});
 
 
         const fetchComments = async () => {
-            const response = await fetch('/api/comments/' + id)
+            const response = await fetch('/api/reviews/' + id)
             const data = await response.json()
             setComments(data)
         }
@@ -29,20 +29,20 @@ const SneakerDetails = ({data}) => {
     return (
         <div className="out">
         <div className="details-banner">
-        <h3 className="brand_name">{post.brand_name}</h3>
+        <h3 className="brand_name">{post.name}</h3>
         <div className="details-container">
             <p className="details-description">{post.description}</p>
         </div>
         </div>
 
             <div className="flex-container">
-                <div className="left-side" style={{ backgroundImage:`url(${post.img_url})`}}>
+                <div className="left-side" style={{ backgroundImage:`url(${post.image_url})`}}>
                 </div>
                 <div className="right-side">
                     {/* <p>{"✔️ Sizes: " + post.sizes }</p> */}
                     <p className="details-price">{"🏷️ Price: " + post.price}</p>
-                    <p className="right-side-brand_name">{post.brand_name}</p>
-                    <Link to={'../../comment/create/'+ id }><button className="addCommentBtn">Create Comment</button></Link>
+                    <p className="right-side-brand_name">{post.name}</p>
+                    <Link to={'../../comment/reviews/'+ id }><button className="addCommentBtn">Review</button></Link>
                 </div>
             </div>
 

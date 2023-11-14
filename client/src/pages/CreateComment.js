@@ -29,7 +29,7 @@ const CreateComment = () => {
             body: JSON.stringify(comment)
         }
         
-        await fetch('/api/comments/' + sneaker_id, options)
+        await fetch('/api/reviews/' + sneaker_id, options)
         window.location.href = '/'
     }
 

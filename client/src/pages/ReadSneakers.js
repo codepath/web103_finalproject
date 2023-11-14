@@ -17,9 +17,9 @@ const ReadSneakers = (props) => {
     const handleBrandSort = () => {
         const sortedSneakers = [...posts].sort((a, b) => {
             if (brandSortOrder === 'ascending') {
-                return a.brand_name.localeCompare(b.brand_name);
+                return a.name.localeCompare(b.name);
             } else {
-                return b.brand_name.localeCompare(a.brand_name);
+                return b.name.localeCompare(a.name);
             }
         });
         setPosts([...sortedSneakers]);
@@ -68,11 +68,11 @@ const ReadSneakers = (props) => {
                 posts.map((post,index) => 
                    <SneakersCard key={post.id} 
                          id={post.id} 
-                         brand_name={post.brand_name} 
+                         brand_name={post.name} 
                          description={post.description} 
                          sizes={post.sizes} 
                          price={post.price}
-                         img_url={post.img_url} />
+                         image_url={post.image_url} />
                 ) : <h3 className="noResults">{'No Sneakers Yet 😞'}</h3>
             }
         </div> 

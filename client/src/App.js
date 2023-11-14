@@ -33,7 +33,7 @@ const App = () => {
       element:<SneakerDetails data={sneakers}/>
     },
     {
-      path:"/comment/create/:sneaker_id",
+      path:"/reviews/create/:sneaker_id",
       element: <CreateComment />
     },
     {

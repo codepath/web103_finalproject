@@ -14,13 +14,13 @@ const CommentBtn = (props) =>  {
       body: JSON.stringify({num_votes: num_votes + 1})
     }
     
-    fetch('/api/comments/' + props.id, options)
+    fetch('/api/reviews/' + props.id, options)
     setNumVotes((num_votes) => num_votes + 1)
   }
 
   return (
     <button className='commentBtn' id={props.id} onClick={updateCount}>
-       {num_votes  +  ' ❤️ ' } <br/ > <br/ >  {props.comments} 
+       {num_votes  +  ' ❤️ ' } <br/ > <br/ >  {props.reviews} 
     </button>
   )
 
