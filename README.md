@@ -78,7 +78,8 @@ Here's a walkthrough of implemented required features:
 
 
 
-![bookcrud](https://github.com/XujuanChen/web103_finalproject/assets/109524796/c948e060-5d60-49d5-b5fb-581f6b6a885d)
+![reviewbook](https://github.com/XujuanChen/web103_finalproject/assets/109524796/b493a1e4-a02e-4d0f-af88-ee023ff02aeb)
+
 
 
 
