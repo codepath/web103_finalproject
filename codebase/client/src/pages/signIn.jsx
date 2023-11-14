@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import '../styles/signIn.css';
@@ -23,20 +22,6 @@ const SignIn = () => {
   const closeError = () => {
     setError(null);
   };
-
-  const createAccount = (event) => {
-    event.preventDefault()
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(trip)
-    }
-  
-    fetch('/api/users', options)
-    window.location.href = '/'
-  }
 
   return (
     <div className="bodyLogIn" onClick={closeError}>

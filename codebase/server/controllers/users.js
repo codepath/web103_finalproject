@@ -1,19 +1,31 @@
 import pool from '../config/database.js'
 
 const createUser = async (req, res) => {
-    try{
-        const { email, fist_name, last_name, address, city, state, zip, phone } = req.body
-        const results = await pool.query(
-            'INSERT INTO users () VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-            [email, fist_name, last_name, address, city, state, zip, phone]
-          )
-        res.status(201).json(results.rows[0])
+  try {
+    const { email, first_name, last_name, address, city, state, zip, phone } = req.body;
+    const query = `
+      INSERT INTO users (email, first_name, last_name, address, city, state, zip, phone)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      RETURNING *
+    `;
+    const values = [email, first_name, last_name, address, city, state, zip, phone];
 
-    } catch (error) {
-        res.status(409).json( { error: error.message } )
+    // Attempt to insert the user
+    const results = await pool.query(query, values);
+    res.status(201).json(results.rows[0]);
+  } catch (error) {
+    // Log the error message for debugging
+    console.error('Error creating user:', error.message);
+
+    // Check if the error message contains unique constraint violation
+    if (error.message.includes('unique constraint')) {
+      res.status(409).json({ error: 'Email already exists.' });
+    } else {
+      // If it's another type of error, return a generic 409 error message
+      res.status(409).json({ error: 'Conflict while creating user.' });
     }
-
-}
+  }
+};
 
 // const filterItems = async (req, res) => { use these example routes for user routes
 //     try {
@@ -60,28 +72,27 @@ const createUser = async (req, res) => {
 //     }
 //   };
 
-//   const getItems = async (req, res) => {
-//     try{
-//         const results = await pool.query('SELECT * FROM items ORDER BY id ASC')
-//         res.status(200).json(results.rows)
-//     } catch (error) {
-//         res.status(409).json( { error: error.message } )
-//     }
-// }
+  const getUsers = async (req, res) => {
+    try{
+        const results = await pool.query('SELECT * FROM users')
+        res.status(200).json(results.rows)
+    } catch (error) {
+        res.status(409).json( { error: error.message } )
+    }
+}
 
-// const getItem = async (req, res) => {
-//     try{
-//         const id = parseInt(req.params.id)
-//         const results = await pool.query('SELECT * FROM items WHERE id = $1', [id])
-//         res.status(200).json(results.rows[0])
+const getUser = async (req, res) => {
+    try{
+        const id = parseInt(req.params.id)
+        const results = await pool.query('SELECT * FROM users WHERE id = $1', [id])
+        res.status(200).json(results.rows[0])
 
-//     } catch (error) {
-//       res.status(409).json( { error: error.message } )
-//       console.log('Unable to get item')
-//       console.log('Error:', error.message)
-//     }
-
-// } 
+    } catch (error) {
+      res.status(409).json( { error: error.message } )
+      console.log('Unable to get user')
+      console.log('Error:', error.message)
+    }
+} 
 
 const updateUser = async (request, response) => {
     try {
@@ -125,8 +136,8 @@ const updateUser = async (request, response) => {
   export default {
     createUser,
     // filterItems,
-    // getItems,
-    // getItem,
+    getUsers,
+    getUser,
     updateUser,
     deleteUser
   }

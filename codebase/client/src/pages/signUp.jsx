@@ -1,55 +1,63 @@
-// src/components/SignUp.js
-import React, { useState } from 'react';
-import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
+import { Navigate } from 'react-router-dom';
+import SignUpForm from '../components/signUpForm';
 import DisplayVerificationMessage from '../components/displayVerificationMessage';
-import '../styles/signIn.css';
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [verificationMessage, setVerificationMessage] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
 
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Send email verification
-      await sendEmailVerification(userCredential.user);
-      setVerificationMessage('Thank you for signing up! An email verification link has been sent to your email address. Please check your email and click the link to verify your account.');
-    } catch (error) {
-      console.error('Error registering user:', error.message);
+      if (user && user.emailVerified) {
+        // Call your function to create an account
+        const createAccount = async (email) => {
+          console.log(email)
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: email,
+              first_name: '',
+              last_name: '',
+              address: '',
+              city: '',
+              state: '',
+              zip: '',
+              phone: ''
+            })
+          };
+          await fetch('http://localhost:3001/api/users', options);
+        };
+        createAccount(user.email);
+        console.log('User verified');
+      }
+    });
+    return () => {
+      // Unsubscribe from the auth state listener when the component unmounts
+      unsubscribe();
+    };
+    
+  }, []);
+
+  if (user) {
+    // If user is logged in, check for email verification
+    if (user.emailVerified) {
+      // Redirect to home page if email is verified
+      return <Navigate to="/" />;
+    } else {
+      // Display message for unverified email
+      return <DisplayVerificationMessage />;
     }
-  };
-
-  return (
-    <div className="bodyLogIn">
-      <div className="containerLogIn">
-        <div className="wrapper">
-          <div className="title"><span>Sign Up</span></div>
-          {verificationMessage ? (
-            <DisplayVerificationMessage/>
-          ) : (
-            <form onSubmit={handleSignUp}>
-              <div className="row">
-                <i className="fas fa-user"></i>
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-              </div>
-              <div className="row">
-                <i className="fas fa-lock"></i>
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-              </div>
-              <div className="btnLogIn">
-                <input type="submit" value="Sign Up" />
-              </div>
-              <div className="signup-link">Already a User? <a href="#">Login now</a></div>
-            </form>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  } else {
+    // If user is not logged in, show the sign-up form
+    return <SignUpForm />;
+  }
 };
 
 export default SignUp;

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {
   BrowserRouter as Router,
   Route,
@@ -28,7 +27,6 @@ function App() {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       setUser(authUser);
     });
-
     return () => {
       unsubscribe();
     };
@@ -61,7 +59,7 @@ function App() {
               <span className="home-nav5">Contact</span>
             </nav>
             <div className="home-buttons">
-              {user ? <a href="/"><button onClick={handleLogout}className="btnWhite">Logout</button></a> : (
+              {user && user.emailVerified ? <a href="/"><button onClick={handleLogout}className="btnWhite">Logout</button></a> : (
                 <>
                   <a href="/signIn"><button className="btnWhite">Login</button></a>
                   <a href="/signUp"><button className="btnWhite">SignUp</button></a>
@@ -118,15 +116,7 @@ function App() {
         <Route element={<ProductView />} path="/productview" />
         <Route element={<Liked />} path="/liked" />
         <Route element={<SignIn />} path="/signIn" />
-        <Route path="/signUp" element={user ? (
-            user.emailVerified ? (
-              <Navigate to="/" />
-            ) : (
-              <DisplayVerificationMessage />
-            )
-          ) : (
-            <SignUp />
-          )} />       
+        <Route path="/signUp" element={<SignUp />} />       
         <Route element={<Checkout />} path="/checkout" />
         {/* <Redirect to="**" /> */}
       </Routes>

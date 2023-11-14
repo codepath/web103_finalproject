@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import itemRoutes from './routes/items.js'
+import userRoutes from './routes/users.js'
 // import activityRoutes from './routes/activities.js'
 // import destinationRoutes from './routes/destinations.js'
 // import tripDestinationRoutes from './routes/trips_destinations.js'
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/items', itemRoutes)
+app.use('/api/users', userRoutes)
 // app.use('/api/activities', activityRoutes)
 // app.use('/api/destinations', destinationRoutes)
 // app.use('/api/trips-destinations', tripDestinationRoutes)
