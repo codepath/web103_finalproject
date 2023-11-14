@@ -12,4 +12,5 @@ const DisplayVerificationMessage = () => {
   );
 };
 
+
 export default DisplayVerificationMessage;
