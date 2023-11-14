@@ -67,6 +67,9 @@ const DiscussionBoard = () => {
   return (
     <div>
       <h2>Discussion Board</h2>
+      <button>
+        <a href="/create-post">Create Post</a>
+      </button>
       {posts.map(function (post) {
         return (
           <Post
