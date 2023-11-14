@@ -1,0 +1,84 @@
+import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
+import '../styles/Book.css'
+
+const EditReview= () => {
+    const {id} = useParams();
+    // console.log("editreview:"+id)
+    const [review, setReview] = useState({id:0, review:'', rating:0, book_id:0});
+
+    useEffect(() => {
+        const fetchBook = async () => {
+            try {
+            const response = await fetch('http://localhost:3001/api/reviews/'+id);
+            const data = await response.json();
+            setReview(data);
+            } catch (error) {
+            console.error("Error fetching book:", error);
+            }
+        }
+    
+        fetchBook();
+    }, [])
+
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setReview( (prev) => {
+            return {
+                ...prev,
+                [name]:value,
+            }
+        })
+    }
+    
+
+    const updateReview = async (event) => {
+        event.preventDefault();
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        }
+        
+        await fetch('http://localhost:3001/api/reviews/' + id, options)
+        window.location.href = `/`
+    }
+
+
+    const deleteReview = async (event) => {
+        event.preventDefault();
+
+        const options = {
+            method: 'DELETE'
+        }
+        
+        await fetch('http://localhost:3001/api/reviews/'+ id, options)
+        window.location.href = `/`
+    }
+
+    return (
+        <div>
+            <center><h3>Edit Your Comments</h3></center>
+            <form>
+                <label>Rating</label> <br />
+                <input type="number" id="rating" name="rating" value={review.rating} onChange={handleChange} /><br />
+                <br/>
+
+                <label>Review</label><br />
+                <textarea rows="5" cols="50" id="review" name="review" value={review.review} onChange={handleChange}>
+                </textarea>
+                <br/>
+
+                <button type="submit" value="Submit" onClick={updateReview}>update</button>
+
+                <button type="submit" value="Submit" onClick={deleteReview}>delete</button>
+            </form>
+        </div>
+    )
+}
+
+export default EditReview

@@ -4,6 +4,7 @@ import '../styles/Book.css'
 
 const EditBook = ({data}) => {
     const {id} = useParams();
+    // console.log("editbook:"+id)
     const [post, setPost] = useState({id: 0, name: '', author: '', image: '', description: '' })
 
     useEffect(() => {
@@ -41,7 +42,7 @@ const EditBook = ({data}) => {
         }
         
         await fetch('http://localhost:3001/api/books/' + id, options)
-        window.location.href = '/'
+        window.location.href =  `/booksreviews/${id}`
     }
 
 
@@ -53,7 +54,7 @@ const EditBook = ({data}) => {
         }
         
         await fetch('http://localhost:3001/api/books/'+ id, options)
-        window.location.href = '/'
+        window.location.href = `/booksreviews/${id}`
     }
 
     return (

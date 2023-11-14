@@ -5,6 +5,7 @@ import booksRouter from './routes/books.js'
 import readersRouter from './routes/readers.js'
 import reviewsRouter from './routes/reviews.js'
 import readersbooksRouter from './routes/readersbooks.js'
+import BooksReviewsRouter from './routes/books_reviews.js'
 
 dotenv.config()
 const app = express()
@@ -20,6 +21,7 @@ app.use('/api/books', booksRouter)
 app.use('/api/readers', readersRouter)
 app.use('/api/reviews', reviewsRouter)
 app.use('/api/readersbooks', readersbooksRouter)
+app.use('/api/booksreviews', BooksReviewsRouter)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
