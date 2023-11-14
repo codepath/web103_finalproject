@@ -16,8 +16,7 @@ const Post = ({ post, onDelete, onEdit }) => {
 
   return (
     <div className="post">
-      <h3><Link to={`/posts/${post.id}`}>{post.title}</Link></h3>
-      <p>{post.content}</p>
+      <h3><Link to={`/posts/${post.id}`}>{post.content}</Link></h3>
       <button onClick={() => onEdit()}>Edit</button> {/* Call the onEdit function */}
       <button onClick={() => onDelete(post.id)}>Delete</button>
     </div>
