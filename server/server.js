@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import favicon from "serve-favicon";
 import dotenv from "dotenv";
+import cors from "cors";
 
 // import the router from your routes file
 import userDetailsRouter from "./routes/userDetails.js";
@@ -22,6 +23,12 @@ if (process.env.NODE_ENV === "development") {
   app.use(favicon(path.resolve("public", "lightning.png")));
   app.use(express.static("public"));
 }
+
+// add functionality to restrict backend connection only to front-end post 5173
+const corsOptions = {
+  origin: "http://localhost:5173",
+};
+app.use(cors(corsOptions));
 
 // specify the api path for the server to use
 app.use("/", userDetailsRouter);
