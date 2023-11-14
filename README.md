@@ -24,7 +24,7 @@ Backend:
 
 ## Features
 
-### User-friendly and pleasant shopping experience with UI/UX in mind
+### User-friendly and pleasant shopping experience with UI/UX in mind ✅
 
 Pleasant store pages for shopping and great user experience
 
@@ -36,7 +36,7 @@ Using specific login credentials, an admin can upload, delete, and edit current 
 
 [gif goes here]
 
-### Account Creation
+### Account Creation ✅
 
 Users can create accounts with email verification to make purchases, view purchase history, and perform other features
 
