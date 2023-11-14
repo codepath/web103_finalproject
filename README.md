@@ -71,6 +71,10 @@ Backend: PostgreSQL, Express.js, Node.js
 
 ### Milestone 4- Unit 8 Gifs
 
+Backend: https://imgur.com/a/Vb6hiUt
+
+Frontend: https://imgur.com/a/fU5h1ak
+
 ### Milestone 3- Unit 7 Gifs
 
 Backend: https://imgur.com/a/UOY3gqP
