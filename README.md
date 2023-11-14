@@ -32,9 +32,9 @@ Using specific login credentials, an admin can upload, delete, and edit current 
 
 ### Account Creation
 
-Users can create accounts to make purchases, view purchase history, and perform other features
+Users can create accounts with email verification to make purchases, view purchase history, and perform other features
 
-[gif goes here]
+<img src='jewelryStore1.gif' />
 
 ### Account Editing and Deletion
 
