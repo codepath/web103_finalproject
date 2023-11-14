@@ -18,13 +18,13 @@ function Login() {
   };
 
   const checkUserExists = () => {
-    setRegisteredUser((prev) => prev);
+    setRegisteredUser((prev) => !prev);
     if (!isRegisteredUser) {
       const registerSchema = yup.object().shape({
         email: yup.string().required("Email is required!"),
         password: yup.string().required("Password is required!"),
-        name: yup.string().required("Name is required!"),
-        phone: yup.string().required("Phone Number is required!"),
+        // name: yup.string().required("Name is required!"),
+        // phone: yup.string().required("Phone Number is required!"),
       });
       setSchema(registerSchema);
     } else {
@@ -70,7 +70,11 @@ function Login() {
         padding: "50px",
       }}
     >
-      <p style={{ fontSize: "25px", fontWeight: "700" }}>LOGIN FORM</p>
+      {isNewAttempt || isRegisteredUser ? (
+        <p style={{ fontSize: "25px", fontWeight: "700" }}>LOGIN FORM</p>
+      ) : (
+        <p style={{ fontSize: "25px", fontWeight: "700" }}>REGISTRATION FORM</p>
+      )}
       {!isNewAttempt && !isRegisteredUser && (
         <div>
           <input
@@ -103,7 +107,7 @@ function Login() {
           }}
           onClick={checkUserExists}
         >
-          Submit
+          Check Email
         </button>
       )}
       {!isNewAttempt && (
