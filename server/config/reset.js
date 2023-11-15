@@ -92,17 +92,19 @@ const createTagsTables = async () => {
         );
     `
     const createMoviesTagsTableQuery = `
-        DROP TABLE IF EXISTS movies_tags CASCADE;
-
-        CREATE TABLE IF NOT EXISTS movies_tags (
-            movie_id int NOT NULL,
-            tag_id int NOT NULL,
-            PRIMARY KEY (movie_id, tag_id),
-            FOREIGN KEY (movie_id) REFERENCES movies(movie_id) 
-                ON UPDATE CASCADE
-                On DELETE CASCADE,
-            FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON UPDATE CASCADE
-        );
+    DROP TABLE IF EXISTS movies_tags CASCADE;
+      
+    CREATE TABLE IF NOT EXISTS movies_tags (
+        movie_id int NOT NULL,
+        tag_id int NOT NULL,
+        PRIMARY KEY (movie_id, tag_id),
+        FOREIGN KEY (movie_id) REFERENCES movies(movie_id) 
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
+      );
     `
 
     try {
