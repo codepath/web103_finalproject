@@ -12,6 +12,8 @@ const moviesData = JSON.parse(moviesFile)
 
 const createMoviesTable = async () => {
     const createMoviesTableQuery = `
+        DROP TABLE IF EXISTS movies CASCADE;
+
         CREATE TABLE IF NOT EXISTS movies (
             movie_id serial PRIMARY KEY,
             title varchar(500) NOT NULL,
@@ -63,6 +65,8 @@ const seedMoviesTable = async () => {
 
 const createWishlistTable = async () => {
     const createWishlistTableQuery = `
+        DROP TABLE IF EXISTS wishlist CASCADE;
+
         CREATE TABLE IF NOT EXISTS wishlist (
             user_id int,
             movie_id int
@@ -80,13 +84,17 @@ const createWishlistTable = async () => {
 
 const createTagsTables = async () => {
     const createTagsTableQuery = `
+        DROP TABLE IF EXISTS tags CASCADE;
+
         CREATE TABLE IF NOT EXISTS tags (
             tag_id serial PRIMARY KEY,
             genre varchar(100)
         );
     `
     const createMoviesTagsTableQuery = `
-      CREATE TABLE IF NOT EXISTS movies_tags (
+    DROP TABLE IF EXISTS movies_tags CASCADE;
+      
+    CREATE TABLE IF NOT EXISTS movies_tags (
         movie_id int NOT NULL,
         tag_id int NOT NULL,
         PRIMARY KEY (movie_id, tag_id),
@@ -115,6 +123,8 @@ const createTagsTables = async () => {
 
 const createUsersTable = async () => {
     const createUsersTableQuery = `
+        DROP TABLE IF EXISTS users CASCADE;
+        
         CREATE TABLE IF NOT EXISTS users (
             id serial PRIMARY KEY,
             fullname varchar(100) NOT NULL,
