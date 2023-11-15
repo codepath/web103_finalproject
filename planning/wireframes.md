@@ -1,21 +1,25 @@
 # Wireframes
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+<ul>
+    <li>Profile⭐</li>
+    <li>Home Page⭐</li>
+    <li>Landing Page⭐</li>
+    <li>Login/Signup Page</li>
+    <li>About Us</li>
+</ul>
 
-## Wireframe 1: [page title]
+## Wireframe 1: Home Page
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+<img src='../images/1.png'/>
 
-## Wireframe 2: [page title]
+## Wireframe 2: Profile Page
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+<img src='../images/2.png'/>
 
-## Wireframe 3: [page title]
+## Wireframe 3: Landing Page
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+<img src='../images/3.png'/>
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
