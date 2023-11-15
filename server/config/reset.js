@@ -8,6 +8,10 @@ const currentPath = fileURLToPath(import.meta.url)
 const moviesFile = fs.readFileSync(path.join(dirname(currentPath), '../config/data/data.json'))
 const moviesData = JSON.parse(moviesFile)
 
+const currentPathTag = fileURLToPath(import.meta.url)
+const tagsFile = fs.readFileSync(path.join(dirname(currentPathTag), '../config/data/data_tag.json'))
+const tagsData = JSON.parse(tagsFile)
+
 
 
 const createMoviesTable = async () => {
@@ -119,6 +123,23 @@ const createTagsTables = async () => {
 }
 
 
+const seedTagsTable = async () => {
+    await createTagsTables()
+  
+    tagsData.forEach((tag) => {
+        const insertQuery = {
+            text: 'INSERT INTO tags (genre) VALUES ($1)'
+        }
+        
+        try {
+            pool.query(insertQuery, [tag.genre])
+            console.log(`✅ ${tag.genre} added successfully`)
+        }
+        catch (err) {
+            console.error('⚠️ error inserting tags', err)
+        }
+    })
+}
 
 
 const createUsersTable = async () => {
@@ -145,9 +166,9 @@ const createUsersTable = async () => {
 
 
 seedMoviesTable()
+seedTagsTable()
 createUsersTable()
 createWishlistTable()
-createTagsTables()
 
 
 
