@@ -14,8 +14,6 @@ const createMoviesTable = async () => {
     const createMoviesTableQuery = `
         DROP TABLE IF EXISTS movies CASCADE;
 
-        DROP TABLE IF EXISTS movies CASCADE;
-
         CREATE TABLE IF NOT EXISTS movies (
             movie_id serial PRIMARY KEY,
             title varchar(500) NOT NULL,
