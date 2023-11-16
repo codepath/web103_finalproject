@@ -1,10 +1,10 @@
 import express from 'express'
-import UsersTripsController from '../controllers/users_trips.js'
+import UsersBooksController from '../controllers/users_books.js'
 
 const router = express.Router()
 
-router.post('/create/:trip_id', UsersTripsController.createTripUser)
-router.get('/users/:trip_id', UsersTripsController.getTripUsers)
-router.get('/trips/:username', UsersTripsController.getUserTrips)
+router.post('/create/:book_id', UsersBooksController.createBookUser)
+router.get('/users/:book_id', UsersBooksController.getBookUsers)
+router.get('/books/:username', UsersBooksController.getUserBooks)
 
 export default router
