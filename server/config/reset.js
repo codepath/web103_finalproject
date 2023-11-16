@@ -76,7 +76,6 @@ const createReviewssTable = async () => {
         FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
     `
-
     try {
         await pool.query(createReviewsTableQuery)
         console.log('🎉 reviews table created successfully')

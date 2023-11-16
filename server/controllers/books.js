@@ -1,8 +1,42 @@
 import { pool } from '../config/database.js'
+import { URL } from 'url';
+import imageSize from 'image-size';
+import fetch from 'node-fetch';
 
 const createBook = async (req, res) => {
     try {
         const { name, author, image, description } = req.body
+
+        // Function to check if the URL points to a valid image
+        const isValidImageURL = async (url) => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    return false;
+                }
+                const buffer = await response.buffer();
+                const dimensions = imageSize(buffer);
+                return dimensions.width > 0 && dimensions.height > 0;
+            } catch (error) {
+                return false;
+            }
+        };
+
+        // Validate the image URL
+        const isValidURL = (string) => {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        };
+
+        // Check if the image URL is valid and points to a valid image
+        if (!isValidURL(image) || !(await isValidImageURL(image))) {
+            return res.status(400).json({ error: 'Invalid image URL' });
+        }
+
         const results = await pool.query(
             `INSERT INTO books ( name, author, image, description )
             VALUES( $1, $2, $3, $4 ) 
@@ -41,6 +75,37 @@ const updateBook= async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const { name, author, image, description } = req.body
+
+        // Function to check if the URL points to a valid image
+        const isValidImageURL = async (url) => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    return false;
+                }
+                const buffer = await response.buffer();
+                const dimensions = imageSize(buffer);
+                return dimensions.width > 0 && dimensions.height > 0;
+            } catch (error) {
+                return false;
+            }
+        };
+
+        // Validate the image URL
+        const isValidURL = (string) => {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        };
+
+        // Check if the image URL is valid and points to a valid image
+        if (!isValidURL(image) || !(await isValidImageURL(image))) {
+            return res.status(400).json({ error: 'Invalid image URL' });
+        }
+        
         const results = await pool.query(
             `UPDATE books
             SET name = $1, author = $2, image = $3, description = $4
