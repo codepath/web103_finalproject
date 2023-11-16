@@ -1,0 +1,200 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    /* This will blur everything behind the modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Make sure it's above other content */
+}
+
+.modal {
+    position: relative;
+    background: #1a1a1a;
+    /* Dark background for the modal */
+    color: white;
+    /* Text color */
+    border-radius: 15px;
+    /* Slightly rounded corners for the modal */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 50vw;
+    /* Max width */
+    max-height: 80vh;
+    /* Max height */
+    overflow-y: auto;
+    /* Enable scroll if content is too long */
+    display: flex;
+    flex-direction: column;
+    /* Increase the modal width and padding for a bigger, more detailed view */
+    padding: 30px;
+    width: 80vw;
+    /* Responsive width based on the viewport width */
+    max-width: 900px;
+    /* Larger max width for better detail display */
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    /* White color for the icon */
+}
+
+.modal-title {
+    font-size: 2rem;
+    /* Larger font size for the title */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.modal-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-trailer {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background-color: #e50914;
+    /* Red color for the button */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Additional styles for other content you want to include in the modal */
+.modal-info {
+    margin-bottom: 0.5rem;
+}
+
+.modal-actors,
+.modal-director,
+.modal-publish-date {
+    font-size: 0.9rem;
+}
+
+/* Scrollbar styles for the modal content */
+.modal::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: #e50914;
+    /* Red scrollbar thumb */
+    border-radius: 10px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    /* Dark track as the modal background */
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-image {
+    width: 100%;
+    /* Full width of the modal */
+    max-height: 300px;
+    /* Maximum image height */
+    object-fit: cover;
+    /* Ensure the image covers the area nicely */
+    border-radius: 10px;
+    /* Rounded corners for the image */
+    margin-bottom: 20px;
+    /* Spacing between the image and the modal content */
+}
+
+.modal-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.youtube-container {
+    position: relative;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    /* Rounded corners for the iframe */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Shadow for depth */
+    margin-top: 20px;
+    /* Spacing between content and video */
+}
+
+.youtube-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+    font-size: 48px;
+}
+
+.youtube-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-edit-link {
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    /* Center the link horizontally */
+    margin-top: 20px;
+    /* Spacing from the YouTube iframe */
+}
+
+.edit-link {
+    display: inline-flex;
+    /* Align icon with text */
+    align-items: center;
+    color: #fff;
+    /* White color text to match the close button */
+    text-decoration: none;
+    /* Remove underline from link */
+    background-color: #e50914;
+    /* Red background to match your theme */
+    padding: 10px 20px;
+    border-radius: 5px;
+    /* Match the close button's styling */
+    font-weight: bold;
+    /* Bold text */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.edit-icon {
+    margin-right: 8px;
+    /* Space between icon and text */
+}
+
+.edit-link:hover {
+    background-color: #c4080d;
+    /* Slightly darker red on hover */
+}

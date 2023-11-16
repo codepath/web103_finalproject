@@ -1,0 +1,42 @@
+[
+    {
+        "tag_id": 1,
+        "genre": "Action"
+    },
+    {
+        "tag_id": 2,
+        "genre": "Adventure"
+    },
+    {
+        "tag_id": 3,
+        "genre": "Comedy"
+    },
+    {
+        "tag_id": 4,
+        "genre": "Drama"
+    },
+    {
+        "tag_id": 5,
+        "genre": "Fantasy"
+    },
+    {
+        "tag_id": 6,
+        "genre": "Horror"
+    },
+    {
+        "tag_id": 7,
+        "genre": "Mystery"
+    },
+    {
+        "tag_id": 8,
+        "genre": "Romance"
+    },
+    {
+        "tag_id": 9,
+        "genre": "Sci-Fi"
+    },
+    {
+        "tag_id": 10,
+        "genre": "Thriller"
+    }
+]

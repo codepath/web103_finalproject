@@ -1,28 +1,42 @@
-
 [
-    {
+  {
+      "movie_id": 1,
       "title": "The Shawshank Redemption",
       "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
       "actors": "Tim Robbins, Morgan Freeman",
       "director": "Frank Darabont",
-      "publish_date": "1994-09-23",
+      "publish_date": "1994-09-23T04:00:00.000Z",
       "img_url": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg",
       "trailer_url": "https://youtube.com/watch?v=6hB3S9bIaco"
-    },
-    {
+  },
+  {
+      "movie_id": 2,
       "title": "The Godfather",
       "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
       "actors": "Marlon Brando, Al Pacino",
       "director": "Francis Ford Coppola",
-      "publish_date": "1972-03-24",
+      "publish_date": "1972-03-24T05:00:00.000Z",
       "img_url": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
       "trailer_url": "https://youtube.com/watch?v=sY1S34973zA"
-    }
-  ]
-
-  
-  
-  
-  
-  
-  
+  },
+  {
+      "movie_id": 3,
+      "title": "Avatar",
+      "description": "It is set in the mid-22nd century when humans are colonizing Pandora, a lush habitable moon of a gas giant in the Alpha Centauri star system, in order to mine the valuable mineral unobtanium. The expansion of the mining colony threatens the continued existence of a local tribe of Na'vi, a humanoid species indigenous to Pandora. The title of the film refers to a genetically engineered Na'vi body operated from the brain of a remotely located human that is used to interact with the natives of Pandora.",
+      "actors": "Sam Worthington, Zoe Saldana, Stephen Lang",
+      "director": "James Cameron",
+      "publish_date": "2009-12-18T05:00:00.000Z",
+      "img_url": "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg",
+      "trailer_url": "https://www.youtube.com/watch?v=rjRVnVziU2A"
+  },
+  {
+      "movie_id": 4,
+      "title": "Titanic",
+      "description": "An epic, action-packed romance set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built. She was the most luxurious liner of her era -- the \"ship of dreams\" -- which ultimately carried over 1,500 people to their death in the ice cold waters of the North Atlantic in the early hours of April 15, 1912.",
+      "actors": "Leonardo DiCaprio, Kate Winslet",
+      "director": "James Cameron",
+      "publish_date": "1997-12-19T05:00:00.000Z",
+      "img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdPugWzSnX3TWCYO-KlF4f5VF2JeMp6VGdAi2lQTLzsqHq00dW",
+      "trailer_url": "https://www.youtube.com/watch?v=CHekzSiZjrY"
+  }
+]

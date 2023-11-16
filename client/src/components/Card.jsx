@@ -8,7 +8,7 @@ const Card = ({ title, description, actors, director, publish_date, img_url, tra
                 <div className='card-overlay'>
                     <div className='card-content'>
                         <h2 className='card-title'>{title}</h2>
-                        <a href={trailer_url} className='card-trailer'>Watch Trailer</a>
+                        <a href={trailer_url} className='card-trailer' target='_blank'>Watch Trailer</a>
                     </div>
                 </div>
             </div>

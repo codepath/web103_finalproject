@@ -64,4 +64,4 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 - **User to Movie**: One to Many (A user can create multiple movies, but each movie is created by one user)
 - **User to Wishlist**: One to One (A user can have multiple wishlists, but each wishlist belongs to one user)
 - **Wishlist to Movie**: Many to Many (A wishlist can have multiple movies and a movie can be in multiple wishlists)
-- **Movie to Tag**: Many to Many (A movie can have multiple tags and a tag can be associated with multiple movies)
+- **Movie to Tag**: One to Many (A movie can have only one tag but a tag can be associated with multiple movies)
