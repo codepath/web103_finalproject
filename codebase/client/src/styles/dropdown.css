@@ -1,12 +1,12 @@
 /* Dropdown styles */
 
-.dropdown {
+ .dropdown {
     max-width: 13em;
-    position: relative;
-    width: 35%;
     margin-left: var(--dl-space-space-twounits);
+    flex: 0 0 calc(20%);
   }
   
+  /*
   .dropdown-btn {
     background: #1d1f24;
     font-size: 18px;
@@ -73,7 +73,7 @@
     color: #fff;
     margin: 0.1em 0;
     text-decoration: none;
-  }
+  } */
   
   /* base styles */
   * {
