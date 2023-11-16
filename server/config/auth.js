@@ -43,3 +43,4 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
 }
 
 export const GitHub = new GitHubStrategy(options, verify)
+
