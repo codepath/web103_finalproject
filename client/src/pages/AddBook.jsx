@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/AddBook.css'
 
 const AddBook = () => {
     const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' });
@@ -13,8 +14,24 @@ const AddBook = () => {
         })
     }
 
+    const isValidImageUrl = (url) => {
+        // Basic URL format validation
+        try {
+            new URL(url);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    };
+
     const createBook = async (event) => {
         event.preventDefault()
+
+        // Validate the image URL before submitting
+        if (!isValidImageUrl(book.image)) {
+            alert('Please provide a valid image URL.');
+            return; // Prevent form submission if URL is invalid
+        }
 
         const options = {
             method: 'POST',
@@ -25,12 +42,14 @@ const AddBook = () => {
         }
 
         await fetch(`http://localhost:3001/api/books`, options)
-        window.location.href = '/browse/'
+
+        window.location.href = '/browse'
+
     }
 
     return (
         <div>
-            <center><h3> Add New Book</h3></center>
+            <center><h3>Add New Book</h3></center>
             <form>
                 <label>Title</label> <br />
                 <input type="text" id="name" name="name" value={book.name} onChange={handleChange}/><br />
@@ -45,11 +64,12 @@ const AddBook = () => {
                 <br/>
 
                 <label>Description</label><br />
+                <br />
                 <textarea rows="5" cols="50" id="description" name="description" value={book.description} onChange={handleChange}>
                 </textarea>
                 <br/>
 
-                <button type="submit" value="Submit" onClick={createBook}>Submit</button>
+                <input type="submit" value="Submit" onClick={createBook} />
             </form>
         </div>
     )

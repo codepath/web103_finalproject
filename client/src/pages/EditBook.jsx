@@ -4,7 +4,6 @@ import '../styles/Book.css'
 
 const EditBook = ({data}) => {
     const {id} = useParams();
-    // console.log("editbook:"+id)
     const [post, setPost] = useState({id: 0, name: '', author: '', image: '', description: '' })
 
     useEffect(() => {
@@ -18,6 +17,15 @@ const EditBook = ({data}) => {
         });
     }, [data, id]);
 
+    const isValidImageUrl = (url) => {
+        // Basic URL format validation
+        try {
+            new URL(url);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    };
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -33,6 +41,12 @@ const EditBook = ({data}) => {
     const updatePost = async (event) => {
         event.preventDefault();
 
+        // Validate the image URL before submitting
+        if (!isValidImageUrl(post.image)) {
+            alert('Please provide a valid image URL.');
+            return; // Prevent form submission if URL is invalid
+        }
+
         const options = {
             method: 'PATCH',
             headers: {
@@ -42,7 +56,7 @@ const EditBook = ({data}) => {
         }
         
         await fetch('http://localhost:3001/api/books/' + id, options)
-        window.location.href =  `/browse/`
+        window.location.href =   `/book/details/${id}`
     }
 
 
@@ -54,7 +68,7 @@ const EditBook = ({data}) => {
         }
         
         await fetch('http://localhost:3001/api/books/'+ id, options)
-        window.location.href = `/browse/`
+        window.location.href = `/booksreviews/${id}`
     }
 
     return (
@@ -74,6 +88,7 @@ const EditBook = ({data}) => {
                 <br/>
 
                 <label>Description</label><br />
+                <br />
                 <textarea rows="5" cols="50" id="description" name="description" value={post.description} onChange={handleChange}>
                 </textarea>
                 <br/>

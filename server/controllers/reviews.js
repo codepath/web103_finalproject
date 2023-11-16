@@ -60,7 +60,7 @@ const getReviews = async (req, res) => {
 const getReviewByBookId = async (req, res) => {
     try {
         const book_id = parseInt(req.params.book_id)
-        const selectQuery = `SELECT review, rating FROM reviews WHERE id = ${book_id}`
+        const selectQuery = `SELECT review, rating, book_id FROM reviews WHERE id = ${book_id}`
         const results = await pool.query(selectQuery)
     
         res.status(200).json(results.rows[0])

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import Card from '../components/Card'
 
 const ReadReviews = () => {
   const {id} = useParams();
@@ -11,7 +10,7 @@ const ReadReviews = () => {
     const fetchBookById = async () => {
       const response = await fetch(`http://localhost:3001/api/books/${id}`) 
       const data = await response.json()
-      setBook(data)
+      setBook(data);
   }
 
     const fetchReviews = async() => {
