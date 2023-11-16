@@ -213,16 +213,15 @@ const setup = async () => {
   }
   await createSubjectsTable();
   await createSchoolsTable();
-  // uncomment these lines when ready
   await seedSubjectsTable();
   await seedSchoolsTable();
   await createUsersTable();
   await createAvailabilitiesTable();
   await createSessionsTable();
-  if (process.env.NODE_ENV === "development") {
-    await seedUsersTable();
-    await seedAvailabilitiesTable();
-  }
+  // if (process.env.NODE_ENV === "development") {
+  await seedUsersTable();
+  await seedAvailabilitiesTable();
+  // }
 };
 
 export default setup;
