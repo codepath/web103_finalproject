@@ -1,0 +1,23 @@
+.books-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search {
+    margin-bottom: 1em;
+    width: 50vh;
+    float: left;
+}
+
+
+.add-book {
+    float: right;
+    margin-top: 1em;
+}
+
+.search-bar {
+    overflow: hidden;
+    padding-bottom: 2vh;
+}

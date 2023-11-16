@@ -1,0 +1,16 @@
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+}
+
+#homeBtn {
+    margin-right: 2vh;
+}
+
+.header-container {
+    overflow: hidden;
+    padding-bottom: 2vh;
+}
