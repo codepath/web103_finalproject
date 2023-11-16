@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/Book.css'
 
-const EditReview = () => {
+const EditReview = ({data, api_url}) => {
     const {review_id} = useParams();
     // console.log("editreview:"+id)
     const [review, setReview] = useState({id:0, review:'', rating:0, book_id:0});
@@ -10,7 +10,7 @@ const EditReview = () => {
     useEffect(() => {
         const fetchReview = async () => {
             try {
-            const response = await fetch('http://localhost:3001/api/reviews/' + review_id);
+            const response = await fetch(`${api_url}/api/reviews/` + review_id);
             const data = await response.json();
             setReview(data);
             } catch (error) {
@@ -19,7 +19,7 @@ const EditReview = () => {
         }
     
         fetchReview();
-    }, [])
+    }, [data, api_url])
 
 
     const handleChange = (event) => {
@@ -44,8 +44,8 @@ const EditReview = () => {
             body: JSON.stringify(review)
         }
         
-        await fetch('http://localhost:3001/api/reviews/' + review_id, options)
-        window.location.href = `/booksreviews/${review.book_id}`
+        await fetch(`${api_url}/api/reviews/` + id, options)
+        window.location.href = `/`
     }
 
 
@@ -56,8 +56,8 @@ const EditReview = () => {
             method: 'DELETE'
         }
         
-        await fetch('http://localhost:3001/api/reviews/'+ review_id, options)
-        window.location.href = `/booksreviews/${review.book_id}`
+        await fetch(`${api_url}/api/reviews/`+ id, options)
+        window.location.href = `/`
     }
 
     return (
