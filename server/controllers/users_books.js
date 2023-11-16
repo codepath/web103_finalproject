@@ -2,18 +2,18 @@ import { pool } from '../config/database.js'
 
 const createBookUser = async (req, res) => {
   try {
-    const trip_id = parseInt(req.params.trip_id)
+    const book_id = parseInt(req.params.book_id)
     const { username } = req.body
 
     const results = await pool.query(`
-      INSERT INTO users_trips (trip_id, username)
+      INSERT INTO users_books (book_id, username)
       VALUES($1, $2)
       RETURNING *`,
-      [trip_id, username]
+      [book_id, username]
     )
 
     res.status(200).json(results.rows[0])
-    console.log('🆕 added user to trip')
+    console.log('🆕 added user to book')
   }
   catch (error) {
     res.status(409).json( { error: error.message } )
@@ -21,12 +21,12 @@ const createBookUser = async (req, res) => {
   }
 }
 
-const getTripUsers = async (req, res) => {
+const getBookUsers = async (req, res) => {
   try {
-    const trip_id = parseInt(req.params.trip_id)
+    const book_id = parseInt(req.params.book_id)
     const results = await pool.query(
-      'SELECT * FROM users_trips WHERE trip_id = $1',
-      [trip_id]
+      'SELECT * FROM users_books WHERE book_id = $1',
+      [book_id]
     )
 
     res.status(200).json(results.rows)
@@ -36,13 +36,13 @@ const getTripUsers = async (req, res) => {
   }
 }
 
-const getUserTrips = async (req, res) => {
+const getUserBooks = async (req, res) => {
   try {
     const username = req.params.username
     const results = await pool.query(`
-      SELECT trips.* FROM users_trips, trips
-      WHERE users_trips.trip_id = trips.id
-      AND users_trips.username = $1`,
+      SELECT books.* FROM users_books, books
+      WHERE users_books.book_id = books.id
+      AND users_books.username = $1`,
       [username]
     )
 
@@ -55,6 +55,6 @@ const getUserTrips = async (req, res) => {
 
 export default {
   createBookUser,
-  getTripUsers,
-  getUserTrips
+  getBookUsers,
+  getUserBooks
 }
