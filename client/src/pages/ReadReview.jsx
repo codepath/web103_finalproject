@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 
-const ReadReviews = () => {
+const ReadReviews = ({user, api_url}) => {
   const {id} = useParams();
   const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' })
   const [reviews, setReviews] = useState()
 
   useEffect(() => {
     const fetchBookById = async () => {
-      const response = await fetch(`http://localhost:3001/api/books/${id}`) 
+      const response = await fetch(`${api_url}/api/books/${id}`) 
       const data = await response.json()
       setBook(data);
   }
 
     const fetchReviews = async() => {
-      const response = await fetch('http://localhost:3001/api/booksreviews/'+id)
+      const response = await fetch(`${api_url}//api/booksreviews/`+id)
       const results = await response.json()
       setReviews(results)
     }
     fetchBookById()
     fetchReviews()
-}, []);
+}, [user, api_url]);
 
 
   return (
