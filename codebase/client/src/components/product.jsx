@@ -31,10 +31,10 @@ const Product = (props) => {
                 value={props.quantity || 1}
                 style={{ maxWidth: '3rem' }}
               />
-              <button className="btn btn-outline-dark flex-shrink-0" type="button">
+              {/* <button className="btn btn-outline-dark flex-shrink-0" type="button">
                 <i className="bi-cart-fill me-1"></i>
                 Add to cart
-              </button>
+              </button> taken out for now since are not using cart functionality */}
               
             </div>
           </div>

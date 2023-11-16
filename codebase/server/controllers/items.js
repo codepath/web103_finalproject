@@ -16,49 +16,50 @@ const createItem = async (req, res) => {
 }
 
 const filterItems = async (req, res) => {
-    try {
-      const { minPrice, maxPrice, color, type, metal } = req.query;
-  
-      const queryValues = [];
-      const queryParams = [];
-  
-      if (minPrice !== undefined) {
-        queryValues.push(`price >= $${queryValues.length + 1}`);
-        queryParams.push(minPrice);
-      }
-  
-      if (maxPrice !== undefined) {
-        queryValues.push(`price <= $${queryValues.length + 1}`);
-        queryParams.push(maxPrice);
-      }
-  
-      if (color) {
-        queryValues.push(`color = $${queryValues.length + 1}`);
-        queryParams.push(color);
-      }
-  
-      if (type) {
-        queryValues.push(`type = $${queryValues.length + 1}`);
-        queryParams.push(type);
-      }
-  
-      if (metal) {
-        queryValues.push(`metal = $${queryValues.length + 1}`);
-        queryParams.push(metal);
-      }
-  
-      const query = `
-        SELECT * FROM items
-        WHERE ${queryValues.join(' AND ')}
-      `;
-  
-      const result = await pool.query(query, queryParams);
-  
-      res.json(result.rows);
-    } catch (error) {
-      res.status(409).json({ error: error.message });
+  try {
+    const { minPrice, maxPrice, color, type, metal } = req.query;
+
+    const queryValues = [];
+    const queryParams = [];
+
+    if (minPrice !== undefined) {
+      queryValues.push(`price >= $${queryParams.length + 1}`);
+      queryParams.push(minPrice);
     }
-  };
+
+    if (maxPrice !== undefined) {
+      queryValues.push(`price <= $${queryParams.length + 1}`);
+      queryParams.push(maxPrice);
+    }
+
+    if (color) {
+      queryValues.push(`color = $${queryParams.length + 1}`);
+      queryParams.push(color);
+    }
+
+    if (type) {
+      queryValues.push(`type = $${queryParams.length + 1}`);
+      queryParams.push(type);
+    }
+
+    if (metal) {
+      queryValues.push(`metal = $${queryParams.length + 1}`);
+      queryParams.push(metal);
+    }
+
+    let query = `SELECT * FROM items`;
+
+    if (queryValues.length > 0) {
+      query += ` WHERE ${queryValues.join(' AND ')}`;
+    }
+
+    const result = await pool.query(query, queryParams);
+
+    res.json(result.rows);
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+};
 
   const getItems = async (req, res) => {
     try{

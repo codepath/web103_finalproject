@@ -1,49 +1,49 @@
 import { pool } from './database.js'
 import './dotenv.js'
 
-const createItemsTable = async () => {
-    const createItemsTableQuery = `
-    CREATE TABLE IF NOT EXISTS items (
-        id serial PRIMARY KEY,
-        title varchar(100) NOT NULL,
-        description varchar(500),
-        img_url text NOT NULL,
-        quantity integer,
-        price money NOT NULL,
-        color varchar(100),
-        type varchar(100) NOT NULL,
-        metal varchar(100)
-    );
-    `
-    try {
-        const res = await pool.query(createItemsTableQuery)
-        console.log('🎉 items created successfully')
-    } catch (err) {
-        console.error('⚠️ error creating items table', err)
-    }
-}
+// const createItemsTable = async () => {
+//     const createItemsTableQuery = `
+//     CREATE TABLE IF NOT EXISTS items (
+//         id serial PRIMARY KEY,
+//         title varchar(100) NOT NULL,
+//         description varchar(500),
+//         img_url text NOT NULL,
+//         quantity integer,
+//         price money NOT NULL,
+//         color varchar(100),
+//         type varchar(100) NOT NULL,
+//         metal varchar(100)
+//     );
+//     `
+//     try {
+//         const res = await pool.query(createItemsTableQuery)
+//         console.log('🎉 items created successfully')
+//     } catch (err) {
+//         console.error('⚠️ error creating items table', err)
+//     }
+// }
 
-const createUsersTable = async () => {
-    const createUsersTableQuery = `
-    CREATE TABLE IF NOT EXISTS users (
-        id serial PRIMARY KEY,
-        email varchar(100) NOT NULL,
-        first_name varchar(100),
-        last_name varchar(100),
-        address varchar(100),
-        city varchar(100),
-        state varchar(100),
-        zip varchar(100),
-        phone varchar(100)
-    );
-    `
-    try {
-        const res = await pool.query(createUsersTableQuery)
-        console.log('🎉 users created successfully')
-    } catch (err) {
-        console.error('⚠️ error creating users table', err)
-    }
-}
+// const createUsersTable = async () => {
+//     const createUsersTableQuery = `
+//     CREATE TABLE IF NOT EXISTS users (
+//         id serial PRIMARY KEY,
+//         email varchar(100) NOT NULL,
+//         first_name varchar(100),
+//         last_name varchar(100),
+//         address varchar(100),
+//         city varchar(100),
+//         state varchar(100),
+//         zip varchar(100),
+//         phone varchar(100)
+//     );
+//     `
+//     try {
+//         const res = await pool.query(createUsersTableQuery)
+//         console.log('🎉 users created successfully')
+//     } catch (err) {
+//         console.error('⚠️ error creating users table', err)
+//     }
+// }
 
 const createUsersSavedItemsTable = async () => {
     const createUsersSavedItemsTableQuery = `
@@ -102,8 +102,8 @@ const createUserOrderTable = async () => {
 }
 
 const create = async () => {
-    await createItemsTable()
-    await createUsersTable()
+    // await createItemsTable()
+    // await createUsersTable()
     await createUsersSavedItemsTable()
     await createUserCartItemsTable()
     await createUserOrderTable()

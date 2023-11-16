@@ -3,7 +3,7 @@
 .dropdown {
     max-width: 13em;
     position: relative;
-    width: 10%;
+    width: 35%;
     margin-left: var(--dl-space-space-twounits);
   }
   

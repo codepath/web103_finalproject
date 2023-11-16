@@ -18,12 +18,12 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc}) {
       <span className="card__category">{category}</span>
       <h3 className="card__title">{title}</h3>
       <span className="card__by">
-        <a className="card__author" title="author">${price}</a>
+        <a className="card__author" title="author">{price}</a>
       </span>
-      <button className="btn btn-outline-dark flex-shrink-0" type="button">
+      {/* <button className="btn btn-outline-dark flex-shrink-0" type="button">
           <i className="bi-cart-fill me-1"></i>
           Add to cart
-      </button>
+      </button> taken out for now since we are not using the cart currently */}
     </div>
     <div className="card__info-hover">
       <svg className="card__like" viewBox="0 0 24 24">

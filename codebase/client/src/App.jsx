@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
-import DisplayVerificationMessage from './components/displayVerificationMessage';
 import Home from './pages/home'
 import NotFound from './pages/not-found'
 import Catalog from './pages/catalog'
@@ -17,6 +16,7 @@ import Liked from './pages/liked'
 import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
 import Checkout from './pages/checkout'
+import AccountSettings from './pages/accountSettings'
 import './App.css'
 
 function App() {
@@ -118,6 +118,7 @@ function App() {
         <Route element={<SignIn />} path="/signIn" />
         <Route path="/signUp" element={<SignUp />} />       
         <Route element={<Checkout />} path="/checkout" />
+        <Route element={<AccountSettings />} path="/accountSettings" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>
