@@ -24,17 +24,23 @@ Backend:
 
 ## Features
 
+### User-friendly and pleasant shopping experience with UI/UX in mind ✅
+
+Pleasant store pages for shopping and great user experience
+
+<img src='jewelryStore2.gif' />
+
 ### Admin Control
 
 Using specific login credentials, an admin can upload, delete, and edit current items in stock
 
 [gif goes here]
 
-### Account Creation
+### Account Creation ✅
 
-Users can create accounts to make purchases, view purchase history, and perform other features
+Users can create accounts with email verification to make purchases, view purchase history, and perform other features
 
-[gif goes here]
+<img src='jewelryStore1.gif' />
 
 ### Account Editing and Deletion
 
