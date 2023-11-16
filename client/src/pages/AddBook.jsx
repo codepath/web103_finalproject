@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/AddBook.css'
 
-const AddBook = () => {
+const AddBook = ({user, api_url}) => {
     const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' });
 
     const handleChange = (event) => {
@@ -41,8 +41,10 @@ const AddBook = () => {
             body: JSON.stringify(book)
         }
 
-        await fetch(`http://localhost:3001/api/books`, options)
+        await fetch(`${api_url}/api/books`, options)
+
         window.location.href = '/browse'
+
     }
 
     return (
