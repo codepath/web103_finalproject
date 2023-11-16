@@ -7,12 +7,12 @@ import DiscussionBoard from './pages/DiscussionBoard';
 import ResourceList from './pages/ResourceList';
 import CreatePost from './pages/CreatePost';
 import CreateResource from './pages/CreateResource';
-import AboutUs from './pages/AboutUs'; // Import the new AboutUs component
+import AboutUs from './pages/AboutUs'; 
 import Events from './pages/Events';
 import './App.css';
 
 import Login from './pages/Login';
-import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
+import ProtectedRoute from './components/ProtectedRoute'; 
 import { AuthProvider } from './contexts/AuthContext';
 import PostDetail from './components/PostDetail';
 
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
+          <Route path="/events" element={<Events />} />
           <Route path="/posts" element={<ProtectedRoute><DiscussionBoard /></ProtectedRoute>} />
           <Route path="/resources" element={<ProtectedRoute><ResourceList /></ProtectedRoute>} />
           <Route path="/create-post" element={<ProtectedRoute><CreatePost /></ProtectedRoute>} />
