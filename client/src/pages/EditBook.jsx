@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/Book.css'
 
-const EditBook = ({data}) => {
+const EditBook = ( {data, api_url} ) => {
     const {id} = useParams();
     const [post, setPost] = useState({id: 0, name: '', author: '', image: '', description: '' })
 
@@ -15,7 +15,7 @@ const EditBook = ({data}) => {
             image: result.image,
             description: result.description
         });
-    }, [data, id]);
+    }, [data, api_url, id]);
 
     const isValidImageUrl = (url) => {
         // Basic URL format validation
@@ -55,8 +55,10 @@ const EditBook = ({data}) => {
             body: JSON.stringify(post)
         }
         
-        await fetch('http://localhost:3001/api/books/' + id, options)
-        window.location.href =   `/book/details/${id}`
+
+        await fetch(`${api_url}/api/books/` + id, options)
+
+        window.location.href =  `/book/details/${id}`
     }
 
 
@@ -67,8 +69,10 @@ const EditBook = ({data}) => {
             method: 'DELETE'
         }
         
-        await fetch('http://localhost:3001/api/books/'+ id, options)
-        window.location.href = `/booksreviews/${id}`
+        await fetch(`${api_url}/api/books/`+ id, options)
+
+        window.location.href = '/browse'
+
     }
 
     return (
