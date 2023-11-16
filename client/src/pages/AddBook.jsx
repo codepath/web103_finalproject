@@ -25,7 +25,7 @@ const AddBook = () => {
         }
 
         await fetch(`http://localhost:3001/api/books`, options)
-        window.location.href = '/'
+        window.location.href = '/browse/'
     }
 
     return (

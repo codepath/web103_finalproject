@@ -45,7 +45,7 @@ const EditReview= () => {
         }
         
         await fetch('http://localhost:3001/api/reviews/' + id, options)
-        window.location.href = `/`
+        window.location.href = `/browse`
     }
 
 
@@ -57,7 +57,7 @@ const EditReview= () => {
         }
         
         await fetch('http://localhost:3001/api/reviews/'+ id, options)
-        window.location.href = `/`
+        window.location.href = `/browse/`
     }
 
     return (

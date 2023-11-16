@@ -42,7 +42,7 @@ const EditBook = ({data}) => {
         }
         
         await fetch('http://localhost:3001/api/books/' + id, options)
-        window.location.href =  `/booksreviews/${id}`
+        window.location.href =  `/browse/`
     }
 
 
@@ -54,7 +54,7 @@ const EditBook = ({data}) => {
         }
         
         await fetch('http://localhost:3001/api/books/'+ id, options)
-        window.location.href = `/booksreviews/${id}`
+        window.location.href = `/browse/`
     }
 
     return (

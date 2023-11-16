@@ -49,7 +49,7 @@ const AddReview = () => {
 
         const reviewId = await add_review()
         await createBooksReviews(reviewId)
-        window.location = `/booksreviews/${book_id}`
+        window.location = `/browse/`
     }
 
     return (

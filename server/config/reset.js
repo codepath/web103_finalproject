@@ -104,6 +104,68 @@ const createBooksReviewsTable = async () => {
     }
 }
 
+// users table
+const createUsersTable = async () => {
+    const createUsersTableQuery = `
+      CREATE TABLE IF NOT EXISTS users (
+        id serial PRIMARY KEY,
+        githubid integer NOT NULL,
+        username varchar(100) NOT NULL,
+        avatarurl varchar(500) NOT NULL,
+        accesstoken varchar(500) NOT NULL
+      );
+    `
+  
+    try {
+      const res = await pool.query(createUsersTableQuery)
+      console.log('🎉 users table created successfully')
+    }
+    catch (error) {
+      console.error('⚠️ error creating users table', err)
+    }
+  }
+  
+  const createBooksUsersTable = async () => {
+    const createBooksUsersTableQuery = `
+      CREATE TABLE IF NOT EXISTS books_users (
+        book_id int NOT NULL,
+        user_id int NOT NULL,
+        PRIMARY KEY (book_id, user_id),
+        FOREIGN KEY (book_id) REFERENCES books(id) ON UPDATE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE
+      );
+    `
+  
+    try {
+      const res = await pool.query(createBooksUsersTableQuery)
+      console.log('🎉 books_users table created successfully')
+    }
+    catch (error) {
+      console.error('⚠️ error creating books_users table', err)
+    }
+  }
+  
+  const createUsersBooksTable = async () => {
+    const createUsersBooksTableQuery = `
+      CREATE TABLE IF NOT EXISTS users_books (
+        id serial PRIMARY KEY,
+        book_id int NOT NULL,
+        username text NOT NULL,
+        FOREIGN KEY (book_id) REFERENCES books(id)
+      );
+    `
+  
+    try {
+        const res = await pool.query(createUsersBooksTableQuery)
+        console.log('🎉 users_books table created successfully')
+    } catch (err) {
+        console.error('⚠️ error creating users_books table', err)
+    }
+  }
+
+
+
+
 // seed books table
 // const seedBooksTable = async () => {
 //     await createBooksTable()
@@ -137,3 +199,6 @@ createReadersTable()
 createReadersBooksTable()
 createReviewssTable()
 createBooksReviewsTable()
+createUsersTable ()
+createBooksUsersTable()
+createUsersBooksTable ()
