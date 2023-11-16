@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../styles/BookDetails.css'
 
-const BookDetails = () => {
+const BookDetails = ({data, api_url}) => {
     const { id } = useParams();
     const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' });
 
     useEffect(() => {
         const fetchBookById = async () => {
-            const response = await fetch(`http://localhost:3001/api/books/${id}`)
+            const response = await fetch(`${api_url}/api/books/${id}`)
             const data = await response.json()
             setBook(data)
             console.log(data)
         }
         fetchBookById();
-    }, [id]);
+    }, [data, api_url, id]);
 
     return (
         <>
