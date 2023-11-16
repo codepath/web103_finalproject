@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../styles/Book.css'
 
-const AddReview = () => {
+const AddReview = ({api_url}) => {
     const {book_id} = useParams();
     const [review, setReview] = useState({review: "", rating: 0})
 
@@ -28,7 +28,7 @@ const AddReview = () => {
                 body: JSON.stringify(review)
             }
             
-            const response = await fetch(`http://localhost:3001/api/reviews/${book_id}`, options)
+            const response = await fetch(`${api_url}/api/reviews/${book_id}`, options)
             const data = await response.json()
             setReview(data)
             return data.id
@@ -42,14 +42,14 @@ const AddReview = () => {
                 },
                 body: JSON.stringify({book_id: book_id, review_id: review_id})
             }
-            const response = await fetch(`http://localhost:3001/api/booksreviews/${book_id}`, options)
+            const response = await fetch(`${api_url}/api/booksreviews/${book_id}`, options)
             const data = await response.json()
             return data
         }
 
         const reviewId = await add_review()
         await createBooksReviews(reviewId)
-        window.location = `/booksreviews/${book_id}`
+        window.location = `/browse/`
     }
 
     return (
