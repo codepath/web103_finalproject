@@ -30,9 +30,6 @@ export const Profile = () => {
     }
   }, [user]);
 
-  console.log("user", user);
-  console.log("initialProfile", initialProfile);
-
   useEffect(() => {
     const fetchSchools = async () => {
       const schools = await getSchools();

@@ -75,13 +75,19 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-const server = https.createServer(
-  {
-    key: fs.readFileSync(`${__dirname}/certs/key.pem`, "utf8"),
-    cert: fs.readFileSync(`${__dirname}/certs/cert.pem`, "utf8"),
-  },
-  app
-);
+let server;
+
+if (process.env.NODE_ENV === "development") {
+  server = https.createServer(
+    {
+      key: fs.readFileSync(`${__dirname}/certs/key.pem`, "utf8"),
+      cert: fs.readFileSync(`${__dirname}/certs/cert.pem`, "utf8"),
+    },
+    app
+  );
+} else if (process.env.NODE_ENV === "production") {
+  server = app;
+}
 
 server.listen(process.env.PORT, (_) => {
   console.log(`Server listening on port https://localhost:${process.env.PORT}`);

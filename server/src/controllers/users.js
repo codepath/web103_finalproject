@@ -21,7 +21,6 @@ const getUserById = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { rows } = await User.update(req.params.id, req.body);
-    console.log(req.body);
     return res.status(200).json(rows[0]);
   } catch (error) {
     res.status(409).json({ error: error.message });

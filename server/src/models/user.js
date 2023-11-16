@@ -25,7 +25,6 @@ const create = ({ email, githubId, username, profilePicture }) => {
 };
 
 const update = (id, { role, bio, school_id, subject_id, year }) => {
-  console.log({ role, bio, school_id, subject_id, year });
   const query = `
     UPDATE users
     SET role = $2, bio = $3, school_id = $4, subject_id = $5, year = $6
