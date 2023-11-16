@@ -67,17 +67,35 @@ const EditMovie = () => {
      */
     const deleteData = async (event) => {
         event.preventDefault();
-        try {
-            const response = await fetch(`/api/movies/${id}`, {
-                method: "DELETE"
-            });
-        } catch (error) {
-            console.error(error);
+    
+        // Display the confirmation dialog
+        const userConfirmed = window.confirm("Are you sure you want to delete this movie?");
+    
+        if (userConfirmed) {
+            try {
+                const response = await fetch(`/api/movies/${id}`, {
+                    method: "DELETE"
+                });
+    
+                // Check if the delete was successful, then redirect
+                if (response.ok) {
+                    alert("Movie deleted successfully.");
+                    window.location.href = "/";
+                } else {
+                    // Handle any errors if the fetch response wasn't ok
+                    alert("There was an error deleting the movie.");
+                }
+    
+            } catch (error) {
+                console.error(error);
+                alert("An error occurred while trying to delete the movie.");
+            }
+        } else {
+            // If the user clicks "Cancel", do nothing
+            console.log("User canceled the delete operation.");
         }
-
-        // Route user back to home page after submitting form
-        window.location.href = "/";
     }
+    
 
     return (
         <div className='edit-movie'>
