@@ -11,5 +11,6 @@
 }
 
 .header-container {
-    padding-bottom: 8vh;
+    overflow: hidden;
+    padding-bottom: 2vh;
 }

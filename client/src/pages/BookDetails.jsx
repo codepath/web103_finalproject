@@ -1,39 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import '../styles/Book.css'
+import '../styles/BookDetails.css'
 
 const BookDetails = () => {
     const { id } = useParams();
     const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' });
-    
+
     useEffect(() => {
         const fetchBookById = async () => {
-            const response = await fetch(`http://localhost:3001/api/books/${id}`)  // http://localhost:3001/api/books/1
+            const response = await fetch(`http://localhost:3001/api/books/${id}`)
             const data = await response.json()
             setBook(data)
             console.log(data)
         }
         fetchBookById();
     }, [id]);
-    
+
     return (
         <>
-            <div className="card">
-                <div className="left-container" style={{ backgroundImage: `url(${book.image})` }}>
-                    {/* <img src={book.image} alt="Book Cover" /> */}
+            <div className="card-details">
+                <div className="left-side" style={{ backgroundImage: `url(${book.image})` }}>
                 </div>
-                <div className="right-container">
+                <div className="right-side">
                     <h2>{book.name}</h2>
                     <h3>{book.author}</h3>
                     <p>{book.description}</p>
+                    <Link to={`/booksreviews/${id}`}><button id="read-reviews-btn">Read Reviews</button></Link>
+                    <Link to={`/edit/${id}`}><button id="edit-book-btn">Edit Book</button></Link>
                 </div>
-
             </div>
-            <Link to={`/booksreviews/${id}`}><button>Read Reviews</button></Link>
-
-            <Link to={`/edit/${id}`}><button>Edit Book</button></Link>
-
-            <Link to=""><button>Add to MyProfile</button></Link>
+            {/* <Link to=""><button>Add to MyProfile</button></Link> */}
         </>
     )
 }
