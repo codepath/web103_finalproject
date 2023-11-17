@@ -12,10 +12,10 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://?????.up.railway.app' : 'http://localhost:3000'
+const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://playpaal.up.railway.app' : 'http://localhost:3000'
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: CLIENT_URL,
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   })
@@ -41,7 +41,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 app.get("/", (req, res) => {
-  res.redirect("http://localhost:5173");
+  res.redirect(CLIENT_URL);
 });
 app.use("/auth", authRouter);
 app.use("/games", gamesRouter);
