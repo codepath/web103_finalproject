@@ -5,7 +5,7 @@ import ProductCard from "../components/productCard";
 import Dropdown from "../components/dropdown";
 import "../styles/catalog.css";
 
-const Liked = () => {
+const EditItems = () => {
   const [options, setOptions] = useState({
   type: ['bracelets', 'earrings', 'necklaces & pendants', 'rings', 'other accessories'], 
   color: ['silver', 'gold', 'rose gold', 'multi-color'],
@@ -72,4 +72,4 @@ const Liked = () => {
   );
 };
 
-export default Liked;
+export default EditItems;

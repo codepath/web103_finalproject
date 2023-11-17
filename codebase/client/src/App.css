@@ -189,3 +189,7 @@ body{
   font-size: 40px;
   text-align: center;
 }
+
+.bold{
+  font-weight: bold;
+}

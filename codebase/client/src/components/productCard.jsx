@@ -1,19 +1,32 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "../styles/productCard.css";
 
-function ProductCard({ category, title, price, imgSrc, imgHoverSrc}) {
+function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description, id, quantity}) {
+  const productData = {
+    category,
+    title,
+    price,
+    imgSrc,
+    imgHoverSrc,
+    description,
+    id,
+    quantity
+  };
+  
   return (
     <div className="card">
     <div
       className="card__img"
       style={{ backgroundImage: `url(${imgSrc})` }}
     ></div>
-    <a href="#" className="card_link">
+    <Link to="/productview" state={{productData:productData}}
+        className="card_link">
       <div
         className="card__img--hover"
         style={{ backgroundImage: `url(${imgHoverSrc})` }}
       ></div>
-    </a>
+    </Link>
     <div className="card__info">
       <span className="card__category">{category}</span>
       <h3 className="card__title">{title}</h3>

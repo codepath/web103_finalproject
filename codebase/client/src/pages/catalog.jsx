@@ -61,6 +61,9 @@ const Catalog = () => {
             price={item.price}
             imgSrc={item.img_url}
             imgHoverSrc={item.img_url}
+            description={item.description}
+            id={item.id}
+            quantity={item.quantity}
           />
         ))
         }

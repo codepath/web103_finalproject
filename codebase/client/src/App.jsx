@@ -17,6 +17,7 @@ import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
 import Checkout from './pages/checkout'
 import AccountSettings from './pages/accountSettings'
+import EditItems from './pages/EditItems';
 import './App.css'
 
 function App() {
@@ -113,12 +114,13 @@ function App() {
         <Route element={<Home />} exact path="/" />
         <Route element={<NotFound />} path="**" />
         <Route element={<Catalog />} path="/catalog" />
-        <Route element={<ProductView />} path="/productview" />
+        <Route path="/productview" element={<ProductView />}/>
         <Route element={<Liked />} path="/liked" />
         <Route element={<SignIn />} path="/signIn" />
         <Route path="/signUp" element={<SignUp />} />       
         <Route element={<Checkout />} path="/checkout" />
         <Route element={<AccountSettings />} path="/accountSettings" />
+        <Route element={<EditItems />} path="/editItems" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>
