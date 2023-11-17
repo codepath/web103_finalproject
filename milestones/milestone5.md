@@ -11,7 +11,7 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [ ] Update the status of issues in your project board as you complete them
 - [ ] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
   - [ ] Under each feature you have completed, **include a GIF** showing feature functionality
-- [ ] In this document, complete the **Reflection** section below
+- [ ] In this docpument, comlete the **Reflection** section below
 - [ ] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
 - [ ] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
   - [ ] Include this GIF in the **Final Demo GIF** section below
@@ -24,50 +24,50 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-- [ ] The project includes an Express backend app and a React frontend app
-- [ ] The project includes these backend-specific features:
-  - [ ] At least one of each of the following database relationship in Postgres
-    - [ ] one-to-many
-    - [ ] many-to-many with a join table
-  - [ ] A well-designed RESTful API
-    - [ ] The API can respond to at least one of each type of request: GET, POST, PATCH, and DELETE
-    - [ ] Routes follow proper naming conventions
-  - [ ] The ability to reset the database to its default state
-- [ ] The project includes these frontend-specific features:
-  - [ ] At least one redirection
-  - [ ] At least one interaction that the user can initiate and complete on the same page without navigating to a new page
-  - [ ] Dynamic frontend routes created with React Router
-  - [ ] Hierarchically designed React components
-    - [ ] Components broken down into categories, including Page and Component types
-    - [ ] Corresponding container components and presenter components as appropriate
-- [ ] The project includes dynamic routes for both frontend and backend apps
+- [X] The project includes an Express backend app and a React frontend app
+- [X] The project includes these backend-specific features:
+  - [X] At least one of each of the following database relationship in Postgres
+    - [X] one-to-many
+    - [X] many-to-many with a join table
+  - [X] A well-designed RESTful API
+    - [X] The API can respond to at least one of each type of request: GET, POST, PATCH, and DELETE
+    - [X] Routes follow proper naming conventions
+  - [X] The ability to reset the database to its default state
+- [X] The project includes these frontend-specific features:
+  - [X] At least one redirection
+  - [X] At least one interaction that the user can initiate and complete on the same page without navigating to a new page
+  - [X] Dynamic frontend routes created with React Router
+  - [X] Hierarchically designed React components
+    - [X] Components broken down into categories, including Page and Component types
+    - [X] Corresponding container components and presenter components as appropriate
+- [X] The project includes dynamic routes for both frontend and backend apps
 - [ ] The project is deployed on Railway with all pages and features working
 
 ### Custom Features
 
 👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-- [ ] The project gracefully handles errors
-- [ ] The project includes a one-to-one database relationship
-- [ ] The project includes a slide-out pane or modal as appropriate for your use case
+- [X] The project gracefully handles errors
+- [X] The project includes a one-to-one database relationship
+- [X] The project includes a slide-out pane or modal as appropriate for your use case
 - [ ] The project includes a unique field within the join table
 - [ ] The project includes a custom non-RESTful route with corresponding controller actions
-- [ ] The project allows filtering and/or sorting as appropriate for your use case
+- [X] The project allows filtering and/or sorting as appropriate for your use case
 - [ ] Data is automatically generated in response to a certain event or user action. Examples include generating a default inventory for a new user starting a game or creating a starter set of tasks for a user creating a new task app account
-- [ ] Data submitted via a POST or PATCH request is validated before the database is updated
+- [X] Data submitted via a POST or PATCH request is validated before the database is updated
 
 ### Stretch Features
 
 👉🏾👉🏾👉🏾 Check off each completed feature below.
 
-- [ ] A subset of pages require the user to log in before accessing the content
-  - [ ] Users can log in and log out via GitHub OAuth with Passport.js
+- [X] A subset of pages require the user to log in before accessing the content
+  - [X] Users can log in and log out via GitHub OAuth with Passport.js
 - [ ] Restrict available user options dynamically, such as restricting available purchases based on a user's currency
-- [ ] Show a spinner while a page or page element is loading
-- [ ] Disable buttons and inputs during the form submission process
+- [X] Show a spinner while a page or page element is loading
+- [X] Disable buttons and inputs during the form submission process
 - [ ] Disable buttons after they have been clicked
 - [ ] Users can upload images to the app and have them be stored on a cloud service
-- [ ] 🍞 [Toast messages](https://www.patternfly.org/v3/pattern-library/communication/toast-notifications/index.html) deliver simple feedback in response to user events
+- [X] 🍞 [Toast messages](https://www.patternfly.org/v3/pattern-library/communication/toast-notifications/index.html) deliver simple feedback in response to user events
 
 ## Final Demo GIF
 

@@ -62,7 +62,7 @@ const seedGamesTable = async () => {
         game.background_image,
         `{${game.genre.join(",")}}`,
         `{${game.platform.join(",")}}`,
-        game.price
+        game.price,
       ],
     };
 
@@ -102,5 +102,24 @@ const seedScreenshotsTable = async () => {
   });
 };
 
+const createUsersTable = async () => {
+  const createUsersTableQuery = `
+  CREATE TABLE IF NOT EXISTS users (
+      id serial PRIMARY KEY,
+      githubid int NOT NULL,
+      username varchar(200) NOT NULL,
+      avatarurl varchar(500),
+      accesstoken varchar(500) NOT NULL
+  );
+`;
+  try {
+    const res = await pool.query(createUsersTableQuery);
+    console.log("🎉 users table created successfully");
+  } catch (err) {
+    console.error("⚠️ error creating users table", err);
+  }
+};
+
+createUsersTable();
 seedGamesTable();
 seedScreenshotsTable();

@@ -45,11 +45,11 @@ const HomePage = () => {
   }
   if (filteredGames) {
     return (
-      <div className="grid grid-cols-8 lg:grid-cols-aside-main lg:grid-rows-main gap-4">
-        <div className="sm:hidden md:grid md:col-start-1">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 grid-cols-4 lg:grid-cols-aside-main lg:grid-rows-main gap-4">
+        <div className="hidden md:grid md:col-start-1">
           <GenreList />
         </div>
-        <div className="p-4 md:col-start-2 md:col-span-7 row-start-1 md:row-span-1 grid grid-cols-6 gap-4 sm:col-span-2 ">
+        <div className="p-4 md:col-start-2 h-fit md:col-span-7 row-start-1 grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:col-span-4 sm:grid-cols-2">
           {filteredGames.map((game) => (
             <GameCard game={game} key={game.id} />
           ))}
@@ -61,12 +61,12 @@ const HomePage = () => {
 
   return (
     data && (
-      <div className="grid grid-cols-8 lg:grid-cols-aside-main lg:grid-rows-main gap-4 ">
-        <div className="sm:hidden md:grid md:col-start-1 ">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 grid-cols-4 lg:grid-cols-aside-main lg:grid-rows-main gap-4">
+        <div className="hidden md:grid md:col-start-1">
           <GenreList />
         </div>
 
-        <div className="p-4 sm:col-start-2 sm:col-span-4 md:col-start-2 md:col-span-4 row-start-1 grid-cols-6 gap-4 ">
+        <div className="p-4 md:col-start-2 h-fit md:col-span-7 row-start-1 grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:col-span-4 sm:grid-cols-2">
           {games.map((game) => (
             <GameCard game={game} />
           ))}

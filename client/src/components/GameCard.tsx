@@ -13,7 +13,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
       <div
         className="
         relative group flex flex-col items-center justify-center rounded-md overflow-hidden gap-x-1 bg-neutral-900/70 cursor-pointer 
-        hover:bg-slate-800/50 transition p-2 hover:scale-105 text-white max-h-[400px] h-auto tansition ease-in-out duration-300"
+        hover:bg-slate-800/50 transition p-4 hover:scale-105 text-white max-h-[300px] h-auto tansition ease-in-out duration-300"
       >
         <div
           className="
@@ -24,7 +24,7 @@ const GameCard: React.FC<GameItemProps> = ({ game }) => {
             overflow-hidden"
         >
           <img
-            className="h-[140px]"
+            className="h-[160px]"
             src={game.background_image|| ''}
             alt="Image"
           />
