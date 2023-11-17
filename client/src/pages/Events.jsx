@@ -1,8 +1,18 @@
 // Events.jsx
 import React, { useState } from 'react';
-import { events } from '../../../server/data/mockData';
+// import { events } from '../../../server/data/mockData';
 import { FaBookmark, FaRegBookmark, FaShare } from 'react-icons/fa'; // Import icons from React Icons
 import "../css/Events.css";
+
+// create events array
+const events = [
+  { category: 'hackathon', title: 'Global Hack Week: Career Week', link: 'https://events.mlh.io/events/10077?_gl=1*bok2g4*_ga*MjEwMjQyNTIxMC4xNjk5NzMwODY2*_ga_E5KT6TC4TK*MTcwMDE0OTI1NC4yLjAuMTcwMDE0OTI1NC4wLjAuMA..', level: 'Beginner' },
+{ category: 'hackathon', title: 'Generate the future in the 404', link: 'https://www.aiatl.io/', level: 'Intermediate' },
+{ category: 'hackathon', title: 'Boston Hacks', link: 'https://bostonhacks.org/', level: 'Beginner' },
+{ category: 'hackathon', title: 'Microsoft AI Classroom Hackathon', link: 'https://microsoftaiclassroom.devpost.com/?ref_feature=challenge&ref_medium=discover', level: 'Intermediate' },
+{ category: 'hackathon', title: 'Google’s Immersive Geospatial Challenge', link: 'https://googlesimmersive.devpost.com/?ref_feature=challenge&ref_medium=discover', level: 'Beginner'},
+{ category: 'hackathon', title: 'MLH Month Long Hackathon', link: 'https://hackfest-november.devpost.com/?ref_feature=challenge&ref_medium=discover', level: 'Beginner' },
+]
 
 const Events = () => {
   const [selectedLevel, setSelectedLevel] = useState('all');
