@@ -22,7 +22,7 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
   };
 
   try {
-    const userQuery = "SELECT * FROM users WHERE id = $1";
+    const userQuery = "SELECT * FROM users WHERE google_id = $1";
     const userResult = await pool.query(userQuery, [userData.githubId]);
 
     if (userResult.rowCount === 0) {

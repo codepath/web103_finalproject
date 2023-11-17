@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const Orders = () => {
+const Orders = (user) => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
+      console.log("user", user);
       try {
         const response = await fetch("/api/order/getOrders"); // Replace with your endpoint to fetch orders
         if (!response.ok) {

@@ -22,14 +22,15 @@ const App = () => {
       const data = await response.json();
       setSneakers(data);
     };
-    // const getUser = async () => {
-    //   const response = await fetch(`${API_URL}/auth/login/success`, {
-    //     credentials: "include",
-    //   });
-    //   const json = await response.json();
-    //   setUser(json.user);
-    // };
-    // getUser();
+    const getUser = async () => {
+      const response = await fetch(`${API_URL}/auth/login/success`, {
+        credentials: "include",
+      });
+      const json = await response.json();
+      setUser(json.user);
+      console.log(user);
+    };
+    getUser();
     fetchSneakers();
   }, []);
 
@@ -41,7 +42,8 @@ const App = () => {
     },
     {
       path: "/orders",
-      element: <Orders />,
+      element:
+        user && user.id ? <Orders user={user} /> : <Login api_url={API_URL} />,
     },
     {
       path: "/",
@@ -57,11 +59,21 @@ const App = () => {
     },
     {
       path: "/new",
-      element: <CreateSneaker />,
+      element:
+        user && user.id && user.is_admin === true ? (
+          <CreateSneaker user={user} />
+        ) : (
+          <Login api_url={API_URL} />
+        ),
     },
     {
       path: "/edit/:id",
-      element: <EditSneaker data={sneakers} />,
+      element:
+        user && user.id && user.is_admin === true ? (
+          <EditSneaker data={sneakers} user={user} />
+        ) : (
+          <Login api_url={API_URL} />
+        ),
     },
     {
       path: "/about",
@@ -69,7 +81,12 @@ const App = () => {
     },
     {
       path: "/cart",
-      element: <CartPage />,
+      element:
+        user && user.id ? (
+          <CartPage user={user} />
+        ) : (
+          <Login api_url={API_URL} />
+        ),
     },
     {
       path: "/*",

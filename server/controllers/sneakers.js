@@ -8,12 +8,12 @@ const createSneaker = async (req, res) => {
       price,
       size,
       color,
-      stockquantity,
+      stock_quantity,
       category,
-      targetaudience,
-      img_url,
+      target_audience,
+      image_url,
     } = req.body;
-
+    console.log(req.body);
     const sneakerResult = await pool.query(
       `INSERT INTO sneakers (name, brand, description, price, size, color, stock_quantity, category, target_audience)
         VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) 
@@ -25,16 +25,17 @@ const createSneaker = async (req, res) => {
         price,
         size,
         color,
-        stockquantity,
+        stock_quantity,
         category,
-        targetaudience,
+        target_audience,
       ]
     );
 
     const productId = sneakerResult.rows[0].id;
 
     // Assume imageUrls is an array of image URLs associated with the sneakers
-    const imageUrls = img_url || [];
+    const imageUrls = [];
+    imageUrls.push(image_url);
 
     // Insert image URLs into the images table
     const imageInsertPromises = imageUrls.map(async (imageUrl) => {
@@ -123,12 +124,12 @@ const updateSneaker = async (req, res) => {
       price,
       size,
       color,
-      stockquantity,
+      stock_quantity,
       category,
-      targetaudience,
-      img_url, // Array of image URLs
+      target_audience,
+      image_url, // Array of image URLs
     } = req.body;
-
+    console.log(req.body);
     // Update sneaker details
     const updatedSneakerResult = await pool.query(
       `UPDATE sneakers
@@ -142,9 +143,9 @@ const updateSneaker = async (req, res) => {
         price,
         size,
         color,
-        stockquantity,
+        stock_quantity,
         category,
-        targetaudience,
+        target_audience,
         id,
       ]
     );
@@ -158,15 +159,15 @@ const updateSneaker = async (req, res) => {
 
     // Delete existing images for the sneaker
     await pool.query("DELETE FROM images WHERE product_id = $1", [id]);
-
-    // Insert new images for the sneaker
-    if (img_url && img_url.length > 0) {
-      const imageValues = img_url.map((img_url) => [id, img_url]);
-      await pool.query(
-        "INSERT INTO images (product_id, image_url) VALUES $1:raw",
-        [imageValues]
-      );
-    }
+    const image = [];
+    console.log(image_url);
+    image.push[image_url];
+    // console.log(image);
+    await pool.query(
+      `INSERT INTO images (product_id, image_url)
+          VALUES($1, $2)`,
+      [id, image_url]
+    );
 
     res.status(200).json(updatedSneaker);
   } catch (error) {
@@ -178,7 +179,7 @@ const updateSneaker = async (req, res) => {
 const deleteSneaker = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-
+    console.log(id);
     // Delete sneaker
     const deletedSneakerResult = await pool.query(
       "DELETE FROM sneakers WHERE id = $1 RETURNING *",

@@ -13,7 +13,7 @@ const CreateSneaker = () => {
     stock_quantity: "",
     category: "",
     target_audience: "",
-    // image_urls:
+    image_url: [],
   });
 
   const handleChange = (event) => {
@@ -145,8 +145,15 @@ const CreateSneaker = () => {
         />
         <br />
         <br />
-        {/* <label>Image URL</label><br />
-                <input type='text' id='image_urls' name='image_urls' value={sneaker.image_urls} onChange={handleChange} /> */}
+        <label>Image URL</label>
+        <br />
+        <input
+          type="text"
+          id="image_url"
+          name="image_url"
+          value={sneaker.image_url}
+          onChange={handleChange}
+        />
         <br />
         <input type="submit" value="Submit" onClick={createSneaker} />
       </form>
