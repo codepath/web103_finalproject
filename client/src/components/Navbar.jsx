@@ -56,16 +56,16 @@ const Navbar = () => {
         </Link>
       </div>
       <nav>
-      {isAuthenticated ? (
-  <div>
-    {user.avatarUrl ? (
-      <img src={user.avatarUrl} alt="User" />
-    ) : (
-      <span>User</span>
-    )}
-    <button onClick={handleLogout}>Logout</button>
-  </div>
-) : (
+        {isAuthenticated ? (
+          <div>
+            {user.username ? (
+              <span>{user.username}</span>
+            ) : (
+              <span>User</span>
+            )}
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        ) : (
           <Link to="/login">
             <button style={loginButtonStyle}>Login</button>
           </Link>
