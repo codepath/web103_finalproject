@@ -5,7 +5,10 @@ import passport from 'passport';
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL,
+  // callbackURL: process.env.GITHUB_CALLBACK_URL,
+  callbackURL: process.env.NODE_ENV === 'production'
+    ? process.env.GITHUB_CALLBACK_URL
+    : 'http://localhost:3001/auth/github/callback',
 };
 
 const verify = async (accessToken, refreshToken, profile, callback) => {
