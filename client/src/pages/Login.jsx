@@ -4,16 +4,13 @@ import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import "../css/Login.css";
 
-const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-server-production.up.railway.app' : 'http://localhost:3001';
-window.API_URL = API_URL;
-
 const Login = () => {
   const navigate = useNavigate();
   const { setAuthInfo } = useAuth();
-  const AUTH_URL = `${window.API_URL}/auth/github`;
+  const AUTH_URL = `${API_URL}/auth/github`;
 
   useEffect(() => {
-    axios.get(`${window.API_URL}/auth/login/success`, { withCredentials: true })
+    axios.get(`${API_URL}/auth/login/success`, { withCredentials: true })
       .then(response => {
         if (response.data.success) {
           console.log('Login Success:', response.data); // Add this line

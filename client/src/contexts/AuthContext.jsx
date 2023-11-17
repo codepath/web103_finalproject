@@ -1,9 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-server-production.up.railway.app/auth/github/callback' : 'http://localhost:3001';
-window.API_URL = API_URL;
-
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
@@ -14,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    axios.get(`${window.API_URL}/auth/login/success`, { withCredentials: true })
+    axios.get(`${API_URL}/auth/login/success`, { withCredentials: true })
       .then(response => {
         if (response.data.success) {
           setAuthState({ isAuthenticated: true, user: response.data.user, loading: false });
