@@ -3,6 +3,9 @@ export const getSchools = async () => {
     const response = await fetch("/api/schools", {
       method: "GET",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
     return data;
@@ -16,6 +19,9 @@ export const getSchoolById = async (id) => {
     const response = await fetch(`/api/schools/${id}`, {
       method: "GET",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
     return data;

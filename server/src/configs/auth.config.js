@@ -1,4 +1,3 @@
-import { pool } from "./db.config.js";
 import GitHubStrategy from "passport-github2";
 import User from "../models/user.js";
 
@@ -27,10 +26,10 @@ const verify = async (accessToken, refreshToken, profile, done) => {
     if (!user) {
       const { rows } = await User.create(userData);
       const newUser = rows[0];
-      return done(null, newUser.id);
+      return done(null, newUser);
     }
 
-    return done(null, user.id);
+    return done(null, user);
   } catch (error) {
     return done(error);
   }

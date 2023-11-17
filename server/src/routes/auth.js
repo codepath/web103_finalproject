@@ -1,20 +1,10 @@
 import express from "express";
 import passport from "passport";
 
+import User from "../models/user.js";
+import { GitHub } from "../configs/auth.config.js";
+
 const router = express.Router();
-
-router.get("/login/success", (req, res) => {
-  if (req.user) {
-    // req.user only contains the user's id
-    res.status(200).json({ success: true, user_id: req.user });
-  } else {
-    res.status(401).json({ success: false, message: "failure" });
-  }
-});
-
-router.get("/login/failed", (req, res) => {
-  res.status(401).json({ success: false, message: "failure" });
-});
 
 router.get("/logout", (req, res, next) => {
   req.logout((err) => {
@@ -24,7 +14,7 @@ router.get("/logout", (req, res, next) => {
 
     req.session.destroy((err) => {
       res.clearCookie("connect.sid");
-      res.json({ status: "logout", user_id: null });
+      res.json({ status: true, message: "Logged out" });
     });
   });
 });
@@ -41,5 +31,20 @@ router.get(
     failureRedirect: "/",
   })
 );
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const { rows } = await User.findOne(id);
+    done(null, rows[0]);
+  } catch (error) {
+    done(error);
+  }
+});
+
+passport.use(GitHub);
 
 export default router;
