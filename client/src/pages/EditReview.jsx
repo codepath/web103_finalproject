@@ -56,8 +56,9 @@ const EditReview = ({data, api_url}) => {
             method: 'DELETE'
         }
         
-        await fetch(`${api_url}/api/reviews/`+ review_id, options)
-        window.location.href = `/browse`
+        await fetch(`${api_url}/api/reviews/`+ id, options)
+        window.location.href = `/`
+
     }
 
     return (

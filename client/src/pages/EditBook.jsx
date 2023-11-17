@@ -55,10 +55,10 @@ const EditBook = ( {data, api_url} ) => {
             body: JSON.stringify(post)
         }
         
-
         await fetch(`${api_url}/api/books/` + id, options)
 
         window.location.href =  `/book/details/${id}`
+
     }
 
 
@@ -72,6 +72,7 @@ const EditBook = ( {data, api_url} ) => {
         await fetch(`${api_url}/api/books/`+ id, options)
 
         window.location.href = '/browse'
+
     }
 
     return (
