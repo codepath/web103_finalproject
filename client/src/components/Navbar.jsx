@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios'; // Import axios for making HTTP requests
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
   const { isAuthenticated, user, setAuthInfo } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     // This will cause the component to re-render when isAuthenticated changes
   }, [isAuthenticated]);
@@ -31,7 +33,14 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <img src="/logo.PNG" alt="Logo" className="logo" />
+      {/* <img src="/logo.PNG" alt="Logo" className="logo" /> */}
+      <img
+        src="/logo.PNG"
+        alt="Logo"
+        className="logo"
+        onClick={() => navigate('/')}
+        style={{ cursor: 'pointer' }}
+      />
       <div className="link-container">
         <Link to="/about" className="link">
           About Us
@@ -47,12 +56,16 @@ const Navbar = () => {
         </Link>
       </div>
       <nav>
-        {isAuthenticated ? (
-          <div>
-            <img src={user.avatarUrl} alt="User" />
-            <button onClick={handleLogout}>Logout</button> {/* Logout button */}
-          </div>
-        ) : (
+      {isAuthenticated ? (
+  <div>
+    {user.avatarUrl ? (
+      <img src={user.avatarUrl} alt="User" />
+    ) : (
+      <span>User</span>
+    )}
+    <button onClick={handleLogout}>Logout</button>
+  </div>
+) : (
           <Link to="/login">
             <button style={loginButtonStyle}>Login</button>
           </Link>
