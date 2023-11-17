@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import path from 'path';
 import UserRoutes from './routes/UserRoutes.js';
 import PostRoutes from './routes/PostRoutes.js';
 import CommentRoutes from './routes/CommentRoutes.js';
@@ -11,6 +13,8 @@ import passport, { GitHub } from './config/auth.js'; // import modified passport
 import session from 'express-session'
 import connectPgSimple from 'connect-pg-simple'; // Import the module
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log('Environment Variables:');
 console.log('GITHUB_CLIENT_ID:', process.env.GITHUB_CLIENT_ID);
@@ -85,6 +89,12 @@ app.use('/api/resources', ResourceRoutes);
 app.use('/api/types', TypeRoutes);
 
 const PORT = process.env.PORT || 3001;
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
