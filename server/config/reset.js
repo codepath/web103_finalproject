@@ -181,7 +181,25 @@ const createUsersTable = async () => {
 }
 
 
-seedTagsTable()
-createUsersTable()
+const seedUsersTable = async () => {
+    await createUsersTable();
+
+    const insertQuery = {
+        text: 'INSERT INTO users (fullname, username, password, email) VALUES ($1, $2, $3, $4) RETURNING id',
+        values: ['Admin', 'admin', 'thisisadmin', 'iamadmin@gmail.com']
+    };
+
+    try {
+        const res = await pool.query(insertQuery);
+        console.log(`✅ Admin added successfully`);
+        
+    } catch (err) {
+        console.error(`⚠️ Error inserting admin or creating wishlist`, err);
+    }
+}
+
+
 createWishlistTable()
+seedTagsTable()
+seedUsersTable()
 // seedMoviesTable()
