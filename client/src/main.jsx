@@ -6,7 +6,7 @@ import './index.css'
 
 // Set the API URL based on the environment
 window.API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://codefm-production.up.railway.app'
+  ? 'https://codefm-client-production.up.railway.app'
   : 'http://localhost:3001';
   
 ReactDOM.createRoot(document.getElementById('root')).render(

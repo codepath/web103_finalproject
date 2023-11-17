@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // const API_URL = '/api/types';
 
-const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-production.up.railway.app' : 'http://localhost:3001';
+const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-client-production.up.railway.app' : 'http://localhost:3001';
 
 export const getAllTypes = async () => {
   try {
