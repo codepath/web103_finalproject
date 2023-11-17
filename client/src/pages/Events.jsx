@@ -1,11 +1,10 @@
 // Events.jsx
 import React, { useState } from 'react';
-import { mockData } from '../../../server/data/mockData';
+import { events } from '../../../server/data/mockData';
 import { FaBookmark, FaRegBookmark, FaShare } from 'react-icons/fa'; // Import icons from React Icons
 import "../css/Events.css";
 
 const Events = () => {
-  const { events } = mockData;
   const [selectedLevel, setSelectedLevel] = useState('all');
   const [bookmarkedEvents, setBookmarkedEvents] = useState([]);
 
