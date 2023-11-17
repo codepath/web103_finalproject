@@ -12,9 +12,13 @@ const Profile = () => {
     toast.success('Logged Outt Successfully!', {
       position: toast.POSITION.TOP_CENTER,
     });
+  const API_URL =
+    process.env.NODE_ENV === 'production'
+      ? 'playpal.up.railway.app'
+      : 'http://localhost:3000';
   const Navigate = useNavigate();
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3000/auth/login/success`, {
+    const response = await fetch(`${API_URL}/auth/login/success`, {
       credentials: 'include',
     });
     const res = await response.json();
@@ -43,7 +47,7 @@ const Profile = () => {
 
   const logout = async () => {
     loggedOut();
-    const url = `http://localhost:3000/auth/logout`;
+    const url = `${API_URL}/auth/logout`;
     const response = await fetch(url, { credentials: 'include' });
     window.location.href = '/';
   };

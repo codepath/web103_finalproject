@@ -11,42 +11,45 @@ const SearchBar = () => {
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
-
+  const API_URL =
+    process.env.NODE_ENV === 'production'
+      ? 'playpal.up.railway.app'
+      : 'http://localhost:3000';
   const loggedin = () =>
     toast.success('Logged in Successfully!', {
       position: toast.POSITION.TOP_CENTER,
     });
 
-    useEffect(() => {
-      const getUser = async () => {
-        try {
-          const response = await fetch(`http://localhost:3000/auth/login/success`, {
-            credentials: 'include',
-          });
-          if (response.status === 401) {
-            console.log("User not logged in");
-            return;
-          }
-          const json = await response.json();
-          if (json.user) {
-            setUser(json.user);
-          }
-        } catch (e) {
-          console.error(e.message);
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await fetch(`${API_URL}/auth/login/success`, {
+          credentials: 'include',
+        });
+        if (response.status === 401) {
+          console.log('User not logged in');
+          return;
         }
-      };
-    
-      getUser();
-    }, []); 
+        const json = await response.json();
+        if (json.user) {
+          setUser(json.user);
+        }
+      } catch (e: any) {
+        console.error(e.message);
+      }
+    };
+
+    getUser();
+  }, []);
 
   const gotoprofile = () => {
     navigate('/profile');
   };
 
-  const login = (e) => {
+  const login = (e: any) => {
     e.preventDefault();
-    window.location.href = 'http://localhost:3000/auth/github';
-    loggedin()
+    window.location.href = `${API_URL}/auth/github`;
+    loggedin();
   };
 
   return (

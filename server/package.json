@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "reset": "cd config && node --require dotenv/config reset.js",
     "dev": "nodemon --require dotenv/config server.js",
-    "start": "serve build -s -n -L -p $PORT"
+    "start": "npm run reset && nodemon --require dotenv/config server.js"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +22,8 @@
     "passport": "^0.6.0",
     "passport-github2": "^0.1.12",
     "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
