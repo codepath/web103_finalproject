@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
-    res.status(200).json({ succes: true, user: req.user });
+    res.status(200).json({ success: true, user: req.user });
   }
 });
 
@@ -25,18 +25,19 @@ router.get("/logout", (req, res, next) => {
     });
   });
 });
+
 router.get(
-  "/login/federated/google",
-  passport.authenticate("google", {
+  "/github",
+  passport.authenticate("github", {
     scope: ["read:user"],
   })
 );
 
 router.get(
-  "/oauth2/redirect/google",
-  passport.authenticate("google", {
-    successReturnToOrRedirect: "/",
-    failureRedirect: "/login",
+  "/github/callback",
+  passport.authenticate("github", {
+    successRedirect: "/",
+    failureRedirect: "/destinations",
   })
 );
 

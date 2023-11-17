@@ -1,51 +1,53 @@
 import { pool } from "./database.js";
-import GoogleStrategy from "passport-google-oauth20";
+import GitHubStrategy from "passport-github2";
 
-const googleOptions = {
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK_URL,
+const options = {
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  //callbackURL: 'http://localhost:3001/auth/github/callback'
 };
 
-const verifyCallback = async (accessToken, refreshToken, profile, done) => {
-  const { id, displayName, emails, photos } = profile;
+const verify = async (accessToken, refreshToken, profile, callback) => {
+  console.log(profile);
+  console.log(accessToken);
+  const {
+    _json: { id, name, login, avatar_url },
+  } = profile;
 
-  const googleUser = {
-    id: id,
-    username: displayName,
-    email: emails[0].value,
-    avatarUrl: photos[0].value,
+  const userData = {
+    githubId: id,
+    username: login,
+    avatarUrl: avatar_url,
     accessToken,
   };
 
   try {
     const userQuery = "SELECT * FROM users WHERE id = $1";
-    const userResult = await pool.query(userQuery, [googleUser.id]);
+    const userResult = await pool.query(userQuery, [userData.githubId]);
 
     if (userResult.rowCount === 0) {
       const insertUserQuery = `
-        INSERT INTO users (id, username, email, avatarurl, accesstoken)
+        INSERT INTO users (google_id, username, avatarurl, access_token, is_admin)
         VALUES($1, $2, $3, $4, $5)
         RETURNING *
       `;
       const insertUserValues = [
-        googleUser.id,
-        googleUser.username,
-        googleUser.email,
-        googleUser.avatarUrl,
-        googleUser.accessToken,
+        userData.githubId,
+        userData.username,
+        userData.avatarUrl,
+        userData.accessToken,
+        false,
       ];
       const newUserResult = await pool.query(insertUserQuery, insertUserValues);
 
       const newUser = newUserResult.rows[0];
-      return done(null, newUser);
+      return callback(null, newUser);
     }
 
     const user = userResult.rows[0];
-    return done(null, user);
+    return callback(null, user);
   } catch (error) {
-    return done(error);
+    return callback(error);
   }
 };
-
-export const Google = new GoogleStrategy(googleOptions, verifyCallback);
+export const GitHub = new GitHubStrategy(options, verify);

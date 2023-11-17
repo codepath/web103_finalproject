@@ -89,7 +89,7 @@ const getSneaker = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const results = await pool.query(
-      "SELECT s.*, i.image_url FROM sneakers s LEFT JOIN images i ON s.id = i.productid WHERE s.id = $1",
+      "SELECT s.*, i.image_url FROM sneakers s LEFT JOIN images i ON s.id = i.product_id WHERE s.id = $1",
       [id]
     );
 

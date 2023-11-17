@@ -2,14 +2,15 @@ import { pool } from "../config/database.js";
 
 const createReview = async (req, res) => {
   try {
-    const productid = parseInt(req.params.productid);
-    const { userid, rating, reviewtext, reviewdate } = req.body;
+    const productid = parseInt(req.params.sneaker_id);
+    console.log(productid);
+    const { user_id, rating, review_text, review_date } = req.body;
 
     const results = await pool.query(
       `INSERT INTO reviews (product_id, user_id, rating, review_text, review_date)
       VALUES($1, $2, $3, $4, $5) 
       RETURNING *`,
-      [productid, userid, rating, reviewtext, reviewdate]
+      [productid, user_id, rating, review_text, review_date]
     );
     res.status(201).json(results.rows[0]);
   } catch (error) {
@@ -30,7 +31,7 @@ const getReviews = async (req, res) => {
 
 const getProductReviews = async (req, res) => {
   try {
-    const productid = parseInt(req.params.productid);
+    const productid = parseInt(req.params.sneaker_id);
     const results = await pool.query(
       "SELECT * FROM reviews WHERE product_id = $1",
       [productid]
