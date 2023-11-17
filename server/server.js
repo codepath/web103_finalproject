@@ -23,7 +23,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
-const CLIENT_URL = 'http://localhost:3000'
+const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://readrave-server.up.railway.app' : 'http://localhost:3000'
 
 app.use(express.json())
 app.use(cors({
