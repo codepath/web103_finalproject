@@ -49,12 +49,12 @@ const AddReview = ({api_url}) => {
 
         const reviewId = await add_review()
         await createBooksReviews(reviewId)
-        window.location = `/browse/`
+        window.location = `/booksreviews/${book_id}`
     }
 
     return (
         <div>
-            <center><h3> Leave Your Comments</h3></center>
+            <center><h3> Write a comment...</h3></center>
             <form>
                 <label>Rating</label> <br />
                 <input type="number" id="rating" name="rating" value={review.rating} onChange={handleChange} /><br />
@@ -65,7 +65,7 @@ const AddReview = ({api_url}) => {
                 </textarea>
                 <br/>
 
-                <button type="submit" value="Submit" onClick={create_review}>Submit</button>
+                <input type="submit" value="Submit" onClick={create_review}/>
             </form>
         </div>
     )

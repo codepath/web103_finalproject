@@ -1,3 +1,4 @@
+
 .books-container {
     display: flex;
     flex-direction: row;
@@ -14,17 +15,10 @@
 
 .add-book {
     float: right;
-    margin-top: 1em;
-}
-.search-bar {
-    display: flex;
-    gap: 2rem;
-    overflow: hidden;
-    padding-bottom: 2vh;
+    margin-top: 0.7em;
 }
 
-.searchbar-container {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+.search-bar {
+    overflow: hidden;
+    padding-bottom: 2vh;
 }

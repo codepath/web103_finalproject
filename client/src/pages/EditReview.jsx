@@ -13,6 +13,7 @@ const EditReview = ({data, api_url}) => {
             const response = await fetch(`${api_url}/api/reviews/` + review_id);
             const data = await response.json();
             setReview(data);
+            console.log(data)
             } catch (error) {
             console.error("Error fetching review:", error);
             }
@@ -74,9 +75,8 @@ const EditReview = ({data, api_url}) => {
                 </textarea>
                 <br/>
 
-                <button type="submit" value="Submit" onClick={updateReview}>update</button>
-
-                <button type="submit" value="Submit" onClick={deleteReview}>delete</button>
+                <input type="submit" value="Update" onClick={updateReview}/>
+                <button className="deleteButton" onClick={deleteReview}>Delete</button>
             </form>
         </div>
     )

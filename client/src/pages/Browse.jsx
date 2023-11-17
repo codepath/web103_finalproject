@@ -29,7 +29,6 @@ const Browse = (props) => {
                         <input
                             type="text"
                             placeholder="Search by title..."
-
                             onChange={handleSearch}
                         />
                     </div>
