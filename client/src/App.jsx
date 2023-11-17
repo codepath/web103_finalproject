@@ -16,6 +16,10 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
 import PostDetail from './components/PostDetail';
 
+const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-production.up.railway.app' : 'http://localhost:3001';
+window.API_URL = API_URL;
+
+
 const App = () => {
   return (
     <AuthProvider>

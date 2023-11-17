@@ -29,11 +29,18 @@ app.use(session({
 }));
 
 app.use(express.json());
+// app.use(cors({
+//   origin: 'http://localhost:5173',
+//   methods: 'GET,POST,PUT,DELETE,PATCH',
+//   credentials: true,
+// }));
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.NODE_ENV === 'production' ? 'https://codefm-production.up.railway.app' : 'http://localhost:5173',
   methods: 'GET,POST,PUT,DELETE,PATCH',
   credentials: true,
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());

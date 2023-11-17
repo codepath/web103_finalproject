@@ -1,11 +1,13 @@
 // commentService.js
 import axios from 'axios';
 
-const API_URL = '/api/comments';
+// const API_URL = '/api/comments';
+const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-production.up.railway.app' : 'http://localhost:3001';
+
 
 export const getAllComments = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(`${API_URL}/api/comments`);
     return response.data;
   } catch (error) {
     console.error('Error fetching comments:', error);
