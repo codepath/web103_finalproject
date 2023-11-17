@@ -100,3 +100,8 @@ input[type=submit]:hover {
 form {
     width: 100%;
 }
+
+.flex-row{
+    display: flex;
+    gap: 2rem;
+}

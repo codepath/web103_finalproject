@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import '../styles/Book.css'
 
 const ReadReviews = ({user, api_url}) => {
   const {id} = useParams();
@@ -14,7 +15,7 @@ const ReadReviews = ({user, api_url}) => {
   }
 
     const fetchReviews = async() => {
-      const response = await fetch(`${api_url}//api/booksreviews/`+id)
+      const response = await fetch(`${api_url}/api/booksreviews/`+id)
       const results = await response.json()
       setReviews(results)
     }
@@ -24,7 +25,7 @@ const ReadReviews = ({user, api_url}) => {
 
 
   return (
-    <div>
+    <div className='flex-row'>
       <div className="card">
         <div className="left-container" style={{ backgroundImage: `url(${book.image})` }}>
         </div> 
@@ -35,6 +36,7 @@ const ReadReviews = ({user, api_url}) => {
         </div> 
       </div> 
       <br />
+      <div>
       {
         reviews && reviews.length > 0 ?
         reviews.map(review => 
@@ -50,8 +52,8 @@ const ReadReviews = ({user, api_url}) => {
           ) :
           <h3>No comments yet. Be the first!</h3>
       }
-
-      <Link to={`/addreview/${id}`}><button>Leave a review</button></Link>
+        <Link to={`/addreview/${id}`}><button>Leave a review</button></Link>
+      </div>
     </div>
   )
 }
