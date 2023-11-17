@@ -6,16 +6,19 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 [👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
 
-## Wireframe 1: [page title]
+- Login ⭐
+- Job Posting ⭐
+- Account History ⭐ 
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+## Wireframe 1: [Login Page]
 
-## Wireframe 2: [page title]
+![Alt text](image.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+## Wireframe 2: [Job Posting Page]
 
-## Wireframe 3: [page title]
+![Alt text](image-2.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 3: [Account History]
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![Alt text](image-1.png)
+
