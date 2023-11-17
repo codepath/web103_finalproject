@@ -10,8 +10,9 @@ const Navigation = () => {
             </ul>
 
             <ul>
-                <li><a href='/create' role='button'>Create New Movie Profile</a></li>
                 <li><a href='/' role='button'>View Movies</a></li>
+                <li><a href='/wishlist' role='button'>Wish List</a></li>
+                <li><a href='/create' role='button'>Create New Movie Profile</a></li>
             </ul>
             
         </nav>

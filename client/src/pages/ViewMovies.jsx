@@ -47,9 +47,7 @@ const ViewMovies = ({ title }) => {
           movies.map((movie, index) => (
             <div onClick={() => openModal(movie)} key={movie.movie_id}>
               <Card
-                title={movie.title}
-                img_url={movie.img_url}
-                trailer_url={movie.trailer_url}
+                movie={movie}
               />
             </div>
           ))

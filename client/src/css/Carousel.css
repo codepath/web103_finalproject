@@ -1,0 +1,22 @@
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel-card-wrapper {
+    flex: 0 0 auto;
+    width: 20%; /* Width of each card */
+    position: relative;
+    scroll-snap-align: center;
+    margin-right: 10px;
+}
+
+.carousel-card-wrapper:first-child {
+    margin-left: calc((100% - 20%) / 2); /* Center the first card */
+}
+
+.carousel-card-wrapper:last-child {
+    margin-right: calc((100% - 20%) / 2); /* Center the last card */
+}

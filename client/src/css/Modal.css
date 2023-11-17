@@ -198,3 +198,24 @@
     background-color: #c4080d;
     /* Slightly darker red on hover */
 }
+
+.wishlist-icon {
+    cursor: pointer;
+    transition: transform 0.3s;
+    font-size: 2rem; /* Adjust the size of the icon */
+    position: absolute; /* Position the icon relative to the modal */
+    right: 20px; /* Position from the right */
+    bottom: 20px; /* Position from the bottom */
+}
+
+.wishlist-icon.not-added:hover, .wishlist-icon.not-deleted:hover {
+    transform: rotate(180deg);
+}
+
+.wishlist-icon.added {
+    color: green;
+}
+
+.wishlist-icon.deleted {
+    color: red;
+}

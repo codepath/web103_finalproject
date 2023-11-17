@@ -26,7 +26,7 @@ app.use(cors());
 app.use('/api/movies', moviesRoutes);
 app.use('/api/tags', tagsRoutes);
 app.use('/api/wishlist', wishlistRoutes)
-app.use('api/moviesTags', moviesTagsRoutes)
+app.use('/api/moviesTags', moviesTagsRoutes)
 
 
 

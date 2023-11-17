@@ -1,40 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import Carousel from '../components/Carousel.jsx';
 
-function WishList() {
+const WishList = ({ title }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/wishlist')
-      .then(response => {
-        setMovies(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+    document.title = title || '';
+  }, [title]);
 
-  const handleRemoveMovie = (movieId) => {
-    axios.delete(`/api/wishlist/${movieId}`)
-      .then(response => {
-        setMovies(movies.filter(movie => movie._id !== movieId));
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+  useEffect(() => {
+    const fetchWishList = async () => {
+      const response = await fetch('/api/wishlist/');
+      const data = await response.json();
+      setMovies(data);
+    };
+    fetchWishList();
+  }, []);
 
   return (
     <div>
       <h1>Wishlist</h1>
-      {movies.map(movie => (
-        <div key={movie._id}>
-          <h2>{movie.title}</h2>
-          <img src={movie.poster} alt={movie.title} />
-          <p>{movie.description}</p>
-          <button onClick={() => handleRemoveMovie(movie._id)}>Remove</button>
-        </div>
-      ))}
+      <Carousel movies={movies} setMovies={setMovies} />
     </div>
   );
 }
