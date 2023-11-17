@@ -3,6 +3,7 @@
  .dropdown {
     max-width: 13em;
     margin-left: var(--dl-space-space-twounits);
+    margin-bottom: 1%;
     flex: 0 0 calc(20%);
   }
   
@@ -80,4 +81,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  @media (max-width: 650px) {
+    .dropdown {
+      flex: 0 0 calc(46%);
+      margin-left: 0px;
+    }
+    .dropdowns {
+      margin: 0;
+    }
   }

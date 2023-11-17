@@ -4,8 +4,8 @@
 .cards {
     display: flex;
     flex-wrap: wrap;
-    margin: 2% 0 2% 8%;
-    gap: 2%;
+    margin: 0 0 2% 6%;
+    gap: 0;
 }
 
 .card__like {
@@ -62,12 +62,12 @@ top: 0;
   
 }
 .card {
-  flex: 0 0 calc(20%);
-  margin-bottom: 4%;
-  margin-right: 25px;
+  flex: 0 0 calc(22%);
+  margin-bottom: 3%;
+  margin-right: 2%;
   transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
   background-color: #fff;
-    width: 33.3%;
+  width: 33.3%;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -132,18 +132,30 @@ border-bottom-right-radius: 12px;
 
 @media (max-width: 880px) {
   .card {
-    flex: 0 0 calc(28%);
-    margin-bottom: 7%;
+    flex: 0 0 calc(30%);
+    margin-bottom: 5%;
   }
 }
 
 @media (max-width: 650px) {
   .card {
-    flex: 0 0 calc(42%);
+    flex: 0 0 calc(47%);
     margin-bottom: 7%;
+    margin-right: 3%;
   }
   .cards {
     margin-top: 7%;
     margin-bottom: 5%;
+    margin-left: 3%;
+    gap: 0;
+  }
+}
+
+@media (max-width: 386px) {
+  .card {
+    flex: 0 0 calc(93%);
+  }
+  .cards {
+    margin-left: 8%;
   }
 }

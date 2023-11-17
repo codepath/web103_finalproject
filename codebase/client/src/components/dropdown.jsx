@@ -18,16 +18,15 @@ const Dropdown = ({ title, options, setParams, params, filter}) => {
   return (
     <>
       <div className="dropdown">
-        <label className="dropdown-btn">
+        {/* <label> we don't need this label
           <span>{title}</span>
           <span className="arrow"></span>
-        </label>
-
+        </label> */}
         <select
-          className="dropdown-content"
+          className="buttonLogIn"
           value={selectedOption}
           onChange={(e) => handleOptionSelect(e.target.value)}>
-          <option value="">Select an option</option>
+          <option value="">{title}</option>
           {options.map((option, index) => (
             <option key={index} value={option}>
               {option}
