@@ -1,8 +1,11 @@
-export const getUser = async (id) => {
+export const getUser = async () => {
   try {
-    const response = await fetch(`/api/users/${id}`, {
+    const response = await fetch(`/api/users/me`, {
       method: "GET",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
     return data;
@@ -11,9 +14,9 @@ export const getUser = async (id) => {
   }
 };
 
-export const updateUser = async (id, user) => {
+export const updateUser = async (user) => {
   try {
-    const response = await fetch(`/api/users/${id}`, {
+    const response = await fetch(`/api/users/me`, {
       method: "PUT",
       credentials: "include",
       body: JSON.stringify(user),

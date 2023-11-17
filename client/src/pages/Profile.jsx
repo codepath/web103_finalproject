@@ -67,7 +67,7 @@ export const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateUser(profile.id, {
+    await updateUser({
       role: profile.role,
       bio: profile.bio,
       school_id: profile.schoolId,

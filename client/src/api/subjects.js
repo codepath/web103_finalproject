@@ -3,6 +3,9 @@ export const getSubjects = async () => {
     const response = await fetch("/api/subjects", {
       method: "GET",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
     return data;
@@ -16,6 +19,9 @@ export const getSubjectById = async (id) => {
     const response = await fetch(`/api/subjects/${id}`, {
       method: "GET",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
     return data;

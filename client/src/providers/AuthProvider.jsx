@@ -1,30 +1,35 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "../context";
-import { getUserId, logout as fetchLogout } from "../api";
+import { getUser, logout as fetchLogout } from "../api";
 
 export const AuthProvider = ({ children }) => {
-  const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const logout = async () => {
     const data = await fetchLogout();
-    if (data.success) {
-      setUserId(null);
+    if (data.status) {
+      setUser(null);
     }
   };
 
-  const fetchUserId = async () => {
-    const data = await getUserId();
-    if (data.success) {
-      setUserId(data.user_id);
+  const fetchUser = async () => {
+    try {
+      const data = await getUser();
+      setUser(data);
+    } catch (error) {
+      // console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchUserId();
+    fetchUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ logout, userId }}>
+    <AuthContext.Provider value={{ user, isLoading, logout }}>
       {children}
     </AuthContext.Provider>
   );
