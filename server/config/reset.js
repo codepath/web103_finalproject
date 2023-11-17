@@ -1,6 +1,6 @@
 import { pool } from '../config/database.js'
 import './dotenv.js'
-import booksData from '../data/books.js'
+
 
 // create books
 // DROP TABLE books CASCADE;

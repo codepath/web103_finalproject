@@ -23,7 +23,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
-const CLIENT_URL = 'http://localhost:5173'
+const CLIENT_URL = 'http://localhost:3000'
 
 app.use(express.json())
 app.use(cors({

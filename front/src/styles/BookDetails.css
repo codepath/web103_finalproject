@@ -1,0 +1,46 @@
+.card-details {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 8px; */
+    margin: 10px;
+    padding: 10px;
+    margin-top: 50px;
+    /* width: 500px; */
+}
+
+.left-side {
+    flex: 0 0 35%;
+    /* Adjust the width of the image container as needed */
+    height: 500px;
+    /* Set the height of the image container */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    /* margin-right: 20px; */
+}
+
+.right-side {
+    flex: 1;
+}
+
+.right-side h2 {
+    margin-top: 0;
+    font-size: 2.5rem;
+}
+
+.right-side h3 {
+    margin-top: 5px;
+    font-size: 2.2rem;
+}
+
+.right-side p {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+#read-reviews-btn, #edit-book-btn {
+    font-size: 1.2rem;
+    margin: 2vh;
+}
