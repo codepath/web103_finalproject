@@ -5,7 +5,7 @@
     "description": "A fullstack application with React and Node.js",
     "scripts": {
         "dev": "concurrently \"cd client && vite\" \"cd server && nodemon --require dotenv/config server.js\"",
-        "start": "nodemon --require dotenv/config server/server.js",
+        "start": "node --require dotenv/config server/server.js",
         "build": "cd client && vite build",
         "reset-db": "cd server/config && node --require dotenv/config reset.js"
     },
