@@ -1,4 +1,4 @@
-export const mockData = {
+const mockData = {
   // "users": [
   //   { "id": 1, "username": "user1", "password": "password1" },
   //   { "id": 2, "username": "user2", "password": "password2" },
@@ -56,11 +56,15 @@ export const mockData = {
   { category: 'hackathon', title: 'Microsoft AI Classroom Hackathon', link: 'https://microsoftaiclassroom.devpost.com/?ref_feature=challenge&ref_medium=discover', level: 'Intermediate' },
   { category: 'hackathon', title: 'Google’s Immersive Geospatial Challenge', link: 'https://googlesimmersive.devpost.com/?ref_feature=challenge&ref_medium=discover', level: 'Beginner'},
   { category: 'hackathon', title: 'MLH Month Long Hackathon', link: 'https://hackfest-november.devpost.com/?ref_feature=challenge&ref_medium=discover', level: 'Beginner' },
-  
   ]
   // "types": [
   //   { "id": 1, "name": "Type 1" },
   //   { "id": 2, "name": "Type 2" },
   //   { "id": 3, "name": "Type 3" }
   // ]
+};
+
+module.exports = {
+  events: mockData.events,
+  resources: mockData.resources,
 };
