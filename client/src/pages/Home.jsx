@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar"
 import "../styles/Home.css"
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
@@ -35,7 +34,7 @@ const Home = (props) => {
             <h2>📚share your reading raves with the world📚</h2>
 
             <div className="carousel-container">
-                <div className="review">
+                <div className="review-home">
                     <p>"I've been using ReadRave for a few months now, and I can't recommend it enough to fellow book enthusiasts." </p>
                     <p>- ReadRaver 1</p>
                 </div>
@@ -54,7 +53,7 @@ const Home = (props) => {
                         ))}
                     </Carousel>
                 </div>
-                <div className="review">
+                <div className="review-home">
                     <p>"ReadRave is a fantastic platform for book lovers. I've enjoyed using it to connect with like-minded readers, and explore new book recommendations." </p>
                     <p>- ReadRaver 2</p>
                 </div>

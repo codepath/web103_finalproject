@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRoutes, Link } from 'react-router-dom'
 import './App.css'
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Browse from './pages/Browse';
 import AddBook from './pages/AddBook';
@@ -20,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await fetch(`${API_URL}/auth/login/success`, { credentials: 'include' } )
+      const response = await fetch(`${API_URL}/auth/login/success`, { credentials: 'include' })
       const json = await response.json()
       setUser(json.user)
     }
@@ -51,7 +50,7 @@ function App() {
     },
     {
       path: '/browse',
-      element: user && user.id ? <Browse user={user} data={books} />: <Login api_url={API_URL} />
+      element: user && user.id ? <Browse user={user} data={books} /> : <Login api_url={API_URL} />
     },
     {
       path: '/book/new',
@@ -59,15 +58,15 @@ function App() {
     },
     {
       path: '/edit/:id',
-      element: user && user.id ? <EditBook user={user} data={books} api_url={API_URL}/>: <Login api_url={API_URL} />
+      element: user && user.id ? <EditBook user={user} data={books} api_url={API_URL} /> : <Login api_url={API_URL} />
     },
     {
       path: '/book/details/:id',
-      element: user && user.id ? <BookDetails user={user} data={books} api_url={API_URL}/>: <Login api_url={API_URL} />
+      element: user && user.id ? <BookDetails user={user} data={books} api_url={API_URL} /> : <Login api_url={API_URL} />
     },
     {
       path: '/booksreviews/:id',
-      element: user && user.id ? <ReadReview user={user} api_url={API_URL} />: <Login api_url={API_URL} />
+      element: user && user.id ? <ReadReview user={user} api_url={API_URL} /> : <Login api_url={API_URL} />
     },
     {
       path: '/addreview/:book_id',
@@ -75,7 +74,7 @@ function App() {
     },
     {
       path: '/editreview/:review_id',
-      element: user && user.id ? <EditReview  user={user} api_url={API_URL} />: <Login api_url={API_URL} />
+      element: user && user.id ? <EditReview user={user} api_url={API_URL} /> : <Login api_url={API_URL} />
     },
     // {
     //   path: '/users/add/:book_id',
@@ -86,21 +85,21 @@ function App() {
 
   return (
     <>
-      <>
-        <div className="header-container">
-          <div className="header-left">
+      {
+        user && user.id ?
+          <div className="header-container">
+            <div className="header-left">
               <Link to="/"><button id="homeBtn" >Home</button></Link>
               <Link to="/browse"><button id="browseBtn" >Browse</button></Link>
-          </div>
-          <div>
-              <Avatar className='avatar' user={user} /> 
-          </div>
-          <div className="header-right">
-              {/* <Link to="/signin"><button>Sign In</button></Link> */}
-              <button onClick={logout} className='headerBtn'>Logout</button>
-          </div>
-        </div>
-      </>
+            </div>
+            <div>
+              <Avatar className='avatar' user={user} />
+            </div>
+            <div className="header-right">
+              <button onClick={logout} className='logoutBtn'>Logout</button>
+            </div>
+          </div> : <></>
+      }
       {element}
     </>
   )

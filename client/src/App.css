@@ -1,9 +1,38 @@
 #root {
-  /* max-width: 1280px; */
   width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
+.logoutBtn {
+  margin-top: -100px;
+}
 
+.header-left {
+  flex: 1;
+  text-align: left;
+}
+
+.header-right {
+  flex: 1;
+  text-align: right;
+}
+
+#homeBtn {
+  margin-right: 2vh;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-bottom: 2vh;
+}
+
+.avatar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}

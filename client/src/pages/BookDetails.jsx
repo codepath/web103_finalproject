@@ -29,7 +29,6 @@ const BookDetails = ({data, api_url}) => {
                     <Link to={`/edit/${id}`}><button id="edit-book-btn">Edit Book</button></Link>
                 </div>
             </div>
-            {/* <Link to=""><button>Add to MyProfile</button></Link> */}
         </>
     )
 }

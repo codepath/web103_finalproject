@@ -5,8 +5,8 @@
     align-items: center; /* Vertically aligns reviews with the carousel */
   }
   
-  .review {
-    flex: 1; /* Ensures reviews occupy equal space */
+  .review-home {
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -14,9 +14,8 @@
   }
   
   .carousel {
-    /* max-width: 70vh; */
-    flex: 2; /* Allocates more space to the carousel */
-    margin: 0 auto; /* Centers the carousel within the container */
+    flex: 1; 
+    margin: 0 auto; 
   }
 
 .carousel-image img {
