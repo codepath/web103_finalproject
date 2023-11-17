@@ -59,7 +59,7 @@
 import React from 'react';
 import '../css/Modal.css';
 import { AiOutlineCloseCircle, AiFillYoutube } from 'react-icons/ai'; // Importing icons from react-icons
-import { FaRegCalendarAlt, FaRegUser, FaUsers, FaEdit } from 'react-icons/fa'; // Additional icons for details
+import { FaRegCalendarAlt, FaRegUser, FaUsers, FaEdit, FaTag } from 'react-icons/fa'; // Additional icons for details
 
 const Modal = ({ movie, onClose }) => {
   if (!movie) return null;
@@ -82,6 +82,11 @@ const Modal = ({ movie, onClose }) => {
 
         <div className="modal-body">
           <p className="modal-description">{movie.description}</p>
+
+          <div className="modal-info">
+            <FaTag className="icon" />
+            <span>Genre: {movie.tag}</span>
+          </div>
           <div className="modal-info">
             <FaRegUser className="icon" />
             <span>Director: {movie.director}</span>

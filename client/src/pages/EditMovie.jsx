@@ -7,6 +7,23 @@ const EditMovie = () => {
     const id = useParams().id;
     const [movie, setMovie] = useState({});
 
+    // Create a state variable for the movie tags
+    const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        const getTags = async () => {
+            try {
+                const response = await fetch("/api/tags/");
+                const data = await response.json();
+                console.log(data);
+                setTags(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getTags();
+    }, []);
+
     /**
      * Hook to fetch movie data from the API
      */
@@ -67,16 +84,16 @@ const EditMovie = () => {
      */
     const deleteData = async (event) => {
         event.preventDefault();
-    
+
         // Display the confirmation dialog
         const userConfirmed = window.confirm("Are you sure you want to delete this movie?");
-    
+
         if (userConfirmed) {
             try {
                 const response = await fetch(`/api/movies/${id}`, {
                     method: "DELETE"
                 });
-    
+
                 // Check if the delete was successful, then redirect
                 if (response.ok) {
                     alert("Movie deleted successfully.");
@@ -85,7 +102,7 @@ const EditMovie = () => {
                     // Handle any errors if the fetch response wasn't ok
                     alert("There was an error deleting the movie.");
                 }
-    
+
             } catch (error) {
                 console.error(error);
                 alert("An error occurred while trying to delete the movie.");
@@ -95,13 +112,13 @@ const EditMovie = () => {
             console.log("User canceled the delete operation.");
         }
     }
-    
+
 
     return (
         <div className='edit-movie'>
             <h2>Edit Movie #{id}</h2>
             <form>
-            <label htmlFor="title">Title:</label>
+                <label htmlFor="title">Title:</label>
                 <input
                     type="text"
                     id="title"
@@ -117,6 +134,22 @@ const EditMovie = () => {
                     value={movie.description}
                     onChange={handleChange}
                 />
+
+                <label htmlFor="tag">Tags (Genre):</label>
+                <select
+                    id="tag"
+                    name="tag"
+                    value={movie.tag}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Select a genre</option>
+                    {tags.map((tag) => (
+                        <option key={tag.tag_id} value={tag.genre}>
+                            {tag.genre}
+                        </option>
+                    ))}
+                </select>
 
                 <label htmlFor="poster">Image URL:</label>
                 <input

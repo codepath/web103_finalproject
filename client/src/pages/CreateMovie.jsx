@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../css/CreateMovie.css';
 
 const CreateMovie = () => {
@@ -6,12 +6,30 @@ const CreateMovie = () => {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
+        tag: "",
         actors: "",
         director: "",
         publish_date: null,
         img_url: "",
         trailer_url: "",
     });
+
+    // Create a state variable for the movie tags
+    const [tags, setTags] = useState([]);
+
+    useEffect(() => {
+        const getTags = async () => {
+            try {
+                const response = await fetch("/api/tags/");
+                const data = await response.json();
+                console.log(data);
+                setTags(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getTags();
+    }, []);
 
     /**
      * Function to handle form input changes
@@ -71,6 +89,22 @@ const CreateMovie = () => {
                     onChange={handleChange}
                     required
                 />
+
+                <label htmlFor="tag">Tags (Genre):</label>
+                <select
+                    id="tag"
+                    name="tag"
+                    value={formData.tag}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Select a genre</option>
+                    {tags.map((tag) => (
+                        <option key={tag.tag_id} value={tag.genre}>
+                            {tag.genre}
+                        </option>
+                    ))}
+                </select>
 
                 <label htmlFor="poster">Image URL:</label>
                 <input

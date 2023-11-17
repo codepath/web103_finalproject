@@ -38,5 +38,45 @@
     {
         "tag_id": 10,
         "genre": "Thriller"
+    },
+    {
+        "tag_id": 11,
+        "genre": "Crime"
+    },
+    {
+        "tag_id": 12,
+        "genre": "Animation"
+    },
+    {
+        "tag_id": 13,
+        "genre": "Biography"
+    },
+    {
+        "tag_id": 14,
+        "genre": "Family"
+    },
+    {
+        "tag_id": 15,
+        "genre": "History"
+    },
+    {
+        "tag_id": 16,
+        "genre": "Musical"
+    },
+    {
+        "tag_id": 17,
+        "genre": "Sport"
+    },
+    {
+        "tag_id": 18,
+        "genre": "War"
+    },
+    {
+        "tag_id": 19,
+        "genre": "Western"
+    },
+    {
+        "tag_id": 20,
+        "genre": "Documentary"
     }
 ]
