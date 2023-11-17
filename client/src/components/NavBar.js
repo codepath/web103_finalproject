@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import React, { useState, useEffect } from "react";
 
-const API_URL = "http://localhost:3000";
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "faizansneakerworld-server.up.railway.app"
+    : "http://localhost:3000";
 const logout = async () => {
   const url = `${API_URL}/auth/logout`;
   const response = await fetch(url, { credentials: "include" });
@@ -22,7 +25,7 @@ function NavBar() {
       setUser(json.user);
     };
     getUser();
-  }, []);
+  }, [API_URL]);
 
   return (
     <header className="header">

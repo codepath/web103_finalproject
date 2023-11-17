@@ -11,10 +11,14 @@ import orderRoutes from "./routes/order.js";
 // create express app
 const app = express();
 const DOMAIN = process.env.DOMAIN;
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "faizansneakerworld-client.up.railway.app"
+    : "http://localhost:3000";
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: API_URL,
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   })
@@ -40,7 +44,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.get("/", (req, res) => {
-  res.redirect("http://localhost:3001");
+  res.redirect(API_URL);
 });
 
 app.use("/auth", authRoutes);
