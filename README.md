@@ -49,7 +49,7 @@ Backend: Node.js, Express.js, PostgreSQL
       <img src='https://github.com/fzinnah17/CodeFM/blob/main/GIFs/Railway%20Backend.gif' title='Video Walkthrough' width='400px' alt='Railway' />
 
 - ✅ 4. **One-to-many database relationship**: Connection between users and their posts on the discussion board. One user can have multiple posts.
-- [ ] 5. **Many-to-many with a join table**: Users can share multiple resources, and a single resource (like a YouTube tutorial) can be saved by multiple users. This requires a join table.
+- ✅ 5. **Many-to-many with a join table**: Users can share multiple resources, and a single resource (like a YouTube tutorial). This requires a join table.
 - ✅ 6. **RESTful API**:
    - **GET**: Fetch a list of posts or resources.
    - **POST**: Create a new post on the discussion board.
@@ -66,7 +66,7 @@ Backend: Node.js, Express.js, PostgreSQL
 - ✅ 10. **On-page interactions**: Users can create or edit a post on the same page without navigating to a new page.
   <img src= 'https://github.com/fzinnah17/CodeFM/blob/main/GIFs/CRUD_Frontend.gif' title='Video Walkthrough'>
   
-- [ ] 11. **Dynamic frontend routes with React Router**: Using React Router, you can create dynamic routes like `/posts/:postId` to view a specific post's details.
+- ✅ 11. **Dynamic frontend routes with React Router**: Using React Router, you can create dynamic routes like `/posts/:postId` to view a specific post's details.
 - ✅  12. **Hierarchical React components**: Break down frontend components methodically:
    - ✅  **Page components**: `Home`, `DiscussionBoard`, `ResourceList`.
    - ✅  **Presenter components**: `Post`, `Comment`, `ResourceItem`.
