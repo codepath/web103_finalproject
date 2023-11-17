@@ -1,0 +1,12 @@
+.reviews-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.review {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 50px;
+}
