@@ -102,6 +102,7 @@ console.log('GITHUB_CLIENT_SECRET:', process.env.GITHUB_CLIENT_SECRET);
 console.log('GITHUB_CALLBACK_URL:', process.env.GITHUB_CALLBACK_URL);
 console.log('API_URL:', process.env.API_URL);
 
+const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-client-production.up.railway.app' : 'http://localhost:5173';
 const app = express();
 
 const PgSession = connectPgSimple(session);
@@ -120,7 +121,7 @@ app.use(express.json());
 // }));
 
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://codefm-client-production.up.railway.app' : 'http://localhost:5173',
+  origin: CLIENT_URL,
   methods: 'GET,POST,PUT,DELETE,PATCH',
   credentials: true,
 }));
@@ -148,9 +149,9 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// app.get('/', (req, res) => {
-//   res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ CodeFM Backend</h1>');
-// });
+app.get('/', (req, res) => {
+  res.redirect(CLIENT_URL);
+});
 
 app.get('/login/success', (req, res) => {
   if (req.isAuthenticated()) {
