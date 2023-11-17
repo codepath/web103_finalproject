@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "../styles/productCard.css";
+import { useLocation } from "react-router-dom";
 
 function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description, id, quantity}) {
   const productData = {
@@ -13,6 +14,7 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
     id,
     quantity
   };
+  const location = useLocation().pathname;
   
   return (
     <div className="card">
@@ -20,6 +22,15 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
       className="card__img"
       style={{ backgroundImage: `url(${imgSrc})` }}
     ></div>
+    {location == "/edititems" ? 
+    <Link to="/editItem" state={{productData:productData}}
+        className="card_link">
+      <div
+        className="card__img--hover"
+        style={{ backgroundImage: `url(${imgHoverSrc})` }}
+      ></div>
+    </Link> 
+    : 
     <Link to="/productview" state={{productData:productData}}
         className="card_link">
       <div
@@ -27,6 +38,7 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
         style={{ backgroundImage: `url(${imgHoverSrc})` }}
       ></div>
     </Link>
+    }
     <div className="card__info">
       <span className="card__category">{category}</span>
       <h3 className="card__title">{title}</h3>

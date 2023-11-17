@@ -18,10 +18,10 @@ import SignUp from './pages/signUp'
 import Checkout from './pages/checkout'
 import AccountSettings from './pages/accountSettings'
 import EditItems from './pages/EditItems';
+import EditItem from './pages/EditItem';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [user, setUser] = useState(null);
   
   useEffect(() => {
@@ -114,13 +114,14 @@ function App() {
         <Route element={<Home />} exact path="/" />
         <Route element={<NotFound />} path="**" />
         <Route element={<Catalog />} path="/catalog" />
-        <Route path="/productview" element={<ProductView />}/>
+        <Route element={<ProductView />} path="/productview"/>
         <Route element={<Liked />} path="/liked" />
         <Route element={<SignIn />} path="/signIn" />
-        <Route path="/signUp" element={<SignUp />} />       
+        <Route element={<SignUp />} path="/signUp"  />       
         <Route element={<Checkout />} path="/checkout" />
         <Route element={<AccountSettings />} path="/accountSettings" />
         <Route element={<EditItems />} path="/editItems" />
+        <Route element={<EditItem />} path="/editItem" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>
