@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import Question from '../components/Question'
+
+
 function DetailedView() {
     const {id} = useParams()
 
@@ -16,7 +19,7 @@ function DetailedView() {
       })
       const data = await result.json()
       setJob(data)
-      console.log('detailed view', data)
+      //console.log('detailed view', data)
 
     }
     
@@ -24,6 +27,12 @@ function DetailedView() {
     fetchData()
   }, [])
 
+
+  const handleFeedbackRequest = (question) => {
+
+    console.log('feedback requested for question: ', question)
+  
+  }
   // const [answers, setAnswers] = useState(Array(job?.questionList.length).fill('')); // initialize answers state with an array of empty strings
 
   // const handleAnswerChange = (index, newAnswer) => {
@@ -38,11 +47,15 @@ function DetailedView() {
   const renderQuestions = (questionsString) => {
     const questions = questionsString.split(/\d+\./).slice(1); // split by question number pattern and remove the first empty string
 
+
     return questions.map((question, index) => (
-      <div key={index}>
-        <p>{`${index + 1}. ${question.trim()}`}</p>
-        <textarea />
-      </div>
+      
+      <Question question={question} index={index}/>
+      // <div key={index}>
+      //   <p>{`${index + 1}. ${question.trim()}`}</p>
+      //   <textarea />
+      //   <Button onClick={() => handleFeedbackRequest(question.trim())}>Ask for Feedback</Button>
+      // </div>
     ));
   };
   
