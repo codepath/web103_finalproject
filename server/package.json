@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "reset": "cd config && node --require dotenv/config reset.js",
     "dev": "nodemon --require dotenv/config server.js",
-    "start": "npm run reset && nodemon --require dotenv/config server.js"
+    "start": "pnpm run reset && nodemon --require dotenv/config server.js"
   },
   "keywords": [],
   "author": "",
