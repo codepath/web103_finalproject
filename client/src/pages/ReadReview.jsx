@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import '../styles/Book.css'
 
-const ReadReviews = () => {
+const ReadReviews = ({user, api_url}) => {
   const {id} = useParams();
   const [book, setBook] = useState({ id: 0, name: '', author: '', image: '', description: '' })
   const [reviews, setReviews] = useState()
 
   useEffect(() => {
     const fetchBookById = async () => {
-      const response = await fetch(`http://localhost:3001/api/books/${id}`) 
+      const response = await fetch(`${api_url}/api/books/${id}`) 
       const data = await response.json()
       setBook(data);
   }
 
     const fetchReviews = async() => {
-      const response = await fetch('http://localhost:3001/api/booksreviews/'+id)
+      const response = await fetch(`${api_url}/api/booksreviews/`+id)
       const results = await response.json()
       setReviews(results)
     }
     fetchBookById()
     fetchReviews()
-}, []);
+}, [user, api_url]);
 
 
   return (
-    <div>
+    <div className='flex-row'>
       <div className="card">
         <div className="left-container" style={{ backgroundImage: `url(${book.image})` }}>
         </div> 
@@ -35,6 +36,7 @@ const ReadReviews = () => {
         </div> 
       </div> 
       <br />
+      <div>
       {
         reviews && reviews.length > 0 ?
         reviews.map(review => 
@@ -50,8 +52,8 @@ const ReadReviews = () => {
           ) :
           <h3>No comments yet. Be the first!</h3>
       }
-
-      <Link to={`/addreview/${id}`}><button>Leave a review</button></Link>
+        <Link to={`/addreview/${id}`}><button>Leave a review</button></Link>
+      </div>
     </div>
   )
 }

@@ -23,17 +23,19 @@ const Browse = (props) => {
 
     return (
         <>
-            <div className="search-bar">
-                <div className="search">
-                    <input
-                        type="text"
-                        placeholder="Search by title..."
+            <div className="searchbar-container">
+                <div className="search-bar">
+                    <div className="search">
+                        <input
+                            type="text"
+                            placeholder="Search by title..."
 
-                        onChange={handleSearch}
-                    />
-                </div>
-                <div className="add-book">
-                    <Link to='/book/new'><button>Add Book 📖</button></Link>
+                            onChange={handleSearch}
+                        />
+                    </div>
+                    <div className="add-book">
+                        <Link to='/book/new'><button>Add Book 📖</button></Link>
+                    </div>
                 </div>
             </div>
 

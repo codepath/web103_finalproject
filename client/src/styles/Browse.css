@@ -16,8 +16,15 @@
     float: right;
     margin-top: 1em;
 }
-
 .search-bar {
+    display: flex;
+    gap: 2rem;
     overflow: hidden;
     padding-bottom: 2vh;
+}
+
+.searchbar-container {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
