@@ -6,9 +6,12 @@ const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
   // callbackURL: process.env.GITHUB_CALLBACK_URL,
+  // callbackURL: process.env.NODE_ENV === 'production'
+  //   ? process.env.GITHUB_CALLBACK_URL
+  //   : 'http://localhost:3001/auth/github/callback',
   callbackURL: process.env.NODE_ENV === 'production'
-    ? process.env.GITHUB_CALLBACK_URL
-    : 'http://localhost:3001/auth/github/callback',
+    ? 'https://codefm-production.up.railway.app/auth/github/callback'
+    : process.env.GITHUB_CALLBACK_URL,
 };
 
 const verify = async (accessToken, refreshToken, profile, callback) => {

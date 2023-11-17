@@ -148,9 +148,9 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ CodeFM Backend</h1>');
-});
+// app.get('/', (req, res) => {
+//   res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">✈️ CodeFM Backend</h1>');
+// });
 
 app.get('/login/success', (req, res) => {
   if (req.isAuthenticated()) {
