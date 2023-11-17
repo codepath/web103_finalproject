@@ -14,11 +14,14 @@ const createOrderFromCart = async (req, res) => {
     );
 
     const orderId = orderResult.rows[0].id;
-
+    const API_URL =
+      process.env.NODE_ENV === "production"
+        ? "https://faizansneakerworld-server.up.railway.app"
+        : "http://localhost:3000";
     for (const sneaker of sneakers) {
       // Retrieve sneaker details
       const response = await axios.get(
-        `http://localhost:3000/api/cart/getProductQuantity/${sneaker.id}`
+        `${API_URL}/api/cart/getProductQuantity/${sneaker.id}`
       );
 
       const { quantity } = response.data;

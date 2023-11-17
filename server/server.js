@@ -13,7 +13,7 @@ const app = express();
 const DOMAIN = process.env.DOMAIN;
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "faizansneakerworld-client.up.railway.app"
+    ? "https://faizansneakerworld-client.up.railway.app"
     : "http://localhost:3000";
 app.use(express.json());
 app.use(

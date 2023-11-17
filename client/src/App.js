@@ -14,7 +14,7 @@ import EditSneaker from "./pages/EditSneaker";
 const App = () => {
   const API_URL =
     process.env.NODE_ENV === "production"
-      ? "faizansneakerworld-server.up.railway.app"
+      ? "https://faizansneakerworld-server.up.railway.app"
       : "http://localhost:3000";
   const [sneakers, setSneakers] = useState([]);
   const [user, setUser] = useState([]);

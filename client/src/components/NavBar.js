@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "faizansneakerworld-server.up.railway.app"
+    ? "https://faizansneakerworld-server.up.railway.app"
     : "http://localhost:3000";
 const logout = async () => {
   const url = `${API_URL}/auth/logout`;
