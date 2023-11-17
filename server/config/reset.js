@@ -22,6 +22,7 @@ const createMoviesTable = async () => {
             movie_id serial PRIMARY KEY,
             title varchar(500) NOT NULL,
             description text NOT NULL,
+            tag varchar(100) NOT NULL,
             actors text NOT NULL,
             director varchar(100),
             publish_date date,
@@ -39,31 +40,42 @@ const createMoviesTable = async () => {
 }
 
 const seedMoviesTable = async () => {
-    await createMoviesTable()
-  
-    moviesData.forEach((movie) => {
+    await createMoviesTable();
+
+    for (const movie of moviesData) {
         const insertQuery = {
-            text: 'INSERT INTO movies (title, description, actors, director, publish_date, img_url, trailer_url) VALUES ($1, $2, $3, $4, $5, $6, $7)'
-        }
-        
-        const values = [
-            movie.title,
-            movie.description,
-            movie.actors,
-            movie.director,
-            movie.publish_date,
-            movie.img_url,
-            movie.trailer_url
-        ]
-        
+            text: 'INSERT INTO movies (title, description, tag, actors, director, publish_date, img_url, trailer_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING movie_id',
+            values: [
+                movie.title,
+                movie.description,
+                movie.tag,
+                movie.actors,
+                movie.director,
+                movie.publish_date,
+                movie.img_url,
+                movie.trailer_url
+            ]
+        };
+
         try {
-            pool.query(insertQuery, values)
-            console.log(`✅ ${movie.title} added successfully`)
+            const res = await pool.query(insertQuery);
+            console.log(`✅ ${movie.title} added successfully`);
+
+            // Assuming that tagsData is an array of genres such as ["Action", "Drama"]
+            const tag = tagsData.find(t => t.genre === movie.tag);
+            if (tag) {
+                const insertMoviesTagsQuery = {
+                    text: 'INSERT INTO movies_tags (movie_id, tag_id) VALUES ($1, $2)',
+                    values: [res.rows[0].movie_id, tag.tag_id]
+                };
+                await pool.query(insertMoviesTagsQuery);
+                console.log(`✅ ${movie.title} added successfully to movies_tags`);
+            }
         }
         catch (err) {
-            console.error('⚠️ error inserting movies', err)
+            console.error(`⚠️ Error inserting movie: ${movie.title}`, err);
         }
-    })
+    }
 }
 
 
@@ -124,22 +136,26 @@ const createTagsTables = async () => {
 
 
 const seedTagsTable = async () => {
-    await createTagsTables()
-  
-    tagsData.forEach((tag) => {
+    await createTagsTables();
+
+    for (const tag of tagsData) {
+        // Make sure to include tag_id in the insert statement
         const insertQuery = {
-            text: 'INSERT INTO tags (genre) VALUES ($1)'
-        }
-        
+            text: 'INSERT INTO tags (tag_id, genre) VALUES ($1, $2)',
+            values: [tag.tag_id, tag.genre]
+        };
+
         try {
-            pool.query(insertQuery, [tag.genre])
-            console.log(`✅ ${tag.genre} added successfully`)
+            await pool.query(insertQuery);
+            console.log(`✅ Genre: ${tag.genre} with ID: ${tag.tag_id} added successfully`);
+        } catch (err) {
+            console.error(`⚠️ Error inserting tag: ${tag.genre}`, err);
         }
-        catch (err) {
-            console.error('⚠️ error inserting tags', err)
-        }
-    })
+    }
+
+    await seedMoviesTable();
 }
+
 
 
 const createUsersTable = async () => {
@@ -154,27 +170,18 @@ const createUsersTable = async () => {
             email varchar(100) NOT NULL
         );
     `
-  
+
     try {
-      const res = await pool.query(createUsersTableQuery)
-      console.log('🎉 users table created successfully')
+        const res = await pool.query(createUsersTableQuery)
+        console.log('🎉 users table created successfully')
     }
     catch (err) {
-      console.error('⚠️ error creating users table', err)
+        console.error('⚠️ error creating users table', err)
     }
 }
 
 
-seedMoviesTable()
 seedTagsTable()
 createUsersTable()
 createWishlistTable()
-
-
-
-
-
-
-
-
-
+// seedMoviesTable()

@@ -48,10 +48,6 @@ const ViewMovies = ({ title }) => {
             <div onClick={() => openModal(movie)} key={movie.movie_id}>
               <Card
                 title={movie.title}
-                description={movie.description}
-                actors={movie.actors}
-                director={movie.director}
-                publish_date={movie.publish_date}
                 img_url={movie.img_url}
                 trailer_url={movie.trailer_url}
               />

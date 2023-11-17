@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Card.css';
 
-const Card = ({ title, description, actors, director, publish_date, img_url, trailer_url }) => {
+const Card = ({ title, img_url, trailer_url }) => {
     return (
         <div className='card'>
             <div className='card-image' style={{ backgroundImage: `url(${img_url})` }}>

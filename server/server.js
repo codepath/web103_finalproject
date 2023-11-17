@@ -5,7 +5,7 @@ import cors from 'cors';
 import moviesRoutes from './routes/movies.js';
 import dotenv from 'dotenv';
 
-import tagsRoutes from './routes/movies.js';
+import tagsRoutes from './routes/tags.js';
 import wishlistRoutes from './routes/wishlist.js'
 import moviesTagsRoutes from './routes/movies_tags.js'
 

@@ -1,42 +1,90 @@
 [
-  {
-      "movie_id": 1,
-      "title": "The Shawshank Redemption",
-      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-      "actors": "Tim Robbins, Morgan Freeman",
-      "director": "Frank Darabont",
-      "publish_date": "1994-09-23T04:00:00.000Z",
-      "img_url": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg",
-      "trailer_url": "https://youtube.com/watch?v=6hB3S9bIaco"
-  },
-  {
-      "movie_id": 2,
-      "title": "The Godfather",
-      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-      "actors": "Marlon Brando, Al Pacino",
-      "director": "Francis Ford Coppola",
-      "publish_date": "1972-03-24T05:00:00.000Z",
-      "img_url": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
-      "trailer_url": "https://youtube.com/watch?v=sY1S34973zA"
-  },
-  {
-      "movie_id": 3,
-      "title": "Avatar",
-      "description": "It is set in the mid-22nd century when humans are colonizing Pandora, a lush habitable moon of a gas giant in the Alpha Centauri star system, in order to mine the valuable mineral unobtanium. The expansion of the mining colony threatens the continued existence of a local tribe of Na'vi, a humanoid species indigenous to Pandora. The title of the film refers to a genetically engineered Na'vi body operated from the brain of a remotely located human that is used to interact with the natives of Pandora.",
-      "actors": "Sam Worthington, Zoe Saldana, Stephen Lang",
-      "director": "James Cameron",
-      "publish_date": "2009-12-18T05:00:00.000Z",
-      "img_url": "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg",
-      "trailer_url": "https://www.youtube.com/watch?v=rjRVnVziU2A"
-  },
-  {
-      "movie_id": 4,
-      "title": "Titanic",
-      "description": "An epic, action-packed romance set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built. She was the most luxurious liner of her era -- the \"ship of dreams\" -- which ultimately carried over 1,500 people to their death in the ice cold waters of the North Atlantic in the early hours of April 15, 1912.",
-      "actors": "Leonardo DiCaprio, Kate Winslet",
-      "director": "James Cameron",
-      "publish_date": "1997-12-19T05:00:00.000Z",
-      "img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdPugWzSnX3TWCYO-KlF4f5VF2JeMp6VGdAi2lQTLzsqHq00dW",
-      "trailer_url": "https://www.youtube.com/watch?v=CHekzSiZjrY"
-  }
+    {
+        "movie_id": 1,
+        "title": "The Shawshank Redemption",
+        "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        "tag": "Drama",
+        "actors": "Tim Robbins, Morgan Freeman",
+        "director": "Frank Darabont",
+        "publish_date": "1994-09-23T04:00:00.000Z",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg",
+        "trailer_url": "https://youtube.com/watch?v=6hB3S9bIaco"
+    },
+    {
+        "movie_id": 2,
+        "title": "The Godfather",
+        "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        "tag": "Crime",
+        "actors": "Marlon Brando, Al Pacino",
+        "director": "Francis Ford Coppola",
+        "publish_date": "1972-03-24T05:00:00.000Z",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+        "trailer_url": "https://youtube.com/watch?v=sY1S34973zA"
+    },
+    {
+        "movie_id": 3,
+        "title": "Avatar",
+        "description": "It is set in the mid-22nd century when humans are colonizing Pandora, a lush habitable moon of a gas giant in the Alpha Centauri star system, in order to mine the valuable mineral unobtanium. The expansion of the mining colony threatens the continued existence of a local tribe of Na'vi, a humanoid species indigenous to Pandora. The title of the film refers to a genetically engineered Na'vi body operated from the brain of a remotely located human that is used to interact with the natives of Pandora.",
+        "tag": "Sci-Fi",
+        "actors": "Sam Worthington, Zoe Saldana, Stephen Lang",
+        "director": "James Cameron",
+        "publish_date": "2009-12-18T05:00:00.000Z",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=rjRVnVziU2A"
+    },
+    {
+        "movie_id": 4,
+        "title": "Titanic",
+        "description": "An epic, action-packed romance set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built. She was the most luxurious liner of her era -- the \"ship of dreams\" -- which ultimately carried over 1,500 people to their death in the ice cold waters of the North Atlantic in the early hours of April 15, 1912.",
+        "tag": "Romance",
+        "actors": "Leonardo DiCaprio, Kate Winslet",
+        "director": "James Cameron",
+        "publish_date": "1997-12-19T05:00:00.000Z",
+        "img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdPugWzSnX3TWCYO-KlF4f5VF2JeMp6VGdAi2lQTLzsqHq00dW",
+        "trailer_url": "https://www.youtube.com/watch?v=CHekzSiZjrY"
+    },
+    {
+        "movie_id": 5,
+        "title": "Forrest Gump",
+        "description": "Slow-witted Forrest Gump has never thought of himself as disadvantaged, and thanks to his supportive mother, he leads anything but a restricted life. Whether dominating on the gridiron as a college football star, fighting in Vietnam or captaining a shrimp boat, Forrest inspires people with his childlike optimism. But one person Forrest cares about most may be the most difficult to save -- his childhood love, the sweet but troubled Jenny.",
+        "tag": "Drama",
+        "actors": "Tom Hanks, Robin Wright, Gary Sinise, Sally Field",
+        "director": " Robert Zemeckis",
+        "publish_date": "1994-06-15T04:00:00.000Z",
+        "img_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p15829_v_v13_aa.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=bLvqoHBptjg"
+    },
+    {
+        "movie_id": 6,
+        "title": "Saving Private Ryan",
+        "description": "Captain John Miller takes his men behind enemy lines to find Private James Ryan, whose three brothers have been killed in combat. Surrounded by the brutal realties of war, while searching for Ryan, each man embarks upon a personal journey and discovers their own strength to triumph over an uncertain future with honor, decency and courage.",
+        "tag": "War",
+        "actors": "Tom Hanks, Edward Burns, Matt Damon",
+        "director": "Steven Spielberg",
+        "publish_date": "1998-07-24T04:00:00.000Z",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=9CiW_DgxCnQ"
+    },
+    {
+        "movie_id": 7,
+        "title": "Black Hawk Down",
+        "description": "The film takes place in 1993 when the U.S. sent special forces into Somalia to destabilize the government and bring food and humanitarian aid to the starving population. Using Black Hawk helicopters to lower the soldiers onto the ground, an unexpected attack by Somalian forces brings two of the helicopters down immediately. From there, the U.S. soldiers must struggle to regain their balance while enduring heavy gunfire",
+        "tag": "War",
+        "actors": "Josh Hartnett, Eric Bana, Ewan McGregor",
+        "director": "Ridley Scott",
+        "publish_date": "2002-01-18T05:00:00.000Z",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BYWMwMzQxZjQtODM1YS00YmFiLTk1YjQtNzNiYWY1MDE4NTdiXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=2GfBkC3qs78"
+    },
+    {
+        "movie_id": 8,
+        "title": "Pearl Harbor",
+        "description": "This sweeping drama, based on real historical events, follows American boyhood friends Rafe McCawley and Danny Walker as they enter World War II as pilots. Rafe is so eager to take part in the war that he departs to fight in Europe alongside England's Royal Air Force. On the home front, his girlfriend, Evelyn, finds comfort in the arms of Danny. The three of them reunite in Hawaii just before the Japanese attack on Pearl Harbor.",
+        "tag": "Romance",
+        "actors": "Ben Affleck, Josh Hartnett, Kate Beckinsale",
+        "director": "Michael Bay",
+        "publish_date": "2001-05-21T04:00:00.000Z",
+        "img_url": "https://images.moviesanywhere.com/90d0b4de901fd0d69c5a2d9a85b6bc31/fd19b9fa-9d97-4b2c-a220-dd67e62cad3f.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=oGYcxjywx0o"
+    }
 ]
