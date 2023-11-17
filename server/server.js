@@ -14,7 +14,7 @@ const DOMAIN = process.env.DOMAIN;
 const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://faizansneakerworld-client.up.railway.app"
-    : "http://localhost:3000";
+    : "http://localhost:3001";
 app.use(express.json());
 app.use(
   cors({

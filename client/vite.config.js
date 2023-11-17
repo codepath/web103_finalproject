@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://faizansneakerworld-client.up.railway.app",
+        target: "http://localhost:3000",
       },
     },
   },
