@@ -1,6 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
+const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-production.up.railway.app' : 'http://localhost:3001';
+window.API_URL = API_URL;
+
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {

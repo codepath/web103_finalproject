@@ -1,12 +1,13 @@
 // postService.js
 import axios from 'axios';
 
-const API_URL = '/api/posts';
+// const API_URL = '/api/posts';
+const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-production.up.railway.app' : 'http://localhost:3001';
 
 
 export const getAllPosts = async () => {
   try {
-    const response = await axios.get('/api/posts'); // Assuming your API endpoint is correct
+    const response = await axios.get(`${API_URL}/api/posts`);
     return response.data;
   } catch (error) {
     console.error('Error fetching posts:', error); //get
