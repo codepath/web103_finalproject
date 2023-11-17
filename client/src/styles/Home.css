@@ -1,0 +1,28 @@
+.carousel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distributes reviews evenly around the carousel */
+    align-items: center; /* Vertically aligns reviews with the carousel */
+  }
+  
+  .review-home {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 0 10px; 
+  }
+  
+  .carousel {
+    flex: 1; 
+    margin: 0 auto; 
+  }
+
+.carousel-image img {
+    max-width: 390px;
+    height: auto;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

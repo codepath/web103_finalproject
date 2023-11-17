@@ -4,18 +4,25 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+⭐Home, ⭐MyProfile, ⭐Browse, ⭐BookDetails, MyBooks
 
-## Wireframe 1: [page title]
+## Wireframe 1: Home
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![home](https://github.com/XujuanChen/web103_finalproject/assets/72937387/a8f21deb-60c2-4e5b-9369-b95bd558c900)
 
-## Wireframe 2: [page title]
+## Wireframe 2: MyProfile
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![myprofile](https://github.com/XujuanChen/web103_finalproject/assets/72937387/8e10230d-714e-46ad-93f8-c2443ca430d9)
 
-## Wireframe 3: [page title]
+## Wireframe 3: Browse
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![browse](https://github.com/XujuanChen/web103_finalproject/assets/72937387/19594f2a-6b82-4427-bd8f-2c9c17ae9f7d)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 4: BookDetails
+
+![bookdetails](https://github.com/XujuanChen/web103_finalproject/assets/72937387/e8e91a32-f67a-44bd-a43d-ad1fca845f4f)
+
+## Wireframe 5: All Wireframes
+
+![allpages](https://github.com/XujuanChen/web103_finalproject/assets/72937387/706ae3dd-26e8-4db0-9863-ebb0e2f2e088)
+
