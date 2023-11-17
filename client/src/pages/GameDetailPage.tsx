@@ -6,9 +6,8 @@ import { Game } from '../types';
 import axios from 'axios';
 import PlatformMapper from '../components/PlatformMapper.tsx';
 import { useNavigate } from 'react-router-dom';
-import { RxCross2 } from 'react-icons/rx';
 import Modal from '../components/Modal.tsx';
-import { useModal } from '../store.ts';
+
 
 const GameDetailPage = () => {
   const { id } = useParams();

@@ -100,38 +100,26 @@ Organize components into pages, containers, and presentational components.
 
 <img src='./client/public/Component Heirarchy.gif' title='Organize components' width='' alt='Video Walkthrough' />
 
-### Redirect user to Login page if not authenticated when trying to access profile
+### ✅Use Passport.js for GitHub OAuth login 
+
+Allow users to login via GitHub OAuth using Passport.js to restrict access to profile.
+<img src='./client/public/login_logout.gif' title='Organize components' width='' alt='Login Logout' />
+
+### ✅Redirect user to Login page if not authenticated when trying to access profile
 
 Redirect to login page if user tries to access profile when unauthenticated.
 
-[gif goes here]
+<img src='./client/public/redirect.gif' title='Organize components' width='' alt='Redirec' />
 
 
-### Disable action buttons while form is submitting to prevent duplicate submits
-
-Disable form buttons during submission to prevent duplicates.
-
-[gif goes here]
-
-### Display toast notifications when games are favorited, deleted, added, etc.
-
-Show toast notifications when games are favorited, deleted, added, etc.
-
-[gif goes here]
-
-### Use Passport.js for GitHub OAuth login to restrict profile and favorites pages to logged in users
-
-Allow users to login via GitHub OAuth using Passport.js to restrict access to profile and favorites pages. [gif goes here]
-
-[gif goes here]
 
 
 ## Installation Instructions
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
+| Command                   | Action                                            |
+| :------------------------ | :-------------------------------------------------|
 | `pnpm install`             | Installs dependencies                            |
 | `pnpm run dev`             | Starts local dev server at `localhost:3000`      |
 | `pnpm run build`           | Build your production site to `./dist/`          |

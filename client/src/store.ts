@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-
 interface GameQuery {
   searchText?: string;
   genreId?: number | null;
@@ -20,17 +19,4 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
     })),
 }));
 
-interface ModalStore {
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
-}
-
-const useModal = create<ModalStore>((set) => ({
-  isOpen: false,
-  onOpen: () => set({ isOpen: true }),
-  onClose: () => set({ isOpen: false }),
-}));
-
 export default useGameQueryStore;
-export {useModal};

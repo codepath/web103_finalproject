@@ -10,3 +10,11 @@ export interface Game {
     genre: number[];
     platform: number[];
   }
+
+  export interface User {
+    accesstoken: string;
+    avatarurl: string; 
+    githubid: number;
+    id: number;
+    username: string;
+  }

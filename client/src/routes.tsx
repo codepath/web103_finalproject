@@ -4,6 +4,7 @@ import Layout from './pages/Layout';
 import ErrorPage from './pages/ErrorPage';
 import AddPage from './pages/AddPage';
 import GameDetailPage from './pages/GameDetailPage';
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: 'addgame', element: <AddPage /> },
-      { path: 'games/:id', element: <GameDetailPage /> }
+      { path: 'games/:id', element: <GameDetailPage /> },
+      { path:'/profile', element: <Profile />}
     ],
   },
 ]);
