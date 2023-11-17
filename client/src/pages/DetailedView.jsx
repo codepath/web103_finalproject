@@ -19,7 +19,7 @@ function DetailedView() {
       })
       const data = await result.json()
       setJob(data)
-      //console.log('detailed view', data)
+      console.log('detailed view', data)
 
     }
     
@@ -28,20 +28,8 @@ function DetailedView() {
   }, [])
 
 
-  const handleFeedbackRequest = (question) => {
-
-    console.log('feedback requested for question: ', question)
   
-  }
-  // const [answers, setAnswers] = useState(Array(job?.questionList.length).fill('')); // initialize answers state with an array of empty strings
 
-  // const handleAnswerChange = (index, newAnswer) => {
-  //   setAnswers(prevAnswers => {
-  //     const newAnswers = [...prevAnswers];
-  //     newAnswers[index] = newAnswer;
-  //     return newAnswers;
-  //   });
-  // };
 
 
   const renderQuestions = (questionsString) => {
@@ -51,33 +39,33 @@ function DetailedView() {
     return questions.map((question, index) => (
       
       <Question question={question} index={index}/>
-      // <div key={index}>
-      //   <p>{`${index + 1}. ${question.trim()}`}</p>
-      //   <textarea />
-      //   <Button onClick={() => handleFeedbackRequest(question.trim())}>Ask for Feedback</Button>
-      // </div>
+      
     ));
   };
   
 
 
   return (
-    <div>
-        {/* <h3>DetailedView</h3> */}
+    <>
+    {job && <div>
 
-        {job && (
-            <>
-            {/* <h2>{job.title}</h2>
-            <h3>{job.role}</h3>
-            <p>{job.qualifications}</p> */}
-            {job && renderQuestions(job.qlist)}
+      <h1>{job.title}</h1>
+      <h3>{job.role}</h3>
+      <div className='d-flex gap-2 center justify-content-center'>
+        <Button size='sm' variant='outline-primary'>Edit</Button>
+        <Button size='sm' variant='outline-danger'>Delete</Button>
+      </div>
+      
 
-            </>
-            )
-        }
 
-        <Button>Edit</Button><Button>Delete</Button>
-    </div>
+      
+      <div className='d-flex gap-3 flex-column mt-4'>
+        {renderQuestions(job.qlist)}
+      </div>
+
+        
+    </div>}
+    </>
   )
 }
 

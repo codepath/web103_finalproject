@@ -83,7 +83,7 @@ function FormSubmission() {
             <Form.Check type="checkbox" label="Behavioral" />
           </Form.Group>
 
-          <Button variant="dark" type="submit">
+          <Button variant="outline-light" type="submit">
             Submit
           </Button>
       </Form>

@@ -9,9 +9,9 @@ function Login() {
   return (    
     <div>
       <h1 className='mb-5'>InterviewAI</h1>
-      <Stack gap={3}>
-        <Link to='/form'><Button size='md' variant='dark'>Get Started</Button></Link>
-        <Link to='/result'><Button size='md' variant='dark'>Results</Button></Link>
+      <Stack direction='horizontal' gap={3} className='d-flex justify-content-center'>
+        <Link to='/form'><Button size='md' variant='outline-light'>Get Started</Button></Link>
+        <Link to='/result'><Button size='md' variant='outline-light'>Results</Button></Link>
       </Stack>
       </div>
   )

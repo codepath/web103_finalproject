@@ -117,6 +117,9 @@ const getQuestionById = async (req, res) => {
 }
 
 
+const updateQuestionAnswer = async (req, res) => {
+}
+
 // const updateQuestion = 
 
 // const deleteQuestion = async (req, res) => {
