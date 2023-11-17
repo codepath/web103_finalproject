@@ -7,12 +7,12 @@ import DiscussionBoard from './pages/DiscussionBoard';
 import ResourceList from './pages/ResourceList';
 import CreatePost from './pages/CreatePost';
 import CreateResource from './pages/CreateResource';
-import AboutUs from './pages/AboutUs'; // Import the new AboutUs component
+import AboutUs from './pages/AboutUs'; 
 import Events from './pages/Events';
 import './App.css';
 
 import Login from './pages/Login';
-import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
+import ProtectedRoute from './components/ProtectedRoute'; 
 import { AuthProvider } from './contexts/AuthContext';
 import PostDetail from './components/PostDetail';
 
