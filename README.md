@@ -64,9 +64,9 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ### User Wishlist Dashboard
 
-✅ User can see various movie wishlsits they've created. Also, the user can click on a wishlist to see a wishlist detail screen, showing movies contained in the wishlist.
+✅ User can see various movies that have previously been added to their personal wishlist. Also, the user can click on a movie in the wishlist to see its detail screen, showing movie information details.
 
-[gif goes here]
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
 
 
 ### Add a movies to a wishlist
