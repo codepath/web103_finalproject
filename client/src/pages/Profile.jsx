@@ -6,11 +6,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { IoIosAddCircle } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 import { MdAddAPhoto } from "react-icons/md";
-// import { postNewProfilePhoto } from "../redux/slices/userSlice";
+import { postNewProfilePhoto } from "../redux/slices/userSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const { userId } = useParams();
+  const { id } = useParams();
+  console.log(id, "user IDDDD");
   const [activeTab, setActiveTab] = useState("user"); // 'user' or 'listings'
   const [userData, setUserData] = useState({
     firstName: "",
@@ -26,6 +27,7 @@ const Profile = () => {
     city: false,
     state: false,
   });
+  const [imageUrl, setImageUrl] = useState("");
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isPhotoIconHovered, setIsPhotoIconHovered] = useState(false);
@@ -46,15 +48,21 @@ const Profile = () => {
     }));
   };
 
-  const setProfilePhoto = async (image_url) => {
-    if (user && user.id) {
-      // Only proceed if user.id is present
-      console.log("hello i'm updating the photo");
-      // await dispatch(
-      //   postNewProfilePhoto({ userId: user.id, imageUrl: image_url })
-      // );
+  const setProfilePhoto = () => {
+    if (user && user.id && imageUrl) {
+      // Only proceed if user.id and imageUrl are present
+      console.log("Hello, I'm updating the photo");
+      dispatch(postNewProfilePhoto({ userId: user?.id, newImageUrl: imageUrl }))
+        .then(() => {
+          // Additional logic after the photo is updated successfully
+        })
+        .catch((error) => {
+          console.error("Error updating profile photo:", error);
+        });
     } else {
-      console.error("User ID is not present. Cannot set profile photo.");
+      console.error(
+        "User ID or Image URL is missing. Cannot set profile photo."
+      );
     }
   };
 
@@ -103,7 +111,7 @@ const Profile = () => {
 
   return user ? (
     <div className="lg:max-w-5xl mx-auto mt-16 mb-8 border-2 border-#FF385C rounded-lg p-10">
-      <div className=" flex justify-between items-center mb-6 ">
+      <div className="flex justify-between items-center mb-6 ">
         <button
           className={`w-full py-2 rounded-md focus:outline-none ${
             activeTab === "user"
@@ -141,32 +149,32 @@ const Profile = () => {
       </div>
 
       {activeTab === "user" && (
-        <div className="grid gap-10 ">
+        <div className="grid gap-10">
           <p className="text-center"> User Profile </p>
-          <ul className="flex justify-center">
-            {UserIcon.map((icon) => (
-              <li key={icon.id} className="">
-                <IoIosAddCircle
-                  className="tranlate-x-9 translate-y-11 cursor-pointer "
-                  style={{
-                    fontSize: "3rem",
-                    color: isHovered ? "green" : "black",
-                    backgroundColor: "white",
-                    borderRadius: "30px",
-                  }}
-                  onClick={showProfilePictureDialog}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                />
-                {user.image_url ? (
-                  <div className="w-8">{user.image_url}</div>
-                ) : (
-                  <RxAvatar style={{ fontSize: "8rem" }} />
-                )}
-                <p>{icon.name}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="flex relative justify-center">
+            <div className="translate-x-6 translate-y-5 z-10">
+              <IoIosAddCircle
+                className="cursor-pointer "
+                style={{
+                  fontSize: "3.5rem",
+                  color: isHovered ? "green" : "black",
+                  backgroundColor: "white",
+                  borderRadius: "30px",
+                  width: "3.5rem",
+                }}
+                onClick={showProfilePictureDialog}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              />
+            </div>
+            <div className="-translate-x-5">
+              {user.image_url ? (
+                <div className="w-8 ">{user.image_url}</div>
+              ) : (
+                <RxAvatar style={{ fontSize: "12rem" }} />
+              )}
+            </div>
+          </div>
           {isUploadingPhoto ? (
             <div
               className="flex relative"
@@ -175,6 +183,7 @@ const Profile = () => {
               <span
                 className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600 hover:cursor:pointer"
                 onMouseEnter={() => setIsPhotoIconHovered(true)}
+                style={{ cursor: "pointer !important" }}
               >
                 <MdAddAPhoto style={{ fontSize: "2rem" }} />
               </span>
@@ -198,12 +207,19 @@ const Profile = () => {
                 id="website-admin"
                 className="rounded-none bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Image Url"
+                onChange={(e) => setImageUrl(e.target.value)}
               />
               <span
                 className="inline-flex items-center px-3 text-sm text-gray-900 border rounded-s-0 border-gray-300 rounded-e-md bg-green-600 dark:text-gray-400 dark:border-gray-600 hover:cursor:pointer"
                 onClick={setProfilePhoto}
               >
-                <IoIosAddCircle style={{ fontSize: "2rem", color: "white" }} />
+                <IoIosAddCircle
+                  style={{
+                    fontSize: "2rem",
+                    color: "white",
+                    cursor: "pointer",
+                  }}
+                />
               </span>
             </div>
           ) : (
