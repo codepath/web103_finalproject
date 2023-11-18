@@ -101,8 +101,12 @@ console.log('GITHUB_CLIENT_ID:', process.env.GITHUB_CLIENT_ID);
 console.log('GITHUB_CLIENT_SECRET:', process.env.GITHUB_CLIENT_SECRET);
 console.log('GITHUB_CALLBACK_URL:', process.env.GITHUB_CALLBACK_URL);
 console.log('API_URL:', process.env.API_URL);
+console.log("Environment: ", process.env.NODE_ENV);
 
 const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-client-production.up.railway.app' : 'http://localhost:5173';
+console.log("Client URL: ", CLIENT_URL);
+
+
 const app = express();
 
 const PgSession = connectPgSimple(session);
