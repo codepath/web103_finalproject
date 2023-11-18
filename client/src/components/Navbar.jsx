@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useApiUrl } from '../contexts/ApiContext';
 import axios from 'axios'; // Import axios for making HTTP requests
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ apiUrl }) => {
   const { isAuthenticated, user, setAuthInfo } = useAuth();
+  const apiUrl = useApiUrl();
   const navigate = useNavigate();
   useEffect(() => {
     // This will cause the component to re-render when isAuthenticated changes

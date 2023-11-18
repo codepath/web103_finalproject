@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import { useApiUrl } from './ApiContext';
 
 const AuthContext = createContext(null);
 
@@ -9,6 +10,8 @@ export const AuthProvider = ({ children, apiUrl }) => {
     user: null,
     loading: true, // Add a loading state
   });
+
+  const apiUrl = useApiUrl();
 
   useEffect(() => {
     axios.get(`${apiUrl}/auth/login/success`, { withCredentials: true })

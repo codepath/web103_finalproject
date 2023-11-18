@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import { useApiUrl } from '../contexts/ApiContext';
 import "../css/Login.css";
 
 const Login = () => {
+  const apiUrl = useApiUrl();
   const navigate = useNavigate();
   const { setAuthInfo } = useAuth();
-  const AUTH_URL = `${API_URL}/auth/github`;
+  const AUTH_URL = `${apiUrl}/auth/github`;
 
   useEffect(() => {
-    axios.get(`${API_URL}/auth/login/success`, { withCredentials: true })
+    axios.get(`${apiUrl}/auth/login/success`, { withCredentials: true })
       .then(response => {
         if (response.data.success) {
           console.log('Login Success:', response.data); // Add this line
@@ -25,7 +27,7 @@ const Login = () => {
           console.error('Login check failed', error);
         }
       });
-  }, [navigate, setAuthInfo]);
+  }, [apiUrl, navigate, setAuthInfo]);
 
   return (
     <div className="login-container">

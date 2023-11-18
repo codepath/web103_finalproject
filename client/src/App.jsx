@@ -14,15 +14,17 @@ import './App.css';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute'; 
 import { AuthProvider } from './contexts/AuthContext';
+import { ApiUrlProvider } from './contexts/ApiContext';
 import PostDetail from './components/PostDetail';
 
-const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-server-production.up.railway.app' : 'http://localhost:3001';
+// const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-server-production.up.railway.app' : 'http://localhost:3001';
 
 const App = () => {
   return (
-    <AuthProvider apiUrl={API_URL}>
+    <ApiUrlProvider>
+    <AuthProvider>
       <div>
-        <Navbar apiUrl={API_URL} />
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -36,6 +38,7 @@ const App = () => {
         </Routes>
       </div>
     </AuthProvider>
+    </ApiUrlProvider>
   );
 };
 

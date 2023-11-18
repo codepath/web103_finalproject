@@ -1,11 +1,12 @@
 // resourceService.js
 import axios from 'axios';
-
-// const API_URL = '/api/resources';
+import { useApiUrl } from '../contexts/ApiContext';
+// const apiUrl = '/api/resources';
 
 export const getAllResources = async () => {
+  const apiUrl = useApiUrl();
   try {
-    const response = await axios.get(`${API_URL}/api/resources`);
+    const response = await axios.get(`${apiUrl}/api/resources`);
     return response.data;
   } catch (error) {
     console.error('Error fetching resources:', error);
@@ -14,8 +15,9 @@ export const getAllResources = async () => {
 };
 
 export const createResource = async (resourceData) => {
+  const apiUrl = useApiUrl();
   try {
-    const response = await axios.post(API_URL, resourceData);
+    const response = await axios.post(apiUrl, resourceData);
     return response.data;
   } catch (error) {
     console.error('Error creating resource:', error);

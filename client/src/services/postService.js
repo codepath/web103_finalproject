@@ -1,11 +1,12 @@
 // postService.js
 import axios from 'axios';
-
-// const API_URL = '/api/posts';
+import { useApiUrl } from '../contexts/ApiContext';
+// const apiUrl = '/api/posts';
 
 export const getAllPosts = async () => {
+  const apiUrl = useApiUrl();
   try {
-    const response = await axios.get(`${API_URL}/api/posts`);
+    const response = await axios.get(`${apiUrl}/api/posts`);
     return response.data;
   } catch (error) {
     console.error('Error fetching posts:', error); //get
@@ -36,8 +37,9 @@ export const updatePost = async (postId, postData) => {
 };
 
 export const deletePost = async (postId) => {
+  const apiUrl = useApiUrl();
   try {
-    const response = await axios.delete(`${API_URL}/${postId}`);
+    const response = await axios.delete(`${apiUrl}/${postId}`);
     return response.data;
   } catch (error) {
     console.error('Error deleting post:', error);
