@@ -2,7 +2,7 @@
 
 Designed and developed by: Myesha Mahazabeen & Farnaz Zinnah
 
-🔗 Link to deployed app:
+🔗 Link to deployed app: https://codefm-client-production.up.railway.app/
 
 ## About
 
