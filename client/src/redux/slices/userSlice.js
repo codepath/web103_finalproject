@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { set } from "date-fns";
+import cloneDeep from "lodash/cloneDeep";
 
 const API_URL =
   process.env.NODE_ENV === "production"
@@ -74,9 +75,47 @@ export const authLogOut = createAsyncThunk(
   }
 );
 
+export const fetchUpdatedUserInfo = createAsyncThunk(
+  "user/fetchUpdatedUserInfo",
+  async (userId, { dispatch }) => {
+    try {
+      // Make your API request to fetch updated user information
+      const res = await axios.get(`${API_URL}/api/users/${userId}`, {
+        withCredentials: true,
+      });
+
+      // Dispatch the action to update the user in the Redux store
+      dispatch(setLoggedInUser(res.data));
+    } catch (error) {
+      console.error("Error fetching updated user information:", error);
+      throw error;
+    }
+  }
+);
+
+export const postNewProfilePhoto = createAsyncThunk(
+  "user/postNewProfilePhoto",
+  async ({ userId, newImageUrl }, { dispatch }) => {
+    try {
+      // Make your API request
+      console.log(newImageUrl, "image url from redux");
+      const res = await axios.patch(
+        `${API_URL}/api/profile/new-profile-photo`,
+        { id: userId, image_url: newImageUrl },
+        { withCredentials: true }
+      );
+      // Dispatch the fetchUpdatedUserInfo thunk to refetch the user details
+      dispatch(fetchUpdatedUserInfo(userId));
+    } catch (error) {
+      console.error("Error posting new profile photo:", error);
+      throw error;
+    }
+  }
+);
+
 const initialState = {
   email: null,
-  loggedInUser: [],
+  loggedInUser: null,
   isLoggedIn: false,
   isAuthenticated: false,
   error: null,
@@ -101,6 +140,9 @@ const userSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
+    updateLoggedInUserImageUrl: (state, action) => {
+      state.loggedInUser.image_url = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -122,6 +164,7 @@ const userSlice = createSlice({
       })
       .addCase(authRegister.fulfilled, (state, action) => {
         state.status = "succeeded";
+        console.log(action.payload, "action payload create");
         state.loggedInUser = action.payload;
       })
       .addCase(authRegister.rejected, (state, action) => {
@@ -134,15 +177,33 @@ const userSlice = createSlice({
       })
       .addCase(authLogOut.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.loggedInUser = []; // Set to an empty array
+        state.loggedInUser = null; // Set to an empty array
       })
       .addCase(authLogOut.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchUpdatedUserInfo.pending, (state) => {
+        state.error = null;
+        state.status = "loading";
+      })
+      .addCase(postNewProfilePhoto.rejected, (state, action) => {
+        const actionWithoutCircularRefs = cloneDeep(action);
+        console.error(
+          "Error during postNewProfilePhoto:",
+          actionWithoutCircularRefs
+        );
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
 
-export const { setEmail, toggleLoggedIn, setAuthenticated, setLoggedInUser } =
-  userSlice.actions;
+export const {
+  setEmail,
+  toggleLoggedIn,
+  setAuthenticated,
+  setLoggedInUser,
+  updateLoggedInUserImageUrl,
+} = userSlice.actions;
 export default userSlice.reducer;
