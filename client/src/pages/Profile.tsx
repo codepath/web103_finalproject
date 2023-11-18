@@ -13,7 +13,7 @@ const Profile = () => {
 
   const API_URL =
     process.env.NODE_ENV === 'production'
-      ? 'https://playpal.up.railway.app/'
+      ? 'https://playpal.up.railway.app'
       : 'http://localhost:3000';
 
   const Navigate = useNavigate();
@@ -32,10 +32,10 @@ const Profile = () => {
   }, []);
 
   const logout = async () => {
-    loggedOut();
     const url = `${API_URL}/auth/logout`;
     const response = await fetch(url, { credentials: 'include' });
-    await response.json()
+    loggedOut();
+    await response.json();
     window.location.href = '/';
   };
 
