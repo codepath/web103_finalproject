@@ -54,7 +54,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can delete a movie from the movie dashboard.
 
-<img src='https://i.imgur.com/e5CG7le.gif' title='Edit Movie' width='800' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/e5CG7le.gif' title='Delete Movie' width='800' alt='Video Walkthrough' />
 
 ### Toogle movie view
 
@@ -87,7 +87,14 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 <img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/search_filter.gif' title='Search Filter' width='800' alt='Video Walkthrough' />
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### Filter movies by genre
+
+✅ User can filter for movies related to a specific genre. Many movies can share the same genre (one-to-many).
+
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/filter_genre.gif' title='Filter Genre' width='800' alt='Video Walkthrough' />
+
+
+
 
 ## Installation Instructions
 
