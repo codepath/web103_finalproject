@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../services/postService';
+import { useApiUrl } from '../contexts/ApiContext';
 import '../css/CreatePost.css'; 
 
 const CreatePost = () => {
   const [post, setPost] = useState({ title: '', content: '' });
   const navigate = useNavigate();
+  const apiUrl = useApiUrl();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await createPost(post);
+      await createPost(post, apiUrl);
       navigate('/posts');
     } catch (error) {
       console.error('Failed to create post:', error);
