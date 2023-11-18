@@ -10,7 +10,7 @@ const options = {
   //   ? process.env.GITHUB_CALLBACK_URL
   //   : 'http://localhost:3001/auth/github/callback',
   callbackURL: process.env.NODE_ENV === 'production'
-    ? 'https://codefm-production.up.railway.app/auth/github/callback'
+    ? 'https://codefm-server-production.up.railway.app/auth/github/callback'
     : process.env.GITHUB_CALLBACK_URL,
 };
 
