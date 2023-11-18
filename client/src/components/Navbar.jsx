@@ -4,14 +4,14 @@ import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios'; // Import axios for making HTTP requests
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ apiUrl }) => {
   const { isAuthenticated, user, setAuthInfo } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     // This will cause the component to re-render when isAuthenticated changes
   }, [isAuthenticated]);
   const handleLogout = () => {
-    axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
+    axios.get(`${apiUrl}/auth/logout`, { withCredentials: true })
       .then(() => {
         // Update auth state
         setAuthInfo({ isAuthenticated: false, user: null });

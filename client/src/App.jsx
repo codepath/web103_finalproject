@@ -22,7 +22,7 @@ const App = () => {
   return (
     <AuthProvider>
       <div>
-        <Navbar />
+        <Navbar apiUrl={API_URL} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
