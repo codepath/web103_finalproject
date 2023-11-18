@@ -6,7 +6,7 @@
         "tag": "Drama",
         "actors": "Tim Robbins, Morgan Freeman",
         "director": "Frank Darabont",
-        "publish_date": "1994-09-23T04:00:00.000Z",
+        "publish_date": "1994-09-23",
         "img_url": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg",
         "trailer_url": "https://youtube.com/watch?v=6hB3S9bIaco"
     },
@@ -17,7 +17,7 @@
         "tag": "Crime",
         "actors": "Marlon Brando, Al Pacino",
         "director": "Francis Ford Coppola",
-        "publish_date": "1972-03-24T05:00:00.000Z",
+        "publish_date": "1972-03-24",
         "img_url": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
         "trailer_url": "https://youtube.com/watch?v=sY1S34973zA"
     },
@@ -28,7 +28,7 @@
         "tag": "Sci-Fi",
         "actors": "Sam Worthington, Zoe Saldana, Stephen Lang",
         "director": "James Cameron",
-        "publish_date": "2009-12-18T05:00:00.000Z",
+        "publish_date": "2009-12-18",
         "img_url": "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg",
         "trailer_url": "https://www.youtube.com/watch?v=rjRVnVziU2A"
     },
@@ -39,7 +39,7 @@
         "tag": "Romance",
         "actors": "Leonardo DiCaprio, Kate Winslet",
         "director": "James Cameron",
-        "publish_date": "1997-12-19T05:00:00.000Z",
+        "publish_date": "1997-12-19",
         "img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdPugWzSnX3TWCYO-KlF4f5VF2JeMp6VGdAi2lQTLzsqHq00dW",
         "trailer_url": "https://www.youtube.com/watch?v=CHekzSiZjrY"
     },
@@ -50,7 +50,7 @@
         "tag": "Drama",
         "actors": "Tom Hanks, Robin Wright, Gary Sinise, Sally Field",
         "director": " Robert Zemeckis",
-        "publish_date": "1994-06-15T04:00:00.000Z",
+        "publish_date": "1994-06-15",
         "img_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p15829_v_v13_aa.jpg",
         "trailer_url": "https://www.youtube.com/watch?v=bLvqoHBptjg"
     },
@@ -61,7 +61,7 @@
         "tag": "War",
         "actors": "Tom Hanks, Edward Burns, Matt Damon",
         "director": "Steven Spielberg",
-        "publish_date": "1998-07-24T04:00:00.000Z",
+        "publish_date": "1998-07-24",
         "img_url": "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_FMjpg_UX1000_.jpg",
         "trailer_url": "https://www.youtube.com/watch?v=9CiW_DgxCnQ"
     },
@@ -72,7 +72,7 @@
         "tag": "War",
         "actors": "Josh Hartnett, Eric Bana, Ewan McGregor",
         "director": "Ridley Scott",
-        "publish_date": "2002-01-18T05:00:00.000Z",
+        "publish_date": "2002-01-18",
         "img_url": "https://m.media-amazon.com/images/M/MV5BYWMwMzQxZjQtODM1YS00YmFiLTk1YjQtNzNiYWY1MDE4NTdiXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_.jpg",
         "trailer_url": "https://www.youtube.com/watch?v=2GfBkC3qs78"
     },
@@ -83,8 +83,118 @@
         "tag": "Romance",
         "actors": "Ben Affleck, Josh Hartnett, Kate Beckinsale",
         "director": "Michael Bay",
-        "publish_date": "2001-05-21T04:00:00.000Z",
+        "publish_date": "2001-05-21",
         "img_url": "https://images.moviesanywhere.com/90d0b4de901fd0d69c5a2d9a85b6bc31/fd19b9fa-9d97-4b2c-a220-dd67e62cad3f.jpg",
         "trailer_url": "https://www.youtube.com/watch?v=oGYcxjywx0o"
+    },
+    {
+        "movie_id": 9,
+        "title": "Gladiator",
+        "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+        "tag": "Action",
+        "actors": "Russell Crowe, Joaquin Phoenix, Connie Nielsen",
+        "director": "Ridley Scott",
+        "publish_date": "2000-05-05",
+        "img_url": "https://m.media-amazon.com/images/I/91ATO4sRPVL._AC_UF894,1000_QL80_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=P5ieIbInFpg"
+    },
+    {
+        "movie_id": 10,
+        "title": "Jurassic Park",
+        "description": "During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.",
+        "tag": "Adventure",
+        "actors": "Sam Neill, Laura Dern, Jeff Goldblum",
+        "director": "Steven Spielberg",
+        "publish_date": "1993-06-11",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=QWBKEmWWL38"
+    },
+    {
+        "movie_id": 11,
+        "title": "Superbad",
+        "description": "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.",
+        "tag": "Comedy",
+        "actors": "Michael Cera, Jonah Hill, Christopher Mintz-Plasse",
+        "director": "Greg Mottola",
+        "publish_date": "2007-08-17",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BY2VkMDg4ZTYtN2M3Yy00NWZiLWE2ODEtZjU5MjZkYWNkNGIzXkEyXkFqcGdeQXVyODY5Njk4Njc@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=LvKvus3vCEY"
+    },
+    {
+        "movie_id": 12,
+        "title": "Schindler's List",
+        "description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+        "tag": "Drama",
+        "actors": "Liam Neeson, Ralph Fiennes, Ben Kingsley",
+        "director": "Steven Spielberg",
+        "publish_date": "1994-02-04",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=mxphAlJID9U"
+    },
+    {
+        "movie_id": 13,
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+        "tag": "Fantasy",
+        "actors": "Elijah Wood, Ian McKellen, Orlando Bloom",
+        "director": "Peter Jackson",
+        "publish_date": "2001-12-19",
+        "img_url": "https://m.media-amazon.com/images/I/81EBp0vOZZL.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=V75dMMIW2B4"
+    },
+    {
+        "movie_id": 14,
+        "title": "Get Out",
+        "description": "A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
+        "tag": "Horror",
+        "actors": "Daniel Kaluuya, Allison Williams, Bradley Whitford",
+        "director": "Jordan Peele",
+        "publish_date": "2017-02-24",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_FMjpg_UX1000_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=DzfpyUB60YY"
+    },
+    {
+        "movie_id": 15,
+        "title": "Sherlock Holmes",
+        "description": "Detective Sherlock Holmes and his stalwart partner Watson engage in a battle of wits and brawn with a nemesis whose plot is a threat to all of England.",
+        "tag": "Mystery",
+        "actors": "Robert Downey Jr., Jude Law, Rachel McAdams",
+        "director": "Guy Ritchie",
+        "publish_date": "2009-12-25",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BMTg0NjEwNjUxM15BMl5BanBnXkFtZTcwMzk0MjQ5Mg@@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=J7nJksXDBWc"
+    },
+    {
+        "movie_id": 16,
+        "title": "La La Land",
+        "description": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
+        "tag": "Romance",
+        "actors": "Ryan Gosling, Emma Stone, Rosemarie DeWitt",
+        "director": "Damien Chazelle",
+        "publish_date": "2016-12-09",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=0pdqf4P9MB8"
+    },
+    {
+        "movie_id": 17,
+        "title": "Toy Story",
+        "description": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+        "tag": "Animation",
+        "actors": "Tom Hanks, Tim Allen, Don Rickles",
+        "director": "John Lasseter",
+        "publish_date": "1995-11-22",
+        "img_url": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=CxwTLktovTU"
+    },
+    {
+        "movie_id": 18,
+        "title": "Cheaper by the Dozen",
+        "description": "With his wife doing a book tour, a father of twelve must handle a new job and his unstable brood.",
+        "tag": "Family",
+        "actors": "Steve Martin, Bonnie Hunt, Hilary Duff",
+        "director": "Shawn Levy",
+        "publish_date": "2003-12-25",
+        "img_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p33584_v_v12_ao.jpg",
+        "trailer_url": "https://www.youtube.com/watch?v=Wq8Nsc5r2So"
     }
 ]
