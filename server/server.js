@@ -26,9 +26,9 @@ app.use(
 app.use(express.json());
 app.use(
   session({
-    secret: "sq7taigbtwo2brbsdasdy",
+    secret: "sq7tawigbtwo2brbsdasdy",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
   })
 );
 app.use(passport.initialize());
