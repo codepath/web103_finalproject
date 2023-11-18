@@ -76,7 +76,7 @@ const DropdownMenu = ({ toggleDropdown, toggleLoginModal, isDropdownOpen }) => {
                 </li>
               </ul>
             </div>
-            {user ? (
+            {user && user.length > 0 ? (
               <div className="py-2 hover:bg-button-color hover:text-white">
                 <button
                   onClick={() => {

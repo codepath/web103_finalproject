@@ -4,7 +4,7 @@ import Listings from "./pages/Listings";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Profiles from "./pages/Profiles";
+import Profile from "./pages/Profile";
 
 function App() {
   const [listings, setListings] = useState([]);
@@ -42,7 +42,7 @@ function App() {
         {element}
       </div>
       <Routes>
-        <Route path="/profile" element={<Profiles />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

@@ -15,7 +15,7 @@ import connectPgSimple from "connect-pg-simple";
 const CLIENT_URL =
   process.env.NODE_ENV === "production"
     ? process.env.PROD_CLIENT_URL
-    : process.env.DEV_CLIENT_URL;
+    : "http://localhost:5173";
 
 const API_URL =
   process.env.NODE_ENV === "production"

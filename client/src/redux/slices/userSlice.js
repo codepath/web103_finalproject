@@ -134,7 +134,7 @@ const userSlice = createSlice({
       })
       .addCase(authLogOut.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.loggedInUser = null;
+        state.loggedInUser = []; // Set to an empty array
       })
       .addCase(authLogOut.rejected, (state, action) => {
         state.status = "failed";
