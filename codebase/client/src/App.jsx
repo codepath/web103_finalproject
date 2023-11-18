@@ -19,6 +19,7 @@ import Checkout from './pages/checkout'
 import AccountSettings from './pages/accountSettings'
 import EditItems from './pages/EditItems';
 import EditItem from './pages/EditItem';
+import AddItem from './pages/addItem';
 import './App.css'
 
 function App() {
@@ -122,6 +123,7 @@ function App() {
         <Route element={<AccountSettings />} path="/accountSettings" />
         <Route element={<EditItems />} path="/editItems" />
         <Route element={<EditItem />} path="/editItem" />
+        <Route element={<AddItem />} path="/addItem" />
         {/* <Redirect to="**" /> */}
       </Routes>
     </Router>

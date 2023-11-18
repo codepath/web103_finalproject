@@ -1,11 +1,11 @@
 import pool from '../config/database.js'
 
 const createItem = async (req, res) => {
-    try{
-        const { name, metal, color, price, type, description, image_url, quantity } = req.body
+    try{ 
+        const { title, metal, color, price, type, description, img_url, quantity } = req.body
         const results = await pool.query(
             'INSERT INTO items (title, metal, color, price, type, description, img_url, quantity) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-            [name, metal, color, price, type, description, image_url, quantity]
+            [title, metal, color, price, type, description, img_url, quantity]
           )
         res.status(201).json(results.rows[0])
 

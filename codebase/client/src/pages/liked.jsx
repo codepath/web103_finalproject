@@ -45,7 +45,7 @@ const Liked = () => {
 
   return (
     <>
-      <h1 className="pageTitle">Catalog</h1>
+      <h1 className="pageTitle">Liked</h1>
       <div className="dropdowns">
           <Dropdown title="Category" options={options.type} params={params} setParams={setParams} filter="type"/>
           <Dropdown title="Color" options={options.color} params={params} setParams={setParams} filter="color"/>

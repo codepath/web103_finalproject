@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import ProductCard from "../components/productCard";
 import Dropdown from "../components/dropdown";
 import "../styles/catalog.css";
+import { Link } from "react-router-dom";
 
 const EditItems = () => {
   const [options, setOptions] = useState({
@@ -53,6 +54,9 @@ const EditItems = () => {
           <Dropdown title="Min Price" options={options.minPrice} params={params} setParams={setParams} filter="minPrice"/>
           <Dropdown title="Max Price" options={options.maxPrice} params={params} setParams={setParams} filter="maxPrice"/>
       </div>
+      <Link to="/additem">
+        <button className="buttonLogIn addButton">Add</button>
+      </Link>
       <section className="cards">
         { items.length === 0 ? <p>No items found.</p> : items.map((item) => (
           <ProductCard
