@@ -3,9 +3,29 @@ import passport from "passport";
 
 const router = express.Router();
 
+router.get(
+  "/github",
+  passport.authenticate("github", {
+    scope: ["read:user"],
+  })
+);
+
+router.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    successRedirect: "/",
+    failureRedirect: "/games",
+  })
+);
+
 router.get("/login/success", (req, res) => {
-  if (req.user) {
-    res.status(200).json({ success: true, user: req.user });
+  try {
+    if (req.user) {
+      res.status(200).json({ success: true, user: req.user });
+    }
+  } catch (e) {
+    res.status(409).json({ success: false, mesage: e });
+    console.log(e);
   }
 });
 
@@ -21,25 +41,9 @@ router.get("/logout", (req, res, next) => {
 
     req.session.destroy((err) => {
       res.clearCookie("connect.sid");
-
       res.json({ status: "logout", user: {} });
     });
   });
 });
-
-router.get(
-  "/github",
-  passport.authenticate("github", {
-    scope: ["read:user"],
-  })
-);
-
-router.get(
-  "/github/callback",
-  passport.authenticate("github", {
-    successRedirect: "/",
-    failureRedirect: "/games",
-  })
-);
 
 export default router;

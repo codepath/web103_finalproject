@@ -15,7 +15,7 @@ const app = express();
 const CLIENT_URL =
   process.env.NODE_ENV === "production"
     ? "https://playpal-client-app.up.railway.app"
-    : "http://localhost:3000";
+    : "https://localhost:3000";
 
 app.use(
   cors({
@@ -25,21 +25,12 @@ app.use(
   })
 );
 app.use(express.json());
-const oneDay = 1000 * 60 * 60 * 24;
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "thisismysecrctekeyfhrgfgrfrty84fwir767",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { 
-      secure: process.env.NODE_ENV === "production",
-      maxAge: oneDay ,
-      httpOnly: true, 
-      sameSite: 'lax' 
-    },
-  })
-);
 
+app.use(session({
+  secret: 'sq7taigbtwo2brby',
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(GitHub);
