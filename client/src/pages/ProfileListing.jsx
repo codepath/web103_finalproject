@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import listings from '../jsons/listings.json';
+import { Link } from 'react-router-dom'
 
 function ProfileListing() {
   const [showForm, setShowForm] = useState(false);
@@ -128,7 +129,10 @@ function ProfileListing() {
 <ul className="grid grid-cols-1 gap-8  lg:grid-cols-3 mt-10">
   {userListings.map((userListing, index) => (
     <li key={index} className="bg-white p-8 rounded-md shadow-md w-full mb-4">
-      <h2 className="text-2xl font-semibold mb-2">{userListing.title}</h2>
+      
+      <h2 className="text-2xl font-semibold mb-2" style={{cursor:"pointer"}}>{userListing.title}
+      <Link to={`/listings/${userListing.id}`}>{userListing.title}</Link>
+      </h2>
       {/* <p className="text-gray-600 text-lg">ID: {userListing.id}</p> */}
       <p className="text-gray-600 text-lg">Price per night: ${parseFloat(userListing.price).toFixed(2)}</p>
       {userListing.img && (

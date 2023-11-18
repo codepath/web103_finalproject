@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProfileListing from "./ProfileListing";
 import { useParams } from "react-router-dom";
 // import UserIcon from "../jsons/UserIcon.json";
