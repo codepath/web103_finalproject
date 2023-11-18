@@ -25,14 +25,18 @@ app.use(
   })
 );
 app.use(express.json());
-
+const oneDay = 1000 * 60 * 60 * 24;
 app.use(
   session({
-    cookie: { maxAge: 86400000 },
-    secret: "keyboard dog",
+    secret: process.env.SESSION_SECRET || "thisismysecrctekeyfhrgfgrfrty84fwir767",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { 
+      secure: process.env.NODE_ENV === "production",
+      maxAge: oneDay ,
+      httpOnly: true, 
+      sameSite: 'lax' 
+    },
   })
 );
 
