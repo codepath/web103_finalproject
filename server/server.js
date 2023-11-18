@@ -12,7 +12,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://playpaal.up.railway.app' : 'http://localhost:3000'
+const CLIENT_URL = process.env.NODE_ENV === 'production' ? 'https://playpal-client-app.up.railway.app' : 'http://localhost:3000'
 app.use(
   cors({
     origin: CLIENT_URL,
