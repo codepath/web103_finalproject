@@ -130,9 +130,11 @@ function ProfileListing() {
   {userListings.map((userListing, index) => (
     <li key={index} className="bg-white p-8 rounded-md shadow-md w-full mb-4">
       
-      <h2 className="text-2xl font-semibold mb-2" style={{cursor:"pointer"}}>{userListing.title}
-      <Link to={`/listings/${userListing.id}`}>{userListing.title}</Link>
-      </h2>
+      
+      {/* <Link to={`/listings/${userListing.id}`}> */}
+      <h2 className="text-2xl font-semibold mb-2" style={{cursor:"pointer"}}>{userListing.title}</h2>
+      {/* </Link> */}
+      
       {/* <p className="text-gray-600 text-lg">ID: {userListing.id}</p> */}
       <p className="text-gray-600 text-lg">Price per night: ${parseFloat(userListing.price).toFixed(2)}</p>
       {userListing.img && (
