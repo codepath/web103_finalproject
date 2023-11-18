@@ -11,6 +11,7 @@ const SearchBar = () => {
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
+  const userRef = useRef(user)
   const API_URL =
     process.env.NODE_ENV === 'production'
       ? 'https://playpal.up.railway.app'
@@ -42,7 +43,7 @@ const SearchBar = () => {
     };
 
     getUser();
-  }, [setUser]);
+  }, [userRef]);
 
   const gotoprofile = () => {
     navigate('/profile');

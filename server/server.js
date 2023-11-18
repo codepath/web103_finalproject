@@ -19,7 +19,7 @@ const CLIENT_URL =
 
 app.use(
   cors({
-    origin: CLIENT_URL,
+    origin: true,
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   })

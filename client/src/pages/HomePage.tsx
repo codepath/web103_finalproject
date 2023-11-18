@@ -11,9 +11,12 @@ import Spinner from '../components/Spinner.tsx';
 const HomePage = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
-
+  const API_URL =
+    process.env.NODE_ENV === 'production'
+      ? 'https://playpal.up.railway.app'
+      : 'http://localhost:3000';
   const fetchGames = async () => {
-    const res = await axios.get('https://playpal.up.railway.app/games');
+    const res = await axios.get(`${API_URL}/games`);
     const data = await res.data;
     return data;
   };
