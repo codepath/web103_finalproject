@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAllPosts, updatePost } from '../services/postService';
 import Post from '../components/Post';
-import EditPostModal from './EditPostModal';
+import EditPostModal from '../pages/EditPostModal';
 import { useApiUrl } from '../contexts/ApiContext';
 
 const DiscussionBoard = () => {
