@@ -26,7 +26,7 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 - [x] The project includes an Express backend app and a React frontend app
 - [x] The project includes these backend-specific features:
-  - [ ] At least one of each of the following database relationship in Postgres
+  - [x] At least one of each of the following database relationship in Postgres
     - [x] one-to-many
     - [x] many-to-many with a join table
   - [x] A well-designed RESTful API
