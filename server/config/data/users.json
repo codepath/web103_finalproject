@@ -1,0 +1,47 @@
+[
+  {
+    "first_name": "Mary",
+    "last_name": "Taylor",
+    "address1": "8089 Wishing Tree Lane",
+    "address2": "",
+    "city": "Ann Arbor",
+    "state": "MI",
+    "country": "US",
+    "zipcode": "48108",
+    "phone": "734-477-6920",
+    "user_name": "marytaylor123",
+    "email": "marytaylor123@gmail.com",
+    "password": "password123",
+    "is_active": true
+  },
+  {
+    "first_name": "Tate",
+    "last_name": "Greene",
+    "address1": "4171 Gladewater Rd",
+    "address2": "Apt 3",
+    "city": "Dallas",
+    "state": "TX",
+    "country": "US",
+    "zipcode": "75206",
+    "phone": "345-240-3310",
+    "user_name": "tategreene456",
+    "email": "tategreene456@gmail.com",
+    "password": "password456",
+    "is_active": true
+  },
+  {
+    "first_name": "Marilyn",
+    "last_name": "Whiteman",
+    "address1": "4410 Pikes Falls Rd",
+    "address2": "",
+    "city": "Jamaica",
+    "state": "VT",
+    "country": "US",
+    "zipcode": "05343",
+    "phone": "381-240-3310",
+    "user_name": "marilynwhiteman789",
+    "email": "marilynwhiteman789@gmail.com",
+    "password": "password789",
+    "is_active": true
+  }
+]

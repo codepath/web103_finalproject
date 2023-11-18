@@ -1,0 +1,42 @@
+[
+    {
+      "title": "Beautiful Ann Arbor Suburban Home",
+      "property_id": 2,
+      "price_per_night": "$230.00",
+      "image_url": "https://i.ibb.co/VDrRDZF/Screen-Shot-2023-11-05-at-1-01-54-PM.png"
+
+    },
+    {
+      "title": "Cabin Home in Ann Arbor Outskirts",
+      "property_id": 1,
+      "price_per_night": "$130.00",
+      "image_url": "https://i.ibb.co/7gQsrnp/Screen-Shot-2023-11-05-at-1-02-16-PM.png"
+
+    },
+    {
+      "title": "Apartment in Dallas Right Across from Major Transit Hub",
+      "property_id": 4,
+      "price_per_night": "$175.00",
+      "image_url": "https://i.ibb.co/7bFzJy4/Screen-Shot-2023-11-05-at-1-02-24-PM.png"
+    },
+    {
+      "title": "Apartment in Gated Community in Dallas",
+      "property_id": 3,
+      "price_per_night": "$130.00",
+      "image_url": "https://i.ibb.co/bQPF56V/Screen-Shot-2023-11-05-at-1-05-58-PM.png"
+    },
+    {
+      "title": "Large Guest House in Peaceful Vermont Countryside",
+      "property_id": 5,
+      "price_per_night": "$125.00",
+      "image_url": "https://i.ibb.co/GFG88cM/Screen-Shot-2023-11-05-at-1-05-13-PM.png"
+    },
+    {
+      "title": "The best Bed and Breakfast in Vermont",
+      "property_id": 6,
+      "price_per_night": "200.00",
+      "image_url": "https://i.ibb.co/b7JKrbn/Screen-Shot-2023-11-05-at-1-08-37-PM.png"
+
+    }
+  ]
+  

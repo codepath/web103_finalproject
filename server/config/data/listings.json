@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Beautiful Ann Arbor Suburban Home",
+    "property_id": 2,
+    "price_per_night": "$230.00"
+  },
+  {
+    "title": "Cabin Home in Ann Arbor Outskirts",
+    "property_id": 1,
+    "price_per_night": "$130.00"
+  },
+  {
+    "title": "Apartment in Dallas Right Across from Major Transit Hub",
+    "property_id": 4,
+    "price_per_night": "$175.00"
+  },
+  {
+    "title": "Apartment in Gated Community in Dallas",
+    "property_id": 3,
+    "price_per_night": "$130.00"
+  },
+  {
+    "title": "Large Guest House in Peaceful Vermont Countryside",
+    "property_id": 5,
+    "price_per_night": "$125.00"
+  },
+  {
+    "title": "The best Bed and Breakfast in Vermont",
+    "property_id": 6,
+    "price_per_night": "200.00"
+  }
+]
