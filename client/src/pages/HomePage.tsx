@@ -13,7 +13,7 @@ const HomePage = () => {
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
 
   const fetchGames = async () => {
-    const res = await axios.get('/api/games');
+    const res = await axios.get('https://playpal.up.railway.app/games');
     const data = await res.data;
     return data;
   };

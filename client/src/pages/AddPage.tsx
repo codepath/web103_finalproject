@@ -61,7 +61,7 @@ const GameForm = () => {
     e.preventDefault();
     try {
       console.log(game);
-      const response = await axios.post('/api/games', game);
+      const response = await axios.post('https://playpal.up.railway.app/games', game);
       console.log(response.data);
       addedGame();
       Navigate('/');
