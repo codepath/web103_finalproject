@@ -70,6 +70,7 @@ Backend: PostgreSQL, Express.js, Node.js
 ### Milestone 5- Unit 9 Gifs
 
 Routes: Covers Features 1-2
+https://imgur.com/a/t8I9YML
 
 Backend: Covers Features 4-8
 https://imgur.com/a/Yjvq06g
