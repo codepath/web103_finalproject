@@ -35,7 +35,7 @@ const DropdownMenu = ({ toggleDropdown, toggleLoginModal, isDropdownOpen }) => {
         {isDropdownOpen && (
           <div className="absolute top-full right-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark-bg-gray-700 dark-divide-gray-600 w-56">
             <div className="px-4 py-3 text-sm text-gray-900 dark-text-white hover:bg-login-color">
-              {user ? (
+              {user && user.id ? (
                 <>
                   <div>
                     {user.first_name} {user.last_name}
@@ -49,7 +49,7 @@ const DropdownMenu = ({ toggleDropdown, toggleLoginModal, isDropdownOpen }) => {
             <div className="flex w-full">
               <ul className="table list-none py-2 text-sm text-gray-700 dark-text-gray-200 w-full">
                 <li className="table-row hover:bg-button-color hover:text-white">
-                  <Link to="/profile">
+                  <Link to={`/profile/${user?.id}`}>
                     <button
                       className="block px-4 py-2 hover-bg-gray-100 dark-hover-bg-gray-600 dark-hover-text-white"
                       onClick={toggleDropdown}
@@ -76,7 +76,7 @@ const DropdownMenu = ({ toggleDropdown, toggleLoginModal, isDropdownOpen }) => {
                 </li>
               </ul>
             </div>
-            {user ? (
+            {user && user.id ? (
               <div className="py-2 hover:bg-button-color hover:text-white">
                 <button
                   onClick={() => {
