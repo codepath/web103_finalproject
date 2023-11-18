@@ -379,4 +379,4 @@ const createSessionTable = async () => {
 // seedPropertyAmenitiesTable();
 // seedListingAvailabilityTable();
 // seedListingImagesTable();
-// createSessionTable();
+createSessionTable();
