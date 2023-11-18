@@ -36,7 +36,8 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can see a list of available movies on the app and further view movie detail in a popped up modal by clicking on any movie.
 
-<img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' />
+<!-- <img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' /> -->
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/movie_list.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
 
 ### Create profile for a new movie
 
@@ -60,38 +61,38 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can toggle the movie display by switch either card or timeline form.
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
 
 ### User Wishlist Dashboard
 
 ✅ User can see various movies that have previously been added to their personal wishlist. Also, the user can click on a movie in the wishlist to see its detail screen, showing movie information details.
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_dashboard.gif' title='Wishlist Dashboard' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/wishlist_dashboard.gif' title='Wishlist Dashboard' width='800' alt='Video Walkthrough' />
 
 
 ### Add a movies to a wishlist
 
 ✅ User can add movies to a wishlist from a list of available movies.
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_add_movie.gif' title='Add Movie to Wishlist' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/wishlist_add_movie.gif' title='Add Movie to Wishlist' width='800' alt='Video Walkthrough' />
 
 ### Remove a movie from wishlist
 
 ✅ User can remove a movie from the wishlist detail screen.
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_remove_movie.gif' title='Remove Movie to Wishlist' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/wishlist_remove_movie.gif' title='Remove Movie to Wishlist' width='800' alt='Video Walkthrough' />
 
 ### Filter movies by keyword
 
 ✅ User can filter out the movie they want to see by typing the title, director's name, or actors' names in a search bar
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/search_filter.gif' title='Search Filter' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/search_filter.gif' title='Search Filter' width='800' alt='Video Walkthrough' />
 
 ### Filter movies by genre
 
 ✅ User can filter for movies related to a specific genre. Many movies can share the same genre (one-to-many).
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/filter_genre.gif' title='Filter Genre' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/filter_genre.gif' title='Filter Genre' width='800' alt='Video Walkthrough' />
 
 
 
