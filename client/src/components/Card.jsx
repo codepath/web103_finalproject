@@ -4,7 +4,7 @@ import '../css/Card.css';
 const Card = ({ movie }) => {
     return (
         <div className='card'>
-            <div className='card-image' style={{ backgroundImage: `url(${movie.img_url})` }}>
+            <div className='card-image' style={{ backgroundImage: `url(${movie.img_url})`, cursor: 'pointer'}}>
                 <div className='card-overlay'>
                     <div className='card-content'>
                         <h2 className='card-title'>{movie.title}</h2>

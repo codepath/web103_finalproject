@@ -34,7 +34,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ### User Movie Dashboard
 
-✅ User can see a list of movies they saved on the app, and can click to see movie details.
+✅ User can see a list of movies they saved on the app and further view movie detail in a popped up modal by clicking on any movie.
 
 <img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' />
 
@@ -56,33 +56,34 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 <img src='https://i.imgur.com/e5CG7le.gif' title='Edit Movie' width='800' alt='Video Walkthrough' />
 
+### Toogle movie view
+
+✅ User can toggle the movie display by switch either card or timeline form.
+
+[gif goes here]
+
 ### User Wishlist Dashboard
 
-User can see various movie wishlsits they've created. Also, the user can click on a wishlist to see a wishlist detail screen, showing movies contained in the wishlist.
+✅ User can see various movie wishlsits they've created. Also, the user can click on a wishlist to see a wishlist detail screen, showing movies contained in the wishlist.
 
 [gif goes here]
 
-### Create a wishlist
-
-User can create a new wishlist to save their favorite movies.
-
-[gif goes here]
 
 ### Add a movies to a wishlist
 
-User can add movies to a wishlist from their list of movies.
+✅ User can add movies to a wishlist from their list of movies.
 
 [gif goes here]
 
 ### Remove a movie from wishlist
 
-User can remove a movie from the wishlist detail screen.
+✅ User can remove a movie from the wishlist detail screen.
 
 [gif goes here]
 
-### Delete a wishlist from the dashboard
+### Filter movies by keyword
 
-User can delete any wishlist directly from the dashboard with a delete button.
+✅ User can filter out the movie they want to see by typing the title, director's name, or actors' names in a search bar
 
 [gif goes here]
 
@@ -98,4 +99,4 @@ User can delete any wishlist directly from the dashboard with a delete button.
 
 `npm run reset` (once you have got database set up)
 
-`npm start`
+`npm start` (start both frontend and backend)

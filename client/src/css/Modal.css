@@ -208,7 +208,7 @@
     bottom: 20px; /* Position from the bottom */
 }
 
-.wishlist-icon.not-added:hover, .wishlist-icon.not-deleted:hover {
+.wishlist-icon.not-added:hover {
     transform: rotate(180deg);
 }
 
@@ -216,6 +216,6 @@
     color: green;
 }
 
-.wishlist-icon.deleted {
+.wishlist-icon.deleted:hover {
     color: red;
 }

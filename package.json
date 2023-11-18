@@ -26,6 +26,7 @@
     "react-modal": "^3.16.1",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.9.0",
+    "react-vertical-timeline-component": "^3.6.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
