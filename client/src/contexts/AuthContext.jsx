@@ -23,7 +23,7 @@ export const AuthProvider = ({ children, apiUrl }) => {
         console.error('Authentication check failed', error);
         setAuthState({ isAuthenticated: false, user: null, loading: false });
       });
-  }, []);
+  }, [apiUrl]);
 
   const setAuthInfo = ({ isAuthenticated, user }) => {
     setAuthState({ isAuthenticated, user, loading: false });
