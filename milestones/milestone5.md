@@ -71,13 +71,13 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ## Final Demo GIF
 
-🔗 [Here's a GIF walkthrough of the final project](👉🏾👉🏾👉🏾 your link here)
+
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-Learning how to deploy the project went really well
+Learning how to deploy the project went really well.
 
 ### 2. What were some challenges your group faced in this unit?
 
