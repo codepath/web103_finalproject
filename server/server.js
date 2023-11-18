@@ -73,9 +73,9 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.redirect(CLIENT_URL);
-});
+// app.get('/', (req, res) => {
+//   res.redirect(CLIENT_URL);
+// });
 
 app.get('/login/success', (req, res) => {
   if (req.isAuthenticated()) {
