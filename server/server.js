@@ -44,7 +44,7 @@ app.use(
     store: new RedisStore({ client: redisClient }),
     secret: "sq7taigbtwo2brbsdasdy",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
   })
 );
 app.use(passport.initialize());
