@@ -60,7 +60,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can toggle the movie display by switch either card or timeline form.
 
-[gif goes here]
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
 
 ### User Wishlist Dashboard
 
