@@ -4,7 +4,7 @@ const createItem = async (req, res) => {
     try{
         const { name, metal, color, price, type, description, image_url, quantity } = req.body
         const results = await pool.query(
-            'INSERT INTO items (name, metal, color, price, type, description, image_url, quantity) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+            'INSERT INTO items (title, metal, color, price, type, description, img_url, quantity) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
             [name, metal, color, price, type, description, image_url, quantity]
           )
         res.status(201).json(results.rows[0])
@@ -84,13 +84,13 @@ const getItem = async (req, res) => {
 
 } 
 
-const updateItem = async (request, response) => {
+const updateItem = async (req, res) => {
     try {
-      const { name, metal, color, price, type, description, image_url, quantity } = req.body
+      const { title, metal, color, price, type, description, img_url, quantity } = req.body
       const id = parseInt(req.params.id)
   
-      const results = await pool.query('UPDATE trips SET name=$1, metal=$2, color=$3, price=$4, type=$5, description=$6, image_url=$7, quantity=$8 WHERE id = $9',
-        [name, metal, color, price, type, description, image_url, quantity, id]
+      const results = await pool.query('UPDATE items SET title=$1, metal=$2, color=$3, price=$4, type=$5, description=$6, img_url=$7, quantity=$8 WHERE id = $9',
+        [title, metal, color, price, type, description, img_url, quantity, id]
       )
   
       res.status(200).json(results.rows);

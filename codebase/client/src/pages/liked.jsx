@@ -64,6 +64,8 @@ const Liked = () => {
             description={item.description}
             id={item.id}
             quantity={item.quantity}
+            color={item.color}
+            metal={item.metal}
           />
         ))
         }

@@ -5,31 +5,70 @@ import { useLocation } from 'react-router-dom';
 const EditItem = () => {
   const location = useLocation();
   const productData = location.state.productData;
-  const { category, title, price, imgSrc, imgHoverSrc, description, id, quantity: initialQuantity } = productData;
+  const { category, title, price, imgSrc, imgHoverSrc, description, id, quantity: initialQuantity, color, metal } = productData;
 
   // State variables for editable fields
+  const [edittedCategory, setEdittedCategory] = useState(category);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedPrice, setEditedPrice] = useState(price);
   const [editedDescription, setEditedDescription] = useState(description);
+  const [editedImgSrc, setEditedImgSrc] = useState(imgSrc);
   const [editedQuantity, setEditedQuantity] = useState(initialQuantity);
+  const [editedColor, setEditedColor] = useState(color);
+  const [editedMetal, setEditedMetal] = useState(metal);
 
   const updateItem = async (e) => {
     e.preventDefault();
-    const options = {
+    try {    
+      const options = {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           title: editedTitle,
+          metal: editedMetal,
+          color: editedColor,
           price: editedPrice,
+          type: edittedCategory,
           description: editedDescription,
+          img_url: editedImgSrc,
           quantity: editedQuantity
         })
     }
+      const response = await fetch(`http://localhost:3001/api/items/${id}`, options);
     
-    await fetch(`http://localhost:3001/api/items/` + id, options)
-    // window.location.href = '/edititems'
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      // Handle success if needed    
+      window.location.href = '/edititems'
+
+    } catch (error) {
+      console.error('Error updating item:', error.message);
+    }
+  }
+
+  const deleteItem = async (e) => {
+    e.preventDefault();
+    try {    
+      const options = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    }
+      const response = await fetch(`http://localhost:3001/api/items/${id}`, options);
+    
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      // Handle success if needed    
+      window.location.href = '/edititems'
+
+    } catch (error) {
+      console.error('Error updating item:', error.message);
+    }
   }
 
   return (
@@ -71,7 +110,10 @@ const EditItem = () => {
                   style={{ maxWidth: '5rem' }}
                 />
               </div>
-              <button className="buttonLogIn" onClick={updateItem}>Save</button>
+              <div className="login-button-container">
+                <button className="buttonLogIn" onClick={updateItem}>Save</button>
+                <button className="buttonLogIn" onClick={deleteItem}>Delete</button>
+              </div>
             </div>
           </div>
         </div>

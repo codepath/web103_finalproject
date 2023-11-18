@@ -14,7 +14,7 @@ const Catalog = () => {
   maxPrice: [20, 50, 100, 200, 500]
   });
 
-  const [params, setParams] = useState({minPrice: undefined, maxPrice: undefined, color: '', type: '', metal: ''});
+  const [params, setParams] = useState({minPrice: undefined, maxPrice: undefined, color: '', type: '', metal: '', });
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -64,6 +64,8 @@ const Catalog = () => {
             description={item.description}
             id={item.id}
             quantity={item.quantity}
+            color={item.color}
+            metal={item.metal}
           />
         ))
         }

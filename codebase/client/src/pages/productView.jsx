@@ -5,7 +5,7 @@ const ProductView = () => {
     const location = useLocation();
     console.log(location);
     const productData = location.state.productData;
-    const {category, title, price, imgSrc, imgHoverSrc, description, id, quantity} = productData;
+    const {category, title, price, imgSrc, imgHoverSrc, description, id, quantity, color, metal} = productData;
 
   return (
     <>

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import "../styles/productCard.css";
 import { useLocation } from "react-router-dom";
 
-function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description, id, quantity}) {
+function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description, id, quantity, color, metal}) {
   const productData = {
     category,
     title,
@@ -12,7 +12,9 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
     imgHoverSrc,
     description,
     id,
-    quantity
+    quantity,
+    color,
+    metal
   };
   const location = useLocation().pathname;
   

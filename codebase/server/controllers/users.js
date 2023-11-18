@@ -123,7 +123,6 @@ const updateUser = async (request, response) => {
       const order_deletion = await pool.query('DELETE FROM users_orders WHERE user_id = $1',
         [id]
       )
-  
       const results = await pool.query('DELETE FROM users WHERE id = $1', [id])
       res.status(200).json(results.rows)
     }
@@ -132,7 +131,7 @@ const updateUser = async (request, response) => {
     }
       
   }
-
+  
   export default {
     createUser,
     // filterItems,
