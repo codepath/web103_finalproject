@@ -32,27 +32,24 @@ Rawg.io
 
 ## Tech Stack
 
-Frontend: ReactJs, Zustand , Axios, Tailwind 
+Frontend: ReactJs, Zustand , Axios, Tailwind
 
 Backend: Node.js, Express, Passport.js, Postgresql
 
 ## Features
 
-
-
-### ✅PostgreSQL database with tables for games, platforms, genres, etc. 
+### ✅PostgreSQL database with tables for games, platforms, genres, etc.
 
 Setup a PostgreSQL database with structured tables to store game data.
 
 <img src='./client/public/feature.gif' title='db setuo' width='' alt='Video Walkthrough' />
-
 
 ### ✅Create RESTful API routes for games, platforms, and genres that support GET, POST, PATCH, and DELETE requests
 
 Only Game Routes completed currently! Still under development!
 <img src='./client/public/api.gif' title='api setup' width='' alt='Video Walkthrough' />
 
-### ✅Setup Frontend 
+### ✅Setup Frontend
 
 Sidebar and SearchBar done!
 <img src='./client/public/dt.gif' title='frontend setup' width='' alt='Video Walkthrough' />
@@ -62,7 +59,6 @@ Sidebar and SearchBar done!
 CRUD functionality for games
 
 <img src='./client/public/Add_edit_delete.gif' title='CRUD Data' width='' alt='Video Walkthrough' />
-
 
 ### ✅Alert User if impossible data is entered
 
@@ -74,13 +70,11 @@ Validate game info entered by user before inserting or updating in the database.
 Data is Fetched from Railway PostgreSQL database
 <img src='./client/public/Data_from_Db.gif' title=' Data From Db' width='' alt='Video Walkthrough' />
 
-
 ### ✅React Router for dynamic routing to pages like Home, Games, Genres, Platforms, etc.
 
 Use React Router to handle routing between app pages.
 
 <img src='./client/public/Dynamic Routes.gif' title='dynamic Router' width='' alt='Video Walkthrough' />
-
 
 ### ✅Game search, filter, and sort functionality
 
@@ -100,7 +94,7 @@ Organize components into pages, containers, and presentational components.
 
 <img src='./client/public/Component Heirarchy.gif' title='Organize components' width='' alt='Video Walkthrough' />
 
-### ✅Use Passport.js for GitHub OAuth login 
+### ✅Use Passport.js for GitHub OAuth login
 
 Allow users to login via GitHub OAuth using Passport.js to restrict access to profile.
 <img src='./client/public/login_logout.gif' title='Organize components' width='' alt='Login Logout' />
@@ -111,18 +105,8 @@ Redirect to login page if user tries to access profile when unauthenticated.
 
 <img src='./client/public/redirect.gif' title='Organize components' width='' alt='Redirec' />
 
+### ✅Well Designed API
 
+Setup a one to many relationship with Platforms and Genres.
 
-
-## Installation Instructions
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                            |
-| :------------------------ | :-------------------------------------------------|
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm run dev`             | Starts local dev server at `localhost:3000`      |
-| `pnpm run build`           | Build your production site to `./dist/`          |
-| `pnpm run preview`         | Preview your build locally, before deploying     |
-
-
+<img src='./client/public/well_Api.gif' title='api setuo' width='' alt='Api Walkthrough' />
