@@ -39,10 +39,10 @@ const HomePage = () => {
   }, [data, searchText, genreId]);
 
   if (isError) {
-    return <div className="text-white"> Error Fetching games!!!</div>;
+    return <div className="text-white text-4xl p-4"> Error Fetching games!!!</div>;
   }
   if (isPending) {
-    return <Spinner/>
+    return <div className="text-white flex justify-center items-center h-[500px]"> <Spinner/></div>;
   }
   if (filteredGames) {
     return (
