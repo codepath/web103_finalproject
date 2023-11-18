@@ -4,7 +4,17 @@
     margin-left: 20px;
 }
 
+.selection {
+    width: 30% !important;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
 .toggle-view {
     margin-left: 30px;
     margin-bottom: 10px;
+}
+
+.input-container {
+    display: flex;
 }

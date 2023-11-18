@@ -11,6 +11,8 @@ const ViewMovies = ({ title }) => {
   const [selectedMovie, setSelectedMovie] = useState(null); // Initialize selectedMovie state to in order to hide the modal by default
   const [searchTerm, setSearchTerm] = useState(''); // Initialize search term state to an empty string
   const [viewType, setViewType] = useState('cards'); // "cards" or "timeline"
+  const [tags, setTags] = useState([]); // Initialize tags state to an empty array
+  const [selectedTag, setSelectedTag] = useState(null); // Initialize selectedTag state to null
 
   /**
    * Function to toggle between "cards" and "timeline" view
@@ -23,6 +25,21 @@ const ViewMovies = ({ title }) => {
   useEffect(() => {
     document.title = title || ''
   }, [title])
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await fetch('/api/tags/');
+        const data = await response.json();
+        setTags(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchTags();
+  }, []);
+  
 
   // Fetch movies from the backend API
   useEffect(() => {
@@ -61,12 +78,21 @@ const ViewMovies = ({ title }) => {
   };
 
   /**
+   * Function to handle tag filter  
+   */
+  const handleTagFilter = (event) => {
+    setSelectedTag(event.target.value);
+    console.log(event.target.value);
+  }
+
+  /**
    * Filter movies based on the search term
    */
   const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     movie.director.toLowerCase().includes(searchTerm.toLowerCase()) ||
     movie.actors.toLowerCase().includes(searchTerm.toLowerCase())
+    ) && (!selectedTag || movie.tag == selectedTag)
   );
 
   return (
@@ -84,9 +110,18 @@ const ViewMovies = ({ title }) => {
 
       {viewType === 'cards' ? (
         <div className='view-movies-container'>
-          <div className='search-bar-container'>
+
+          <div className='input-container'>
             <input className="search-bar" type="text" placeholder="Search movie, director, or actor here..." value={searchTerm} onChange={handleSearch} />
+            <select className="selection" value={selectedTag} onChange={handleTagFilter}>
+              <option value="">Choose your genre</option>
+              {tags.map((tag) => (
+                <option key={tag.tag_id} value={tag.genre}>{tag.genre}</option>
+              ))}
+            </select>
           </div>
+
+          
 
           <div className='cards-container'>
             {
