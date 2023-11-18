@@ -85,7 +85,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can filter out the movie they want to see by typing the title, director's name, or actors' names in a search bar
 
-[gif goes here]
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/search_filter.gif' title='Search Filter' width='800' alt='Video Walkthrough' />
 
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
