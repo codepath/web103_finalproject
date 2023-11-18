@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpx vite",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "server build -s -n -L -p $PORT"
+    "start": "serve build -s -n -L -p $PORT"
   },
   "eslintConfig": {
     "extends": [
