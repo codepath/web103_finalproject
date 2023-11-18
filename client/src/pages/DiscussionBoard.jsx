@@ -52,7 +52,7 @@ const DiscussionBoard = () => {
 
   const saveEditedPost = async function (postId, editedContent) {
     try {
-      await updatePost(postId, { content: editedContent });
+      await updatePost(postId, { content: editedContent }, apiUrl);
       const updatedPosts = posts.map(function (post) {
         if (post.id === postId) {
           return { ...post, content: editedContent };

@@ -1,33 +1,101 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { getAllPosts, updatePost } from '../services/postService';
+import Post from '../components/Post';
+import EditPostModal from './EditPostModal';
+import { useApiUrl } from '../contexts/ApiContext';
 
-const PostDetail = () => {
-    const { postId } = useParams();
-    const [post, setPost] = useState(null);
+const DiscussionBoard = () => {
+  const [posts, setPosts] = useState([]);
+  const [editingPost, setEditingPost] = useState(null);
+  const apiUrl = useApiUrl();
 
-    useEffect(() => {
-        const fetchPost = async () => {
-            try {
-                const response = await axios.get(`/api/posts/${postId}`);
-                setPost(response.data);
-            } catch (error) {
-                console.error('Error fetching post:', error);
-            }
-        };
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getAllPosts(apiUrl);
+        
+        const filteredPosts = data.filter(post => !post.deleted);
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.error('Failed to fetch posts:', error);
+      }
+    };
+  
+    fetchPosts();
+  }, [apiUrl]);
+  
+  const openEditModal = (postId) => {
+    const postToEdit = posts.find(function (post) {
+      return post.id === postId;
+    });
+    setEditingPost(postToEdit);
+  };
 
-        fetchPost();
-    }, [postId]);
+  const closeEditModal = () => {
+    setEditingPost(null);
+  };
 
-    if (!post) return <div>Loading...</div>;
+  const deletePost = function (postId) {
+    axios
+      .delete(`/api/posts/${postId}`)
+      .then(function (response) {
+        const updatedPosts = posts.filter(function (post) {
+          return post.id !== postId;
+        });
+        setPosts(updatedPosts);
+      })
+      .catch(function (error) {
+        console.error('Failed to delete post:', error);
+      });
+  };
 
-    return (
-        <div>
-            <h1>{post.title}</h1>
-            <p>{post.content}</p>
-            {/* Add edit and delete functionality if needed */}
-        </div>
-    );
+  const saveEditedPost = async function (postId, editedContent) {
+    try {
+      await updatePost(postId, { content: editedContent });
+      const updatedPosts = posts.map(function (post) {
+        if (post.id === postId) {
+          return { ...post, content: editedContent };
+        }
+        return post;
+      });
+      setPosts(updatedPosts);
+    } catch (error) {
+      console.error('Failed to save edited post:', error);
+    }
+    closeEditModal();
+  };
+
+  return (
+    <div>
+      <h2>Discussion Board</h2>
+      <button>
+        <a href="/create-post">Create Post</a>
+      </button>
+      {posts.map(function (post) {
+        return (
+          <Post
+            key={post.id}
+            post={post}
+            onEdit={function () {
+              openEditModal(post.id);
+            }}
+            onDelete={function () {
+              deletePost(post.id);
+            }}
+          />
+        );
+      })}
+
+      {editingPost && (
+        <EditPostModal
+          post={editingPost}
+          onSave={saveEditedPost}
+          onRequestClose={closeEditModal}
+        />
+      )}
+    </div>
+  );
 };
 
-export default PostDetail;
+export default DiscussionBoard;
