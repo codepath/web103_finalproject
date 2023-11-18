@@ -28,7 +28,7 @@ app.use(
   session({
     secret: "sq7taigbtwo2brbsdasdy",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 app.use(passport.initialize());
