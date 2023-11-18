@@ -11,10 +11,7 @@ const Profile = () => {
       position: toast.POSITION.TOP_CENTER,
     });
 
-  const API_URL =
-    process.env.NODE_ENV === 'production'
-      ? 'https://playpal.up.railway.app'
-      : 'http://localhost:3000';
+  const API_URL = 'https://playpal.up.railway.app';
 
   const Navigate = useNavigate();
 
