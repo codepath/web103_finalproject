@@ -101,7 +101,7 @@ const Modal = ({ setMovies, movies, movie, onClose, isWishList }) => {
 
           <div className="modal-info">
             <FaRegCalendarAlt className="icon" />
-            <span>Release Date: {movie.publish_date}</span>
+            <span>Release Date: {movie.publish_date.split('T')[0]}</span>
           </div>
 
         </div>
