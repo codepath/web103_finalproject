@@ -35,16 +35,16 @@ Backend: PostgreSQL, Express.js, Node.js
 - [X] (Backend Feature) The web app implements a one-to-many database relationship in Postgres: the comment section can have multiple comments in the Sneakers Detail page.
 
 ### Feature 5
-- [ ] (Backend Feature) The web app implements a many-to-many with a join table database relationship in Postgres: a user can make multiple orders with multiple sneakers
+- [X] (Backend Feature) The web app implements a many-to-many with a join table database relationship in Postgres: a user can make multiple orders with multiple sneakers
 
 ### Feature 6
-- [ ] (Backend Feature) The web app implements a well-designed RESTful API that can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
+- [X] (Backend Feature) The web app implements a well-designed RESTful API that can respond to at least one of each type of request: GET, POST, PATCH, and DELETE.
       
 ### Feature 7
 - [x] Backend Feature) The web app implements a well-designed RESTful API that implements proper naming conventions for routes.
 
 ### Feature 8
-- [ ] (Backend Feature) The web app implements the ability to reset the database to its default state.
+- [X] (Backend Feature) The web app implements the ability to reset the database to its default state.
 
 ### Feature 9
 - [x] (Frontend Feature) The web app implements at least one redirection: wrong URL takes user to the 404 page.
@@ -65,7 +65,7 @@ Backend: PostgreSQL, Express.js, Node.js
 - [x] (Custom Feature) The web app allows filtering and/or sorting as appropriate for your use case: Sort features on name and price.
 
 ### Feature 15
-- [ ] (Custom Feature) The web app includes a slide-out pane or modal as appropriate for your use case: An order for sneakers will include a slide-out pane.
+- [X] (Custom Feature) The web app gracefully handles errors
 
 
 
