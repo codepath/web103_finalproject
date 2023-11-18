@@ -13,7 +13,7 @@ const SearchBar = () => {
   const [user, setUser] = useState<User | null>(null);
   const API_URL =
     process.env.NODE_ENV === 'production'
-      ? 'playpal.up.railway.app'
+      ? 'https://playpal.up.railway.app'
       : 'http://localhost:3000';
   const loggedin = () =>
     toast.success('Logged in Successfully!', {
