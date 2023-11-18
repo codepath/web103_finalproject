@@ -34,7 +34,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ### User Movie Dashboard
 
-✅ User can see a list of movies they saved on the app and further view movie detail in a popped up modal by clicking on any movie.
+✅ User can see a list of available movies on the app and further view movie detail in a popped up modal by clicking on any movie.
 
 <img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' />
 
@@ -71,7 +71,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ### Add a movies to a wishlist
 
-✅ User can add movies to a wishlist from their list of movies.
+✅ User can add movies to a wishlist from a list of available movies.
 
 <img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_add_movie.gif' title='Add Movie to Wishlist' width='800' alt='Video Walkthrough' />
 
@@ -79,7 +79,7 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can remove a movie from the wishlist detail screen.
 
-[gif goes here]
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_remove_movie.gif' title='Remove Movie to Wishlist' width='800' alt='Video Walkthrough' />
 
 ### Filter movies by keyword
 
