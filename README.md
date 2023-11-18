@@ -58,7 +58,8 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can delete a movie from the movie dashboard.
 
-<img src='https://i.imgur.com/e5CG7le.gif' title='Delete Movie' width='800' alt='Video Walkthrough' />
+<!-- <img src='https://i.imgur.com/e5CG7le.gif' title='Delete Movie' width='800' alt='Video Walkthrough' /> -->
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/delete_movie.gif' title='Delete Movie' width='800' alt='Video Walkthrough' />
 
 ### Toogle movie view
 

@@ -72,16 +72,20 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 ## Final Demo GIF
 
 🔗 [Here's a GIF walkthrough of the final project](👉🏾👉🏾👉🏾)
-<img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/jGLztqV.gif' title='Create Movie' width='800' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/AXtEAkD.gif' title='Edit Movie' width='800' alt='Video Walkthrough' />
-<img src='https://i.imgur.com/e5CG7le.gif' title='Delete Movie' width='800' alt='Video Walkthrough' />
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_dashboard.gif' title='Wishlist Dashboard' width='800' alt='Video Walkthrough' />
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_add_movie.gif' title='Add Movie to Wishlist' width='800' alt='Video Walkthrough' />
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_remove_movie.gif' title='Remove Movie to Wishlist' width='800' alt='Video Walkthrough' />
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/search_filter.gif' title='Search Filter' width='800' alt='Video Walkthrough' />
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/filter_genre.gif' title='Filter Genre' width='800' alt='Video Walkthrough' />
+<!-- <img src='https://i.imgur.com/TvdcSuF.gif' title='Read Movies' width='800' alt='Video Walkthrough' /> -->
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/movie_list.gif' title='Movie List' width='800' alt='Video Walkthrough' />
+<!-- <img src='https://i.imgur.com/jGLztqV.gif' title='Create Movie' width='800' alt='Video Walkthrough' /> -->
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/add_movie_profile.gif' title='Add Movie Profile' width='800' alt='Video Walkthrough' />
+<!-- <img src='https://i.imgur.com/AXtEAkD.gif' title='Edit Movie' width='800' alt='Video Walkthrough' /> -->
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/edit_movie.gif' title='Edit Movie' width='800' alt='Video Walkthrough' />
+<!-- <img src='https://i.imgur.com/e5CG7le.gif' title='Delete Movie' width='800' alt='Video Walkthrough' /> -->
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/delete_movie.gif' title='Delete Movie' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/wishlist_dashboard.gif' title='Wishlist Dashboard' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/wishlist_add_movie.gif' title='Add Movie to Wishlist' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/wishlist_remove_movie.gif' title='Remove Movie to Wishlist' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/search_filter.gif' title='Search Filter' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/blob/main/walkthrough_gifs/filter_genre.gif' title='Filter Genre' width='800' alt='Video Walkthrough' />
 
 
 
