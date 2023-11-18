@@ -27,6 +27,7 @@ const SearchBar = () => {
           credentials: 'include',
         });
         if (response.status === 401) {
+          setUser(null)
           console.log('User not logged in');
           return;
         }
@@ -41,7 +42,7 @@ const SearchBar = () => {
     };
 
     getUser();
-  }, [user]);
+  }, [setUser]);
 
   const gotoprofile = () => {
     navigate('/profile');
