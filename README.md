@@ -66,14 +66,14 @@ Backend: Node.js, Express.js, and PostgreSQL
 
 ✅ User can see various movies that have previously been added to their personal wishlist. Also, the user can click on a movie in the wishlist to see its detail screen, showing movie information details.
 
-<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/toggle_display.gif' title='Toggle Display' width='800' alt='Video Walkthrough' />
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_dashboard.gif' title='Wishlist Dashboard' width='800' alt='Video Walkthrough' />
 
 
 ### Add a movies to a wishlist
 
 ✅ User can add movies to a wishlist from their list of movies.
 
-[gif goes here]
+<img src='https://github.com/TranHVLoc/CineMundo/tree/main/walkthrough_gifs/wishlist_add_movie.gif' title='Add Movie to Wishlist' width='800' alt='Video Walkthrough' />
 
 ### Remove a movie from wishlist
 
