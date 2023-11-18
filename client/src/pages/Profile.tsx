@@ -35,6 +35,7 @@ const Profile = () => {
     loggedOut();
     const url = `${API_URL}/auth/logout`;
     const response = await fetch(url, { credentials: 'include' });
+    await response.json()
     window.location.href = '/';
   };
 
