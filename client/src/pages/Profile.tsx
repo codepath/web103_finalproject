@@ -14,7 +14,7 @@ const Profile = () => {
     });
   const API_URL =
     process.env.NODE_ENV === 'production'
-      ? 'playpal.up.railway.app'
+      ? 'https://playpal.up.railway.app/'
       : 'http://localhost:3000';
   const Navigate = useNavigate();
   const getUser = async () => {

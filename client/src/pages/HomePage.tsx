@@ -6,6 +6,7 @@ import GameCard from '../components/GameCard';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import useGameQueryStore from '../store.ts';
 import AddGameCard from '../components/AddGameCard.tsx';
+import Spinner from '../components/Spinner.tsx';
 
 const HomePage = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -38,10 +39,10 @@ const HomePage = () => {
   }, [data, searchText, genreId]);
 
   if (isError) {
-    return <div> Error Fetching games....</div>;
+    return <div className="text-white"> Error Fetching games!!!</div>;
   }
   if (isPending) {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
   if (filteredGames) {
     return (
