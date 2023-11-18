@@ -35,12 +35,13 @@ const SearchBar = () => {
           setUser(json.user);
         }
       } catch (e: any) {
+        setUser(null)
         console.error(e.message);
       }
     };
 
     getUser();
-  }, []);
+  }, [user]);
 
   const gotoprofile = () => {
     navigate('/profile');
