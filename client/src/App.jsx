@@ -42,7 +42,7 @@ function App() {
         {element}
       </div>
       <Routes>
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
     </div>
   );
