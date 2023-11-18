@@ -32,7 +32,7 @@ export const SetAvailability = () => {
   return (
     <Layout>
       {isLoading && <div>Loading...</div>}
-      {!timeAdded && !isLoading && (
+      {!timeAdded && !isLoading ? (
         <form name="change-profile" onSubmit={handleAddAvailability}>
           <div className="flex flex-col justify-center items-center gap-4 gap-y-10 p-4 pb-16 ">
             <label htmlFor="username">Time</label>
@@ -47,8 +47,13 @@ export const SetAvailability = () => {
             </button>
           </div>
         </form>
+      ) : (
+        timeAdded && (
+          <div className="text-xl h-36 font-bold flex justify-center items-center">
+            New Time Added
+          </div>
+        )
       )}
-      {timeAdded && <div>New Time Added</div>}
     </Layout>
   );
 };
