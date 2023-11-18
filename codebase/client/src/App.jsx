@@ -12,7 +12,7 @@ import Home from './pages/home'
 import NotFound from './pages/not-found'
 import Catalog from './pages/catalog'
 import ProductView from './pages/productView'
-import Liked from './pages/liked'
+import Likes from './pages/likes'
 import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
 import Checkout from './pages/checkout'
@@ -116,7 +116,7 @@ function App() {
         <Route element={<NotFound />} path="**" />
         <Route element={<Catalog />} path="/catalog" />
         <Route element={<ProductView />} path="/productview"/>
-        <Route element={<Liked />} path="/liked" />
+        <Route element={<Likes />} path="/likes" />
         <Route element={<SignIn />} path="/signIn" />
         <Route element={<SignUp />} path="/signUp"  />       
         <Route element={<Checkout />} path="/checkout" />

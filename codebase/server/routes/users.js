@@ -9,5 +9,4 @@ router.delete('/:id', UsersController.deleteUser)
 router.patch('/:id', UsersController.updateUser)
 // router.get('/filter', ItemsController.filterItems); //use these example routes in the future
 
-
 export default router
