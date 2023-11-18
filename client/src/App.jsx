@@ -20,7 +20,7 @@ const API_URL = process.env.NODE_ENV === 'production' ? 'https://codefm-server-p
 
 const App = () => {
   return (
-    <AuthProvider>
+    <AuthProvider apiUrl={API_URL}>
       <div>
         <Navbar apiUrl={API_URL} />
         <Routes>

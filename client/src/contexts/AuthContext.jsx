@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const AuthContext = createContext(null);
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children, apiUrl }) => {
   const [authState, setAuthState] = useState({
     isAuthenticated: false,
     user: null,
@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    axios.get(`${API_URL}/auth/login/success`, { withCredentials: true })
+    axios.get(`${apiUrl}/auth/login/success`, { withCredentials: true })
       .then(response => {
         if (response.data.success) {
           setAuthState({ isAuthenticated: true, user: response.data.user, loading: false });
