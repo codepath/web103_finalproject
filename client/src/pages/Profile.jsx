@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import ProfileListing from "./ProfileListing";
+import ProfileListing from "./ProfileListing";
 import { useParams } from "react-router-dom";
 // import UserIcon from "../jsons/UserIcon.json";
 import { useSelector, useDispatch } from "react-redux";
@@ -416,11 +416,11 @@ const Profile = () => {
         </div>
       )}
 
-      {/* {activeTab === "listings" && (
+      {activeTab === "listings" && (
         <div>
           <ProfileListing />
         </div>
-      )} */}
+      )}
 
       {activeTab === "properties" && <div>properties</div>}
     </div>
