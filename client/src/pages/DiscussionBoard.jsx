@@ -3,15 +3,17 @@ import axios from 'axios';
 import { getAllPosts, updatePost } from '../services/postService';
 import Post from '../components/Post';
 import EditPostModal from './EditPostModal';
+import { useApiUrl } from '../contexts/ApiContext';
 
 const DiscussionBoard = () => {
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(null);
+  const apiUrl = useApiUrl();
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const data = await getAllPosts();
+        const data = await getAllPosts(apiUrl);
         
         const filteredPosts = data.filter(post => !post.deleted);
         setPosts(filteredPosts);
@@ -21,7 +23,7 @@ const DiscussionBoard = () => {
     };
   
     fetchPosts();
-  }, []);
+  }, [apiUrl]);
   
   const openEditModal = (postId) => {
     const postToEdit = posts.find(function (post) {

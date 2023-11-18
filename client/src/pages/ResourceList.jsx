@@ -2,16 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import ResourceItem from '../components/ResourceItem';
 import { getAllResources } from '../services/resourceService';
+import { useApiUrl } from '../contexts/ApiContext';
 import '../css/ResourceList.css';
 
 const ResourceList = () => {
   const [resources, setResources] = useState([]);
   const [shareUserId, setShareUserId] = useState(''); // State to hold the user ID to share with
+  const apiUrl = useApiUrl();
 
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const data = await getAllResources();
+        const data = await getAllResources(apiUrl);
         setResources(data);
       } catch (error) {
         console.error('Error fetching resources:', error);
@@ -19,7 +21,7 @@ const ResourceList = () => {
     };
 
     fetchResources();
-  }, []);
+  }, [apiUrl]);
 
   // Group resources by type or category
   const groupedResources = resources.reduce((acc, resource) => {
