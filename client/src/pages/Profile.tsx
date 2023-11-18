@@ -12,11 +12,14 @@ const Profile = () => {
     toast.success('Logged Outt Successfully!', {
       position: toast.POSITION.TOP_CENTER,
     });
+
   const API_URL =
     process.env.NODE_ENV === 'production'
       ? 'https://playpal.up.railway.app/'
       : 'http://localhost:3000';
+
   const Navigate = useNavigate();
+
   const getUser = async () => {
     const response = await fetch(`${API_URL}/auth/login/success`, {
       credentials: 'include',
@@ -43,7 +46,7 @@ const Profile = () => {
 
       return () => clearInterval(interval);
     }
-  }, [user, Navigate]);
+  },[]);
 
   const logout = async () => {
     loggedOut();
@@ -51,30 +54,31 @@ const Profile = () => {
     const response = await fetch(url, { credentials: 'include' });
     window.location.href = '/';
   };
-  if (!user) {
+
+  if (user) {
     return (
-      <div className="flex flex-col justify-center h-[500px] items-center text-white  ">
+        <div className="flex flex-col justify-center items-center text-white ">
+        <img className="rounded-full" width={250} src={user?.avatarurl} />
+        <div>
+          <h1 className="text-4xl font-bold mt-4 mb-4">{user?.username}</h1>
+        </div>
         <ToastContainer className="absolute" autoClose={2000} />
-        <h1 className="text-6xl font-bold p-4 text-red-500">
-          You are not logged in ! Redirecting to home in {countdown}
-        </h1>
+        <button
+          onClick={() => logout()}
+          className="px-3 py-2 bg-white rounded-lg text-black hover:scale-125 transition ease-in-out "
+        >
+          Log Out
+        </button>
       </div>
     );
   }
   return (
-    <div className="flex flex-col justify-center items-center text-white ">
-      <img className="rounded-full" width={250} src={user?.avatarurl} />
-      <div>
-        <h1 className="text-4xl font-bold mt-4 mb-4">{user?.username}</h1>
-      </div>
-      <ToastContainer className="absolute" autoClose={2000} />
-      <button
-        onClick={() => logout()}
-        className="px-3 py-2 bg-white rounded-lg text-black hover:scale-125 transition ease-in-out "
-      >
-        Log Out
-      </button>
-    </div>
+    <div className="flex flex-col justify-center h-[500px] items-center text-white  ">
+    <ToastContainer className="absolute" autoClose={2000} />
+    <h1 className="text-6xl font-bold p-4 text-red-500">
+      You are not logged in ! Redirecting to home in {countdown}
+    </h1>
+  </div>
   );
 };
 
