@@ -14,9 +14,12 @@ const Profile = () => {
   const Navigate = useNavigate();
 
   const getUser = async () => {
-    const response = await fetch(`https://playpal.up.railway.app/auth/login/success`, {
-      credentials: 'include',
-    });
+    const response = await fetch(
+      `https://playpal.up.railway.app/auth/login/success`,
+      {
+        credentials: 'include',
+      }
+    );
     const res = await response.json();
     if (res.user) {
       setUser(res.user);
