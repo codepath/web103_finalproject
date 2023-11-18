@@ -19,7 +19,7 @@ const WishList = ({ title }) => {
 
   return (
     <div>
-      <h1>Wishlist</h1>
+      <h2>Wishlist</h2>
       <Carousel movies={movies} setMovies={setMovies} />
     </div>
   );
