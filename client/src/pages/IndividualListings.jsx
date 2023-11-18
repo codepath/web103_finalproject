@@ -2,7 +2,6 @@ import React from 'react';
 
 const IndividualListings = ({ match, userListings }) => {
   // Extract the listing ID from the URL parameter
-  console.log("hello world");
   console.log(userListings);
 
   const listingId = match.params.id;
