@@ -3,6 +3,8 @@ import cors from "cors";
 import listingsRoutes from "./routes/listings.js";
 import propertiesRoutes from "./routes/properties.js";
 import authRoutes from "./routes/auth.js";
+import profileRoutes from "./routes/profile.js";
+import userRoutes from "./routes/users.js";
 import passport from "passport";
 import session from "express-session";
 // import { GitHub } from "./config/auth.js";
@@ -78,6 +80,8 @@ app.use((req, res, next) => {
 app.use("/api", listingsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/properties", propertiesRoutes);
+app.use("/api/profile", profileRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
