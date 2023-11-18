@@ -1,0 +1,43 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-field {
+    margin-top: 20px;
+    width: 100%;
+    font-family: Arial, sans-serif; 
+  }
+  
+  .form-label {
+    margin-bottom: 10px;
+  }
+  
+  .input-field {
+    margin-bottom: 40px;
+    width: 100%;
+    padding: 10px;
+    font-family: Arial, sans-serif; 
+  }
+  
+  .textarea-field {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-family: Arial, sans-serif; 
+  }
+  
+  .submit-button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    font-size: 16px; 
+  }
+  

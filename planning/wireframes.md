@@ -4,18 +4,43 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- Home Page (Before login) ⭐
+- Discussion page/Dashboard Page (After Login) ⭐
+- Sign up page ⭐
+- Log in page ⭐
+- User Profile (settings) page ⭐
+- Events page ⭐
+- Resources Page ⭐
+- Badges Page ⭐
 
-## Wireframe 1: [page title]
+## Wireframe 1: Home Page (Before login)
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/homepage(before).png'>
 
-## Wireframe 2: [page title]
+## Wireframe 2: Discussion page/Dashboard Page (After Login)
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/Discussion%20page%20(after%20login).png'>
 
-## Wireframe 3: [page title]
+## Wireframe 3: Sign up page
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/Signup.png'>
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 4: Log in page
+
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/login.png'>
+
+## Wireframe 5: User Profile (settings) page
+
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/User_profile.png'>
+
+## Wireframe 6: Events page
+
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/Event_page.png'>
+
+## Wireframe 7: Resources page
+
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/resources.png'>
+
+## Wireframe 8: Badges page
+
+<img src ='https://github.com/Myesha-Mahazabeen/web103_finalproject/blob/main/wireframes/badges.png'>
