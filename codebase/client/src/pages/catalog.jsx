@@ -3,6 +3,7 @@ import React from "react";
 import {useState, useEffect} from 'react';
 import ProductCard from "../components/productCard";
 import Dropdown from "../components/dropdown";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import "../styles/catalog.css";
 
 const Catalog = () => {
@@ -14,33 +15,51 @@ const Catalog = () => {
   maxPrice: [20, 50, 100, 200, 500]
   });
 
-  const [params, setParams] = useState({minPrice: undefined, maxPrice: undefined, color: '', type: '', metal: '', });
+  const [params, setParams] = useState({minPrice: undefined, maxPrice: undefined, color: '', type: '', metal: ''});
   const [items, setItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user.uid);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     const fetchItems = async () => {
-    
       const queryString = Object.entries(params)
-      .filter(([_, value]) => value !== undefined && value !== '')
-      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      .join('&');
-    
-    try {
-      console.log(queryString)
-      const response = await fetch(`http://localhost:3001/api/items/filter?${queryString}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok.');
+        .filter(([_, value]) => value !== undefined && value !== '')
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+        .join('&');
+
+      try {
+        if (currentUser) {
+          const response = await fetch(`http://localhost:3001/api/items/filter?currentUserId=${currentUser}&${queryString}`);
+          if (!response.ok) {
+            throw new Error('Network response was not ok.');
+          }
+
+          const data = await response.json();
+          setItems(data);
+        }
+      } catch (error) {
+        console.error('Error:', error);
       }
-      
-      const data = await response.json();
-      console.log(data);
-      setItems(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }    
-  }
-  fetchItems();
-  }, [params]);
+    };
+    
+    fetchItems();
+    console.log(items)
+  }, [params, currentUser]);
+
 
 
   return (
@@ -66,6 +85,7 @@ const Catalog = () => {
             quantity={item.quantity}
             color={item.color}
             metal={item.metal}
+            liked={item.is_liked}
           />
         ))
         }

@@ -15,12 +15,12 @@ const createItem = async (req, res) => {
 
 }
 
-const filterItems = async (req, res) => {
+const filterItemsWithLikeStatus = async (req, res) => {
   try {
-    const { minPrice, maxPrice, color, type, metal } = req.query;
+    const { currentUserId, minPrice, maxPrice, color, type, metal } = req.query;
 
     const queryValues = [];
-    const queryParams = [];
+    const queryParams = [currentUserId]; // Always include the currentUserId as the first parameter
 
     if (minPrice !== undefined) {
       queryValues.push(`price >= $${queryParams.length + 1}`);
@@ -32,29 +32,36 @@ const filterItems = async (req, res) => {
       queryParams.push(maxPrice);
     }
 
-    if (color) {
+    if (color !== undefined) {
       queryValues.push(`color = $${queryParams.length + 1}`);
       queryParams.push(color);
     }
 
-    if (type) {
+    if (type !== undefined) {
       queryValues.push(`type = $${queryParams.length + 1}`);
       queryParams.push(type);
     }
 
-    if (metal) {
+    if (metal !== undefined) {
       queryValues.push(`metal = $${queryParams.length + 1}`);
       queryParams.push(metal);
     }
 
-    let query = `SELECT * FROM items`;
+    let query = `
+    SELECT 
+      *,
+      CASE WHEN users_saved_items.user_id IS NOT NULL THEN 1 ELSE 0 END AS is_liked
+    FROM 
+      items
+    LEFT JOIN 
+      users_saved_items ON items.id = users_saved_items.item_id AND users_saved_items.user_id = $1
+    `;
 
     if (queryValues.length > 0) {
       query += ` WHERE ${queryValues.join(' AND ')}`;
     }
 
     const result = await pool.query(query, queryParams);
-
     res.json(result.rows);
   } catch (error) {
     res.status(409).json({ error: error.message });
@@ -122,7 +129,7 @@ const updateItem = async (req, res) => {
 
   export default {
     createItem,
-    filterItems,
+    filterItemsWithLikeStatus,
     getItems,
     getItem,
     updateItem,

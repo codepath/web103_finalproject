@@ -43,6 +43,7 @@ function App() {
       .catch((error) => {
         console.error('Error during logout:', error.message);
       });
+      window.location.href = "/";
   };
   
   return (
@@ -57,8 +58,9 @@ function App() {
             <nav className="home-links">
               <span>Home</span>
               <span className="home-nav2">Catalog</span>
-              <span className="home-nav4">About Us</span>
-              <span className="home-nav5">Contact</span>
+              <span className="home-nav4">Contact</span>
+              {/* <span className="home-nav5">About Us</span> */}
+              {user && user.emailVerified ? <a href="/likes"><span className="home-nav5">Likes</span></a> : <></>}
             </nav>
             <div className="home-buttons">
               {user && user.emailVerified ? <a href="/"><button onClick={handleLogout}className="btnWhite">Logout</button></a> : (

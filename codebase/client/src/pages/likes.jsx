@@ -104,6 +104,7 @@ const Likes = () => {
             quantity={item.quantity}
             color={item.color}
             metal={item.metal}
+            liked={1}
           />
         ))
         }

@@ -198,3 +198,40 @@ body{
   margin-left: 6.5%;
   margin-bottom: 2%;
 }
+
+/* ------------------- heart ------------------- */
+.heart { 
+  position: relative; 
+  width: 25px; 
+  height: 22px; 
+} 
+
+.heart:before, .heart:after { 
+  position: absolute; 
+  content: ""; 
+  left: 12px; 
+  top: 0; 
+  width: 12px; 
+  height: 20px; 
+  background: red; 
+  border: 1px solid black;
+  border-radius: 50px 50px 0 0; 
+  transform: rotate(-45deg); 
+  transform-origin: 0 100%; 
+} 
+
+.heart:after { 
+  left: 0; 
+  transform: rotate(45deg); 
+  transform-origin :100% 100%; 
+}
+
+.clearHeart:before, .clearHeart:after{
+  background: lightslategray;
+}
+
+.lowerOpacity{
+  opacity: 0.7;
+}
+
+/* ------------------ ------------------------ */

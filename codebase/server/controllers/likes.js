@@ -15,4 +15,34 @@ const getLikedItemsByUser = async (req, res) => {
   }
 };
 
-export default {getLikedItemsByUser};
+const deleteLike = async (req, res) => {
+  try {
+    const { user_id, item_id } = req.params;
+
+    await pool.query(
+      'DELETE FROM users_saved_items WHERE user_id = $1 AND item_id = $2',
+      [user_id, item_id]
+    );
+
+    res.status(200).json({ message: 'Like deleted successfully' });
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+}
+
+const addLike = async (req, res) => {
+  try {
+    const { user_id, item_id } = req.params;
+
+    await pool.query(
+      'INSERT INTO users_saved_items (user_id, item_id) VALUES ($1, $2)',
+      [user_id, item_id]
+    );
+
+    res.status(200).json({ message: 'Like added successfully' });
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+}
+
+export default {getLikedItemsByUser, deleteLike, addLike};
