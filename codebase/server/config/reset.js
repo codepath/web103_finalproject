@@ -23,33 +23,35 @@ import './dotenv.js'
 //     }
 // }
 
-// const createUsersTable = async () => {
-//     const createUsersTableQuery = `
-//     CREATE TABLE IF NOT EXISTS users (
-//         id serial PRIMARY KEY,
-//         email varchar(100) NOT NULL,
-//         first_name varchar(100),
-//         last_name varchar(100),
-//         address varchar(100),
-//         city varchar(100),
-//         state varchar(100),
-//         zip varchar(100),
-//         phone varchar(100)
-//     );
-//     `
-//     try {
-//         const res = await pool.query(createUsersTableQuery)
-//         console.log('🎉 users created successfully')
-//     } catch (err) {
-//         console.error('⚠️ error creating users table', err)
-//     }
-// }
+const createUsersTable = async () => {
+    const createUsersTableQuery = `
+    drop table if exists users cascade;
+    CREATE TABLE IF NOT EXISTS users (
+        id varchar(100) PRIMARY KEY,
+        email varchar(100) NOT NULL,
+        first_name varchar(100),
+        last_name varchar(100),
+        address varchar(100),
+        city varchar(100),
+        state varchar(100),
+        zip varchar(100),
+        phone varchar(100)
+    );
+    `
+    try {
+        const res = await pool.query(createUsersTableQuery)
+        console.log('🎉 users created successfully')
+    } catch (err) {
+        console.error('⚠️ error creating users table', err)
+    }
+}
 
 const createUsersSavedItemsTable = async () => {
     const createUsersSavedItemsTableQuery = `
+    drop table if exists users_saved_items cascade;
     CREATE TABLE IF NOT EXISTS users_saved_items (
         item_id int NOT NULL,
-        user_id int NOT NULL,
+        user_id varchar(100) NOT NULL,
         PRIMARY KEY (item_id, user_id),
         FOREIGN KEY (item_id) REFERENCES items(id) ON UPDATE CASCADE,
         FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE
@@ -65,9 +67,10 @@ const createUsersSavedItemsTable = async () => {
 
 const createUserCartItemsTable = async () => {
     const createUserCartItemsTableQuery = `
+    drop table if exists users_cart_items cascade;
     CREATE TABLE IF NOT EXISTS users_cart_items (
         item_id int NOT NULL,
-        user_id int NOT NULL,
+        user_id varchar(100) NOT NULL,
         PRIMARY KEY (item_id, user_id),
         FOREIGN KEY (item_id) REFERENCES items(id) ON UPDATE CASCADE,
         FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE
@@ -83,9 +86,10 @@ const createUserCartItemsTable = async () => {
 
 const createUserOrderTable = async () => {
     const createUserOrderTableQuery = `
+    drop table if exists users_orders cascade;
     CREATE TABLE IF NOT EXISTS users_orders (
         item_id int NOT NULL,
-        user_id int NOT NULL,
+        user_id varchar(100) NOT NULL,
         order_date date NOT NULL,
         quantity int NOT NULL,
         PRIMARY KEY (item_id, user_id),
@@ -103,10 +107,10 @@ const createUserOrderTable = async () => {
 
 const create = async () => {
     // await createItemsTable()
-    // await createUsersTable()
+    await createUsersTable()
     await createUsersSavedItemsTable()
     await createUserCartItemsTable()
     await createUserOrderTable()
 }
 
-// create()
+create()

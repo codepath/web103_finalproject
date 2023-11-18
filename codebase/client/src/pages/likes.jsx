@@ -3,6 +3,7 @@ import React from "react";
 import {useState, useEffect} from 'react';
 import ProductCard from "../components/productCard";
 import Dropdown from "../components/dropdown";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import "../styles/catalog.css";
 
 const Likes = () => {
@@ -15,7 +16,6 @@ const Likes = () => {
   // });
 
   // const [params, setParams] = useState({minPrice: undefined, maxPrice: undefined, color: '', type: '', metal: ''});
-  const [items, setItems] = useState([]);
 
   // useEffect(() => {
   //   const fetchItems = async () => {
@@ -42,22 +42,43 @@ const Likes = () => {
   // fetchItems();
   // }, [params]);
 
+  const [user, setUser] = useState(null);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user.uid); // Set the user state to UID if the user is logged in
+      } else {
+        setUser(null); // Set the user state to null if there's no logged-in user
+      }
+    });
+
+    return () => {
+      // Unsubscribe from the auth state listener when the component unmounts
+      unsubscribe();
+    };
+  }, []); // Empty dependency array to run this effect only once
+
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/likes/5`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok.');
+        if (user) {
+          const response = await fetch(`http://localhost:3001/api/likes/${user}`);
+          if (!response.ok) {
+            throw new Error('Network response was not ok.');
+          }
+          const data = await response.json();
+          console.log(data);
+          setItems(data);
         }
-        const data = await response.json();
-        console.log(data);
-        setItems(data);
       } catch (error) {
         console.error('Error:', error);
-      }    
-    }
+      }
+    };
     fetchItems();
-  }, []);
+  }, [user]);
 
 
   return (

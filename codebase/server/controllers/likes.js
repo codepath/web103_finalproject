@@ -2,7 +2,7 @@ import pool from '../config/database.js'
 
 const getLikedItemsByUser = async (req, res) => {
   try {
-    const user_id = parseInt(req.params.user_id);
+    const user_id = req.params.user_id;
 
     const likedItems = await pool.query(
       'SELECT i.* FROM items i INNER JOIN users_saved_items usi ON i.id = usi.item_id WHERE usi.user_id = $1',

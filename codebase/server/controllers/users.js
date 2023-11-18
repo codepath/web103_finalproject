@@ -2,13 +2,13 @@ import pool from '../config/database.js'
 
 const createUser = async (req, res) => {
   try {
-    const { email, first_name, last_name, address, city, state, zip, phone } = req.body;
+    const { id, email, first_name, last_name, address, city, state, zip, phone } = req.body;
     const query = `
-      INSERT INTO users (email, first_name, last_name, address, city, state, zip, phone)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      INSERT INTO users (id, email, first_name, last_name, address, city, state, zip, phone)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
       RETURNING *
     `;
-    const values = [email, first_name, last_name, address, city, state, zip, phone];
+    const values = [id, email, first_name, last_name, address, city, state, zip, phone];
 
     // Attempt to insert the user
     const results = await pool.query(query, values);
@@ -123,6 +123,7 @@ const updateUser = async (request, response) => {
       const order_deletion = await pool.query('DELETE FROM users_orders WHERE user_id = $1',
         [id]
       )
+  
       const results = await pool.query('DELETE FROM users WHERE id = $1', [id])
       res.status(200).json(results.rows)
     }
@@ -131,7 +132,7 @@ const updateUser = async (request, response) => {
     }
       
   }
-  
+
   export default {
     createUser,
     // filterItems,

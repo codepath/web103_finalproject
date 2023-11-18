@@ -15,13 +15,13 @@ const SignUp = () => {
       if (user && user.emailVerified) {
         // Call your function to create an account
         const createAccount = async (email) => {
-          console.log(email)
           const options = {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+              id: user.uid,
               email: email,
               first_name: '',
               last_name: '',
