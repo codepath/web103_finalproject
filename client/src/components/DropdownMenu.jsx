@@ -3,6 +3,7 @@ import { RxAvatar, RxDropdownMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authLogOut } from "../redux/slices/userSlice";
+import Policies from "../pages/Policies";
 
 const DropdownMenu = ({ toggleDropdown, toggleLoginModal, isDropdownOpen }) => {
   const user = useSelector((state) => state.user?.loggedInUser);
@@ -73,6 +74,16 @@ const DropdownMenu = ({ toggleDropdown, toggleLoginModal, isDropdownOpen }) => {
                   >
                     Perks
                   </button>
+                </li>
+                <li className="table-row hover:bg-button-color hover:text-white">
+                  <Link to="/policy">
+                  <button
+                    className="block px-4 py-2 hover-bg-gray-100 dark-hover-bg-gray-600 dark-hover-text-white"
+                    onClick={toggleLoginModal}
+                  >
+                    Policies
+                  </button>
+                  </Link>
                 </li>
               </ul>
             </div>
