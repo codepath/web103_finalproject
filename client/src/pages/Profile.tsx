@@ -7,16 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const Profile = () => {
   const [user, setUser] = useState<User | null>(null);
   const loggedOut = () =>
-    toast.success('Logged Outt Successfully!', {
+    toast.success('Logged Out Successfully!', {
       position: toast.POSITION.TOP_CENTER,
     });
-
-  const API_URL = 'https://playpal.up.railway.app';
 
   const Navigate = useNavigate();
 
   const getUser = async () => {
-    const response = await fetch(`${API_URL}/auth/login/success`, {
+    const response = await fetch(`https://playpal.up.railway.app/auth/login/success`, {
       credentials: 'include',
     });
     const res = await response.json();
@@ -29,7 +27,7 @@ const Profile = () => {
   }, []);
 
   const logout = async () => {
-    const url = `${API_URL}/auth/logout`;
+    const url = `https://playpal.up.railway.app/auth/logout`;
     const response = await fetch(url, { credentials: 'include' });
     loggedOut();
     await response.json();
