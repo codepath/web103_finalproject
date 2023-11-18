@@ -41,7 +41,7 @@ const GameDetailPage = () => {
   };
 
   const fetchGame = async () => {
-    const res = await axios.get(`/api/games/${id}`);
+    const res = await axios.get(`https://playpal.up.railway.app/games/${id}`);
     const data = res.data;
     return data;
   };
@@ -85,7 +85,7 @@ const GameDetailPage = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.delete(`/api/games/${id}`, editedgame);
+      const response = await axios.delete(`https://playpal.up.railway.app/games/${id}`, editedgame);
       console.log(response.data);
       Navigate('/');
     } catch (err) {
@@ -96,7 +96,7 @@ const GameDetailPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.patch(`/api/games/${id}`, editedgame);
+      const response = await axios.patch(`https://playpal.up.railway.app/games/${id}`, editedgame);
       console.log(response.data);
       Navigate('/');
     } catch (err) {
