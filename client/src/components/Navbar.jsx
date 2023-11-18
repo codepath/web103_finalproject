@@ -5,7 +5,7 @@ import { useApiUrl } from '../contexts/ApiContext';
 import axios from 'axios'; // Import axios for making HTTP requests
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ apiUrl }) => {
+const Navbar = () => {
   const { isAuthenticated, user, setAuthInfo } = useAuth();
   const apiUrl = useApiUrl();
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { useApiUrl } from './ApiContext';
 
 const AuthContext = createContext(null);
 
-export const AuthProvider = ({ children, apiUrl }) => {
+export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState({
     isAuthenticated: false,
     user: null,
