@@ -68,6 +68,8 @@ Backend: PostgreSQL, Express.js, Node.js
 - [X] (Custom Feature) The web app gracefully handles errors
 
 ### Milestone 5- Unit 9 Gifs
+Full product demo:
+https://imgur.com/lEhDXpz
 
 Routes: Covers Features 1-2
 https://imgur.com/a/t8I9YML
