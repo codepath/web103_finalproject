@@ -10,7 +10,6 @@ const Modal = ({ setMovies, movies, movie, onClose, isWishList }) => {
 
   // Keep track of whether the movie has been added to the wishlist
   const [addedToWishlist, setAddedToWishlist] = useState(false);
-  const [deletedFromWishlist, setDeletedFromWishlist] = useState(false);
 
   // Assuming the `trailer_url` is a YouTube link, we extract the video ID for embedding
   const youtubeVideoId = movie.trailer_url.split('v=')[1];
@@ -63,7 +62,6 @@ const Modal = ({ setMovies, movies, movie, onClose, isWishList }) => {
       }
 
       // Remove the movie from the state
-      setDeletedFromWishlist(true);
       setMovies(movies.filter(movie => movie.movie_id !== movieId));
       onClose();
       alert('Movie deleted from wishlist');
@@ -130,11 +128,7 @@ const Modal = ({ setMovies, movies, movie, onClose, isWishList }) => {
             isWishList ? (
               // <button onClick={() => onButtonClick(movie.movie_id)}>Delete from wishlist</button>
               <div className="modal-delete-from-wishlist">
-                {deletedFromWishlist ? (
-                  <AiFillDelete className="wishlist-icon deleted" title="Movie delete from wishlist" />
-                ) : (
-                  <AiOutlineMinus className="wishlist-icon not-deleted" onClick={() => deleteFromWishlist(movie.movie_id)} title="Delete from wishlist" />
-                )}
+                <AiFillDelete className="wishlist-icon deleted" onClick={() => deleteFromWishlist(movie.movie_id)} title="Delete from wishlist" />
               </div>
             ) : (
               <div className="modal-add-to-wishlist">
