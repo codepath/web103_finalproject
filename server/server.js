@@ -12,7 +12,6 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-
 const CLIENT_URL =
   process.env.NODE_ENV === "production"
     ? "https://playpal-client-app.up.railway.app"
@@ -29,9 +28,11 @@ app.use(express.json());
 
 app.use(
   session({
-    secret: "keyboardcat",
+    cookie: { maxAge: 86400000 },
+    secret: "keyboard dog",
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: true },
   })
 );
 
