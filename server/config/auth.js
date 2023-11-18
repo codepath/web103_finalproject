@@ -2,17 +2,24 @@ import { pool } from './database.js';
 import GithubStrategy from 'passport-github2';
 import passport from 'passport';
 
+// const options = {
+//   clientID: process.env.GITHUB_CLIENT_ID,
+//   clientSecret: process.env.GITHUB_CLIENT_SECRET,
+//   // callbackURL: process.env.GITHUB_CALLBACK_URL,
+//   // callbackURL: process.env.NODE_ENV === 'production'
+//   //   ? process.env.GITHUB_CALLBACK_URL
+//   //   : 'http://localhost:3001/auth/github/callback',
+//   callbackURL: process.env.NODE_ENV === 'production'
+//     ? 'https://codefm-server-production.up.railway.app/auth/github/callback'
+//     : process.env.GITHUB_CALLBACK_URL,
+// };
+
 const options = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  // callbackURL: process.env.GITHUB_CALLBACK_URL,
-  // callbackURL: process.env.NODE_ENV === 'production'
-  //   ? process.env.GITHUB_CALLBACK_URL
-  //   : 'http://localhost:3001/auth/github/callback',
-  callbackURL: process.env.NODE_ENV === 'production'
-    ? 'https://codefm-server-production.up.railway.app/auth/github/callback'
-    : process.env.GITHUB_CALLBACK_URL,
+  callbackURL: process.env.GITHUB_CALLBACK_URL,
 };
+
 
 const verify = async (accessToken, refreshToken, profile, callback) => {
   console.log('Access Token:', accessToken);
