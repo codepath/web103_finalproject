@@ -56,11 +56,15 @@ function App() {
           </span>
           <div data-thq="thq-navbar-nav" className="home-desktop-menu">
             <nav className="home-links">
-              <span>Home</span>
-              <span className="home-nav2">Catalog</span>
-              <span className="home-nav4">Contact</span>
+              <a href="/" className='removeLinkStyling'><span className="home-nav1">Home</span></a>
+              <a href="/catalog" className='removeLinkStyling'><span className="home-nav2">Catalog</span></a>
+              <a href="" className='removeLinkStyling'><span className="home-nav4">Contact</span></a>
               {/* <span className="home-nav5">About Us</span> */}
-              {user && user.emailVerified ? <a href="/likes"><span className="home-nav5">Likes</span></a> : <></>}
+              {user && user.emailVerified ? 
+              <>
+              <a href="/likes" className='removeLinkStyling'><span className="home-nav5">Likes</span></a> 
+              <a href="/edititems" className='removeLinkStyling'><span className="home-nav5">Admin</span></a>  
+              </>: <></>}
             </nav>
             <div className="home-buttons">
               {user && user.emailVerified ? <a href="/"><button onClick={handleLogout}className="btnWhite">Logout</button></a> : (

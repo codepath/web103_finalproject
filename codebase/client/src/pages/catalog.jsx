@@ -73,7 +73,7 @@ const Catalog = () => {
           <Dropdown title="Max Price" options={options.maxPrice} params={params} setParams={setParams} filter="maxPrice"/>
       </div>
       <section className="cards">
-        { items.length === 0 ? <p>No items found.</p> : items.map((item) => (
+        { items.length === 0 ? "" : items.map((item) => ( //can add a no items found message here if you want
           <ProductCard
             category={item.type}
             title={item.title}

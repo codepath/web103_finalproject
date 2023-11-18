@@ -152,6 +152,7 @@ body{
   }
 .buttonLogIn {
   border-radius: 20px;
+  transition: 0.3s;
   border: 1px solid black;
   background-color: black;
   color: #FFFFFF;
@@ -160,7 +161,6 @@ body{
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: transform 80ms ease-in;
 }
 .buttonLogIn:hover {
     background-color: #FFFFFF;
@@ -168,6 +168,7 @@ body{
   }
 .btnWhite{
   border-radius: 20px;
+  transition: 0.3s;
   border: 1px solid black;
   background-color: white;
   color: black;
@@ -176,10 +177,9 @@ body{
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: transform 80ms ease-in;
 }
 .btnWhite:hover {
-    background: gray;
+    background: #3d6e70ff;
     color: black;
 }
 
@@ -235,3 +235,8 @@ body{
 }
 
 /* ------------------ ------------------------ */
+
+.removeLinkStyling{
+  text-decoration: none;
+  color: inherit;
+}
