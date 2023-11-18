@@ -24,9 +24,9 @@ function ProfileListing() {
     }));
   };
 
-  const handleEditListing = (index) => {
-    console.log(`Edit clicked for index: ${index}`);
-  };
+  // const handleEditListing = (index) => {
+  //   console.log(`Edit clicked for index: ${index}`);
+  // };
 
   const handleDeleteListing = (index) => {
     const updatedListings = [...userListings];
@@ -143,15 +143,15 @@ function ProfileListing() {
         />
       )}
       <div className="flex justify-between mt-4">
-        <button
+        {/* <button
           onClick={() => handleEditListing(index)}
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
           Edit
-        </button>
+        </button> */}
         <button
           onClick={() => handleDeleteListing(index)}
-          className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+          className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 w-full"
         >
           Delete
         </button>
