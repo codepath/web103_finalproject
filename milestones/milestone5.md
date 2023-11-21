@@ -94,5 +94,3 @@ I grew a lot. Before, I only knew how to use an API-based and less involved back
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
 I want to complete this site and make it production-ready. I love working on this site because I know my work is for something that will be used. I love it. I love continuously adding to the site and seeing my work evolve and grow. Making something production-ready is the biggest challenge. You have to test and try breaking your site. You have to make sure user info is protected and every corner is checked. With that said, I plan to continue my path in web development/full stack development.
-
--Special Thanks to CodePath. I can't say how wonderful this journey has been. After three classes, I think I will take a break from CodePath courses for a bit, but I will spread the word about how wonderful CodePath is. THANK YOU.
