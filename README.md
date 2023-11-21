@@ -44,9 +44,9 @@ Users can create accounts with email verification to make purchases, view purcha
 
 ### Stock browsing
 
-Users can browse current inventory that is updated regularly
+Users can browse current inventory(with a corresponding product page) that is updated regularly
 
-[gif goes here]
+<img src='jewelryStore4.gif' />
 
 ### Stock filtering
 
