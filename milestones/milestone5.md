@@ -71,7 +71,7 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ## Final Demo GIF
 
-🔗 <img src='../jewelryStore7.gif' />
+🔗 <img src='../jewelryStore9.gif' />
 
 ## Reflection
 
