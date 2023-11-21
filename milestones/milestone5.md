@@ -71,26 +71,29 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ## Final Demo GIF
 
-🔗 <img src='../jewelryStore7.gif' />
+🔗 <img src='jewelryStore7.gif' />
+Sorry if I couldn't get all the features shown in the video. I wasn't sure how to show things such as "The project includes dynamic routes for both frontend and backend apps". I just assumed that things like this are evident through the showcase of the app. I tried to show as much backend as I could, but the GIF had to be under a minute.
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+I made the UI well. I also learned a lot about making routes to join data and other things.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+I kept facing syntax errors when making and calling routes which took so much time to debug
 
 ### 3. What were some of the highlights or achievements that you are most proud of in this project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+I really liked the UI and responsiveness of my app. In many of my past assignments, UI and UX were the last thing on my mind, but since I am making this site for someone, I wanted it to be perfect to the best of my ability. I also made some cool routes. I made one route that not only filtered data, but made a new column based on whether a user liked that item. This involved joining two tables. It was cool to see things such as joins and making custom columns that I learned in class come to life.
 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
-[👉🏾👉🏾👉🏾 your answer here]
+I grew a lot. Before, I only knew how to use an API-based and less involved backends such as Supabase. However, this course taught me how to use PostgreSQL and make my own routes! It's awesome what you can do with backend engineering/development. I really wanted to learn about the backend this semester, and I accomplished that! 
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
-[👉🏾👉🏾👉🏾 your answer here]
+I want to complete this site and make it production-ready. I love working on this site because I know my work is for something that will be used. I love it. I love continuously adding to the site and seeing my work evolve and grow. Making something production-ready is the biggest challenge. You have to test and try breaking your site. You have to make sure user info is protected and every corner is checked. With that said, I plan to continue my path in web development/full stack development.
+
+-Special Thanks to CodePath. I can't say how wonderful this journey has been. After three classes, I think I will take a break from CodePath courses for a bit, But I will spread the word about how wonderful CodePath is. THANK YOU.
