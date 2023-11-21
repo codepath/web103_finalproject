@@ -30,11 +30,11 @@ Pleasant store pages for shopping and great user experience
 
 <img src='jewelryStore2.gif' />
 
-### Admin Control
+### Admin Control ✅
 
 Using specific login credentials, an admin can upload, delete, and edit current items in stock
 
-[gif goes here]
+<img src='jewelryStore3.gif' />
 
 ### Account Creation ✅
 
