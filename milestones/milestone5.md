@@ -72,7 +72,6 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 ## Final Demo GIF
 
 🔗 <img src='jewelryStore7.gif' />
-Sorry if I couldn't get all the features shown in the video. I wasn't sure how to show things such as "The project includes dynamic routes for both frontend and backend apps". I just assumed that things like this are evident through the showcase of the app. I tried to show as much backend as I could, but the GIF had to be under a minute.
 
 ## Reflection
 
