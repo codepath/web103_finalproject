@@ -58,7 +58,7 @@ Users can filter stock by price, metal, Jewelry type, etc
 
 Users can like items for later purchase
 
-[gif goes here]
+<img src='jewelryStore6.gif' />
 
 ## Installation Instructions
 
