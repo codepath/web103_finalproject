@@ -42,19 +42,19 @@ Users can create accounts with email verification to make purchases, view purcha
 
 <img src='jewelryStore1.gif' />
 
-### Stock browsing
+### Stock browsing ✅
 
 Users can browse current inventory(with a corresponding product page) that is updated regularly
 
 <img src='jewelryStore4.gif' />
 
-### Stock filtering
+### Stock filtering ✅
 
 Users can filter stock by price, metal, Jewelry type, etc
 
-[gif goes here]
+<img src='jewelryStore5.gif' />
 
-### Like Items
+### Like Items ✅
 
 Users can like items for later purchase
 
