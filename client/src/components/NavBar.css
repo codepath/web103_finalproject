@@ -1,0 +1,45 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  background: transparent;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100; 
+
+}
+
+.logo {
+  font-size: 25px;
+  color: #1A202C;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.topnav a {
+  position: relative;
+  font-size: 18px;
+  color: #1A202C;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 40px;
+  margin: 40px;
+}
+ 
+.topnav a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #1A202C;
+  transition: .2s;
+}
+
+.topnav a:hover::before {
+  width: 100%;
+}

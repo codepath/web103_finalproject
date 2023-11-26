@@ -1,0 +1,75 @@
+.SneakersCard {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    margin-top: 100px;
+    margin-bottom: 15px;
+    width:550px;
+    height: 500px;
+    background-size: cover; 
+    background-position: 50% 50%;
+    text-align: center;
+    background-blend-mode: multiply;
+    color:#1A202C;
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    /* Limit text to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit the number of displayed lines */
+    -webkit-box-orient: vertical;
+    position: relative;
+}
+
+.SneakersCard-info {
+    padding-top: 0px;
+    width: 100%;
+}
+
+.brand-name{
+    font-size: 15px;
+    font-weight: bold;
+    color: #1A202C;
+    margin-bottom: 100px;
+}
+
+/* .description {
+    text-align: justify;
+    text-justify: inter-word;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #1A202C;
+    height: 145px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+} */
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    position: absolute;
+    bottom: 20px; 
+    left: 30px; 
+    right: 30px; 
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1A202C;
+}
+
+.detailsBtn {
+    color: rgb(255, 255, 255);
+    background-color: rgba(38, 163, 217, 0.577);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 20px;
+}

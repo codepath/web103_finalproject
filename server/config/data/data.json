@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Nike Air Force 1 Low Retro",
+    "brand": "Nike",
+    "description": "Debuting in 1982 as a basketball must-have, the Air Force 1 came into its own in the '90s. The clean look of the classic white-on-white AF1 was endorsed from the basketball courts to the block and beyond. Finding its rhythm in hip-hop culture, releasing limited collabs and colorways, Air Force 1 became an iconic sneaker around the globe. And with over 2000 iterations of this staple, its impact on fashion, music and sneaker culture can’t be denied.",
+    "price": 150.0,
+    "size": 10.5,
+    "color": "White",
+    "stock_quantity": 100,
+    "category": "Basketball",
+    "target_audience": "Men",
+    "image_url": [
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/bf80c9bb-3c07-4e5a-ba3f-677cc1889e4d/air-force-1-low-retro-mens-shoes-H7r1WF.png"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Nike Luka 2",
+    "brand": "Nike",
+    "description": "You bring the speed. We'll bring the stability. The Luka 2 is built to support your skills, with an emphasis on step-backs, side-steps and quick-stop action. A stacked midsole features firm, flexible cushioning for added responsiveness as you shift back and forth on the court. Up top, the full-foot wrapped cage design helps you stay contained whether you're faking out a defender or driving down the lane. With all that tech in a lightweight package, we've got efficiency covered. The rest is up to you.",
+    "price": 130.0,
+    "size": 10.5,
+    "color": "Black",
+    "stock_quantity": 80,
+    "category": "Basketball",
+    "target_audience": "Men",
+    "image_url": [
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/58928cb8-74c0-4ad3-882a-4bfa65bab908/luka-2-basketball-shoes-vcXFrk.png"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "LeBron XXI Akoya",
+    "brand": "Nike",
+    "description": "Last time around, LeBron flipped the script on his shoe game as only the King can. The encore is even better. The LeBron XXI has a cabling system that works with Zoom Air cushioning and a light, low-to-the-ground design, giving you agile fluidity and explosiveness without excess weight. Created for your ascent and the next generation of hoopers, it’s ideal for Bron-like open-floor attacks and rising toward the rim when the game’s pace turns up. This special design celebrates the akoya pearl, with its perfect shapes and reflective nature. Its natural beauty and grace hold up across any era.",
+    "price": 200.0,
+    "size": 10.5,
+    "color": "Silver",
+    "stock_quantity": 120,
+    "category": "Basketball",
+    "target_audience": "Men",
+    "image_url": [
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/02fbc834-6752-4778-9a95-1973de02b0b9/lebron-xxi-akoya-basketball-shoes-lnQSsH.png"
+    ]
+  }
+]

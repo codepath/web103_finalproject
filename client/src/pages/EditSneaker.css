@@ -1,0 +1,24 @@
+.EditSneaker {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.AddEdit {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.deleteButton {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #a83434;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 50px;
+}

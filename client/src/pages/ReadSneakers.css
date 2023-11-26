@@ -1,0 +1,34 @@
+.ReadSneakers {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#1A202C;
+}
+
+.banner {
+    text-align: center;
+}
+
+.Sort {
+    display: flex;
+    align-items: center;
+  }
+  
+  .Sort p {
+    margin-right: 20px; 
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .Sort button {
+    margin-right: 20px; 
+  }
+
+
+.welcome-paragraph {
+    margin-top: 20px;
+    color: #486284;
+    font-size: 16px;
+    font-weight: bold;
+}
