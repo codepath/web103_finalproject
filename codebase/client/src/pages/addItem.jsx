@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { storage } from "../firebase.js";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import '../styles/product.css';
 
 const AddItem = () => {
@@ -11,6 +13,35 @@ const AddItem = () => {
   const [editedQuantity, setEditedQuantity] = useState('');
   const [editedColor, setEditedColor] = useState('');
   const [editedMetal, setEditedMetal] = useState('');
+
+  const allInputs = {imgUrl: ''}
+    const [imageAsFile, setImageAsFile] = useState('')
+    const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+
+  const handleImageAsFile = (e) => {
+      const image = e.target.files[0]
+      setImageAsFile(image)
+  }
+
+  const handleFireBaseUpload = async (e) => {
+    e.preventDefault();
+
+    if (!imageAsFile) {
+      console.error('No image file selected');
+      return;
+    }
+
+    const storageRef = ref(storage, `images/${imageAsFile.name}`);
+
+    try {
+      await uploadBytes(storageRef, imageAsFile);
+      const imageUrl = await getDownloadURL(storageRef);
+      setEditedImgUrl(imageUrl);
+      console.log('File uploaded:', imageUrl);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  }
 
   const addItem = async (e) => {
     e.preventDefault();
@@ -140,6 +171,17 @@ const AddItem = () => {
             </div>
           </div>
         </div>
+
+        <img src={imageAsUrl.imgUrl} alt="image tag" />
+
+        <form onSubmit={handleFireBaseUpload}>
+        <input 
+          type="file"
+          onChange={handleImageAsFile}
+        />
+        <button>upload to firebase</button>
+      </form>
+
       </section>
     </>
   );

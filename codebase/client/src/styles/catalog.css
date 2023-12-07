@@ -1,9 +1,9 @@
 .dropdowns{
   flex: 1;
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-direction: row;
-  margin: 0 4% 1% 4%;
+  margin-bottom: 1%;
   flex-wrap: wrap;
 }
 @media (max-width: 1564px) {
