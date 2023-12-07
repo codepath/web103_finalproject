@@ -1,7 +1,7 @@
 /* Dropdown styles */
 
  .dropdown {
-    max-width: 13em;
+    max-width: 16%;
     margin-left: var(--dl-space-space-twounits);
     margin-bottom: 1%;
     flex: 0 0 calc(20%);

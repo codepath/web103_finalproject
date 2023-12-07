@@ -53,10 +53,11 @@ const EditItems = () => {
           <Dropdown title="Metal" options={options.metal} params={params} setParams={setParams} filter="metal"/>
           <Dropdown title="Min Price" options={options.minPrice} params={params} setParams={setParams} filter="minPrice"/>
           <Dropdown title="Max Price" options={options.maxPrice} params={params} setParams={setParams} filter="maxPrice"/>
+          <div class="break"></div>
+          <Link to="/additem" >
+            <button className="buttonLogIn addButton">Add</button>
+          </Link>
       </div>
-      <Link to="/additem">
-        <button className="buttonLogIn addButton">Add</button>
-      </Link>
       <section className="cards">
         { items.length === 0 ? <p>No items found.</p> : items.map((item) => (
           <ProductCard
