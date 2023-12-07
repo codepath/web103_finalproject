@@ -14,13 +14,13 @@ This website is for my godmother who is a Jeweler and sells Jewelry. She current
 
 ### Inspiration
 
-I was once looking through my godmother's Jewelry page on Instagram to purchase a golden necklace. I wanted a specific type of necklace that either had a holy cross or a Virgin Mary piece on it. However, it was difficult as there were so many items, but no way to filter results and know what had been sold. I had to ask my godmother directly if she had this specific necklace on hand, which felt very inefficient. I then had the idea, what if I made her a website to alleviate this issue and help her business grow by being on a more organized platform!
+I was once looking through my godmother's Jewelry page on Instagram to purchase a golden necklace. I wanted a specific type of necklace that either had a holy cross or a Virgin Mary piece on it. However, it was difficult as there were so many items, but no way to filter results and know what had been sold. I had to ask my godmother directly if she had this specific necklace on hand, which felt very inefficient. I then had the idea, what if I made her a website to alleviate this issue and help her business grow by being on a more organized platform?
 
 ## Tech Stack
 
-Frontend: 
+Frontend: React.js, HTML, CSS
 
-Backend:
+Backend: PostgreSQL, Firebase
 
 ## Features
 
@@ -30,11 +30,11 @@ Pleasant store pages for shopping and great user experience
 
 <img src='jewelryStore2.gif' />
 
-### Admin Control
+### Admin Control ✅
 
 Using specific login credentials, an admin can upload, delete, and edit current items in stock
 
-[gif goes here]
+<img src='jewelryStore3.gif' />
 
 ### Account Creation ✅
 
@@ -42,65 +42,23 @@ Users can create accounts with email verification to make purchases, view purcha
 
 <img src='jewelryStore1.gif' />
 
-### Account Editing and Deletion
+### Stock browsing ✅
 
-Users can edit or delete their account
+Users can browse current inventory(with a corresponding product page) that is updated regularly
 
-[gif goes here]
+<img src='jewelryStore4.gif' />
 
-### Stock browsing
+### Stock filtering ✅
 
-Users can browse current inventory that is updated regularly
+Users can filter stock by price, metal, Jewelry type, etc
 
-[gif goes here]
+<img src='jewelryStore5.gif' />
 
-### Stock filtering
+### Like Items ✅
 
-Users can filter stock by price, metal, weight, carat, solid or plated, and Jewelry type
+Users can like items for later purchase
 
-[gif goes here]
-
-### Stock sorting
-
-Users can sort stock by price and popularity
-
-[gif goes here]
-
-### Stock searching
-
-Users can search for stock by item name or keywords
-
-[gif goes here]
-
-### View Previous Purchases
-
-Users can view previous purchases
-
-[gif goes here]
-
-### Save Items
-
-Users can save items for later purchase
-
-[gif goes here]
-
-### Shopping Cart
-
-Users can add items to a shopping cart which they can later checkout with
-
-[gif goes here]
-
-### Checkout
-
-Users can checkout their current shopping cart or checkout a single item directly
-
-[gif goes here]
-
-### Marked as Sold
-
-Upon purchase of an item, it is taken off the inventory display if there are no more available. Additionally, the number of purchases for this item is kept track of to track its popularity
-
-[gif goes here]
+<img src='jewelryStore6.gif' />
 
 ## Installation Instructions
 
