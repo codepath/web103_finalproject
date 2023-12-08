@@ -233,12 +233,68 @@ body{
 }
 
 .lowerOpacity{
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-/* ------------------ ------------------------ */
+/* ------------------ link styling------------------------ */
 
 .removeLinkStyling{
   text-decoration: none;
   color: inherit;
+}
+
+
+/* ------------------- border ------------------- */
+.border{
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: 60px;
+}
+
+
+/* ------------------- margin and padding------------------- */
+.marginTop{
+  margin-top: 1rem;
+}
+
+/* ------------------- image styling ------------------- */
+/* this is for the edit image icon in the front of images */
+.uploadImgOverlayDiv{
+  position: relative;
+}
+
+.uploadImgOverlayDiv:before{
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jewelry-store-79f62.appspot.com/o/images%2FUpload-Icon-Logo-Transparent-Free-PNG.png?alt=media&token=3077137e-f335-41d0-bd22-c384f225a4d3');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.editImgOverlayDiv{
+  position: relative;
+}
+
+.editImgOverlayDiv:hover:before{
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jewelry-store-79f62.appspot.com/o/images%2Fedit-pen-write-icon--2.png?alt=media&token=c20da355-8e3b-4756-ba95-8d04d69719f8');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ------------------- styling to make cursor a pointer ------------------- */
+.pointer{
+  cursor: pointer;
 }

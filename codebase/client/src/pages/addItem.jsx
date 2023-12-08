@@ -14,14 +14,20 @@ const AddItem = () => {
   const [editedColor, setEditedColor] = useState('');
   const [editedMetal, setEditedMetal] = useState('');
 
-  const allInputs = {imgUrl: ''}
-    const [imageAsFile, setImageAsFile] = useState('')
-    const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+  const [imageAsFile, setImageAsFile] = useState('');
+  const [imagePreview, setImagePreview] = useState(null);
+  const url = null;
 
   const handleImageAsFile = (e) => {
-      const image = e.target.files[0]
-      setImageAsFile(image)
-  }
+    e.preventDefault();
+    const image = e.target.files[0];
+    setImageAsFile(image);
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(image);
+  };
 
   const handleFireBaseUpload = async (e) => {
     e.preventDefault();
@@ -41,11 +47,12 @@ const AddItem = () => {
     } catch (error) {
       console.error('Error uploading file:', error);
     }
-  }
+  };
 
   const addItem = async (e) => {
     e.preventDefault();
     try {    
+      await handleFireBaseUpload(e);
       const options = {
         method: 'POST',
         headers: {
@@ -75,6 +82,17 @@ const AddItem = () => {
     }
   };
 
+  const handleImageClick = (e) => {
+    e.preventDefault();
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+      handleImageAsFile(e);
+    };
+    input.click();
+  };
+
   return (
     <>
       <h1 className="pageTitle">Add Product</h1>
@@ -82,8 +100,15 @@ const AddItem = () => {
         <div className="container px-4 px-lg-5 my-5">
           <div className="row gx-4 gx-lg-5 align-items-center">
             <div className="col-md-6">
-              <img className="card-img-top mb-5 mb-md-0" src={editedImgUrl} alt="..." />
-            </div>
+            <div className="editImgOverlayDiv">
+                <div className="image-container border pointer" onClick={handleImageClick}>
+                  {imagePreview ? (
+                    <img className="card-img-top mb-5 mb-md-0" src={imagePreview} alt="Preview" />
+                  ) : (
+                    <p>Click to upload image</p>
+                  )}
+                </div>
+              </div>            </div>
             <div className="col-md-6">
               <div className="mb-3">
                 <label htmlFor="title" className="form-label">Name:</label>
@@ -171,17 +196,6 @@ const AddItem = () => {
             </div>
           </div>
         </div>
-
-        <img src={imageAsUrl.imgUrl} alt="image tag" />
-
-        <form onSubmit={handleFireBaseUpload}>
-        <input 
-          type="file"
-          onChange={handleImageAsFile}
-        />
-        <button>upload to firebase</button>
-      </form>
-
       </section>
     </>
   );

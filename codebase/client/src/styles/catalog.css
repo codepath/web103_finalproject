@@ -6,6 +6,10 @@
   margin-bottom: 1%;
   flex-wrap: wrap;
 }
+.addIcon{
+  opacity: 0.4;
+  margin-top: 25%;
+}
 @media (max-width: 1564px) {
 
 }

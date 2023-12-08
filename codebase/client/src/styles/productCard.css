@@ -118,7 +118,11 @@ border-bottom-right-radius: 12px;
 
 .card:hover .card__img--hover {
     height: 100%;
-    opacity: 0.3;
+    /* opacity: 0.3; */
+}
+
+.card:hover .editIconOpacity {
+  opacity: 0.8;
 }
 
 .card:hover .card__info {

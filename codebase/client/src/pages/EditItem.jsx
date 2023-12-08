@@ -141,15 +141,15 @@ const EditItem = () => {
       <section className="py-5">
         <div className="container px-4 px-lg-5 my-5">
           <div className="row gx-4 gx-lg-5 align-items-center">
-            <div className="col-md-6">
+            <div className="col-md-6 uploadImgOverlayDiv">
               <img 
-                className="card-img-top mb-5 mb-md-0" 
+                className="card-img-top mb-5 mb-md-0 border pointer lowerOpacity" 
                 src={imagePreview || editedImgUrl} 
                 alt="..." 
                 onClick={handleImageClick}
                 />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 marginTop">
               <div className="mb-3">
                 <label htmlFor="title" className="form-label">Title:</label>
                 <input
@@ -160,31 +160,12 @@ const EditItem = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="price" className="form-label">Price:</label>
+                <label htmlFor="category" className="form-label">Category:</label>
                 <input
                   type="text"
-                  value={editedPrice}
-                  onChange={(e) => setEditedPrice(e.target.value)}
+                  value={editedCategory}
+                  onChange={(e) => setEditedCategory(e.target.value)}
                   className="form-control fs-4 mb-3"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="description" className="form-label">Description:</label>
-                <textarea
-                  value={editedDescription}
-                  onChange={(e) => setEditedDescription(e.target.value)}
-                  className="form-control fs-4 mb-3"
-                  rows={4}
-                ></textarea>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="quantity" className="form-label">In Stock:</label>
-                <input
-                  type="number"
-                  value={editedQuantity}
-                  onChange={(e) => setEditedQuantity(e.target.value)}
-                  className="form-control fs-4 mb-3"
-                  style={{ maxWidth: '5rem' }}
                 />
               </div>
               <div className="mb-3">
@@ -206,12 +187,32 @@ const EditItem = () => {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="category" className="form-label">Category:</label>
+                <label htmlFor="description" className="form-label">Description:</label>
+                <textarea
+                  value={editedDescription}
+                  onChange={(e) => setEditedDescription(e.target.value)}
+                  className="form-control fs-4 mb-3"
+                  rows={4}
+                ></textarea>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="price" className="form-label">Price:</label>
                 <input
                   type="text"
-                  value={editedCategory}
-                  onChange={(e) => setEditedCategory(e.target.value)}
+                  value={editedPrice}
+                  onChange={(e) => setEditedPrice(e.target.value)}
                   className="form-control fs-4 mb-3"
+                  style={{ maxWidth: '8rem' }}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="quantity" className="form-label">In Stock:</label>
+                <input
+                  type="number"
+                  value={editedQuantity}
+                  onChange={(e) => setEditedQuantity(e.target.value)}
+                  className="form-control fs-4 mb-3"
+                  style={{ maxWidth: '5rem' }}
                 />
               </div>
               {/* <div className="mb-3">
