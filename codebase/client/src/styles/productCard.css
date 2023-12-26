@@ -44,7 +44,7 @@ border-top-right-radius: 12px;
     position: absolute;
     padding: 16px;
   width: 100%;
-  opacity: 0;
+  opacity: 1; /* change to this to 0 to hide icons until hover */
   top: 0;
 }
 

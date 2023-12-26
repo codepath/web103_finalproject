@@ -100,9 +100,10 @@ const ProductView = () => {
                 Add to cart
               </button> taken out for now since are not using cart functionality */}
             </div>
-            <div onClick={handleLike}>
+            {currentUser != null ? <div onClick={handleLike}>
               {liked === 1 ? <div className='heart'></div> : <div className='heart clearHeart'></div>}
             </div>
+            : ""}
           </div>
         </div>
       </div>

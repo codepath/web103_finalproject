@@ -229,7 +229,7 @@ body{
 }
 
 .clearHeart:before, .clearHeart:after{
-  background: lightslategray;
+  background: white;
 }
 
 .lowerOpacity{

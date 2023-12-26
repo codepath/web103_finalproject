@@ -34,9 +34,12 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
     return () => {
       unsubscribe();
     };
+    console.log(currentUser);
   }, []);
 
-  const handleLike = () => {
+  const handleLike = (e) => {
+    e.preventDefault(); // Prevent the default link navigation behavior
+    e.stopPropagation(); // Prevent event propagation to the parent elements
     if (curLiked === 1) {
       setLiked(0);
       const deleteLike = async () => {
@@ -134,9 +137,17 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
       Add to cart
   </button> taken out for now since we are not using the cart currently */}
   </div>
-  <div className="card__info-hover">
+  <div className="card__info-hover"> {/* change opacity to 0 to only show these icons on hover. right now that feature is off */}
   <div className="lowerOpacity" onClick={handleLike}>
-  {curLiked === 1 ? <div className='heart'></div> : <div className='heart clearHeart'></div>}
+  {currentUser != null ? ( // Check if a guest user is logged in
+                  <>
+                  {curLiked === 1 ? (
+                    <div className="heart"></div>
+                  ) : (
+                    <div className="heart clearHeart"></div>
+                  )}
+                  </>
+              ) : ""}  
   </div>
   {/* <div className="card__clock-info">
     <svg className="card__clock" viewBox="0 0 24 24">

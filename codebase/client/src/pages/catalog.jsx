@@ -40,17 +40,23 @@ const Catalog = () => {
         .filter(([_, value]) => value !== undefined && value !== '')
         .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
         .join('&');
-
+    
       try {
+        let url = 'http://localhost:3001/api/items/filter';
+        
         if (currentUser) {
-          const response = await fetch(`http://localhost:3001/api/items/filter?currentUserId=${currentUser}&${queryString}`);
-          if (!response.ok) {
-            throw new Error('Network response was not ok.');
-          }
-
-          const data = await response.json();
-          setItems(data);
+          url += `?currentUserId=${currentUser}&${queryString}`;
+        } else {
+          url += `?${queryString}`;
         }
+    
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+    
+        const data = await response.json();
+        setItems(data);
       } catch (error) {
         console.error('Error:', error);
       }
