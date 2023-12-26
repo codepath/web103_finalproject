@@ -18,6 +18,7 @@ const Catalog = () => {
   const [params, setParams] = useState({minPrice: undefined, maxPrice: undefined, color: '', type: '', metal: ''});
   const [items, setItems] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const auth = getAuth();
@@ -57,13 +58,14 @@ const Catalog = () => {
     
         const data = await response.json();
         setItems(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error:', error);
+        setLoading(false);
       }
     };
     
     fetchItems();
-    console.log(items)
   }, [params, currentUser]);
 
 
@@ -78,7 +80,8 @@ const Catalog = () => {
           <Dropdown title="Min Price" options={options.minPrice} params={params} setParams={setParams} filter="minPrice"/>
           <Dropdown title="Max Price" options={options.maxPrice} params={params} setParams={setParams} filter="maxPrice"/>
       </div>
-      <section className="cards">
+        {loading ? <div className="loader-containerSml"><div className="loader"></div></div> :
+        <section className="cards">
         { items.length === 0 ? "" : items.map((item) => ( //can add a no items found message here if you want
           <ProductCard
             category={item.type}
@@ -95,7 +98,8 @@ const Catalog = () => {
           />
         ))
         }
-      </section>
+        </section>
+        }
     </>
   );
 };

@@ -117,7 +117,7 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
   </div>
   :
   <div className="card">
-  <Link to="/productview" state={{productData:productData}}
+  <Link to={`/productview/${id}`} state={{productData:productData}}
     className="card_link removeLinkStyling">
   <div
   className="card__img"

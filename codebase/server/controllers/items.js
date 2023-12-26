@@ -78,18 +78,34 @@ const filterItemsWithLikeStatus = async (req, res) => {
 }
 
 const getItem = async (req, res) => {
-    try{
-        const id = parseInt(req.params.id)
-        const results = await pool.query('SELECT * FROM items WHERE id = $1', [id])
-        res.status(200).json(results.rows[0])
+  try {
+    const id = parseInt(req.params.id);
+    const currentUserId = req.query.currentUserId; // Retrieve current user's ID from query params
 
-    } catch (error) {
-      res.status(409).json( { error: error.message } )
-      console.log('Unable to get item')
-      console.log('Error:', error.message)
+    // Fetch the specific item along with whether the current user has liked it
+    const query = `
+      SELECT 
+        items.*,
+        CASE WHEN users_saved_items.user_id IS NOT NULL THEN 1 ELSE 0 END AS is_liked
+      FROM 
+        items
+      LEFT JOIN 
+        users_saved_items ON items.id = users_saved_items.item_id AND users_saved_items.user_id = $1
+      WHERE 
+        items.id = $2
+    `;
+
+    const result = await pool.query(query, [currentUserId, id]);
+    
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'Item not found' });
+    } else {
+      res.json(result.rows[0]);
     }
-
-} 
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 const updateItem = async (req, res) => {
     try {

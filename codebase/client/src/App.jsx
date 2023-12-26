@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
 } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase';
@@ -20,6 +19,7 @@ import AccountSettings from './pages/accountSettings'
 import EditItems from './pages/EditItems';
 import EditItem from './pages/EditItem';
 import AddItem from './pages/addItem';
+import ScrollToTop from './components/scrollToTop'
 import './App.css'
 
 function App() {
@@ -120,6 +120,7 @@ function App() {
         </header>
         </div>
     <Router>
+      {/* <ScrollToTop /> */}
       <Routes>
         <Route element={<Home />} exact path="/" />
         <Route element={<NotFound />} path="**" />
