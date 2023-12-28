@@ -23,36 +23,45 @@ const ProductView = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user.uid);
-      } else {
-        setCurrentUser(null);
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    async function fetchItemDetails() {
+  
+    const fetchItemDetails = async (userId) => {
       try {
-        const response = await fetch(`http://localhost:3001/api/items/${itemId}`);
+        let url = `http://localhost:3001/api/items/${itemId}`;
+        console.log("test", userId);
+        if (userId) {
+          url += `?user_id=${userId}`;
+        }
+
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
+  
         const data = await response.json();
         setItemDetails(data);
-        setLoading(false); // Set loading state to false after data is received
+        console.log(data);
+        setLiked(data.is_liked);
+        setLoading(false);
       } catch (error) {
         console.error('Error:', error);
         setLoading(false);
       }
-    }
-
-    fetchItemDetails();
-  }, [itemId, currentUser]);
+    };
+  
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user.uid);
+        fetchItemDetails(user.uid); // Fetch item details after user is available
+      } else {
+        setCurrentUser(null);
+        fetchItemDetails(null); // Fetch item details without user ID
+      }
+    });
+  
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const handleLike = async () => {
     if (!currentUser) {

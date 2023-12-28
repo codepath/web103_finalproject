@@ -1,6 +1,6 @@
 // components/Catalog.jsx
 import React from "react";
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useMemo} from 'react';
 import ProductCard from "../components/productCard";
 import Dropdown from "../components/dropdown";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -20,55 +20,62 @@ const Catalog = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user.uid);
-      } else {
-        setCurrentUser(null);
-      }
-    });
+  const auth = useMemo(() => getAuth(), []);
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    const fetchItems = async () => {
-      const queryString = Object.entries(params)
-        .filter(([_, value]) => value !== undefined && value !== '')
-        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-        .join('&');
-    
+  useEffect(() => {  
+    // Function to fetch items
+    const fetchItems = async (userId) => {
+      console.log("test1")
       try {
+        const queryString = Object.entries(params)
+          .filter(([_, value]) => value !== undefined && value !== '')
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+          .join('&');
+  
         let url = 'http://localhost:3001/api/items/filter';
-        
-        if (currentUser) {
-          url += `?currentUserId=${currentUser}&${queryString}`;
-        } else {
-          url += `?${queryString}`;
+        url += `?${queryString}`;
+  
+        if (userId) {
+          url += `&currentUserId=${userId}`;
         }
-    
+  
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Network response was not ok.');
         }
-    
+  
         const data = await response.json();
         setItems(data);
+        console.log(data);
         setLoading(false);
       } catch (error) {
         console.error('Error:', error);
         setLoading(false);
       }
     };
-    
-    fetchItems();
-  }, [params, currentUser]);
-
-
+  
+    // Check for existing user authentication
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      fetchItems(currentUser.uid);
+    }
+  
+    // Set up authentication listener only if not authenticated
+    const unsubscribe = !currentUser ? onAuthStateChanged(auth, (user) => {
+      console.log("test2")
+      if (user) {
+        setCurrentUser(user.uid);
+        fetchItems(user.uid);
+      } else {
+        setCurrentUser(null);
+        fetchItems(null);
+      }
+    }) : () => {};
+  
+    return () => {
+      unsubscribe();
+    };
+  }, [params]);
 
   return (
     <>
@@ -84,6 +91,7 @@ const Catalog = () => {
         <section className="cards">
         { items.length === 0 ? "" : items.map((item) => ( //can add a no items found message here if you want
           <ProductCard
+            key={item.id}
             category={item.type}
             title={item.title}
             price={item.price}

@@ -80,7 +80,7 @@ const filterItemsWithLikeStatus = async (req, res) => {
 const getItem = async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    const currentUserId = req.query.currentUserId; // Retrieve current user's ID from query params
+    const user_id = req.query.user_id; // Retrieve current user's ID from query params
 
     // Fetch the specific item along with whether the current user has liked it
     const query = `
@@ -95,7 +95,7 @@ const getItem = async (req, res) => {
         items.id = $2
     `;
 
-    const result = await pool.query(query, [currentUserId, id]);
+    const result = await pool.query(query, [user_id, id]);
     
     if (result.rows.length === 0) {
       res.status(404).json({ error: 'Item not found' });

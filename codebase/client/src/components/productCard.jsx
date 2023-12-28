@@ -34,7 +34,6 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
     return () => {
       unsubscribe();
     };
-    console.log(currentUser);
   }, []);
 
   const handleLike = (e) => {
@@ -141,7 +140,7 @@ function ProductCard({ category, title, price, imgSrc, imgHoverSrc, description,
   <div className="lowerOpacity" onClick={handleLike}>
   {currentUser != null ? ( // Check if a guest user is logged in
                   <>
-                  {curLiked === 1 ? (
+                  {curLiked == 1 ? (
                     <div className="heart"></div>
                   ) : (
                     <div className="heart clearHeart"></div>
