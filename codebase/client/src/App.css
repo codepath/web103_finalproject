@@ -1,0 +1,329 @@
+/* -------------------landing page------------------- */
+body{
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+    --dl-color-gray-500: #595959;
+    --dl-color-gray-700: #999999;
+    --dl-color-gray-800: #595959;
+    --dl-color-gray-900: #D9D9D9;
+    --dl-size-size-large: 144px;
+    --dl-size-size-small: 48px;
+    --dl-color-danger-300: #A22020;
+    --dl-color-danger-500: #BF2626;
+    --dl-color-danger-700: #E14747;
+    --dl-color-gray-black: #000000;
+    --dl-color-gray-white: #FFFFFF;
+    --dl-size-size-medium: 96px;
+    --dl-size-size-xlarge: 192px;
+    --dl-size-size-xsmall: 16px;
+    --dl-space-space-unit: 16px;
+    --dl-color-primary-100: #0e1482;
+    --dl-color-primary-300: #0074F0;
+    --dl-color-primary-500: #14A9FF;
+    --dl-color-primary-700: #85DCFF;
+    --dl-color-success-300: #199033;
+    --dl-color-success-500: #32A94C;
+    --dl-color-success-700: #4CC366;
+    --dl-size-size-xxlarge: 288px;
+    --dl-size-size-maxwidth: 1400px;
+    --dl-radius-radius-round: 50%;
+    --dl-space-space-halfunit: 8px;
+    --dl-space-space-sixunits: 96px;
+    --dl-space-space-twounits: 32px;
+    --dl-color-primary1-blue60: #e2ddf5ff;
+    --dl-color-primary1-blue80: #0e1482;
+    --dl-radius-radius-radius2: 2px;
+    --dl-radius-radius-radius4: 4px;
+    --dl-radius-radius-radius8: 8px;
+    --dl-space-space-fiveunits: 80px;
+    --dl-space-space-fourunits: 64px;
+    --dl-color-primary1-blue100: #0e1482;
+    --dl-space-space-threeunits: 48px;
+    --dl-color-secondary-gray500: #d9d9d9ff;
+    --dl-color-secondary-grey400: #eff0f2ff;
+    --dl-space-space-oneandhalfunits: 24px;
+  }
+  .button {
+    color: var(--dl-color-gray-black);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: var(--dl-color-gray-white);
+  }
+  .input {
+    color: var(--dl-color-gray-black);
+    cursor: auto;
+    padding: 0.5rem 1rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: var(--dl-color-gray-white);
+  }
+  .textarea {
+    color: var(--dl-color-gray-black);
+    cursor: auto;
+    padding: 0.5rem;
+    border-color: var(--dl-color-gray-black);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: var(--dl-color-gray-white);
+  }
+  .list {
+    width: 100%;
+    margin: 1em 0px 1em 0px;
+    display: block;
+    padding: 0px 0px 0px 1.5rem;
+    list-style-type: none;
+    list-style-position: outside;
+  }
+  .list-item {
+    display: list-item;
+  }
+  .teleport-show {
+    display: flex !important;
+    transform: none !important;
+  }
+  .heading2 {
+    font-size: 2.5rem;
+  }
+  .heading3 {
+    font-size: 1.8rem;
+  }
+  .sectionTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1.2;
+    text-transform: uppercase;
+  }
+  .heading1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+  }
+  .heading4 {
+    font-size: 1.2rem;
+  }
+  .Content {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 1.15;
+    text-transform: none;
+    text-decoration: none;
+  }
+  .Heading {
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 1.15;
+    text-transform: none;
+    text-decoration: none;
+  }
+  @media(max-width: 767px) {
+    .heading2 {
+      font-size: 1.8rem;
+    }
+    .heading3 {
+      font-size: 1.1rem;
+    }
+    .heading1 {
+      font-size: 2.5rem;
+    }
+    .heading4 {
+      font-size: 1.2rem;
+    }
+  }
+  /* ---------------------------------------------------- */
+  .pageTitle {
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%
+  }
+  .login-button-container {
+    display: flex;
+    gap: 3%; /* Adjust the gap for spacing */
+    justify-content: center; /* Center the buttons horizontally */
+    width: 100%;
+  }
+.buttonLogIn {
+  border-radius: 20px;
+  transition: 0.3s;
+  border: 1px solid black;
+  background-color: black;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.buttonLogIn:hover {
+    background-color: #FFFFFF;
+    color: black;
+    cursor: pointer;
+  }
+.btnWhite{
+  border-radius: 20px;
+  transition: 0.3s;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.btnWhite:hover {
+    background: #3d6e70ff;
+    color: black;
+}
+
+.emailVerification{
+  margin: 10%;
+  color: black;
+  font-size: 40px;
+  text-align: center;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+/* use this line to start a new row in flex */
+.break{
+  flex-basis: 100%;
+  height: 0;
+}
+
+/* ------------------- heart ------------------- */
+.heart { 
+  position: relative; 
+  width: 25px; 
+  height: 22px; 
+} 
+
+.heart:before, .heart:after { 
+  position: absolute; 
+  content: ""; 
+  left: 12px; 
+  top: 0; 
+  width: 12px; 
+  height: 20px; 
+  background: red; 
+  border: 1px solid black;
+  border-radius: 50px 50px 0 0; 
+  transform: rotate(-45deg); 
+  transform-origin: 0 100%; 
+} 
+
+.heart:after { 
+  left: 0; 
+  transform: rotate(45deg); 
+  transform-origin :100% 100%; 
+}
+
+.clearHeart:before, .clearHeart:after{
+  background: white;
+}
+
+.lowerOpacity{
+  opacity: 0.8;
+}
+
+/* ------------------ link styling------------------------ */
+
+.removeLinkStyling{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ------------------- border ------------------- */
+.border{
+  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  border-radius: 60px;
+}
+
+
+/* ------------------- margin and padding------------------- */
+.marginTop{
+  margin-top: 1rem;
+}
+
+/* ------------------- image styling ------------------- */
+/* this is for the edit image icon in the front of images */
+.uploadImgOverlayDiv{
+  position: relative;
+}
+
+.uploadImgOverlayDiv:before{
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jewelry-store-79f62.appspot.com/o/images%2FUpload-Icon-Logo-Transparent-Free-PNG.png?alt=media&token=3077137e-f335-41d0-bd22-c384f225a4d3');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.editImgOverlayDiv{
+  position: relative;
+}
+
+.editImgOverlayDiv:hover:before{
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jewelry-store-79f62.appspot.com/o/images%2Fedit-pen-write-icon--2.png?alt=media&token=c20da355-8e3b-4756-ba95-8d04d69719f8');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ------------------- styling to make cursor a pointer ------------------- */
+.pointer{
+  cursor: pointer;
+}
+
+/* ------------------- styling for loading related components ------------------- */
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-containerSml {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10% 0 10% 0;
+}
+
+.loader-containerMed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30% 0 30% 0;
+}

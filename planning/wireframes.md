@@ -4,18 +4,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+landing page, catalog, item view, cart, saved, previous orders
 
-## Wireframe 1: [page title]
-
-[👉🏾👉🏾👉🏾 include wireframe 1]
-
-## Wireframe 2: [page title]
-
-[👉🏾👉🏾👉🏾 include wireframe 2]
-
-## Wireframe 3: [page title]
-
-[👉🏾👉🏾👉🏾 include wireframe 3]
-
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframes:
+link: https://github.com/JohnnyCortez/JewelryStore/blob/main/wireframes.pdf

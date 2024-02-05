@@ -1,0 +1,15 @@
+.dropdowns{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 1%;
+  flex-wrap: wrap;
+}
+.addIcon{
+  opacity: 0.4;
+  margin-top: 25%;
+}
+@media (max-width: 1564px) {
+
+}

@@ -1,0 +1,92 @@
+/* Add these styles at the end of your existing checkout.css file */
+
+.containerC{
+    margin-bottom: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.avatar-lg {
+  height: 5rem;
+  width: 5rem;
+}
+
+.font-size-18 {
+  font-size: 18px !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a {
+  /* text-decoration: none !important; */
+}
+
+.w-xl {
+  min-width: 160px;
+}
+
+.cardC {
+  margin-bottom: 24px;
+  -webkit-box-shadow: 0 2px 3px #e4e8f0;
+  box-shadow: 0 2px 3px #e4e8f0;
+  padding: 2%;
+}
+
+.cardC {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #eff0f2;
+  border-radius: 1rem;
+}
+
+/* Additional styles for responsiveness and spacing */
+@media (max-width: 768px) {
+  .col-lg-8,
+  .col-lg-4 {
+    width: 100%;
+  }
+}
+
+/* Styles for the summary section */
+.checkout-summary {
+  border: 1px solid #eff0f2;
+  border-radius: 1rem;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+/* Styles for the buttons */
+.checkout-buttons {
+  margin-top: 16px;
+}
+
+/* Styles for the continue shopping and checkout buttons */
+.btn-continue-shopping,
+.btn-checkout {
+  width: 100%;
+}
+
+/* Optional: Adjust button colors and padding */
+.btn-continue-shopping {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-checkout {
+  background-color: #28a745;
+  color: #fff;
+}
