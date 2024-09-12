@@ -1,0 +1,50 @@
+# Dependencies 
+node_modules
+.pnpm-store
+
+# Production build 
+dist
+build
+
+# Environment files
+.env
+.env.production
+.env*.local
+
+# Logs
+logs
+*.log
+
+# IDE artifacts
+.idea
+.vscode
+
+# MacOS system files
+.DS_Store
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Testing artifacts
+coverage
+
+# Temporary files
+tmp
+temp
+
+# Cache files
+*.cache
