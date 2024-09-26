@@ -1,0 +1,88 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+  box-sizing: border-box;
+  background-color: #fffffe;
+}
+
+.button {
+  background-color: #ff5470;
+}
+
+.container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 100vw;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+header {
+  display: flex;
+}
+
+header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stayvue-logo {
+  height: 5rem;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  position: relative;
+}
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a::before {
+  content: "";
+  display: block;
+  height: 5px;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+.stayvue-logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
