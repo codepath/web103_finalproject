@@ -33,29 +33,37 @@ Backend: NodeJS, Express, Railway
 ### Admin:
 
 [ ] Approve (edit the user state) the creation of a celebrity account.
+
 [ ] Delete and flag content that violates the code of conduct
 
 ### User Profile Pages (Purchased Customer)
 
 [ ] Purchased account to view purchased content
+
 [ ] Add a review or comments on the page
+
 [ ] Delete/Edit the review or comments that they made
 
 ### User Profile Pages (Non-Purchased Customer)
 
 [ ] View default videos that celebrities allow
+
 [ ] Read through comments that purchased users have
 
 ### Celebrity
 
 [ ] Add (POST) videos onto the main page and add the title and introduction
+
 [ ] Delete (DELETE) videos that they post
+
 [ ] Edit (PUT) videos and edit the title and introduction
+
 [ ] Add/Edit the price of the account
 
 ### Purchase request
 
 [ ] Form to fill in the form to submit an order
+
 [ ] Update or cancel the order before the celebrity accepts the request.
 
 ## Additional features
@@ -63,12 +71,15 @@ Backend: NodeJS, Express, Railway
 ### Filter
 
 [ ] Celebrity’s category
+
 [ ] Video types (Birthday, Roast, Pep talk, and etc)
+
 [ ] Price range
 
 ### Sorting
 
 [ ] User’s reviews
+
 [ ] Price
 
 ## Installation Instructions
