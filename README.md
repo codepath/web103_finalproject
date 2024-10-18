@@ -58,7 +58,7 @@ Backend: NodeJS, Express, Railway
 [ ] Form to fill in the form to submit an order
 [ ] Update or cancel the order before the celebrity accepts the request.
 
-## [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+## Additional features
 
 ### Filter
 

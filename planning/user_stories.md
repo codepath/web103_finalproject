@@ -5,7 +5,9 @@ Reference the Writing User Stories final project guide in the course portal for 
 ## Outline User Roles
 
 User role 1: Normal User
+
 User role 2: Administration
+
 User role 3: Celebrity
 
 ## Draft User Stories
