@@ -20,12 +20,12 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Our team made significant progress this unit by focusing on user stories and features that could enhance our app for its target audience. This collaborative effort not only clarified our vision for the web app but also fostered better communication and teamwork among us. We particularly enjoyed the brainstorming sessions, where we built on each other's ideas and explored creative solutions to everyday challenges. Overall, it was a rewarding experience that brought us closer as a team.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+One challenge our group encountered was that all three members had different ideas for the web app, which led to some deliberation on which concept to pursue. This process took time as we worked to evaluate the strengths and weaknesses of each idea and find common ground that aligned with our project's goals.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We believe the guidelines have provided a comprehensive list of resources up to this point. However, as we move forward with our final project, It would be highly beneficial to hold feedback sessions with mentors or peers, as their insights could help us identify areas for improvement and confirm that we are on the right track.
