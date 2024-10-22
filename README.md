@@ -2,7 +2,8 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: Arelyy Martinez, Chau Anh Nguyen, Mary Ramirez
+
 
 🔗 Link to deployed app:
 
@@ -18,9 +19,9 @@ Designed and developed by: [your names here]
 
 ## Tech Stack
 
-Frontend:
+Frontend: React.js
 
-Backend:
+Backend:Node.js, Express.js, PostgreSQL
 
 ## Features
 
