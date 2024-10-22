@@ -19,4 +19,7 @@ This is the primary user role for the app, representing students who are both lo
 5. As a student who is searching for a room, I want to filter available rooms by price and location, so I can quickly find listings that meet my needs.
 6. As a student who is searching for a room, I want to save room listings that I like to my favorites so I can refer to them later.
 7. As a student searching for a room, I want to view detailed information about a listing, including photos and a description, so that I can assess if it meets my needs.
+8. As a student, I want to create a profile so that potential tenants or roommates can learn more about me.
+9. As a student, I want to log in to my account so that I can access my saved listings and manage my profile.
+10. As a student, I want to log out of my account easily so that I can protect my personal information when using shared devices.
 
