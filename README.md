@@ -15,7 +15,7 @@ Designed and developed by: Arely Martinez, Chau Anh Nguyen, Mary Ramirez
 
 ### Inspiration
 
-[text goes here]
+The inspiration for this app came from our own struggles with finding student housing. Like many others, we faced the challenge of securing a place that fit our budget, was in a good location, and matched our living preferences. Seeing how common this problem was among students, We wanted to create a solution that would make the process easier. By providing a dedicated platform where students can not only post and browse available rooms but also find roommates who share their schedules and lifestyles, this app aims to take the stress out of student housing.
 
 ## Tech Stack
 
