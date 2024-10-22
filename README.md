@@ -33,8 +33,7 @@ Users can create a new account by providing necessary details like name, email, 
 
 ### User Login
 
-Users can securely log into their accounts to manage their listings and profile.
-
+Users can securely log into their accounts to view room listings, manage their profiles, and post new listings.
 
 ### User Logout
 
