@@ -11,7 +11,9 @@ Designed and developed by: Arely Martinez, Chau Anh Nguyen, Mary Ramirez
 
 ### Description and Purpose
 
-[text goes here]
+RoomMateLink is a roommate matching platform designed specifically for students seeking affordable and convenient housing solutions. The app allows users to post and manage room rental listings, enabling landlords (students with available rooms) to connect with potential tenants (other students) in their area.
+
+The main purpose of RoomMateLink is to simplify the process of finding suitable roommates and available rooms through an intuitive and user-friendly platform. By making these connections easier, the app empowers students to navigate their housing options with confidence.
 
 ### Inspiration
 
