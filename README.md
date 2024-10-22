@@ -27,25 +27,42 @@ Backend:Node.js, Express.js, PostgreSQL
 
 ## Features
 
-### [Name of Feature 1]
+### User Sign Up
 
-[short description goes here]
+Users can create a new account by providing necessary details like name, email, and password.
 
-[gif goes here]
+### User Login
 
-### [Name of Feature 2]
+Users can securely log into their accounts to manage their listings and profile.
 
-[short description goes here]
 
-[gif goes here]
+### User Logout
 
-### [Name of Feature 3]
+Users can log out with one click to ensure their information remains secure.
 
-[short description goes here]
+### Create User Profile
 
-[gif goes here]
+Users can set up personal profiles to provide information about themselves.
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### Room Rental Listing Management
+
+Users can create, modify, and remove room rental listings easily. They can post new listings, edit existing ones to update details like price or description, and delete listings once the room is rented.
+
+### Browse Available Room Listings
+
+Users can view a list of all available room rentals on the platform.
+
+### Filter Room Listings by Price and Location
+
+Users can apply filters to narrow down their search results based on preferences.
+
+### Save Favorite Listings
+
+Users can bookmark listings for easy access later.
+
+### View Detailed Listing Information
+
+Users can click on listings to see in-depth information, including images, descriptions, price, and contact information.
 
 ## Installation Instructions
 
