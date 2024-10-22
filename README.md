@@ -1,4 +1,4 @@
-# [your app name here]
+# RoomMateLink
 
 CodePath WEB103 Final Project
 
