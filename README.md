@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Arelyy Martinez, Chau Anh Nguyen, Mary Ramirez
+Designed and developed by: Arely Martinez, Chau Anh Nguyen, Mary Ramirez
 
 
 🔗 Link to deployed app:
