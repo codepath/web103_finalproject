@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Juri Rodriguez, Ida Kamali, Andrew
+Designed and developed by: Juri Rodriguez, Ida Kamali, Adrian
 
 🔗 Link to deployed app:
 
