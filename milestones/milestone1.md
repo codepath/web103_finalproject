@@ -20,12 +20,12 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We have brainstormed the project scope and visions. The project is a platform for nail salons to attract users and manage time shifts of workers. 
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+The biggest challenge is deciding the project purpose (topic). We take a long time during the breakout meeting to consider and evaluate the project topics which lead to the final idea of a booking system for nail salons. 
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Since this is the first time we have worked together and during a class, we need the Tech Fellow to help with the steps of the project as well as choosing the topic.
