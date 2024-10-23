@@ -18,7 +18,7 @@ This is a frustrating feeling and a result of not being prepared to answer truly
 
 Errorly is a project aimed at having users post unique coding problems and challenges for other users to attempt them,
 these problems are formatted in markdown and users in comments can talk about the question or post their own code solutions, but the
-main point of the website is to have users try and make original coding problems which can be upvoted by other users.
+main point of the website is to have users try and make original coding problems which can be upvoted or downvoted by other users.
 
 
 ### Inspiration
@@ -78,15 +78,15 @@ Node, Express, Postgres, Javascript, Passport
 
 ### Additional Features
 
-### Upvote system for posted problems and comments
+### Voting system for posted problems and comments
 
-- [ ] Users can upvote posted problems and upvote other users comments for those problems
+- [ ] Users can upvote and downvote posted problems and users' comments for those problems as a way of giving feedback to the user
 
 [gif goes here]
 
 ### Question filtering based on upvotes, comments, newest, oldest
 
-- [ ] The user can filter programming questions by their upvotes, comments, and by how recently they have been posted
+- [ ] The user can filter programming questions by their upvotes, downvotes, comments, and by how recently they have been posted
 
 [gif goes here]
 
