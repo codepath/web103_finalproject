@@ -14,7 +14,7 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [x] In `readme.md`: complete the **Inspiration** section
 - [x] In `readme.md`: list all features you intend to include in your app (in future units, you will check off features as you complete them and add GIFs demonstrating the features)
 - [x] In `planning/user_stories.md`: add all user stories
-- [ ] In this document, complete the **Reflection** section below
+- [x] In this document, complete the **Reflection** section below
 
 ## Reflection
 
