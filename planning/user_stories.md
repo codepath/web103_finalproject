@@ -9,6 +9,7 @@ Reference the Writing User Stories final project guide in the course portal for 
 ## Draft User Stories
 
 1. As a **player**, I want to create and customize my tree character, so that I can personalize my journey in the app.
+
 2. As a **player**, I want to track my progress on different skills, so that I can see how my tree grows as I develop.
 
 3. As a **player**, I want to earn points and rewards for completing streaks, so that I feel motivated to build habits consistently.
@@ -26,3 +27,5 @@ Reference the Writing User Stories final project guide in the course portal for 
 9. As a **player**, I want the ability to reset my progress or start fresh with a new tree, so that I can have a sense of renewal in my journey if I need it.
 
 10. As a **player**, I want to track and compare my achievements with others (leaderboard), so that I feel challenged and inspired to improve.
+
+11. As a **player**, I want to share my tree's progress and achievements with my friends or on social media, so I can celebrate my success publicly.

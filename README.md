@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Juri Rodriguez, Ida, Andrew
+Designed and developed by: Juri Rodriguez, Ida Kamali, Andrew
 
 🔗 Link to deployed app:
 
@@ -10,19 +10,19 @@ Designed and developed by: Juri Rodriguez, Ida, Andrew
 
 ### Description and Purpose
 
-## Description and Purpose
-
 Growify is a gamified personal development app that helps users build new skills and habits in an engaging, fun way. Users create and customize their own tree, which grows and evolves as they progress on their personal development journey. By maintaining streaks, completing challenges, and achieving milestones, users earn points to unlock new accessories, abilities, and upgrades for their tree. Growify motivates continuous personal growth by encouraging accountability and allowing users to reinvent their skills along the way.
 
 ### Inspiration
 
 Growify was inspired by the desire to make personal development more engaging and fun. We wanted to merge the satisfaction of leveling up in a game with the long-term benefits of building good habits and skills. By using a tree as the character that grows with the user’s progress, we aim to create a visual representation of growth that is both rewarding and motivating. Gamified apps have proven to be effective in habit-building, and we wanted to apply that concept to personal development in a way that feels rewarding without being overwhelming.
 
+We also gained inspiration from applications like https://habitica.com/static/home and https://habitica.com/static/home.
+
 ## Tech Stack
 
 Frontend: React
 
-Backend: Express
+Backend: Express, PostgreSQL, Node.JS
 
 ## Features
 
