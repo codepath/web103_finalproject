@@ -1,8 +1,8 @@
-# [your app name here]
+# Learn More 2gether (LM2)
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: David Alonge, Casey Mak
 
 🔗 Link to deployed app:
 
@@ -10,35 +10,42 @@ Designed and developed by: [your names here]
 
 ### Description and Purpose
 
-[text goes here]
+Learn More 2gether (LM2) is a collaborative platform that enables users to create study groups, schedule learning sessions, and share resources with their peers. Whether for academic purposes or group learning projects, LM2 allows users to organize study topics, set up sessions, and upload files to help groups stay connected and focused. The purpose is to foster a community-driven learning environment where users can support each other’s educational goals.
 
 ### Inspiration
 
-[text goes here]
+The inspiration for LM2 came from the need for organized study groups in academic settings. With students juggling various responsibilities and time constraints, it's essential to have a platform that makes it easy to schedule study sessions, discuss topics, and share resources. We were inspired by the success of peer-to-peer learning models and wanted to provide a tool to make study collaboration more streamlined and accessible.
 
 ## Tech Stack
 
 Frontend:
 
+React.js
+HTML5/CSS3
+JavaScript
+PicoCSS (for styling)
+
 Backend:
+Node.js
+Express.js
+MongoDB (Database)
+Cloudinary (for file uploads)
 
 ## Features
 
-### [Name of Feature 1]
-
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+## Group Creation & Topic Scheduling
+Description: Users can create or join study groups, schedule sessions based on topics, and assign specific dates for their collaborative work.
 
 [gif goes here]
 
-### [Name of Feature 3]
+### File Upload & Sharing
+Description: Members of the study group can upload and share resources like notes, documents, and other study materials within their group, making collaboration more efficient.
 
-[short description goes here]
+[gif goes here]
+
+### lOG IN WITH Github 
+
+We will create authentication and authorization for users to be able to log in and log out
 
 [gif goes here]
 
