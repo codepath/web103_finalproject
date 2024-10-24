@@ -1,8 +1,8 @@
-# [your app name here]
+# TripPlanner+Tracker
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [your names here]
+Designed and developed by: Maggie Killada, Ashwani Balakrishnan, Arys Aikyn
 
 🔗 Link to deployed app:
 
@@ -10,11 +10,11 @@ Designed and developed by: [your names here]
 
 ### Description and Purpose
 
-[text goes here]
+The app helps to keep a complete track of a trip including the mode of transport used, places visited, activities done, restaurants on the go with an option to now the expenses at every point, who paid and when the journey ends split between other people in the trip. We can use apis to show the users the estimated time of travel. No bookings can be made, But can be directed to the respective websites for booking and we at our end keep a track when the user chooses an option. A place to store all essential documents required for the travel.
 
 ### Inspiration
 
-[text goes here]
+We were inspired by the in-class lab On The Fly except we would like to extend this project with more detailed features.
 
 ## Tech Stack
 
@@ -24,25 +24,41 @@ Backend:
 
 ## Features
 
-### [Name of Feature 1]
+### View All Trips
 
-[short description goes here]
-
-[gif goes here]
-
-### [Name of Feature 2]
-
-[short description goes here]
+Users can view all scheduled trips. They can create, update, and delete trips.
 
 [gif goes here]
 
-### [Name of Feature 3]
+### View Trip Details
 
-[short description goes here]
+Users can see a detailed view of their trip which includes: date, description, transportation (mode, estimated travel time, cost), destinations (location, cost), expenses, and documents.
 
 [gif goes here]
 
-### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
+### Add Destinations to Trip
+
+Users can choose from a list of destinations, such as restaurants and places, to assign to a trip.
+
+[gif goes here]
+
+### Invite Users to Trip
+
+Users can invite others to a trip and have access to make changes to the itenerary if any.
+
+[gif goes here]
+
+### Split Expenses
+
+Throughout the trip the expenses will be tracked. At the end of the trip users will be notified.
+
+[gif goes here]
+
+### Upload Documents
+
+Users can add relevant travel documents to the trip.
+
+[gif goes here]
 
 ## Installation Instructions
 
