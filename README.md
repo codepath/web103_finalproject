@@ -1,4 +1,4 @@
-# TripPlanner+Tracker
+# TripTrail
 
 CodePath WEB103 Final Project
 
