@@ -25,8 +25,6 @@ In our last class, we worked together to come up with ideas for our website. We 
 ### 2. What were some challenges your group faced in this unit?
 
 1. While Slack was convenient, it could be difficult to reach everyone at the same time, especially with different time zones and busy schedules, which sometimes led to delays or misunderstanding.
-So far, I was able to fork the repo from Codepath but my other group member cannot access the repo while I added her as a collaborator to the repo. I tried doing the same with my other GitHub account and my other GitHub account can access it.
-We will try to figure it out during tomorrow lab time in the class.
 2. We have not learned about Authentication in the course so we can't estimate how much work is needed for this feature. Therefore, we cannot have a solid plan for all of features for the website (some more would be added after implementing Authentication).
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
