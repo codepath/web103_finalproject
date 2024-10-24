@@ -28,14 +28,14 @@ Backend:
 
 ### Clubs Display
 
-- [ ] Display all clubs and their basic info (e.g., name, category, description, number of members).
+- [ ] Display all clubs and their basic info (e.g., name, category, description, number of members, board members, gallery).
 - [ ] Provide options for filtering and sorting clubs based on needs (e.g., category, number of members).
 
 [gif goes here]
 
 ### Clubs Details
 
-- [ ] A landing page for each club to display their info (e.g., name, description, gallery, upcoming and past events, contact info, number of members).
+- [ ] A landing page for each club to display their info (e.g., name, description, board members, gallery, upcoming and past events, contact info, number of members).
 
 [gif goes here]
 
