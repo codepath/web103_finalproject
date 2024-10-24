@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [Ayushi Porwal]
+Designed and developed by: [Ayushi Porwal, Justin Bradshaw, Anh Nguyen]
 
 🔗 Link to deployed app:
 
