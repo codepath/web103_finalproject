@@ -1,4 +1,4 @@
-# [your app name here]
+# ClubHub
 
 CodePath WEB103 Final Project
 
@@ -12,11 +12,11 @@ Designed and developed by:
 
 ### Description and Purpose
 
-[text goes here]
+ClubHub is a website for discovering and engaging with student clubs at TechNova university. Explore a wide range of clubs, from academic societies and sports teams to cultural organizations and interest groups. Stay up-to-date with upcoming events and keep track of your clubs' activities.
 
 ### Inspiration
 
-[text goes here]
+Inspired by the needs of keeping track of a large amount (~800) of club communities on the university of a member of our group, ClubHub was created to provide a centralized platform where students can easily discover, connect with, and keep track of their wide range of clubs and activities. This website aims to empower students to make the most of their university experience by connecting them with like-minded individuals and opportunities. 
 
 ## Tech Stack
 

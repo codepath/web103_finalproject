@@ -22,3 +22,5 @@ Reference the Writing User Stories final project guide in the course portal for 
 7. As a club manager, I want to display info of my clubs and my clubs' activity, so that I can advertise my clubs and events to more students.
 8. As a club manager, I want to get a summary of my clubs, so that I can manage my club better.
 9. As a club manager, I want to get a summary of my past events (e.g., joined/registered ratio, feedback), so that I can see how my events went and how I can improve it in the future.
+10. (Additional feature when implementing User Authentication) As a club manager, I want to create and modify new clubs, so that I can advertise my club to others.
+11. (Additional feature when implementing User Authentication) As a club manager, I want to create and modify new events for my club, so that I can advertise my club's activities to others.
