@@ -1,0 +1,23 @@
+{
+  "name": "budgetbuddy",
+  "version": "1.0.0",
+  "description": "BudgetBuddy helps users manage personal finances by tracking income, expenses, and savings goals. Users can plan budgets, categorize expenses, and visualize financial reports, ensuring better money management and meeting financial goals.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ayushi Porwal",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushiporwal13/BudgetBuddy.git"
+  },
+  "keywords": [
+    "finance",
+    "tracker"
+  ],
+  "bugs": {
+    "url": "https://github.com/ayushiporwal13/BudgetBuddy/issues"
+  },
+  "homepage": "https://github.com/ayushiporwal13/BudgetBuddy#readme"
+}
