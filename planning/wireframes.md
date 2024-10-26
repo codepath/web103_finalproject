@@ -8,6 +8,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Wireframe 1: [page title]
 
+![Screenshot 2024-10-26 at 12 46 45](https://github.com/user-attachments/assets/6945efdf-7efe-4cde-b9af-9f788909013d)
+
 [👉🏾👉🏾👉🏾 include wireframe 1]
 
 ## Wireframe 2: [page title]
