@@ -30,3 +30,4 @@ In our last class, we worked together to come up with ideas for our website. We 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
 [👉🏾👉🏾👉🏾 your answer here]
+The project went well so far. We may need others provide their feedback on the workability of authentication and our design of database in the next week.

@@ -52,6 +52,14 @@ Backend:
 
 [gif goes here]
 
+### Clubs Management
+- [ ] Users can create new club
+- [ ] Users can modify or delete the created club
+
+### Events Management
+- [ ] Users can create new event
+- [ ] Users can modify or delete the created event
+
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
 ## Installation Instructions
