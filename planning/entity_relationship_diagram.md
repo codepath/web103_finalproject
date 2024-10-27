@@ -1,17 +1,80 @@
+| List of Tables           |
+|--------------------------|
+| users                    |
+| posts                    |
+| comments                 |
+| tags                     |
+| post_tags                |
+| votes                    |
+| user_layout_preferences  |
+
+----------------------------------------------------------
+
 # Entity Relationship Diagram
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
+## users
+| Column        | Type      | Constraints                |
+|--------------|-----------|---------------------------|
+| id           | int       | PRIMARY KEY               |
+| username     | varchar   | UNIQUE, NOT NULL          |
+| email        | varchar   | UNIQUE, NOT NULL          |
+| password_hash| varchar   | NOT NULL                  |
+| display_name | varchar   | NOT NULL                  |
+| github_id    | varchar   | UNIQUE                    |
+| created_at   | timestamp | NOT NULL, DEFAULT NOW()   |
+| updated_at   | timestamp | NOT NULL, DEFAULT NOW()   |
 
-## Create the List of Tables
+## posts
+| Column      | Type      | Constraints                |
+|------------|-----------|---------------------------|
+| id         | int       | PRIMARY KEY               |
+| user_id    | int       | FOREIGN KEY (users.id)    |
+| title      | text      | NOT NULL                  |
+| content    | text      | NOT NULL                  |
+| score      | int       | NOT NULL, DEFAULT 0       |
+| created_at | timestamp | NOT NULL, DEFAULT NOW()   |
+| updated_at | timestamp | NOT NULL, DEFAULT NOW()   |
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+## comments
+| Column            | Type      | Constraints                     |
+|------------------|-----------|--------------------------------|
+| id               | int       | PRIMARY KEY                    |
+| user_id          | int       | FOREIGN KEY (users.id)         |
+| post_id          | int       | FOREIGN KEY (posts.id)         |
+| parent_comment_id| int       | FOREIGN KEY (comments.id)      |
+| content          | text      | NOT NULL                       |
+| score            | int       | NOT NULL, DEFAULT 0            |
+| created_at       | timestamp | NOT NULL, DEFAULT NOW()        |
+| updated_at       | timestamp | NOT NULL, DEFAULT NOW()        |
 
-## Add the Entity Relationship Diagram
+## tags
+| Column      | Type      | Constraints                |
+|------------|-----------|---------------------------|
+| id         | int       | PRIMARY KEY               |
+| name       | varchar   | UNIQUE, NOT NULL          |
+| description| text      |                           |
+| created_at | timestamp | NOT NULL, DEFAULT NOW()   |
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
+## post_tags
+| Column  | Type | Constraints                          |
+|--------|------|-------------------------------------|
+| post_id| int  | FOREIGN KEY (posts.id)              |
+| tag_id | int  | FOREIGN KEY (tags.id)               |
+PRIMARY KEY (post_id, tag_id)
 
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
+## votes
+| Column      | Type      | Constraints                      |
+|------------|-----------|----------------------------------|
+| id         | int       | PRIMARY KEY                      |
+| user_id    | int       | FOREIGN KEY (users.id)           |
+| post_id    | int       | FOREIGN KEY (posts.id)           |
+| comment_id | int       | FOREIGN KEY (comments.id)        |
+| value      | int       | NOT NULL, CHECK (value IN(-1,1)) |
+| created_at | timestamp | NOT NULL, DEFAULT NOW()          |
+
+## user_layout_preferences
+| Column      | Type      | Constraints                |
+|------------|-----------|---------------------------|
+| user_id    | int       | PRIMARY KEY, FOREIGN KEY  |
+| layout_type| varchar   | NOT NULL                  |
+| updated_at | timestamp | NOT NULL, DEFAULT NOW()   |
