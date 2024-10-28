@@ -29,8 +29,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ![image](https://github.com/user-attachments/assets/70232676-83ca-401f-9a15-d8bee2d4512b)
 
 ## Rooms Table
-
-![image](https://github.com/user-attachments/assets/3cb5eee2-29c8-4439-aa4d-3afafabc7e4f)
+![image](https://github.com/user-attachments/assets/4fe5e4cf-6fc5-44bb-aa25-5da27eaed4e4)
 
 
 ## Favorites Table
