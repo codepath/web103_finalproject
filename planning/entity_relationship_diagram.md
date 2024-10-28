@@ -11,7 +11,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## The Entity Relationship Diagram
 
-![image](https://github.com/user-attachments/assets/bbbabb82-4cdc-403e-bb9c-fafe0c981af5)
+![image](https://github.com/user-attachments/assets/0a2d3a93-039e-4981-9ce1-d6907913a2b7)
+
 
 ## Relationships
 - User to Profile: One-to-One (A user can have one profile.)
