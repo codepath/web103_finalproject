@@ -13,6 +13,11 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ![image](https://github.com/user-attachments/assets/bbbabb82-4cdc-403e-bb9c-fafe0c981af5)
 
+## Relationships
+User to Profile: One-to-One (A user can have one profile.)
+User to Room: One-to-Many (A user can create multiple room listings.)
+User to Favorite: One-to-Many (A user can have multiple favorites.)
+Room to Favorite: One-to-Many (A room can be favorited by multiple users.)
 
 ## Users Table
 
