@@ -11,7 +11,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## The Entity Relationship Diagram
 
-![image](https://github.com/user-attachments/assets/0a2d3a93-039e-4981-9ce1-d6907913a2b7)
+![image](https://github.com/user-attachments/assets/51269059-8dab-49f6-96ff-9093fa693d01)
 
 
 ## Relationships
@@ -19,6 +19,8 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 - User to Room: One-to-Many (A user can create multiple room listings.)
 - User to Favorite: One-to-Many (A user can have multiple favorites.)
 - Room to Favorite: One-to-Many (A room can be favorited by multiple users.)
+
+## Tables
 
 ## Users Table
 
