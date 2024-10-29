@@ -1,0 +1,130 @@
+Table clubs {
+  id integer [pk]
+  name varchar(250) [not null]
+  description text
+  email varchar(250)
+}
+
+Table categories {
+  id integer [pk]
+  name varchar(250)
+}
+
+Table club_categories {
+  club_id integer
+  category_id integer
+
+  indexes {
+    (club_id, category_id) [pk]
+  }
+}
+
+Table board_members {
+  id integer [pk]
+  name varchar(250) [not null]
+  introduction text
+}
+
+Table club_board_members {
+  club_id integer
+  board_member_id integer
+  
+  indexes {
+    (club_id, board_member_id) [pk]
+  }
+}
+
+Table images {
+  id integer [pk]
+  taken_time date
+  name text
+  description text
+}
+
+Table club_images {
+  club_id integer
+  image_id integer
+
+  indexes {
+    (club_id, image_id) [pk]
+  }
+}
+
+Table events {
+  id integer [pk]
+  name varchar(250) [not null]
+  start_time datetime [not null]
+  end_time datetime [not null]
+  description text
+  register integer
+  waitlist integer
+}
+
+// Chau Phan:
+// events and clubs are many-to-many relationship
+// as we allow 2 or more clubs can join to organize an event
+// and a club can have many events
+
+Table club_events {
+  club_id integer
+  event_id integer
+
+  indexes {
+    (club_id, event_id) [pk]
+  }
+}
+
+// Chau Phan:
+// locations are used for both events and clubs'office
+// clubs and locations are many-to-many relationship
+// as we allow a club may have multiple offices
+// and an office (e.g., a room) may have 2 or more desks for different club
+// similarly for events and locations
+
+Table locations {
+  id integer [pk]
+  name varchar
+  address text
+}
+
+Table club_locations {
+  club_id integer
+  location_id integer
+  
+  indexes {
+    (club_id, location_id) [pk]
+  }
+}
+
+Table event_locations {
+  event_id integer
+  location_id integer
+  
+  indexes {
+    (event_id, location_id) [pk]
+  }
+}
+
+Ref: club_board_members.club_id > clubs.id
+
+Ref: club_board_members.board_member_id > board_members.id
+
+Ref: club_images.club_id > clubs.id
+
+Ref: club_images.image_id > images.id
+
+Ref: club_categories.club_id > clubs.id
+
+Ref: club_categories.category_id > categories.id
+
+Ref: club_events.club_id > clubs.id
+
+Ref: club_events.event_id > events.id
+
+Ref: club_locations.club_id > clubs.id
+
+Ref: club_locations.location_id > locations.id
+
+Ref: event_locations.event_id > events.id
+
+Ref: event_locations.location_id > locations.id
