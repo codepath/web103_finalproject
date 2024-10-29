@@ -20,9 +20,3 @@ Note:
 
 - In the orders table, the requested by field will store the customer's user_id, and the filmed_by field will store the celebrity's user_id.
 - The order_status uses integer to represent the current status of the order.
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
