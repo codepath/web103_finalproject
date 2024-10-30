@@ -32,7 +32,7 @@ Users can view all scheduled trips. They can create, update, and delete trips.
 
 ### View Trip Details
 
-Users can see a detailed view of their trip which includes: date, description, transportation (mode, estimated travel time, cost), destinations (location, cost), expenses, and documents.
+Users can see a detailed view of their trip which includes: title, start/end date, description, transportation, estimated travel time, travel cost, destinations (title, type, location, cost), total expenses, and documents.
 
 [gif goes here]
 
