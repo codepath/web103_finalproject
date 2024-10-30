@@ -6,22 +6,22 @@ This document should be completed and submitted during **Unit 6** of this course
 
 This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
 
-- [ ] In `planning/wireframes.md`: add wireframes for at least three pages in your web app
-- [ ] In `planning/entity_relationship_diagram.md`: add the entity relationship diagram you developed for your database
-- [ ] Prepare your three-minute pitch presentation, to be presented during Unit 7 (the next unit)
-  - [ ] You do **not** need to submit any materials in advance of your pitch
-- [ ] In this document, complete the **Reflection** section below
+- [x] In `planning/wireframes.md`: add wireframes for at least three pages in your web app
+- [x] In `planning/entity_relationship_diagram.md`: add the entity relationship diagram you developed for your database
+- [x] Prepare your three-minute pitch presentation, to be presented during Unit 7 (the next unit)
+  - [x] You do **not** need to submit any materials in advance of your pitch
+- [x] In this document, complete the **Reflection** section below
 
 ## Reflection
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We were able to create our wireframes and ER diagram of our backend database we will use in our webapp.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Learning wireframing and making ER diagrams.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+More reference material.
