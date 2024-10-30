@@ -28,4 +28,4 @@ Planning a meeting.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We don't need any additional support for now.

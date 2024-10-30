@@ -8,7 +8,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
+<img src='./ERD.png' title='ERD Diagram' width='' alt='ERD Diagram' />
 
 | Column Name | Type | Description |
 |-------------|------|-------------|
