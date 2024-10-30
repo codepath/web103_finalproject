@@ -5,11 +5,11 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## List of Pages
 
 [👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
-[⭐ Home Page]
-[⭐ Salon Page]
-[⭐ Appointment Page]
-[⭐ Login Page]
-[⭐ Sign up Page]
+- ⭐ Home Page
+- ⭐ Salon Page
+- ⭐ Appointment Page
+- ⭐ Login Page
+- ⭐ Sign up Page
 
 ## Wireframe 1: [Home Page]
 
