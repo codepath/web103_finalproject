@@ -16,12 +16,12 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+This week was pretty interesting! We made wireframes, ERDs, discussed on how our project would look like and of course our pitch. We have been going over how we can make it more interesting and how much we can cover.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We are not very familiar with FIGMA or GUI, so that was a learning curve. We tried to come up with something basic for now.
 
 ### 3. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We're trying to scope in features, as much as we can include. Understanding, how much we can cover and plan accordingly.
