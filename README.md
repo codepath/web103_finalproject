@@ -28,7 +28,7 @@ PicoCSS (for styling)
 Backend:
 Node.js
 Express.js
-MongoDB (Database)
+PostGres (Database)
 Cloudinary (for file uploads)
 
 ## Features
