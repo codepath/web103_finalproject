@@ -1,21 +1,48 @@
 # Wireframes
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
-
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+👉🏾👉🏾👉🏾 **Login Page** ⭐  
+👉🏾👉🏾👉🏾 **Profile Page** ⭐  
+👉🏾👉🏾👉🏾 **Home / Dashboard Page** ⭐  
+👉🏾👉🏾👉🏾 **Recipe Suggestions Page** ⭐  
+👉🏾👉🏾👉🏾 **Recipe Detail Page** ⭐  
+👉🏾👉🏾👉🏾 **404 Page** ⭐  
 
-## Wireframe 1: [page title]
+---
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+## Wireframe 1: Login Page
 
-## Wireframe 2: [page title]
+![Login Page Wireframe](./wireframeImages/LoginPage.jpg)
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+---
 
-## Wireframe 3: [page title]
+## Wireframe 2: Profile Page
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Profile Page Wireframe](./wireframeImages/ProfilePage.jpg)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+---
+
+## Wireframe 3: Home / Dashboard Page
+
+![Home Page Wireframe](./wireframeImages/HomePage.jpg)
+
+---
+
+## Wireframe 4: Recipe Suggestions Page
+
+![Recipe Suggestions Wireframe](./wireframeImages/RecipeSuggestionsPage.jpg)
+
+---
+
+## Wireframe 5: Recipe Detail Page
+
+![Recipe Detail Wireframe](./wireframeImages/RecipeDetailsPage.jpg)
+
+---
+
+## Wireframe 6: 404 Page
+
+![404 Page Wireframe](./wireframeImages/404.jpg)
+
+---
