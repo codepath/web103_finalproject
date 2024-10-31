@@ -10,6 +10,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 - ⭐ Appointment Page
 - ⭐ Login Page
 - ⭐ Sign up Page
+- ⭐ Profile Page
 
 ## Wireframe 1: Home Page
 
@@ -30,5 +31,9 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## Wireframe 5: Sign up Page
 
 <img width="483" alt="Screenshot 2024-10-30 at 6 50 12 PM" src="https://github.com/user-attachments/assets/4fe89fd6-8269-4aa0-a573-20813ca24e7a">
+
+## Wireframe 6: Profile Page
+
+<img width="1430" alt="Screenshot 2024-10-30 at 7 50 38 PM" src="https://github.com/user-attachments/assets/c4236d0e-9d50-4cfe-99d7-cd063e572a0a">
 
 [👉🏾👉🏾👉🏾 include more wireframes as desired]
