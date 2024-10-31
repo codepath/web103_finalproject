@@ -4,25 +4,25 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-- Home ⭐
-- Create Trip ⭐
-- Trip Detail/Edit Trip ⭐
-- My Trips
-- Destinations
-- Create Destination
-- Sign In
-- Sign Up
+-   Home ⭐
+-   Create Trip ⭐
+-   Trip Detail/Edit Trip ⭐
+-   My Trips
+-   Destinations
+-   Create Destination
+-   Sign In
+-   Sign Up
 
 ## Wireframe 1: Home
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![Home Page](./homepage.png)
 
 ## Wireframe 2: Create Trip
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![Create Page](./createtrip.png)
 
 ## Wireframe 3: Trip Detail/Edit Trip
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Trips List View](./viewtripslist.png)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![Trips Card View](./viewtripscard.png)
