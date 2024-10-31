@@ -3,11 +3,11 @@
 Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
 
 ## List of Pages
-[x] Home
-[x] Clubs
-[x] Events
-[x] Club detail
-[x] Event detail
+- [x] Home
+- [x] Clubs
+- [x] Events
+- [x] Club detail
+- [x] Event detail
 
 [👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
 
