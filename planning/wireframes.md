@@ -35,5 +35,3 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## Wireframe 6: Profile Page
 
 <img width="1430" alt="Screenshot 2024-10-30 at 7 50 38 PM" src="https://github.com/user-attachments/assets/c4236d0e-9d50-4cfe-99d7-cd063e572a0a">
-
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
