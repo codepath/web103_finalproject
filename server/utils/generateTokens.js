@@ -1,6 +1,11 @@
 import jwt from 'jsonwebtoken';
-
-export const generateTokens = async (user) => {
+/**
+ * Generate JWT access and refresh tokens from a user object
+ * with an id and email property
+ * @param {Object} user 
+ * @returns {Object} {accessToken, refreshToken}
+ */
+const generateTokens = async (user) => {
     const accessToken = jwt.sign({
         userId: user.id,
         email: user.email,
@@ -12,3 +17,5 @@ export const generateTokens = async (user) => {
     }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
     return { accessToken, refreshToken };
 }
+
+export default generateTokens

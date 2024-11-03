@@ -1,5 +1,6 @@
 import User from '../models/User.js'
 import security from '../utils/security.js'
+import generateTokens from '../utils/generateTokens.js'
 
 const authController = {
     /**
@@ -17,9 +18,18 @@ const authController = {
             user.password = await security.hashPassword(user.password)
             console.log(user)
             const newUser = await User.create(user)
-            
-            console.log(newUser)
-            return res.json(newUser)
+            const tokens = await generateTokens({user: newUser})
+            console.log("AUTH TOKENS",tokens)
+            console.log("CREATED DB USER",newUser)
+            res.cookie('refresh', tokens.refreshToken, {
+                httpOnly: true,
+                sameSite: 'None',
+                secure: true
+            })
+            res.status(201).json({
+                accessToken: tokens.accessToken,
+                user: newUser
+            })
         } catch (error) {
             return res.status(400).send(error)
         }
