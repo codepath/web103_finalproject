@@ -3,6 +3,7 @@ import { pool } from './database.js'
 const initDB = async () => {
     try {
         await pool.query(createUserTableQuery)
+        console.log('Database initialized')
     } catch (error) {
         console.error('Error initializing database', error)
     }
@@ -18,9 +19,9 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     image_url TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     failed_login_attempts INT DEFAULT 0
 )
 `

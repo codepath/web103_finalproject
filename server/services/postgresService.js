@@ -1,4 +1,7 @@
 import { pool } from '../config/database.js'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '../.env' })
 
 /*  Class to interact with the Postgres database easier */
 /*  Quick Reference: */
@@ -63,8 +66,8 @@ class PostgresService {
 
     /**
      * Get paginated data from the table
-     * @param {number} limit - The number of records to return.
-     * @param {number} page - The page number, starting from 0.
+     * @param {number} limit - The number of records to return
+     * @param {number} page - The page number, starting from 0
      * @returns {Promise<Array>} - Returns paginated data from the table
      */
     async get_paginated_data_basic(limit, page) {
@@ -110,7 +113,7 @@ class PostgresService {
      * Useful for getting paginated data from a conditional query with an order
      * @param {number} limit - The number of records to return
      * @param {number} page - The page number, starting from 0
-     * @param {Object} where - An object representing the WHERE conditions.
+     * @param {Object} where - An object representing the WHERE conditions
      * @param {string} order - The ORDER BY clause, e.g., "created_at DESC"
      * @returns {Promise<Array>} - Returns paginated data with a WHERE clause and ORDER BY clause
      */
