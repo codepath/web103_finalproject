@@ -13,6 +13,7 @@ const config = {
     ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 }
 
+// log database configuration (connection debugging)
 console.log('Database configuration:', {
     database: config.database,
     host: config.host,
@@ -22,7 +23,7 @@ console.log('Database configuration:', {
 
 export const pool = new pg.Pool(config)
 
-// Add connection event listeners
+// Add connection event listeners (connection debugging)
 pool.on('connect', () => {
     console.log('Pool connected to PostgreSQL')
 })
