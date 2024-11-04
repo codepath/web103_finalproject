@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "reset": "node --require dotenv/config config/reset.js",
     "start": "npm run reset && nodemon server.js",
