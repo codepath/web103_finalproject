@@ -69,6 +69,20 @@ const getEventById = async (req, res) => {
     const images = await pool.query(selectImagesQuery, [eventId])
     const imagesResults = images.rows
     eventResult.images = imagesResults
+
+    const selectClubQuery = `
+      SELECT
+        clubs.id,
+        clubs.name
+      FROM clubs
+      JOIN club_events
+      ON club_events.club_id = clubs.id
+      WHERE club_events.event_id = $1
+    `
+    const clubs = await pool.query(selectClubQuery, [eventId])
+    const clubsResults = clubs.rows
+    eventResult.clubs = clubsResults
+
     console.log(eventResult)
     res.status(200).json(eventResult)
   } catch (err) {
