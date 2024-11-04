@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useAppDispatch } from '../store/hooks'
+import { signUp } from '../store/slices/auth.slice'
 
 const Auth = () => {
+    const dispatch = useAppDispatch()
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [first_name, setFirstName] = useState('')
@@ -23,27 +27,23 @@ const Auth = () => {
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault()
-        const res = await fetch('http://localhost:3000/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                user: {
-                    email,
-                    password,
-                    first_name,
-                    last_name,
-                    user_name,
-                },
-            }),
-        })
-        console.log(res)
-        const data = await res.json()
-        localStorage.setItem('access', JSON.stringify(data.accessToken))
-        localStorage.setItem('user', JSON.stringify(data.user))
-        setApiRes(data)
-        console.log(data)
+        try {
+            const userData = {
+                email,
+                password,
+                user_name,
+                first_name,
+                last_name
+            }
+            // Make sure we wrap the user data in a user object
+            console.log("FIRST USER FORM", userData)
+            const result = await dispatch(signUp(userData)).unwrap()
+            console.log("Signup successful:", result)
+            // Handle successful signup (e.g., redirect to login or dashboard)
+        } catch (error) {
+            console.error("Signup failed:", error)
+            // Handle error (e.g., show error message to user)
+        }
     }
 
     const handleLogin = async (e: React.FormEvent) => {

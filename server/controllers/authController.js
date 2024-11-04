@@ -4,7 +4,7 @@ import generateTokens from '../utils/generateTokens.js'
 
 const authController = {
     /**
-     * @requires user: {
+     * @requires req.body {
      * email: string,
      * password: string,
      * first_name: string,
@@ -14,7 +14,8 @@ const authController = {
      */
     async signup(req, res) {
         try {
-            const user = req.body.user
+            console.log("HEY MOTHER FUCKER", req.body)
+            const user = req.body
             user.password = await security.hashPassword(user.password)
             console.log(user)
             const newUser = await User.create(user)
@@ -26,10 +27,22 @@ const authController = {
                 sameSite: 'None',
                 secure: true
             })
-            newUser.password = undefined
+            const formattedUser = {
+                id: newUser.id,
+                email: newUser.email,
+                user_name: newUser.user_name,
+                first_name: newUser.first_name,
+                last_name: newUser.last_name,
+                image_url: newUser.image_url,
+                created_at: newUser.created_at,
+                last_login: newUser.last_login,
+                last_updated: newUser.last_updated,
+                failed_login_attempts: newUser.failed_login_attempts,
+            }
+            console.log("FORMATTED USER",formattedUser)
             res.status(201).json({
-                accessToken: tokens.accessToken,
-                user: newUser
+                access_token: tokens.accessToken,
+                user: formattedUser
             })
         } catch (error) {
             return res.status(400).send(error)
