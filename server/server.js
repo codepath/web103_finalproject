@@ -1,13 +1,15 @@
 import './config/dotenv.js'
 import express from 'express'
 import cors from 'cors'
-import apiRouters from './routes/api-routers.js'
+import clubsRouters from './routes/clubs-routers.js'
+import eventsRouters from './routes/events-routers.js'
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use('/api', apiRouters)
+app.use('/api/clubs', clubsRouters)
+app.use('/api/events', eventsRouters)
 
 const PORT = process.env.PORT || 3001
 
