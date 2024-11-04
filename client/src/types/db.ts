@@ -18,3 +18,8 @@ export interface SignUpData {
     first_name: string
     last_name: string
 }
+
+export interface SignInData {
+    user_name: string
+    password: string
+}

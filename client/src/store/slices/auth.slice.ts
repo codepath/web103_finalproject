@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../services/api'
-import { SignUpData } from '../../types/db'
+import { SignUpData, SignInData } from '../../types/db'
 import { setUser, clearUser } from './user.slice'
 
 interface AuthState {
@@ -59,7 +59,22 @@ export const refreshSession = createAsyncThunk(
     }
 )
 
-// export const signIn = createAsyncThunk(
+export const signIn = createAsyncThunk(
+    'signIn',
+    async (data: SignInData, { dispatch }) => {
+        try {
+            localStorage.clear()
+            const response = await api.auth.signIn(data)
+            if (response.access_token && response.user) {
+                dispatch(setUser(response.user))
+                dispatch(setAccessToken(response.access_token))
+            }
+            return response
+        } catch (error) {
+            return error
+        }
+    }
+)
 
 
 export const signOut = createAsyncThunk(
@@ -143,6 +158,21 @@ const authSlice = createSlice({
             state.error = action.error.message as string
         })
 
+        // Sign In
+        builder.addCase(signIn.pending, (state) => {
+            state.isFormLoading = true
+            state.isLoading = true
+            state.error = null
+        })
+        builder.addCase(signIn.fulfilled, (state) => {
+            state.isFormLoading = false
+            state.isLoading = false
+        })
+        builder.addCase(signIn.rejected, (state, action) => {
+            state.isFormLoading = false
+            state.isLoading = false
+            state.error = action.payload as string
+        })
     }
 })
 

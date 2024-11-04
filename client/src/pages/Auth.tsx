@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAppDispatch } from '../store/hooks'
-import { signUp } from '../store/slices/auth.slice'
+import { signUp, signIn } from '../store/slices/auth.slice'
 
 const Auth = () => {
     const dispatch = useAppDispatch()
@@ -48,22 +48,18 @@ const Auth = () => {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
-        const res = await fetch('http://localhost:3000/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                user: {
-                    user_name: login_user_name,
-                    password: login_password,
-                },
-            }),
-        })
-        console.log(res)
-        const data = await res.json()
-        setApiRes(data)
-        console.log(data)
+        try {
+            const userData = {
+                user_name: login_user_name,
+                password: login_password
+            }
+            const result = await dispatch(signIn(userData)).unwrap()
+            console.log("Login successful:", result)
+            // Handle successful login (e.g., redirect to dashboard)            
+        } catch (error) {
+            console.error("Login failed:", error)
+            // Handle error (e.g., show error message to user)
+        }
     }
 
     return (

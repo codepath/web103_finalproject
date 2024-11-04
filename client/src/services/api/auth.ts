@@ -1,5 +1,5 @@
 import { fetchApi } from "./base";
-import { SignUpData } from "../../types/db";
+import { SignUpData, SignInData } from "../../types/db";
 
 export const authApi = {
     signUp: (user: SignUpData) =>
@@ -8,7 +8,7 @@ export const authApi = {
         body: JSON.stringify(user),
     }),
 
-    signIn: (user: {password: string, user_name: string}) =>
+    signIn: (user: SignInData) =>
         fetchApi('/auth/login', {
         method: 'POST',
         body: JSON.stringify(user),

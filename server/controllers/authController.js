@@ -63,10 +63,14 @@ const authController = {
     async login(req, res) {
         try {
             // Check if we're getting user_name or email
-            const { user_name, password } = req.body
+            const login_data = req.body
+            console.log("LOGIN DATA",login_data)
     
             // Find user by username
-            const user = await User.get_by_field('user_name', user_name)
+            const users = await User.get_by_field('user_name', login_data.user_name)
+            const user = users[0]
+
+            console.log("USER",user)
             if (!user) {
                 return res.status(404).json({
                     message: 'User not found'
@@ -74,7 +78,8 @@ const authController = {
             }
     
             // Compare password
-            const isPasswordValid = await security.comparePassword(password, user.password)
+            const isPasswordValid = await security.comparePasswords(login_data.password, user.password)
+            console.log("IS PASSWORD VALID",isPasswordValid)
             if (!isPasswordValid) {
                 // Update failed login attempts
                 await User.update(user.id, {
