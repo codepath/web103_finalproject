@@ -26,6 +26,7 @@ const authController = {
                 sameSite: 'None',
                 secure: true
             })
+            newUser.password = undefined
             res.status(201).json({
                 accessToken: tokens.accessToken,
                 user: newUser
