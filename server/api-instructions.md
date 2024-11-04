@@ -1,3 +1,8 @@
+In /server directory:
+- run "npm run reset" to reset the database to the initial state with seeding data. Details of seeding data in /server/data directory.
+- run "npm run start" to reset the database and start the server
+- run "npm run dev" to start the server only. The data on database isn't changed.
+
 ClubHub API has following endpoints. The endpoints with checked are already implemented.
 
 # Clubs
