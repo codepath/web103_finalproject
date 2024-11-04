@@ -1,9 +1,11 @@
-import User from '../models/User.js'
+import PostgresService from '../services/postgresService.js'
+
+const User = new PostgresService('users')
 
 const userController = {
     async create(req, res) {
         try {
-            const user = await User.create(req.body)
+            const user = await User.save(req.body)
             return res.status(201).send(user)
         } catch (error) {
             return res.status(400).send(error)
@@ -11,7 +13,7 @@ const userController = {
     },
     async getAll(req, res) {
         try {
-            const users = await User.getAll()
+            const users = await User.get_all()
             return res.status(200).send(users)
         } catch (error) {
             return res.status(400).send(error)
@@ -19,7 +21,7 @@ const userController = {
     },
     async getOne(req, res) {
         try {
-            const user = await User.getOne(req.params.id)
+            const user = await User.get_by_id(req.params.id)
             return res.status(200).send(user)
         } catch (error) {
             return res.status(400).send(error)

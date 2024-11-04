@@ -6,15 +6,16 @@ import userRoutes from './routes/userRoutes.js'
 
 const app = express()
 
-app.use(cors(
-    {
-        origin: 'http://localhost:5173',
-        credentials: true
-    }
-))
+app.use(cors({
+    origin: 'http://localhost:5173',  // Your frontend URL
+    credentials: true,  // Very important!
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
+
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser())
 
 app.use('/auth', authRoutes)
 // app.use('/user', userRoutes)

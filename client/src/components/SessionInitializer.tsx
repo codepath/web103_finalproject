@@ -19,7 +19,7 @@ export default function SessionInitializer() {
     if (session) {
       // Schedule the token refresh
       console.log('persistSession')
-      persistSession((60 * (60 * 1000)), dispatch);
+      persistSession(60 * 60 * 1000, dispatch);
       console.log('persistSession done')
     }
   }, [session, dispatch]);

@@ -1,6 +1,9 @@
-import User from '../models/User.js'
 import security from '../utils/security.js'
 import generateTokens from '../utils/generateTokens.js'
+import jwt from 'jsonwebtoken'
+import PostgresService from '../services/postgresService.js'
+
+const User = new PostgresService('users')
 
 const authController = {
     /**
@@ -18,8 +21,8 @@ const authController = {
             const user = req.body
             user.password = await security.hashPassword(user.password)
             console.log(user)
-            const newUser = await User.create(user)
-            const tokens = await generateTokens({user: newUser})
+            const newUser = await User.save(user)
+            const tokens = await generateTokens(newUser)
             console.log("AUTH TOKENS",tokens)
             console.log("CREATED DB USER",newUser)
             res.cookie('refresh', tokens.refreshToken, {
@@ -49,15 +52,114 @@ const authController = {
         }
     },
 
+    /**
+     * @requires req.body {
+     * email: string,
+     * password: string
+     * }
+     * @param {*} req 
+     * @param {*} res 
+     */
     async login(req, res) {},
 
+    /**
+     * This route will be used to refresh the access token
+     * check credentials for the httpOnly cookie
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async refresh(req, res) {
+        try {
+            console.log("REFRESHING")
+            const refresh_token = req.cookies.refresh
+            console.log("REFRESH TOKEN, ",refresh_token)
+            if (!refresh_token) {
+                return res.status(401).json({
+                    message: "Refresh token not found"
+                })
+            }
+
+            try {
+                const decoded = jwt.verify(
+                    refresh_token,
+                    process.env.REFRESH_TOKEN_SECRET
+                )
+                console.log("DECODED",decoded)
+                if (decoded.type !== 'refresh') {
+                    return res.status(401).json({
+                        message: "Invalid token"
+                    })
+                }
+
+                const user = await User.get_by_id(decoded.userId)
+                console.log("USER",user)
+                if (!user) {
+                    return res.status(404).json({
+                        message: "User not found"
+                    })
+                }
+                console.log("USER",user)
+
+                const tokens = await generateTokens(user)
+                console.log("TOKENS",tokens)
+
+                res.cookie('refresh', tokens.refreshToken, {
+                    httpOnly: true,
+                    sameSite: 'None',
+                    secure: true,
+                    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+                })
+
+                const formattedUser = {
+                    id: user.id,
+                    email: user.email,
+                    user_name: user.user_name,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    image_url: user.image_url,
+                    created_at: user.created_at,
+                    last_login: user.last_login,
+                    last_updated: user.last_updated,
+                    failed_login_attempts: user.failed_login_attempts,
+                }
+                console.log("FORMATTED USER",formattedUser)
+
+                res.status(200).json({
+                    access_token: tokens.accessToken,
+                    user: formattedUser
+                })
+            } catch (error) {
+                if (error instanceof jwt.TokenExpiredError) {
+                    return res.status(401).json({ 
+                        message: 'Refresh token expired' 
+                    })
+                }
+                if (error instanceof jwt.JsonWebTokenError) {
+                    return res.status(401).json({ 
+                        message: 'Invalid refresh token' 
+                    })
+                }
+                throw error
+            }
+        } catch (error) {
+            console.error('Refresh error:', error)
+            return res.status(500).json({ 
+                message: 'Internal server error during refresh' 
+            })
+        }
+    },
+
+    /**
+     * This route will be used to logout the user
+     * @param {*} req
+     * @param {*} res
+     */
+    async logout(req, res) {},
+
+    // OAuth routes (do later)
     async github(req, res) {},
 
     async githubCallback(req, res) {},
-
-    async refresh(req, res) {},
-
-    async logout(req, res) {}
 
 }
 

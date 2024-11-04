@@ -41,16 +41,17 @@ export const signUp = createAsyncThunk(
 
 export const refreshSession = createAsyncThunk(
     'refreshSession',
-    async (_, { dispatch }) => {
+    async (_, { dispatch, rejectWithValue }) => {
         try {
             console.log("REFRESH SESSION SEARCHING")
             const response = await api.auth.refreshSession()
-            console.log("REFRESH SESSION FOUND")
-            if (response.access_token) {
-                dispatch(setUser(response.access_token))
+            console.log("REFRESH SESSION FOUND", response)
+            if (response.access_token && response.user) {
+                dispatch(setUser(response.user))
                 dispatch(setAccessToken(response.access_token))
+                return response
             }
-            return response.data
+            return rejectWithValue('Invalid response format')
         } catch (error) {
             console.log("REFRESH SESSION ERROR, NOT FOUND", error)
             return error
