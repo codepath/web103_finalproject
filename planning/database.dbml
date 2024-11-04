@@ -1,13 +1,14 @@
 Table clubs {
-  id integer [pk]
+  id serial [pk]
   name varchar(250) [not null]
   description text
   email varchar(250)
 }
 
 Table categories {
-  id integer [pk]
+  id serial [pk]
   name varchar(250)
+  description text
 }
 
 Table club_categories {
@@ -20,9 +21,10 @@ Table club_categories {
 }
 
 Table board_members {
-  id integer [pk]
-  name varchar(250) [not null]
+  id serial [pk]
+  fullname varchar(250) [not null]
   introduction text
+  email text
 }
 
 Table club_board_members {
@@ -36,9 +38,9 @@ Table club_board_members {
 
 Table images {
   id integer [pk]
+  name varchar(250)
+  url text
   taken_time date
-  name text
-  description text
 }
 
 Table club_images {
@@ -51,13 +53,13 @@ Table club_images {
 }
 
 Table events {
-  id integer [pk]
+  id serial [pk]
   name varchar(250) [not null]
-  start_time datetime [not null]
-  end_time datetime [not null]
+  start_time timestamptz [not null]
+  end_time timestamptz [not null]
   description text
-  register integer
-  waitlist integer
+  capacity integer
+  registered integer
 }
 
 // Chau Phan:
@@ -83,7 +85,7 @@ Table club_events {
 
 Table locations {
   id integer [pk]
-  name varchar
+  name text
   address text
 }
 
@@ -102,6 +104,24 @@ Table event_locations {
   
   indexes {
     (event_id, location_id) [pk]
+  }
+}
+
+Table event_categories {
+  event_id integer
+  category_id integer
+  
+  indexes {
+    (event_id, category_id) [pk]
+  }
+}
+
+Table event_images {
+  event_id integer
+  image_id integer
+  
+  indexes {
+    (event_id, image_id) [pk]
   }
 }
 
@@ -128,3 +148,11 @@ Ref: club_locations.location_id > locations.id
 Ref: event_locations.event_id > events.id
 
 Ref: event_locations.location_id > locations.id
+
+Ref: event_categories.event_id > events.id
+
+Ref: event_categories.category_id > categories.id
+
+Ref: event_images.event_id > events.id
+
+Ref: event_images.image_id > images.id
