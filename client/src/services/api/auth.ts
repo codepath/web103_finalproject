@@ -14,12 +14,10 @@ export const authApi = {
         body: JSON.stringify(user),
     }),
 
-    signOut: (access_token: string) =>
+    signOut: () =>
         fetchApi('/auth/logout', {
         method: 'POST',
-        headers: {
-            Authorization: `Bearer ${access_token}`,
-        },
+        credentials: 'include',
     }),
 
     refreshSession: () =>

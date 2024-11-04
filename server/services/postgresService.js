@@ -45,6 +45,8 @@ class PostgresService {
     /**
      * Constructor to set the table name
      * @param {string} table - The name of the table in the Postgres database
+     * @example
+     * const postService = new PostgresService('posts')
      */
     constructor(table) {
         this.table = table
@@ -53,6 +55,8 @@ class PostgresService {
     /**
      * Get all records from the table
      * @returns {Promise<Array>} - Returns all records from the table
+     * @example
+     * const posts = await postService.get_all()
      */
     async get_all() {
         try {
@@ -69,6 +73,8 @@ class PostgresService {
      * @param {number} limit - The number of records to return
      * @param {number} page - The page number, starting from 0
      * @returns {Promise<Array>} - Returns paginated data from the table
+     * @example
+     * const paginatedPosts = await postService.get_paginated_data_basic(10, 0)
      */
     async get_paginated_data_basic(limit, page) {
         try {
@@ -90,6 +96,8 @@ class PostgresService {
      * @param {number} page - The page number, starting from 0
      * @param {Object} where - An object representing the WHERE conditions
      * @returns {Promise<Array>} - Returns paginated data with a WHERE clause
+     * @example
+     * const paginatedPostsWhere1 = await postService.get_paginated_data_where(10, 0, { tag: 1 })
      */
     async get_paginated_data_where(limit, page, where) {
         const keys = Object.keys(where)
@@ -116,6 +124,8 @@ class PostgresService {
      * @param {Object} where - An object representing the WHERE conditions
      * @param {string} order - The ORDER BY clause, e.g., "created_at DESC"
      * @returns {Promise<Array>} - Returns paginated data with a WHERE clause and ORDER BY clause
+     * @example
+     * const paginatedPostsWhereOrder1 = await postService.get_paginated_data_where_order(10, 0, { tag: 1 }, 'created_at DESC')
      */
     async get_paginated_data_where_order(limit, page, where, order) {
         const keys = Object.keys(where)
@@ -138,6 +148,8 @@ class PostgresService {
      * Get a record by ID
      * @param {string|number} id 
      * @returns {Promise<Object>} - Returns a record by ID
+     * @example
+     * const post = await postService.get_by_id(1)
      */
     async get_by_id(id) {
         try {
@@ -156,6 +168,8 @@ class PostgresService {
      * Save a new record to the table
      * @param {Object} data 
      * @returns {Promise<Object>} - Returns the saved data
+     * @example
+     * const newPost = await postService.save({ title: 'New Post', content: 'New content' })
      */
     async save(data) {
         const keys = Object.keys(data)
@@ -179,6 +193,8 @@ class PostgresService {
      * @param {string|number} id 
      * @param {Object} data 
      * @returns {Promise<Object>} - Returns the updated data
+     * @example
+     * const updatedPost = await postService.update(1, { title: 'Updated Post', content: 'Updated content' })
      */
     async update(id, data) {
         const keys = Object.keys(data)
@@ -201,6 +217,8 @@ class PostgresService {
      * Delete a record by ID
      * @param {string} id 
      * @returns {Promise<Object>} - Returns the deleted data
+     * @example
+     * const deletedPost = await postService.delete(1)
      */
     async delete(id) {
         try {
@@ -220,6 +238,8 @@ class PostgresService {
      * @param {string} field 
      * @param {any} value 
      * @returns {Promise<Array>} - Returns records by field
+     * @example
+     * const postsByTag = await postService.get_by_field('tag', 1)
      */
     async get_by_field(field, value) {
         try {
@@ -238,6 +258,8 @@ class PostgresService {
      * Get records by multiple fields
      * @param {Object} fields 
      * @returns {Promise<Array>} - Returns records by fields
+     * @example
+     * const postsByFields = await postService.get_by_fields({ tag: 1, user_id: 1 })
      */
     async get_by_fields(fields) {
         const keys = Object.keys(fields)

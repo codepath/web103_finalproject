@@ -60,7 +60,76 @@ const authController = {
      * @param {*} req 
      * @param {*} res 
      */
-    async login(req, res) {},
+    async login(req, res) {
+        try {
+            // Check if we're getting user_name or email
+            const { user_name, password } = req.body
+    
+            // Find user by username
+            const user = await User.get_by_field('user_name', user_name)
+            if (!user) {
+                return res.status(404).json({
+                    message: 'User not found'
+                })
+            }
+    
+            // Compare password
+            const isPasswordValid = await security.comparePassword(password, user.password)
+            if (!isPasswordValid) {
+                // Update failed login attempts
+                await User.update(user.id, {
+                    failed_login_attempts: (user.failed_login_attempts || 0) + 1,
+                    last_login: new Date()
+                })
+    
+                return res.status(401).json({
+                    message: 'Invalid credentials'
+                })
+            }
+    
+            // Successful login - update user record
+            await User.update(user.id, {
+                failed_login_attempts: 0,
+                last_login: new Date()
+            })
+    
+            // Generate tokens
+            const tokens = await generateTokens(user)
+    
+            // Set refresh token cookie
+            res.cookie('refresh', tokens.refreshToken, {
+                httpOnly: true,
+                sameSite: 'None',
+                secure: true,
+                maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+            })
+    
+            // Format user data for response
+            const formattedUser = {
+                id: user.id,
+                email: user.email,
+                user_name: user.user_name,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                image_url: user.image_url,
+                created_at: user.created_at,
+                last_login: user.last_login,
+                last_updated: user.last_updated,
+                failed_login_attempts: user.failed_login_attempts,
+            }
+    
+            // Send response
+            return res.status(200).json({
+                access_token: tokens.accessToken,
+                user: formattedUser
+            })
+        } catch (error) {
+            console.error('Login error:', error)
+            return res.status(500).json({
+                message: 'Internal server error during login'
+            })
+        }
+    },
 
     /**
      * This route will be used to refresh the access token
@@ -154,7 +223,28 @@ const authController = {
      * @param {*} req
      * @param {*} res
      */
-    async logout(req, res) {},
+    async logout(req, res) {
+        try {
+            res.cookie('refresh', '', {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'None',
+                maxAge: 0 // Expires immediately
+            })
+
+            console.log("LOGGED OUT")
+            
+            // Optional: Clear any user-related data from response
+            return res.status(200).json({
+                message: 'Logged out successfully'
+            })
+        } catch (error) {
+            console.error('Logout error:', error)
+            return res.status(500).json({
+                message: 'Internal server error during logout'
+            })
+        }
+    },
 
     // OAuth routes (do later)
     async github(req, res) {},
