@@ -72,6 +72,7 @@ const getEventById = async (req, res) => {
     console.log(eventResult)
     res.status(200).json(eventResult)
   } catch (err) {
+    console.error('get Event by Id error: ', err)
     res.status(409).json({error: err})
   }
 }
