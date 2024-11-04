@@ -8,7 +8,14 @@ ClubHub API has following endpoints. The endpoints with checked are already impl
 # Clubs
 
 # Events
-- [ ] /api/events -> get all events with details
+- [x] /api/events -> get all events, each event includes:
+  + id
+  + name
+  + start_time
+  + end_time
+  + description
+  + capacity
+  + registered
 - [x] /api/events/:eventId -> all details of event by Id including:
   + id
   + name
