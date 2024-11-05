@@ -3,12 +3,13 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import './config/dotenv.js' // load .env file variables globally
 
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:5173',  // Your frontend URL
-    credentials: true,  // Very important!
+    origin: `${process.env.FRONTEND_URL}`,
+    credentials: true,  // for cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }))

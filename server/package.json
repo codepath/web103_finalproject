@@ -5,8 +5,8 @@
   "description": "Errorly server",
   "main": "server.js",
   "scripts": {
-    "initDB": "cd config && node --require dotenv/config initDB.js",
-    "start": "npm run initDB && nodemon --require dotenv/config server.js"
+    "initDB": "cd config && node initDB.js",
+    "start": "npm run initDB && nodemon server.js"
   },
   "author": "",
   "license": "ISC",

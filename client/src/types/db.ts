@@ -4,11 +4,11 @@ export interface User {
     user_name: string
     first_name: string
     last_name: string
-    image_url?: string | null
+    image_url?: string
     created_at?: string
     last_login?: string
     last_updated?: string
-    failed_login_attempts?: number | 0
+    failed_login_attempts?: number
 }
 
 export interface SignUpData {

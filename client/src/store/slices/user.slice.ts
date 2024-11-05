@@ -8,19 +8,21 @@ interface UserState {
     error : string | null
 }
 
+const defaultUserSettings: User = {
+    id: '',
+    email: '',
+    user_name: '',
+    first_name: '',
+    last_name: '',
+    image_url: undefined,
+    created_at: undefined,
+    last_login: undefined,
+    last_updated: undefined,
+    failed_login_attempts: undefined
+}
+
 const initialState: UserState = {
-    user: {
-        id: '',
-        email: '',
-        user_name: '',
-        first_name: '',
-        last_name: '',
-        image_url: null,
-        created_at: undefined,
-        last_login: undefined,
-        last_updated: undefined,
-        failed_login_attempts: 0
-    },
+    user: defaultUserSettings,
     isLoading: false,
     error: null
 }
@@ -42,16 +44,7 @@ export const userSlice = createSlice({
             state.user = action.payload
         },
         clearUser(state) {
-            state.user.id = ''
-            state.user.email = ''
-            state.user.user_name = ''
-            state.user.first_name = ''
-            state.user.last_name = ''
-            state.user.image_url = null
-            state.user.created_at = undefined
-            state.user.last_login = undefined
-            state.user.last_updated = undefined
-            state.user.failed_login_attempts = 0
+            state.user = defaultUserSettings
         }
     },
     extraReducers: (builder) => {

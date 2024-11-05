@@ -234,7 +234,7 @@ class PostgresService {
     }
 
     /**
-     * Get records by a specific field and value
+     * Returns and array of records by a specific field and value
      * @param {string} field 
      * @param {any} value 
      * @returns {Promise<Array>} - Returns records by field
@@ -255,7 +255,7 @@ class PostgresService {
     }
 
     /**
-     * Get records by multiple fields
+     * Returns an array of records by multiple fields
      * @param {Object} fields 
      * @returns {Promise<Array>} - Returns records by fields
      * @example

@@ -7,6 +7,7 @@ interface AuthState {
     access_token: string | null
     isLoading: boolean
     isFormLoading: boolean
+    isAuthenticated: boolean
     error: string | null
 }
 
@@ -14,25 +15,24 @@ const initialState: AuthState = {
     access_token: null,
     isLoading: false,
     isFormLoading: false,
+    isAuthenticated: false,
     error: null,
 }
 
 
 export const signUp = createAsyncThunk(
     'signUp',
-    async (data: SignUpData, { dispatch }) => {
+    async (data: SignUpData, { dispatch, rejectWithValue }) => {
         try {
+            // clear local storage of any previous tokens
             localStorage.clear()
-            console.log("SECOND USER FORM", data)
             const response = await api.auth.signUp(data)
-            console.log("THIRD USER FORM", response)
-            console.log(response)
             if (response.access_token && response.user) {
-                console.log("FOURTH USER FORM DISPATCHING")
                 dispatch(setUser(response.user))
                 dispatch(setAccessToken(response.access_token))
+                return response
             }
-            return response
+            return rejectWithValue('Invalid response format')
         } catch (error) {
             return error
         }
@@ -43,9 +43,7 @@ export const refreshSession = createAsyncThunk(
     'refreshSession',
     async (_, { dispatch, rejectWithValue }) => {
         try {
-            console.log("REFRESH SESSION SEARCHING")
             const response = await api.auth.refreshSession()
-            console.log("REFRESH SESSION FOUND", response)
             if (response.access_token && response.user) {
                 dispatch(setUser(response.user))
                 dispatch(setAccessToken(response.access_token))
@@ -53,7 +51,6 @@ export const refreshSession = createAsyncThunk(
             }
             return rejectWithValue('Invalid response format')
         } catch (error) {
-            console.log("REFRESH SESSION ERROR, NOT FOUND", error)
             return error
         }
     }
@@ -61,15 +58,17 @@ export const refreshSession = createAsyncThunk(
 
 export const signIn = createAsyncThunk(
     'signIn',
-    async (data: SignInData, { dispatch }) => {
+    async (data: SignInData, { dispatch, rejectWithValue }) => {
         try {
+            // Clear local storage of any previous tokens
             localStorage.clear()
             const response = await api.auth.signIn(data)
             if (response.access_token && response.user) {
                 dispatch(setUser(response.user))
                 dispatch(setAccessToken(response.access_token))
+                return response
             }
-            return response
+            return rejectWithValue('Invalid response format')
         } catch (error) {
             return error
         }
@@ -119,11 +118,13 @@ const authSlice = createSlice({
             state.error = null
         })
         builder.addCase(signUp.fulfilled, (state, action) => {
+            state.isAuthenticated = true
             state.isFormLoading = false
             state.isLoading = false
             console.log("SIGNUP FULFILLED", action.payload)
         })
         builder.addCase(signUp.rejected, (state, action) => {
+            state.isAuthenticated = false
             state.isFormLoading = false
             state.isLoading = false
             state.error = action.payload as string
@@ -136,10 +137,12 @@ const authSlice = createSlice({
         })
         builder.addCase(refreshSession.fulfilled, (state, action) => {
             console.log("REFRESH SESSION FULFILLED", action.payload)
+            state.isAuthenticated = true
             state.isLoading = false
         })
         builder.addCase(refreshSession.rejected, (state, action) => {
             console.log("REFRESH SESSION REJECTED")
+            state.isAuthenticated = false
             state.isLoading = false
             state.error = action.error.message as string
         })
@@ -151,6 +154,7 @@ const authSlice = createSlice({
         })
         builder.addCase(signOut.fulfilled, (state) => {
             state.isLoading = false
+            state.isAuthenticated = false
             state.access_token = null
         })
         builder.addCase(signOut.rejected, (state, action) => {
@@ -166,6 +170,7 @@ const authSlice = createSlice({
         })
         builder.addCase(signIn.fulfilled, (state) => {
             state.isFormLoading = false
+            state.isAuthenticated = true
             state.isLoading = false
         })
         builder.addCase(signIn.rejected, (state, action) => {

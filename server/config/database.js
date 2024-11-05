@@ -13,17 +13,21 @@ const config = {
     ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 }
 
-// log database configuration (connection debugging)
+// log database configuration (for connection debugging)
+/*
 console.log('Database configuration:', {
     database: config.database,
     host: config.host,
     port: config.port,
     user: config.user,
 })
+*/
 
 export const pool = new pg.Pool(config)
 
-// Add connection event listeners (connection debugging)
+// connection event listeners (for connection debugging)
+/*
 pool.on('connect', () => {
     console.log('Pool connected to PostgreSQL')
 })
+*/

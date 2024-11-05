@@ -1,4 +1,5 @@
 import { pool } from './database.js'
+import './dotenv.js' // load .env file, put here for database startup, since we won't go through server.js
 
 const initDB = async () => {
     try {
