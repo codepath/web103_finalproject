@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { refreshSession } from '../store/slices/auth.slice'
 import { persistSession } from '../lib/session'
 
-export default function SessionInitializer() {
+const SessionInitializer = () => {
   const dispatch = useAppDispatch()
   const session = useAppSelector((state) => state.auth.access_token)
 
@@ -23,3 +23,5 @@ export default function SessionInitializer() {
 
   return null
 }
+
+export default SessionInitializer

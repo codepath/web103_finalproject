@@ -24,17 +24,12 @@ export const signUp = createAsyncThunk(
     'signUp',
     async (data: SignUpData, { dispatch, rejectWithValue }) => {
         try {
-            // clear local storage of any previous tokens
-            localStorage.clear()
             const response = await api.auth.signUp(data)
-            if (response.access_token && response.user) {
-                dispatch(setUser(response.user))
-                dispatch(setAccessToken(response.access_token))
-                return response
-            }
-            return rejectWithValue('Invalid response format')
+            dispatch(setUser(response.user))
+            dispatch(setAccessToken(response.access_token))
+             return response
         } catch (error) {
-            return error
+            return rejectWithValue(error instanceof Error ? error.message : 'An error occurred')
         }
     }
 )
@@ -43,15 +38,19 @@ export const refreshSession = createAsyncThunk(
     'refreshSession',
     async (_, { dispatch, rejectWithValue }) => {
         try {
-            const response = await api.auth.refreshSession()
-            if (response.access_token && response.user) {
-                dispatch(setUser(response.user))
-                dispatch(setAccessToken(response.access_token))
-                return response
+            // if you have an access token, you have a refresh token
+            // expired refresh tokens in http cookies are automatically
+            // not sent to the server because of how browsers work
+            const access_token = localStorage.getItem('access_token')
+            if (!access_token) {
+                return
             }
-            return rejectWithValue('Invalid response format')
+            const response = await api.auth.refreshSession()
+            dispatch(setUser(response.user))
+            dispatch(setAccessToken(response.access_token))
+            return response
         } catch (error) {
-            return error
+            return rejectWithValue(error instanceof Error ? error.message : 'An error occurred')
         }
     }
 )
@@ -60,17 +59,12 @@ export const signIn = createAsyncThunk(
     'signIn',
     async (data: SignInData, { dispatch, rejectWithValue }) => {
         try {
-            // Clear local storage of any previous tokens
-            localStorage.clear()
             const response = await api.auth.signIn(data)
-            if (response.access_token && response.user) {
-                dispatch(setUser(response.user))
-                dispatch(setAccessToken(response.access_token))
-                return response
-            }
-            return rejectWithValue('Invalid response format')
+            dispatch(setUser(response.user))
+            dispatch(setAccessToken(response.access_token))
+            return response
         } catch (error) {
-            return error
+            return rejectWithValue(error instanceof Error ? error.message : 'An error occurred')
         }
     }
 )
@@ -78,23 +72,13 @@ export const signIn = createAsyncThunk(
 
 export const signOut = createAsyncThunk(
     'signOut',
-    async (_, { dispatch, getState }) => {
-        const state = getState() as { auth: AuthState }
+    async (_, { dispatch, rejectWithValue }) => {
         try {
-            const access_token = state.auth.access_token
-            console.log("SIGN OUT ACCESS TOKEN", access_token)
-            if (!access_token) {
-                console.log("NO ACCESS TOKEN")
-                dispatch(clearUser())
-                return true
-            }
-            console.log("SIGN OUT ACCESS TOKEN FOUND")
-            localStorage.clear()
+            dispatch(clearAccessToken())
             dispatch(clearUser())
             await api.auth.signOut()
-            return true
         } catch (error) {
-            return error
+            return rejectWithValue(error instanceof Error ? error.message : 'An error occurred')
         }
     }
 )
@@ -108,6 +92,12 @@ const authSlice = createSlice({
         setAccessToken(state, action) {
             state.access_token = action.payload
             localStorage.setItem('access_token', action.payload)
+            state.isAuthenticated = true
+        },
+        clearAccessToken(state) {
+            state.access_token = null
+            localStorage.removeItem('access_token')
+            state.isAuthenticated = false
         },
     },
     extraReducers: (builder) => {
@@ -117,11 +107,10 @@ const authSlice = createSlice({
             state.isLoading = true
             state.error = null
         })
-        builder.addCase(signUp.fulfilled, (state, action) => {
-            state.isAuthenticated = true
+        builder.addCase(signUp.fulfilled, (state) => {
             state.isFormLoading = false
             state.isLoading = false
-            console.log("SIGNUP FULFILLED", action.payload)
+            state.error = null
         })
         builder.addCase(signUp.rejected, (state, action) => {
             state.isAuthenticated = false
@@ -129,22 +118,20 @@ const authSlice = createSlice({
             state.isLoading = false
             state.error = action.payload as string
         })
+
         // Refresh Session
         builder.addCase(refreshSession.pending, (state) => {
-            console.log("REFRESH SESSION PENDING")
             state.isLoading = true
             state.error = null
         })
-        builder.addCase(refreshSession.fulfilled, (state, action) => {
-            console.log("REFRESH SESSION FULFILLED", action.payload)
-            state.isAuthenticated = true
+        builder.addCase(refreshSession.fulfilled, (state) => {
             state.isLoading = false
+            state.error = null
         })
-        builder.addCase(refreshSession.rejected, (state, action) => {
-            console.log("REFRESH SESSION REJECTED")
+        builder.addCase(refreshSession.rejected, (state) => {
             state.isAuthenticated = false
             state.isLoading = false
-            state.error = action.error.message as string
+            state.error = null
         })
 
         // Sign Out
@@ -154,8 +141,7 @@ const authSlice = createSlice({
         })
         builder.addCase(signOut.fulfilled, (state) => {
             state.isLoading = false
-            state.isAuthenticated = false
-            state.access_token = null
+            state.error = null
         })
         builder.addCase(signOut.rejected, (state, action) => {
             state.isLoading = false
@@ -169,8 +155,8 @@ const authSlice = createSlice({
             state.error = null
         })
         builder.addCase(signIn.fulfilled, (state) => {
+            state.error = null
             state.isFormLoading = false
-            state.isAuthenticated = true
             state.isLoading = false
         })
         builder.addCase(signIn.rejected, (state, action) => {
@@ -181,5 +167,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { setAccessToken } = authSlice.actions
+export const { setAccessToken, clearAccessToken } = authSlice.actions
 export default authSlice.reducer

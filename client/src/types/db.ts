@@ -20,6 +20,6 @@ export interface SignUpData {
 }
 
 export interface SignInData {
-    user_name: string
+    email: string
     password: string
 }

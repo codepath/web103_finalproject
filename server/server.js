@@ -3,7 +3,8 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-import './config/dotenv.js' // load .env file variables globally
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express()
 

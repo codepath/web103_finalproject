@@ -8,7 +8,7 @@ export default verifyJWT = (req, res, next) => {
 
     // if there is no token, return an error
     if (!token) {
-        return res.status(401).send('Access denied')
+        return res.status(401).json({ message: 'No token provided' })
     }
 
     try {
@@ -17,7 +17,7 @@ export default verifyJWT = (req, res, next) => {
 
         // if the token is not an access token, return an error
         if (decodedToken.type !== 'access') {
-            return res.status(401).send('Not an access token')
+            return res.status(401).json({ message: 'Not an access token' })
         }
 
         // set the user property of the request to the decoded token
@@ -26,9 +26,9 @@ export default verifyJWT = (req, res, next) => {
         next()
     } catch (error) {
         if (error.name === 'TokenExpiredError') {
-            return res.status(401).send('Token expired')
+            return res.status(401).json({ message: 'Token expired' })
         }
         
-        return res.status(400).send('Invalid token')
+        return res.status(400).json({ message: 'Invalid token' })
     }
 }

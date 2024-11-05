@@ -4,7 +4,6 @@ const GithubLogin = () => {
     const handleGithubLogin = async () => {
         try {
             const response = await api.auth.getGithubLoginUrl()
-            console.log('GitHub login response:', response)
             window.location.href = response.url
         } catch (error) {
             console.error('Failed to start GitHub login:', error)

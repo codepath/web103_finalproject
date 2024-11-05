@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import { useAppDispatch } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { signUp, signIn } from '../store/slices/auth.slice'
-import GithubLogin from '../components/GithubLogin'
+import GithubLogin from '../auth/GithubLogin'
 
 
 const Auth = () => {
     const dispatch = useAppDispatch()
+    const { error, isLoading, isFormLoading } = useAppSelector((state) => state.auth)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -14,7 +15,7 @@ const Auth = () => {
     const [user_name, setUserName] = useState('')
 
     const [login_password, setLoginPassword] = useState('')
-    const [login_user_name, setLoginUserName] = useState('')
+    const [login_email, setLoginEmail] = useState('')
 
     const [apiRes, setApiRes] = useState({ accessToken: '', user: '' })
 
@@ -39,7 +40,7 @@ const Auth = () => {
             }
             // Make sure we wrap the user data in a user object
             console.log("FIRST USER FORM", userData)
-            const result = await dispatch(signUp(userData)).unwrap()
+            const result = await dispatch(signUp(userData))
             console.log("Signup successful:", result)
             // Handle successful signup (e.g., redirect to login or dashboard)
         } catch (error) {
@@ -52,10 +53,10 @@ const Auth = () => {
         e.preventDefault()
         try {
             const userData = {
-                user_name: login_user_name,
+                email: login_email,
                 password: login_password
             }
-            const result = await dispatch(signIn(userData)).unwrap()
+            const result = await dispatch(signIn(userData))
             console.log("Login successful:", result)
             // Handle successful login (e.g., redirect to dashboard)            
         } catch (error) {
@@ -68,6 +69,9 @@ const Auth = () => {
         <div className="flex flex-col items-center">
             <h1 className="text-3xl text-blue-600">Auth</h1>
             <p className="text-2xl font-regular">Sign Up / Login</p>
+            {error && <p className="text-red-600">{error}</p>}
+            {isLoading && <p>Loading...</p>}
+            {isFormLoading && <p>Form Loading...</p>}
             <p>State:</p>
             <code>{email}</code>
             <code>{password}</code>
@@ -125,15 +129,15 @@ const Auth = () => {
                 <button type="submit" className="bg-blue-600 text-white p-2 m-2">Sign Up</button>
             </form>
             <p>State:</p>
-            <code>{login_user_name}</code>
+            <code>{login_email}</code>
             <code>{login_password}</code>
             <form onSubmit={handleLogin} className="flex flex-col items-center w-[400px]">
                 <label>Login</label>
                 <input
                     type="text"
-                    placeholder="User Name"
-                    value={login_user_name}
-                    onChange={(e) => setLoginUserName(e.target.value)}
+                    placeholder="Email"
+                    value={login_email}
+                    onChange={(e) => setLoginEmail(e.target.value)}
                     className="border border-gray-400 p-2 m-2 w-full"
                 />
                 <input

@@ -35,10 +35,10 @@ const authController = {
             // get user from request
             const user = req.body
 
-            // check if user already exists
+            // check if email already exists
             const users = await User.get_by_field('email', user.email)
             if (users.length > 0) {
-                return res.status(409).json({ message: 'User already exists' })
+                return res.status(409).json({ message: 'Email already registered' })
             }
 
             // check if username already exists
@@ -111,13 +111,20 @@ const authController = {
             const login_data = req.body
 
             // find user by username
-            const users = await User.get_by_field('user_name', login_data.user_name)
+            const users = await User.get_by_field('email', login_data.email)
 
             // access the user
             const user = users[0]
             if (!user) {
                 return res.status(404).json({
                     message: 'User not found'
+                })
+            }
+
+            // check if user signed up with GitHub
+            if (user.github_id) {
+                return res.status(400).json({
+                    message: 'Account signed up with GitHub, please login with GitHub'
                 })
             }
     

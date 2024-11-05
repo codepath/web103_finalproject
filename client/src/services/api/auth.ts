@@ -1,6 +1,10 @@
 import { fetchApi } from "./base";
 import { SignUpData, SignInData } from "../../types/db";
 
+/**
+ * @description Uses fetchApi to make simplified auth related requests to the server
+ * @returns Server response
+ */
 export const authApi = {
     signUp: (user: SignUpData) =>
         fetchApi('/auth/signup', {
@@ -17,18 +21,15 @@ export const authApi = {
     signOut: () =>
         fetchApi('/auth/logout', {
         method: 'POST',
-        credentials: 'include',
     }),
 
     refreshSession: () =>
         fetchApi('/auth/refresh', {
         method: 'POST',
-        credentials: 'include', // Includes website saved cookies in the request, *refresh token*
     }),
 
     getGithubLoginUrl: () => 
         fetchApi('/auth/github/login', {
         method: 'GET',
-        credentials: 'include'
     }),
 }

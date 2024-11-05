@@ -27,11 +27,17 @@ const initialState: UserState = {
     error: null
 }
 
+// haven't used since user is automatically returned
+// and set in the refreshSession thunk in the auth slice
 export const refreshUser = createAsyncThunk(
     'refreshUser',
-    async (access_token: string, { dispatch }) => {
-        const response = await api.user.getMe(access_token)
-        dispatch(setUser(response.data))
+    async (access_token: string, { dispatch, rejectWithValue }) => {
+        try {
+            const response = await api.user.getMe(access_token)
+            dispatch(setUser(response.data))
+        } catch (error) {
+            return rejectWithValue(error instanceof Error ? error.message : 'An error occurred')   
+        }
     }
 )
 
@@ -40,7 +46,6 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser(state, action) {
-            console.log("SETTING USER", action.payload)
             state.user = action.payload
         },
         clearUser(state) {
