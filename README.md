@@ -24,52 +24,52 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ## Features
 
-### [ ] Authorization
+###  Authorization
 
-Allow users to securely create accounts, log in, and log out to access the booking system and manage their information.
+- [ ] Allow users to securely create accounts, log in, and log out to access the booking system and manage their information.
 
 [gif goes here]
 
 ### Home Page - List All Stores
 
-Display a list of all available nail salons, including basic information like name and address, to help users choose where to book an appointment.
+- [ ] Display a list of all available nail salons, including basic information like name and address, to help users choose where to book an appointment.
 
 [gif goes here]
 
 ### Store Details - List All Employees
 
-Show a list of employees at each selected salon, providing users with information about each employee’s name and specialties as well as the salon's details including title, address, and available time.
+- [ ] Show a list of employees at each selected salon, providing users with information about each employee’s name and specialties as well as the salon's details including title, address, and available time.
 
 [gif goes here]
 
 ### Employee Availability
 
-Display the available time slots for each selected employee, making it easy for users to choose a convenient time for their appointment.
+- [ ] Display the available time slots for each selected employee, making it easy for users to choose a convenient time for their appointment.
 
 ### Book Appointment
 
-Allow users to select an available time slot and confirm their booking. Ensure that users receive a confirmation when the booking is successful.
+- [ ] Allow users to select an available time slot and confirm their booking. Ensure that users receive a confirmation when the booking is successful.
 
 ### Email Notifications
 
-Automatically send an email to the salon notifying them of a new booking, send a confirmation email to the user for their records, and notifying users of upcoming appointments.
+- [ ] Automatically send an email to the salon notifying them of a new booking, send a confirmation email to the user for their records, and notifying users of upcoming appointments.
 
 ### User Profile - View Bookings
 
-- Enable users to see a list of all their current and upcoming bookings, including details like date, time, salon, and technician.
-- Showing current user's personal profile information including their full name, username, email, and phone number. The user can also update their information if needed.
+- [ ] Enable users to see a list of all their current and upcoming bookings, including details like date, time, salon, and technician.
+- [ ] Showing current user's personal profile information including their full name, username, email, and phone number. The user can also update their information if needed.
 
 ### Modify and Cancel Bookings
 
-Allow users to view or cancel their bookings if their plans change, providing flexibility in managing appointments.
+- [ ] Allow users to view or cancel their bookings if their plans change, providing flexibility in managing appointments.
 
 ### Search and Filter
 
-Allow users to search for salons by name or location and filter results based on ratings, services offered, or distance.
+- [ ] Allow users to search for salons by name or location and filter results based on ratings, services offered, or distance.
 
 ### User Reviews and Ratings
 
-Provide a platform for users to leave reviews for salons and display ratings to help other users make informed choices.
+- [ ] Provide a platform for users to leave reviews for salons and display ratings to help other users make informed choices.
 
 ## Installation Instructions
 
