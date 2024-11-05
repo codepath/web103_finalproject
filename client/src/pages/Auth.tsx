@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useAppDispatch } from '../store/hooks'
 import { signUp, signIn } from '../store/slices/auth.slice'
+import GithubLogin from '../components/GithubLogin'
+
 
 const Auth = () => {
     const dispatch = useAppDispatch()
@@ -143,6 +145,7 @@ const Auth = () => {
                 />
                 <button type="submit" className="bg-blue-600 text-white p-2 m-2">Login</button>
             </form>
+            <GithubLogin />
         </div>
     )
 }

@@ -168,6 +168,12 @@ const authController = {
                 const user = await User.get_by_id(decoded.userId)
                 console.log("USER",user)
                 if (!user) {
+                    res.cookie('refresh', '', {
+                        httpOnly: true,
+                        secure: true,
+                        sameSite: 'None',
+                        maxAge: 0 // Expires immediately
+                    })
                     return res.status(404).json({
                         message: "User not found"
                     })
@@ -251,11 +257,100 @@ const authController = {
         }
     },
 
-    // OAuth routes (do later)
-    async github(req, res) {},
+    // Initiates GitHub OAuth flow
+    async githubLogin(req, res) {
+        const githubUrl = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=http://localhost:3000/auth/github/callback&scope=user:email`
+        res.json({ url: githubUrl })
+    },
 
-    async githubCallback(req, res) {},
-
+    // Handles the GitHub callback
+    // authController.js
+    async githubCallback(req, res) {
+        try {
+            const { code } = req.query
+            console.log("1. Received GitHub code:", code)
+    
+            // Exchange code for access token
+            const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    client_id: process.env.GITHUB_CLIENT_ID,
+                    client_secret: process.env.GITHUB_CLIENT_SECRET,
+                    code
+                })
+            })
+            const tokenData = await tokenRes.json()
+            console.log("2. GitHub token response:", tokenData)
+    
+            // Get GitHub user data
+            const userRes = await fetch('https://api.github.com/user', {
+                headers: {
+                    'Authorization': `Bearer ${tokenData.access_token}`,
+                    'Accept': 'application/json'
+                }
+            })
+            const githubUser = await userRes.json()
+            console.log("3. GitHub user data:", githubUser)
+    
+            // Get user's email (make separate request)
+            const emailRes = await fetch('https://api.github.com/user/emails', {
+                headers: {
+                    'Authorization': `Bearer ${tokenData.access_token}`,
+                    'Accept': 'application/json'
+                }
+            })
+            const emails = await emailRes.json()
+            console.log("4. GitHub emails:", emails)
+    
+            // Get primary email
+            const primaryEmail = emails.find(email => email.primary)?.email
+            if (!primaryEmail) {
+                console.error("No primary email found")
+                return res.redirect('http://localhost:5173/auth/github/error')
+            }
+    
+            // Find or create user
+            const users = await User.get_by_field('github_id', githubUser.id.toString())
+            let user = users[0]
+    
+            if (!user) {
+                console.log("5. Creating new user")
+                const newUser = {
+                    github_id: githubUser.id.toString(),
+                    email: primaryEmail,  // Use the primary email we fetched
+                    user_name: githubUser.login,
+                    first_name: githubUser.name?.split(' ')[0] || githubUser.login,
+                    last_name: githubUser.name?.split(' ')[1] || '',
+                    image_url: githubUser.avatar_url,
+                    password: null  // Since this is a GitHub user
+                }
+                console.log("New user data:", newUser)
+                user = await User.save(newUser)
+            }
+    
+            // Generate tokens
+            const tokens = await generateTokens(user)
+    
+            // Set refresh token cookie
+            res.cookie('refresh', tokens.refreshToken, {
+                httpOnly: true,
+                sameSite: 'None',
+                secure: true,
+                maxAge: 7 * 24 * 60 * 60 * 1000
+            })
+    
+            // Redirect to frontend
+            return res.redirect(`http://localhost:5173/auth/github/success?access_token=${tokens.accessToken}`)
+    
+        } catch (error) {
+            console.error('GitHub auth error:', error)
+            return res.redirect('http://localhost:5173/auth/github/error')
+        }
+    }
 }
 
 export default authController

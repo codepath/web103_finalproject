@@ -8,8 +8,8 @@ router.post('/signup', authController.signup)
 router.post('/login', authController.login)
 
 // OAuth routes
-router.post('/github', authController.github)
-router.post('/github/callback', authController.githubCallback)
+router.get('/github/login', authController.githubLogin)
+router.get('/github/callback', authController.githubCallback)
 
 // Token management routes
 router.post('/refresh', authController.refresh)

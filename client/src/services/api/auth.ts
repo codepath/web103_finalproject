@@ -25,4 +25,10 @@ export const authApi = {
         method: 'POST',
         credentials: 'include', // Includes website saved cookies in the request, *refresh token*
     }),
+
+    getGithubLoginUrl: () => 
+        fetchApi('/auth/github/login', {
+        method: 'GET',
+        credentials: 'include'
+    }),
 }
