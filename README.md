@@ -24,7 +24,7 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ## Features
 
-### Authorization
+### [ ] Authorization
 
 Allow users to securely create accounts, log in, and log out to access the booking system and manage their information.
 
