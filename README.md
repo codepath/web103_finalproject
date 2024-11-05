@@ -18,9 +18,9 @@ The idea for BookEZ came from the challenges many people face when booking appoi
 
 ## Tech Stack
 
-Frontend:
+Frontend: React.js, Boostrap 5.
 
-Backend:
+Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ## Features
 
@@ -38,7 +38,7 @@ Display a list of all available nail salons, including basic information like na
 
 ### Store Details - List All Employees
 
-Show a list of employees at each selected salon, providing users with information about each employee’s name and specialties.
+Show a list of employees at each selected salon, providing users with information about each employee’s name and specialties as well as the salon's details including title, address, and available time.
 
 [gif goes here]
 
@@ -52,15 +52,16 @@ Allow users to select an available time slot and confirm their booking. Ensure t
 
 ### Email Notifications
 
-Automatically send an email to the salon notifying them of a new booking and send a confirmation email to the user for their records.
+Automatically send an email to the salon notifying them of a new booking, send a confirmation email to the user for their records, and notifying users of upcoming appointments.
 
 ### User Profile - View Bookings
 
-Enable users to see a list of all their current and upcoming bookings, including details like date, time, salon, and technician.
+- Enable users to see a list of all their current and upcoming bookings, including details like date, time, salon, and technician.
+- Showing current user's personal profile information including their full name, username, email, and phone number. The user can also update their information if needed.
 
 ### Modify and Cancel Bookings
 
-Allow users to edit or cancel their bookings if their plans change, providing flexibility in managing appointments.
+Allow users to view or cancel their bookings if their plans change, providing flexibility in managing appointments.
 
 ### Search and Filter
 
