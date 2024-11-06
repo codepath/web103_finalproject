@@ -14,19 +14,19 @@ const NavigationBar = () => {
 
                 <div className="nav-bar-logged-in-status">
                     {
-                        loggedIn 
+                        !loggedIn 
                         ?
                             <div className="nav-bar-right-box">
-                                <button type="button" className="btn btn-light" onClick={() => navigate("/login")}>Log In</button>
-                                <button type="button" className="btn btn-info" onClick={() => navigate("/signup")}>Sign Up</button>
+                                <button type="button" class="btn btn-light button-light" onClick={() => {navigate("/login"); setLoggedIn(true); console.log(loggedIn)}}>Log In</button>
+                                <button type="button" class="btn btn-info button-info" onClick={() => navigate("/signup")}>Sign Up</button>
                             </div>
                         :
                             <div className="nav-bar-right-box">
                                 <div className="nav-bar-profile-image-box">
-                                    <img src='../../data/profile_sample_image.jpg' className="nav-bar-profile-image-url" alt="Profile" />
+                                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHEJ-8GyKlZr5ZmEfRMmt5nR4tH_aP-crbgg&s' className="nav-bar-profile-image-url" alt="Profile" />
                                 </div>
-                                <div className="nav-bar-username">
-                                    Drake Do=
+                                <div className="nav-bar-username" onClick={() => {setLoggedIn(false); console.log(loggedIn)}}>
+                                    Drake Do
                                 </div>
                             </div>
                     }
