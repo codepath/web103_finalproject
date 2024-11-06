@@ -1,0 +1,26 @@
+.nav-bar {
+    height: 7vh;
+    padding: 10px 4%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar-right-box {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.nav-bar-profile-image-box {
+    border-radius: 20px;
+    border: 2px cyan solid;
+    padding: 1px;
+}
+
+.nav-bar-profile-image-url {
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+}
