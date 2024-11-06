@@ -14,25 +14,20 @@ import NotFoundPage from './pages/not-found-page';
 function App() {
 
   return (
-    <div className='app'>
-
-      <NavigationBar />
-
       <BrowserRouter>
-      <div className="App">
-          <Routes>
-            <Route path="/" element={<HomePage title='Home Page' />} />
-            <Route path="/login" element={<LoginPage title='Login Page' />} />
-            <Route path="/signup" element={<SignUpPage title='Create an account' />} />
-            <Route path="/profile" element={<ProfilePage title='Profile Page' />} />
-            <Route path="/employee/appointment" element={<AppointmentPage title='Reserve an appointment with employee' />} />
-            <Route path="/salon" element={<SalonPage title='Salon' />}/>
-            <Route path="*" element={<NotFoundPage title="404 Page not found" />} />
-          </Routes>
-      </div>
-    </BrowserRouter>
-
-    </div>
+        <div className="App">
+          <NavigationBar />
+            <Routes>
+              <Route path="/" element={<HomePage title='Home Page' />} />
+              <Route path="/login" element={<LoginPage title='Login Page' />} />
+              <Route path="/signup" element={<SignUpPage title='Create an account' />} />
+              <Route path="/profile" element={<ProfilePage title='Profile Page' />} />
+              <Route path="/employee/appointment" element={<AppointmentPage title='Reserve an appointment with employee' />} />
+              <Route path="/salon" element={<SalonPage title='Salon' />}/>
+              <Route path="*" element={<NotFoundPage title="404 Page not found" />} />
+            </Routes>
+        </div>
+      </BrowserRouter>
   )
 }
 
