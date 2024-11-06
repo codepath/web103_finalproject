@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.navbar {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-image {
+    width: 50%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.ingredients,
+.instructions {
+    margin-top: 20px;
+}
+
+.ingredients ul {
+    padding-left: 20px;
+}
+
+.save-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
