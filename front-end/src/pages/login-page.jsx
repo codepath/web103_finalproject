@@ -9,7 +9,7 @@ const LoginPage = () => {
         <> 
             <div className='login-box-frame'>
                 <div className="login-box">
-                    <h1>Log in here</h1>
+                    <h1>Log in to your account</h1>
 
                     <div className='login-box-component'>
                         <label>
