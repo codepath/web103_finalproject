@@ -18,7 +18,7 @@ const NavigationBar = () => {
                         ?
                             <div className="nav-bar-right-box">
                                 <button type="button" class="btn btn-light button-light" onClick={() => {navigate("/login"); setLoggedIn(true); console.log(loggedIn)}}>Log In</button>
-                                <button type="button" class="btn btn-info button-info" onClick={() => navigate("/signup")}>Sign Up</button>
+                                <button type="button" class="btn btn-info button-info" onClick={() => navigate("/signup")}>Register</button>
                             </div>
                         :
                             <div className="nav-bar-right-box">
