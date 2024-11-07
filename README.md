@@ -34,11 +34,10 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 - [ ] Allow users to securely create accounts, log in, and log out to access the booking system and manage their information.
 
-[gif goes here]
-Login Page: 
+- Login Page: 
 ![LoginPageRecord](https://github.com/user-attachments/assets/1645619d-8b35-4311-8ae8-732c08821352)
 
-Signup Page:
+- Signup Page:
 ![SignUpPage](https://github.com/user-attachments/assets/a87f806b-28a2-4154-8b6d-0ff4c7f1ea59)
 
 
@@ -46,8 +45,7 @@ Signup Page:
 
 - [ ] Display a list of all available nail salons, including basic information like name and address, to help users choose where to book an appointment.
 
-[gif goes here]
-Demo of home page
+- Demo of home page
 ![HomePage](https://github.com/user-attachments/assets/69d39f16-9521-49e0-89ad-667e8321bbf2)
 
 
