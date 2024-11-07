@@ -28,7 +28,7 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 - [ ] Set up and manage a PostgreSQL database with structured tables for users, salons, employees, bookings, and time slots. This feature includes robust reset and seeding capabilities, enabling developers to easily reset tables and populate them with initial mock data, ensuring a consistent database state for testing and development.
 
-![DB Table GIF](path/to/your-gif.gif)
+![DB Table GIF](https://github.com/Web103-BookEZ/web103_finalproject/tree/main/gifs)
 
 ### Authorization
 
