@@ -5,6 +5,10 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
+    const checkInformationAndLogin = () => {
+        navigate("/");
+    }
+
     return (
         <> 
             <div className='login-box-frame'>
@@ -22,9 +26,10 @@ const LoginPage = () => {
                             <input className='login-input' type='password' placeholder='Enter your password here' required/>
                         </label>
 
-                        <button className='signin-button'>Log In</button>
+                        <button className='signin-button' onClick={() => checkInformationAndLogin()}>Log In</button>
 
-                        <a href='#' onClick={() => navigate("/signup")}><i>Forgot Password?</i></a>
+                        <a href='#' onClick={() => navigate("/forgot-password")}><i>Forgot Password?</i></a>
+                        <a href='#' onClick={() => navigate("/signup")}><i>Did not have account? Create a new account</i></a>
                     </div>
 
                     

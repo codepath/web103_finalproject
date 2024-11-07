@@ -10,6 +10,8 @@ import AppointmentPage from './pages/appointment-page';
 import SalonPage from './pages/salon-page';
 import SignUpPage from './pages/sign-up-page';
 import NotFoundPage from './pages/not-found-page';
+import ForgotPasswordCheckEmail from './pages/forgot-password-check-email';
+import ForgotPasswordNewPassword from './pages/forgot-password-new-password';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage title='Home Page' />} />
               <Route path="/login" element={<LoginPage title='Login Page' />} />
+              <Route path="/forgot-password" element={<ForgotPasswordCheckEmail title='Confirm your email' />} />
+              <Route path="/new-password" element={<ForgotPasswordNewPassword title='Enter new password' />} />
               <Route path="/signup" element={<SignUpPage title='Create an account' />} />
               <Route path="/profile" element={<ProfilePage title='Profile Page' />} />
               <Route path="/employee/appointment" element={<AppointmentPage title='Reserve an appointment with employee' />} />
