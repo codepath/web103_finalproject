@@ -1,0 +1,106 @@
+.home-page-frame {
+    /* height: 90%; */
+    width: 100%;
+    padding: auto 4%;
+}
+
+p {
+    font-size: 68px;
+    font-weight: bold;
+    margin: 0;
+}
+
+h4 {
+    margin: 0;
+}
+
+.home-page-landing {
+    height: 64vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: auto 4%;
+
+    gap: 5%;
+
+    /* background-color: red; */
+}
+
+.home-page-landing-explore-more {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.button-light {
+    background-color: azure;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+.button-info {
+    background-color: cyan;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+.button-info:hover, .button-light:hover {
+    transform: scale(1.125);
+}
+
+.home-page-introduction {
+    height: 45vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.home-page-introduction-description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+}
+
+.home-page-introduction-image {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 15px;
+}
+
+.home-page-introduction-image img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+}
+
+.home-page-salons {
+    padding: auto 20px;
+    height: 30vh;
+}
+
+.hps-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+}
+
+.home-page-salons-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
