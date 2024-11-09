@@ -1,0 +1,30 @@
+
+header {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-header {
+    height: 30vh;
+    width: 85vw;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+}
+
+.header-buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-buttons button {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.body{
+    background-color: rgba(5, 5, 5, 0.973);
+}
