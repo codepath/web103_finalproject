@@ -24,11 +24,11 @@ Backend:
 
 ## Features
 
-### View All Trips
+### View All Trips ✅
 
 Users can view all scheduled trips. They can create, update, and delete trips.
 
-[gif goes here]
+![viewalltrips gif](gifs/viewalltrips.gif)
 
 ### View Trip Details
 
