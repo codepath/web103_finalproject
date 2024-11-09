@@ -1,61 +1,89 @@
-.App {
-  font-family:Avenir, "Century Gothic", sans-serif;
-  font-weight:100; 
-  font-style:normal;
-  font-size: calc(10px + 2vmin);
-  color: #373D3F;
-  justify-content: center;
-  background-image: url('background.jpg');
-  background-color: #97bfd8a3;
-  background-position: right center;
-  background-size: cover;
-  padding:20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-
-  min-height: 800px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  
-}
-
-.header {
+.ribbon {
+  background-color: rgb(223, 129, 20);
   width: 100%;
-  color: #373D3F;
-  text-align: center;
+  display: flex;
+  justify-content: end;
 }
 
-.headerBtn {
-  margin-bottom: 50px;
-  margin-right: 10px;
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
 }
 
-.ReadPosts {
-  display: grid;
-  grid-auto-flow: row;
-
-  gap: 30px;
+.icons img {
+  width: 24px;
+  height: auto;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+.text {
   font-size: 15px;
-  font-weight: 500;
-  font-family: inherit;
-  color:373D3F;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  margin-left: -10px;
+  margin-right: 5px;
 }
-.headerBtn:hover {
-  background-color: #97bfd8;
-  transition: all .7s ease;
-  -webkit-transition: all .7s ease;
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  background-color: rgb(5, 5, 5, 0.18);
+  height: 40px;
+  padding-left: 10px;
+}
+
+.nav-buttons a {
+  font-size: 18px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: lighter;
+  color: white;
+  padding: 8px ;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px;
+  margin-right: 5px;
+}
+
+.nav-buttons a:hover {
+  background-color: rgba(237, 137, 22, 0.71);
+  border-radius: 5px;
+}
+
+.nav-buttons img.logo {
+  height: 38px;
+  margin-right: 20px;
+}
+
+.nav-icons {
+  gap: 15px;
+  margin-left: 415px;
+}
+
+.nav-icons img {
+  width: 20px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.logo {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  z-index: 10;
+}
+
+.logo img {
+  width: 200px;
+  height: 70px;
+  margin-top: 10px;
+}
+
+.nav-header {
+  top:34px;
+  left:0;
+  position: absolute;
+  height:100px;
+  width: 100%;
+  margin-left: 200px;
+  margin-top: 10px; 
 }

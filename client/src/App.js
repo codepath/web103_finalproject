@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom'
+import Home from './pages/Home'
 import ReadTrips from './pages/ReadTrips'
 import CreateTrip from './pages/CreateTrip'
 import EditTrip from './pages/EditTrip'
@@ -10,7 +11,12 @@ import TripDetails from './pages/TripDetails'
 import { Link } from 'react-router-dom'
 import CreateActivity from './pages/CreateActivity';
 import AddToTrip from './pages/AddToTrip';
-
+import Logo from './assets/Logo.png';
+import email_icon from './assets/email_icon.png';
+import instagram_icon from './assets/instagram_icon.png';
+import whatsapp_icon from './assets/whatsapp_icon.png';
+import heart_icon from './assets/heart_icon.png';
+import profile_icon from './assets/profile_icon.png';
 
 
 const App = () => {
@@ -32,6 +38,10 @@ const App = () => {
   let element = useRoutes([
     {
       path: "/",
+      element:<Home/>
+    },
+    {
+      path: "/trips",
       element:<ReadTrips data={trips}/>
     },
     {
@@ -70,11 +80,36 @@ const App = () => {
     <div className="App">
 
       <div className="header">
+        <div className="home_page">
+            <div className='ribbon'>
+                <div className = 'icons'>
+                    <img src={instagram_icon}/><div className="text" >tripotrail_find_me</div>
+                    <img src={whatsapp_icon}/><div className="text" >+1-404-987-999</div>
+                    <img src={email_icon}/><div className="text" >support@tripotrail.com</div>
+                </div>
+            </div>
+            <div className='main_page'>
+                <div className='logo'>
+                    <img src={Logo} alt="Logo" />
+                </div>
+                <div className="nav-header">
+                    <div className="nav-buttons">
+                        <a href='/' role='button'>Home</a>
+                        <Link to="/trip/new"><a href='/planYourTrip' role='button'>Plan your Trip</a></Link>
+                        <Link to="/trips"><a href='/myTrips' role='button'>My Trips</a></Link>
+                        <a href='/destinations' role='button'>Destinations</a>
+                        <a href='/about' role='button'>About</a>
+                        <a href='/blog' role='button'>Blogs</a>
+                        <a href='/contact' role='button'>Contact</a>
+                        <div className = 'nav-icons'>
+                            <img src={heart_icon}/>
+                            <img src={profile_icon}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
 
-        <h1>On The Fly ✈️</h1>
-        <Link to="/"><button className="headerBtn">Explore Trips</button></Link>
-        <Link to="/destinations"><button className="headerBtn">Explore Destinations</button></Link>
-        <Link to="/trip/new"><button className="headerBtn"> + Add Trip </button></Link>
       </div>
         {element}
     </div>
