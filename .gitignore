@@ -1,1 +1,69 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Environment variables
+.env
+client/.env
+
+# Build files and directories
+dist/
+build/
+client/build/
+client/dist/
+
+# Cache files
+.cache/
+.client/.cache/
+client/.cache/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+
+# Coverage reports
+coverage/
+client/coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+*.sass-cache
+*.class
+*.pyc
+*.pyo
+*.pyd
+
+# Testing and debug files
+.nyc_output/
+.jest/
+test-results/
+client/test-results/
+
+# TypeScript specific (if applicable)
+*.tsbuildinfo
+client/*.tsbuildinfo
+
+# Optional: Ignore database files
+*.sqlite
+*.db
+
+# Ignore public or generated files (optional)
+public/
+client/public/
+
 ./server/.env
