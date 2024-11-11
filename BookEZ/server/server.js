@@ -1,5 +1,6 @@
 import express from 'express'
-import EmployeeRouter from './routes/EmployeeRouter'
+import EmployeeRouter from './routes/EmployeeRouter.js'
+import TimeslotRouter from './routes/TimeslotRouter.js'
 
 const app = express()
 
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/employee', EmployeeRouter)
+app.use('/api/timeslots', TimeslotRouter)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
