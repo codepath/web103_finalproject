@@ -19,6 +19,46 @@ const salons = [
     phone_number: '555-5678',
     email: 'info@stylehub.com',
   },
-]
+  {
+    id: 3,
+    name: 'Chic Cuts',
+    address: '789 Trendy St',
+    city: 'Stylestown',
+    state: 'TX',
+    zip_code: '75001',
+    phone_number: '555-8765',
+    email: 'hello@chiccuts.com',
+  },
+  {
+    id: 4,
+    name: 'Lux Looks',
+    address: '321 Glamour Ln',
+    city: 'Shine City',
+    state: 'FL',
+    zip_code: '33101',
+    phone_number: '555-4321',
+    email: 'contact@luxlooks.com',
+  },
+  {
+    id: 5,
+    name: 'Beauty Bliss',
+    address: '654 Elegance Dr',
+    city: 'Radiant Town',
+    state: 'NV',
+    zip_code: '89109',
+    phone_number: '555-2345',
+    email: 'info@beautybliss.com',
+  },
+  {
+    id: 6,
+    name: 'Glow Up Salon',
+    address: '987 Shine Ave',
+    city: 'Bright City',
+    state: 'WA',
+    zip_code: '98101',
+    phone_number: '555-6789',
+    email: 'support@glowupsalon.com',
+  },
+];
 
 export default salons;

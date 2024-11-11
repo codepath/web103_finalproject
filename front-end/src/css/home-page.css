@@ -1,30 +1,26 @@
-.home-page-frame {
-    /* height: 90%; */
-    width: 100%;
-    padding: auto 4%;
-}
-
-p {
-    font-size: 68px;
+.hpl-title {
+    font-size: 75px;
     font-weight: bold;
     margin: 0;
 }
 
 h4 {
-    margin: 0;
+    margin: 5px 0;
 }
 
 .home-page-landing {
-    height: 64vh;
+    height: 80%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: auto 4%;
+
+    padding: 0 7%;
 
     gap: 5%;
 
-    /* background-color: red; */
+    background-color: #CDF5FD;
 }
 
 .home-page-landing-explore-more {
@@ -55,25 +51,31 @@ h4 {
     transform: scale(1.125);
 }
 
+/* Introduction box */
 .home-page-introduction {
-    height: 45vh;
+    /* height: 45%; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 
-    padding-left: 10%;
-    padding-right: 10%;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 7%;
+    padding-right: 7%;
+
+    /* background-color: #CDF5FD; */
 }
 
 .home-page-introduction-description {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     padding: 15px;
+
 }
 
 .home-page-introduction-image {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -87,9 +89,12 @@ h4 {
     border-radius: 10px;
 }
 
+/* List of salon page */
 .home-page-salons {
-    padding: auto 20px;
-    height: 30vh;
+    padding: 50px 7%;
+    /* height: 30; */
+
+    background-color: #CDF5FD;
 }
 
 .hps-header {
@@ -97,10 +102,59 @@ h4 {
     flex-direction: column;
     align-items: start;
     gap: 15px;
+    /* justify-self: start; */
+}
+
+.hps-search-bar {
+    display: flex;
+    /* justify-self: end; */
+    align-self: self-start;
+    padding-top: 20px;
+    
 }
 
 .home-page-salons-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.home-page-introduction-description-advantage {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: start;
+    align-items: start;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.sb-salon-name:hover {
+    color: #00A9FF;
+    cursor: pointer;
+}
+
+h5 {
+    margin: 0;
+}
+
+.hps-list-of-salon {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5%;
+
+    margin-top: 20px;
+}
+
+.salon-box {
+    border: 1px black solid;
+    border-radius: 15px;
+    padding: 10px 5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
 }
