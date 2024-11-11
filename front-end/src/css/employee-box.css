@@ -13,3 +13,7 @@
 .employee-image {
 
 }
+
+.isOwner {
+    pointer-events: none;
+}

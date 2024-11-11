@@ -51,6 +51,8 @@ const SalonPage = () => {
                 <h3>Email: {salonEmail}</h3>
             </div>
 
+            <h1>List of employees of salon</h1>
+            <h3><i>Booking your favourite Hairdresser/Manicurist here</i></h3>
             <div className="salon-page-salon-list-of-employees">
                 {employeeList.map((employee) => (
                     <EmployeeBox employee={employee} />
