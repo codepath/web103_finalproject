@@ -1,0 +1,60 @@
+.appointment-page-employee-details {
+    /* width: 100%; */
+    padding: 20px 7%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.appointment-reservation {
+    padding: 20px 7%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.list-of-timeSlot {
+    width: 50%;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.timeslot {
+    border-radius: 15px;
+    padding: 20px 25px;
+    height: max-content;
+    width: max-content;
+    background-color: #A0E9FF;
+    border: 2px black solid;
+    margin: 15px;
+}
+
+.timeslot:focus {
+    border: 2px black purple;
+
+}
+
+.reserve-a-timeSlot {
+    width: 50%;
+    /* background-color: aqua; */
+    padding: 20px 5%;
+}
+
+.input-box {
+    width: 100%;
+    line-height: 24px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5%;
+} 
+
+.button-info {
+    background-color: cyan;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
