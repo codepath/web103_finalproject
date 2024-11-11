@@ -1,4 +1,4 @@
-import '../css/login-page.css';
+import '../../css/login-page.css';
 import { useNavigate } from "react-router-dom";
 
 const ForgotPasswordCheckEmail = () => {

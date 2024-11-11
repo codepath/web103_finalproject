@@ -1,8 +1,11 @@
 import "../../css/home-page.css";
 import salons from "../../data/salons";
 import SalonBox from "./salon-box";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+
+    const navigate = useNavigate();
 
     return (
         <> 
@@ -52,8 +55,8 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className="hps-list-of-salon">
-                        {salons.map((salon) => (
-                            <SalonBox salon={salon} />
+                        {salons.map((salon, index) => (
+                            <SalonBox salon={salon} onClick={() => navigate(`/salon/${index}`)} />
                         ))}
                     </div>
                 </div>

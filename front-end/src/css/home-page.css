@@ -128,7 +128,12 @@ h4 {
 }
 
 h1 {
-    margin: 0;
+    margin-bottom: 0;
+}
+
+.sb-salon-name:hover {
+    color: #00A9FF;
+    cursor: pointer;
 }
 
 h5 {
