@@ -1,5 +1,5 @@
 import express from 'express'
-import SalonController from '../controllers/salon.js'
+import SalonController from '../controllers/SalonController.js'
 
 const router = express.Router()
 

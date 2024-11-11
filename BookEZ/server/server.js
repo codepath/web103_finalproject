@@ -1,7 +1,8 @@
 import express from 'express'
 import EmployeeRouter from './routes/EmployeeRouter.js'
 import TimeslotRouter from './routes/TimeslotRouter.js'
-import SalonRouter from './routes/salon.js'
+import SalonRouter from './routes/SalonRouter.js'
+import BookingRouter from './routes/BookingRouter.js'
 
 const app = express()
 
@@ -13,7 +14,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/salon', SalonRouter);
 app.use('/api/employee', EmployeeRouter)
-app.use('/api/timeslots', TimeslotRouter)
+app.use('/api/timeslot', TimeslotRouter)
+app.use('/api/booking', BookingRouter)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
