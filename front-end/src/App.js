@@ -4,7 +4,7 @@ import './App.css';
 
 import NavigationBar from './components/nav-bar';
 import LoginPage from './pages/login-page';
-import HomePage from './pages/home-page';
+import HomePage from './pages/home-page/home-page';
 import ProfilePage from './pages/profile-page';
 import AppointmentPage from './pages/appointment-page';
 import SalonPage from './pages/salon-page';
