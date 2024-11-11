@@ -1,4 +1,4 @@
-import '../css/signup-page.css';
+import '../../css/signup-page.css';
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
