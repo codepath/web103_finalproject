@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const SalonBox = ({ salon }) => {
-    console.log(salon);
+    // console.log(salon);
     const navigate = useNavigate();
 
     return (

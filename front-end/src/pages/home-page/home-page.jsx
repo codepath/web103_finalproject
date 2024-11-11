@@ -56,7 +56,7 @@ const HomePage = () => {
                     </div>
                     <div className="hps-list-of-salon">
                         {salons.map((salon, index) => (
-                            <SalonBox salon={salon} onClick={() => navigate(`/salon/${index}`)} />
+                            <SalonBox salon={salon} key={index} onClick={() => navigate(`/salon/${index}`)} />
                         ))}
                     </div>
                 </div>
