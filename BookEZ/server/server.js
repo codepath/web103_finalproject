@@ -1,6 +1,7 @@
 import express from 'express'
 import EmployeeRouter from './routes/EmployeeRouter.js'
 import TimeslotRouter from './routes/TimeslotRouter.js'
+import SalonRouter from './routes/salon.js'
 
 const app = express()
 
@@ -10,6 +11,7 @@ app.get('/', (req, res) => {
     .send('<h1 style="text-align: center; margin-top: 50px;">BookEZ API</h1>')
 })
 
+app.use('/api/salon', SalonRouter);
 app.use('/api/employee', EmployeeRouter)
 app.use('/api/timeslots', TimeslotRouter)
 
