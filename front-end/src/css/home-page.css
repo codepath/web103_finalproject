@@ -113,6 +113,14 @@ h4 {
     
 }
 
+.input-box {
+    width: 100%;
+    line-height: 24px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5%;
+} 
+
 .home-page-salons-header {
     display: flex;
     flex-direction: row;

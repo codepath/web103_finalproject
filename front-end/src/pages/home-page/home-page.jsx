@@ -1,11 +1,19 @@
+import { useState } from "react";
 import "../../css/home-page.css";
 import salons from "../../data/salons";
 import SalonBox from "./salon-box";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-
+    const [searchPattern, setSearchPattern] = useState("");
+    const [salonToDisplay, setSalonToDisplay] = useState(salons);
+ 
     const navigate = useNavigate();
+
+    const onSearch = () => {
+        let searchMap = salonToDisplay.filter((s) => s.name.startsWith(searchPattern));
+        setSalonToDisplay(searchMap);
+    }
 
     return (
         <> 
@@ -51,11 +59,11 @@ const HomePage = () => {
                         </div>
 
                         <div className="hps-search-bar">
-                            <input />
+                            <input type="text" placeholder="Search" className="input-box" onChange={(e) => {setSearchPattern(e.target.value); onSearch()}} />
                         </div>
                     </div>
                     <div className="hps-list-of-salon">
-                        {salons.map((salon, index) => (
+                        {salonToDisplay.map((salon, index) => (
                             <SalonBox salon={salon} key={index} onClick={() => navigate(`/salon/${index}`)} />
                         ))}
                     </div>
