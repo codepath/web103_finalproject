@@ -10,9 +10,12 @@
     border-bottom: 1px black solid;
 }
 
-/* .employee-image {
-
-} */
+.employee-image {
+    width: 96%;
+    height: 96%;
+    border-radius: 15px;
+    padding: 2%
+}
 
 .isOwner {
     pointer-events: none;

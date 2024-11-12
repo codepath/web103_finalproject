@@ -3,7 +3,8 @@ import { pool } from '../config/database.js'
 const getFreeTimeslotsByEmployeeId = async (req, res) => {
     const employee_id = req.params.employee_id;
     try {
-        const results = await pool.query('SELECT * FROM time_slots WHERE employee_id=$1 AND is_booked=False', [employee_id])
+        // const results = await pool.query('SELECT * FROM time_slots WHERE employee_id=$1 AND is_booked=False', [employee_id])
+        const results = await pool.query('SELECT * FROM time_slots WHERE employee_id=$1', [employee_id])
         
         if (results.rows.length === 0){
             res.status(404).json({ error: "No free timeslot for this employee" })
