@@ -18,7 +18,7 @@ const EmployeeBox = ({ employee }) => {
                     ?
                     <h6><i>Owner</i></h6>
                     :
-                    <h6>Role: {employee.role}</h6>
+                    <h6><i>Role</i>: {employee.role}</h6>
                 }
                 
             </div>

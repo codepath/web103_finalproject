@@ -2,13 +2,11 @@ import "../../css/salon-page.css";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
-import salons from "../../data/salons";
-import employees from "../../data/employees-mock-data"
 import EmployeeBox from "./employee-box";
+import { getEmployeesBySalonId, getSalonById } from "../../services/salonAPI";
 
 const SalonPage = () => {
     let { id } = useParams();
-    // const [salon, setSalon] = useState();
     const [salonName, setSalonName] = useState("");
     const [salonAddress, setAddress] = useState("");
     const [salonCity, setCity] = useState("");
@@ -17,50 +15,90 @@ const SalonPage = () => {
     const [salonPhoneNumber, setPhoneNumber] = useState("");
     const [salonEmail, setEmail] = useState("");
 
+    const [loadingPage, setLoadingPage] = useState(true);
+    const [errorPage, setErrorPage] = useState("");
+    const [loadingEmployee, setLoadingEmployee] = useState(true);
+    const [errorEmployee, setErrorEmployee] = useState("");
+
     const [employeeList, setEmployeeList] = useState([]);
 
     useEffect(() => {
-        // We will replace endpoint to get salon details here
-        const getSalonDetail = () => {
-            const salonToFind = salons.filter((salon) => salon.id === Number(id));
-            setSalonName(salonToFind[0].name);
-            setAddress(salonToFind[0].address);
-            setCity(salonToFind[0].city);
-            setState(salonToFind[0].state);
-            setZipCode(salonToFind[0].zip_code);
-            setPhoneNumber(salonToFind[0].phone_number);
-            setEmail(salonToFind[0].email);
-        }
+        const fetchSalonDetails = async () => {
+            setLoadingPage(true);
+            try {
+                const salon = await getSalonById(id);
+                setSalonName(salon.name);
+                setAddress(salon.address);
+                setCity(salon.city);
+                setState(salon.state);
+                setZipCode(salon.zip_code);
+                setPhoneNumber(salon.phone_number);
+                setEmail(salon.email);
+            } catch (err) {
+                setErrorPage("Failed to fetch this salon's details");
+            } finally {
+                setLoadingPage(false);
+            }
+        };
 
-        const getAllEmployees = () => {
-            const employeesOfSalon = employees.filter((em) => em.salon_id === Number(id));
-            setEmployeeList(employeesOfSalon);
-        }
+        fetchSalonDetails();
+    }, [id]);
 
-        getSalonDetail();
+    useEffect(() => {
+        const getAllEmployees = async () => {
+            setLoadingEmployee(true);
+            try {
+                const employees = await getEmployeesBySalonId(id);
+                setEmployeeList(employees);
+            } catch (err) {
+                setErrorEmployee("Failed to fetch employees for this salon!");
+            } finally {
+                setLoadingEmployee(false);
+            }
+        };
+
         getAllEmployees();
-        
     }, [id]);
 
     return (
         <> 
             <div className="salon-page-salon-details">
-                <h1>{salonName}</h1>
-                <h3>&#xf041; {salonAddress}, {salonCity}, {salonState} {salonZipCode}</h3>
-                <h3>Phone name: {salonPhoneNumber}</h3>
-                <h3>Email: {salonEmail}</h3>
+                {loadingPage ? (
+                    <h1>Loading salon details...</h1>
+                ) : errorPage ? (
+                    <h2>{errorPage}</h2>
+                ) : (
+                    <>
+                        <h1>{salonName}</h1>
+                        <h3>&#xf041; {salonAddress}, {salonCity}, {salonState} {salonZipCode}</h3>
+                        <h3>Phone: {salonPhoneNumber}</h3>
+                        <h3>Email: {salonEmail}</h3>
+                    </>  
+                )}
             </div>
 
-            <h1>List of employees of salon</h1>
-            <h3><i>Booking your favourite Hairdresser/Manicurist here</i></h3>
-            <div className="salon-page-salon-list-of-employees">
-                {employeeList.map((employee) => (
-                    <EmployeeBox employee={employee} />
-                ))}
-            </div>
+            
+            {loadingEmployee ? (
+                <h2>Loading employees...</h2>
+            ) : errorEmployee ? (
+                <h2>{errorEmployee}</h2>
+            ) : (
+                <>
+                    <h1>List of Employees</h1>
+                    <h3><i>Book your favorite hairdresser or manicurist here</i></h3>
+                    <div className="salon-page-salon-list-of-employees">
+                        {employeeList.length > 0 ? (
+                            employeeList.map((employee) => (
+                                <EmployeeBox key={employee.id} employee={employee} />
+                            ))
+                        ) : (
+                            <h2>No employees available for this salon</h2>
+                        )}
+                    </div>
+                </>
+            )}
         </>
-    )
-
-}
+    );
+};
 
 export default SalonPage;
