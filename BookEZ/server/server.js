@@ -5,7 +5,10 @@ import SalonRouter from './routes/SalonRouter.js'
 import BookingRouter from './routes/BookingRouter.js'
 import UserRouter from './routes/UserRouter.js'
 
+import cors from 'cors';
 const app = express()
+
+app.use(cors()); // This enables CORS for all routes
 
 app.get('/', (req, res) => {
   res
