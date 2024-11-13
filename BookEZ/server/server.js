@@ -9,6 +9,7 @@ import cors from 'cors';
 const app = express()
 
 app.use(cors()); // This enables CORS for all routes
+app.use(express.json()); // This parses incoming JSON requests
 
 app.get('/', (req, res) => {
   res
