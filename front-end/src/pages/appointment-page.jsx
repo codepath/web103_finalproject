@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import employeeTimeSlots from "../data/employee-appointment";
 import {
+  bookThisTimeslot,
   getAnEmployeeById,
   getTimeSlotOfAnEmployeeByEmployeeId,
 } from "../services/employeeAPI";
@@ -11,18 +12,19 @@ import {
 const AppointmentPage = () => {
   const [employeeName, setEmployeeName] = useState("");
   const [employeeRole, setEmployeeRole] = useState("");
+  const [employeeId, setEmployeeId] = useState();
+  const [SalonId, setSalonId] = useState();
   const [loadingEmployee, setLoadingEmployee] = useState(true);
   const [errorEmployee, setErrorEmployee] = useState("");
   const [reservedOnce, setReservedOnce] = useState(false);
 
   const [timeSlots, setTimeSlots] = useState([]);
+  const [timeSlotId, setTimeSlotId] = useState();
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [loadingTimeSlots, setLoadingTimeSlots] = useState(true);
   const [errorTimeSlots, setErrorTimeSlots] = useState("");
 
   const { eid } = useParams();
-  // console.log("employee id" + eid);
-  // console.log("salon id" + sid)
 
   useEffect(() => {
     // We will replace endpoint to get employee details here
@@ -32,7 +34,9 @@ const AppointmentPage = () => {
         const employee = await getAnEmployeeById(eid);
         setEmployeeName(employee.name);
         setEmployeeRole(employee.role);
-        // console.log(employees);
+        setEmployeeId(employee.id);
+        setSalonId(employee.salon_id);
+        // console.log(employee);
         // setEmployeeList(employees);
       } catch (err) {
         setErrorEmployee("Failed to fetch this employee for this salon!");
@@ -63,13 +67,28 @@ const AppointmentPage = () => {
     getEmployeeTimeSlot();
   }, [eid, reservedOnce]);
 
-  const reserveAppointment = () => {
+  const reserveAppointment = async () => {
     alert(
       "You reserved timeslot " +
         selectedTimeSlot +
         " for worker " +
         employeeName
     );
+
+    const timeSlotBody = {
+      user_id: "1",
+      salon_id: SalonId,
+      employee_id: employeeId,
+      time_slot_id: timeSlotId
+    }
+
+    try {
+      await bookThisTimeslot(timeSlotBody);
+      console.log("Booking added successfully", timeSlotBody);
+    } catch (error) {
+      console.error("Error adding booking", error);
+    }
+    
     setReservedOnce(true);
   };
 
@@ -101,9 +120,9 @@ const AppointmentPage = () => {
             <>
               {timeSlots.map((timeslot, index) => (
                 <div
-                  className="timeslot"
+                  className= {timeslot.is_booked ? "timeslot timeslot-booked" : "timeslot"}
                   key={index}
-                  onClick={() => {setSelectedTimeSlot(`${timeslot.start_time} - ${timeslot.end_time}`); console.log(timeslot)}}
+                  onClick={() => {setSelectedTimeSlot(`${timeslot.start_time} - ${timeslot.end_time}`); console.log(timeslot); setTimeSlotId(timeslot.id)}}
                 >
                   {`${timeslot.start_time} - ${timeslot.end_time}`}
                 </div>

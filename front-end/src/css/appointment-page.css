@@ -29,6 +29,16 @@
     background-color: #A0E9FF;
     border: 2px black solid;
     margin: 15px;
+    cursor: pointer;
+}
+
+.timeslot:hover {
+    border: 2px red solid;
+}
+
+.timeslot-booked {
+    background-color: gray;
+    pointer-events: none;
 }
 
 .timeslot:focus {
