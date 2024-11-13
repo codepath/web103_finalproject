@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "BudgetBuddy helps users manage personal finances by tracking income, expenses, and savings goals. Users can plan budgets, categorize expenses, and visualize financial reports, ensuring better money management and meeting financial goals.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "Ayushi Porwal",
   "license": "ISC",
@@ -19,5 +21,16 @@
   "bugs": {
     "url": "https://github.com/ayushiporwal13/BudgetBuddy/issues"
   },
-  "homepage": "https://github.com/ayushiporwal13/BudgetBuddy#readme"
+  "homepage": "https://github.com/ayushiporwal13/BudgetBuddy#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.7",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "pg": "^8.13.1"
+  }
 }
