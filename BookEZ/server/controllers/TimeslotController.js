@@ -18,10 +18,12 @@ const getFreeTimeslotsByEmployeeId = async (req, res) => {
 }
 
 const bookTimeslotByTimeslotId = async (req, res) => {
-    const {timeslot_id} = req.params.timeslot_id;
+    const {timeslot_id} = req.params;
     try {
         const result = await pool.query('UPDATE time_slots SET is_booked=True WHERE id=$1 RETURNING *', [timeslot_id]);
         
+        // console.log(timeslot_id); 
+
         if (result.rows.length === 0) {
             res.status(404).json({ error: "Timeslot not found" });
         } else {
