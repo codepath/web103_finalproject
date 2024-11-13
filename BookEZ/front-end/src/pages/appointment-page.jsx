@@ -8,6 +8,7 @@ import {
   getAnEmployeeById,
   getTimeSlotOfAnEmployeeByEmployeeId,
 } from "../services/employeeAPI";
+import { reserveThisTimeSlot } from "../services/timeslotAPI";
 
 const AppointmentPage = () => {
   const [employeeName, setEmployeeName] = useState("");
@@ -84,12 +85,12 @@ const AppointmentPage = () => {
 
     try {
       await bookThisTimeslot(timeSlotBody);
+      await reserveThisTimeSlot(timeSlotId);
       console.log("Booking added successfully", timeSlotBody);
+      setReservedOnce(true);
     } catch (error) {
       console.error("Error adding booking", error);
     }
-    
-    setReservedOnce(true);
   };
 
   return (

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import EmployeeBox from "./employee-box";
 import { getEmployeesBySalonId, getSalonById } from "../../services/salonAPI";
 
+import Icon from '@mui/material/Icon';
+
 const SalonPage = () => {
     let { id } = useParams();
     const [salonName, setSalonName] = useState("");
@@ -70,7 +72,10 @@ const SalonPage = () => {
                 ) : (
                     <>
                         <h1>{salonName}</h1>
-                        <h3>&#xf041; {salonAddress}, {salonCity}, {salonState} {salonZipCode}</h3>
+                        <h3>
+                            <Icon>place</Icon> 
+                            {salonAddress}, {salonCity}, {salonState} {salonZipCode}
+                        </h3>
                         <h3>Phone: {salonPhoneNumber}</h3>
                         <h3>Email: {salonEmail}</h3>
                     </>  
