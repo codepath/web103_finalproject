@@ -12,7 +12,7 @@ import ForgotPasswordNewPassword from './pages/login-signup-page/forgot-password
 import HomePage from './pages/home-page/home-page';
 import SalonPage from './pages/salon-page/salon-page';
 
-import ProfilePage from './pages/profile-page';
+import ProfilePage from './pages/profile-page-appointment/profile-page';
 import AppointmentPage from './pages/appointment-page';
 import NotFoundPage from './pages/not-found-page';
 
