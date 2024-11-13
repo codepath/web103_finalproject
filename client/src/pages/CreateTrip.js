@@ -106,7 +106,7 @@ const CreateTrip = () => {
                 </tr>
                 <tr>
                     <td colSpan='6' style={{ textAlign: 'center' }}>
-                        <input type="submit" value="Submit" onClick={createTrip} />
+                        <input type="submit" value="Submit" onClick={createTrip}/>
                         <input type='submit' value="Cancel" onClick={resetTrip}></input>
                     </td>
                 </tr>

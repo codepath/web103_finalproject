@@ -49,7 +49,7 @@ const App = () => {
       element: <CreateTrip />
     },
     {
-      path:"/edit/:id",
+      path:"/trip/edit/:id",
       element: <EditTrip data={trips} />
     },
     {

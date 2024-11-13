@@ -9,7 +9,7 @@ const Card = (props) =>  {
   return (
       <div className="Card" style={{ backgroundImage:`url(${props.img_url})`}} >
         <div className="card-info">
-          <Link to={'edit/'+ props.id}><img className="moreButton" alt="edit button" src={more} /></Link>
+          <Link to={'/trip/edit/'+ props.id}><img className="moreButton" alt="edit button" src={more} /></Link>
           <h2 className="title">{props.title}</h2>
           <p className="description">{props.description}</p>
           <button className="priceBtn">{props.total_cost}</button>
