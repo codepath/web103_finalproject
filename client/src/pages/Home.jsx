@@ -1,41 +1,100 @@
-import { Container, Typography, Grid2, Paper } from '@mui/material';
-import '../css/Home.css';
+import { Container, Typography, Grid2, Paper, Button } from "@mui/material";
+import "../css/Home.css";
+import * as d3 from "d3";
+import { useEffect } from "react";
 
 const Home = () => {
-    const handleClick = (section) => {
-        if (section === 'Track Expenses') {
-            window.location.href = '/track-expenses';
-        } else if (section === 'Set Budgets') {
-            window.location.href = '/set-budgets';
-        }
-    };
+const drawChart = () => {
+    const data = [12, 36, 45, 60, 20, 65, 75];
+    const width = 400;
+    const height = 200;
+    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-    return (
-        <Container>
-            <Grid2 container spacing={3} style={{ marginTop: '2rem' }}>
-                <Grid2 item xs={12} sm={6}>
-                    <Paper style={{ padding: '1rem' }} onClick={() => handleClick('Track Expenses')}>
-                        <Typography variant="h6" gutterBottom>
-                            Track Expenses
-                        </Typography>
-                        <Typography>
-                            Easily track your daily expenses and categorize them to see where your money is going.
-                        </Typography>
-                    </Paper>
-                </Grid2>
-                <Grid2 item xs={12} sm={6}>
-                    <Paper style={{ padding: '1rem' }} onClick={() => handleClick('Set Budgets')}>
-                        <Typography variant="h6" gutterBottom>
-                            Set Budgets
-                        </Typography>
-                        <Typography>
-                            Set monthly budgets to manage your spending and save more money.
-                        </Typography>
-                    </Paper>
-                </Grid2>
-            </Grid2>
-        </Container>
-    );
+    const svg = d3
+        .select("#chart")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("fill", "black")
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleLinear().domain([0, data.length - 1]).range([0, width]);
+    const y = d3.scaleLinear().domain([0, d3.max(data)]).range([height, 0]);
+
+    const line = d3
+        .line()
+        .x((d, i) => x(i))
+        .y((d) => y(d));
+
+    svg
+        .append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).ticks(data.length));
+
+    svg.append("g").call(d3.axisLeft(y));
+
+    svg
+        .append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "teal")
+        .attr("stroke-width", 1.5)
+        .attr("d", line);
+};
+
+  useEffect(() => {
+    drawChart();
+  }, []);
+
+  return (
+    <Container>
+      <Grid2 container spacing={3} style={{ marginTop: "2rem" }}>
+        <Grid2 item xs={12} sm={6}>
+          <Paper style={{ padding: "1rem" }}>
+            <Button color="secondary" variant="contained">
+              Track Expenses
+            </Button>
+            <Typography>
+              Easily track your daily expenses and categorize them to see where
+              your money is going.
+            </Typography>
+            <div id="chart"></div>
+          </Paper>
+        </Grid2>
+        <Grid2 item xs={12} sm={6}>
+          <Paper style={{ padding: "1rem" }}>
+            <Button color="secondary" variant="contained">
+              Set Budgets
+            </Button>
+            <Typography>
+              Set monthly budgets to manage your spending and save more money.
+            </Typography>
+          </Paper>
+        </Grid2>
+        <Grid2 item xs={12} sm={6}>
+            <Paper style={{ padding: "1rem" }}>
+                <Button color="secondary" variant="contained" onClick={() => window.location.href = '/income'}>
+                    Track Income
+                </Button>
+                <Typography>
+                    Monitor your income sources and keep track of your earnings.
+                </Typography>
+            </Paper>
+        </Grid2>
+        <Grid2 item xs={12} sm={6}>
+            <Paper style={{ padding: "1rem" }}>
+                <Button color="secondary" variant="contained" onClick={() => window.location.href = '/expenses'}>
+                    View Expenses
+                </Button>
+                <Typography>
+                    Review your past expenses and analyze your spending patterns.
+                </Typography>
+            </Paper>
+        </Grid2>
+      </Grid2>
+    </Container>
+  );
 };
 
 export default Home;

@@ -1,26 +1,14 @@
-// import { pool } from './database.js';
+import { pool } from "./database.js";
 // import "./dotenv.js";
 
-import { fileURLToPath, pathToFileURL } from 'url';
-import path from 'path';
-
-// Define the current directory path
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Dynamically import `pool` from database.js
-const { pool } = await import(pathToFileURL(path.resolve(__dirname, '../config/database.js')).href);
-
-// Rest of your reset.js code, using `pool`
-
-// Rest of your reset.js code, using `pool`
 const createUserTable = async () => {
   const query = `
             CREATE TABLE IF NOT EXISTS users (
                 user_id SERIAL PRIMARY KEY,
-                username VARCHAR(50) NOT NULL,
-                password_hash VARCHAR(255) NOT NULL,
-                email VARCHAR(100) NOT NULL,
+                githubid integer NOT NULL,
+                username varchar(100) NOT NULL,
+                avatarurl varchar(500) NOT NULL,
+                accesstoken varchar(500) NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `;
@@ -33,21 +21,127 @@ const createUserTable = async () => {
   }
 };
 
-// const seedUserTable = async () => {
-//     createUserTable();
-//     const query = `
-//                 INSERT INTO users (username, password_hash, email)
-//                 VALUES ('admin', 'admin', 'tempemail@gmail.com');
-//             `;
+const createIncomeTable = async () => {
+  const query = `
+            CREATE TABLE IF NOT EXISTS income (
+                id SERIAL PRIMARY KEY,
+                user_id integer NOT NULL,
+                amount decimal NOT NULL,
+                source varchar(255) NOT NULL,
+                date date NOT NULL
+            );
+        `;
 
-//     try {
-//         await pool.query(query);
-//         console.log('User table seeded successfully');
-//     } catch (error) {
-//         console.error('Error seeding user table:', error);
-//     }
-// }
+  try {
+    await pool.query(query);
+    console.log("Income table created successfully");
+  } catch (error) {
+    console.error("Error creating income table:", error);
+  }
+};
 
-// seedUserTable();
+const createExpensesTable = async () => {
+  const query = `
+            CREATE TABLE IF NOT EXISTS expenses (
+                id SERIAL PRIMARY KEY,
+                user_id integer NOT NULL,
+                category_id integer NOT NULL,
+                amount decimal NOT NULL,
+                description varchar(255) NOT NULL,
+                date date NOT NULL
+            );
+        `;
 
-createUserTable();
+  try {
+    await pool.query(query);
+    console.log("Expenses table created successfully");
+  } catch (error) {
+    console.error("Error creating expenses table:", error);
+  }
+};
+
+const createCategoriesTable = async () => {
+  const query = `
+            CREATE TABLE IF NOT EXISTS categories (
+                id SERIAL PRIMARY KEY,
+                name varchar(255) NOT NULL
+            );
+        `;
+
+  try {
+    await pool.query(query);
+    console.log("Categories table created successfully");
+  } catch (error) {
+    console.error("Error creating categories table:", error);
+  }
+};
+
+const createSavingsGoalsTable = async () => {
+  const query = `
+            CREATE TABLE IF NOT EXISTS savings_goals (
+                id SERIAL PRIMARY KEY,
+                user_id integer NOT NULL,
+                goal_name varchar(255) NOT NULL,
+                target_amount decimal NOT NULL,
+                current_amount decimal NOT NULL,
+                deadline date NOT NULL
+            );
+        `;
+
+  try {
+    await pool.query(query);
+    console.log("Savings goals table created successfully");
+  } catch (error) {
+    console.error("Error creating savings goals table:", error);
+  }
+};
+
+const createBudgetAlertsTable = async () => {
+  const query = `
+            CREATE TABLE IF NOT EXISTS budget_alerts (
+                id SERIAL PRIMARY KEY,
+                user_id integer NOT NULL,
+                limit_amount decimal NOT NULL,
+                alert_message varchar(255) NOT NULL
+            );
+        `;
+
+  try {
+    await pool.query(query);
+    console.log("Budget alerts table created successfully");
+  } catch (error) {
+    console.error("Error creating budget alerts table:", error);
+  }
+};
+
+const createReportsTable = async () => {
+  const query = `
+            CREATE TABLE IF NOT EXISTS reports (
+                id SERIAL PRIMARY KEY,
+                user_id integer NOT NULL,
+                report_type varchar(255) NOT NULL,
+                date_range varchar(255) NOT NULL,
+                report_data text NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `;
+
+  try {
+    await pool.query(query);
+    console.log("Reports table created successfully");
+  } catch (error) {
+    console.error("Error creating reports table:", error);
+  }
+};
+
+const createAllTables = async () => {
+  await createUserTable();
+  await createIncomeTable();
+  await createExpensesTable();
+  await createCategoriesTable();
+  await createSavingsGoalsTable();
+  await createBudgetAlertsTable();
+  await createReportsTable();
+};
+
+createAllTables();

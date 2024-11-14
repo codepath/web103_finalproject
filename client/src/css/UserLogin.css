@@ -1,55 +1,18 @@
-/* UserLogin.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
+.Login {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    font-size: 1.5em; /* Adjust the size as needed */
+    padding: 20px; /* Optional: Add some padding */
 }
 
-.login-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-}
-
-.login-container h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+.headerBtn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
     border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
     cursor: pointer;
-}
-
-.login-container button:hover {
-    background-color: #0056b3;
-}
-
-.login-container .error-message {
-    color: red;
-    margin-top: 10px;
+    width: 100%;
+    opacity: 0.9;
 }

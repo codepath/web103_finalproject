@@ -11,10 +11,10 @@ Reference the Writing User Stories final project guide in the course portal for 
 
 ## Draft User Stories
 
-1. [User Registration and Login]
+1. [User Registration and Login] ✅
 As a user, I want to sign up and log in to the app so that I can access my personal budget information securely.
 
-2. [Track Income and Expenses]
+2. [Track Income and Expenses] ✅
 As a user, I want to input my income and expenses so that I can track my spending and see how much money I have left in my budget.
 
 3. [Categorize Expenses]

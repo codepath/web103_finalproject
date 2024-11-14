@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react";
 import { useRoutes } from "react-router-dom";
 import { Container, Typography, Grid2, Button } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -6,9 +7,38 @@ import XIcon from "@mui/icons-material/X";
 import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/UserLogin";
-import Register from "./pages/UserRegister";
+import Income from "./pages/Income";
+import Expense from "./pages/Expense";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const API_URL = "http://localhost:3000";
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`${API_URL}/auth/login/success`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+          },
+        });
+
+        const content = await res.json();
+        if (content.user) {
+          setUser(content.user);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
   let element = useRoutes([
     {
       path: "/",
@@ -16,36 +46,69 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: <Login api_url={API_URL}/>,
     },
     {
-      path: "/register",
-      element: <Register />,
+      path: "/logout",
+      element: <h1> You have been successfully Logged Out </h1>,
     },
+    {
+      path: "/income",
+      element: <Income />,
+    },
+    {
+      path: "/expenses",
+      element: <Expense />,
+    }
   ]);
 
+  const handleLogout = async () => {
+    try {
+      await fetch(`${API_URL}/auth/logout`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      });
+      setUser(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <>
       <Container>
-        <Typography variant="h2" align="center" gutterBottom>
-          Budget Buddy
-        </Typography>
-        <Typography variant="h5" align="center" paragraph>
-          Take control of your finances with Budget Buddy. Track your expenses,
-          set budgets, and achieve your financial goals.
-        </Typography>
-        <Grid2 container spacing={3} justify="center">
-          <Grid2 item>
-            <Button variant="contained" color="primary" href="/register">
-              Get Started
-            </Button>
+        <header>
+          <Typography variant="h2" align="center" gutterBottom color="white">
+            Budget Buddy
+          </Typography>
+          <Typography variant="h5" align="center">
+            Take control of your finances with Budget Buddy. Track your expenses,
+            set budgets, and achieve your financial goals.
+          </Typography>
+          <Grid2 container spacing={3} justifyContent="end">
+            <Grid2 item>
+              <Button variant="contained" color="primary" href="/">
+                Home
+              </Button>
+            </Grid2>
+            <Grid2 item>
+              {user !== null ? (
+                <Button variant="outlined" color="white" onClick={handleLogout} href={`/logout`}>
+                  {user.username} <br />
+                  Logout
+                </Button>
+              ) : (
+                <Button variant="outlined" color="white" href="/login">
+                  Login
+                </Button>
+              )}
+            </Grid2>
           </Grid2>
-          <Grid2 item>
-            <Button variant="outlined" color="primary" href="/login">
-              Login
-            </Button>
-          </Grid2>
-        </Grid2>
+        </header>
         {element}
 
         <footer style={{ marginTop: "2rem", textAlign: "center" }}>
@@ -82,7 +145,6 @@ function App() {
           </Typography>
         </footer>
       </Container>
-    </>
   );
 }
 

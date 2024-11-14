@@ -5,8 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "reset-start": "npm run reset && nodemon --require dotenv/config server.js",
+    "start": "nodemon --require dotenv/config server.js",
+    "reset": "cd config && node --require dotenv/config reset.js"
   },
   "author": "Ayushi Porwal",
   "license": "ISC",
