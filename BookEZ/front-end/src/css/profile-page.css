@@ -6,22 +6,88 @@
     align-items: flex-start;
 }
 
+.save-edit-cancel-button-group {
+    position: absolute;
+    top: 13%;
+    right: 7%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.pp-edit-button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.pp-edit-button:hover {
+    transform: scale(1.125);
+}
+
 .profile-page-all-details {
     padding: 20px 10%;
     display: grid;
     grid-template-columns: auto auto auto;
+    gap: 2%;
 }
 
 .profile-page-all-details-frame {
     display: flex;
     flex-direction: column;
-    width: max-content;
+    /* width: max-content; */
+    align-items: start;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+
+    border: 2px black solid;
+}
+
+.button-info-save {
+    background-color: limegreen;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+.button-info-cancel {
+    background-color: red;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
 }
 
 .profile-details {
     display: flex;
     flex-direction: row;
 }
+
+.input-box-username {
+    width: max-content;
+    line-height: 24px;
+    padding: 10px;
+    border-radius: 10px;
+    /* margin-bottom: 5%; */
+}
+
+.edit-username {
+    width: 25%;
+}
+
+.input-box {
+    width: 100%;
+    line-height: 24px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5%;
+} 
 
 .profile-page-incoming-appointment {
     padding: 20px 7%;
