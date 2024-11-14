@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Homepage from './pages/Homepage.jsx'
+import LandingPage from './pages/LandingPage.jsx'
+import HomePage from './pages/HomePage.jsx'
 
 
 function App() {
   return (
     <div className="App">
-      <Homepage />
+      <LandingPage />
+      <HomePage />
     </div>
   );
 }
