@@ -18,7 +18,7 @@ The idea for BookEZ came from the challenges many people face when booking appoi
 
 ## Tech Stack
 
-Frontend: React.js, Boostrap 5.
+Frontend: React.js, Material UI.
 
 Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
@@ -66,9 +66,6 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 - [x] Allow users to select an available time slot and confirm their booking. Ensure that users receive a confirmation when the booking is successful.
 ![Booking](https://github.com/user-attachments/assets/f2e8f0d4-61f5-4623-9094-823ddd57a4dc)
 
-### Email Notifications
-
-- [ ] Automatically send an email to the salon notifying them of a new booking, send a confirmation email to the user for their records, and notifying users of upcoming appointments.
 
 ### User Profile - View Bookings
 
@@ -78,17 +75,6 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 - [x] Showing current user's personal profile information including their full name, username, email, and phone number. The user can also update their information if needed.
 ![Userprofilemodifyinfo](https://github.com/user-attachments/assets/ddc9859d-d12d-401b-b3a8-5ed21648aea4)
 
-### Modify and Cancel Bookings
-
-- [ ] Allow users to view or cancel their bookings if their plans change, providing flexibility in managing appointments.
-
-### Search and Filter
-
-- [ ] Allow users to search for salons by name or location and filter results based on ratings, services offered, or distance.
-
-### User Reviews and Ratings
-
-- [ ] Provide a platform for users to leave reviews for salons and display ratings to help other users make informed choices.
 
 ## Installation Instructions
 
