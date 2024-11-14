@@ -32,7 +32,7 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ### Authorization
 
-- [ ] Allow users to securely create accounts, log in, and log out to access the booking system and manage their information.
+- [x] Allow users to securely create accounts, log in, and log out to access the booking system and manage their information.
 
 - Login Page: 
 ![LoginPageRecord](https://github.com/user-attachments/assets/1645619d-8b35-4311-8ae8-732c08821352)
@@ -43,11 +43,10 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ### Home Page - List All Stores
 
-- [ ] Display a list of all available nail salons, including basic information like name and address, to help users choose where to book an appointment.
+- [x] Display a list of all available nail salons, including basic information like name and address, to help users choose where to book an appointment.
 
 - Demo of home page
-![HomePage](https://github.com/user-attachments/assets/69d39f16-9521-49e0-89ad-667e8321bbf2)
-
+![Homepage](https://github.com/user-attachments/assets/e625ab42-06d3-4ff8-894b-250628c751bb)
 
 ### Store Details - List All Employees
 
@@ -57,11 +56,14 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ### Employee Availability
 
-- [ ] Display the available time slots for each selected employee, making it easy for users to choose a convenient time for their appointment.
+- [x] Display the available time slots for each selected employee, making it easy for users to choose a convenient time for their appointment.
+![EmployeeAvailability](https://github.com/user-attachments/assets/71dda37f-d44e-44d2-bf98-84f4d4ce1052)
+
 
 ### Book Appointment
 
-- [ ] Allow users to select an available time slot and confirm their booking. Ensure that users receive a confirmation when the booking is successful.
+- [x] Allow users to select an available time slot and confirm their booking. Ensure that users receive a confirmation when the booking is successful.
+![Booking](https://github.com/user-attachments/assets/f2e8f0d4-61f5-4623-9094-823ddd57a4dc)
 
 ### Email Notifications
 
