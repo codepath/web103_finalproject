@@ -50,7 +50,8 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ### Store Details - List All Employees
 
-- [ ] Show a list of employees at each selected salon, providing users with information about each employee’s name and specialties as well as the salon's details including title, address, and available time.
+- [x] Show a list of employees at each selected salon, providing users with information about each employee’s name and specialties as well as the salon's details including title, address, and available time.
+![Storedetails](https://github.com/user-attachments/assets/35bb6a28-180b-4f22-8902-ca65d2be66b4)
 
 [gif goes here]
 
@@ -71,8 +72,11 @@ Backend: Express.js, PostgreSQL, RailWay, Node.js.
 
 ### User Profile - View Bookings
 
-- [ ] Enable users to see a list of all their current and upcoming bookings, including details like date, time, salon, and technician.
-- [ ] Showing current user's personal profile information including their full name, username, email, and phone number. The user can also update their information if needed.
+- [x] Enable users to see a list of all their current and upcoming bookings, including details like date, time, salon, and technician.
+![Userprofile-viewbooking](https://github.com/user-attachments/assets/e7e0fd2f-a0f7-4310-a415-075a152816d5)
+
+- [x] Showing current user's personal profile information including their full name, username, email, and phone number. The user can also update their information if needed.
+![Userprofilemodifyinfo](https://github.com/user-attachments/assets/ddc9859d-d12d-401b-b3a8-5ed21648aea4)
 
 ### Modify and Cancel Bookings
 
