@@ -33,11 +33,28 @@ export const submitEdittedInfo = async (timeSlotId, userInfoBody) => {
         throw new Error(`Error: ${response.statusText}`);
       }
       const data = await response.json();
-      console.log(timeSlotId);
+    //   console.log(timeSlotId);
     //   console.log(timeSlotBody);
       return data;
     } catch (error) {
       console.error("Error updating user info:", error);
       throw error;
     }
-  };
+};
+
+// Get all upcoming appointment of that user
+export const getAllUpcomingAppointments= async (uid) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/booking/user/${uid}`);
+        if (!response.ok) {
+            // console.log("having error");
+          throw new Error(`Error fetching upcoming appointments details: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+      } catch (error) {
+        console.error("Error fetching upcoming appointments detail:", error);
+        throw error;
+      }
+};

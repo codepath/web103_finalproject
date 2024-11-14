@@ -4,14 +4,15 @@ import IncomingAppointments from "./incoming-appointment";
 import BorderColorRoundedIcon from "@mui/icons-material/BorderColorRounded";
 import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
+import { getAllUpcomingAppointments, getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
 
 const ProfilePage = () => {
   const [isEditing, setIsEditting] = useState(false);
   const [isLoadingUser, setIsLoadingUser] = useState(true);
   const [isErrorUser, setIsErrorUser] = useState(true);
 
-  const [userId, setUserId] = useState(1);
+//   const [userId, setUserId] = useState(1);
+    const userId = 1;
   const [userUsername, setUserUsername] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
@@ -22,6 +23,11 @@ const ProfilePage = () => {
   const [editedUserEmail, setEditedUserEmail] = useState(userEmail);
   const [editedUserPhoneNumber, setEditedUserPhoneNumber] = useState(userPhoneNumber);
   const [editedUserFullname, setEditedUserFullname] = useState(userUsername);
+
+  // Elements for getting upcomming appoinemtnt
+  const [listOfAppointments, setListOfAppointments] = useState([]);
+  const [isLoadingAppointment, setIsLoadingAppointment] = useState(true);
+  const [isErrorAppointment, setIsErrorAppointment] = useState(true);
 
   useEffect(() => {
     const getAllUserDetail = async () => {
@@ -42,6 +48,23 @@ const ProfilePage = () => {
     };
 
     getAllUserDetail();
+  }, []);
+
+  useEffect(() => {
+    const getAllAppointments = async () => {
+        try {
+            const result = await getAllUpcomingAppointments(userId);
+            console.log(result);
+            setListOfAppointments(result);
+        } catch (err) {
+            console.error("Error fetching list of upcoming appointments");
+        } finally {
+            setIsLoadingAppointment(false);
+            setIsErrorAppointment(false);
+        }
+    };
+
+    getAllAppointments();
   }, [])
 
   const startEditing = () => {
@@ -199,17 +222,25 @@ const ProfilePage = () => {
                         </div>
                         </div>
                     </div>
-                }
-                
+                }     
             </>
         }
-      
 
       <div className="profile-page-incoming-appointment">
-        <h1>Incoming appointment</h1>
-        <div>
-          <IncomingAppointments />
+        <h1>Upcoming appointment</h1>
+
+        <div className="pp-list-of-appointments">
+            {isLoadingAppointment ?
+                <h1>Loading...</h1>
+                :isErrorAppointment ?
+                <h1>Fail Loading appointments...</h1>
+                :listOfAppointments.length <= 0 ?
+                <h1>There is no upcoming appointment</h1>
+                :
+                <IncomingAppointments appointmentCriteria={listOfAppointments} />
+            }
         </div>
+        
       </div>
     </>
   );
