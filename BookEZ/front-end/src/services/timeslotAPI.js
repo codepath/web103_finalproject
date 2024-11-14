@@ -24,4 +24,20 @@ export const reserveThisTimeSlot = async (timeSlotId) => {
       throw error;
     }
   };
-  
+
+// Get a timeslot by id
+export const getATimeSlotById = async (tid) => {
+  try {
+      const response = await fetch(`${API_BASE_URL}/api/timeslot/${tid}`);
+      if (!response.ok) {
+          // console.log("having error");
+        throw new Error(`Error fetching timeslot: ${response.statusText}`);
+      }
+      const data = await response.json();
+      // console.log(data);
+      return data;
+    } catch (error) {
+      console.error("Error fetching timeslot:", error);
+      throw error;
+    }
+};

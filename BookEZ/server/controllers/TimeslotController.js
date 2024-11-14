@@ -1,5 +1,22 @@
 import { pool } from '../config/database.js'
 
+const getATimeslotById = async (req, res) => {
+    const {timeslot_id}= req.params;
+    try {
+        // const results = await pool.query('SELECT * FROM time_slots WHERE employee_id=$1 AND is_booked=False', [employee_id])
+        const results = await pool.query('SELECT * FROM time_slots WHERE id=$1', [timeslot_id])
+        
+        if (results.rows.length === 0){
+            res.status(404).json({ error: "No timeslot found" })
+
+        } else {
+            res.status(200).json(results.rows);
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}
+
 const getFreeTimeslotsByEmployeeId = async (req, res) => {
     const employee_id = req.params.employee_id;
     try {
@@ -34,4 +51,4 @@ const bookTimeslotByTimeslotId = async (req, res) => {
     }
 }
 
-export default { getFreeTimeslotsByEmployeeId, bookTimeslotByTimeslotId }
+export default { getFreeTimeslotsByEmployeeId, bookTimeslotByTimeslotId, getATimeslotById }

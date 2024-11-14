@@ -3,6 +3,7 @@ import "../../css/home-page.css";
 // import SalonBox from "./salon-box";
 import { getAllSalons } from "../../services/salonAPI";
 import { useNavigate } from "react-router-dom";
+import PlaceIcon from '@mui/icons-material/Place';
 
 const HomePage = () => {
     const [searchPattern, setSearchPattern] = useState("");
@@ -94,7 +95,10 @@ const HomePage = () => {
                         salonToDisplay.map((salon, index) => (
                             <div className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
                                 <h3 className="sb-salon-name">{salon.name}</h3>
-                                <p>&#xf041; {salon.address}, {salon.city}, {salon.state} {salon.zip_code}</p>
+                                <p>
+                                    <PlaceIcon /> 
+                                    {salon.address}, {salon.city}, {salon.state} {salon.zip_code}
+                                </p>
                             </div>
                         ))
                     ) : (
