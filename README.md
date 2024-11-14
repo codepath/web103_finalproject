@@ -34,7 +34,7 @@ Cloudinary (for file uploads)
 ## Features
 
 ## Created the Landing Page
-<img src='./public/landing_page.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='./others/landing_page.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 ## Group Creation & Topic Scheduling
