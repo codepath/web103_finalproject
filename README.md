@@ -24,17 +24,17 @@ Backend: Express.js, PostgreSQL, Node.js
 
 ## Features
 
-### [User Registration & Login System]
+### [User Registration & Login System] ✅
 
 [Secure authentication system that allows users to register accounts and log in to manage personal budgets.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/UVGqAxr.gif)
 
-### [Income and Expense Tracking]
+### [Income and Expense Tracking] ✅
 
 [Feature enabling users to add, edit, and delete income and expenses, with real-time budget updates.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/UVGqAxr.gif)
 
 ### [Expense Categorization]
 
@@ -77,28 +77,28 @@ Backend: Express.js, PostgreSQL, Node.js
 
 ## Technical Feature List
 
-### [User Registration & Authentication]
+### [User Registration & Authentication] ✅
 
 [Secure account creation and login system.]
 [Password hashing and validation for security.]
 
 [gif goes here]
 
-### [Database Design]
+### [Database Design] ✅
 
 [PostgreSQL database schema for users, transactions, and categories.]
 [Relationships: one-to-many (users to transactions) and many-to-many (categories to transactions).]
 
 [gif goes here]
 
-### [API Development]
+### [API Development] ✅
 
 [RESTful API with endpoints for user management, income and expense tracking.]
 [Implement GET, POST, PATCH, and DELETE methods with proper naming conventions.]
 
 [gif goes here]
 
-### [Frontend Development]
+### [Frontend Development]  ✅
 
 [React-based user interface with components for dashboards and forms.]
 [Dynamic routes using React Router for navigation.]
@@ -118,7 +118,7 @@ Backend: Express.js, PostgreSQL, Node.js
 
 [gif goes here]
 
-### [Expense Management]
+### [Expense Management]  ✅
 
 [Functionality for adding, editing, categorizing, and deleting expenses.]
 [Sorting and filtering options for detailed analysis.]
