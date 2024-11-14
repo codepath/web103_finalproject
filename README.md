@@ -33,6 +33,10 @@ Cloudinary (for file uploads)
 
 ## Features
 
+## Created the Landing Page
+<img src='./public/landing_page.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 ## Group Creation & Topic Scheduling
 Description: Users can create or join study groups, schedule sessions based on topics, and assign specific dates for their collaborative work.
 
