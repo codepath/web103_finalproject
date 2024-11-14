@@ -1,35 +1,151 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useState, useEffect} from "react";
+import { useRoutes } from "react-router-dom";
+import { Container, Typography, Grid2, Button } from "@mui/material";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import XIcon from "@mui/icons-material/X";
+import "./App.css";
+import Home from "./pages/Home";
+import Login from "./pages/UserLogin";
+import Income from "./pages/Income";
+import Expense from "./pages/Expense";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null);
+  const API_URL = "http://localhost:3000";
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`${API_URL}/auth/login/success`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+          },
+        });
+
+        const content = await res.json();
+        if (content.user) {
+          setUser(content.user);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/login",
+      element: <Login api_url={API_URL}/>,
+    },
+    {
+      path: "/logout",
+      element: <h1> You have been successfully Logged Out </h1>,
+    },
+    {
+      path: "/income",
+      element: <Income />,
+    },
+    {
+      path: "/expenses",
+      element: <Expense />,
+    }
+  ]);
+
+  const handleLogout = async () => {
+    try {
+      await fetch(`${API_URL}/auth/logout`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      });
+      setUser(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Container>
+        <header>
+          <Typography variant="h2" align="center" gutterBottom color="white">
+            Budget Buddy
+          </Typography>
+          <Typography variant="h5" align="center">
+            Take control of your finances with Budget Buddy. Track your expenses,
+            set budgets, and achieve your financial goals.
+          </Typography>
+          <Grid2 container spacing={3} justifyContent="end">
+            <Grid2 item>
+              <Button variant="contained" color="primary" href="/">
+                Home
+              </Button>
+            </Grid2>
+            <Grid2 item>
+              {user !== null ? (
+                <Button variant="outlined" color="white" onClick={handleLogout} href={`/logout`}>
+                  {user.username} <br />
+                  Logout
+                </Button>
+              ) : (
+                <Button variant="outlined" color="white" href="/login">
+                  Login
+                </Button>
+              )}
+            </Grid2>
+          </Grid2>
+        </header>
+        {element}
+
+        <footer style={{ marginTop: "2rem", textAlign: "center" }}>
+          <div>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FacebookIcon />
+            </a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon />
+            </a>
+            <a
+              href="https://www.x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <XIcon />
+            </a>
+          </div>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            align="center"
+            style={{ marginTop: "1rem" }}
+          >
+            © {new Date().getFullYear()} Budget Buddy. All rights reserved.
+          </Typography>
+        </footer>
+      </Container>
+  );
 }
 
-export default App
+export default App;
