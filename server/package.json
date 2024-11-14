@@ -5,8 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "npm run reset && nodemon --require dotenv/config server.js",
-    "reset": "cd config && node --require dotenv/config reset.js"
+    "start": "npm run reset && nodemon server.js",
+    "reset": "cd config && node reset.js"
   },
   "keywords": [],
   "author": "",

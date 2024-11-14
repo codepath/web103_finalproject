@@ -20,7 +20,7 @@ import profile_icon from './assets/profile_icon.png';
 
 
 const App = () => {
-  
+
   const [trips, setTrips] = useState([]);
   const [destinations, setDestinations] = useState([]);
 
@@ -74,8 +74,8 @@ const App = () => {
     }
   ]);
 
-  
-  return ( 
+
+  return (
 
     <div className="App">
 
@@ -95,8 +95,8 @@ const App = () => {
                 <div className="nav-header">
                     <div className="nav-buttons">
                         <a href='/' role='button'>Home</a>
-                        <Link to="/trip/new"><a href='/planYourTrip' role='button'>Plan your Trip</a></Link>
-                        <Link to="/trips"><a href='/myTrips' role='button'>My Trips</a></Link>
+                        <Link to="/trip/new">Plan your Trip</Link>
+                        <Link to="/trips">My Trips</Link>
                         <a href='/destinations' role='button'>Destinations</a>
                         <a href='/about' role='button'>About</a>
                         <a href='/blog' role='button'>Blogs</a>

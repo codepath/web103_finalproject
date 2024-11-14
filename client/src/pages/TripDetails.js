@@ -22,7 +22,7 @@ const TripDetails = ({data}) => {
 
         const fetchDestinations = async () => {
 
-            
+
         }
 
 
@@ -52,7 +52,7 @@ const TripDetails = ({data}) => {
                 <div className="activities">
                 {
                 activities && activities.length > 0 ?
-                activities.map((activity,index) => 
+                activities.map((activity,index) =>
                     <ActivityBtn id={activity.id} activity={activity.activity} num_votes={activity.num_votes}/>
                 ) : ''
                 }
@@ -62,7 +62,7 @@ const TripDetails = ({data}) => {
                 <div className="destinations">
                 {
                 destinations && destinations.length > 0 ?
-                destinations.map((destination,index) => 
+                destinations.map((destination,index) =>
                     <DestinationBtn id={destination.id} destination={destination.destination} />
                 ) : ''
                 }
@@ -70,9 +70,9 @@ const TripDetails = ({data}) => {
                     <Link to={'../../destination/new/'+id}><button className="addDestinationBtn">+ Add Destination</button></Link>
                 </div>
             </div>
-            
+
         </div>
-            
+
 
 
     )
