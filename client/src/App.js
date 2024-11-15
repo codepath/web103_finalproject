@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import ReadTrips from './pages/ReadTrips'
 import CreateTrip from './pages/CreateTrip'
 import EditTrip from './pages/EditTrip'
@@ -42,7 +43,7 @@ const App = () => {
     },
     {
       path: "/trips",
-      element:<ReadTrips data={trips}/>
+      element:<ReadTrips data={trips} />
     },
     {
       path:"/trip/new",
@@ -71,6 +72,10 @@ const App = () => {
     {
       path:"/destinations/add/:destination_id",
       element: <AddToTrip data={trips}/>
+    },
+    {
+      path: "*", // invalid URL
+      element: <NotFound />
     }
   ]);
 
@@ -81,13 +86,6 @@ const App = () => {
 
       <div className="header">
         <div className="home_page">
-            <div className='ribbon'>
-                <div className = 'icons'>
-                    <img src={instagram_icon}/><div className="text" >tripotrail_find_me</div>
-                    <img src={whatsapp_icon}/><div className="text" >+1-404-987-999</div>
-                    <img src={email_icon}/><div className="text" >support@tripotrail.com</div>
-                </div>
-            </div>
             <div className='main_page'>
                 <div className='logo'>
                     <img src={Logo} alt="Logo" />
@@ -98,9 +96,6 @@ const App = () => {
                         <Link to="/trip/new">Plan your Trip</Link>
                         <Link to="/trips">My Trips</Link>
                         <a href='/destinations' role='button'>Destinations</a>
-                        <a href='/about' role='button'>About</a>
-                        <a href='/blog' role='button'>Blogs</a>
-                        <a href='/contact' role='button'>Contact</a>
                         <div className = 'nav-icons'>
                             <img src={heart_icon}/>
                             <img src={profile_icon}/>
@@ -108,8 +103,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-            </div>
-
+          </div>
       </div>
         {element}
     </div>
