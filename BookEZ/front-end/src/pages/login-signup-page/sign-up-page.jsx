@@ -34,6 +34,7 @@ const SignUpPage = () => {
         full_name: user.full_name,
         phone_number: user.phone_number,
       })
+      alert('Registration successful! Welcome to our community.')
       console.log('Registration successful', data)
       navigate('/login')
     } catch (error) {
