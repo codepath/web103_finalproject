@@ -10,8 +10,8 @@ const Home = () => {
             <div className='container-main'>
                     <div className='container-text'>
                     <div className="title"><h4>Plan your</h4></div>
-                    <div className='subtitle'><h4>perfect </h4></div>
-                    <div className="title"><h4>Gateway!</h4></div>
+                    <div className='subtitle'><h4>perfect</h4></div>
+                    <div className="title"><h4>Getaway!</h4></div>
                     </div>
                     <div className='container-button'>
                     <a href='/destinations' role='button'>Discover</a>

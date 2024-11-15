@@ -23,12 +23,6 @@
     backdrop-filter: blur(1px); 
 }
 
-
-.title {
-    padding-left:30px;
-    font-size: 24px;
-}
-
 .description {
     text-align: justify;
     text-justify: inter-word;
