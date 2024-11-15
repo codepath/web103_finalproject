@@ -1,58 +1,146 @@
-import '../../css/signup-page.css';
-import { useNavigate } from "react-router-dom";
+import '../../css/signup-page.css'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { registerUser } from '../../services/authAPI'
 
 const SignUpPage = () => {
+  const navigate = useNavigate()
+  const [user, setUser] = useState({
+    username: '',
+    password: '',
+    email: '',
+    full_name: '',
+    phone_number: '',
+    confirmPassword: '',
+  })
 
-    const navigate = useNavigate();
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setUser({ ...user, [name]: value })
+  }
 
-    return (
-        <> 
-            <div className='signup-box-frame'>
-                <div className="signup-box">
-                    <h1>Create a new account</h1>
+  const handleSignUp = async (event) => {
+    event.preventDefault()
+    if (user.password !== user.confirmPassword) {
+      alert('Passwords do not match')
+      return
+    }
 
-                    <div className='signup-box-component'>
-                        <label>
-                            Full Name
-                            <input className='signup-input' type='text' placeholder='Enter your email here' required/>
-                        </label>
+    try {
+      const data = await registerUser({
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        full_name: user.full_name,
+        phone_number: user.phone_number,
+      })
+      console.log('Registration successful', data)
+      navigate('/login')
+    } catch (error) {
+      alert('Failed to register. Please try again.')
+    }
+  }
 
-                        <label>
-                            Username
-                            <input className='signup-input' type='text' placeholder='Enter your email here' required/>
-                        </label>
+  return (
+    <form className="signup-box-frame" onSubmit={handleSignUp}>
+      <div className="signup-box">
+        <h1>Create a new account</h1>
 
-                        <label>
-                            Email
-                            <input className='signup-input' type='email' placeholder='Enter your email here' required/>
-                        </label>
+        <div className="signup-box-component">
+          <label>
+            Full Name
+            <input
+              name="full_name"
+              className="signup-input"
+              type="text"
+              placeholder="Enter your full name"
+              value={user.full_name}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
 
-                        <label>
-                            Phone
-                            <input className='signup-input' type='tel' placeholder='Enter your email here' required/>
-                        </label>
+          <label>
+            Username
+            <input
+              name="username"
+              className="signup-input"
+              type="text"
+              placeholder="Choose a username"
+              value={user.username}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
 
-                        <label>
-                            Password
-                            <input className='signup-input' type='password' placeholder='Enter your password here' required/>
-                        </label>
+          <label>
+            Email
+            <input
+              name="email"
+              className="signup-input"
+              type="email"
+              placeholder="Enter your email"
+              value={user.email}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
 
-                        <label>
-                            Confirm Password
-                            <input className='signup-input' type='password' placeholder='Enter your password here' required/>
-                        </label>
+          <label>
+            Phone
+            <input
+              name="phone_number"
+              className="signup-input"
+              type="tel"
+              placeholder="Enter your phone number"
+              value={user.phone_number}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
 
-                        <button className='signin-button'>Register</button>
+          <label>
+            Password
+            <input
+              name="password"
+              className="signup-input"
+              type="password"
+              placeholder="Create a password"
+              value={user.password}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
 
-                        <a href='#' onClick={() => navigate("/login")}><i>Already have account? Log in</i></a>
-                    </div>
+          <label>
+            Confirm Password
+            <input
+              name="confirmPassword"
+              className="signup-input"
+              type="password"
+              placeholder="Confirm your password"
+              value={user.confirmPassword}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
 
-                    
-                </div>
-            </div>
-        </>
-    )
-
+          <button className="signin-button" type="submit">
+            Register
+          </button>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/login')
+            }}
+          >
+            <i>Already have an account? Log in</i>
+          </a>
+        </div>
+      </div>
+    </form>
+  )
 }
 
-export default SignUpPage;
+export default SignUpPage
