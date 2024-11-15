@@ -1,6 +1,5 @@
 import '../App.css';
 import '../css/Home.css';
-
 import Main_Page from '../assets/Main_Page.jpg';
 
 const Home = () => {

@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import tripRoutes from './routes/trips.js'
 
+// create express app
 const app = express()
 
 app.use(express.json())
