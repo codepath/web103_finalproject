@@ -26,19 +26,37 @@ Backend:
 
 ### View All Trips ✅
 
-Users can view all scheduled trips. They can create, update, and delete trips.
+Users can view all scheduled trips.
 
-![viewalltrips gif](gifs/viewalltrips.gif)
+![viewalltrips gif](gifs/wip.gif)
+
+### Create Trip ✅
+
+Users can plan their trip and input all relevant information related to the trip.
+
+![createtrip gif](gifs/wip.gif)
+
+### Edit & Delete Trip ✅
+
+Users can update and delete trips from their list of trips.
+
+![editdeletetrip gif](gifs/wip.gif)
 
 ### View Trip Details
 
 Users can see a detailed view of their trip which includes: title, start/end date, description, transportation, estimated travel time, travel cost, destinations (title, type, location, cost), total expenses, and documents.
 
-[gif goes here]
+![tripdetails gif](gifs/wip.gif)
+
+### View & Filter Destinations
+
+Users can choose from a list of destinations, such as restaurants and places, to assign to a trip.
+
+![viewfilterdestinations gif](gifs/wip.gif)
 
 ### Add Destinations to Trip
 
-Users can choose from a list of destinations, such as restaurants and places, to assign to a trip.
+Users can choose from a list of destinations to assign to a trip.
 
 [gif goes here]
 
