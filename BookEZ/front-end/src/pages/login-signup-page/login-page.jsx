@@ -1,43 +1,90 @@
-import '../../css/login-page.css';
-import { useNavigate } from "react-router-dom";
+import '../../css/login-page.css'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { loginUser } from '../../services/authAPI'
 
 const LoginPage = () => {
+  const navigate = useNavigate()
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  })
 
-    const navigate = useNavigate();
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setUser((prev) => ({ ...prev, [name]: value }))
+  }
 
-    const checkInformationAndLogin = () => {
-        navigate("/");
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const response = await loginUser(user)
+      console.log('Login successful:', response)
+      alert('Login successful!')
+      navigate('/')
+    } catch (error) {
+      alert('Login failed. Please check your credentials and try again.')
+      console.error('Error logging in:', error)
     }
+  }
 
-    return (
-        <> 
-            <div className='login-box-frame'>
-                <div className="login-box">
-                    <h1>Log in to your account</h1>
+  return (
+    <form className="login-box-frame" onSubmit={handleSubmit}>
+      <div className="login-box">
+        <h1>Log in to your account</h1>
+        <div className="login-box-component">
+          <label>
+            Email
+            <input
+              className="login-input"
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleChange}
+              placeholder="Enter your email here"
+              required
+            />
+          </label>
 
-                    <div className='login-box-component'>
-                        <label>
-                            Email
-                            <input className='login-input' type='email' placeholder='Enter your email here' required/>
-                        </label>
+          <label>
+            Password
+            <input
+              className="login-input"
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleChange}
+              placeholder="Enter your password here"
+              required
+            />
+          </label>
 
-                        <label>
-                            Password
-                            <input className='login-input' type='password' placeholder='Enter your password here' required/>
-                        </label>
+          <button type="submit" className="signin-button">
+            Log In
+          </button>
 
-                        <button className='signin-button' onClick={() => checkInformationAndLogin()}>Log In</button>
-
-                        <a href='#' onClick={() => navigate("/forgot-password")}><i>Forgot Password?</i></a>
-                        <a href='#' onClick={() => navigate("/signup")}><i>Did not have account? Create a new account</i></a>
-                    </div>
-
-                    
-                </div>
-            </div>
-        </>
-    )
-
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/forgot-password')
+            }}
+          >
+            <i>Forgot Password?</i>
+          </a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate('/signup')
+            }}
+          >
+            <i>Don't have an account? Create one now!</i>
+          </a>
+        </div>
+      </div>
+    </form>
+  )
 }
 
-export default LoginPage;
+export default LoginPage
