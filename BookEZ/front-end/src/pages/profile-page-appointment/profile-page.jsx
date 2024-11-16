@@ -6,13 +6,13 @@ import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { getAllUpcomingAppointments, getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
 
-const ProfilePage = () => {
+const ProfilePage = ({ currentUserId }) => {
   const [isEditing, setIsEditting] = useState(false);
   const [isLoadingUser, setIsLoadingUser] = useState(true);
   const [isErrorUser, setIsErrorUser] = useState(true);
 
 //   const [userId, setUserId] = useState(1);
-    const userId = 1;
+ 
   const [userUsername, setUserUsername] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
@@ -32,7 +32,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const getAllUserDetail = async () => {
         try {
-            const result = await getUserInfoById(userId);
+            const result = await getUserInfoById(currentUserId);
             console.log(result[0]);
             setUserUsername(result[0].username);
             setUserFullname(result[0].full_name);
@@ -53,7 +53,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const getAllAppointments = async () => {
         try {
-            const result = await getAllUpcomingAppointments(userId);
+            const result = await getAllUpcomingAppointments(currentUserId);
             console.log(result);
             setListOfAppointments(result);
         } catch (err) {
@@ -86,7 +86,7 @@ const ProfilePage = () => {
     }
 
     try {
-        await submitEdittedInfo(userId, userInfoBody);
+        await submitEdittedInfo(currentUserId, userInfoBody);
         // alert("Saved");
     } catch (err) {
         console.error("Fail saving updated user info");
