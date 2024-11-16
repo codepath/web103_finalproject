@@ -4,9 +4,9 @@
   "description": "CodePath WEB103 Final Project",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "nodemailer": "^6.9.16"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -3,7 +3,7 @@ const users = [
     id: 1,
     username: 'ellen',
     password: 'hashed_password_123',
-    email: 'ellen@example.com',
+    email: 'parthskansara@gmail.com',
     full_name: 'Ellen Joe',
     phone_number: '123-456-7890',
   },
