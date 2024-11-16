@@ -1,16 +1,26 @@
 import { useState } from "react";
 import '../css/nav-bar.css'
 import { useNavigate } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const NavigationBar = () => {
 
     const [loggedIn, setLoggedIn] = useState(true);
     const navigate = useNavigate();
 
+    const [wantToShowMenu, setWantToShowMenu] = useState(false);
+    const navigateToPage = (page) => {
+        navigate(page);
+        setWantToShowMenu(false);
+    }
+
     return (
         <> 
             <div className="nav-bar">
-                <h1 onClick={() => navigate("/")}>BOOKEZ</h1>
+                <div className="title-menu">
+                    <MenuIcon className="menu-icon" onClick={() => {setWantToShowMenu(true); console.log(wantToShowMenu)}} />
+                </div>
+                <h1 onClick={() => navigate("/")} className="title">BOOKEZ</h1>
 
                 <div className="nav-bar-logged-in-status">
                     {
@@ -32,6 +42,21 @@ const NavigationBar = () => {
                     }
                 </div>
             </div>
+
+            {wantToShowMenu && 
+                <div className="hiddenSideTab">
+                    <div className="hp-sidemenu">
+                        <div className="sidemenu-title">
+                            <h1>BOOKEZ</h1>
+                        </div>
+                        <div className="page-on-hidden-tab" onClick={() => navigateToPage("/")}>Home Page</div>
+                        <div className="page-on-hidden-tab" onClick={() => navigateToPage("/profile")}>My Profile</div>
+                    </div>
+                    <div className="hp-menu-therest"  onClick={() => {setWantToShowMenu(false); console.log(wantToShowMenu)}}>
+
+                    </div>
+                </div>
+            }
         </>
     )
 }

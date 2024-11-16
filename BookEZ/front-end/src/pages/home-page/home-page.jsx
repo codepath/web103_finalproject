@@ -4,6 +4,9 @@ import "../../css/home-page.css";
 import { getAllSalons } from "../../services/salonAPI";
 import { useNavigate } from "react-router-dom";
 import PlaceIcon from '@mui/icons-material/Place';
+import SecurityUpdateGoodIcon from '@mui/icons-material/SecurityUpdateGood';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 const HomePage = () => {
     const [searchPattern, setSearchPattern] = useState("");
@@ -46,19 +49,20 @@ const HomePage = () => {
                 <p className="hpl-title">BOOKEZ</p>
                 <h2><i>Effortless Salon Booking at Your Fingertips</i></h2>
                 <div className="home-page-landing-explore-more">
-                    <button className="button-light">Explore more</button>
+                    <a className="button-light" href="#intro">Explore more</a>
                     <a className="button-info" href="#salon">Salons near me</a>
                 </div>
             </div>
 
-            <div className="home-page-introduction">
+            <div className="home-page-introduction" id="intro">
                 <div className="home-page-introduction-description">
                     <h3>BOOKEZ is a dynamic platform that suggests a list of salons and allows you to book an appointment for hair and nails with your favorite stylists.</h3>
                     <h3><i>With BOOKEZ, you can</i></h3>
                     <div className="home-page-introduction-description-advantage">
-                        <h4>&#9989; Book appointments with ease and precision.</h4>
-                        <h4>&#9989; Get automatic reminders and avoid missed appointments.</h4>
-                        <h4>&#9989; Customize for a perfect fit with your business.</h4>
+                        {/* <h4>&#9989; Book appointments with ease and precision.</h4> */}
+                        <h4 className="advantage"><SecurityUpdateGoodIcon color="#00A9FF" /> Book appointments with ease and precision.</h4>
+                        <h4 className="advantage"><NotificationsActiveIcon /> Get automatic reminders and avoid missed appointments.</h4>
+                        <h4 className="advantage"><AccessTimeFilledIcon /> Customize for a perfect fit with your business.</h4>
                     </div>
                 </div>
                 <div className="home-page-introduction-image">
@@ -95,7 +99,7 @@ const HomePage = () => {
                         salonToDisplay.map((salon, index) => (
                             <div className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
                                 <h3 className="sb-salon-name">{salon.name}</h3>
-                                <p>
+                                <p className="advantage">
                                     <PlaceIcon /> 
                                     {salon.address}, {salon.city}, {salon.state} {salon.zip_code}
                                 </p>
