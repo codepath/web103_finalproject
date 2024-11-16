@@ -135,3 +135,7 @@
     gap: 2%;
     cursor: pointer;
 }
+
+.add-to-calendar {
+    color: white;
+}
