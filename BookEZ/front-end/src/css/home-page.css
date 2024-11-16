@@ -134,6 +134,13 @@ h4 {
     justify-content: start;
     align-items: start;
 }
+/* 
+.advantage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+} */
 
 h1 {
     margin-bottom: 0;
@@ -165,4 +172,6 @@ h5 {
     flex-direction: column;
     justify-content: center;
     align-items: start;
+
+    cursor: pointer;
 }
