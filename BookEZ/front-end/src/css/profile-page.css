@@ -102,15 +102,19 @@
 }
 
 .pp-list-of-appointments {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center; */
+    width: 100%;
 }
 
 .appointment-box {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 2%;
+    /* display: flex;
+    flex-direction: row;
+    gap: 5%; */
 }
 
 .appointment-box-inside {
@@ -127,9 +131,7 @@
 }
 
 .abi-selection {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 10px;
+    flex-direction: column;
+    gap: 2%;
     cursor: pointer;
 }
