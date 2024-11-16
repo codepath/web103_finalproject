@@ -47,12 +47,12 @@ export async function register(req, res) {
 
 // Login an existing user
 export async function login(req, res) {
-  const { username, password } = req.body
+  const { email, password } = req.body
 
   try {
     const userResult = await pool.query(
-      'SELECT * FROM users WHERE username = $1',
-      [username]
+      'SELECT * FROM users WHERE email = $1',
+      [email]
     )
     if (userResult.rows.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' })
