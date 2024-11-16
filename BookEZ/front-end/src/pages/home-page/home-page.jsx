@@ -8,11 +8,25 @@ import SecurityUpdateGoodIcon from '@mui/icons-material/SecurityUpdateGood';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
+
+import { imageLinks } from "../../data/imageLinks";
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 const HomePage = () => {
     const [searchPattern, setSearchPattern] = useState("");
     const [salonToDisplay, setSalonToDisplay] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+    // const salonImage = "https://www.revealhairstudiorye.com/wp-content/uploads/2021/01/Untitled-design.jpg";
 
     const navigate = useNavigate();
 
@@ -73,7 +87,7 @@ const HomePage = () => {
             <div className="home-page-salons" id="salon">
                 <div className="home-page-salons-header">
                     <div className="hps-header">
-                        <h1>List of Salons</h1>
+                        <h1>List of salons</h1>
                         <h5><i>Finding your favorite salons</i></h5>
                     </div>
 
@@ -95,19 +109,33 @@ const HomePage = () => {
                     <h2>There is currently no salon to display</h2>
                 ) : (
                     <div className="hps-list-of-salon">
-                    {salonToDisplay && salonToDisplay.length > 0 ? (
-                        salonToDisplay.map((salon, index) => (
-                            <div className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
-                                <h3 className="sb-salon-name">{salon.name}</h3>
-                                <p className="advantage">
-                                    <PlaceIcon /> 
-                                    {salon.address}, {salon.city}, {salon.state} {salon.zip_code}
-                                </p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No salons available to display</p>
-                    )}
+                        {salonToDisplay && salonToDisplay.length > 0 ? (
+                            salonToDisplay.map((salon, index) => (
+                                // <div className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
+                                    <Card sx={{ maxWidth: "max-width" }} className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
+                                        <CardActionArea>
+                                            <CardMedia
+                                            component="img"
+                                            height="140"
+                                            image={imageLinks[getRandomInt(imageLinks.length)]}
+                                            alt="green iguana"
+                                            />
+                                            <CardContent>
+                                                <Typography gutterBottom variant="h5" component="div">
+                                                    {salon.name}
+                                                </Typography>
+                                                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                                    <PlaceIcon /> 
+                                                    {salon.address}, {salon.city}, {salon.state} {salon.zip_code}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                // </div>
+                            ))
+                        ) : (
+                            <p>No salons available to display</p>
+                        )}
                 </div>
                 )}
             </div>

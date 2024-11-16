@@ -18,7 +18,8 @@ import NotFoundPage from './pages/not-found-page';
 import { useState } from 'react';
 
 function App() {
-  const [currentUserId, setCurrentUserId] = useState(null);
+  // const [currentUserId, setCurrentUserId] = useState(null);
+  const [currentUserId, setCurrentUserId] = useState(1);
 
   const handleSetUserId = (id) => {
     setCurrentUserId(id);

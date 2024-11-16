@@ -166,7 +166,8 @@ h5 {
 .salon-box {
     border: 1px black solid;
     border-radius: 15px;
-    padding: 10px 5%;
+    padding: 30px 5%;
+    background-color: white;
 
     display: flex;
     flex-direction: column;

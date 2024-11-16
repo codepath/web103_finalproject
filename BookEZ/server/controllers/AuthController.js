@@ -61,7 +61,8 @@ export async function login(req, res) {
     const user = userResult.rows[0]
     const validPassword = await comparePasswords(password, user.password)
     if (!validPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' })
+      console.log(password + " " + user.password);
+      return res.status(401).json({ error: 'Invalid password credentials' })
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
