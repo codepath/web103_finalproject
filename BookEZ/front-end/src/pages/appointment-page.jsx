@@ -10,7 +10,7 @@ import {
 } from "../services/employeeAPI";
 import { reserveThisTimeSlot } from "../services/timeslotAPI";
 
-const AppointmentPage = () => {
+const AppointmentPage = ({ currentUserId }) => {
   const [employeeName, setEmployeeName] = useState("");
   const [employeeRole, setEmployeeRole] = useState("");
   const [employeeId, setEmployeeId] = useState();
@@ -77,7 +77,7 @@ const AppointmentPage = () => {
     );
 
     const timeSlotBody = {
-      user_id: "1",
+      user_id: currentUserId,
       salon_id: SalonId,
       employee_id: employeeId,
       time_slot_id: timeSlotId
