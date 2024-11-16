@@ -1,6 +1,6 @@
 import '../../css/signup-page.css'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { registerUser } from '../../services/authAPI'
 
 const SignUpPage = () => {
@@ -129,15 +129,14 @@ const SignUpPage = () => {
           <button className="signin-button" type="submit">
             Register
           </button>
-          <a
-            href="#"
+          <p
             onClick={(e) => {
               e.preventDefault()
               navigate('/login')
             }}
           >
             <i>Already have an account? Log in</i>
-          </a>
+          </p>
         </div>
       </div>
     </form>

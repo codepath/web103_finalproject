@@ -4,6 +4,8 @@ import IncomingAppointments from "./incoming-appointment";
 import BorderColorRoundedIcon from "@mui/icons-material/BorderColorRounded";
 import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+
+
 import { getAllUpcomingAppointments, getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
 
 const ProfilePage = ({ currentUserId }) => {
@@ -28,7 +30,7 @@ const ProfilePage = ({ currentUserId }) => {
   const [listOfAppointments, setListOfAppointments] = useState([]);
   const [isLoadingAppointment, setIsLoadingAppointment] = useState(true);
   const [isErrorAppointment, setIsErrorAppointment] = useState(true);
-
+  
   useEffect(() => {
     const getAllUserDetail = async () => {
         try {
@@ -117,6 +119,8 @@ const ProfilePage = ({ currentUserId }) => {
             <h1>Fail Loading user details...</h1>  
         :
             <>
+                <h1 className="profile-page-title">{userUsername} profile</h1>
+                {/* Username */}
                 <div className="profile-page-username">
                     {isEditing ?
                         <div className="profile-page-all-details-frame edit-username">
