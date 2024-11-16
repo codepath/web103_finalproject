@@ -3,7 +3,7 @@ const timeSlots = [
   {
     id: 1,
     employee_id: 1,
-    is_booked: false,
+    is_booked: true,
     start_time: '2024-11-01T09:00:00',
     end_time: '2024-11-01T10:00:00',
   },
@@ -33,7 +33,7 @@ const timeSlots = [
   {
     id: 5,
     employee_id: 2,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T10:00:00',
     end_time: '2024-11-01T11:00:00',
   },
@@ -72,7 +72,7 @@ const timeSlots = [
   {
     id: 10,
     employee_id: 5,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T09:00:00',
     end_time: '2024-11-01T10:00:00',
   },
@@ -102,7 +102,7 @@ const timeSlots = [
   {
     id: 14,
     employee_id: 7,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T10:00:00',
     end_time: '2024-11-01T11:00:00',
   },
@@ -125,7 +125,7 @@ const timeSlots = [
   {
     id: 17,
     employee_id: 8,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T10:00:00',
     end_time: '2024-11-01T11:00:00',
   },
@@ -155,7 +155,7 @@ const timeSlots = [
   {
     id: 21,
     employee_id: 10,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T11:00:00',
     end_time: '2024-11-01T12:00:00',
   },
@@ -171,7 +171,7 @@ const timeSlots = [
   {
     id: 23,
     employee_id: 11,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T10:00:00',
     end_time: '2024-11-01T11:00:00',
   },
@@ -187,7 +187,7 @@ const timeSlots = [
   {
     id: 25,
     employee_id: 16,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T09:00:00',
     end_time: '2024-11-01T10:00:00',
   },
@@ -224,7 +224,7 @@ const timeSlots = [
   {
     id: 30,
     employee_id: 17,
-    is_booked: true,
+    is_booked: false,
     start_time: '2024-11-01T11:00:00',
     end_time: '2024-11-01T12:00:00',
   },
