@@ -1,0 +1,24 @@
+.event {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(255, 253, 253, 0.13);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+    font-size: 15px; 
+    font-family: "InriaSans-Bold";
+    color:white;
+}
+
+
+.event:hover {
+    transform: scale(1.02);
+    background-color: 3px rgb(231, 130, 15);
+    cursor: pointer;
+}
+
+.event p{
+    color:white;
+    font-size: 14px;
+    font-weight: lighter;
+}
