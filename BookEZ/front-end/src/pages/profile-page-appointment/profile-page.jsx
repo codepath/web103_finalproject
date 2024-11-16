@@ -6,7 +6,7 @@ import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 
-import { getAllUpcomingAppointments, getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
+import { getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
 
 const ProfilePage = ({ currentUserId }) => {
   const [isEditing, setIsEditting] = useState(false);
@@ -26,11 +26,6 @@ const ProfilePage = ({ currentUserId }) => {
   const [editedUserPhoneNumber, setEditedUserPhoneNumber] = useState(userPhoneNumber);
   const [editedUserFullname, setEditedUserFullname] = useState(userUsername);
 
-  // Elements for getting upcomming appoinemtnt
-  const [listOfAppointments, setListOfAppointments] = useState([]);
-  const [isLoadingAppointment, setIsLoadingAppointment] = useState(true);
-  const [isErrorAppointment, setIsErrorAppointment] = useState(true);
-  
   useEffect(() => {
     const getAllUserDetail = async () => {
         try {
@@ -51,24 +46,6 @@ const ProfilePage = ({ currentUserId }) => {
 
     getAllUserDetail();
   }, []);
-
-  useEffect(() => {
-    const getAllAppointments = async () => {
-        try {
-            const result = await getAllUpcomingAppointments(currentUserId);
-            // console.log("Here is result of incoming appointments");
-            // console.log(result);
-            setListOfAppointments(result);
-        } catch (err) {
-            console.error("Error fetching list of upcoming appointments");
-        } finally {
-            setIsLoadingAppointment(false);
-            setIsErrorAppointment(false);
-        }
-    };
-
-    getAllAppointments();
-  }, [])
 
   const startEditing = () => {
     setIsEditting(true);
@@ -235,15 +212,7 @@ const ProfilePage = ({ currentUserId }) => {
         <h1>Upcoming appointment</h1>
 
         <div className="pp-list-of-appointments">
-            {isLoadingAppointment ?
-                <h1>Loading...</h1>
-                :isErrorAppointment ?
-                <h1>Fail Loading appointments...</h1>
-                :listOfAppointments.length <= 0 ?
-                <h1>There is no upcoming appointment</h1>
-                :
-                <IncomingAppointments appointmentCriteria={listOfAppointments} />
-            }
+            <IncomingAppointments currentUserId={currentUserId} />
         </div>
         
       </div>
