@@ -35,7 +35,7 @@ const ProfilePage = ({ currentUserId }) => {
     const getAllUserDetail = async () => {
         try {
             const result = await getUserInfoById(currentUserId);
-            console.log(result[0]);
+            // console.log(result[0]);
             setUserUsername(result[0].username);
             setUserFullname(result[0].full_name);
             setUserEmail(result[0].email);
@@ -56,7 +56,8 @@ const ProfilePage = ({ currentUserId }) => {
     const getAllAppointments = async () => {
         try {
             const result = await getAllUpcomingAppointments(currentUserId);
-            console.log(result);
+            // console.log("Here is result of incoming appointments");
+            // console.log(result);
             setListOfAppointments(result);
         } catch (err) {
             console.error("Error fetching list of upcoming appointments");

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSalonById } from "../../services/salonAPI";
 import { getAnEmployeeById } from "../../services/employeeAPI";
-import { getATimeSlotById } from "../../services/timeslotAPI";
+import { cancelThisTimeSlot, getATimeSlotById } from "../../services/timeslotAPI";
 
 import { Button } from "@mui/material";
 
@@ -17,15 +17,16 @@ import CardActions from '@mui/material/CardActions';
 const IncomingAppointments = ({ appointmentCriteria }) => {
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [deletedAnAppointment, setDeletedAnAppointment] = useState(false);
 
     const salonImage = "https://www.revealhairstudiorye.com/wp-content/uploads/2021/01/Untitled-design.jpg";
-
 
     useEffect(() => {
         const getAppointments = async () => {
             const fetchedAppointments = [];
 
             for (const appointment of appointmentCriteria) {
+                // console.log(appointment);
                 try {
                     const salonDetail = await getSalonById(appointment.salon_id);
                     const employeeDetail = await getAnEmployeeById(appointment.employee_id);
@@ -36,6 +37,8 @@ const IncomingAppointments = ({ appointmentCriteria }) => {
                         employee: employeeDetail.name,
                         startTime: timeSlotDetail[0]?.start_time || "N/A",
                         endTime: timeSlotDetail[0]?.end_time || "N/A",
+                        bookingId: appointment.id,
+                        timeSlotId: appointment.time_slot_id
                     };
 
                     fetchedAppointments.push(appointmentDetail);
@@ -50,7 +53,17 @@ const IncomingAppointments = ({ appointmentCriteria }) => {
         };
 
         getAppointments();
-    }, [appointmentCriteria]);
+    }, [deletedAnAppointment, appointmentCriteria]);
+
+    const cancelThisAppointment = async (time_slotid, bookingsid) => {
+        try {
+            await cancelThisTimeSlot(time_slotid, bookingsid);
+            console.log("Booking added successfully", time_slotid, " ", bookingsid);
+        } catch (error) {
+            console.error("Error adding booking", error);
+        }
+        setDeletedAnAppointment(true);
+    }
 
     return (
         <div className="appointment-box">
@@ -61,40 +74,40 @@ const IncomingAppointments = ({ appointmentCriteria }) => {
                     {appointments.length > 0 && (
                         appointments.map((app, index) => (
                             // <div className="appointment-box-inside" key={index}>
-                                <Card sx={{ maxWidth: "max-width" }} className="appointment-box-inside" key={index}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                        component="img"
-                                        height="140"
-                                        image={salonImage}
-                                        alt="green iguana"
-                                        />
+                            <Card sx={{ maxWidth: "max-width" }} className="appointment-box-inside" key={index}>
+                                <CardActionArea>
+                                    <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image={salonImage}
+                                    alt="green iguana"
+                                    />
 
-                                        <CardContent>
-                                            <Typography gutterBottom variant="h5" component="div" sx={{ color: '#1230AE' }}>
-                                                <b>{app.salon}</b>
-                                            </Typography>
-                                            <Typography gutterBottom variant="h6" component="div">
-                                                Employee: {app.employee}
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                                                Date: {app.startTime.substring(0, 10)}
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                                                Start time: {app.startTime.substring(11, 16)}
-                                            </Typography>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div" sx={{ color: '#1230AE' }}>
+                                            <b>{app.salon}</b>
+                                        </Typography>
+                                        <Typography gutterBottom variant="h6" component="div">
+                                            Employee: {app.employee}
+                                        </Typography>
+                                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                                            Date: <b>{app.startTime.substring(0, 10)}</b>
+                                        </Typography>
 
-                                            <Typography variant="body2" sx={{ color: 'text.primary' }}>
-                                                End time: {app.endTime.substring(11, 16)}
-                                            </Typography>
-                                        </CardContent>
-                                    </CardActionArea>
-                                    <CardActions>
-                                        <Button variant="contained" size="small" color="error">
-                                            Cancel appointment
-                                        </Button>
-                                    </CardActions>
-                                </Card>
+                                        <Typography variant="body2" sx={{ color: 'text.primary' }}>
+                                            Time: <b><i>{app.startTime.substring(11, 16)} - {app.endTime.substring(11, 16)}</i></b>
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions className="abi-selection" sx={{ justifyContent: 'center', width: "100%" }}>
+                                    <Button variant="contained" size="small" color="success" sx={{ m: 1 }}>
+                                        Add to Google Calendar
+                                    </Button>
+                                    <Button variant="contained" size="small" color="error" sx={{ m: 1 }} onClick={() => cancelThisAppointment(app.timeSlotId, app.bookingId)}>
+                                        Cancel appointment
+                                    </Button>
+                                </CardActions>
+                            </Card>
                             // </div>
                         ))
                     )}

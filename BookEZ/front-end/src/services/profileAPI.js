@@ -51,7 +51,7 @@ export const getAllUpcomingAppointments= async (uid) => {
           throw new Error(`Error fetching upcoming appointments details: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         return data;
       } catch (error) {
         console.error("Error fetching upcoming appointments detail:", error);
