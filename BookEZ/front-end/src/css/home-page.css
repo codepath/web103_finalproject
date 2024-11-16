@@ -157,7 +157,7 @@ h5 {
 
 .hps-list-of-salon {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 30% 30% 30%;
     gap: 5%;
 
     margin-top: 20px;

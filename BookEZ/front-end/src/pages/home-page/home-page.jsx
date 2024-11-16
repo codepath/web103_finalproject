@@ -21,8 +21,9 @@ function getRandomInt(max) {
 }
 
 const HomePage = () => {
-    const [searchPattern, setSearchPattern] = useState("");
-    const [salonToDisplay, setSalonToDisplay] = useState([]);
+    // const [searchPattern, setSearchPattern] = useState("");
+    const [salons, setSalons] = useState([]);
+    const [salonToDisplayFilter, setSalonToDisplayFilter] = useState([]); // Filtered list
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -36,7 +37,8 @@ const HomePage = () => {
             try {
                 const salonList = await getAllSalons();
                 // console.log(salonList)
-                setSalonToDisplay(salonList);
+                setSalons(salonList);
+                setSalonToDisplayFilter(salonList);
             } catch (err) {
                 setError("Failed to fetch salons");
             } finally {
@@ -50,11 +52,11 @@ const HomePage = () => {
 
     // console.log(salonToDisplay);
 
-    const onSearch = () => {
-        const filteredSalons = salonToDisplay.filter((s) => 
+    const onSearch = (searchPattern) => {
+        const filteredSalons = salons.filter((s) => 
             s.name.toLowerCase().startsWith(searchPattern.toLowerCase())
         );
-        setSalonToDisplay(filteredSalons);
+        setSalonToDisplayFilter(filteredSalons);
     };
 
     return (
@@ -96,7 +98,7 @@ const HomePage = () => {
                             type="text" 
                             placeholder="Search" 
                             className="input-box" 
-                            onChange={(e) => { setSearchPattern(e.target.value); onSearch(); }} 
+                            onChange={(e) => onSearch(e.target.value)}
                         />
                     </div>
                 </div>
@@ -105,12 +107,12 @@ const HomePage = () => {
                     <h2>Loading salons...</h2>
                 ) : error ? (
                     <h2>{error}</h2>
-                ) : salonToDisplay.length === 0 ? (
+                ) : salons.length === 0 ? (
                     <h2>There is currently no salon to display</h2>
                 ) : (
                     <div className="hps-list-of-salon">
-                        {salonToDisplay && salonToDisplay.length > 0 ? (
-                            salonToDisplay.map((salon, index) => (
+                        {salonToDisplayFilter && salonToDisplayFilter.length > 0 ? (
+                            salonToDisplayFilter.map((salon, index) => (
                                 // <div className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
                                     <Card sx={{ maxWidth: "max-width" }} className="salon-box" key={index} onClick={() => navigate(`/salon/${salon.id}`)}>
                                         <CardActionArea>
@@ -134,7 +136,7 @@ const HomePage = () => {
                                 // </div>
                             ))
                         ) : (
-                            <p>No salons available to display</p>
+                            <p>No salon match your search</p>
                         )}
                 </div>
                 )}
