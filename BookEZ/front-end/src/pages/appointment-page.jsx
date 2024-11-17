@@ -125,7 +125,7 @@ const AppointmentPage = ({ currentUserId }) => {
                   key={index}
                   onClick={() => {setSelectedTimeSlot(`${timeslot.start_time} - ${timeslot.end_time}`); console.log(timeslot); setTimeSlotId(timeslot.id)}}
                 >
-                  {`${timeslot.start_time} - ${timeslot.end_time}`}
+                  {`${timeslot.start_time.substring(11, 16)} - ${timeslot.end_time.substring(11, 16)}`}
                 </div>
               ))}
             </>
@@ -133,6 +133,7 @@ const AppointmentPage = ({ currentUserId }) => {
         </div>
 
         <div className="reserve-a-timeSlot">
+          <h4 style={{ marginBottom: "15px" }}>Your selected time slot is:</h4>
           <input
             type="text"
             className="input-box"

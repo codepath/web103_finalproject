@@ -16,6 +16,7 @@ import ProfilePage from './pages/profile-page-appointment/profile-page';
 import AppointmentPage from './pages/appointment-page';
 import NotFoundPage from './pages/not-found-page';
 import { useState } from 'react';
+import MyDatePicker from './pages/my-date-picker';
 
 function App() {
   // const [currentUserId, setCurrentUserId] = useState(null);
@@ -37,6 +38,7 @@ function App() {
               <Route path="/signup" element={<SignUpPage title='Create an account' />} />
               
               <Route path="/profile" element={<ProfilePage title='Profile Page' currentUserId={currentUserId}/>} />
+              <Route path="/day" element={<MyDatePicker title='Profile Page' />} />
 
               <Route path="/employee/:eid/salon/:sid/appointment" element={<AppointmentPage title='Reserve an appointment with employee' currentUserId={currentUserId}/>} />
               <Route path="/salon/:id" element={<SalonPage title='Salon'/>}/>
