@@ -54,6 +54,7 @@ const IncomingAppointments = ({ currentUserId }) => {
         const getAllAppointments = async () => {
             try {
                 const result = await getAllUpcomingAppointments(currentUserId);
+                console.log(result.length);
                 if (result.length >0) {
                     const fetchedAppointments = [];
                     
@@ -79,6 +80,8 @@ const IncomingAppointments = ({ currentUserId }) => {
                         fetchedAppointments.push(appointmentDetail);
                     }
                     setAppointments(fetchedAppointments);
+                } else {
+                  setAppointments([]);
                 }
             } catch (err) {
                 console.error("Error fetching list of upcoming appointments");

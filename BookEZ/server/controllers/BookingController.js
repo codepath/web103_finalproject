@@ -10,8 +10,7 @@ const getBookingsByUserId = async (req, res) => {
         const results = await pool.query('SELECT * FROM bookings WHERE user_id=$1', [user_id])
         
         if (results.rows.length === 0){
-            res.status(404).json({ error: "No free bookings for this user" })
-
+            res.status(200).json([])
         } else {
             res.status(200).json(results.rows);
         }
