@@ -1,5 +1,8 @@
 .profile-page-title {
-    color: blueviolet;
+    color: #1230AE;
+    justify-self: start;
+    margin-left: 7%;
+    font-style: italic;
 }
 
 .profile-page-username {
@@ -55,7 +58,7 @@
     height: max-content;
     padding: 10px 15px;
     border-radius: 5px;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
@@ -64,7 +67,7 @@
     height: max-content;
     padding: 10px 15px;
     border-radius: 5px;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
@@ -102,19 +105,23 @@
 }
 
 .pp-list-of-appointments {
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    justify-content: center;
     width: 100%;
 }
 
 .appointment-box {
-    display: grid;
+    width: 100%;
+
+    /* display: grid;
     grid-template-columns: auto auto auto;
-    gap: 2%;
-    /* display: flex;
+    gap: 2%; */
+    display: flex;
     flex-direction: row;
-    gap: 5%; */
+    justify-content: center;
+    gap: 5%;
 }
 
 .appointment-box-inside {
@@ -138,4 +145,27 @@
 
 .add-to-calendar {
     color: white;
+}
+
+.no-appointment-add-more {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 20px;
+    border: 4px black dashed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    color: #1230AE;
+}
+
+.no-appointment-add-more:hover {
+    background-color:whitesmoke;
+    border: 4px #1230AE dashed;
+    color: #1230AE;
+}
+
+h4 {
+    margin: 0;
 }

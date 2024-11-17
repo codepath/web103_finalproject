@@ -7,8 +7,7 @@ import {
 } from "../../services/timeslotAPI";
 
 import { getAllUpcomingAppointments } from "../../services/profileAPI";
-
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Button } from "@mui/material";
 
 import Card from "@mui/material/Card";
@@ -17,7 +16,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardActions from "@mui/material/CardActions";
-// import { sizing } from '@mui/system';
+
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 // To convert a timeslot from ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ) to Google Calendar format (YYYYMMDDTHHmmssZ)
 function convertToGoogleCalendarFormat(isoDate) {
@@ -39,87 +40,115 @@ function convertToGoogleCalendarFormat(isoDate) {
     return returnTime;
 }
 
-const IncomingAppointments = ({ currentUserId }) => {
+const IncomingAppointments = ({ currentUserId, onDataChange }) => {
   const [appointments, setAppointments] = useState([]);
 
-    // Elements for getting upcomming appoinemtnt
-    const [isLoadingAppointment, setIsLoadingAppointment] = useState(true);
-    const [isErrorAppointment, setIsErrorAppointment] = useState(true);
-    const [cancelOnce, setCancelOnce] = useState(false);
+  // Elements for getting upcomming appoinemtnt
+  const [isLoadingAppointment, setIsLoadingAppointment] = useState(true);
+  const [isErrorAppointment, setIsErrorAppointment] = useState(true);
+  const [cancelOnce, setCancelOnce] = useState(false);
 
-    const salonImage =
-    "https://www.revealhairstudiorye.com/wp-content/uploads/2021/01/Untitled-design.jpg";
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const getAllAppointments = async () => {
-            try {
-                const result = await getAllUpcomingAppointments(currentUserId);
-                console.log(result.length);
-                if (result.length >0) {
-                    const fetchedAppointments = [];
-                    
-                    for (const appointment of result) {
-                        const salonDetail = await getSalonById(appointment.salon_id);
-                        const employeeDetail = await getAnEmployeeById(
-                            appointment.employee_id
-                        );
-                        const timeSlotDetail = await getATimeSlotById(
-                            appointment.time_slot_id
-                        );
+  const salonImage =
+  "https://www.revealhairstudiorye.com/wp-content/uploads/2021/01/Untitled-design.jpg";
 
-                        const appointmentDetail = {
-                            salon: salonDetail.name,
-                            address: salonDetail.address + ", " + salonDetail.city + ", " + salonDetail.state + " " + salonDetail.zip_code,
-                            employee: employeeDetail.name,
-                            startTime: timeSlotDetail[0]?.start_time || "N/A",
-                            endTime: timeSlotDetail[0]?.end_time || "N/A",
-                            bookingId: appointment.id,
-                            timeSlotId: appointment.time_slot_id,
-                        };
+  useEffect(() => {
+      const getAllAppointments = async () => {
+          try {
+              const result = await getAllUpcomingAppointments(currentUserId);
+              // console.log(result.length);
+              onDataChange(result.length);
+              
+              if (result.length >0) {
+                  const fetchedAppointments = [];
+                  
+                  for (const appointment of result) {
+                      const salonDetail = await getSalonById(appointment.salon_id);
+                      const employeeDetail = await getAnEmployeeById(
+                          appointment.employee_id
+                      );
+                      const timeSlotDetail = await getATimeSlotById(
+                          appointment.time_slot_id
+                      );
 
-                        fetchedAppointments.push(appointmentDetail);
-                    }
-                    setAppointments(fetchedAppointments);
-                } else {
-                  setAppointments([]);
-                }
-            } catch (err) {
-                console.error("Error fetching list of upcoming appointments");
-            } finally {
-                setIsLoadingAppointment(false);
-                setIsErrorAppointment(false);
-            }
-        };
-    
-        getAllAppointments();
-    }, [cancelOnce, currentUserId])
+                      const appointmentDetail = {
+                          salon: salonDetail.name,
+                          address: salonDetail.address + ", " + salonDetail.city + ", " + salonDetail.state + " " + salonDetail.zip_code,
+                          employee: employeeDetail.name,
+                          startTime: timeSlotDetail[0]?.start_time || "N/A",
+                          endTime: timeSlotDetail[0]?.end_time || "N/A",
+                          bookingId: appointment.id,
+                          timeSlotId: appointment.time_slot_id,
+                      };
 
-  const cancelThisAppointment = async (time_slotid, bookingsid) => {
-    try {
-      await cancelThisTimeSlot(time_slotid, bookingsid);
-    //   console.log("Booking added successfully", time_slotid, " ", bookingsid);
-    } catch (error) {
-      console.error("Error adding booking", error);
-    }
-    setCancelOnce(!cancelOnce);
+                      fetchedAppointments.push(appointmentDetail);
+                  }
+                  setAppointments(fetchedAppointments);
+              } else {
+                setAppointments([]);
+              }
+          } catch (err) {
+              console.error("Error fetching list of upcoming appointments");
+          } finally {
+              setIsLoadingAppointment(false);
+              setIsErrorAppointment(false);
+          }
+      };
+  
+      getAllAppointments();
+  }, [cancelOnce, currentUserId])
+
+  const cancelThisAppointment = (time_slotid, bookingsid) => {
+    Swal.fire({
+      title: "Confirming...",
+      text: "Do you want to cancel this appointment?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const cancel = async () => {
+          try {
+            await cancelThisTimeSlot(time_slotid, bookingsid);
+          //   console.log("Booking added successfully", time_slotid, " ", bookingsid);
+          } catch (error) {
+            console.error("Error adding booking", error);
+          }
+          setCancelOnce(!cancelOnce);
+        }
+        cancel();
+        Swal.fire("Confirmed!", "You have successfully cancel this appointment!", "success");
+        // Add logic for "Yes" action here
+        onDataChange(appointments.length);
+      } else if (result.isDismissed) {
+        Swal.fire("Cancelled", "Stop successfully!", "error");
+        // Add logic for "No" action here
+      }
+    });
   };
 
   return (
     <div className="appointment-box">
       {isLoadingAppointment ? (
-        <h1>Loading...</h1>
+        <h3>Loading...</h3>
       ) : isErrorAppointment ? (
-        <h1>Error loading list of appointment</h1>
+        <h3>Error loading list of appointment</h3>
       ) :
       appointments.length <= 0 ? (
-        <h1>There is currently no appointments</h1>
+        // <h3>There is currently no appointments</h3>
+        <div className="no-appointment-add-more" onClick={() => navigate("/#salon")}>
+          <h3>There is currently no appointments</h3>
+          <h4> <span>Book a new reservation</span> <AddCircleIcon /> </h4>
+        </div>
       ) : (
         <>
           {appointments.length > 0 &&
             appointments.map((app, index) => (
               // <div className="appointment-box-inside" key={index}>
               <Card
-                sx={{ maxWidth: "max-width" }}
+                sx={{ maxWidth: "30%", p: 4 }}
                 className="appointment-box-inside"
                 key={index}
               >
