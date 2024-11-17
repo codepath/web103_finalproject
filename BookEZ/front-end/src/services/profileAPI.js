@@ -46,10 +46,11 @@ export const submitEdittedInfo = async (timeSlotId, userInfoBody) => {
 export const getAllUpcomingAppointments= async (uid) => {
     try {
         const response = await fetch(`${API_BASE_URL}/api/booking/user/${uid}`);
+        // console.log(response);
         if (!response.ok) {
             // console.log("having error");
           throw new Error(`Error fetching upcoming appointments details: ${response.statusText}`);
-        }
+        } 
         const data = await response.json();
         // console.log(data);
         return data;
