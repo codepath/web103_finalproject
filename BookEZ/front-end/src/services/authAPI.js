@@ -1,4 +1,5 @@
-const API_BASE_URL = 'http://localhost:3001' // Updated base URL with /api prefix
+// Updated base URL with /api prefix
+const API_BASE_URL = 'http://localhost:3001' 
 
 export const registerUser = async (user) => {
   try {

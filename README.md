@@ -18,7 +18,7 @@ The idea for BookEZ came from the challenges many people face when booking appoi
 
 ## Tech Stack
 
-Frontend: React.js, Material UI.
+Frontend: React.js, Material UI, Sweet Alert 2.
 
 Backend: Express.js, PostgreSQL, RailWay, Node.js.
 

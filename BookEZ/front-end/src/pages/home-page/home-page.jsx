@@ -90,7 +90,7 @@ const HomePage = () => {
                 <div className="home-page-salons-header">
                     <div className="hps-header">
                         <h1>List of salons</h1>
-                        <h5><i>Finding your favorite salons</i></h5>
+                        <h5><i>Choose your favorite salons</i></h5>
                     </div>
 
                     <div className="hps-search-bar">

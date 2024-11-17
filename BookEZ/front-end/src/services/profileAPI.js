@@ -1,7 +1,8 @@
-// Define functions to call API to getAllCars, getCar, createCar, editCar, deleteCar
-const API_BASE_URL = "http://localhost:3001"; // Updated base URL with /api prefix
+// Define functions to call API
+// Updated base URL with /api prefix
+const API_BASE_URL = "http://localhost:3001";
 
-// Get an user's details
+// Get an user's details (username, fullname, email, phone numbers)
 export const getUserInfoById= async (uid) => {
     try {
         const response = await fetch(`${API_BASE_URL}/api/user/${uid}`);
@@ -18,8 +19,7 @@ export const getUserInfoById= async (uid) => {
       }
 };
 
-// Update user details
-// Display list of Salons in homepage
+// Update user details (username, fullname, email, phone numbers)
 export const submitEdittedInfo = async (timeSlotId, userInfoBody) => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/user/${timeSlotId}`, {
@@ -42,7 +42,7 @@ export const submitEdittedInfo = async (timeSlotId, userInfoBody) => {
     }
 };
 
-// Get all upcoming appointment of that user
+// Get all upcoming appointments of that user by userId
 export const getAllUpcomingAppointments= async (uid) => {
     try {
         const response = await fetch(`${API_BASE_URL}/api/booking/user/${uid}`);

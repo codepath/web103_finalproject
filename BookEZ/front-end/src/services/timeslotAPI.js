@@ -1,8 +1,7 @@
 // Define functions to call API to getAllCars, getCar, createCar, editCar, deleteCar
 const API_BASE_URL = "http://localhost:3001"; // Updated base URL with /api prefix
 
-// Get all Salons 
-// Display list of Salons in homepage
+// Reserve a timeslot by id
 export const reserveThisTimeSlot = async (timeSlotId) => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/timeslot/book/${timeSlotId}`, {
@@ -13,20 +12,19 @@ export const reserveThisTimeSlot = async (timeSlotId) => {
         // body: JSON.stringify(timeSlotBody),
       });
       if (!response.ok) {
-        throw new Error(`Error booking this timeslot: ${response.statusText}`);
+        throw new Error(`Error reserving this timeslot: ${response.statusText}`);
       }
       const data = await response.json();
       console.log(timeSlotId);
     //   console.log(timeSlotBody);
       return data;
     } catch (error) {
-      console.error("Error adding booking:", error);
+      console.error("Error reserving booking:", error);
       throw error;
     }
 };
 
 // Cancel the reservation
-// Display list of Salons in homepage
 export const cancelThisTimeSlot = async (timeSlotId, bookingId) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/timeslot/cancel/${timeSlotId}`, {
@@ -41,11 +39,7 @@ export const cancelThisTimeSlot = async (timeSlotId, bookingId) => {
     }
 
     const response1 = await fetch(`${API_BASE_URL}/api/booking/${bookingId}`, {
-      method: "DELETE",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      // body: JSON.stringify(timeSlotBody),
+      method: "DELETE"
     });
     if (!response1.ok) {
       throw new Error(`Error cancel this reservation from booking tablet: ${response.statusText}`);
@@ -53,7 +47,7 @@ export const cancelThisTimeSlot = async (timeSlotId, bookingId) => {
 
     // const data = await response.json();
     // console.log(timeSlotId);
-  //   console.log(timeSlotBody);
+    // console.log(timeSlotBody);
     // return data;
   } catch (error) {
     console.error("Error canceling reservation from booking table:", error);
