@@ -14,6 +14,8 @@ import { StaticDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TextField } from "@mui/material";
 
+import Swal from "sweetalert2";
+
 const AppointmentPage = ({ currentUserId }) => {
   const [employeeName, setEmployeeName] = useState("");
   const [employeeRole, setEmployeeRole] = useState("");
@@ -60,29 +62,46 @@ const AppointmentPage = ({ currentUserId }) => {
   }, [eid]);
 
   const reserveAppointment = async () => {
-    alert(
-      "You reserved timeslot " +
-        selectedTimeSlot +
-        " for worker " +
-        employeeName
-    );
-
-    const timeSlotBody = {
-      user_id: currentUserId,
-      salon_id: SalonId,
-      employee_id: employeeId,
-      time_slot_id: timeSlotId
-    }
-
-    try {
-      await bookThisTimeslot(timeSlotBody);
-      await reserveThisTimeSlot(timeSlotId);
-      console.log("Booking added successfully", timeSlotBody);
-      setReservedOnce(true);
-
-      getTimeslotdAndFilterByTime(eid, formattedDate);
-    } catch (error) {
-      console.error("Error adding booking", error);
+    if (selectedTimeSlot === "") {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please select a timeslot',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
+    } else {
+      Swal.fire({
+        title: "Confirming...",
+        text: "Do you want to reserve this appointment?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const timeSlotBody = {
+            user_id: currentUserId,
+            salon_id: SalonId,
+            employee_id: employeeId,
+            time_slot_id: timeSlotId
+          }
+          
+          const reserve = async () => {
+            try {
+              await bookThisTimeslot(timeSlotBody);
+              await reserveThisTimeSlot(timeSlotId);
+              console.log("Booking added successfully", timeSlotBody);
+              setReservedOnce(true);
+        
+              getTimeslotdAndFilterByTime(eid, formattedDate);
+              Swal.fire("Confirmed!", `You reserved timeslot ${selectedTimeSlot} with ${employeeName}`, "success");
+            } catch (error) {
+              console.error("Error adding booking", error);
+            }
+          }
+          reserve();
+        }
+      });
     }
   };
 
@@ -161,7 +180,7 @@ const AppointmentPage = ({ currentUserId }) => {
                   <div
                     className= {timeslot.is_booked ? "timeslot timeslot-booked" : "timeslot"}
                     key={index}
-                    onClick={() => {setSelectedTimeSlot(`${timeslot.start_time} - ${timeslot.end_time}`); console.log(timeslot); setTimeSlotId(timeslot.id)}}
+                    onClick={() => {setSelectedTimeSlot(`${timeslot.start_time.substring(0, 10)} ${timeslot.start_time.substring(11, 16)} - ${timeslot.end_time.substring(11, 16)}`); console.log(timeslot); setTimeSlotId(timeslot.id)}}
                   >
                     {`${timeslot.start_time.substring(11, 16)} - ${timeslot.end_time.substring(11, 16)}`}
                   </div>

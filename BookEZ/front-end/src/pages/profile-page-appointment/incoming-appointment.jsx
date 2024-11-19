@@ -148,11 +148,11 @@ const IncomingAppointments = ({ currentUserId, onDataChange }) => {
             appointments.map((app, index) => (
               // <div className="appointment-box-inside" key={index}>
               <Card
-                sx={{ maxWidth: "30%", p: 4 }}
+                sx={{ width: "80%", p: 4 }}
                 className="appointment-box-inside"
                 key={index}
               >
-                <CardActionArea>
+                <CardActionArea sx={{ with: "100%" }}>
                   <CardMedia
                     component="img"
                     height="140"
