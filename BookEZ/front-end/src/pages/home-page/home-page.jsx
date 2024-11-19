@@ -62,11 +62,13 @@ const HomePage = () => {
     return (
         <> 
             <div className="home-page-landing">
-                <p className="hpl-title">BOOKEZ</p>
-                <h2><i>Effortless Salon Booking at Your Fingertips</i></h2>
-                <div className="home-page-landing-explore-more">
-                    <a className="button-light" href="#intro">Explore more</a>
-                    <a className="button-info" href="#salon">Salons near me</a>
+                <div className="hpl-center-box">
+                    <p className="hpl-title">BOOKEZ</p>
+                    <h2><i>Effortless Salon Booking at Your Fingertips</i></h2>
+                    <div className="home-page-landing-explore-more">
+                        <a className="button-light" href="#intro">Explore more</a>
+                        <a className="button-info" href="#salon">Salons near me</a>
+                    </div>
                 </div>
             </div>
 

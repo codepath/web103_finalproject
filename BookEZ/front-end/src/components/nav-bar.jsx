@@ -20,7 +20,7 @@ const NavigationBar = () => {
                 <div className="title-menu">
                     <MenuIcon className="menu-icon" onClick={() => {setWantToShowMenu(true); console.log(wantToShowMenu)}} />
                 </div>
-                <h1 onClick={() => navigate("/")} className="title">BOOKEZ</h1>
+                <h1 onClick={() => navigate("/")} className="title fascinate-regular">BOOKEZ</h1>
 
                 <div className="nav-bar-logged-in-status">
                     {
@@ -47,7 +47,7 @@ const NavigationBar = () => {
                 <div className="hiddenSideTab">
                     <div className="hp-sidemenu">
                         <div className="sidemenu-title">
-                            <h1>BOOKEZ</h1>
+                            <h1 className="fascinate-regular">BOOKEZ</h1>
                         </div>
                         <div className="page-on-hidden-tab" onClick={() => navigateToPage("/")}>Home Page</div>
                         <div className="page-on-hidden-tab" onClick={() => navigateToPage("/profile")}>My Profile</div>
