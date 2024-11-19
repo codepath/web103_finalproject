@@ -1,7 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Shrikhand&family=Sour+Gummy:ital,wght@0,600;1,600&display=swap');
+
+.fascinate-regular {
+    font-family: "Fascinate", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+  
 .hpl-title {
-    font-size: 75px;
-    font-weight: bold;
+    font-size: 100px;
+    /* font-weight: bold; */
     margin: 0;
+    font-family: "Shrikhand", serif;
+    font-weight: 400;
+    font-style: normal;
+  
 }
 
 h4 {
@@ -12,7 +25,6 @@ h4 {
     height: 80%;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -20,7 +32,24 @@ h4 {
 
     gap: 5%;
 
-    background-color: #CDF5FD;
+    /* background-color: #CDF5FD; */
+    background: url("../giphy.webp");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.hpl-center-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+     /* White with 50% opacity */
+    /* background: rgba(255, 255, 255, 0.3); */
+    backdrop-filter: blur(10px); /* Applies a blur to the content behind */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    border-radius: 20px;
 }
 
 .home-page-landing-explore-more {

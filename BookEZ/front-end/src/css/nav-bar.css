@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Shrikhand&family=Sour+Gummy:ital,wght@0,600;1,600&display=swap');
+
+.fascinate-regular {
+    font-family: "Fascinate", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .nav-bar {
     height: 7%;
     padding: 10px 4%;
