@@ -5,10 +5,14 @@ import { useParams } from "react-router-dom";
 // import employeeTimeSlots from "../data/employee-appointment";
 import {
   bookThisTimeslot,
-  getAnEmployeeById,
-  getTimeSlotOfAnEmployeeByEmployeeId,
+  getAnEmployeeById
 } from "../services/employeeAPI";
-import { reserveThisTimeSlot } from "../services/timeslotAPI";
+import { reserveThisTimeSlot, getTimeslotsOfEmployeeByIdAndDate } from "../services/timeslotAPI";
+
+import dayjs from "dayjs";
+import { StaticDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { TextField } from "@mui/material";
 
 const AppointmentPage = ({ currentUserId }) => {
   const [employeeName, setEmployeeName] = useState("");
@@ -25,10 +29,16 @@ const AppointmentPage = ({ currentUserId }) => {
   const [loadingTimeSlots, setLoadingTimeSlots] = useState(true);
   const [errorTimeSlots, setErrorTimeSlots] = useState("");
 
+  // const [filteredTimeSlots, setFilteredTimeSlots] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(dayjs());
+
+  // const [selectedDay, setSelectedDay] = useState("");
+  const [formattedDate, setFormattedDate] = useState(dayjs().format("YYYY-MM-DD"));
+
   const { eid } = useParams();
 
+  // Get employee information
   useEffect(() => {
-    // We will replace endpoint to get employee details here
     const getAnEmployee = async () => {
       setLoadingEmployee(true);
       try {
@@ -48,25 +58,6 @@ const AppointmentPage = ({ currentUserId }) => {
 
     getAnEmployee();
   }, [eid]);
-
-  useEffect(() => {
-    const getEmployeeTimeSlot = async () => {
-      setSelectedTimeSlot("");
-      setLoadingTimeSlots(true);
-      try {
-        const timeSlotList = await getTimeSlotOfAnEmployeeByEmployeeId(eid);
-        // const slots = timeSlotList.map(slot => );
-        setTimeSlots(timeSlotList);
-      } catch (err) {
-        setErrorTimeSlots("Failed to fetch this employee for this salon!");
-      } finally {
-        setLoadingTimeSlots(false);
-        console.log(timeSlots);
-      }
-    };
-
-    getEmployeeTimeSlot();
-  }, [eid, reservedOnce]);
 
   const reserveAppointment = async () => {
     alert(
@@ -88,9 +79,41 @@ const AppointmentPage = ({ currentUserId }) => {
       await reserveThisTimeSlot(timeSlotId);
       console.log("Booking added successfully", timeSlotBody);
       setReservedOnce(true);
+
+      getTimeslotdAndFilterByTime(eid, formattedDate);
     } catch (error) {
       console.error("Error adding booking", error);
     }
+  };
+
+  const getTimeslotdAndFilterByTime = async (eid, date) => {
+    // setSelectedTimeSlot("");
+    setLoadingTimeSlots(true);
+    // console.log(`Here is the date ${date}||`)
+    try {
+      const timeSlotList = await getTimeslotsOfEmployeeByIdAndDate(eid, date);
+      // console.log(timeSlotList);
+      setTimeSlots(timeSlotList);
+      setFormattedDate(date);
+    } catch (err) {
+      setErrorTimeSlots("Failed to fetch this employee for this salon!");
+    } finally {
+      setLoadingTimeSlots(false);
+    }
+  }
+
+  useEffect(() => {
+    getTimeslotdAndFilterByTime(eid, formattedDate);
+  }, [eid, formattedDate, reservedOnce])
+
+  const handleDateChange = (newDate) => {
+    setSelectedDate(newDate);
+    // filterTimeSlotsByDate(timeSlots, newDate);
+    // Format as YYYY-MM-DD
+    // setFormattedDate(formatted);
+    const formatted = newDate.format("YYYY-MM-DD"); 
+    // console.log("Selected Date:", formatted.trim());
+    getTimeslotdAndFilterByTime(eid, formatted);
   };
 
   return (
@@ -99,9 +122,9 @@ const AppointmentPage = ({ currentUserId }) => {
         {
           loadingEmployee 
           ?
-          <h1>Loading employee list...</h1>
+          <h3>Loading employee list...</h3>
           : errorEmployee ?
-          <h1>Loading employee list error!!</h1>
+          <h3>Loading employee list error!!</h3>
           :
           <>
             <h1>{employeeName}</h1>
@@ -112,37 +135,71 @@ const AppointmentPage = ({ currentUserId }) => {
       
       <div className="appointment-reservation">
         <div className="list-of-timeSlot">
-          {loadingTimeSlots 
-            ? 
-            <h1>Loading time slots...</h1>
-            : errorTimeSlots ? 
-            <h1>Fetching time slots error!!</h1>
-            :
-            <>
-              {timeSlots.map((timeslot, index) => (
-                <div
-                  className= {timeslot.is_booked ? "timeslot timeslot-booked" : "timeslot"}
-                  key={index}
-                  onClick={() => {setSelectedTimeSlot(`${timeslot.start_time} - ${timeslot.end_time}`); console.log(timeslot); setTimeSlotId(timeslot.id)}}
-                >
-                  {`${timeslot.start_time.substring(11, 16)} - ${timeslot.end_time.substring(11, 16)}`}
-                </div>
-              ))}
-            </>
-          }
+          
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <StaticDatePicker
+              value={selectedDate}
+              onChange={handleDateChange}
+              renderInput={(params) => <TextField {...params} />}
+              orientation="landscape"
+            />
+          </LocalizationProvider>
         </div>
 
         <div className="reserve-a-timeSlot">
-          <h4 style={{ marginBottom: "15px" }}>Your selected time slot is:</h4>
-          <input
-            type="text"
-            className="input-box"
-            value={selectedTimeSlot}
-            unselectable="true"
-          />
-          <button className="button-info" onClick={() => reserveAppointment()}>
-            Reserve
-          </button>
+          {loadingTimeSlots 
+            ? 
+            <h3>Loading time slots...</h3>
+            : errorTimeSlots ? 
+            <h3>Fetching time slots error!!</h3>
+            : timeSlots.length === 0 ? 
+            <h3><i>{employeeName} has no schedule on {formattedDate}!</i></h3>
+            :
+            <div className="time-slot-frame">
+              <div className="time-slot-box">
+                {timeSlots.map((timeslot, index) => (
+                  <div
+                    className= {timeslot.is_booked ? "timeslot timeslot-booked" : "timeslot"}
+                    key={index}
+                    onClick={() => {setSelectedTimeSlot(`${timeslot.start_time} - ${timeslot.end_time}`); console.log(timeslot); setTimeSlotId(timeslot.id)}}
+                  >
+                    {`${timeslot.start_time.substring(11, 16)} - ${timeslot.end_time.substring(11, 16)}`}
+                  </div>
+                ))}
+              </div>
+
+              <h4 style={{ marginBottom: "15px" }}>Your selected time slot is:</h4>
+              <input
+                type="text"
+                className="input-box"
+                value={selectedTimeSlot}
+                unselectable="true"
+              />
+              <button className="button-info" onClick={() => reserveAppointment()}>
+                Reserve
+              </button>
+              
+              <div className="timeslot-note">
+                <div
+                  className= "timeslot-note-box timeslot-booked"
+                >
+                  15:30 - 16:00
+                </div>
+
+                <h4 className="timeslot-note-guide">The timeslot is already booked!</h4>
+              </div>
+
+              <div className="timeslot-note">
+                <div
+                  className= "timeslot-note-box"
+                >
+                  15:30 - 16:00
+                </div>
+                <h4 className="timeslot-note-guide">The timeslot is not yet booked!</h4>
+              </div>
+            </div>
+          }
+         
         </div>
       </div>
     </>

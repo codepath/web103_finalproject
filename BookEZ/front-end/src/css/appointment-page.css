@@ -8,7 +8,7 @@
 }
 
 .appointment-reservation {
-    padding: 20px 7%;
+    padding: 0 7% 20px 7%;
 
     display: flex;
     flex-direction: row;
@@ -28,7 +28,18 @@
     width: max-content;
     background-color: #A0E9FF;
     border: 2px black solid;
-    margin: 15px;
+    margin: 15px 15px 15px 0;
+    cursor: pointer;
+}
+
+.timeslot-note-box {
+    border-radius: 15px;
+    padding: 10px 15px;
+    height: max-content;
+    width: max-content;
+    background-color: #A0E9FF;
+    border: 2px black solid;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -38,6 +49,7 @@
 
 .timeslot-booked {
     background-color: gray;
+    color: white;
     pointer-events: none;
 }
 
@@ -72,3 +84,28 @@
 .ia-p-time {
     margin: 10px;
 }
+
+.time-slot-box {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.timeslot-note {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.timeslot-note-guide {
+    font-style: italic;
+    color: #1230AE;
+}
+/* 
+.time-slot-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+} */

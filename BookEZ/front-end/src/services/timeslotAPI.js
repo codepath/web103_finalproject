@@ -71,3 +71,21 @@ export const getATimeSlotById = async (tid) => {
       throw error;
     }
 };
+
+// Get a timeslot of users filtering by date and id
+export const getTimeslotsOfEmployeeByIdAndDate = async (eid, date) => {
+  console.log(`${API_BASE_URL}/api/timeslot/${eid}/?date=${date}`)
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/timeslot/employee/${eid}/?date=${date}`);
+    if (!response.ok) {
+        // console.log("having error");
+      throw new Error(`Error fetching timeslot: ${response.statusText}`);
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching timeslot:", error);
+    throw error;
+  }
+}
