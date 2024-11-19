@@ -78,9 +78,9 @@ const HomePage = () => {
                     <h3><i>With BOOKEZ, you can</i></h3>
                     <div className="home-page-introduction-description-advantage">
                         {/* <h4>&#9989; Book appointments with ease and precision.</h4> */}
-                        <h4 className="advantage"><SecurityUpdateGoodIcon color="#00A9FF" /> Book appointments with ease and precision.</h4>
-                        <h4 className="advantage"><NotificationsActiveIcon /> Get automatic reminders and avoid missed appointments.</h4>
-                        <h4 className="advantage"><AccessTimeFilledIcon /> Customize for a perfect fit with your business.</h4>
+                        <h4 className="advantage sd-info-icon"><SecurityUpdateGoodIcon /> Book appointments with ease and precision.</h4>
+                        <h4 className="advantage sd-info-icon"><NotificationsActiveIcon /> Get automatic reminders and avoid missed appointments.</h4>
+                        <h4 className="advantage sd-info-icon"><AccessTimeFilledIcon /> Customize for a perfect fit with your business.</h4>
                     </div>
                 </div>
                 <div className="home-page-introduction-image">

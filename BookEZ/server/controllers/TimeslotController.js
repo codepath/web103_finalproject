@@ -68,4 +68,25 @@ const cancelTimeslotById = async (req, res) => {
     }
 }
 
-export default { getFreeTimeslotsByEmployeeId, bookTimeslotByTimeslotId, getATimeslotById, cancelTimeslotById }
+// Get a timeslot of users filtering by date and id
+// /api/timeslot/employee/:employee_id?date=2024-11-19
+const getTimeslotsOfEmployeeByIdAndDate = async (req, res) => {
+    const employee_id = req.params.employee_id;
+    const date = req.query.date;
+    try {
+        // const results = await pool.query('SELECT * FROM time_slots WHERE employee_id=$1 AND is_booked=False', [employee_id])
+        const results = await pool.query('SELECT * FROM time_slots WHERE employee_id=$1 AND start_time::date = $2', [employee_id, date])
+        
+        // if (results.rows.length === 0){
+        //     res.status(404).json({ error: "No free timeslot for this employee" })
+        // } else {
+        //     res.status(200).json(results.rows);
+        // }
+
+        res.status(200).json(results.rows);
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}
+
+export default { getFreeTimeslotsByEmployeeId, bookTimeslotByTimeslotId, getATimeslotById, cancelTimeslotById, getTimeslotsOfEmployeeByIdAndDate }

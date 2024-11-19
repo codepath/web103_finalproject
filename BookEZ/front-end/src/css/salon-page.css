@@ -12,8 +12,12 @@
     /* width: 100%; */
 }
 
-h3 {
-    color: #00A9FF;
+.sd-address:hover {
+    text-decoration: underline;
+}
+
+.salon-details {
+    color: #1230AE;
 }
 
 .salon-page-salon-list-of-employees {
@@ -22,4 +26,50 @@ h3 {
 
     padding: 20px 7%;
 
+}
+
+/* Tooltip style */
+.tooltip {
+    position: absolute;
+    bottom: 100%; /* Position above the box */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+}
+
+/* Animation for the tooltip */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+}
+
+.sd-mail {
+    font-weight: 700;
+    font-size: 19px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.sd-info-icon {
+    /* width: max-content; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
 }

@@ -205,3 +205,11 @@ h5 {
 
     cursor: pointer;
 }
+
+.sd-info-icon {
+    /* width: max-content; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+}
