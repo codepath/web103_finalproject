@@ -16,16 +16,16 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(user);
+    event.preventDefault()
+    console.log(user)
     try {
-      const response = await loginUser(user);
+      const response = await loginUser(user)
       console.log('Login successful:', response)
       // alert('Login successful!')
-      setUser((prev) => ({...prev})) //, user_id: response.user_id
+      setUser((prev) => ({ ...prev })) //, user_id: response.user_id
       setCurrentUserId(response.user_id)
-      setJWT(response.token);
-      navigate("/");
+      setJWT(response.token)
+      navigate('/')
     } catch (error) {
       alert('Login failed. Please check your credentials and try again.')
       console.error('Error logging in:', error)
