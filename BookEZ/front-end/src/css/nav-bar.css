@@ -124,3 +124,13 @@
     color: #1230AE;
     text-decoration: underline;
 }
+
+.logout-button {
+    color: red;
+}
+
+.logout-button:hover {
+    color: red;
+    font-style: italic;
+    text-decoration: underline;
+}

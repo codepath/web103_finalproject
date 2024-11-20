@@ -21,24 +21,29 @@ import MyDatePicker from './pages/my-date-picker';
 
 function App() {
   // const [currentUserId, setCurrentUserId] = useState(null);
-  const [currentUserId, setCurrentUserId] = useState(1);
+  const [currentUserId, setCurrentUserId] = useState(null);
+  const [jwt, setJWT] = useState(null);
 
   const handleSetUserId = (id) => {
     setCurrentUserId(id);
   }
 
+  const handleJWT = (jwt) => {
+    setJWT(jwt)
+  }
+
   return (
       <BrowserRouter>
         <div className="App">
-          <NavigationBar />
+          <NavigationBar jwt={jwt} currentUserId={currentUserId} />
             <Routes>
               <Route path="/" element={<HomePage title='Home Page' />} />
-              <Route path="/login" element={<LoginPage title='Login Page' setCurrentUserId={handleSetUserId}/>} />
+              <Route path="/login" element={<LoginPage title='Login Page' setCurrentUserId={handleSetUserId} setJWT={handleJWT} />} />
               <Route path="/new-password" element={<ForgotPasswordNewPassword title='Enter new password' />} />
               <Route path="/forgot-password" element={<ForgotPasswordCheckEmail title='Confirm your email' />} />
               <Route path="/signup" element={<SignUpPage title='Create an account' />} />
               
-              <Route path="/profile" element={<ProfilePage title='Profile Page' currentUserId={currentUserId}/>} />
+              <Route path="/profile" element={<ProfilePage title='Profile Page' currentUserId={currentUserId} />} />
               <Route path="/day" element={<MyDatePicker title='Profile Page' />} />
 
               <Route path="/employee/:eid/salon/:sid/appointment" element={<AppointmentPage title='Reserve an appointment with employee' currentUserId={currentUserId}/>} />
