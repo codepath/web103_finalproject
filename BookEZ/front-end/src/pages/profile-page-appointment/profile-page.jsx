@@ -25,8 +25,7 @@ const ProfilePage = ({ currentUserId }) => {
   //   const [editedUserId, setEditedUserId] = useState(1);
   const [editedUserUsername, setEditedUserUsername] = useState(userUsername);
   const [editedUserEmail, setEditedUserEmail] = useState(userEmail);
-  const [editedUserPhoneNumber, setEditedUserPhoneNumber] =
-    useState(userPhoneNumber);
+  const [editedUserPhoneNumber, setEditedUserPhoneNumber] = useState(userPhoneNumber);
   const [editedUserFullname, setEditedUserFullname] = useState(userUsername);
 
   const [numberOfAppointment, setNumberOfAppointment] = useState(1);

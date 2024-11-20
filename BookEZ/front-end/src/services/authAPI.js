@@ -21,6 +21,8 @@ export const registerUser = async (user) => {
   }
 }
 
+// Testing username: drakedo
+// Testing password: drakenevadie19
 export const loginUser = async (user) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
@@ -34,7 +36,7 @@ export const loginUser = async (user) => {
       throw new Error(`Error logging in: ${response.statusText}`)
     }
     const data = await response.json()
-    return data
+    return data;
   } catch (error) {
     console.error('Error logging in:', error)
     throw error

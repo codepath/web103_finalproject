@@ -15,7 +15,7 @@ export const reserveThisTimeSlot = async (timeSlotId) => {
         throw new Error(`Error reserving this timeslot: ${response.statusText}`);
       }
       const data = await response.json();
-      console.log(timeSlotId);
+      // console.log(timeSlotId);
     //   console.log(timeSlotBody);
       return data;
     } catch (error) {
@@ -82,7 +82,7 @@ export const getTimeslotsOfEmployeeByIdAndDate = async (eid, date) => {
       throw new Error(`Error fetching timeslot: ${response.statusText}`);
     }
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching timeslot:", error);

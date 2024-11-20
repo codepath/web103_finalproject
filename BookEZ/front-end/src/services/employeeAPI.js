@@ -36,24 +36,6 @@ export const getTimeSlotOfAnEmployeeByEmployeeId = async (eid) => {
       }
 };
 
-// Get all Salons 
-// Display list of Salons in homepage
-// export const bookASlot = async () => {
-//     try {
-//         const response = await fetch(`${API_BASE_URL}/api/salon`);
-//         if (!response.ok) {
-//             // console.log("having error");
-//           throw new Error(`Error fetching cars: ${response.statusText}`);
-//         }
-//         const data = await response.json();
-//         // console.log(data);
-//         return data;
-//       } catch (error) {
-//         console.error("Error fetching cars:", error);
-//         throw error;
-//       }
-// };
-
 // Book the timeslot
 // Adding a booking to booking database
 export const bookThisTimeslot = async (timeSlotBody) => {
@@ -69,7 +51,7 @@ export const bookThisTimeslot = async (timeSlotBody) => {
       throw new Error(`Error booking this timeslot: ${response.statusText}`);
     }
     const data = await response.json();
-    console.log(timeSlotBody);
+    // console.log(timeSlotBody);
     return data;
   } catch (error) {
     console.error("Error adding booking:", error);
