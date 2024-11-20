@@ -22,15 +22,13 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ### Baseline Features
 
-👉🏾👉🏾👉🏾 Check off each completed feature below.
-
-- [ ] The project includes an Express backend app and a React frontend app
-- [ ] The project includes these backend-specific features:
-  - [ ] At least one of each of the following database relationship in Postgres
-    - [ ] one-to-many
-    - [ ] many-to-many with a join table
-  - [ ] A well-designed RESTful API
-    - [ ] The API can respond to at least one of each type of request: GET, POST, PATCH, and DELETE
+- [x] The project includes an Express backend app and a React frontend app
+- [x] The project includes these backend-specific features:
+  - [x] At least one of each of the following database relationship in Postgres
+    - [x] one-to-many
+    - [x] many-to-many with a join table
+  - [x] A well-designed RESTful API
+    - [x] The API can respond to at least one of each type of request: GET, POST, PATCH, and DELETE
     - [ ] Routes follow proper naming conventions
   - [ ] The ability to reset the database to its default state
 - [ ] The project includes these frontend-specific features:

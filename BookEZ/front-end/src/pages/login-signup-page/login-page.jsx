@@ -9,6 +9,8 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
     email: '',
     password: '',
   })
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -16,20 +18,23 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(user);
+    event.preventDefault()
+    if (!user.email || !user.password) {
+      setError('Please fill out all fields.')
+      return
+    }
+    setError('') // Clear previous errors
+    setLoading(true)
     try {
-      const response = await loginUser(user);
-      console.log('Login successful:', response)
-      // alert('Login successful!')
-      setUser((prev) => ({...prev})) //, user_id: response.user_id
+      const response = await loginUser(user)
       setCurrentUserId(response.user_id)
-      setJWT(response.token);
-      navigate("/");
+      setJWT(response.token)
+      navigate('/')
     } catch (error) {
-      alert('Login failed. Please check your credentials and try again.')
+      setError('Login failed. Please check your credentials.')
       console.error('Error logging in:', error)
     } finally {
+      setLoading(false)
     }
   }
 
@@ -37,6 +42,7 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
     <form className="login-box-frame" onSubmit={handleSubmit}>
       <div className="login-box">
         <h1>Log in to your account</h1>
+        {error && <p className="error-message">{error}</p>}
         <div className="login-box-component">
           <label>
             Email
@@ -64,11 +70,11 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
             />
           </label>
 
-          <button type="submit" className="signin-button">
-            Log In
+          <button type="submit" className="signin-button" disabled={loading}>
+            {loading ? 'Logging in...' : 'Log In'}
           </button>
 
-          <a
+          <button
             href="#"
             onClick={(e) => {
               e.preventDefault()
@@ -76,8 +82,8 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
             }}
           >
             <i>Forgot Password?</i>
-          </a>
-          <a
+          </button>
+          <button
             href="#"
             onClick={(e) => {
               e.preventDefault()
@@ -85,7 +91,7 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
             }}
           >
             <i>Don't have an account? Create one now!</i>
-          </a>
+          </button>
         </div>
       </div>
     </form>

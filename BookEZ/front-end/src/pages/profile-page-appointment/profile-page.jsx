@@ -1,64 +1,59 @@
-import { useEffect, useState } from "react";
-import "../../css/profile-page.css";
-import IncomingAppointments from "./incoming-appointment";
-import BorderColorRoundedIcon from "@mui/icons-material/BorderColorRounded";
-import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { Button } from "@mui/material";
-
-import { useNavigate } from "react-router-dom";
-
-import { getUserInfoById, submitEdittedInfo } from "../../services/profileAPI";
+import { useEffect, useState } from 'react'
+import '../../css/profile-page.css'
+import IncomingAppointments from './incoming-appointment'
+import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded'
+import SaveRoundedIcon from '@mui/icons-material/SaveRounded'
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { getUserInfoById, submitEdittedInfo } from '../../services/profileAPI'
 
 const ProfilePage = ({ currentUserId }) => {
-  const [isEditing, setIsEditting] = useState(false);
-  const [isLoadingUser, setIsLoadingUser] = useState(true);
-  const [isErrorUser, setIsErrorUser] = useState(true);
+  const [isEditing, setIsEditing] = useState(false)
+  const [isLoadingUser, setIsLoadingUser] = useState(true)
+  const [isErrorUser, setIsErrorUser] = useState(false)
 
-  //   const [userId, setUserId] = useState(1);
+  const [userUsername, setUserUsername] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userPhoneNumber, setUserPhoneNumber] = useState('')
+  const [userFullname, setUserFullname] = useState('')
 
-  const [userUsername, setUserUsername] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  const [userFullname, setUserFullname] = useState("");
+  const [editedUserUsername, setEditedUserUsername] = useState('')
+  const [editedUserEmail, setEditedUserEmail] = useState('')
+  const [editedUserPhoneNumber, setEditedUserPhoneNumber] = useState('')
+  const [editedUserFullname, setEditedUserFullname] = useState('')
 
-  //   const [editedUserId, setEditedUserId] = useState(1);
-  const [editedUserUsername, setEditedUserUsername] = useState(userUsername);
-  const [editedUserEmail, setEditedUserEmail] = useState(userEmail);
-  const [editedUserPhoneNumber, setEditedUserPhoneNumber] = useState(userPhoneNumber);
-  const [editedUserFullname, setEditedUserFullname] = useState(userUsername);
-
-  const [numberOfAppointment, setNumberOfAppointment] = useState(1);
-  const navigate = useNavigate();
+  const [numberOfAppointment, setNumberOfAppointment] = useState(1)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getAllUserDetail = async () => {
       try {
-        const result = await getUserInfoById(currentUserId);
-        // console.log(result[0]);
-        setUserUsername(result[0].username);
-        setUserFullname(result[0].full_name);
-        setUserEmail(result[0].email);
-        setUserPhoneNumber(result[0].phone_number);
+        const result = await getUserInfoById(currentUserId)
+        setUserUsername(result[0].username)
+        setUserFullname(result[0].full_name)
+        setUserEmail(result[0].email)
+        setUserPhoneNumber(result[0].phone_number)
       } catch (err) {
-        console.error("Error fetching user details");
+        console.error('Error fetching user details')
+        setIsErrorUser(true)
       } finally {
-        setIsLoadingUser(false);
-        setIsErrorUser(false);
+        setIsLoadingUser(false)
       }
-    };
+    }
 
-    getAllUserDetail();
-  }, []);
+    if (currentUserId) {
+      getAllUserDetail()
+    }
+  }, [currentUserId]) // Fix: Include currentUserId in dependency array
 
   const startEditing = () => {
-    setIsEditting(true);
-
-    setEditedUserUsername(userUsername);
-    setEditedUserEmail(userEmail);
-    setEditedUserPhoneNumber(userPhoneNumber);
-    setEditedUserFullname(userFullname);
-  };
+    setIsEditing(true)
+    setEditedUserUsername(userUsername)
+    setEditedUserEmail(userEmail)
+    setEditedUserPhoneNumber(userPhoneNumber)
+    setEditedUserFullname(userFullname)
+  }
 
   const saveEditInfo = async () => {
     const userInfoBody = {
@@ -66,45 +61,42 @@ const ProfilePage = ({ currentUserId }) => {
       email: editedUserEmail,
       full_name: editedUserFullname,
       phone_number: editedUserPhoneNumber,
-    };
+    }
 
     try {
-      await submitEdittedInfo(currentUserId, userInfoBody);
-      // alert("Saved");
+      await submitEdittedInfo(currentUserId, userInfoBody)
     } catch (err) {
-      console.error("Fail saving updated user info");
+      console.error('Fail saving updated user info')
     } finally {
-      setIsEditting(false);
-
-      setUserUsername(editedUserUsername);
-      setUserEmail(editedUserEmail);
-      setUserFullname(editedUserFullname);
-      setUserPhoneNumber(editedUserPhoneNumber);
+      setIsEditing(false)
+      setUserUsername(editedUserUsername)
+      setUserEmail(editedUserEmail)
+      setUserPhoneNumber(editedUserPhoneNumber)
+      setUserFullname(editedUserFullname)
     }
-  };
+  }
 
   const cancelSave = () => {
-    setIsEditting(false);
-
-    setEditedUserUsername(userUsername);
-    setEditedUserEmail(userEmail);
-    setEditedUserPhoneNumber(userPhoneNumber);
-    setEditedUserFullname(userFullname);
-  };
+    setIsEditing(false)
+    setEditedUserUsername(userUsername)
+    setEditedUserEmail(userEmail)
+    setEditedUserPhoneNumber(userPhoneNumber)
+    setEditedUserFullname(userFullname)
+  }
 
   const handleDataFromChild = (data) => {
-    setNumberOfAppointment(data);
-  };
+    setNumberOfAppointment(data)
+  }
 
   return (
     <>
       {isLoadingUser ? (
         <h1>Loading...</h1>
       ) : isErrorUser ? (
-        <h1>Fail Loading user details...</h1>
+        <h1>Fail loading user details...</h1>
       ) : (
         <>
-          <h1 className="profile-page-title">My profile</h1>
+          <h1 className="profile-page-title">My Profile</h1>
           {/* Username */}
           <div className="profile-page-username">
             {isEditing ? (
@@ -128,7 +120,7 @@ const ProfilePage = ({ currentUserId }) => {
             <div className="save-edit-cancel-button-group">
               <button
                 className="pp-edit-button button-info"
-                onClick={() => startEditing()}
+                onClick={startEditing}
               >
                 Edit
                 <BorderColorRoundedIcon />
@@ -138,14 +130,14 @@ const ProfilePage = ({ currentUserId }) => {
             <div className="save-edit-cancel-button-group">
               <button
                 className="pp-edit-button button-info-save"
-                onClick={() => saveEditInfo()}
+                onClick={saveEditInfo}
               >
                 Save
                 <SaveRoundedIcon />
               </button>
               <button
                 className="pp-edit-button button-info-cancel"
-                onClick={() => cancelSave()}
+                onClick={cancelSave}
               >
                 Cancel
                 <CloseRoundedIcon />
@@ -156,7 +148,7 @@ const ProfilePage = ({ currentUserId }) => {
           {isEditing ? (
             <div className="profile-page-all-details">
               <div className="profile-page-all-details-frame">
-                <h3>Edit your full name</h3>
+                <h3>Edit Your Full Name</h3>
                 <div className="profile-details">
                   <input
                     className="input-box"
@@ -167,7 +159,7 @@ const ProfilePage = ({ currentUserId }) => {
                 </div>
               </div>
               <div className="profile-page-all-details-frame">
-                <h3>Edit your email</h3>
+                <h3>Edit Your Email</h3>
                 <div className="profile-details">
                   <input
                     className="input-box"
@@ -178,7 +170,7 @@ const ProfilePage = ({ currentUserId }) => {
                 </div>
               </div>
               <div className="profile-page-all-details-frame">
-                <h3>Edit your phone number</h3>
+                <h3>Edit Your Phone Number</h3>
                 <div className="profile-details">
                   <input
                     className="input-box"
@@ -192,7 +184,7 @@ const ProfilePage = ({ currentUserId }) => {
           ) : (
             <div className="profile-page-all-details">
               <div className="profile-page-all-details-frame">
-                <h3>Full name</h3>
+                <h3>Full Name</h3>
                 <div className="profile-details">
                   <h4>{userFullname}</h4>
                 </div>
@@ -216,15 +208,15 @@ const ProfilePage = ({ currentUserId }) => {
 
       <div className="profile-page-incoming-appointment">
         <h1>
-          Upcoming appointment
+          Upcoming Appointment
           {numberOfAppointment > 0 && (
             <span>
-              <Button 
-                variant="outlined" 
+              <Button
+                variant="outlined"
                 sx={{ m: 1 }}
-                onClick={() => navigate("/#salon")}
-                >
-                Add more appointment
+                onClick={() => navigate('/#salon')}
+              >
+                Add More Appointment
               </Button>
             </span>
           )}
@@ -238,7 +230,7 @@ const ProfilePage = ({ currentUserId }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ProfilePage;
+export default ProfilePage
