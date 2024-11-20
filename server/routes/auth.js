@@ -38,7 +38,7 @@ router.get(
     '/github/callback',
     passport.authenticate('github', {
         successRedirect: 'http://localhost:3002',
-        failureRedirect:'http://localhost:3002/login',
+        failureRedirect:'http://localhost:3000/login',
     })
 )
 

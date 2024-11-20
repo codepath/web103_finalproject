@@ -10,8 +10,6 @@ import './config/dotenv.js'
 //Initialize an Express instance.
 const app = express()
 
-
-
 //add middlewares
 app.use(session({
   secret: process.env.SESSION_SECRET,

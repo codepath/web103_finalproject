@@ -14,10 +14,10 @@ const verify = async (accessToken, refreshToken, profile, callback)  => {
     const userData = { githubId: id, username: login, avatarUrl: avatar_url, accessToken }
 
     try {
-        const results = await pool.query('SELECT * FROM users WHERE username = $1', [userData.username])
+        const results = await pool.query(`SELECT * FROM users WHERE username = $1`, [userData.username])
         const user = results.rows[0]
-
         if (!user) {
+            console.log("got here 1")
             const results = await pool.query(
                 `INSERT INTO users (github_id, username, avatar_url, access_token)
                 VALUES($1, $2, $3, $4)
@@ -26,9 +26,9 @@ const verify = async (accessToken, refreshToken, profile, callback)  => {
             )
 
             const newUser = results.rows[0]
+            
             return callback(null, newUser)            
         }
-
         return callback(null, user)
 
      }

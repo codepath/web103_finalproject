@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import { useRoutes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import CreateGroup from './pages/CreateGroup.js';
 
 
 
@@ -28,8 +29,14 @@ function App() {
     path: '/',
     element: user && user.id ?
       <HomePage /> : <LoginPage api_url={API_URL} />
+    },
+    {
+      path: '/groups/new',
+      element: user && user.id ?
+        <CreateGroup user={user} api_url={API_URL} /> : <LoginPage api_url={API_URL} />
     }
   ])
+
 
   return (
     <div className="App">
