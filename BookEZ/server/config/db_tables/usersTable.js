@@ -1,6 +1,12 @@
 import { pool } from '../database.js'
 import '../dotenv.js'
 import users from '../../mock_data/users.js'
+import bcrypt from 'bcrypt'
+
+async function hashPassword(password) {
+  const salt = await bcrypt.genSalt(10)
+  return bcrypt.hash(password, salt)
+}
 
 const createUsersTableQuery = `
     DROP TABLE IF EXISTS users CASCADE;
@@ -28,9 +34,10 @@ const seedUsersTable = async () => {
     await createUsersTable()
     for (const user of users) {
       const insertQuery = `INSERT INTO users (username, password, email, full_name, phone_number) VALUES ($1, $2, $3, $4, $5)`
+      const hashedPassword = await hashPassword(user.password)
       const values = [
         user.username,
-        user.password,
+        hashedPassword,
         user.email,
         user.full_name,
         user.phone_number,
