@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { Container, Typography, Grid2, Paper, Button } from "@mui/material";
 import "../css/Home.css";
 import * as d3 from "d3";
 import { useEffect } from "react";
 
-const Home = () => {
+const Home = (props) => {
+  const id = props?.user?.user_id;
 const drawChart = () => {
     const data = [12, 36, 45, 60, 20, 65, 75];
     const width = 400;
@@ -48,11 +50,11 @@ const drawChart = () => {
   }, []);
 
   return (
-    <Container>
-      <Grid2 container spacing={3} style={{ marginTop: "2rem" }}>
+    <Container className="container">
+      <Grid2 container spacing={3} style={{ marginTop: "2rem" }} justifyContent="center" className="container">
         <Grid2 item xs={12} sm={6}>
           <Paper style={{ padding: "1rem" }}>
-            <Button color="secondary" variant="contained">
+            <Button color="secondary" variant="contained" onClick={() => window.location.href = `/expenses/${id}`}>
               Track Expenses
             </Button>
             <Typography>

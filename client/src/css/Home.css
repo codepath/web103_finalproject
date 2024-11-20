@@ -7,6 +7,12 @@ body {
     background-color: #f4f4f4;
 }
 
+.container{
+    max-width: 1800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
 header {
     background-color: #333;
     color: #fff;

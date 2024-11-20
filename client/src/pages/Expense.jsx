@@ -1,36 +1,129 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+// import axios from 'axios';
+import expenseService from '../services/Expense';
 
-const Expense = () => {
+const Expense = (props) => {
+    const { id } = useParams();
+    // eslint-disable-next-line react/prop-types
+    const categories = props.categories;
+    // const [categoriesId, setCategoriesId] = useState();
     const [entries, setEntries] = useState([]);
-    const [form, setForm] = useState({ type: 'income', amount: '', description: '' });
+    const [filteredEntries, setFilteredEntries] = useState([]);
+    const [form, setForm] = useState({ user_id: id, type: 'expense', amount: '', description: '' });
+ 
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm({ ...form, [name]: value });
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await expenseService.getExpenses(id);
+                setEntries(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    // const updateData = async (newEntry) => {
+    //     try {
+    //         const response = await expenseService.updateExpenses(`/api/expenses/${id}`, newEntry);
+    //         setEntries([...entries, response.data]);
+    //     } catch (error) {
+    //         console.error('Error updating data:', error);
+    //     }
+    // };
+
+    const addData = async (newEntry) => {
+        try {
+            newEntry.date = new Date(newEntry.date).toISOString();
+            const response = await expenseService.addExpenses(newEntry);
+            setEntries([...entries, response.data]);
+        } catch (error) {
+            console.error('Error adding data:', error);
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setEntries([...entries, form]);
-        setForm({ type: 'income', amount: '', description: '' });
+        await addData(form);
+        setForm({ type: 'expense', amount: '', description: '', date: '', category_id: '' });
+        document.querySelector('input[name="category_id"]:checked').checked = false;
+    };
+    const handleChange = (e) => {
+        let { name, value } = e.target;
+        setForm({ ...form, [name]: value });
     };
 
     return (
         <div>
-            <h1>Track Your Income and Expenses</h1>
+            <h1>Track Your Expenses</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
-                        Type:
+                        <b>
+                        Type: </b> 
                         <select name="type" value={form.type} onChange={handleChange}>
-                            <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
+                    </label>
+                <div>
+                    <label>
+                        <b>Search by Category: </b>
+                        <select
+                            name="searchCategory"
+                            onChange={(e) => {
+                                const selectedCategory = e.target.value;
+                                if (selectedCategory !== '') {
+                                    const localEntries = [...entries];
+                                    const filteredEntries = localEntries.filter(
+                                        (entry) => entry.category_id === parseInt(selectedCategory)
+                                    );
+                                    if (filteredEntries.length === 0) {
+                                        alert('No entries found for the selected category');
+                                    }
+                                    if (filteredEntries.length > 0) {
+                                        setFilteredEntries(filteredEntries);
+                                    }
+                                    // setEntries(filteredEntries);
+                                } else {
+                                    setEntries(entries);
+                                }
+                            }}
+                        >
+                            <option value="">All</option>
+                            {categories.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
+                </div>
+                <div>
+                    <label>
+                        <b> Category </b>
+                    {categories.map((category) => (
+                        <label key={category.id}>
+                            <input
+                                type="radio"
+                                name="category_id"
+                                value={category.id}
+                                // checked={category.name}
+                                onChange={handleChange}
+                            />
+                            {category.name}
+                        </label>
+                    ))}
                     </label>
                 </div>
                 <div>
                     <label>
-                        Amount:
+                        <b>
+                        Amount: </b>
                         <input
                             type="number"
                             name="amount"
@@ -42,7 +135,7 @@ const Expense = () => {
                 </div>
                 <div>
                     <label>
-                        Description:
+                        <b>Description:</b>
                         <input
                             type="text"
                             name="description"
@@ -52,23 +145,39 @@ const Expense = () => {
                         />
                     </label>
                 </div>
-                <button type="submit">Add Entry</button>
+                <div>
+                    <label>
+                        <b>Date: </b>
+                        <input
+                            type="date"
+                            name="date"
+                            value={form.date}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
+                </div>
+                <button type="submit" className='add-entry'>Add Entry</button>
             </form>
             <h2>Tracked Entries</h2>
-            <table>
+            <table align='center' style={{ borderSpacing: '15px' }}>
                 <thead>
                     <tr>
-                        <th>Type</th>
+                        <th>User</th>
+                        <th>Category</th>
                         <th>Amount</th>
                         <th>Description</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {entries.map((entry, index) => (
+                    { entries.map((entry, index) => (
                         <tr key={index}>
-                            <td>{entry.type}</td>
+                            <td>{entry.user_id}</td>
+                            <td>{categories.find(category => category.id === entry.category_id)?.name}</td>
                             <td>{entry.amount}</td>
                             <td>{entry.description}</td>
+                            <td>{new Date(entry.date).toLocaleDateString()}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -78,3 +187,4 @@ const Expense = () => {
 };
 
 export default Expense;
+

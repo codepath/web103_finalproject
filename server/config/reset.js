@@ -1,4 +1,5 @@
 import { pool } from "./database.js";
+import {categoriesData} from '../data/categories.js';
 // import "./dotenv.js";
 
 const createUserTable = async () => {
@@ -145,3 +146,22 @@ const createAllTables = async () => {
 };
 
 createAllTables();
+
+const seedCategoriesTable = async () => {
+  const query = `
+            INSERT INTO categories (name)
+            VALUES ($1)
+            ;
+        `;
+
+  try {
+    for (const category of categoriesData) {
+      await pool.query(query, [category.name]);
+    }
+    console.log("Categories table seeded successfully");
+  } catch (error) {
+    console.error("Error seeding categories table:", error);
+  }
+};
+
+await seedCategoriesTable();

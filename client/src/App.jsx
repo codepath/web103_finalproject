@@ -12,6 +12,7 @@ import Expense from "./pages/Expense";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [categories, setCategories] = useState([]);
   const API_URL = "http://localhost:3000";
 
   useEffect(() => {
@@ -36,13 +37,25 @@ function App() {
       }
     }
 
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/category");
+        const categories = await response.json();
+        console.log(categories);
+        setCategories(categories.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    }
+
     fetchUser();
+    fetchCategories();
   }, []);
 
   let element = useRoutes([
     {
       path: "/",
-      element: <Home />,
+      element: <Home user={user}/>,
     },
     {
       path: "/login",
@@ -53,12 +66,12 @@ function App() {
       element: <h1> You have been successfully Logged Out </h1>,
     },
     {
-      path: "/income",
-      element: <Income />,
+      path: "/income/:id",
+      element: <Income categories={categories} user={user}/>,
     },
     {
-      path: "/expenses",
-      element: <Expense />,
+      path: "/expenses/:id",
+      element: <Expense categories={categories} user={user}/>,
     }
   ]);
 
