@@ -13,8 +13,11 @@ async function hashPassword(password) {
 
 // Helper function to compare passwords
 async function comparePasswords(password, hashedPassword) {
-  return bcrypt.compare(password, hashedPassword)
+  // console.log("Password to compare:", password);
+  // console.log("Hashed password:", hashedPassword);
+  return bcrypt.compare(password, hashedPassword);
 }
+
 
 // Register a new user
 export async function register(req, res) {
@@ -59,9 +62,10 @@ export async function login(req, res) {
     }
 
     const user = userResult.rows[0]
+    // console.log(user);
     const validPassword = await comparePasswords(password, user.password)
+    // console.log("Password validation result:", validPassword);    
     if (!validPassword) {
-      console.log(password + " " + user.password);
       return res.status(401).json({ error: 'Invalid password credentials' })
     }
 

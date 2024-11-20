@@ -3,14 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { loginUser } from '../../services/authAPI'
 
-const LoginPage = ({ setCurrentUserId }) => {
+const LoginPage = ({ setCurrentUserId, setJWT }) => {
   const navigate = useNavigate()
   const [user, setUser] = useState({
     email: '',
     password: '',
-    user_id: 0,
   })
-
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -18,17 +16,20 @@ const LoginPage = ({ setCurrentUserId }) => {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    console.log(user);
     try {
-      const response = await loginUser(user)
+      const response = await loginUser(user);
       console.log('Login successful:', response)
-      alert('Login successful!')
-      setUser((prev) => ({...prev, user_id: response.user_id}))
+      // alert('Login successful!')
+      setUser((prev) => ({...prev})) //, user_id: response.user_id
       setCurrentUserId(response.user_id)
-      navigate('/')
+      setJWT(response.token);
+      navigate("/");
     } catch (error) {
       alert('Login failed. Please check your credentials and try again.')
       console.error('Error logging in:', error)
+    } finally {
     }
   }
 
