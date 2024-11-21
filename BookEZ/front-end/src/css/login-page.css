@@ -50,6 +50,7 @@ label {
 
 .signin-button {
     width: 100%;
+    /* width: max-content; */
     height: 40px;
     background-color: azure;
     border: 2px black solid;
@@ -68,5 +69,16 @@ a {
 }
 
 a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password-and-sign-up {
+    margin: 0;
+}
+
+.forgot-password-and-sign-up:hover {
+    color: #6C48C5;
+    font-weight: 700;
+    cursor: pointer;
     text-decoration: underline;
 }

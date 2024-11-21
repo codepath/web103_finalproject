@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { loginUser } from '../../services/authAPI'
 
 const LoginPage = ({ setCurrentUserId, setJWT }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [errorLogin, setErrorLogin] = useState("");
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -27,7 +28,7 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
       setJWT(response.token);
       navigate("/");
     } catch (error) {
-      alert('Login failed. Please check your credentials and try again.')
+      setErrorLogin('Login failed. Please check your credentials and try again.')
       console.error('Error logging in:', error)
     } finally {
     }
@@ -64,28 +65,31 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
             />
           </label>
 
+          {errorLogin !== "" && <p>{errorLogin}</p>}
+          
           <button type="submit" className="signin-button">
             Log In
           </button>
 
-          <a
+          <p
             href="#"
             onClick={(e) => {
               e.preventDefault()
               navigate('/forgot-password')
             }}
+            className='forgot-password-and-sign-up'
           >
             <i>Forgot Password?</i>
-          </a>
-          <a
-            href="#"
+          </p>
+          <p
             onClick={(e) => {
               e.preventDefault()
               navigate('/signup')
             }}
+            className='forgot-password-and-sign-up'
           >
-            <i>Don't have an account? Create one now!</i>
-          </a>
+            <i>Didn't have an account? Create one now!</i>
+          </p>
         </div>
       </div>
     </form>

@@ -1,12 +1,12 @@
 .signup-box-frame {
-    height: 90%;
-    width: 100%;
+    height: 86%;
+    width: 92%;
 
     display: flex;
     justify-content: center;
     /* align-items: center; */
 
-    padding: auto 4%;
+    padding: 1% 4%;
 }
 
 .signup-box {
@@ -19,8 +19,8 @@
     padding: 5%;
     gap: 20px;
 
-    position: absolute;
-    top: 11%;
+    /* position: absolute;
+    top: 11%; */
 
 }
 
@@ -38,4 +38,40 @@
     padding: 5px 10px;
     border-radius: 10px;
     border: 1px gray solid;
+    margin: 1.15% 0;
+}
+
+.already-have-account {
+    cursor: pointer;
+}
+
+.already-have-account:hover {
+    color: #6C48C5;
+    text-decoration: underline;
+}
+
+.signup {
+    margin-top: 2%;
+}
+
+.password-validation {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.validation-criteria {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    color: red;
+}
+
+.validation-criteria-qualified {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    color: limegreen;
 }
