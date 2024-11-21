@@ -3,17 +3,17 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "calendar.png",
+      "src": "logo_new.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "calendar.png",
+      "src": "logo_new.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "calendar.png",
+      "src": "logo_new.png",
       "type": "image/png",
       "sizes": "512x512"
     }
