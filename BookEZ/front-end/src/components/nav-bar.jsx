@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import '../css/nav-bar.css'
 import { useNavigate } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import { getUserInfoById } from '../services/profileAPI'
-
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded'
 
 const NavigationBar = ({ jwt, currentUserId }) => {
@@ -20,12 +19,11 @@ const NavigationBar = ({ jwt, currentUserId }) => {
   const [isLoadingUser, setIsLoadingUser] = useState(true)
   const [isErrorUser, setIsErrorUser] = useState(false)
 
-  const isAuthenticated = !!localStorage.getItem('token'); // Check if user is logged in
+  const isAuthenticated = !!localStorage.getItem('token') // Check if user is logged in
 
-  const getAllUserDetail = async () => {
+  const getAllUserDetail = useCallback(async () => {
     try {
       const result = await getUserInfoById(currentUserId)
-      // console.log(result);
       setUserFullname(result[0].full_name)
     } catch (err) {
       setIsErrorUser(true)
@@ -34,18 +32,13 @@ const NavigationBar = ({ jwt, currentUserId }) => {
       setIsLoadingUser(false)
       setIsErrorUser(false)
     }
-  }
-
-  if (isAuthenticated) {
-    getAllUserDetail();
-  }
+  }, [currentUserId])
 
   useEffect(() => {
     if (isAuthenticated) {
-      getAllUserDetail();
+      getAllUserDetail()
     }
-  }, [currentUserId, isAuthenticated])
-
+  }, [getAllUserDetail, isAuthenticated])
 
   const handleNavigateProfile = () => {
     if (jwt) {
@@ -54,7 +47,6 @@ const NavigationBar = ({ jwt, currentUserId }) => {
       navigateToPage('/login')
     }
   }
-
   return (
     <>
       <div className="nav-bar">
@@ -146,8 +138,8 @@ const NavigationBar = ({ jwt, currentUserId }) => {
               <div
                 className="page-on-hidden-tab sd-info-icon logout-button"
                 onClick={() => {
-                  navigateToPage('/');
-                  console.log('Logged out');
+                  navigateToPage('/')
+                  console.log('Logged out')
                   localStorage.removeItem('token')
                 }}
               >
