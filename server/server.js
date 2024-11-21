@@ -5,6 +5,7 @@ import passport from 'passport'
 import session from 'express-session'
 import { GitHub } from './config/auth.js'
 import authRoutes from './routes/auth.js'
+import sessionRoutes from './routes/sessions.js';
 import './config/dotenv.js'
 
 //Initialize an Express instance.
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/groups', groupRoutes)
 app.use('/auth', authRoutes)
+app.use('/api/sessions', sessionRoutes);
 
 const PORT = process.env.PORT || 4000
 

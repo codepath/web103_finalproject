@@ -6,8 +6,7 @@ const Card = (props) => {
     <div
       className="card text-white shadow-lg"
       style={{ 
-        width: '18rem', 
-        height: '18rem', 
+        width: '18rem',  
         backgroundColor: 'rgba(22, 11, 0, 0.507)' // Apply custom background color here
       }}
     >
@@ -16,7 +15,8 @@ const Card = (props) => {
         <p className="card-text text-justify" style={{ height: '145px' }}>
           {props.description}
         </p>
-        <button className="btn btn-outline-light">{'Created by ' + props.created_by}</button>
+        <button className="btn btn-outline-light m-3">{'Created by ' + props.created_by}</button>
+        <Link to={'groups/get/'+ props.id}><button className="seeMoreBtn">See More</button></Link>
       </div>
     </div>
   );

@@ -35,8 +35,12 @@ const createSessionsTable = async () => {
     CREATE TABLE sessions (
       id SERIAL PRIMARY KEY,
       group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
-      finalized_time TIMESTAMP,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      proposed_by INT NOT NULL REFERENCES users(id) ON DELETE CASCADE, -- User ID proposing the session
+      proposed_date DATE NOT NULL,
+      proposed_time TIME NOT NULL,
+      total_votes INT DEFAULT 0, -- To track total votes for this session
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `;
   try {
@@ -47,6 +51,7 @@ const createSessionsTable = async () => {
     console.error('⚠️ error creating sessions table', err);
   }
 };
+
 
 // Drop table if it exists and create users table
 const createUsersTable = async () => {
@@ -73,14 +78,14 @@ const createUsersTable = async () => {
 const createSessionsUsersTable = async () => {
   const dropQuery = `DROP TABLE IF EXISTS sessions_users CASCADE;`;
   const createQuery = `
-    CREATE TABLE sessions_users (
-      session_id INT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
-      user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-      proposed_time TIMESTAMP NOT NULL,
-      vote_count INT DEFAULT 0,
-      PRIMARY KEY (session_id, user_id)
-    );
-  `;
+CREATE TABLE sessions_users (
+    id SERIAL PRIMARY KEY,
+    session_id INT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    proposed_time TIMESTAMP NOT NULL, -- Time proposed by the user
+    voted BOOLEAN DEFAULT FALSE, -- Whether this user voted for the time
+    UNIQUE (session_id, user_id, proposed_time) -- Ensure no duplicate votes
+)`;
   try {
     await pool.query(dropQuery);
     await pool.query(createQuery);

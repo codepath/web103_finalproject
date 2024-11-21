@@ -3,22 +3,10 @@ import Card from "../components/Card";
 import Header from "../components/Header";
 
 const ReadGroups = (props) => {
-  const [groups, setGroups] = useState([]);
-
-  useEffect(() => {
-    const fetchGroups = async () => {
-      const response = await fetch("http://localhost:4000/api/groups");
-      const data = await response.json();
-      console.log(data);
-      setGroups(data);
-    };
-
-    fetchGroups();
-  }, []);
+  const groups = props.data; // might have to use useState but no error for now
 
   return (
     <>
-      <Header />
       <div className="d-flex flex p-3 gap-3">
         {groups && groups.length > 0 ? (
           groups.map((group, index) => (
