@@ -1,0 +1,115 @@
+.group-details {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.group-details h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1px;
+    background-color: #ccc;
+    margin-top: 20px;
+    width: 100%;
+    overflow: auto;  /* Adds scrollbars if content overflows */
+}
+
+.header-row, .time-row {
+    display: contents;
+}
+
+.day-header, .time-slot {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+    width: 100%
+}
+
+.cell {
+    width: 100%;
+    height: 50px; /* Can adjust based on screen size */
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;  /* Ensure padding doesn't affect cell dimensions */
+}
+
+.cell:hover {
+    border-color: #888;
+}
+
+.edit-group-btn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.edit-group-btn:hover {
+    background-color: #333;
+}
+
+.all-sessions-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.close-modal-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    float: right;
+}
+
+.view-all-btn {
+    margin-top: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.cell {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.cell:hover {
+    background-color: rgba(200, 255, 200, 0.5);
+}
+
+.cell.green {
+    background-color: rgba(0, 255, 0, 0.5);
+    color: black;
+    font-weight: bold;
+}
+

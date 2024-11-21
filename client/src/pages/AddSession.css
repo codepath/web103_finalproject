@@ -1,0 +1,64 @@
+.add-session {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1px;
+    background-color: #ccc;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.header-row, .time-row {
+    display: contents;
+}
+
+.day-header, .time-slot {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.cell {
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.cell:hover {
+    background-color: rgba(200, 200, 255, 0.5);
+}
+
+.cell.selected {
+    background-color: rgba(0, 255, 0, 0.5);
+    color: black;
+    font-weight: bold;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}

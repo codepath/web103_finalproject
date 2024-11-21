@@ -1,0 +1,18 @@
+{
+    "users": [
+      {
+        "github_id": 12345678,
+        "username": "david",
+        "avatar_url": "https://avatars.githubusercontent.com/u/12345678",
+        "access_token": "your_access_token_here"
+      }
+    ],
+    "groups": [
+      {
+        "name": "Sample Group",
+        "description": "This is a sample group created by david.",
+        "created_by": 1
+      }
+    ]
+  }
+  
