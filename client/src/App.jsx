@@ -14,7 +14,7 @@ import SavingsGoal from "./pages/SavingsGoal";
 function App() {
   const [user, setUser] = useState(null);
   const [categories, setCategories] = useState([]);
-  const API_URL = "http://localhost:3000";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchUser = async () => {

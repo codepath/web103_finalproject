@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/income';
+const API_URL = import.meta.env.VITE_API_URL + '/api/income';
 
 const getIncome = async (user_id) => {
     try {

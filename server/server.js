@@ -22,6 +22,11 @@ app.use(session({
 }));
 
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('public'))
+}
+
 app.use(cors({
     origin: 'http://localhost:5173',
     methods: 'GET,POST,PUT,DELETE,PATCH',
@@ -50,6 +55,12 @@ app.use('/api/expense', expenseRoutes);
 app.use('/api/goal', goalRoutes);
 
 const PORT = process.env.PORT || 3000;
+
+if (process.env.NODE_ENV === 'production') {
+    app.get('/*', (_, res) =>
+        res.sendFile(path.resolve('public', 'index.html'))
+    )
+}
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/goal';
+const API_URL = import.meta.env.VITE_API_URL + '/api/goal';
 
 const getGoals = async (user_id) => {
     try {

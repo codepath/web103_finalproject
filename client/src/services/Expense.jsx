@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/expense';
+const API_URL = import.meta.env.VITE_API_URL + '/api/expense';
 
 const getExpenses = async (user_id) => {
     const response = await axios.get(`${API_URL}/${user_id}`);
