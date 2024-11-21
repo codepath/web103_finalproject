@@ -10,12 +10,14 @@ import { getAllUpcomingAppointments } from '../../services/profileAPI'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import { Button } from '@mui/material'
 
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Typography from '@mui/material/Typography'
-import CardActionArea from '@mui/material/CardActionArea'
-import CardActions from '@mui/material/CardActions'
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardActions from "@mui/material/CardActions";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
@@ -126,7 +128,10 @@ const IncomingAppointments = ({ currentUserId, onDataChange }) => {
   return (
     <div className="appointment-box">
       {isLoadingAppointment ? (
-        <h3>Loading...</h3>
+        // <h3>Loading...</h3>
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
       ) : isErrorAppointment ? (
         <h3>Error loading list of appointment</h3>
       ) : appointments.length <= 0 ? (

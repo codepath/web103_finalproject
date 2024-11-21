@@ -14,6 +14,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 import { imageLinks } from "../../data/imageLinks";
 
 function getRandomInt(max) {
@@ -106,7 +109,10 @@ const HomePage = () => {
                 </div>
 
                 {loading ? (
-                    <h2>Loading salons...</h2>
+                    // <h2>Loading salons...</h2>
+                    <Box sx={{ display: 'flex' }}>
+                        <CircularProgress />
+                    </Box>
                 ) : error ? (
                     <h2>{error}</h2>
                 ) : salons.length === 0 ? (

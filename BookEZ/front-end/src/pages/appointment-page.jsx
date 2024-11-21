@@ -14,6 +14,9 @@ import { StaticDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TextField } from "@mui/material";
 
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 import Swal from "sweetalert2";
 
 const AppointmentPage = ({ currentUserId }) => {
@@ -141,7 +144,9 @@ const AppointmentPage = ({ currentUserId }) => {
         {
           loadingEmployee 
           ?
-          <h3>Loading employee list...</h3>
+            <Box sx={{ display: 'flex' }}>
+              <CircularProgress />
+            </Box>
           : errorEmployee ?
           <h3>Loading employee list error!!</h3>
           :
@@ -168,9 +173,11 @@ const AppointmentPage = ({ currentUserId }) => {
         <div className="reserve-a-timeSlot">
           {loadingTimeSlots 
             ? 
-            <h3>Loading time slots...</h3>
+              <Box sx={{ display: 'flex' }}>
+                <CircularProgress />
+              </Box>
             : errorTimeSlots ? 
-            <h3>Fetching time slots error!!</h3>
+              <h3>Fetching time slots error!!</h3>
             : timeSlots.length === 0 ? 
             <h3><i>{employeeName} has no schedule on {formattedDate}!</i></h3>
             :
