@@ -67,7 +67,7 @@ const HomePage = () => {
             <div className="home-page-landing">
                 <div className="hpl-center-box">
                     <p className="hpl-title">BOOKEZ</p>
-                    <h2><i>Effortless Salon Booking at Your Fingertips</i></h2>
+                    <h2 className="quote"><i>Effortless Salon Booking at Your Fingertips</i></h2>
                     <div className="home-page-landing-explore-more">
                         <a className="button-light" href="#intro">Explore more</a>
                         <a className="button-info" href="#salon">Salons near me</a>

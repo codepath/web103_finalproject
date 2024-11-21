@@ -22,7 +22,7 @@ h4 {
 }
 
 .home-page-landing {
-    height: 80%;
+    height: 90%;
 
     display: flex;
     justify-content: center;
@@ -33,7 +33,7 @@ h4 {
     gap: 5%;
 
     /* background-color: #CDF5FD; */
-    background: url("../giphy.webp");
+    background: url("https://blog.dktcdn.net/files/salon-la-gi3.jpeg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -50,6 +50,10 @@ h4 {
     backdrop-filter: blur(10px); /* Applies a blur to the content behind */
     -webkit-backdrop-filter: blur(10px); /* For Safari support */
     border-radius: 20px;
+}
+
+.quote {
+    color: white;
 }
 
 .home-page-landing-explore-more {
