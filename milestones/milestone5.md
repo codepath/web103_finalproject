@@ -43,8 +43,6 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ### Custom Features
 
-👉🏾👉🏾👉🏾 Check off each completed feature below.
-
 - [x] The project gracefully handles errors
 - [x] The project includes a one-to-one database relationship
 - [ ] The project includes a slide-out pane or modal as appropriate for your use case
@@ -55,8 +53,6 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 - [x] Data submitted via a POST or PATCH request is validated before the database is updated
 
 ### Stretch Features
-
-👉🏾👉🏾👉🏾 Check off each completed feature below.
 
 - [x] A subset of pages require the user to log in before accessing the content
   - [x] Users can log in and log out via GitHub OAuth with Passport.js
@@ -87,10 +83,16 @@ We were able to add a lot of fine details as we thought about the functionality 
 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
-Parth: Good grasp over building a basic website from scratch, learnt a lot of backend development
-Drake (Thanh Nguyen) Do: Building a full-stack website from scratch, now I can do both back-end and front-end development.
+**Parth**: Good grasp over building a basic website from scratch, learnt a lot of backend development.
+
+**Drake (Thanh Nguyen) Do**: Building a full-stack website from scratch, now I can do both back-end and front-end development.
+
+**Chengtao Lin**: This course has significantly improved my teamwork skills. Working on web development projects taught me effective communication, task allocation based on strengths, and how to integrate our contributions. I learned the value of regular check-ins to align our goals and track progress, ultimately fostering a productive team dynamic.
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
-Parth: Work on more projects, with focus on scalable system design
-Drake (Thanh Nguyen) Do: My goal is having a wev development full-time job, then I want to sharpen my skills in more project.
+**Parth**: Work on more projects, with focus on scalable system design.
+
+**Drake (Thanh Nguyen) Do**: My goal is having a web development full-time job, then I want to sharpen my skills in more projects.
+
+**Chengtao Lin**: My goal is to secure an internship where I can apply my web development skills in real-world scenarios while continuing to improve. Additionally, I aim to participate in more hackathons to collaborate with others, exchange ideas, and learn from shared coding experiences.
