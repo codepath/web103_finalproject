@@ -62,7 +62,7 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
   - [x] Users can log in and log out via GitHub OAuth with Passport.js
 - [ ] Restrict available user options dynamically, such as restricting available purchases based on a user's currency
 - [ ] Show a spinner while a page or page element is loading
-- [ ] Disable buttons and inputs during the form submission process
+- [x] Disable buttons and inputs during the form submission process
 - [ ] Disable buttons after they have been clicked
 - [ ] Users can upload images to the app and have them be stored on a cloud service
 - [ ] 🍞 [Toast messages](https://www.patternfly.org/v3/pattern-library/communication/toast-notifications/index.html) deliver simple feedback in response to user events
@@ -88,7 +88,9 @@ We were able to add a lot of fine details as we thought about the functionality 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
 Parth: Good grasp over building a basic website from scratch, learnt a lot of backend development
+Drake (Thanh Nguyen) Do: Building a full-stack website from scratch, now I can do both back-end and front-end development.
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
 Parth: Work on more projects, with focus on scalable system design
+Drake (Thanh Nguyen) Do: My goal is having a wev development full-time job, then I want to sharpen my skills in more project.
