@@ -32,7 +32,8 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
       const response = await loginUser(user)
       setCurrentUserId(response.user_id)
       setJWT(response.token)
-      navigate('/')
+      localStorage.setItem('token', response.token);
+      // navigate('/')
       // Redirect back to the saved location
       navigate(from, { replace: true });
     } catch (error) {
