@@ -6,6 +6,7 @@ import session from 'express-session'
 import { GitHub } from './config/auth.js'
 
 // import userRoutes from './routes/user.js';
+import categoryRoutes from './routes/category.js';
 import incomeRoutes from './routes/income.js';
 import expenseRoutes from './routes/expense.js';
 
@@ -19,7 +20,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-app.use(express.json())
+app.use(express.json());
 app.use(cors({
     origin: 'http://localhost:5173',
     methods: 'GET,POST,PUT,DELETE,PATCH',
@@ -42,8 +43,9 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRoutes)
 // app.use('/user', userRoutes);
-app.use('/api/income/', incomeRoutes);
-app.use('/api/expense/', expenseRoutes);
+app.use('/api/category', categoryRoutes);
+app.use('/api/income', incomeRoutes);
+app.use('/api/expense', expenseRoutes);
 
 const PORT = process.env.PORT || 3000;
 
