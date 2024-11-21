@@ -6,15 +6,15 @@ This document should be completed and submitted during **Unit 9** of this course
 
 This unit, be sure to complete all tasks listed below. To complete a task, place an `x` between the brackets.
 
-- [ ] Deploy your project on Railway
-  - [ ] In `readme.md`, add the link to your deployed project
+- [x] Deploy your project on Railway
+  - [x] In `readme.md`, add the link to your deployed project
 - [x] Update the status of issues in your project board as you complete them
 - [x] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of their title
   - [x] Under each feature you have completed, **include a GIF** showing feature functionality
-- [ ] In this document, complete the **Reflection** section below
-- [ ] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
-- [ ] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
-  - [ ] Include this GIF in the **Final Demo GIF** section below
+- [x] In this document, complete the **Reflection** section below
+- [x] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
+- [x] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
+  - [x] Include this GIF in the **Final Demo GIF** section below
 
 ## Final Project Feature Checklist
 
@@ -43,8 +43,6 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ### Custom Features
 
-👉🏾👉🏾👉🏾 Check off each completed feature below.
-
 - [x] The project gracefully handles errors
 - [x] The project includes a one-to-one database relationship
 - [ ] The project includes a slide-out pane or modal as appropriate for your use case
@@ -56,20 +54,18 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 ### Stretch Features
 
-👉🏾👉🏾👉🏾 Check off each completed feature below.
-
 - [x] A subset of pages require the user to log in before accessing the content
   - [x] Users can log in and log out via GitHub OAuth with Passport.js
 - [ ] Restrict available user options dynamically, such as restricting available purchases based on a user's currency
 - [ ] Show a spinner while a page or page element is loading
-- [ ] Disable buttons and inputs during the form submission process
+- [x] Disable buttons and inputs during the form submission process
 - [ ] Disable buttons after they have been clicked
 - [ ] Users can upload images to the app and have them be stored on a cloud service
 - [ ] 🍞 [Toast messages](https://www.patternfly.org/v3/pattern-library/communication/toast-notifications/index.html) deliver simple feedback in response to user events
 
 ## Final Demo GIF
 
-🔗 [Here's a GIF walkthrough of the final project](👉🏾👉🏾👉🏾 your link here)
+🔗 [Here's a GIF walkthrough of the final project](https://drive.google.com/file/d/1RuRmEiDC8Ut9-Rh7Lm8WdCRpQNeKA7E1/view)
 
 ## Reflection
 
@@ -87,8 +83,16 @@ We were able to add a lot of fine details as we thought about the functionality 
 
 ### 4. Reflecting on your web development journey so far, how have you grown since the beginning of the course?
 
-Parth: Good grasp over building a basic website from scratch, learnt a lot of backend development
+**Parth**: Good grasp over building a basic website from scratch, learnt a lot of backend development.
+
+**Drake (Thanh Nguyen) Do**: Building a full-stack website from scratch, now I can do both back-end and front-end development.
+
+**Chengtao Lin**: This course has significantly improved my teamwork skills. Working on web development projects taught me effective communication, task allocation based on strengths, and how to integrate our contributions. I learned the value of regular check-ins to align our goals and track progress, ultimately fostering a productive team dynamic.
 
 ### 5. Looking ahead, what are your goals related to web development, and what steps do you plan to take to achieve them?
 
-Parth: Work on more projects, with focus on scalable system design
+**Parth**: Work on more projects, with focus on scalable system design.
+
+**Drake (Thanh Nguyen) Do**: My goal is having a web development full-time job, then I want to sharpen my skills in more projects.
+
+**Chengtao Lin**: My goal is to secure an internship where I can apply my web development skills in real-world scenarios while continuing to improve. Additionally, I aim to participate in more hackathons to collaborate with others, exchange ideas, and learn from shared coding experiences.
