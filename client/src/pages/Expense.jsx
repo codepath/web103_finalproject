@@ -27,9 +27,7 @@ const Expense = (props) => {
     const fetchData = async () => {
       try {
         const response = await expenseService.getExpenses(user_id);
-        console.log("user_id", user_id);
         setEntries(response.data);
-        console.log("response.data", response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {

@@ -42,7 +42,6 @@ function App() {
       try {
         const response = await fetch("/api/category");
         const categories = await response.json();
-        console.log(categories);
         setCategories(categories.data);
       } catch (error) {
         console.error("Error fetching categories:", error);

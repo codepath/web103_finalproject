@@ -3,7 +3,6 @@ import { pool } from "../config/database.js";
 const getExpenses = async (req, res) => {
     try {
         const user_id = req.params.user_id;
-        // console.log(user_id);
         const results = await pool.query("SELECT * FROM expenses where user_id = $1", [user_id]);
         res.status(200).json({ message: "Expenses retrieved successfully", data: results.rows });
     } catch (error) {
@@ -24,8 +23,6 @@ const getExpensesById = async (req, res) => {
 const addExpenses = async (req, res) => {
     try {
         const { user_id, category_id, amount, description, date } = req.body;
-
-        console.log(user_id, category_id, amount, description, date);
         const results = await pool.query(
             "INSERT INTO expenses (user_id, category_id, amount, description, date) VALUES ($1, $2, $3, $4, $5) RETURNING *",
             [user_id, category_id, amount, description, date]

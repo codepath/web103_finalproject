@@ -19,8 +19,6 @@ const SavingsGoal = () => {
     const fetchGoals = async () => {
       try {
         const response = await goalService.getGoals(user_id);
-        console.log("response", response);
-        console.log("response.data[0]", response.data[0]);
         setGoals(response.data);
       } catch (error) {
         console.error("Error fetching goals:", error);

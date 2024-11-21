@@ -4,7 +4,6 @@ const API_URL = 'http://localhost:3000/api/goal';
 
 const getGoals = async (user_id) => {
     try {
-        console.log('user_id', user_id);
         const response = await axios.get(`${API_URL}/${user_id}`);
         return response.data;
     } catch (error) {

@@ -2,11 +2,8 @@ import { pool } from '../config/database.js';
 
 const getGoals = async (req, res) => {
     try {
-        // console.log('req.body', req.body);
         const user_id = req.params.user_id;
-        // console.log('user_id', user_id);
         const results = await pool.query('SELECT * FROM savings_goals where user_id = $1', [user_id]);
-        // console.log('results', results);
         res.status(200).json({ message: 'Goals retrieved successfully', data: results.rows });
     } catch (error) {
         res.status(500).json({ error: error.message });

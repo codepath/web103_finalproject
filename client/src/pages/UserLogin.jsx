@@ -1,8 +1,6 @@
 import '../css/UserLogin.css';
 
 const UserLogin = (props) => {
-
-    console.log(props);
     // eslint-disable-next-line react/prop-types
     const AUTH_URL = `${props.api_url}/auth/github`
     return (
