@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: [Ayushi Porwal, Justin Bradshaw, Anh Nguyen]
+Designed and developed by: [Ayushi Porwal]
 
 🔗 Link to deployed app:
 
@@ -84,6 +84,7 @@ Backend: Express.js, PostgreSQL, Node.js
 
 [Click Me](https://i.imgur.com/1dnVZTT.gif)
 
+
 ### [Database Design] ✅
 
 [PostgreSQL database schema for users, transactions, and categories.]
@@ -105,6 +106,7 @@ Backend: Express.js, PostgreSQL, Node.js
 
 [Click Me](https://i.imgur.com/1dnVZTT.gif)
 
+
 ### [Budget Dashboard] ✅
 
 [Visual representation of total income, expenses, and remaining budget.]
@@ -124,6 +126,7 @@ Backend: Express.js, PostgreSQL, Node.js
 [Sorting and filtering options for detailed analysis.]
 
 [Click Me](https://i.imgur.com/1dnVZTT.gif)
+
 
 ### [Reports Generation]
 
