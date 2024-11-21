@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     localStorage.removeItem('token'); // Remove 'token' when the app loads
-    console.log('Token removed on app reload');
+    // console.log('Token removed on app reload');
   }, []);
 
   // const [currentUserId, setCurrentUserId] = useState(null);

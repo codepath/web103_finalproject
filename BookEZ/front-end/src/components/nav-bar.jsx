@@ -18,24 +18,34 @@ const NavigationBar = ({ jwt, currentUserId }) => {
 
   const [userFullname, setUserFullname] = useState('')
   const [isLoadingUser, setIsLoadingUser] = useState(true)
-  const [isErrorUser, setIsErrorUser] = useState(true)
+  const [isErrorUser, setIsErrorUser] = useState(false)
+
+  const isAuthenticated = !!localStorage.getItem('token'); // Check if user is logged in
+
+  const getAllUserDetail = async () => {
+    try {
+      const result = await getUserInfoById(currentUserId)
+      // console.log(result);
+      setUserFullname(result[0].full_name)
+    } catch (err) {
+      setIsErrorUser(true)
+      console.error('Error fetching user details')
+    } finally {
+      setIsLoadingUser(false)
+      setIsErrorUser(false)
+    }
+  }
+
+  if (isAuthenticated) {
+    getAllUserDetail();
+  }
 
   useEffect(() => {
-    const getAllUserDetail = async () => {
-      try {
-        const result = await getUserInfoById(currentUserId)
-        // console.log(result);
-        setUserFullname(result[0].full_name)
-      } catch (err) {
-        console.error('Error fetching user details')
-      } finally {
-        setIsLoadingUser(false)
-        setIsErrorUser(false)
-      }
+    if (isAuthenticated) {
+      getAllUserDetail();
     }
+  }, [currentUserId, isAuthenticated])
 
-    getAllUserDetail()
-  }, [currentUserId])
 
   const handleNavigateProfile = () => {
     if (jwt) {
