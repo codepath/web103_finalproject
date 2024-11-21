@@ -136,8 +136,9 @@ const NavigationBar = ({ jwt, currentUserId }) => {
               <div
                 className="page-on-hidden-tab sd-info-icon logout-button"
                 onClick={() => {
-                  navigateToPage('/')
-                  console.log('Logged out')
+                  navigateToPage('/');
+                  console.log('Logged out');
+                  localStorage.removeItem('token')
                 }}
               >
                 Log out
