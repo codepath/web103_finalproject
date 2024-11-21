@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 function PrivateRoute({ children }) {
   const isAuthenticated = !!localStorage.getItem('token'); // Check if user is logged in
-  console.log(localStorage.getItem('token'));
+//   console.log(localStorage.getItem('token'));
   const location = useLocation();
 
   if (!isAuthenticated) {

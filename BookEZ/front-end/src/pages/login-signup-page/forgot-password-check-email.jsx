@@ -23,7 +23,7 @@ const ForgotPasswordCheckEmail = () => {
 
                         <button className='signin-button' onClick={() => checkAccount()}>Confirm email</button>
 
-                        <a href='#' onClick={() => navigate("/login")}><i>Back to Log in</i></a>
+                        <p className='forgot-password-and-sign-up' onClick={() => navigate("/login")}><i>Back to Log in</i></p>
                     </div>
 
                     
