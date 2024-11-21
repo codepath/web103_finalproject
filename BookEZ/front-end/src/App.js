@@ -16,11 +16,16 @@ import SalonPage from './pages/salon-page/salon-page';
 import ProfilePage from './pages/profile-page-appointment/profile-page';
 import AppointmentPage from './pages/appointment-page';
 import NotFoundPage from './pages/not-found-page';
-import { useState } from 'react';
-import MyDatePicker from './pages/my-date-picker';
+import { useEffect, useState } from 'react';
 import PrivateRoute from './pages/PrivateRoute';
 
 function App() {
+
+  useEffect(() => {
+    localStorage.removeItem('token'); // Remove 'token' when the app loads
+    console.log('Token removed on app reload');
+  }, []);
+
   // const [currentUserId, setCurrentUserId] = useState(null);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [jwt, setJWT] = useState(null);
@@ -45,7 +50,6 @@ function App() {
               <Route path="/signup" element={<SignUpPage title='Create an account' />} />
               
               <Route path="/profile" element={<ProfilePage title='Profile Page' currentUserId={currentUserId} />} />
-              <Route path="/day" element={<MyDatePicker title='Profile Page' />} />
 
               <Route path="/employee/:eid/salon/:sid/appointment" element={
                 <PrivateRoute>
