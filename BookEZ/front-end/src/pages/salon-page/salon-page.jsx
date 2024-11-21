@@ -10,6 +10,9 @@ import PlaceIcon from '@mui/icons-material/Place'
 import MailRoundedIcon from '@mui/icons-material/MailRounded'
 import PhoneInTalkRoundedIcon from '@mui/icons-material/PhoneInTalkRounded'
 
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
 const SalonPage = () => {
   let { id } = useParams()
   const [salonName, setSalonName] = useState('')
@@ -102,7 +105,9 @@ const SalonPage = () => {
     <>
       <div className="salon-page-salon-details">
         {loadingPage ? (
-          <h1>Loading salon details...</h1>
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>
         ) : errorPage ? (
           <h2>{errorPage}</h2>
         ) : (
@@ -137,7 +142,9 @@ const SalonPage = () => {
       </div>
 
       {loadingEmployee ? (
-        <h2>Loading employees...</h2>
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
       ) : errorEmployee ? (
         <h2>{errorEmployee}</h2>
       ) : (
