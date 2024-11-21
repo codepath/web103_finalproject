@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {user && <Header />}
       {element} 
     </div>
   );

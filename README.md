@@ -40,18 +40,15 @@ Cloudinary (for file uploads)
 ## Group Creation & Topic Scheduling
 Description: Users can create or join study groups, schedule sessions based on topics, and assign specific dates for their collaborative work.
 
-[gif goes here]
+<img src="./others/new_group_and_sessions.gif"/>
 
-### File Upload & Sharing
-Description: Members of the study group can upload and share resources like notes, documents, and other study materials within their group, making collaboration more efficient.
-
-[gif goes here]
 
 ### lOG IN WITH Github 
 
 We will create authentication and authorization for users to be able to log in and log out
 
-[gif goes here]
+<img src="./others/github_login.gif" / >
+
 
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 

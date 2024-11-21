@@ -63,7 +63,6 @@ client/*.tsbuildinfo
 *.db
 
 # Ignore public or generated files (optional)
-public/
 client/public/
 client/node_modules
 server/node_modules
