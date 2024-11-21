@@ -44,11 +44,11 @@ Backend: Express.js, PostgreSQL, Node.js
 
 ### [ADDITIONAL FEATURES GO HERE - ADD ALL FEATURES HERE IN THE FORMAT ABOVE; you will check these off and add gifs as you complete them]
 
-### [Savings Goals]
+### [Savings Goals] ✅
 
 [Allows users to set and monitor savings goals with progress tracking.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [Budget Dashboard]
 
@@ -60,7 +60,7 @@ Backend: Express.js, PostgreSQL, Node.js
 
 [Filter and sort expenses by category, date, or amount for detailed insights.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [Monthly/Yearly Financial Reports]
 
@@ -82,35 +82,35 @@ Backend: Express.js, PostgreSQL, Node.js
 [Secure account creation and login system.]
 [Password hashing and validation for security.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [Database Design] ✅
 
 [PostgreSQL database schema for users, transactions, and categories.]
 [Relationships: one-to-many (users to transactions) and many-to-many (categories to transactions).]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [API Development] ✅
 
 [RESTful API with endpoints for user management, income and expense tracking.]
 [Implement GET, POST, PATCH, and DELETE methods with proper naming conventions.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [Frontend Development]  ✅
 
 [React-based user interface with components for dashboards and forms.]
 [Dynamic routes using React Router for navigation.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
-### [Budget Dashboard]
+### [Budget Dashboard] ✅
 
 [Visual representation of total income, expenses, and remaining budget.]
 [Data visualization libraries (e.g., Chart.js) for displaying financial trends.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [Alerts & Notifications]
 
@@ -123,7 +123,7 @@ Backend: Express.js, PostgreSQL, Node.js
 [Functionality for adding, editing, categorizing, and deleting expenses.]
 [Sorting and filtering options for detailed analysis.]
 
-[gif goes here]
+[Click Me](https://i.imgur.com/1dnVZTT.gif)
 
 ### [Reports Generation]
 
