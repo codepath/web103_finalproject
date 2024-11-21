@@ -6,7 +6,7 @@ Designed and developed by: Chengtao Lin, Parth Kansara, Thanh Nguyen Do
 
 🔗 Link to deployed app: https://bookez.vercel.app/
 
-🔗 Link to deployed API: https://bookez-server.up.railway.app/
+🔗 Link to deployed API: https://bookez-server.up.railway.app/ [Example here](https://github.com/Web103-BookEZ/web103_finalproject/pull/40)
 
 
 ## About
