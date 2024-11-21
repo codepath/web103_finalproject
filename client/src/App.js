@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import CreateGroup from './pages/CreateGroup.js';
 import GroupDetails from './pages/GroupDetails.js';
 import Header from './components/Header.js';
+import AddSession from './pages/AddSession.jsx';
 
 
 
@@ -50,6 +51,16 @@ function App() {
       path: '/groups/get/:id',
       element: user && user.id ?
           <GroupDetails user={user} data={groups} api_url={API_URL} /> : <LoginPage api_url={API_URL} />
+    },
+    {
+      path: '/groups/edit/:id',
+      element: user && user.id ?
+          <GroupDetails user={user} data={groups} api_url={API_URL} /> : <LoginPage api_url={API_URL} />
+    },
+    {
+      path: '/sessions/new/:id',
+      element: user && user.id ?
+          <AddSession user={user} data={groups} api_url={API_URL} /> : <LoginPage api_url={API_URL} />
     }
   ])
 

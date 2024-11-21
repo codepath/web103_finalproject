@@ -36,8 +36,9 @@ const createSessionsTable = async () => {
       id SERIAL PRIMARY KEY,
       group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
       proposed_by INT NOT NULL REFERENCES users(id) ON DELETE CASCADE, -- User ID proposing the session
-      proposed_date DATE NOT NULL,
-      proposed_time TIME NOT NULL,
+      proposed_date DATE,
+      proposed_day VARCHAR(10),
+      proposed_time TIME,
       total_votes INT DEFAULT 0, -- To track total votes for this session
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

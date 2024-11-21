@@ -2,18 +2,32 @@ import { pool } from '../config/database.js';
 
 const createSession = async (req, res) => {
     try {
-        const { group_id, proposed_by, proposed_date, proposed_time } = req.body;
-        const result = await pool.query(
-            `INSERT INTO sessions (group_id, proposed_by, proposed_date, proposed_time)
-            VALUES ($1, $2, $3, $4)
-            RETURNING *`,
-            [group_id, proposed_by, proposed_date, proposed_time]
-        );
-        res.status(201).json(result.rows[0]);
+        const sessions = req.body; // Expecting an array of sessions
+
+        if (!Array.isArray(sessions)) {
+            return res.status(400).json({ error: "Payload must be an array of sessions." });
+        }
+
+        const results = [];
+        for (const session of sessions) {
+            const { group_id, proposed_by, proposed_day, proposed_time } = session;
+
+            const result = await pool.query(
+                `INSERT INTO sessions (group_id, proposed_by, proposed_day, proposed_time)
+                VALUES ($1, $2, $3, $4)
+                RETURNING *`,
+                [group_id, proposed_by, proposed_day, proposed_time]
+            );
+
+            results.push(result.rows[0]);
+        }
+
+        res.status(201).json(results); // Return all created sessions
     } catch (error) {
-        res.status(409).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
+
 
 const getAllSessions = async (req, res) => {
     try {

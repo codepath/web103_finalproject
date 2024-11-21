@@ -100,18 +100,7 @@ const GroupDetails = (props) => {
                                     }
 
                                     const matchingSession = sessions.find((session) => {
-                                        // Extract the day name from the proposed date
-                                        const sessionDate = new Date(session.proposed_date);
-                                        const sessionDay = sessionDate.toLocaleString('en-US', { weekday: 'long' });
-                                    
-                                        //Log to see the values for debugging
-                                        // console.log('Time:', typeof(time));
-                                        // console.log('Session time:', typeof(session.proposed_time));
-                                        // console.log('Day:', typeof(day));
-                                        // console.log('Session Day:', typeof(sessionDay));
-                                    
-                                        // Compare the session day and the current loop day
-                                        return sessionDay === day && session.proposed_time === time;
+                                        return session.proposed_day === day && session.proposed_time === time;
                                     });
 
                                     if (matchingSession) {
@@ -146,7 +135,9 @@ const GroupDetails = (props) => {
                         ))}
 
                     </div>
-
+                    <Link to={`/sessions/new/${id}`}>
+                        <button className="edit-group-btn">Add new Session</button>
+                    </Link>
                     <Link to={`/groups/edit/${id}`}>
                         <button className="edit-group-btn">Edit Group</button>
                     </Link>
