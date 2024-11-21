@@ -1,5 +1,5 @@
 import '../../css/login-page.css'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import { loginUser } from '../../services/authAPI'
 
@@ -10,8 +10,10 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
     email: '',
     password: '',
   })
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'; // Default to home if no previous page
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -31,6 +33,8 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
       setCurrentUserId(response.user_id)
       setJWT(response.token)
       navigate('/')
+      // Redirect back to the saved location
+      navigate(from, { replace: true });
     } catch (error) {
       setErrorLogin('Login failed. Please check your credentials and try again.')
       console.error('Error logging in:', error)

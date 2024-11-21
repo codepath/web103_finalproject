@@ -202,19 +202,19 @@ const AppointmentPage = ({ currentUserId }) => {
                 <div
                   className= "timeslot-note-box timeslot-booked"
                 >
-                  15:30 - 16:00
+                  xx:xx - xx:xx
                 </div>
 
-                <h4 className="timeslot-note-guide">The timeslot is already booked!</h4>
+                <h4 className="timeslot-note-guide">This timeslot is already booked!</h4>
               </div>
 
               <div className="timeslot-note">
                 <div
                   className= "timeslot-note-box"
                 >
-                  15:30 - 16:00
+                  xx:xx - xx:xx
                 </div>
-                <h4 className="timeslot-note-guide">The timeslot is not yet booked!</h4>
+                <h4 className="timeslot-note-guide">This timeslot is not yet booked!</h4>
               </div>
             </div>
           }

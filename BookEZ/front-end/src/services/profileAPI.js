@@ -1,6 +1,6 @@
 // Define functions to call API
 // Updated base URL with /api prefix
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL = "https://bookez-server.up.railway.app";
 
 // Get an user's details (username, fullname, email, phone numbers)
 export const getUserInfoById= async (uid) => {
