@@ -1,0 +1,85 @@
+.ribbon {
+  background-color: rgb(223, 129, 20);
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
+}
+
+.icons img {
+  width: 24px;
+  height: auto;
+}
+
+.text {
+  font-size: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  margin-left: -10px;
+  margin-right: 5px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  background-color: rgb(5, 5, 5, 0.18);
+  height: 40px;
+  padding-left: 10px;
+}
+
+.nav-buttons a {
+  font-size: 18px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: lighter;
+  color: white;
+  padding: 8px ;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0px;
+  margin-right: 5px;
+}
+
+.nav-buttons a:hover {
+  background-color: rgba(237, 137, 22, 0.71);
+  border-radius: 5px;
+}
+
+.nav-buttons img.logo {
+  height: 38px;
+  margin-right: 20px;
+}
+
+.nav-icons {
+  gap: 15px;
+  margin-left: 415px;
+}
+
+.nav-icons img {
+  width: 20px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+}
+
+.logo img {
+  width: 200px;
+  height: 70px;
+}
+
+.nav-header {
+  left:0;
+  position: absolute;
+  height:100px;
+  width: 100%;
+  margin-left: 200px; 
+}

@@ -1,0 +1,86 @@
+.plan_trip {
+    max-width: 100%;
+    align-content: center;
+    border-radius: 10px;
+    margin: 20px;
+    margin-top: 100px;
+    height:500px;
+    background-color: rgba(255, 253, 253, 0.13);
+}
+
+.plan-trip-ribbon {
+    background-color: rgb(225, 225, 225, 0.27);
+    padding: 5px 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+}
+
+.icons img {
+    width: 35px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.form-table {
+    width: 100%;
+    padding: 30px;
+}
+
+.form-table td {
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.form-table label {
+    font-weight: bold;
+}
+
+.form-table input, .form-table select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+.plan-trip-ribbon-title{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    width: 100%;
+    justify-content:center ;
+    height:30px;
+}
+
+.title h4 {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin-right: 5px;
+    font-family: "Aldrich-Font";
+    font-weight: lighter;
+}
+
+.subtitle h4 {
+    color: black;
+    font-size: 18px;
+    margin-right: 5px;
+    font-family: "Aldrich-Font";
+    font-weight: normal;
+}
+
+
+.form-label{
+    font-family: "InriaSans-Bold";
+    font-size: 15px;
+    color:white;
+}
