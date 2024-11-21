@@ -18,6 +18,7 @@ import AppointmentPage from './pages/appointment-page';
 import NotFoundPage from './pages/not-found-page';
 import { useState } from 'react';
 import MyDatePicker from './pages/my-date-picker';
+import PrivateRoute from './pages/PrivateRoute';
 
 function App() {
   // const [currentUserId, setCurrentUserId] = useState(null);
@@ -46,7 +47,11 @@ function App() {
               <Route path="/profile" element={<ProfilePage title='Profile Page' currentUserId={currentUserId} />} />
               <Route path="/day" element={<MyDatePicker title='Profile Page' />} />
 
-              <Route path="/employee/:eid/salon/:sid/appointment" element={<AppointmentPage title='Reserve an appointment with employee' currentUserId={currentUserId}/>} />
+              <Route path="/employee/:eid/salon/:sid/appointment" element={
+                <PrivateRoute>
+                  <AppointmentPage title='Reserve an appointment with employee' currentUserId={currentUserId}/>
+                </PrivateRoute>}
+              />
               <Route path="/salon/:id" element={<SalonPage title='Salon'/>}/>
 
               <Route path="*" element={<NotFoundPage title="404 Page not found" />} />

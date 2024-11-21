@@ -1,5 +1,5 @@
 // Define functions to call API to getAllCars, getCar, createCar, editCar, deleteCar
-const API_BASE_URL = "http://localhost:3001"; // Updated base URL with /api prefix
+const API_BASE_URL = "https://bookez-server.up.railway.app"; // Updated base URL with /api prefix
 
 // Get an employee's details by 
 export const getAnEmployeeById= async (eid) => {
