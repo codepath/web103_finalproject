@@ -74,7 +74,7 @@ const LoginPage = ({ setCurrentUserId, setJWT }) => {
           {errorLogin !== "" && <p>{errorLogin}</p>}
           
           <button type="submit" className="signin-button">
-            Log In
+            {loading? "Loading...": "Log In"}
           </button>
 
           <p
