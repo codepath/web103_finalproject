@@ -2,7 +2,8 @@ import { pool } from '../config/database.js';
 
 const getIncome = async (req, res) => {
     try {
-        const results = await pool.query('SELECT * FROM income');
+        const user_id = req.params.user_id;
+        const results = await pool.query('SELECT * FROM income where user_id = $1', [user_id]);
         res.status(200).json({ message: 'Income retrieved successfully', data: results.rows });
     } catch (error) {
         res.status(500).json({ error: error.message });

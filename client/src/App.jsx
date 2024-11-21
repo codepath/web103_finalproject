@@ -66,11 +66,11 @@ function App() {
       element: <h1> You have been successfully Logged Out </h1>,
     },
     {
-      path: "/income/:id",
+      path: "/income/:user_id",
       element: <Income categories={categories} user={user}/>,
     },
     {
-      path: "/expenses/:id",
+      path: "/expenses/:user_id",
       element: <Expense categories={categories} user={user}/>,
     }
   ]);

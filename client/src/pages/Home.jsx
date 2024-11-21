@@ -61,8 +61,17 @@ const drawChart = () => {
               Easily track your daily expenses and categorize them to see where
               your money is going.
             </Typography>
-            <div id="chart"></div>
           </Paper>
+        </Grid2>
+        <Grid2 item xs={12} sm={6}>
+            <Paper style={{ padding: "1rem" }}>
+                <Button color="secondary" variant="contained" onClick={() => window.location.href = `/income/${id}`}>
+                    Track Income
+                </Button>
+                <Typography>
+                    Monitor your income sources and keep track of your earnings.
+                </Typography>
+            </Paper>
         </Grid2>
         <Grid2 item xs={12} sm={6}>
           <Paper style={{ padding: "1rem" }}>
@@ -74,25 +83,30 @@ const drawChart = () => {
             </Typography>
           </Paper>
         </Grid2>
+        
         <Grid2 item xs={12} sm={6}>
             <Paper style={{ padding: "1rem" }}>
-                <Button color="secondary" variant="contained" onClick={() => window.location.href = '/income'}>
-                    Track Income
+                <Button color="secondary" variant="contained" onClick={() => window.location.href = '/expenses'}>
+                    Set Saving Goals
                 </Button>
                 <Typography>
-                    Monitor your income sources and keep track of your earnings.
+                    Set saving goals and track your progress to achieve financial
+                    freedom.
                 </Typography>
             </Paper>
         </Grid2>
         <Grid2 item xs={12} sm={6}>
             <Paper style={{ padding: "1rem" }}>
-                <Button color="secondary" variant="contained" onClick={() => window.location.href = '/expenses'}>
-                    View Expenses
+                <Button color="secondary" variant="contained">
+                    View Reports
                 </Button>
                 <Typography>
-                    Review your past expenses and analyze your spending patterns.
+                    Generate reports to analyze your spending habits and make
+                    informed financial decisions.
                 </Typography>
+                <div id="chart"></div>
             </Paper>
+            
         </Grid2>
       </Grid2>
     </Container>

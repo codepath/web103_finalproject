@@ -4,8 +4,8 @@ import ExpenseControllers from '../controllers/expense.js';
 const router = express.Router();
 
 
-router.get('/:id', ExpenseControllers.getExpenses);
-// router.get('/:id', ExpenseControllers.getExpensesById);
+router.get('/:user_id', ExpenseControllers.getExpenses); //user_id
+router.get('/:id', ExpenseControllers.getExpensesById);
 router.post('/add', ExpenseControllers.addExpenses);
 router.put('/update/:id', ExpenseControllers.updateExpenses);
 router.delete('/delete/:id', ExpenseControllers.deleteExpenses);
