@@ -1,6 +1,6 @@
 // Updated base URL with /api prefix
-// const API_BASE_URL = 'https://bookez-server.up.railway.app' 
-const API_BASE_URL = "http://localhost:3001"
+const API_BASE_URL = 'https://bookez-server.up.railway.app' 
+// const API_BASE_URL = "http://localhost:3001"
 export const registerUser = async (user) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
