@@ -52,23 +52,26 @@ const Home = (props) => {
   };
 
   useEffect(() => {
-    drawChart();
-  }, []);
+    // drawChart();
+  }, [id]);
 
   return (
-    <Container className="container">
+    <>
+    <Container className="container" width="100%">
       <Grid2
         container
         spacing={3}
-        style={{ marginTop: "2rem" }}
         justifyContent="center"
         className="container"
+        display="flex"
+        flexWrap="wrap"
       >
-        <Grid2 item xs={12} sm={6}>
-          <Paper style={{ padding: "1rem" }}>
+        <Grid2 item xs={12} sm={6} maxWidth="60%" width="40%" minHeight="70px">
+          <Paper style={{ padding: "1rem", height: "70%" }}>
             <Button
-              color="secondary"
+              color="light"
               variant="contained"
+              style={{ border: "1px solid #f2c069" }}
               onClick={() => (window.location.href = `/expenses/${id}`)}
             >
               Track Expenses
@@ -79,11 +82,12 @@ const Home = (props) => {
             </Typography>
           </Paper>
         </Grid2>
-        <Grid2 item xs={12} sm={6}>
-          <Paper style={{ padding: "1rem" }}>
+        <Grid2 item xs={12} sm={6} maxWidth="60%" width="40%" minHeight="70px">
+          <Paper style={{ padding: "1rem", height: "70%" }}>
             <Button
-              color="secondary"
+              color="light"
               variant="contained"
+              style={{ border: "1px solid #f2c069" }}
               onClick={() => (window.location.href = `/income/${id}`)}
             >
               Track Income
@@ -93,11 +97,12 @@ const Home = (props) => {
             </Typography>
           </Paper>
         </Grid2>
-        <Grid2 item xs={12} sm={6}>
-          <Paper style={{ padding: "1rem" }}>
+        <Grid2 item xs={12} sm={6} maxWidth="60%" width="40%" minHeight="70px">
+          <Paper style={{ padding: "1rem", height: "70%" }}>
             <Button
-              color="secondary"
+              color="light"
               variant="contained"
+              style={{ border: "1px solid #f2c069" }}
               onClick={() => (window.location.href = `/savings/${id}`)}
             >
               Set Saving Goals
@@ -108,9 +113,13 @@ const Home = (props) => {
             </Typography>
           </Paper>
         </Grid2>
-        <Grid2 item xs={12} sm={6}>
-          <Paper style={{ padding: "1rem" }}>
-            <Button color="secondary" variant="contained">
+        <Grid2 item xs={12} sm={6} maxWidth="60%" width="40%" minHeight="70px">
+          <Paper style={{ padding: "1rem", height: "70%" }}>
+            <Button
+              color="light"
+              variant="contained"
+              style={{ border: "1px solid #f2c069" }}
+            >
               Set Budgets
             </Button>
             <Typography>
@@ -118,20 +127,25 @@ const Home = (props) => {
             </Typography>
           </Paper>
         </Grid2>
-        <Grid2 item xs={12} sm={6}>
-          <Paper style={{ padding: "1rem" }}>
-            <Button color="secondary" variant="contained">
+        <Grid2 item xs={12} sm={6} maxWidth="60%" width="40%" minHeight="70px">
+          <Paper style={{ padding: "1rem", height: "70%" }}>
+            <Button
+              color="light"
+              variant="contained"
+              style={{ border: "1px solid #f2c069" }}
+            >
               View Reports
             </Button>
             <Typography>
               Generate reports to analyze your spending habits and make informed
               financial decisions.
             </Typography>
-            <div id="chart"></div>
           </Paper>
         </Grid2>
       </Grid2>
     </Container>
+    {/* <div id="chart"></div> */}
+    </>
   );
 };
 

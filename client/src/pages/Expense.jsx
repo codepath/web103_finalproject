@@ -8,7 +8,7 @@ import UpdateModal from "../components/update";
 const Expense = (props) => {
   const user_id = useParams().user_id;
   const categories = props.categories;
-  //   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [entries, setEntries] = useState([]);
   const [filteredEntries, setFilteredEntries] = useState([]);
   const [form, setForm] = useState({
@@ -31,7 +31,7 @@ const Expense = (props) => {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -97,6 +97,11 @@ const Expense = (props) => {
         </div>
       ) : (
         <div>
+          {loading && (
+            <div className="spinner-border text-light" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )}
           <h1>Track Your Expenses</h1>
           <form onSubmit={handleSubmit}>
             <div>
@@ -249,7 +254,10 @@ const Expense = (props) => {
                       {/* <td><a href={`update/${entry.id}`}>Edit</a></td> */}
                       <td>
                         <button onClick={() => updateModal(entry)}>Edit</button>
-                        <button className='delete-button' onClick={() => deleteEntry(entry.id)}>
+                        <button
+                          className="delete-button"
+                          onClick={() => deleteEntry(entry.id)}
+                        >
                           Delete
                         </button>
                       </td>

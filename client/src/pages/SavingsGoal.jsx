@@ -122,7 +122,7 @@ const SavingsGoal = () => {
       ) : (
         <div>
           <h1>Savings Goals</h1>
-          <div>
+          <div className="form-container">
             <input
               type="text"
               name="goal_name"
@@ -163,11 +163,12 @@ const SavingsGoal = () => {
           </div>
           <div>
             <h2>Progress</h2>
-            <div style={{ width: "100%", backgroundColor: "#e0e0e0" }}>
+            <div className="progress-bar">
               <div
+              className="progress-bar-inner"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: "#76c7c0",
+                  backgroundColor: "#f2c069",
                   height: "24px",
                 }}
               ></div>

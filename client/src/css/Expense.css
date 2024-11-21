@@ -9,14 +9,15 @@ body {
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #57aea5;
 }
 
 form {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #000;
+    border: 1px solid #f2c069;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -29,6 +30,7 @@ label {
     display: block;
     margin-bottom: 5px;
     /* font-weight: bold; */
+    color: #f2c069;
 }
 
 .category-label{
@@ -69,7 +71,7 @@ button.add-entry {
 }
 
 button.add-entry:hover {
-    background-color: #5aa9a4;
+    background-color: #457d58;
 }
 
 button.add-entry:disabled {
@@ -80,6 +82,7 @@ table {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
+    border:1 px solid #f2c069;
 }
 
 table th,
@@ -90,16 +93,16 @@ table td {
 }
 
 table th {
-    background-color: #f2f2f2;
+    background-color: #457d58;
 }
 
 table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #51514b;
 }
 
 table td button{
-    background-color: #3589dc;
-    color: #fff;
+    background-color: #457d58;
+    color: #f2c069;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -109,4 +112,5 @@ table td button{
 .delete-button{
     margin: 0 10px;
     background-color: #dc3545;
+    color: #ddd;
 }

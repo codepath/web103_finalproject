@@ -27,11 +27,25 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('public'))
 }
 
-app.use(cors({
-    origin: 'http://localhost:5173',
+const corsOptions = {
+    origin: process.env.NODE_ENV === 'production' ? 'https://budgetbuddy-a1mr.onrender.com' : 'http://localhost:5173',
     methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true
-}))
+};
+
+app.use(cors(corsOptions));
+
+// app.use(cors({
+//     origin: 'http://localhost:5173',
+//     methods: 'GET,POST,PUT,DELETE,PATCH',
+//     credentials: true
+// }))
+
+// app.use(cors({
+//     origin: 'https://budgetbuddy-a1mr.onrender.com',
+//     methods: 'GET,POST,PUT,DELETE,PATCH',
+//     credentials: true
+// }))
 
 app.use(passport.initialize())
 app.use(passport.session())

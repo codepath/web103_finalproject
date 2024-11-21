@@ -14,7 +14,7 @@ import SavingsGoal from "./pages/SavingsGoal";
 function App() {
   const [user, setUser] = useState(null);
   const [categories, setCategories] = useState([]);
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_API_URL || '';
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -97,9 +97,10 @@ function App() {
   };
 
   return (
-      <Container>
-        <header>
-          <Typography variant="h2" align="center" gutterBottom color="white">
+      <Container className="app-container" maxWidth="100%">
+        <header >
+          <img src="/budgetBuddy.png" alt="Budget Buddy Logo" style={{ display: "block", margin: "0 auto", maxWidth: "200px", float:"left", padding:"1%"}} />
+          <Typography variant="h2" align="center" gutterBottom color="#f2c069" padding="1%">
             Budget Buddy
           </Typography>
           <Typography variant="h5" align="center">
@@ -108,18 +109,18 @@ function App() {
           </Typography>
           <Grid2 container spacing={3} justifyContent="end">
             <Grid2 item>
-              <Button variant="contained" color="primary" href="/">
+              <Button variant="contained" color="#f2c069" href="/" style={{backgroundColor: "#457d58"}}>
                 Home
               </Button>
             </Grid2>
             <Grid2 item>
               {user !== null ? (
-                <Button variant="outlined" color="white" onClick={handleLogout} href={`/logout`}>
+                <Button variant="outlined" color="#f2c069" onClick={handleLogout} href={`/logout`}>
                   {user.username} <br />
                   Logout
                 </Button>
               ) : (
-                <Button variant="outlined" color="white" href="/login">
+                <Button variant="outlined" color="#f2c069" href="/login">
                   Login
                 </Button>
               )}
@@ -154,7 +155,7 @@ function App() {
           </div>
           <Typography
             variant="body2"
-            color="textSecondary"
+            color="#f2c069"
             align="center"
             style={{ marginTop: "1rem" }}
           >
