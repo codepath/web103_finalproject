@@ -68,7 +68,18 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
+}
+
+.forgot-password-and-sign-up {
+    margin: 0;
+}
+
+.forgot-password-and-sign-up:hover {
+    color: #6C48C5;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .error-message {
