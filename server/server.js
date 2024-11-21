@@ -9,6 +9,7 @@ import { GitHub } from './config/auth.js'
 import categoryRoutes from './routes/category.js';
 import incomeRoutes from './routes/income.js';
 import expenseRoutes from './routes/expense.js';
+import goalRoutes from './routes/savingGoal.js';
 
 import authRoutes from './routes/auth.js'
 
@@ -46,6 +47,7 @@ app.use('/auth', authRoutes)
 app.use('/api/category', categoryRoutes);
 app.use('/api/income', incomeRoutes);
 app.use('/api/expense', expenseRoutes);
+app.use('/api/goal', goalRoutes);
 
 const PORT = process.env.PORT || 3000;
 

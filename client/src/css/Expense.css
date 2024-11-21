@@ -68,6 +68,10 @@ button.add-entry {
     font-size: 16px;
 }
 
+button.add-entry:hover {
+    background-color: #5aa9a4;
+}
+
 button.add-entry:disabled {
     background-color: #ccc;
 }

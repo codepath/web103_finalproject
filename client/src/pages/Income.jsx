@@ -1,4 +1,4 @@
-import "../css/Income.css";
+// import "../css/Income.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UpdateModal from "../components/update";
@@ -77,7 +77,7 @@ const Income = () => {
 
   return (
     <>
-      {user_id === "undefined" ? (
+      {isNaN(user_id) ? (
         <div>
           <h1>Please Login to access this page</h1>
         </div>

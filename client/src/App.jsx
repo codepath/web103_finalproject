@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/UserLogin";
 import Income from "./pages/Income";
 import Expense from "./pages/Expense";
+import SavingsGoal from "./pages/SavingsGoal";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -72,6 +73,10 @@ function App() {
     {
       path: "/expenses/:user_id",
       element: <Expense categories={categories} user={user}/>,
+    },
+    {
+      path: "/savings/:user_id",
+      element: <SavingsGoal />,
     }
   ]);
 
