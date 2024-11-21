@@ -4,9 +4,9 @@ CodePath WEB103 Final Project
 
 Designed and developed by: Chengtao Lin, Parth Kansara, Thanh Nguyen Do
 
-🔗 Link to deployed app: https://bookez.vercel.app/
+🔗 Link to deployed app: https://bookez.vercel.app
 
-🔗 Link to deployed API: https://bookez-server.up.railway.app/ See an example implementation [here](https://github.com/Web103-BookEZ/web103_finalproject/pull/40).
+🔗 Link to deployed API: https://bookez-server.up.railway.app See an example implementation [here](https://github.com/Web103-BookEZ/web103_finalproject/pull/40).
 
 
 
