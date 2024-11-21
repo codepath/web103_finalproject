@@ -4,7 +4,7 @@ import IncomeControllers from '../controllers/income.js';
 const router = express.Router();
 
 
-router.get('/', IncomeControllers.getIncome);
+router.get('/:user_id', IncomeControllers.getIncome);
 router.get('/:id', IncomeControllers.getIncomeById);
 router.post('/add', IncomeControllers.addIncome);
 router.put('/update/:id', IncomeControllers.updateIncome);

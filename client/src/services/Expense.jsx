@@ -2,10 +2,15 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000/api/expense';
 
-const getExpenses = async (id) => {
-    const response = await axios.get(`${API_URL}/${id}`);
+const getExpenses = async (user_id) => {
+    const response = await axios.get(`${API_URL}/${user_id}`);
     return response.data;
 };
+
+const getExpensesById = async (id) => {
+    const response = await axios.get(`${API_URL}/${id}`);
+    return response.data;
+}
 
 const addExpenses = async (expenseData) => {
     const response = await fetch(`${API_URL}/add`, {
@@ -26,17 +31,18 @@ const addExpenses = async (expenseData) => {
 };
 
 const updateExpenses = async (id, expenseData) => {
-    const response = await axios.put(`${API_URL}${id}`, expenseData);
+    const response = await axios.put(`${API_URL}/update/${id}`, expenseData);
     return response.data;
 };
 
 const deleteExpenses = async (id) => {
-    const response = await axios.delete(`${API_URL}${id}`);
+    const response = await axios.delete(`${API_URL}/delete/${id}`);
     return response.data;
 };
 
 const expenseService = {
     getExpenses,
+    getExpensesById,
     addExpenses,
     updateExpenses,
     deleteExpenses,

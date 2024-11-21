@@ -36,7 +36,7 @@ Backend: Express.js, PostgreSQL, Node.js
 
 [Click Me](https://i.imgur.com/UVGqAxr.gif)
 
-### [Expense Categorization]
+### [Expense Categorization] ✅
 
 [Categorize expenses into predefined or custom categories for better tracking and analysis.]
 
@@ -56,7 +56,7 @@ Backend: Express.js, PostgreSQL, Node.js
 
 [gif goes here]
 
-### [Expense Filtering and Sorting]
+### [Expense Filtering and Sorting] ✅
 
 [Filter and sort expenses by category, date, or amount for detailed insights.]
 
