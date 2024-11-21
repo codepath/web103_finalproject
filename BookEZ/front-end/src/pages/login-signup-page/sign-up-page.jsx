@@ -30,7 +30,6 @@ const SignUpPage = () => {
 
   const handlePasswordChange = (event) => {
     const inputted = event.target.value;
-    console.log(inputted);
 
     const lowerCaseLetters = /[a-z]/; // Use a regex without the 'g' flag for test()
     const upperCaseLetters = /[A-Z]/; // Use a regex without the 'g' flag for test()
