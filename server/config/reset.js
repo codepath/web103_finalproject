@@ -164,4 +164,70 @@ const seedCategoriesTable = async () => {
   }
 };
 
+const seedReportsTable = async (userId, type, year, month = null) => {
+  let incomeQuery, expensesQuery;
+  const params = [userId];
+
+  if (type === "monthly") {
+    incomeQuery = `
+      SELECT 
+        EXTRACT(MONTH FROM date) AS month, 
+        SUM(amount) AS total_income
+      FROM income
+      WHERE user_id = $1 AND EXTRACT(YEAR FROM date) = $2 AND EXTRACT(MONTH FROM date) = $3
+      GROUP BY month;
+    `;
+    expensesQuery = `
+      SELECT 
+        EXTRACT(MONTH FROM date) AS month, 
+        SUM(amount) AS total_expenses
+      FROM expenses
+      WHERE user_id = $1 AND EXTRACT(YEAR FROM date) = $2 AND EXTRACT(MONTH FROM date) = $3
+      GROUP BY month;
+    `;
+    params.push(year, month);
+  } else if (type === "yearly") {
+    incomeQuery = `
+      SELECT 
+        EXTRACT(YEAR FROM date) AS year, 
+        SUM(amount) AS total_income
+      FROM income
+      WHERE user_id = $1 AND EXTRACT(YEAR FROM date) = $2
+      GROUP BY year;
+    `;
+    expensesQuery = `
+      SELECT 
+        EXTRACT(YEAR FROM date) AS year, 
+        SUM(amount) AS total_expenses
+      FROM expenses
+      WHERE user_id = $1 AND EXTRACT(YEAR FROM date) = $2
+      GROUP BY year;
+    `;
+    params.push(year);
+  }
+
+  try {
+    const incomeResult = await pool.query(incomeQuery, params);
+    const expensesResult = await pool.query(expensesQuery, params);
+
+    const report = {
+      income: incomeResult.rows,
+      expenses: expensesResult.rows,
+    };
+
+    const insertReportQuery = `
+      INSERT INTO reports (user_id, report_type, date_range, report_data)
+      VALUES ($1, $2, $3, $4);
+    `;
+    const dateRange = type === "monthly" ? `${year}-${month}` : `${year}`;
+    await pool.query(insertReportQuery, [userId, type, dateRange, JSON.stringify(report)]);
+
+    console.log("Reports table seeded successfully");
+  } catch (error) {
+    console.error("Error seeding reports table:", error);
+  }
+};
+
+const seedAllTables = async () => {
 await seedCategoriesTable();
+};

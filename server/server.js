@@ -4,12 +4,14 @@ import cors from 'cors'
 import passport from 'passport'
 import session from 'express-session'
 import { GitHub } from './config/auth.js'
+import path from 'path'
 
 // import userRoutes from './routes/user.js';
 import categoryRoutes from './routes/category.js';
-import incomeRoutes from './routes/income.js';
 import expenseRoutes from './routes/expense.js';
+import incomeRoutes from './routes/income.js';
 import goalRoutes from './routes/savingGoal.js';
+import reportRoutes from './routes/report.js';
 
 import authRoutes from './routes/auth.js'
 
@@ -67,6 +69,7 @@ app.use('/api/category', categoryRoutes);
 app.use('/api/income', incomeRoutes);
 app.use('/api/expense', expenseRoutes);
 app.use('/api/goal', goalRoutes);
+app.use('/api/report', reportRoutes);
 
 const PORT = process.env.PORT || 3000;
 

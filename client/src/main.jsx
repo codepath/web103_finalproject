@@ -11,3 +11,7 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+// To DOs:
+// 1. Dashboard: Total Savings, Total Income, Total Expenses, Total Goals
+// 2. Upload pdf or receipts for expenses and income

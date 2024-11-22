@@ -133,6 +133,7 @@ const Home = (props) => {
               color="light"
               variant="contained"
               style={{ border: "1px solid #f2c069" }}
+              onClick={() => (window.location.href = `/reports/${id}`)}
             >
               View Reports
             </Button>
