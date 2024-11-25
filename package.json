@@ -1,0 +1,16 @@
+{
+  "name": "web103_finalproject",
+  "version": "1.0.0",
+  "description": "CodePath WEB103 Final Project",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "nodemailer": "^6.9.16"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

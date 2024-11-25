@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Shrikhand&family=Sour+Gummy:ital,wght@0,600;1,600&display=swap');
+
+.fascinate-regular {
+    font-family: "Fascinate", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.nav-bar {
+    height: 7%;
+    padding: 10px 4%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aliceblue;
+}
+
+.title {
+    margin: 0;
+}
+
+.title-menu {
+    height: 100%;
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.nav-bar-logged-in-status {
+    height: 100%;
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.nav-bar-right-box {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 10px;
+    
+    height: 100%;
+    /* width: 100%; */
+}
+
+.nav-bar-profile-image-box {
+    border-radius: 50%;
+    border: 2px cyan solid;
+    padding: 1px;
+    height: 99.5%;
+    aspect-ratio: 1/1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar-profile-image-url {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    height: 95%;
+    /* width: 100%; */
+}
+
+.nav-bar-username {
+    display: flex;
+    align-items: center;
+}
+
+.button-light {
+    background-color: azure;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+.button-info {
+    background-color: cyan;
+    height: max-content;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+.button-info:hover, .button-light:hover {
+    transform: scale(1.125);
+}
+
+.hiddenSideTab {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+}
+
+.hp-sidemenu {
+    background-color: azure;
+    width: 40%;
+}
+
+.sidemenu-title {
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.hp-menu-therest {
+    width: 60%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page-on-hidden-tab {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+
+    font-weight: 500;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: start; */
+    text-align: left;
+}
+
+.page-on-hidden-tab:hover {
+    color: #1230AE;
+    text-decoration: underline;
+}
+
+.logout-button {
+    color: red;
+}
+
+.logout-button:hover {
+    color: red;
+    font-style: italic;
+    text-decoration: underline;
+}
