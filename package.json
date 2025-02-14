@@ -1,0 +1,16 @@
+{
+  "name": "budgetbuddy",
+  "version": "1.0.0",
+  "description": "An application to help track your finances",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && npm install && npm start"
+  },
+  "author": "Ayushi Porwal",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
