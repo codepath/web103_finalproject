@@ -12,9 +12,9 @@ You will need to reference the GitHub Project Management guide in the course por
   - *Please be sure to share your project board with the grading team's GitHub **codepathreview**. This is separate from your repository's sharing settings.*
 - [ ] In your repo, create at least 5 issues from the features on your feature list.
 - [ ] In your repo, update the status of issues in your project board.
-- [ ] In your repo, create a milestone for each of the remaining units: Units 7, 8, and 9.
-  - [ ] Set the completion percentage of each milestone. The milestone for Unit 7 should be 100% completed when you submit for full points. 
-- [ ] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of the feature's name. 
+- [ ] In your repo, create a GitHub Milestone for each final project unit, corresponding to each of the 5 milestones in your `milestones/` directory. 
+  - [ ] Set the completion percentage of each milestone. The GitHub Milestone for `milestones/milestone_3.md` (Unit 7) should be 100% completed when you submit for full points.
+- [ ] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of the feature's name.
   - [ ] Under each feature you have completed, include a GIF showing feature functionality.
 - [ ] In this documents, complete all three questions in the **Reflection** section below.
 
