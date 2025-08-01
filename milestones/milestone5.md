@@ -71,7 +71,11 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 - [ ] Show a spinner while a page or page element is loading
 - [ ] Disable buttons and inputs during the form submission process
 - [ ] Disable buttons after they have been clicked
+  - *At least 75% of buttons in your app must exhibit this behavior to receive full credit*
 - [ ] Users can upload images to the app and have them be stored on a cloud service
+  - *A user profile picture does **NOT** count for this rubric item **only if** the app also includes "Login via GitHub" functionality.*
+  - *Adding a photo via a URL does **NOT** count for this rubric item (for example, if the user provides a URL with an image to attach it to the post).*
+  - *Selecting a photo from a list of provided photos does **NOT** count for this rubric item.*
 - [ ] 🍞 [Toast messages](https://www.patternfly.org/v3/pattern-library/communication/toast-notifications/index.html) deliver simple feedback in response to user events
 
 ## Final Demo GIF
