@@ -26,22 +26,26 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 
 - [ ] The project includes an Express backend app and a React frontend app
 - [ ] The project includes these backend-specific features:
-  - [ ] At least one of each of the following database relationship in Postgres
+  - [ ] At least one of each of the following database relationships in Postgres
     - [ ] one-to-many
     - [ ] many-to-many with a join table
-  - [ ] A well-designed RESTful API
-    - [ ] The API can respond to at least one of each type of request: GET, POST, PATCH, and DELETE
+  - [ ] A well-designed RESTful API that:
+    - [ ] supports all four main request types for a single entity (ex. tasks in a to-do list app): GET, POST, PATCH, and DELETE
+      - [ ] the user can **view** items, such as tasks
+      - [ ] the user can **create** a new item, such as a task
+      - [ ] the user can **update** an existing item by changing some or all of its values, such as changing the title of task
+      - [ ] the user can **delete** an existing item, such as a task
     - [ ] Routes follow proper naming conventions
-  - [ ] The ability to reset the database to its default state
+  - [ ] The web app includes the ability to reset the database to its default state
 - [ ] The project includes these frontend-specific features:
-  - [ ] At least one redirection
+  - [ ] At least one redirection, where users are able to navigate to a new page with a new URL within the app
   - [ ] At least one interaction that the user can initiate and complete on the same page without navigating to a new page
   - [ ] Dynamic frontend routes created with React Router
   - [ ] Hierarchically designed React components
     - [ ] Components broken down into categories, including Page and Component types
     - [ ] Corresponding container components and presenter components as appropriate
 - [ ] The project includes dynamic routes for both frontend and backend apps
-- [ ] The project is deployed on Render with all pages and features working
+- [ ] The project is deployed on Render with all pages and features that are visible to the user are working as intended
 
 ### Custom Features
 
