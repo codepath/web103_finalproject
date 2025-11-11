@@ -11,7 +11,7 @@ const Home: React.FC = () => {
        </header>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center justify-center flex-grow p-4">
+      <main className="flex flex-col items-center justify-center grow p-4">
         {/* Logo & Title Area */}
         <div className="text-center mb-8">
            <div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center text-gray-500 font-bold">LOGO</div>
