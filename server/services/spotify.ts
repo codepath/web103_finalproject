@@ -2,6 +2,18 @@
 let cachedToken: string | null = null;
 let tokenExpiryTime: number = 0;
 
+// import require for CommonJS module
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
+let spotifyPreviewFinder: ((songName: string, artistName?: string, limit?: number) => Promise<any>) | null = null;
+try {
+    spotifyPreviewFinder = require('spotify-preview-finder');
+    console.log('Spotify preview finder loaded successfully');
+} catch (error) {
+    console.error('Failed to load spotify-preview-finder:', error);
+}
+
 // request an access token from Spotify with client credentials flow
 export async function getSpotifyAccessToken(): Promise<string | null> {
     // return cached token if it's still valid
@@ -47,6 +59,38 @@ export async function getSpotifyAccessToken(): Promise<string | null> {
     }
 }
 
+// helper to get preview URL using the preview finder as fallback
+async function getPreviewUrl(songName: string, artistName: string, apiPreviewUrl: string | null): Promise<string | null> {
+    if (apiPreviewUrl) {
+        return apiPreviewUrl;
+    }
+    
+    if (!spotifyPreviewFinder) {
+        console.log(`No preview URL from API and preview finder not available`);
+        return null;
+    }
+
+    try {
+        console.log(`No preview URL from API, searching for: "${songName}" by "${artistName}"`);
+        const result = await spotifyPreviewFinder(songName, artistName, 1);
+        
+        if (result.success && result.results.length > 0) {
+            const firstResult = result.results[0];
+            if (firstResult.previewUrls && firstResult.previewUrls.length > 0) {
+                const previewUrl = firstResult.previewUrls[0];
+                console.log(`Preview finder found URL: ${previewUrl}`);
+                return previewUrl;
+            }
+        }
+        
+        console.log('Preview finder: No preview URL found');
+        return null;
+    } catch (error) {
+        console.error(`Preview finder failed:`, error);
+        return null;
+    }
+}
+
 // fetch track details from Spotify
 export async function getTrack(trackId: string) {
     const token = await getSpotifyAccessToken();
@@ -72,6 +116,11 @@ export async function getTrack(trackId: string) {
         }
 
         const data = await response.json();
+        
+        // Im getting the preview URL by passing song name and artist for the finder
+        const songName = data.name;
+        const artistName = data.artists[0]?.name || '';
+        const previewUrl = await getPreviewUrl(songName, artistName, data.preview_url);
 
         // If we need more fields for the frontend, yall can change it here
         return {
@@ -82,7 +131,7 @@ export async function getTrack(trackId: string) {
                 name: data.album.name,
                 image: data.album.images[0]?.url 
             },
-            previewUrl: data.preview_url,
+            previewUrl,
             duration: data.duration_ms,
             releaseDate: data.album.release_date
         };
