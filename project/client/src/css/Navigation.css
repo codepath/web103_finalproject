@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FEE2BB;
+    padding: 1.2rem 1rem;
+    font-family: 'Rubik', sans-serif;
+}
+
+.navbar-left h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-box {
+    background-color: #493000;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.logout-icon {
+    color: black;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}

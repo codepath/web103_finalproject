@@ -1,0 +1,35 @@
+{
+  "name": "boltbucket",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"cd client && vite\" \"cd server && nodemon server\"",
+    "start": "cd server && node server",
+    "build": "cd client && vite build"
+  },
+  "dependencies": {
+    "@picocss/pico": "^1.5.7",
+    "axios": "^1.13.2",
+    "concurrently": "^7.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "html2canvas": "^1.4.1",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.9.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^7.2.2"
+  }
+}
