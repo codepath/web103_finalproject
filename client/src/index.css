@@ -1,0 +1,160 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+#root {
+    --font-family: Rubik, Verdana, sans-serif;
+    --primary: rgb(115, 2, 12);
+    --primary-hover: black;
+    --color: rgb(0, 0, 0);
+    --h1-color: var(--color);
+    --h2-color: var(--color);
+    --h3-color: var(--color);
+    --card-background-color: rgba(0, 0, 0, 0.8);
+    --card-sectionning-background-color: rgba(0, 0, 0, 0.8);
+    --form-element-active-border-color: var(--color);
+    --form-element-placeholder-color: gray;
+}
+
+#root h1 {
+    font-size: 3rem;
+    margin-bottom: 0px;
+}
+
+#root h2 {
+    margin-bottom: 0px;
+}
+
+#root h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+}
+
+#root p {
+    margin-bottom: 10px;
+}
+
+#root [role=button], #root button, #root input[type=submit] {
+    font-family: var(--font-family);
+    font-weight: 500;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    margin: 10px;
+    width: max-content;
+}
+
+#root [role=button]:hover, #root button:hover, #root input[type=submit]:hover {
+    border: 2px solid var(--color);
+}
+
+#root main {
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#root article {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#root article header {
+    border-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+#root article footer {
+    border-top: 0px;
+    margin-top: 0px;
+    display: flex;
+} */
+
+/* === GLOBAL LAYOUT === */
+body {
+  padding: 1rem 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* === NAVBAR === */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* === POINT DISPLAY (top right) === */
+.points-display {
+  font-weight: bold;
+}
+
+/* === STICKER GRID === */
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.sticker-card {
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+  background: #fafafa;
+  transition: background 0.2s ease;
+}
+
+.sticker-card:hover {
+  background: #f0f8ff;
+}
+
+.sticker-card img {
+  height: 80px;
+  margin-bottom: 0.5rem;
+}
+
+/* === PURCHASE BUTTON === */
+button.purchase-btn {
+  width: 100%;
+}
+
+/* === MESSAGE / ALERTS === */
+.message {
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.message.error {
+  background: #ffe6e6;
+  color: #900;
+}
+
+.message.success {
+  background: #eaffea;
+  color: #096;
+}
+
+/* === HOME PAGE STICKER LIST === */
+.purchased-stickers {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.purchased-stickers img {
+  height: 60px;
+}
