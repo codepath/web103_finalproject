@@ -1,0 +1,443 @@
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--primary-purple);
+}
+
+.signup-card {
+  background-color: var(--white);
+  color: var(--primary-purple);
+  border-radius: 24px;
+  padding: 48px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 32px var(--shadow);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-card h1 {
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--primary-purple);
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--hover-purple);
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--border-gray);
+  color: var(--hover-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  background-color: var(--primary-purple);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.progress-line {
+  width: 60px;
+  height: 3px;
+  background-color: var(--border-gray);
+}
+
+/* Tab Content */
+.tab-content {
+  min-height: 400px;
+}
+
+.tab-content h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--primary-purple);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--primary-purple);
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px 16px;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--primary-purple);
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--light-purple);
+  box-shadow: 0 0 0 3px rgba(74, 0, 112, 0.1);
+}
+
+/* Activity Card Swiping */
+.instruction {
+  text-align: center;
+  color: var(--hover-purple);
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+.card-container {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-card {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-purple),
+    var(--light-purple)
+  );
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 32px;
+  box-shadow: 0 12px 40px var(--shadow);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+}
+
+.activity-card.swipe-left {
+  animation: swipeLeft 0.3s ease forwards;
+}
+
+.activity-card.swipe-right {
+  animation: swipeRight 0.3s ease forwards;
+}
+
+@keyframes swipeLeft {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-150%) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeRight {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150%) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+.card-content {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content h3 {
+  color: var(--white);
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-number {
+  color: var(--text-gray);
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+}
+
+.swipe-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.swipe-button.skip {
+  background-color: #ff6b6b;
+  color: var(--white);
+}
+
+.swipe-button.like {
+  background-color: #4ecdc4;
+  color: var(--white);
+}
+
+.swipe-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.swipe-button:active {
+  transform: scale(0.95);
+}
+
+/* Completion Message */
+.completion-message {
+  text-align: center;
+  padding: 32px;
+}
+
+.completion-message h3 {
+  color: var(--primary-purple);
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.completion-message p {
+  color: var(--hover-purple);
+  margin-bottom: 24px;
+}
+
+.selected-activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.activity-tag {
+  background-color: var(--light-purple);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 14px;
+  background-color: var(--primary-purple);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: var(--light-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.nav-btn:active {
+  transform: translateY(0);
+}
+
+.nav-btn.next,
+.nav-btn.submit {
+  background-color: var(--primary-purple);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--hover-purple);
+  font-size: 0.95rem;
+}
+
+.login-link a {
+  color: var(--primary-purple);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.login-link a:hover {
+  opacity: 0.8;
+}
+
+/* NYC Map Styling */
+.map-hint {
+  text-align: center;
+  color: var(--hover-purple);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.nyc-map {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.borough {
+  fill: #e8e8e8;
+  stroke: var(--primary-purple);
+  stroke-width: 2.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.borough:hover {
+  fill: var(--light-purple);
+  stroke: var(--primary-purple);
+  stroke-width: 3.5;
+  filter: brightness(1.1) drop-shadow(0 2px 8px rgba(74, 0, 112, 0.4));
+}
+
+.borough.selected {
+  fill: var(--primary-purple);
+  stroke: var(--hover-purple);
+  stroke-width: 3.5;
+  animation: pulseBorough 0.5s ease;
+}
+
+@keyframes pulseBorough {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.borough-label {
+  fill: var(--primary-purple);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  pointer-events: none;
+  text-anchor: middle;
+  transition: fill 0.3s ease;
+}
+
+.borough:hover + .borough-label,
+.borough.selected + .borough-label {
+  fill: var(--white);
+  font-weight: 700;
+}
+
+.selected-borough {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--primary-purple);
+  font-size: 1.1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.selected-borough strong {
+  color: var(--light-purple);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signup-card {
+    padding: 32px 24px;
+  }
+
+  .activity-card {
+    max-width: 100%;
+    height: 350px;
+  }
+
+  .card-content h3 {
+    font-size: 2rem;
+  }
+
+  .swipe-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,271 @@
+.home-container {
+  min-height: 100vh;
+  background-color: var(--primary-purple);
+}
+
+.navbar {
+  background-color: var(--light-purple);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand h2 {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-button {
+  background-color: var(--white);
+  color: var(--primary-purple);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-button:hover {
+  background-color: var(--text-gray);
+  transform: translateY(-2px);
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  width: 250px;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.main-content {
+  padding: 48px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-header {
+  text-align: center;
+  margin-bottom: 48px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-header h1 {
+  color: var(--white);
+  margin-bottom: 12px;
+  font-size: 2.5rem;
+}
+
+.content-header p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  animation: fadeIn 0.7s ease;
+}
+
+.group-card {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.group-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.group-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.group-card h3 {
+  color: var(--primary-purple);
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.member-count {
+  color: var(--hover-purple);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.join-button {
+  width: 100%;
+  background-color: var(--primary-purple);
+  color: var(--white);
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.join-button:hover {
+  background-color: var(--light-purple);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-input:focus {
+    width: 100%;
+  }
+
+  .main-content {
+    padding: 24px 16px;
+  }
+
+  .content-header h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Friends Section */
+.friends-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 48px 0;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.friends-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.friends-header h2 {
+  color: var(--primary-purple);
+  margin: 0;
+}
+
+.add-friend-link {
+  background-color: var(--primary-purple);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.add-friend-link:hover {
+  background-color: var(--light-purple);
+  transform: translateY(-2px);
+}
+
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.friend-card:hover {
+  border-color: var(--primary-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.friend-pfp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.friend-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.friend-info h4 {
+  margin: 0;
+  color: var(--primary-purple);
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.friend-interests {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

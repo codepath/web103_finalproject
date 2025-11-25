@@ -1,0 +1,67 @@
+LEXINGTON LINKS DATABASE SCHEMA
+================================================================================
+
+TABLE: user (UNIFIED - merged user + profiles)
+--------------------------------------------------------------------------------
+Column Name                    Type
+--------------------------------------------------------------------------------
+id                             uuid (from Supabase Auth)
+created_at                     timestamp
+updated_at                     timestamp
+username                       string (UNIQUE)
+display_name                   string
+pfp                            string (profile picture URL)
+bio                            string
+borough                        string (Bronx, Brooklyn, Manhattan, Queens, Staten Island)
+year                           string (Freshman, Sophomore, Junior, Senior)
+interests                      jsonb/object {"activity": true}
+follows_ids                    jsonb/object {"user_uuid": true}
+post_ids                       nullable (legacy)
+group_ids                      nullable (legacy)
+message_ids                    nullable (legacy)
+
+TABLE: post
+--------------------------------------------------------------------------------
+Column Name                    Type
+--------------------------------------------------------------------------------
+id                             integer
+created_at                     timestamp
+user_id                        string
+image_url                      nullable
+caption                        string
+content                        string
+user_ids                       nullable
+group_limit                    nullable
+
+TABLE: group
+--------------------------------------------------------------------------------
+Column Name                    Type
+--------------------------------------------------------------------------------
+id                             integer
+created_at                     timestamp
+name                           string
+common_interests               jsonb/object
+messages_id                    jsonb/object
+user_ids                       jsonb/object
+
+TABLE: messages
+--------------------------------------------------------------------------------
+Column Name                    Type
+--------------------------------------------------------------------------------
+id                             integer
+created_at                     timestamp
+conversation_id                integer
+sender_id                      uuid
+content                        string
+read                           boolean
+
+TABLE: conversations
+--------------------------------------------------------------------------------
+Column Name                    Type
+--------------------------------------------------------------------------------
+id                             integer
+created_at                     timestamp
+user_id_1                      uuid
+user_id_2                      uuid
+last_message_at                timestamp
+

@@ -1,0 +1,171 @@
+.user-lookup-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.user-lookup-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.user-lookup-card h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.user-lookup-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.lookup-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.lookup-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.lookup-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.lookup-button {
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lookup-button:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.lookup-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-box {
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.user-result {
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.user-result h3 {
+  color: #22543d;
+  margin-bottom: 1rem;
+}
+
+.user-details p {
+  margin: 0.5rem 0;
+  color: #2d3748;
+}
+
+.user-details strong {
+  color: #1a202c;
+}
+
+details {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+summary {
+  color: #667eea;
+  font-weight: 600;
+  padding: 0.5rem 0;
+}
+
+pre {
+  background: #2d3748;
+  color: #68d391;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.user-pfp {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.interests-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.interest-tag {
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+}
+
+.add-friend-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.add-friend-button:hover:not(:disabled) {
+  background: #38a169;
+}
+
+.add-friend-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.self-note {
+  color: #667eea;
+  font-style: italic;
+  margin-top: 1rem;
+}

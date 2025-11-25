@@ -1,0 +1,165 @@
+.profile-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: var(--primary-purple);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.profile-card {
+  background: white;
+  color: var(--primary-purple);
+  padding: 32px 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 8px 32px var(--shadow);
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profile-header h1 {
+  margin: 0;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--hover-purple);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.profile-form,
+.create-post-form-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.profile-form h3,
+.create-post-form-profile h3,
+.posts-list-profile h3 {
+  margin: 0 0 8px 0;
+  border-bottom: 1px solid var(--border-gray);
+  padding-bottom: 8px;
+}
+
+/* Re-use styles from SignUp.css */
+.profile-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profile-form label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.profile-form input,
+.profile-form select,
+.profile-form textarea,
+.create-post-form-profile textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--primary-purple);
+}
+
+.save-btn,
+.create-post-form-profile button {
+  background-color: var(--primary-purple);
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.save-btn:hover,
+.create-post-form-profile button:hover {
+  background-color: var(--light-purple);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-gray);
+  margin: 32px 0;
+}
+
+.posts-list-profile {
+  margin-bottom: 24px;
+}
+
+.post-card-profile {
+  background: #f9f9f9;
+  border: 1px solid var(--border-gray);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.post-card-profile p {
+  margin: 0 0 8px 0;
+}
+
+.post-card-profile .post-time {
+  font-size: 0.8rem;
+  color: var(--hover-purple);
+}
+
+.signout-btn {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.signout-btn:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-purple);
+  margin-right: 20px;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.post-caption {
+  font-size: 1rem;
+  color: #333;
+  white-space: pre-wrap;
+}
