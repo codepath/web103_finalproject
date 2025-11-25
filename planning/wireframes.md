@@ -4,18 +4,33 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- Landing Page ⭐
+- Sign Up Page ⭐
+- Login Page ⭐
+- Habit Dashboard Page ⭐
+- Profile Page ⭐
+- About Page
+- Contact Page
+- Features Page
 
-## Wireframe 1: [page title]
+## Wireframe 1: Landing Page
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![Landing Page](wireframes/LandingPage.png)
 
-## Wireframe 2: [page title]
+## Wireframe 2: Sign Up Page
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![SignUp Page](wireframes/SignUp.png)
 
-## Wireframe 3: [page title]
+## Wireframe 3: Login Page
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Login Page](wireframes/Login.png)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 4: Habit Dashboard Page
+
+![Habit Dashboard Page](wireframes/HabitsDashboard.png)
+
+
+## Wireframe 4: Profile Page
+
+![Profile Page](wireframes/ProfilePage.png)
+
