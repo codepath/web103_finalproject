@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+
+/* Constants */
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+
+  --color-app: var(--app-text);
+  --color-app-muted: var(--app-text-muted);
+  --color-app-bg: var(--app-bg);
+  --color-surface: var(--app-surface);
+  --color-muted: var(--app-muted);
+  --color-border: var(--app-border);
+  --color-primary: var(--app-primary);
+}
+
+/* Light theme */
+:root {
+  --app-bg: #fff;
+  --app-surface: #f8fafc;
+  --app-muted: #cbcdd0;
+
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+
+  --app-border: #e2e8f0;
+  --app-primary: oklch(0.6221 0.1844 276.52);
+}
+
+/* Dark theme */
+html[data-theme="dark"] {
+  --app-bg: #0f172a;
+  --app-surface: #1e293b;
+  --app-muted: #334155;
+
+  --app-text: #f1f5f9;
+  --app-text-muted: #94a3b8;
+
+  --app-border: #475569;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--app-bg);
+    color: var(--app-text);
+  }
+
+  body {
+    background-color: var(--app-bg);
+    color: var(--app-text);
+  }
+
+  input,
+  textarea,
+  select {
+    @apply outline-none ring-0 focus:outline-none focus:ring-0;
+    color: var(--app-text);
+  }
+
+  select {
+    background-color: var(--app-surface);
+  }
+}
+
+/* Components */
+@layer components {
+  .heading-xl {
+    @apply text-4xl font-bold leading-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl font-semibold;
+  }
+
+  .heading-md {
+    @apply text-2xl font-semibold;
+  }
+
+  .heading-sm {
+    @apply text-xl font-semibold;
+  }
+
+  .body-lg {
+    @apply text-lg leading-relaxed;
+    color: var(--app-text-muted);
+  }
+
+  .body-md {
+    @apply text-base;
+    color: var(--app-text-muted);
+  }
+
+  .body-sm {
+    @apply text-sm;
+    color: var(--app-text-muted);
+  }
+
+  .caption {
+    @apply text-xs;
+    color: var(--app-text-muted);
+  }
+
+  .search-bar {
+    @apply flex gap-4 px-6 py-3 mb-3 mx-4 rounded-4xl items-center justify-center w-full;
+    background-color: var(--app-surface);
+    color: var(--app-text);
+  }
+
+  .menu-item {
+    @apply flex gap-4 px-6 py-3 mb-3 rounded-4xl;
+    background-color: var(--app-surface);
+    color: var(--app-text);
+  }
+}

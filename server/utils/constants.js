@@ -1,0 +1,15 @@
+export const HASHTAG_LIMIT = 20;
+export const HASHTAG_REGEX = /(^|\s)#([a-zA-Z0-9_]{1,50})/g;
+export const HASHTAG_ALLOWED_REGEX = /^[a-z0-9_]{1,50}$/;
+export const INVALID_HASHTAGS_ERROR_CODE = 'INVALID_HASHTAGS';
+export const HASHTAG_SEARCH_DEFAULT_LIMIT = 10;
+export const HASHTAG_SEARCH_MAX_LIMIT = 25;
+export const COMMENT_CONTENT_MAX_LENGTH = 1000;
+export const COMMENTS_DEFAULT_LIMIT = 20;
+export const COMMENTS_MAX_LIMIT = 100;
+export const POSTS_DEFAULT_LIMIT = 20;
+export const POSTS_MAX_LIMIT = 100;
+export const PROJECTS_DEFAULT_LIMIT = 20;
+export const PROJECTS_MAX_LIMIT = 100;
+export const NETWORK_DEFAULT_LIMIT = 20;
+export const NETWORK_MAX_LIMIT = 100;
