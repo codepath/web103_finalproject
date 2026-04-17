@@ -1,0 +1,12 @@
+.goals-save-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.goals-saved-msg {
+  margin-top: 12px;
+  text-align: center;
+  color: #4a6cf7;
+  font-size: 13px;
+}

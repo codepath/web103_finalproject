@@ -1,0 +1,49 @@
+.meals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.meals-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.date-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.meal-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+}
+
+.meal-list-item--border {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.meal-list-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.meal-list-meta {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.btn-view-details {
+  font-size: 13px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}

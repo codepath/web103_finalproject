@@ -1,0 +1,64 @@
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.macro-row {
+  margin-bottom: 20px;
+}
+
+.macro-row:last-child {
+  margin-bottom: 0;
+}
+
+.macro-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.macro-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.macro-value {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.progress-bar {
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4a6cf7;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.meal-row {
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  color: #374151;
+}
+
+.meal-row:last-child {
+  border-bottom: none;
+}

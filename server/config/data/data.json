@@ -1,0 +1,369 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "goal": "cut",
+      "calorie_target": 1800,
+      "protein_target": 180,
+      "carb_target": 150,
+      "fat_target": 50
+    },
+    {
+      "id": 2,
+      "goal": "bulk",
+      "calorie_target": 3200,
+      "protein_target": 200,
+      "carb_target": 400,
+      "fat_target": 90
+    },
+    {
+      "id": 3,
+      "goal": "maintain",
+      "calorie_target": 2400,
+      "protein_target": 160,
+      "carb_target": 280,
+      "fat_target": 75
+    }
+  ],
+  "food_items": [
+    {
+      "id": 1,
+      "name": "Chicken Breast",
+      "calories": 165,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 4,
+      "serving_unit": "100g"
+    },
+    {
+      "id": 2,
+      "name": "Brown Rice",
+      "calories": 216,
+      "protein": 5,
+      "carbs": 45,
+      "fat": 2,
+      "serving_unit": "cup"
+    },
+    {
+      "id": 3,
+      "name": "Whole Egg",
+      "calories": 78,
+      "protein": 6,
+      "carbs": 1,
+      "fat": 5,
+      "serving_unit": "egg"
+    },
+    {
+      "id": 4,
+      "name": "Rolled Oats",
+      "calories": 150,
+      "protein": 5,
+      "carbs": 27,
+      "fat": 3,
+      "serving_unit": "0.5 cup"
+    },
+    {
+      "id": 5,
+      "name": "Banana",
+      "calories": 105,
+      "protein": 1,
+      "carbs": 27,
+      "fat": 0,
+      "serving_unit": "medium"
+    },
+    {
+      "id": 6,
+      "name": "Greek Yogurt (0% fat)",
+      "calories": 100,
+      "protein": 17,
+      "carbs": 6,
+      "fat": 1,
+      "serving_unit": "170g"
+    },
+    {
+      "id": 7,
+      "name": "Almonds",
+      "calories": 164,
+      "protein": 6,
+      "carbs": 6,
+      "fat": 14,
+      "serving_unit": "oz"
+    },
+    {
+      "id": 8,
+      "name": "Salmon Fillet",
+      "calories": 208,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 13,
+      "serving_unit": "100g"
+    },
+    {
+      "id": 9,
+      "name": "Sweet Potato",
+      "calories": 103,
+      "protein": 2,
+      "carbs": 24,
+      "fat": 0,
+      "serving_unit": "medium"
+    },
+    {
+      "id": 10,
+      "name": "Whole Milk",
+      "calories": 149,
+      "protein": 8,
+      "carbs": 12,
+      "fat": 8,
+      "serving_unit": "cup"
+    },
+    {
+      "id": 11,
+      "name": "Peanut Butter",
+      "calories": 188,
+      "protein": 8,
+      "carbs": 6,
+      "fat": 16,
+      "serving_unit": "2 tbsp"
+    },
+    {
+      "id": 12,
+      "name": "Broccoli",
+      "calories": 55,
+      "protein": 4,
+      "carbs": 11,
+      "fat": 1,
+      "serving_unit": "cup"
+    },
+    {
+      "id": 13,
+      "name": "Ground Beef (90/10)",
+      "calories": 196,
+      "protein": 22,
+      "carbs": 0,
+      "fat": 12,
+      "serving_unit": "100g"
+    },
+    {
+      "id": 14,
+      "name": "White Rice",
+      "calories": 206,
+      "protein": 4,
+      "carbs": 45,
+      "fat": 0,
+      "serving_unit": "cup"
+    },
+    {
+      "id": 15,
+      "name": "Cheddar Cheese",
+      "calories": 113,
+      "protein": 7,
+      "carbs": 0,
+      "fat": 9,
+      "serving_unit": "oz"
+    }
+  ],
+  "meals": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "name": "Breakfast",
+      "date": "2026-04-15",
+      "notes": "Pre-workout meal"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "name": "Lunch",
+      "date": "2026-04-15",
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "name": "Dinner",
+      "date": "2026-04-15",
+      "notes": "Light dinner to stay in deficit"
+    },
+    {
+      "id": 4,
+      "user_id": 2,
+      "name": "Breakfast",
+      "date": "2026-04-15",
+      "notes": "High carb morning"
+    },
+    {
+      "id": 5,
+      "user_id": 2,
+      "name": "Post-Workout",
+      "date": "2026-04-15",
+      "notes": "Fast protein + carbs after lifting"
+    },
+    {
+      "id": 6,
+      "user_id": 2,
+      "name": "Dinner",
+      "date": "2026-04-15",
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "user_id": 3,
+      "name": "Breakfast",
+      "date": "2026-04-15",
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "user_id": 3,
+      "name": "Lunch",
+      "date": "2026-04-15",
+      "notes": "Balanced macros"
+    }
+  ],
+  "meal_food_items": [
+    {
+      "id": 1,
+      "meal_id": 1,
+      "food_item_id": 4,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "meal_id": 1,
+      "food_item_id": 3,
+      "quantity": 3
+    },
+    {
+      "id": 3,
+      "meal_id": 1,
+      "food_item_id": 5,
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "meal_id": 2,
+      "food_item_id": 1,
+      "quantity": 1.5
+    },
+    {
+      "id": 5,
+      "meal_id": 2,
+      "food_item_id": 2,
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "meal_id": 2,
+      "food_item_id": 12,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "meal_id": 3,
+      "food_item_id": 8,
+      "quantity": 1.5
+    },
+    {
+      "id": 8,
+      "meal_id": 3,
+      "food_item_id": 9,
+      "quantity": 1
+    },
+    {
+      "id": 9,
+      "meal_id": 4,
+      "food_item_id": 4,
+      "quantity": 2
+    },
+    {
+      "id": 10,
+      "meal_id": 4,
+      "food_item_id": 3,
+      "quantity": 4
+    },
+    {
+      "id": 11,
+      "meal_id": 4,
+      "food_item_id": 10,
+      "quantity": 1
+    },
+    {
+      "id": 12,
+      "meal_id": 4,
+      "food_item_id": 11,
+      "quantity": 1
+    },
+    {
+      "id": 13,
+      "meal_id": 5,
+      "food_item_id": 6,
+      "quantity": 2
+    },
+    {
+      "id": 14,
+      "meal_id": 5,
+      "food_item_id": 5,
+      "quantity": 2
+    },
+    {
+      "id": 15,
+      "meal_id": 5,
+      "food_item_id": 14,
+      "quantity": 1.5
+    },
+    {
+      "id": 16,
+      "meal_id": 6,
+      "food_item_id": 13,
+      "quantity": 2
+    },
+    {
+      "id": 17,
+      "meal_id": 6,
+      "food_item_id": 14,
+      "quantity": 2
+    },
+    {
+      "id": 18,
+      "meal_id": 6,
+      "food_item_id": 12,
+      "quantity": 1
+    },
+    {
+      "id": 19,
+      "meal_id": 7,
+      "food_item_id": 3,
+      "quantity": 2
+    },
+    {
+      "id": 20,
+      "meal_id": 7,
+      "food_item_id": 4,
+      "quantity": 1
+    },
+    {
+      "id": 21,
+      "meal_id": 7,
+      "food_item_id": 6,
+      "quantity": 1
+    },
+    {
+      "id": 22,
+      "meal_id": 8,
+      "food_item_id": 1,
+      "quantity": 1.5
+    },
+    {
+      "id": 23,
+      "meal_id": 8,
+      "food_item_id": 2,
+      "quantity": 1
+    },
+    {
+      "id": 24,
+      "meal_id": 8,
+      "food_item_id": 7,
+      "quantity": 1
+    }
+  ]
+}

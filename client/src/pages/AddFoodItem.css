@@ -1,0 +1,18 @@
+.nutrition-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 14px;
+}
+
+.add-food-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.add-food-save {
+  flex: 1;
+  padding: 12px;
+  font-size: 15px;
+}
