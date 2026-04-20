@@ -24,11 +24,12 @@ Backend: Node.js, Express, PostgreSQL (using Render)
 
 ## Features
 
-### Set Your Macro Goal
+### Set Your Macro Goal [✅]
 
 Users select a goal (cut, bulk, or maintain) and input their daily calorie, protein, carb, and fat targets. These targets are used across the app to track progress.
 
-[gif goes here]
+<img width="1918" height="880" alt="Recording 2026-04-20 000506" src="https://github.com/user-attachments/assets/70cb9945-4987-40ba-b67e-a084c524fb93" />
+
 
 ### Food Item Library [✅]
 
@@ -42,11 +43,11 @@ Users create a meal (e.g. "Breakfast", "Post-workout") and add food items to it 
 
 [View Image](https://imgur.com/a/o9UzMXU.gif)
 
-### Daily Macro Dashboard
+### Daily Macro Dashboard [✅]
 
 A dashboard shows all meals logged for the day, the running macro totals, and progress bars comparing consumed vs. target for calories, protein, carbs, and fat.
 
-[gif goes here]
+<img width="1918" height="880" alt="Recording 2026-04-20 000506" src="https://github.com/user-attachments/assets/70cb9945-4987-40ba-b67e-a084c524fb93" />
 
 ### Meal History Log
 
