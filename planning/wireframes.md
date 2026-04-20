@@ -4,18 +4,53 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+Page:
+/  
+Dashboard — today's macro progress bars + meals logged today
 
-## Wireframe 1: [page title]
+/goals
+View/edit your calorie & macro targets, set cut/bulk/maintain
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+/meals
+List of all meals (browseable by date)
 
-## Wireframe 2: [page title]
+/meals/new
+Create a new meal, search and add food items with quantities
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+/meals/:id
+View a single meal's food items and macro breakdown
 
-## Wireframe 3: [page title]
+/foods
+Food item library — browse all food items
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+/foods/new
+Add a new food item to the library
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+/foods/:id/edit
+Edit an existing food item
+
+## Wireframes 
+
+## Wireframe 1: Home
+
+[/](https://sync-botany-96419705.figma.site/)
+
+## Wireframe 2: Goals
+
+[/goals](https://sync-botany-96419705.figma.site/goals)
+
+## Wireframe 3: Meals
+
+[/meals](https://sync-botany-96419705.figma.site/meals)
+
+## Wireframe 4: New Meals
+
+[/meals/new](https://sync-botany-96419705.figma.site/meals/new)
+
+## Wireframe 5: Foods
+
+[/foods](https://sync-botany-96419705.figma.site/foods)
+
+## Wireframe 6: New Food Items
+
+[/foods/new](https://sync-botany-96419705.figma.site/foods/new)

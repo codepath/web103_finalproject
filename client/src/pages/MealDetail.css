@@ -1,0 +1,81 @@
+.meal-detail-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.meal-detail-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.btn-back:hover {
+  color: #1a1a1a;
+}
+
+.btn-danger-outline {
+  background: none;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-danger-outline:hover {
+  background-color: #fef2f2;
+}
+
+.meal-detail-header {
+  margin-bottom: 24px;
+}
+
+.meal-detail-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.meal-detail-date {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.meal-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.meal-detail-table th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 8px 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.meal-detail-table td {
+  padding: 12px;
+  font-size: 14px;
+  color: #1a1a1a;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.totals-row td {
+  border-bottom: none;
+  border-top: 2px solid #f3f4f6;
+  padding-top: 14px;
+}

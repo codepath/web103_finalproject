@@ -1,0 +1,165 @@
+.app {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+/* ── Header ── */
+.header {
+  background-color: #1c1e2e;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  height: 52px;
+  gap: 4px;
+}
+
+.header-brand {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: #a0a8c0;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Page layout ── */
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: #4a6cf7;
+}
+
+/* ── Shared card ── */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* ── Shared buttons ── */
+.btn-primary {
+  background-color: #4a6cf7;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover {
+  background-color: #3a5ce5;
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-outline:hover {
+  background-color: #f9fafb;
+}
+
+.btn-danger {
+  background-color: #ffffff;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-danger:hover {
+  background-color: #fff5f5;
+}
+
+/* ── Shared form inputs ── */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #4a6cf7;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #4a6cf7;
+  font-size: 14px;
+  padding: 20px 0;
+}
