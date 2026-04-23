@@ -4,7 +4,7 @@ import userRoutes from './routes/users.js'
 import foodItemRoutes from './routes/foodItems.js'
 import mealRoutes from './routes/meals.js'
 import mealFoodItemRoutes from './routes/mealFoodItems.js'
-import authRoutes from './routes/auth.js'  // ← ADD THIS
+import authRoutes from './routes/auth.js'
 import chatbotRoutes from './routes/chatbot.js'
 import ResetController from './controllers/reset.js'
 
@@ -21,7 +21,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/food-items', foodItemRoutes)
 app.use('/api/meals', mealRoutes)
 app.use('/api/meal-food-items', mealFoodItemRoutes)
-app.use('/api/auth', authRoutes)  // ← ADD THIS LINE
+app.use('/api/auth', authRoutes)
 app.use('/api/chatbot', chatbotRoutes)
 app.post('/api/reset', ResetController.resetDatabase)
 
