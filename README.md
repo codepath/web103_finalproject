@@ -22,7 +22,15 @@ Frontend: React, React Router
 
 Backend: Node.js, Express, PostgreSQL (using Render)
 
+## Installation Instructions
+
+[instructions go here]
+
+
+
 ## Features
+
+### !! NOTE !! We have been told that if we have GIFs for at least 5 features, we no longer need to add GIFs for the rest of the features
 
 ### Set Your Macro Goal
 
@@ -66,10 +74,35 @@ Each meal displays a visual macro breakdown (percentage of calories from protein
 
 [gif goes here]
 
-## Installation Instructions
+## Custom Features
 
-[instructions go here]
+### Graceful error handling [✅]
 
+This has been implemented by adding try/catch in all controllers, error states in every page
+
+### Slide-out pane or modal [✅]
+
+The web app includes a slide-out pane or modal as appropriate for your use case that pops up and covers the page content without navigating away from the current page. This was implemented by having SelectFoodModal in CreateMeal, edit modal in FoodLibrary, day modal in Log, and NutriBot pane
+
+### Unique field in join table [✅]
+
+The web app includes a unique field within the join table. This was implemented by adding the "quantity" column in meal_food_items beyond the two foreign keys
+
+### Custom non-RESTful route [✅]
+
+The web app includes a custom non-RESTful route with corresponding controller actions. This was implemented by adding routes like /api/auth/login, /api/auth/register, /api/meals/user/:userId, /api/chatbot.
+
+### Filter or sort items [✅]
+
+The user can filter or sort items based on particular criteria as appropriate for your use case. This was implemented by adding a date filter on Meals page, and search filter in FoodLibrary and CreateMeal modal
+
+### Data auto-generated on action [✅]
+
+Data is automatically generated in response to a certain event or user action. Examples include generating a default inventory for a new user starting a game or creating a starter set of tasks for a user creating a new task app account. This was implemented by having default macro goals (2000 kcal, 150g protein, etc.) auto-created on registration
+
+### POST/PATCH validation [✅]
+
+Data submitted via a POST or PATCH request is validated before the database is updated (e.g. validating that an event is in the future before allowing a new event to be created). This was implemented by having the Goals page validate ranges client-side; auth checks duplicate email server-side
 
 ## Stretch Features
 
@@ -81,3 +114,23 @@ NutriBot is an AI-powered assistant that gives guidance on macronutrient intake.
 - Reads user data for personalized recommendations via gemini-tool calling
 
 [View Demo](https://imgur.com/a/0Hjn6lk.gif)
+
+### Pages require login [✅]
+
+This is implemented by using App.jsx to redirect unauthenticated users to /login for all routes
+
+### Loading spinner [✅]
+
+This was partially implemented by having the dashboard showing "Loading..." text, and NutriBot has animated dots
+
+### Data Visualization [✅]
+
+Implemented custom SVG pie charts: hand-coded with trig math (toXY(), arc calculations), not a chart library. Live-updating as you add food items in CreateMeal, MealDetail and Log
+
+Implemented color-coded animated progress bars on Dashboard (green → yellow → red based on how close you are to targets)
+
+### Advanced UI Components [✅]
+
+Implemented multi-date calendar picker that is built from scratch with no date library, full month navigation, multi-select with Set logic, modal animations
+
+Also implemented SelectFoodModal with a multi-checkbox food selector with real-time search, and duplicate prevention, "already added" badges, keyboard support.
