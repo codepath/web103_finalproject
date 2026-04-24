@@ -1,0 +1,120 @@
+.food-library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.food-library-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon-lib {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.search-input-lib {
+  padding-left: 32px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.food-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.food-card-header {
+  margin-bottom: 12px;
+}
+
+.food-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.food-card-serving {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.food-card-macros {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 8px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: #374151;
+}
+
+.macro-protein {
+  color: #4a6cf7;
+}
+
+.macro-fat {
+  color: #f59e0b;
+}
+
+.food-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit {
+  flex: 1;
+  font-size: 12px;
+  padding: 7px 10px;
+}
+
+.btn-danger {
+  flex: 1;
+}
+
+/* Edit modal */
+.edit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.edit-modal {
+  width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.edit-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}

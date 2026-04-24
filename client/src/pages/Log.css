@@ -1,0 +1,464 @@
+.log-header {
+  margin-bottom: 28px;
+}
+
+.log-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.log-loading {
+  color: #6b7280;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+/* ── Search ── */
+.log-search-card {
+  margin-bottom: 28px;
+}
+
+/* ── Two-column body layout ── */
+.log-body-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.log-body-left {
+  min-width: 0;
+}
+
+/* ── Macro pie chart panel ── */
+.macro-chart-panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.log-macro-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.log-panel-meta {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pie-chart {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 16px auto;
+}
+
+.macro-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  flex: 1;
+  font-weight: 500;
+  color: #374151;
+}
+
+.legend-grams {
+  color: #6b7280;
+  font-size: 13px;
+  min-width: 36px;
+  text-align: right;
+}
+
+.legend-pct {
+  font-weight: 600;
+  color: #111827;
+  min-width: 36px;
+  text-align: right;
+}
+
+.macro-totals {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.macro-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.macro-total-row:first-child {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+@media (max-width: 768px) {
+  .log-body-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .log-macro-panel {
+    position: static;
+  }
+}
+
+/* ── Combined totals card (legacy, kept for spacing reference) ── */
+.log-combined-total {
+  margin-bottom: 16px;
+  padding: 16px 20px;
+}
+
+.log-combined-heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+/* ── Day block ── */
+.log-day {
+  margin-bottom: 32px;
+}
+
+.log-date-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+/* ── Day summary card ── */
+.log-day-summary {
+  margin-bottom: 10px;
+  padding: 16px 20px;
+}
+
+.log-day-summary-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.log-day-calories {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.log-day-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ── Macro line ── */
+.log-macro-line {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.log-macro-line span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.log-macro-protein { color: #3b82f6; }
+.log-macro-carbs   { color: #d97706; }
+.log-macro-fat     { color: #ef4444; }
+
+/* ── Meal list ── */
+.log-meal-list {
+  padding: 0;
+}
+
+.log-meal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  gap: 16px;
+}
+
+.log-meal-row--border {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.log-meal-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.log-meal-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 3px;
+}
+
+.log-meal-meta {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+
+/* ── Date list ── */
+.log-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.log-date-row:hover .log-date-label {
+  color: #3b82f6;
+}
+
+.log-date-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.log-date-arrow {
+  font-size: 18px;
+  color: #9ca3af;
+}
+
+.log-date-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-date-item--border {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.log-date-summary {
+  padding: 0 20px 14px;
+}
+
+.log-date-summary-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.log-date-summary-meta {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.log-dismiss-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+}
+
+.log-dismiss-btn:hover {
+  color: #1a1a1a;
+}
+
+.btn-view-details {
+  font-size: 13px;
+  padding: 6px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Modal overlay ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Modal header ── */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.modal-date {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: #f3f4f6;
+  color: #1a1a1a;
+}
+
+/* ── Modal pie + legend ── */
+.modal-chart {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.modal-pie {
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+}
+
+.modal-chart-info {
+  flex: 1;
+}
+
+.modal-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.modal-legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.modal-legend-label {
+  flex: 1;
+  font-weight: 500;
+  color: #374151;
+}
+
+.modal-legend-grams {
+  color: #6b7280;
+  font-size: 13px;
+  min-width: 36px;
+  text-align: right;
+}
+
+.modal-legend-pct {
+  font-weight: 600;
+  color: #111827;
+  min-width: 36px;
+  text-align: right;
+}
+
+.modal-calorie-total {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+}
+
+/* ── Modal table ── */
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal-table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 8px 10px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.modal-table td {
+  padding: 10px;
+  font-size: 13px;
+  color: #1a1a1a;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.modal-totals-row td {
+  border-bottom: none;
+  border-top: 2px solid #f3f4f6;
+  padding-top: 12px;
+}
