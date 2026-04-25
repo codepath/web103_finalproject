@@ -1,0 +1,132 @@
+-- 1. CLEANUP
+DROP TABLE IF EXISTS products CASCADE; 
+DROP TABLE IF EXISTS users CASCADE; 
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS cart CASCADE;
+DROP TABLE IF EXISTS cart_items CASCADE;
+DROP TABLE IF EXISTS order_items CASCADE;
+
+-- 2. FUNCTIONS
+-- PURPOSE: Automatically refreshes 'updated_at' on row modification.
+CREATE OR REPLACE FUNCTION update_modified_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = now();
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- 3. CREATE PRODUCT TABLE
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    current_quantity INTEGER NOT NULL DEFAULT 0,
+    category VARCHAR(100),
+    description TEXT,
+    image_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TRIGGER FOR PRODUCTS TABLE
+CREATE TRIGGER update_product_modtime
+BEFORE UPDATE ON products
+FOR EACH ROW
+EXECUTE PROCEDURE update_modified_column();
+
+-- 4. CREATE USER TABLE
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(20),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    address_line_1 TEXT,
+    address_line_2 TEXT,
+    city VARCHAR(100),
+    state VARCHAR(100),
+    zipcode VARCHAR(20),
+    user_role VARCHAR(20) DEFAULT 'shopper',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TRIGGER FOR USER TABLE
+CREATE TRIGGER update_user_modtime
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE PROCEDURE update_modified_column();
+
+
+
+-- 5. CREATE ORDER TABLE
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    total_price DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    status VARCHAR(50) NOT NULL DEFAULT 'pending', -- e.g., pending, completed, cancelled
+    shipping_address TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TRIGGER FOR ORDER TABLE
+CREATE TRIGGER update_order_modtime
+BEFORE UPDATE ON orders
+FOR EACH ROW
+EXECUTE PROCEDURE update_modified_column();
+
+
+-- 6. CREATE CART TABLE 
+CREATE TABLE cart (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    total_price DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--TRIGGER FOR CART TABLE
+CREATE TRIGGER update_cart_modtime
+BEFORE UPDATE ON cart
+FOR EACH ROW
+EXECUTE PROCEDURE update_modified_column();
+
+
+-- 7. CREATE CART_ITEMS TABLE
+CREATE TABLE cart_items (
+    id SERIAL PRIMARY KEY,
+    cart_id INTEGER NOT NULL REFERENCES cart(id) ON DELETE CASCADE,
+    product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    quantity INTEGER NOT NULL DEFAULT 1,
+    price_at_add DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TRIGGER FOR CART_ITEMS TABLE
+CREATE TRIGGER update_cart_items_modtime
+BEFORE UPDATE ON cart_items
+FOR EACH ROW
+EXECUTE PROCEDURE update_modified_column();
+
+
+
+--8 CREATE ORDER_ITEMS TABLE 
+CREATE TABLE order_items (
+    id SERIAL PRIMARY KEY,
+    order_id INTEGER NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+    product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE RESTRICT,
+    quantity INTEGER NOT NULL DEFAULT 1,
+    price_at_purchase DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- TRIGGER FOR ORDER_ITEMS TABLE
+CREATE TRIGGER update_order_items_modtime
+BEFORE UPDATE ON order_items
+FOR EACH ROW
+EXECUTE PROCEDURE update_modified_column();

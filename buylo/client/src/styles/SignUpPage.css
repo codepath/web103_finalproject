@@ -1,0 +1,39 @@
+.signup-container {
+  max-width: 600px;
+  margin-top: 2rem;
+}
+
+.signup-container article{
+  background-color:#ECECEA;
+}
+.signup-header {
+  text-align: center;
+  background-color:inherit;
+}
+
+.signup-header h2 {
+  margin-bottom: 0;
+}
+
+.signup-footer {
+  text-align: center;
+  background-color:inherit;
+}
+
+.btn-signup {
+  background-color: #10B981 !important; 
+  border: none;
+  font-weight: bold;
+  border-radius: 2rem;
+}
+
+/* Adjusting fieldset to match the mockup's tight spacing */
+fieldset {
+  margin-bottom: 1rem;
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

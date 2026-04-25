@@ -1,0 +1,68 @@
+:root {
+  /* Global Variables - Keep these here so all components can use them */
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #ffffff;
+  --hero-bg: #adbca5; 
+  --accent: #10b981; 
+  --border: #e5e4e7;
+  --shadow: rgba(0, 0, 0, 0.05) 0 10px 15px -3px;
+
+  /* Typography */
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  
+  /* Rendering optimizations */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #000000af;
+    --text-h: var(--text);
+    --bg: var(root);
+    --hero-bg: #3d4a3e; 
+    --border: #2e303a;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+/* Main Layout Architecture */
+#root {
+  max-width: 100%; /* Changed to 100% to allow pages to control their own width */
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Global Heading Styles */
+h1, h2, h3, h4, h5, h6 ,p , label{
+  font-family: var(--sans);
+  font-weight: 500;
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* Global Link/Button Resets if needed */
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: inherit;
+  border-color: #d3d3d3;
+  color: var(--text-h);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}

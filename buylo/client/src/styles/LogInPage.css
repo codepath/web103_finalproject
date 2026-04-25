@@ -1,0 +1,44 @@
+/* LogInPage.css */
+
+.login-container {
+  max-width: 500px;
+  margin-top: 5rem;
+}
+
+.login-container article{
+    background-color:#ECECEA;
+}
+.login-header {
+  text-align: center;
+  background-color:inherit;
+}
+
+.login-header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.forgot-password-link {
+  margin-bottom: 1.5rem;
+  display: block;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.btn-signin {
+  background-color: #10B981 !important; /* Your brand green */
+  border: none;
+  font-weight: bold;
+  border-radius: 2rem;
+  padding: 0.75rem;
+}
+
+.login-footer {
+  text-align: center;
+  border-top: none !important;
+  font-size: 0.9rem;
+  background-color:inherit;
+}
+
+.create-account-link {
+  font-weight: bold;
+}

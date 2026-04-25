@@ -1,0 +1,115 @@
+.details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .product-layout {
+    grid-template-columns: 1fr 1fr; /* Split screen for desktop */
+  }
+}
+
+.product-image-section img {
+  width: 100%;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+.brand-tag {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.detail-name {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+.detail-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00AB66; /* Matching your Emerald Green */
+  margin-bottom: 2rem;
+}
+
+.stock-info{
+  margin-top:1.5rem;  
+}
+
+.stock-info p{
+  font-size:large;
+  color: #00AB66
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top:1.5rem;
+}
+
+.quantity-selector label {
+  font-weight: 600;
+  margin: 0; 
+}
+
+.quantity-selector select {
+  width: auto;
+  min-width: 80px;
+  margin-bottom: 0; /* Keep it aligned with the label */
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.detail-description h3 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.action-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.add-to-cart-large {
+  background-color: #00AB66;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  flex: 2;
+  font-weight: bold;
+}
+
+.wishlist-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between heart and text */
+}
+
+.wishlist-icon {
+  font-size: 1.1rem;
+  stroke-width: 2px; /* You can make the heart lines thinner or thicker */
+  transition: color 0.2s ease;
+}
+
+/* Optional: Make it turn red when hovered or active */
+.wishlist-btn:hover .wishlist-icon {
+  color: #e63946;
+}
