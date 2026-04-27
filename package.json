@@ -1,0 +1,32 @@
+{
+  "name": "web103_finalproject",
+  "version": "1.0.0",
+  "description": "CodePath WEB103 Final Project",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "npm run reset && npx nodemon --require dotenv/config server/server.js",
+    "server": "npx nodemon --require dotenv/config server/server.js",
+    "reset": "node --require dotenv/config server/config/reset.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mairs2/web103_finalproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mairs2/web103_finalproject/issues"
+  },
+  "homepage": "https://github.com/Mairs2/web103_finalproject#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0"
+  }
+}

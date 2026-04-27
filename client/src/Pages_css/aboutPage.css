@@ -1,0 +1,43 @@
+.about-main {
+  display: flex;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.about-image {
+  width: 380px;
+  height: 340px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.about-text h1 {
+  font-size: 2.5rem;
+  color: #222;
+  margin-bottom: 24px;
+}
+
+.about-text {
+  flex: 1;
+  font-family: Avenir, "Century Gothic", sans-serif;
+  font-size: 1.15rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+.about-text p {
+  margin: 0 0 24px 0;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
