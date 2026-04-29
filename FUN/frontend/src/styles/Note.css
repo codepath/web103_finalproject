@@ -1,0 +1,95 @@
+.note-card {
+  padding: 20px;
+  margin: 20px;
+  margin-left: 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  background-color: var(--note-color);
+  border: 2px solid color-mix(in srgb, var(--note-color), black 5%);
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+}
+
+.note-header h3 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.pin-icon {
+  font-size: 16px;
+}
+
+.note-content {
+  color: #111827;
+  margin: 10px 0;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: start;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7);
+  color: #333;
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.tag span {
+  padding: 0;
+  margin: 0;
+}
+
+.note-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 10px;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}

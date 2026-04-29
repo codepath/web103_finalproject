@@ -1,0 +1,74 @@
+/* MainButton — dark filled (Add Note, Save) */
+.main-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.main-btn:hover {
+  background: #333;
+}
+
+.main-btn:active {
+  background: #000;
+  transform: scale(0.98);
+}
+
+.main-btn:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.main-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* RegularButton — outlined (Tags, Cancel, filters) */
+.regular-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.regular-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.regular-btn:active {
+  transform: scale(0.98);
+}
+
+.regular-btn:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.regular-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

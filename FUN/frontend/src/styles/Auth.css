@@ -1,0 +1,157 @@
+.auth-container {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 420px;
+  animation: fadeIn 0.4s ease;
+}
+
+.auth-box h1 {
+  margin: 5px;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  color: #222;
+}
+
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* INPUTS */
+.auth-box input {
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  background: #fafafa;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+/* BUTTON */
+.auth-box button {
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.auth-box button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
+}
+
+.auth-box button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.auth-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* TEXT */
+.auth-box p {
+  text-align: center;
+  margin-top: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.auth-box a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-box a:hover {
+  text-decoration: underline;
+}
+
+/* ERROR */
+.error {
+  background: #fff5f5;
+  color: #c53030;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #feb2b2;
+  font-size: 14px;
+}
+
+/* PASSWORD BOX */
+.password-requirements {
+  background: #f7fbff;
+  border: 1px solid #d0e4ff;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+  color: #333;
+}
+
+.password-requirements small {
+  display: block;
+  color: #444;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.password-requirements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.password-requirements li {
+  padding: 3px 0;
+  margin-left: 16px;
+  font-size: 12px;
+}
+
+.password-requirements li:before {
+  content: "✓";
+  color: #28a745;
+  margin-right: 6px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

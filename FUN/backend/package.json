@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.6",
+    "debug": "~2.6.9",
+    "dotenv": "^17.4.1",
+    "express": "^4.22.1",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.14",
+    "openai": "^6.34.0",
+    "pg": "^8.20.0"
+  }
+}
