@@ -4,18 +4,25 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- Landing Page ⭐
+- Login/Sign Up Page
+- User Dashboard ⭐
+- User Profile Page
+- Story Pages
+  - Detailed View ⭐
+  - Create Story
+  - Edit Story
 
-## Wireframe 1: [page title]
+## Wireframe 1: Landing Page
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![ArcForge Landing Page Wireframe](./wireframes/landing-page.png)
 
-## Wireframe 2: [page title]
+## Wireframe 2: User Dashboard
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![ArcForge User Dashboard Wireframe](./wireframes/user-dashboard.png)
 
-## Wireframe 3: [page title]
+![ArcForge User Dashboard Wireframe with Pop Up](./wireframes/user-dashboard-with-popup.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 3: Story Detailed View
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![ArcForge Story Detailed View Wireframe](./wireframes/story-detailed-view.png)
