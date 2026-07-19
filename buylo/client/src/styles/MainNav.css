@@ -1,0 +1,43 @@
+/* Branding styles */
+.body{
+  background-attachment: #FAFAFA;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 35px;
+  width: 35px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary); /* Uses Pico's primary color variable */
+}
+
+/* Optional: remove underline on hover for the brand */
+.brand-link:hover {
+  text-decoration: none;
+}
+
+.search-wrapper{
+   width: 100%;
+}
+
+
+.search-nav input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* Fully rounded */
+  font-size: 1rem;
+  width: 515px;
+  
+}
+
+    

@@ -1,0 +1,104 @@
+/* Layout & Search Nav */
+.catalog-container {
+  max-width: 100%;
+}
+
+.search-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+}
+
+.search-input {
+  width: 400px;
+  border-radius: 20px;
+  margin-bottom: 0; /* Override Pico's default margin */
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #A8BCAF; /* Sage Green */
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1a1a1a;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  max-width: 500px;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); 
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* Product Card - Bordered Look */
+.product-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Makes the link fill the grid cell */
+  height: 100%;
+}
+
+.product-card { 
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 1rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.product-name {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Green Button from Wireframe */
+.add-to-cart-btn {
+  background-color: #00AB66; /* Emerald Green */
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 8px;
+  width: 100%;
+  margin: 0;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
