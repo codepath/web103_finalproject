@@ -1,0 +1,28 @@
+.App {
+  font-family:Avenir, "Century Gothic", sans-serif;
+  font-weight:100; 
+  font-style:normal;
+  font-size: calc(10px + 2vmin);
+  color: #373D3F;
+  /* background-image: url('background.jpg'); */
+  background-color: #75c3f3a3;
+  background-position: right center;
+  background-size: cover;
+  padding:20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  /* background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat; */
+  background-size: cover;
+  
+}
+
+.app-content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}

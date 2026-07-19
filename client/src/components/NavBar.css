@@ -1,0 +1,83 @@
+.navbar {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    margin-bottom: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+    font-family: Avenir, "Century Gothic", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #373D3F;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links a {
+    font-family: Avenir, "Century Gothic", sans-serif;
+    font-size: 0.95rem;
+    color: #373D3F;
+    text-decoration: none;
+    padding: 4px 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.navbar-links a:hover {
+    color: #2a7abf;
+    border-bottom-color: #2a7abf;
+}
+
+.navbar-links a.active {
+    color: #2a7abf;
+    border-bottom-color: #2a7abf;
+    font-weight: 500;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbar-search input {
+    font-family: Avenir, "Century Gothic", sans-serif;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.7);
+    color: #373D3F;
+    width: 160px;
+    transition: border-color 0.2s, width 0.2s;
+}
+
+.navbar-search input:focus {
+    border-color: #2a7abf;
+    width: 200px;
+}
+
+.navbar-search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    line-height: 1;
+}
