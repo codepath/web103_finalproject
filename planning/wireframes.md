@@ -4,18 +4,38 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- Login
+- Edit User
+- Edit Artist_User
+- Artist Directory ⭐
+- Artist Directory Side-Panel ⭐
+- Artist Detailed ⭐
+- Merch Shop ⭐
+- User's Profile > Following ⭐
+- User's Profile > Order History ⭐
+- Checkout Cart
+- Error Default
 
-## Wireframe 1: [page title]
+## Wireframe 1: Artist Directory
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![artist directory](https://i.imgur.com/EeJvvYD.png)
 
-## Wireframe 2: [page title]
+## Wireframe 2: Artist Directory Side-Panel
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![Artist Directory but with a side-view panel](https://i.imgur.com/ZjfTBHA.png)
 
-## Wireframe 3: [page title]
+## Wireframe 3: Artist Detailed
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Artist Detailed Page](https://i.imgur.com/3iKhYRY.png)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 4: Merch Shop
+
+![Merch Shop Page](https://i.imgur.com/tjC6Gx6.png)
+
+## Wireframe 5: User's Profile > Following Tab
+
+![User's Profile Following Tab](https://i.imgur.com/DCR2sVQ.png)
+
+## Wireframe 6: User's Profile > Order History Tab
+
+![User's Profile Order History Tab](https://i.imgur.com/dDn9gBX.png)

@@ -1,0 +1,16 @@
+.btn-secondary {
+  background: #ffffff;
+  color: #333333;
+  border: 1.5px solid #333333;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: #333333;
+  color: #ffffff;
+}
