@@ -4,14 +4,37 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Create the List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+- users
+- tasks
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
+### Table: users
 
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
+| Column Name | Type      | Description                     |
+| ----------- | --------- | ------------------------------- |
+| id          | integer   | primary key                     |
+| full_name   | varchar   | user's full name                |
+| email       | varchar   | user email (unique)             |
+| created_at  | timestamp | timestamp when user was created |
+
+---
+
+### Table: tasks
+
+| Column Name | Type      | Description                        |
+| ----------- | --------- | ---------------------------------- |
+| id          | integer   | primary key                        |
+| title       | varchar   | task title                         |
+| description | text      | detailed description of the task   |
+| due_date    | date      | due date                           |
+| priority    | varchar   | task priority (high, medium, low)  |
+| status      | varchar   | task status (pending or completed) |
+| user_id     | integer   | foreign key referencing users.id   |
+| created_at  | timestamp | timestamp when task was created    |
+
+---
+
+### Entity Relationship Diagram
+
+![ER Diagram](./images/erd.png)

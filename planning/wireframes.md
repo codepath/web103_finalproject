@@ -4,18 +4,32 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- ⭐ Dashboard Page
+- ⭐ Task List Page
+- ⭐ Create/Edit Task Page
 
-## Wireframe 1: [page title]
+## Wireframe 1: Task Dashboard
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+- Displays all tasks
+- Filter by priority and status
+- Button: Add Task
+- Checkbox: Mark task as completed
 
-## Wireframe 2: [page title]
+![Dashboard](./images/dashboard.png)
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+## Wireframe 2: Task List Page
 
-## Wireframe 3: [page title]
+- List of all tasks
+- Sorting and filtering options
+- Shows task title, due date, and priority
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Task List](./images/task-list.png)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 3: Create/Edit Task Page
+
+- Input: Task title
+- Input: Due date
+- Dropdown: Priority (high, medium, low)
+- Button: Save Task
+
+![Create Task](./images/create-task.png)
