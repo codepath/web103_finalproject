@@ -4,14 +4,16 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## Create the List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+1. users
+2. artists
+3. admin
+4. profile
+5. follows
+6. concerts
+7. merch
+8. albums
+9. purchases
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
+![sona erd](https://i.imgur.com/jX0Vh5t.png)
