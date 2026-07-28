@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('c:\\\\Users\\\\shalo\\\\MatchLens\\\\Code\\\\client\\\\src\\\\assets\\\\ball.png'\\); \"$\\($img.Width\\)x$\\($img.Height\\)\")",
+      "Bash(chromium-cli --help)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(curl -s http://localhost:5173/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(npx playwright *)",
+      "mcp__claude_ai_Figma__get_design_context",
+      "Bash(python3 -c ' *)",
+      "Bash(taskkill //PID 27472 //F)",
+      "Bash(git status *)",
+      "Bash(powershell.exe -NoProfile -Command \"\\(Get-Content 'Code/client/src/pages/Leaderboard.jsx' -Raw\\) -replace 'dash-mlx','primary' | Set-Content -NoNewline -Encoding utf8 'Code/client/src/pages/Leaderboard.jsx'\")"
+    ]
+  }
+}
