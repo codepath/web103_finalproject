@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="650" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+
+  <!-- Nav bar -->
+  <rect x="0" y="0" width="900" height="60" fill="#e0e0e0" stroke="#333333" stroke-width="1.5"/>
+  <text x="20" y="37" font-size="20" font-weight="bold" fill="#222">EatRite</text>
+  <text x="380" y="35" font-size="14" fill="#333">Home</text>
+  <text x="450" y="35" font-size="14" fill="#333">My Kitchen</text>
+  <text x="560" y="35" font-size="14" fill="#333" text-decoration="underline">Calendar</text>
+  <text x="660" y="35" font-size="14" fill="#333">Profile</text>
+  <rect x="780" y="15" width="90" height="30" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="825" y="35" font-size="13" fill="#333" text-anchor="middle">Log Out</text>
+
+  <text x="20" y="95" font-size="22" font-weight="bold" fill="#222">Meal Calendar</text>
+  <text x="700" y="90" font-size="14" fill="#333">◀</text>
+  <text x="730" y="90" font-size="14" font-weight="bold" fill="#222">July 2026</text>
+  <text x="800" y="90" font-size="14" fill="#333">▶</text>
+  <rect x="750" y="70" width="0" height="0"/>
+
+  <rect x="700" y="105" width="180" height="34" rx="4" fill="#333"/>
+  <text x="790" y="127" font-size="13" fill="#fff" text-anchor="middle">+ Schedule Meal</text>
+
+  <!-- Calendar grid header -->
+  <g font-size="12" fill="#555" text-anchor="middle">
+    <text x="85" y="160">Sun</text>
+    <text x="205" y="160">Mon</text>
+    <text x="325" y="160">Tue</text>
+    <text x="445" y="160">Wed</text>
+    <text x="565" y="160">Thu</text>
+    <text x="685" y="160">Fri</text>
+    <text x="805" y="160">Sat</text>
+  </g>
+
+  <!-- Grid: 7 cols x 4 rows -->
+  <g stroke="#999" fill="none">
+    <rect x="20" y="170" width="860" height="400"/>
+    <line x1="140" y1="170" x2="140" y2="570"/>
+    <line x1="260" y1="170" x2="260" y2="570"/>
+    <line x1="380" y1="170" x2="380" y2="570"/>
+    <line x1="500" y1="170" x2="500" y2="570"/>
+    <line x1="620" y1="170" x2="620" y2="570"/>
+    <line x1="740" y1="170" x2="740" y2="570"/>
+    <line x1="20" y1="270" x2="880" y2="270"/>
+    <line x1="20" y1="370" x2="880" y2="370"/>
+    <line x1="20" y1="470" x2="880" y2="470"/>
+  </g>
+
+  <!-- Sample day numbers and meal tags -->
+  <text x="30" y="185" font-size="11" fill="#888">1</text>
+  <text x="150" y="185" font-size="11" fill="#888">2</text>
+  <rect x="150" y="195" width="100" height="20" rx="3" fill="#dcdcdc"/>
+  <text x="155" y="210" font-size="10" fill="#333">Lunch: Pasta</text>
+
+  <text x="270" y="185" font-size="11" fill="#888">3</text>
+  <text x="390" y="185" font-size="11" fill="#888">4</text>
+  <rect x="390" y="195" width="100" height="20" rx="3" fill="#dcdcdc"/>
+  <text x="395" y="210" font-size="10" fill="#333">Dinner: Tacos</text>
+
+  <text x="510" y="185" font-size="11" fill="#888">5</text>
+  <text x="630" y="185" font-size="11" fill="#888">6</text>
+  <text x="750" y="185" font-size="11" fill="#888">7</text>
+</svg>

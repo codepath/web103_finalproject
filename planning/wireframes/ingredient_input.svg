@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="650" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+
+  <!-- Nav bar -->
+  <rect x="0" y="0" width="900" height="60" fill="#e0e0e0" stroke="#333333" stroke-width="1.5"/>
+  <text x="20" y="37" font-size="20" font-weight="bold" fill="#222">EatRite</text>
+  <text x="380" y="35" font-size="14" fill="#333">Home</text>
+  <text x="450" y="35" font-size="14" fill="#333" text-decoration="underline">My Kitchen</text>
+  <text x="560" y="35" font-size="14" fill="#333">Calendar</text>
+  <text x="660" y="35" font-size="14" fill="#333">Profile</text>
+  <rect x="780" y="15" width="90" height="30" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="825" y="35" font-size="13" fill="#333" text-anchor="middle">Log Out</text>
+
+  <text x="20" y="95" font-size="12" fill="#888">My Kitchen &gt; </text>
+  <text x="110" y="95" font-size="12" fill="#888" text-decoration="underline">Add Ingredient</text>
+
+  <text x="20" y="130" font-size="22" font-weight="bold" fill="#222">Add Ingredient</text>
+
+  <!-- Form -->
+  <rect x="20" y="160" width="500" height="420" rx="6" fill="#fafafa" stroke="#333"/>
+
+  <text x="45" y="195" font-size="13" fill="#333">Ingredient Name</text>
+  <rect x="45" y="205" width="450" height="34" rx="4" fill="#ffffff" stroke="#333"/>
+
+  <text x="45" y="265" font-size="13" fill="#333">Category</text>
+  <rect x="45" y="275" width="450" height="34" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="55" y="297" font-size="13" fill="#999">Select category ▾</text>
+
+  <text x="45" y="335" font-size="13" fill="#333">Quantity</text>
+  <rect x="45" y="345" width="210" height="34" rx="4" fill="#ffffff" stroke="#333"/>
+
+  <text x="285" y="335" font-size="13" fill="#333">Unit</text>
+  <rect x="285" y="345" width="210" height="34" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="295" y="367" font-size="13" fill="#999">Select unit ▾</text>
+
+  <text x="45" y="405" font-size="13" fill="#333">Nutritional / Dietary Info</text>
+  <rect x="45" y="415" width="450" height="100" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="55" y="435" font-size="12" fill="#999">calories, allergens, tags...</text>
+
+  <rect x="45" y="535" width="140" height="38" rx="4" fill="#333"/>
+  <text x="115" y="559" font-size="14" fill="#fff" text-anchor="middle">Save</text>
+
+  <rect x="200" y="535" width="140" height="38" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="270" y="559" font-size="14" fill="#333" text-anchor="middle">Cancel</text>
+</svg>

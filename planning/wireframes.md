@@ -4,18 +4,33 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- ⭐ Home / Recipe Results
+- ⭐ My Kitchen
+- ⭐ Add Ingredient
+- ⭐ User Profile
+- ⭐ Log In / Sign Up
+- ⭐ Meal Calendar
 
-## Wireframe 1: [page title]
+## Wireframe 1: Home / Recipe Results
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![Home page wireframe](wireframes/home.svg)
 
-## Wireframe 2: [page title]
+## Wireframe 2: My Kitchen
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![My Kitchen wireframe](wireframes/kitchen.svg)
 
-## Wireframe 3: [page title]
+## Wireframe 3: Add Ingredient
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+![Add Ingredient wireframe](wireframes/ingredient_input.svg)
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+## Wireframe 4: User Profile
+
+![User Profile wireframe](wireframes/profile.svg)
+
+## Wireframe 5: Log In / Sign Up
+
+![Log In wireframe](wireframes/login.svg)
+
+## Wireframe 6: Meal Calendar
+
+![Meal Calendar wireframe](wireframes/calendar.svg)

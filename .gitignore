@@ -1,0 +1,13 @@
+.env
+
+# SQLite databases
+*.db
+
+# VSCode settings
+.vscode/
+
+# Logs
+*.log
+
+# modules
+node_modules
