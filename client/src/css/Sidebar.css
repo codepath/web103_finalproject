@@ -1,0 +1,127 @@
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  min-height: 100vh;
+  background: var(--sand-surface);
+  border-right: 1px solid var(--sand-border);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  box-sizing: border-box;
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--sand-text);
+}
+
+.sidebar__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--sand-chip);
+  font-size: 13px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--sand-text-soft);
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.sidebar__link:hover {
+  background: var(--sand-chip);
+  color: var(--sand-text);
+}
+
+.sidebar__link--active {
+  background: var(--sand-accent);
+  color: #fffcf7;
+}
+
+.sidebar__link--active .sidebar__icon {
+  color: #fffcf7;
+}
+
+.sidebar__icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: var(--sand-muted);
+}
+
+.sidebar__logout {
+  margin-top: auto;
+}
+
+/* Below tablet width, the sidebar becomes a horizontal top bar instead of
+   a fixed-width column, so it doesn't eat into the content area on phones. */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-right: none;
+    border-bottom: 1px solid var(--sand-border);
+  }
+
+  .sidebar__brand-name {
+    display: none;
+  }
+
+  .sidebar__nav {
+    flex-direction: row;
+    flex: 1;
+    gap: 2px;
+    overflow-x: auto;
+  }
+
+  .sidebar__link {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 8px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .sidebar__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sidebar__logout {
+    flex-direction: column;
+    margin-top: 0;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}

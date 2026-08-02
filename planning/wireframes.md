@@ -4,18 +4,29 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+| Page | Wireframed? |
+|------|-------------|
+| Home / Dashboard | ⭐ |
+| Create Trip | ⭐ |
+| Trip Details | ⭐ |
+| Destination Details | ⭐ |
+| Create Activity | |
+| Budget & Expenses | |
+| Packing List | |
+| Login | ⭐ |
 
-## Wireframe 1: [page title]
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+## Wireframe 1: Login/Signup
 
-## Wireframe 2: [page title]
+<img src='/planning/img/Signup.png' title='Signup' width='' alt='signup wireframe image' />
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+## Wireframe 2: My Trips (User Dashboard)
 
-## Wireframe 3: [page title]
+<img src='/planning/img/My Trips (Dashboard).png' title='Trips' width='' alt='user dashboard wireframe image' />
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+## Wireframe 3: Trip Dashboard
+
+<img src='/planning/img/Trip Dashboard (Overview).png' title='Trip' width='' alt='trip wireframe image' />
+
 
 [👉🏾👉🏾👉🏾 include more wireframes as desired]

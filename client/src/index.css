@@ -1,0 +1,26 @@
+
+:root {
+  /* Sand / beige palette -- shared across pages so new pages match this one. */
+  --sand-bg: #f7f2ea;        /* page background */
+  --sand-surface: #fffcf7;   /* cards, inputs */
+  --sand-border: #e6dcc8;    /* card + input borders */
+  --sand-border-soft: #efe8da; /* dividers inside cards */
+  --sand-muted: #a89a83;     /* placeholder/hint text, disabled */
+  --sand-text-soft: #8a7c66; /* secondary text */
+  --sand-text: #4a3f2f;      /* primary text */
+  --sand-accent: #6b5335;    /* primary buttons, active nav */
+  --sand-accent-hover: #5a4529;
+  --sand-chip: #efe6d6;      /* badges, avatar background */
+  --sand-error-bg: #fbeee9;
+  --sand-error-border: #eecdbd;
+  --sand-error-text: #a4462a;
+  --sand-success-bg: #f2f2e2;
+  --sand-success-border: #d9dcb4;
+  --sand-success-text: #6b7a3c;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--sand-bg);
+}
