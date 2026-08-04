@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="650" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+
+  <!-- Nav bar -->
+  <rect x="0" y="0" width="900" height="60" fill="#e0e0e0" stroke="#333333" stroke-width="1.5"/>
+  <text x="20" y="37" font-size="20" font-weight="bold" fill="#222">EatRite</text>
+  <text x="380" y="35" font-size="14" fill="#333">Home</text>
+  <text x="450" y="35" font-size="14" fill="#333" text-decoration="underline">My Kitchen</text>
+  <text x="560" y="35" font-size="14" fill="#333">Calendar</text>
+  <text x="660" y="35" font-size="14" fill="#333">Profile</text>
+  <rect x="780" y="15" width="90" height="30" rx="4" fill="#ffffff" stroke="#333"/>
+  <text x="825" y="35" font-size="13" fill="#333" text-anchor="middle">Log Out</text>
+
+  <!-- Page title + add button -->
+  <text x="20" y="95" font-size="22" font-weight="bold" fill="#222">My Kitchen</text>
+  <rect x="700" y="75" width="180" height="36" rx="4" fill="#333" />
+  <text x="790" y="98" font-size="14" fill="#fff" text-anchor="middle">+ Add Ingredient</text>
+
+  <!-- Ingredient card grid: 3 cols x 2 rows -->
+  <g>
+    <rect x="20" y="130" width="270" height="110" rx="6" fill="#fafafa" stroke="#333"/>
+    <rect x="35" y="145" width="50" height="50" fill="#dcdcdc" stroke="#999"/>
+    <text x="100" y="165" font-size="14" font-weight="bold" fill="#222">Ingredient Name</text>
+    <text x="100" y="185" font-size="12" fill="#555">Qty: 2 units</text>
+    <text x="100" y="203" font-size="12" fill="#555">Category: Produce</text>
+  </g>
+  <g>
+    <rect x="315" y="130" width="270" height="110" rx="6" fill="#fafafa" stroke="#333"/>
+    <rect x="330" y="145" width="50" height="50" fill="#dcdcdc" stroke="#999"/>
+    <text x="395" y="165" font-size="14" font-weight="bold" fill="#222">Ingredient Name</text>
+    <text x="395" y="185" font-size="12" fill="#555">Qty: 1 unit</text>
+    <text x="395" y="203" font-size="12" fill="#555">Category: Dairy</text>
+  </g>
+  <g>
+    <rect x="610" y="130" width="270" height="110" rx="6" fill="#fafafa" stroke="#333"/>
+    <rect x="625" y="145" width="50" height="50" fill="#dcdcdc" stroke="#999"/>
+    <text x="690" y="165" font-size="14" font-weight="bold" fill="#222">Ingredient Name</text>
+    <text x="690" y="185" font-size="12" fill="#555">Qty: 3 units</text>
+    <text x="690" y="203" font-size="12" fill="#555">Category: Grain</text>
+  </g>
+
+  <g>
+    <rect x="20" y="260" width="270" height="110" rx="6" fill="#fafafa" stroke="#333"/>
+    <rect x="35" y="275" width="50" height="50" fill="#dcdcdc" stroke="#999"/>
+    <text x="100" y="295" font-size="14" font-weight="bold" fill="#222">Ingredient Name</text>
+    <text x="100" y="315" font-size="12" fill="#555">Qty: 4 units</text>
+    <text x="100" y="333" font-size="12" fill="#555">Category: Protein</text>
+  </g>
+  <g>
+    <rect x="315" y="260" width="270" height="110" rx="6" fill="#fafafa" stroke="#333"/>
+    <rect x="330" y="275" width="50" height="50" fill="#dcdcdc" stroke="#999"/>
+    <text x="395" y="295" font-size="14" font-weight="bold" fill="#222">Ingredient Name</text>
+    <text x="395" y="315" font-size="12" fill="#555">Qty: 2 units</text>
+    <text x="395" y="333" font-size="12" fill="#555">Category: Spice</text>
+  </g>
+  <g>
+    <rect x="610" y="260" width="270" height="110" rx="6" fill="#fafafa" stroke="#333"/>
+    <rect x="625" y="275" width="50" height="50" fill="#dcdcdc" stroke="#999"/>
+    <text x="690" y="295" font-size="14" font-weight="bold" fill="#222">Ingredient Name</text>
+    <text x="690" y="315" font-size="12" fill="#555">Qty: 1 unit</text>
+    <text x="690" y="333" font-size="12" fill="#555">Category: Produce</text>
+  </g>
+
+  <text x="20" y="410" font-size="12" fill="#888">(scroll for more ingredients)</text>
+</svg>

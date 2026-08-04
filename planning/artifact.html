@@ -1,0 +1,321 @@
+<title>EatRite — Pitch Deck</title>
+<style>
+  :root {
+    --ground: #FBFAF7;
+    --ground-2: #F1EFE8;
+    --ink: #1A1F1B;
+    --ink-soft: #43504a;
+    --sage: #6B7A6E;
+    --green: #1F7A4D;
+    --green-deep: #145638;
+    --amber: #E08A2B;
+    --line: #E1DED4;
+    --card: #FFFFFF;
+    --shadow: 0 1px 2px rgba(20,30,20,.05), 0 8px 30px rgba(20,30,20,.06);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #141713;
+      --ground-2: #1c211b;
+      --ink: #F2F1EA;
+      --ink-soft: #b7bfb6;
+      --sage: #8b978a;
+      --green: #4DAE7C;
+      --green-deep: #2f8a5c;
+      --amber: #F0A54B;
+      --line: #2b322a;
+      --card: #1b201a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #FBFAF7; --ground-2: #F1EFE8; --ink: #1A1F1B; --ink-soft: #43504a;
+    --sage: #6B7A6E; --green: #1F7A4D; --green-deep: #145638; --amber: #E08A2B;
+    --line: #E1DED4; --card: #FFFFFF; --shadow: 0 1px 2px rgba(20,30,20,.05), 0 8px 30px rgba(20,30,20,.06);
+  }
+  :root[data-theme="dark"] {
+    --ground: #141713; --ground-2: #1c211b; --ink: #F2F1EA; --ink-soft: #b7bfb6;
+    --sage: #8b978a; --green: #4DAE7C; --green-deep: #2f8a5c; --amber: #F0A54B;
+    --line: #2b322a; --card: #1b201a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck { height: 100vh; width: 100%; position: relative; overflow: hidden; }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(1.5rem, 6vw, 6rem);
+    max-width: 1100px; margin: 0 auto;
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .5s ease, transform .5s ease;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .slide { transition: opacity .2s ease; transform: none; }
+  }
+  .slide.active { opacity: 1; transform: none; pointer-events: auto; }
+
+  .eyebrow {
+    font-size: .78rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--green); font-weight: 600; display: flex; align-items: center; gap: .7rem;
+    margin-bottom: 1.4rem;
+  }
+  .eyebrow .num {
+    font-variant-numeric: tabular-nums; color: var(--sage);
+  }
+  .eyebrow .bar { height: 1px; width: 46px; background: var(--line); }
+
+  h1.title {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.6rem, 8vw, 5.2rem); line-height: .98;
+    letter-spacing: -.02em; margin: 0; text-wrap: balance;
+  }
+  h1.title .accent { color: var(--green); font-style: italic; }
+  h2 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem); line-height: 1.05;
+    letter-spacing: -.015em; margin: 0 0 1.1rem; text-wrap: balance;
+  }
+  .lead {
+    font-size: clamp(1.05rem, 2.1vw, 1.4rem); line-height: 1.5;
+    color: var(--ink-soft); max-width: 34ch; margin: 0;
+  }
+  .kicker {
+    font-family: var(--serif); font-style: italic; font-size: 1.25rem;
+    color: var(--amber); margin: 1.6rem 0 0;
+  }
+
+  .rows { display: flex; flex-direction: column; gap: .9rem; margin-top: 1.8rem; }
+  .row {
+    display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: baseline;
+    padding-bottom: .9rem; border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: none; }
+  .row .marker {
+    font-family: var(--serif); font-size: 1.5rem; color: var(--green);
+    font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .row .t { font-weight: 600; font-size: 1.08rem; }
+  .row .d { color: var(--ink-soft); font-size: .96rem; margin-top: .2rem; line-height: 1.45; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.8rem; }
+  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1.3rem 1.25rem; box-shadow: var(--shadow);
+  }
+  .card .tag {
+    font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700;
+    color: var(--amber); display: block; margin-bottom: .55rem;
+  }
+  .card .tag.base { color: var(--green); }
+  .card h3 { font-family: var(--serif); font-size: 1.15rem; margin: 0 0 .4rem; }
+  .card p { margin: 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.45; }
+
+  .stack { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.4rem; align-items: center; }
+  @media (max-width: 760px) { .stack { grid-template-columns: 1fr; gap: 1.4rem; } }
+
+  .schema { display: flex; flex-direction: column; gap: .5rem; font-family: var(--sans); }
+  .ent {
+    display: flex; align-items: center; gap: .6rem; font-size: .9rem;
+    background: var(--ground-2); border: 1px solid var(--line); border-radius: 8px;
+    padding: .55rem .8rem;
+  }
+  .ent .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .ent .nm { font-weight: 600; }
+  .ent .meta { color: var(--sage); font-size: .8rem; margin-left: auto; font-variant-numeric: tabular-nums; }
+  .ent.join { background: transparent; border-style: dashed; }
+
+  .team { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+  .chip {
+    border: 1px solid var(--line); border-radius: 999px; padding: .45rem 1rem;
+    font-size: .92rem; background: var(--card); font-weight: 500;
+  }
+
+  .tech { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .pill {
+    font-size: .82rem; font-weight: 600; letter-spacing: .02em;
+    padding: .4rem .85rem; border-radius: 7px;
+    background: var(--green); color: #fff;
+  }
+  .pill.alt { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+
+  /* chrome */
+  .dots {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; gap: .55rem; z-index: 20;
+  }
+  .dots button {
+    width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+    background: var(--line); transition: background .3s, transform .3s;
+  }
+  .dots button.on { background: var(--green); transform: scale(1.35); }
+  .dots button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+  .nav-hint {
+    position: fixed; bottom: 1.4rem; right: 1.6rem; z-index: 20;
+    font-size: .72rem; color: var(--sage); letter-spacing: .05em;
+  }
+  .counter {
+    position: fixed; top: 1.5rem; right: 1.8rem; z-index: 20;
+    font-family: var(--serif); font-size: .95rem; color: var(--sage);
+    font-variant-numeric: tabular-nums;
+  }
+  .brandmark {
+    position: fixed; top: 1.4rem; left: 1.8rem; z-index: 20;
+    font-family: var(--serif); font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .brandmark .leaf { color: var(--green); }
+
+  .arrow {
+    position: fixed; top: 50%; transform: translateY(-50%); z-index: 20;
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center; opacity: .7;
+    transition: opacity .2s, background .2s;
+  }
+  .arrow:hover { opacity: 1; background: var(--ground-2); }
+  .arrow:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  .arrow.prev { left: 1.2rem; }
+  .arrow.next { right: 1.2rem; }
+  @media (max-width: 720px) { .arrow { display: none; } }
+</style>
+
+<div class="brandmark"><span class="leaf">❧</span> EatRite</div>
+<div class="counter"><span id="cur">1</span> / 6</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 — HOOK -->
+  <section class="slide active">
+    <div class="eyebrow"><span class="num">01</span><span class="bar"></span> The pitch</div>
+    <h1 class="title">Cook what you<br><span class="accent">already have.</span></h1>
+    <p class="kicker">EatRite turns the ingredients in your kitchen into meals you can make right now.</p>
+  </section>
+
+  <!-- 2 — PROBLEM -->
+  <section class="slide">
+    <div class="eyebrow"><span class="num">02</span><span class="bar"></span> The problem</div>
+    <h2>A full fridge, and still<br>“nothing to eat.”</h2>
+    <div class="rows">
+      <div class="row"><span class="marker">·</span><div><div class="t">Same five recipes, on repeat</div><div class="d">People fall back on what they already know instead of trying something new.</div></div></div>
+      <div class="row"><span class="marker">·</span><div><div class="t">Ideas are scattered across the web</div><div class="d">Finding a meal means tab-hopping between a dozen recipe sites.</div></div></div>
+      <div class="row"><span class="marker">·</span><div><div class="t">Ingredients go to waste</div><div class="d">Food expires in the back of the fridge because no recipe ever used it.</div></div></div>
+    </div>
+  </section>
+
+  <!-- 3 — SOLUTION / WALKTHROUGH -->
+  <section class="slide">
+    <div class="eyebrow"><span class="num">03</span><span class="bar"></span> How it works</div>
+    <h2>From your kitchen to your plate<br>in four steps.</h2>
+    <div class="rows">
+      <div class="row"><span class="marker">1</span><div><div class="t">Stock your kitchen</div><div class="d">Add the ingredients you have on hand and set your dietary preferences.</div></div></div>
+      <div class="row"><span class="marker">2</span><div><div class="t">Get matched recipes</div><div class="d">The home page surfaces recipes you can actually make, sorted by rating.</div></div></div>
+      <div class="row"><span class="marker">3</span><div><div class="t">Save your favorites</div><div class="d">Keep the recipes you love one click away in your profile.</div></div></div>
+      <div class="row"><span class="marker">4</span><div><div class="t">Plan the week</div><div class="d">Drop meals onto the calendar and track what you’ve eaten.</div></div></div>
+    </div>
+  </section>
+
+  <!-- 4 — UNDER THE HOOD -->
+  <section class="slide">
+    <div class="eyebrow"><span class="num">04</span><span class="bar"></span> Under the hood</div>
+    <div class="stack">
+      <div>
+        <h2>Three entities,<br>tied together.</h2>
+        <p class="lead">Users, recipes, and ingredients — connected by join tables that power the “cook with what I have” match.</p>
+        <div class="tech">
+          <span class="pill">React</span>
+          <span class="pill">Express</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill alt">Render</span>
+        </div>
+      </div>
+      <div class="schema" aria-label="Database entities">
+        <div class="ent"><span class="dot" style="background:#2b5fb0"></span><span class="nm">users</span><span class="meta">entity</span></div>
+        <div class="ent"><span class="dot" style="background:#c47a17"></span><span class="nm">recipes</span><span class="meta">entity</span></div>
+        <div class="ent"><span class="dot" style="background:#2e8b57"></span><span class="nm">ingredients</span><span class="meta">entity</span></div>
+        <div class="ent join"><span class="dot" style="background:#7a4fb0"></span><span class="nm">recipe_ingredients</span><span class="meta">join</span></div>
+        <div class="ent join"><span class="dot" style="background:#7a4fb0"></span><span class="nm">kitchen</span><span class="meta">join</span></div>
+        <div class="ent join"><span class="dot" style="background:#7a4fb0"></span><span class="nm">favorites · ratings · scheduled_meals</span><span class="meta">join</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 — FEATURES -->
+  <section class="slide">
+    <div class="eyebrow"><span class="num">05</span><span class="bar"></span> What we’re building</div>
+    <h2>Baseline, custom, and one<br>feature that makes us <span style="font-style:italic;color:var(--green)">us</span>.</h2>
+    <div class="cards">
+      <div class="card"><span class="tag base">Baseline</span><h3>Recipe browsing</h3><p>Browse, search, and sort every recipe by rating, newest, or favorites.</p></div>
+      <div class="card"><span class="tag base">Custom</span><h3>My Kitchen</h3><p>Track the ingredients you own and manage them from your profile.</p></div>
+      <div class="card"><span class="tag">Stretch</span><h3>Cook with what I have</h3><p>Match your kitchen against recipes to show exactly what you can make tonight.</p></div>
+    </div>
+  </section>
+
+  <!-- 6 — TEAM / CLOSE -->
+  <section class="slide">
+    <div class="eyebrow"><span class="num">06</span><span class="bar"></span> The team</div>
+    <h2>Six of us, one<br>fuller fridge.</h2>
+    <p class="lead">Built for WEB103 — React front end, Express API, and a Postgres database deployed on Render.</p>
+    <div class="team">
+      <span class="chip">Ashok Gaire</span>
+      <span class="chip">Ousseynou Diop</span>
+      <span class="chip">Mohammad Naeem</span>
+      <span class="chip">Khadeja Ahmar</span>
+      <span class="chip">Oscar Mochizaki</span>
+      <span class="chip">Noah Mckegney</span>
+    </div>
+    <p class="kicker">Stop staring into the fridge. Start eating right.</p>
+  </section>
+
+</div>
+
+<button class="arrow prev" id="prev" aria-label="Previous slide">‹</button>
+<button class="arrow next" id="next" aria-label="Next slide">›</button>
+<div class="dots" id="dots" role="tablist" aria-label="Slides"></div>
+<div class="nav-hint">← → or space to navigate</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const cur = document.getElementById('cur');
+  let i = 0;
+
+  slides.forEach((_, n) => {
+    const b = document.createElement('button');
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+    if (n === 0) b.classList.add('on');
+    b.addEventListener('click', () => go(n));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function go(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    dots.forEach((d, k) => d.classList.toggle('on', k === i));
+    cur.textContent = i + 1;
+  }
+
+  document.getElementById('next').addEventListener('click', () => go(i + 1));
+  document.getElementById('prev').addEventListener('click', () => go(i - 1));
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') go(0);
+    if (e.key === 'End') go(slides.length - 1);
+  });
+</script>

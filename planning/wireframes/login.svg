@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="650" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+
+  <text x="450" y="120" font-size="26" font-weight="bold" fill="#222" text-anchor="middle">EatRite</text>
+
+  <!-- Login card -->
+  <rect x="300" y="170" width="300" height="340" rx="8" fill="#fafafa" stroke="#333"/>
+  <text x="450" y="210" font-size="18" font-weight="bold" fill="#222" text-anchor="middle">Log In</text>
+
+  <text x="325" y="245" font-size="13" fill="#333">Email</text>
+  <rect x="325" y="255" width="250" height="34" rx="4" fill="#ffffff" stroke="#333"/>
+
+  <text x="325" y="315" font-size="13" fill="#333">Password</text>
+  <rect x="325" y="325" width="250" height="34" rx="4" fill="#ffffff" stroke="#333"/>
+
+  <rect x="325" y="385" width="250" height="38" rx="4" fill="#333"/>
+  <text x="450" y="409" font-size="14" fill="#fff" text-anchor="middle">Log In</text>
+
+  <text x="450" y="450" font-size="12" fill="#555" text-anchor="middle">Forgot password?</text>
+
+  <line x1="325" y1="470" x2="575" y2="470" stroke="#ccc"/>
+
+  <text x="450" y="495" font-size="12" fill="#555" text-anchor="middle">Don't have an account?</text>
+  <text x="450" y="493" font-size="12" fill="#555" text-anchor="middle" dy="20" text-decoration="underline">Sign Up</text>
+</svg>
