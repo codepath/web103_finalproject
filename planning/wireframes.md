@@ -6,13 +6,13 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 [👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
 
-## Wireframe 1: [page title]
+## Wireframe 1: Explore Page
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+![Explore Page](wireframes/explore1.png)
 
-## Wireframe 2: [page title]
+## Wireframe 2: Temporary expanded event view
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![Temporary expanded event view](wireframes/explore2.png)
 
 ## Wireframe 3: [page title]
 
