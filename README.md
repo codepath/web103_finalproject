@@ -19,6 +19,28 @@ The purpose of PrepWise is to bring several everyday food-planning tasks into on
 
 Many people have busy schedules during the week and may not have enough time to decide what to cook or prepare meals. Planning meals ahead of time, especially during the weekend, can help make weekdays less stressful. Having a grocery list that shows the ingredients needed for recipes they want to try also makes shopping easier and helps people prepare in advance when they have time to visit the store. 
 
+## Getting Started
+
+Requires Node.js and PostgreSQL.
+
+```bash
+createdb prepwise_dev
+psql prepwise_dev -f database/schema.sql -f database/seed.sql
+
+# Terminal 1: API on :3001
+cd backend
+cp .env.example .env        # edit DATABASE_URL if needed
+npm install
+npm run dev
+
+# Terminal 2: React app on :5173
+cd frontend
+npm install
+npm run dev
+```
+
+In development, Vite forwards `/api` requests to the backend.
+
 ## Tech Stack
 
 - **Frontend:** React, React Router, JavaScript,CSS
