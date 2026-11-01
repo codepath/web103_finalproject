@@ -1,0 +1,43 @@
+/* Recipes page styles */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.recipe-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-card p { margin: 0; }
+
+.meal-type {
+  align-self: flex-start;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--brand-dark);
+}
+
+.recipe-meta {
+  display: flex;
+  gap: 14px;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.match-badge {
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+.match-badge.full { background: var(--green-soft); color: #2f5f2e; }
+.match-badge.partial { background: var(--amber-soft); color: #8a5a0a; }
+.match-badge.none { background: var(--red-soft); color: var(--red); }
