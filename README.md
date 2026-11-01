@@ -88,51 +88,5 @@ The initial version focuses on trip planning, voting, and expense records. User 
 
 ## Installation Instructions
 
-### Express backend
-
-Requires Node.js 20+ and a PostgreSQL database (local or hosted).
-
-```bash
-cd server
-npm ci
-cp .env.example .env
-```
-
-Edit `server/.env` and replace `DATABASE_URL` with your database connection URL.
-Keep any TLS parameters supplied by your database provider. Each teammate keeps
-their own `.env`; do not commit credentials. `CLIENT_ORIGIN` defaults to
-`http://localhost:5173` and should match the React frontend's origin.
-
-```bash
-npm run dev
-```
-
-The API defaults to port 3001. Check the actual database connection with:
-
-```bash
-curl -i http://localhost:3001/api/health
-```
-
-A successful database query returns HTTP 200 with
-`{"status":"ok","database":"connected"}`. An unavailable database returns
-HTTP 503 with `{"status":"error","database":"unavailable"}`. Starting the
-server alone does not confirm database connectivity. A missing `DATABASE_URL`
-stops startup with a configuration error.
-
-Use `npm start` to run without watch mode. For hosting, set the service root to
-`server`, build command to `npm ci`, start command to `npm start`, and configure
-`DATABASE_URL` and `CLIENT_ORIGIN` in the host's environment settings.
-
-### Development database reset
-
-`npm run reset -- --confirm` runs `server/db/schema.sql` followed by
-`server/db/seed.sql` in a transaction. This replaces development data, so verify
-the target `DATABASE_URL` first. Reset is disabled when `NODE_ENV=production`.
-The SQL implements the six tables in the ERD and seeds three demo users, two
-trips, memberships, activities, votes, and expenses. See `server/db/README.md`
-for sample IDs and invite codes. API authorization and cross-table validation
-remain part of the feature endpoints.
-
-Run `npm run test:db` from `server/` to verify repeatable resets, constraints,
-and deletion behavior in an isolated test schema. Tests roll back their data
-without resetting the application tables.
+- Server: cd server, npm install, copy .env.example to .env and fill in the PostgreSQL values for your local database, npm run reset, npm run dev (http://localhost:3001)
+- Client: cd client, npm install, npm run dev (http://localhost:5173). The client sends /api requests to the server on port 3001.
