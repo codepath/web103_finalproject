@@ -4,9 +4,11 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "reset": "node config/reset.js"
   },
   "dependencies": {
+    "dotenv": "^18.0.9",
     "express": "^5.3.0",
     "pg": "^8.23.1"
   }
