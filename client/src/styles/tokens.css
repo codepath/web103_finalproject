@@ -1,0 +1,24 @@
+/* Design tokens from the Figma file (TripTogether collection) */
+:root {
+  --bg-ground: #f8f8f8;
+  --bg-surface: #ffffff;
+  --bg-raised: #eeeeee;
+  --bg-secondary: #e5e5e5;
+  --line-border: #e6e6e6;
+  --line-rule: #f0f0f0;
+  --line-control: #d4d4d4;
+  --text-primary: #0a0a0a;
+  --text-muted: #6b6b6b;
+  --text-negative: #c4242a;
+  --accent-ink: #141414;
+  --data-spent: #1d5fbf;
+  --data-planned: #bdbdbd;
+  --data-track: #e6e6e6;
+
+  --radius-card: 8px;
+  --radius-control: 6px;
+  --sidebar-width: 256px;
+
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+}

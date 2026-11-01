@@ -5,17 +5,20 @@ import TripDetailsPage from './pages/TripDetailsPage.jsx'
 import ExpensesPage from './pages/ExpensesPage.jsx'
 import TripSettingsPage from './pages/TripSettingsPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+import Layout from './components/Layout.jsx'
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/trips" replace />} />
-      <Route path="/trips" element={<TripsPage />} />
-      <Route path="/trips/new" element={<CreateTripPage />} />
-      <Route path="/trips/:tripId" element={<TripDetailsPage />} />
-      <Route path="/trips/:tripId/expenses" element={<ExpensesPage />} />
-      <Route path="/trips/:tripId/settings" element={<TripSettingsPage />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route element={<Layout />}>
+        <Route path="/trips" element={<TripsPage />} />
+        <Route path="/trips/new" element={<CreateTripPage />} />
+        <Route path="/trips/:tripId" element={<TripDetailsPage />} />
+        <Route path="/trips/:tripId/expenses" element={<ExpensesPage />} />
+        <Route path="/trips/:tripId/settings" element={<TripSettingsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
     </Routes>
   )
 }
