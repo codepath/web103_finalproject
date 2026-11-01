@@ -26,6 +26,20 @@ Database: PostgreSQL (with one-to-many and many-to-many relationships)
 
 Deployment: Render
 
+## Current Development Progress
+
+The initial backend vertical slice is complete:
+
+- PostgreSQL schema created for users, tasks, habits, habit completions,
+  categories, and task-category relationships.
+- Seed data added for a demo user, sample tasks, sample habits, and the
+  Health, Career, Learning, Personal, and Finance categories.
+- `GET /api/health` returns the backend health status.
+- `GET /api/tasks` returns seeded tasks with their related categories.
+
+The remaining CRUD, frontend, validation, filtering, and insights features are
+planned for the next milestone and are not marked as completed below.
+
 ## Features
 
 ### User Dashboard Overview:
@@ -60,4 +74,27 @@ Robust backend validation on all POST and PATCH requests to ensure clean data in
 
 ## Installation Instructions
 
-[instructions go here]
+### Backend
+
+```bash
+cd backend
+npm install
+npm run db:schema
+npm run db:seed
+npm start
+```
+
+The backend requires a local ignored `.env` file containing the Render
+PostgreSQL connection variables:
+
+```env
+PGUSER=
+PGPASSWORD=
+PGHOST=
+PGPORT=5432
+PGDATABASE=
+NODE_ENV=development
+PORT=3000
+```
+
+Do not commit `.env` or database credentials.

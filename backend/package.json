@@ -1,0 +1,17 @@
+{
+  "name": "habitflow-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:schema": "node scripts/runSql.js schema.sql",
+    "db:seed": "node scripts/runSql.js seed.sql"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}
