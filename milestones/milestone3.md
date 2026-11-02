@@ -7,6 +7,7 @@ This document should be completed and submitted during **Unit 7** of this course
 - Project: **TripTogether**
 - Tracking issue: [#11 — Complete Milestone 3 (Unit 7) requirements and submission documentation](https://github.com/codepath-12/web103_finalproject/issues/11)
 - Working branch: `yingshu/milestone3`
+- Milestone 3 task status: **100% complete** — all 5 tasks assigned to Milestone 3 are completed. This refers to this unit's assigned tasks, not completion of all five project milestones or every planned application feature.
 - Scope: project management, feature completion evidence, and all five reflection answers. Issue #11 tracks this entire milestone; it does not replace the required feature issues.
 
 ## Checklist
@@ -33,7 +34,7 @@ This document should be completed and submitted during **Unit 7** of this course
     4. Milestone 4 - Unit 8
     5. Milestone 5 - Unit 9
   - [ ] Verify the completion percentage of each milestone. The GitHub Milestone for this unit (Milestone 3 - Unit 7) should be 100% completed when submitting for full points.
-    - Assuming all 5 assigned items are completed, Milestone 3 is **100% complete** (5 completed items, 0 remaining).
+    - Milestone 3 is **100% complete**: all 5 assigned tasks are completed, with 0 remaining. The other project milestones have their own tasks and completion status.
 - [ ] In `README.md`, check off features completed in this unit by adding a ✅ emoji in front of the feature's name.
   - The current branch contains frontend routing, page scaffolding, database schema and seed data, and an initial backend trips query. These establish the foundation but do not demonstrate completion of the full user-facing features.
   - [ ] Under each completed feature, include a GIF showing feature functionality.
@@ -53,7 +54,7 @@ One challenge is coordinating work across branches so that the frontend, backend
 
 ### 3. Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-We have not yet verified completion of the full weekly sprint plan. The current branch shows progress on the application foundation, but the feature checklist and several project-management requirements remain incomplete. We would first create or verify the feature issues, assign owners, and update the project board and milestones. For implementation, we would prioritize an end-to-end trip workflow, then activity management and the daily itinerary, followed by voting and shared expenses. We would record evidence and update completion markers as each workflow becomes functional, while keeping unfinished work assigned to the appropriate upcoming milestone.
+Yes. We completed all 5 tasks assigned to Milestone 3, bringing this unit's milestone to 100% completion with no assigned tasks remaining. This completes the Milestone 3 sprint scope; it does not mean that all five project milestones or all planned application features are finished. In upcoming units, we will prioritize an end-to-end trip workflow, then activity management and the daily itinerary, followed by voting and shared expenses. The separate submission requirements listed above retain their own completion or verification status.
 
 ### 4. Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
