@@ -56,6 +56,12 @@ Project board: https://github.com/orgs/HabitFlowProject/projects/2
 
 - [#2 Create PostgreSQL schema and seed data](https://github.com/HabitFlowProject/web103_finalproject/issues/2) ✅
 
+The database schema and seed data are connected to the Express API. The
+walkthrough below shows the health check and seeded task response without
+exposing database credentials.
+
+![Backend foundation walkthrough](images/backend-foundation.gif)
+
 ### Upcoming Implementation Issues
 
 - [#1 Implement task REST API CRUD](https://github.com/HabitFlowProject/web103_finalproject/issues/1)
@@ -69,19 +75,19 @@ Project board: https://github.com/orgs/HabitFlowProject/projects/2
 
 A centralized analytics view displaying daily completion rates, active habit streaks, and productivity scores.
 
-[gif goes here]
+Planned feature; a walkthrough will be added after implementation.
 
 ### Habit & Task CRUD Management:
 
 Full create, read, update, and delete capabilities for managing daily habits, recurring tasks, and completion logs.
 
-[gif goes here]
+Planned feature; a walkthrough will be added after implementation.
 
 ### Category Tagging System (Many-to-Many):
 
 Organize habits and tasks into custom categories (e.g., Health, Career, Learning) with a join table allowing flexible categorization.
 
-[gif goes here]
+Planned feature; a walkthrough will be added after implementation.
 
 ### AI Weekly Coaching & Insights Panel:
 
