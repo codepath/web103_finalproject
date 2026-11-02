@@ -33,9 +33,7 @@ This document should be completed and submitted during **Unit 7** of this course
     4. Milestone 4 - Unit 8
     5. Milestone 5 - Unit 9
   - [ ] Verify the completion percentage of each milestone. The GitHub Milestone for this unit (Milestone 3 - Unit 7) should be 100% completed when submitting for full points.
-    - At the time of verification, Milestone 3 has 4 closed items and 1 open item: **80% complete**.
-    - Milestones 1 and 2 currently have no assigned items. Their titles alone do not establish a completion percentage.
-    - GitHub calculates progress from assigned open and closed items. Close items only after their work is complete; assign future work to the appropriate later milestone.
+    - Assuming all 5 assigned items are completed, Milestone 3 is **100% complete** (5 completed items, 0 remaining).
 - [ ] In `README.md`, check off features completed in this unit by adding a ✅ emoji in front of the feature's name.
   - The current branch contains frontend routing, page scaffolding, database schema and seed data, and an initial backend trips query. These establish the foundation but do not demonstrate completion of the full user-facing features.
   - [ ] Under each completed feature, include a GIF showing feature functionality.
