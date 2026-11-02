@@ -40,6 +40,22 @@ The initial backend vertical slice is complete:
 The remaining CRUD, frontend, validation, filtering, and insights features are
 planned for the next milestone and are not marked as completed below.
 
+## GitHub Project Management
+
+### Completed Unit 7 Issues
+
+- [#6 Complete HabitFlow planning documents](https://github.com/mgowda23/web103_finalproject/issues/6)
+- [#7 Create and configure HabitFlow project board](https://github.com/mgowda23/web103_finalproject/issues/7)
+- [#8 Present HabitFlow pitch and record feedback](https://github.com/mgowda23/web103_finalproject/issues/8)
+
+### Upcoming Implementation Issues
+
+- [#2 Create PostgreSQL schema and seed data](https://github.com/mgowda23/web103_finalproject/issues/2) ✅
+- [#1 Implement task REST API CRUD](https://github.com/mgowda23/web103_finalproject/issues/1)
+- [#3 Build Dashboard and Tasks pages](https://github.com/mgowda23/web103_finalproject/issues/3)
+- [#4 Implement habits and completion streaks](https://github.com/mgowda23/web103_finalproject/issues/4)
+- [#5 Add validation, filtering, sorting, and error handling](https://github.com/mgowda23/web103_finalproject/issues/5)
+
 ## Features
 
 ### User Dashboard Overview:
