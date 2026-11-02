@@ -17,12 +17,11 @@ List the title of each issue you created, one per line:
 
 ## GitHub Milestones Created
 List the name of each GitHub Milestone you created, one per line:
+- Milestone 1 - Unit 5
+- Milestone 2 - Unit 6
 - Milestone 3 - Unit 7
 - Milestone 4 - Unit 8
 - Final Milestone - Unit 9
-
-Note: Milestone 1 and Milestone 2 still need to be created, and Final Milestone -
-Unit 9 should be renamed to Milestone 5 - Unit 9.
 
 ## Milestone 3 Completion
 Replace the blank before the percent sign with a number from 0 to 100.
