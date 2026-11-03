@@ -1,13 +1,21 @@
 import { pool } from "../config/database.js";
 
-const createUser = async (req, res) => {
+const createUserAndReadingList = async (req, res) => {
   try {
     const { name } = req.body;
 
-    await pool.query(`
+    const results = await pool.query(`
       INSERT INTO Users (name)
       VALUES ($1)
+      RETURNING id
     `, [name]);
+
+    const userId = results.rows[0].id;
+
+    await pool.query(`
+      INSERT INTO ReadingLists (user_id)
+      VALUES ($1)
+    `, [userId]);
 
     res.send(201);
   } catch (error) {
@@ -15,4 +23,4 @@ const createUser = async (req, res) => {
   }
 };
 
-export default { createUser };
+export default { createUserAndReadingList };
