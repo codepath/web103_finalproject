@@ -4,7 +4,20 @@ import { once } from 'node:events'
 import app from './app.js'
 import pool from './db.js'
 
-const futureDate = () => new Date(Date.now() + 86400000).toISOString()
+// Same rule as the reset safeguard: the database name must end in _test and the
+// shared Render host is always refused. Returns why tests must skip, or null if safe.
+const disposableDbProblem = () => {
+  const url = process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL) : null
+  const host = url ? url.hostname : process.env.PGHOST
+  const database = url ? url.pathname.slice(1) : process.env.PGDATABASE
+
+  if (!host || !database) return 'no database configured'
+  if (host.endsWith('render.com')) return `${host} is the shared Render database`
+  if (!database.endsWith('_test')) return `"${database}" is not a disposable *_test database`
+  return null
+}
+
+const futureDate =() => new Date(Date.now() + 86400000).toISOString()
 
 // Seeded by `npm run reset`: course 1 (Web Development) has topic 1, course 2 has topic 4
 const validBody = () => ({
@@ -44,9 +57,9 @@ test('POST /api/assignments', async (t) => {
     assert.equal(response.status, 400)
   })
 
-  // The remaining cases need the seeded database (CI runs `npm run reset` first)
-  const hasDb = Boolean(process.env.DATABASE_URL || process.env.PGHOST)
-  const dbOptions = { skip: hasDb ? false : 'no database configured' }
+  // The remaining cases write to the database, so they only run against a disposable one
+  // (CI runs `npm run reset` on it first)
+  const dbOptions = { skip: disposableDbProblem() ?? false }
 
   await t.test('creates an assignment and returns it', dbOptions, async () => {
     const response = await post(BASE_URL, validBody())
