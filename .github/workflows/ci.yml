@@ -33,6 +33,7 @@ jobs:
     env:
       NODE_ENV: test
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/studysync_test
+      ALLOW_DB_RESET: 'true'
     steps:
       - uses: actions/checkout@v4
 

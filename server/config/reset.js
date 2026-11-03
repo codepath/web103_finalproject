@@ -4,9 +4,34 @@ import { readFileSync } from 'node:fs'
 
 const data = JSON.parse(readFileSync(new URL('./data/data.json', import.meta.url)))
 
+// Reset drops every table, so it needs ALLOW_DB_RESET=true and a disposable target:
+// the database name must end in _test, and the shared Render host is always refused
+const assertSafeTarget = () => {
+  const url = process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL) : null
+  const host = url ? url.hostname : process.env.PGHOST
+  const database = url ? url.pathname.slice(1) : process.env.PGDATABASE
+
+  if (!host || !database) {
+    throw new Error('Refusing to reset: no target database configured (set DATABASE_URL)')
+  }
+
+  if (host.endsWith('render.com')) {
+    throw new Error(`Refusing to reset: ${host} is the shared Render database`)
+  }
+
+  if (!database.endsWith('_test')) {
+    throw new Error(`Refusing to reset "${database}": only databases named *_test are disposable`)
+  }
+
+  if (process.env.ALLOW_DB_RESET !== 'true') {
+    throw new Error('Refusing to reset: set ALLOW_DB_RESET=true to confirm')
+  }
+}
+
 // Children first so foreign keys never block a drop
 const dropAllTables = async () => {
   await pool.query(`
+    DROP TABLE IF EXISTS study_plans;
     DROP TABLE IF EXISTS assignments;
     DROP TABLE IF EXISTS topics;
     DROP TABLE IF EXISTS courses;
@@ -70,6 +95,23 @@ const createAssignmentsTable = async () => {
   console.log('assignments table created successfully')
 }
 
+const createStudyPlansTable = async () => {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS study_plans (
+      id serial PRIMARY KEY,
+      course_id integer NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
+      topic_id integer REFERENCES topics(id) ON DELETE SET NULL,
+      created_by integer NOT NULL REFERENCES users(id),
+      title text NOT NULL,
+      content text NOT NULL,
+      created_at timestamp NOT NULL DEFAULT NOW(),
+      updated_at timestamp NOT NULL DEFAULT NOW()
+    );
+    CREATE INDEX IF NOT EXISTS study_plans_course_id_idx ON study_plans(course_id);
+  `)
+  console.log('study_plans table created successfully')
+}
+
 const seedUsersTable = async () => {
   for (const user of data.users) {
     await pool.query(
@@ -110,17 +152,30 @@ const seedAssignmentsTable = async () => {
   console.log('assignments seeded successfully')
 }
 
+const seedStudyPlansTable = async () => {
+  for (const plan of data.study_plans) {
+    await pool.query(
+      'INSERT INTO study_plans (course_id, topic_id, created_by, title, content) VALUES ($1, $2, $3, $4, $5)',
+      [plan.course_id, plan.topic_id, plan.created_by, plan.title, plan.content]
+    )
+  }
+  console.log('study_plans seeded successfully')
+}
+
 const resetDatabase = async () => {
   try {
+    assertSafeTarget()
     await dropAllTables()
     await createUsersTable()
     await createCoursesTable()
     await createTopicsTable()
     await createAssignmentsTable()
+    await createStudyPlansTable()
     await seedUsersTable()
     await seedCoursesTable()
     await seedTopicsTable()
     await seedAssignmentsTable()
+    await seedStudyPlansTable()
   } catch (err) {
     console.error('error resetting database', err.message)
     process.exitCode = 1

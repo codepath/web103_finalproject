@@ -34,5 +34,21 @@
       "description": "Compare merge sort and quicksort on random input.",
       "due_date": "2026-12-08T23:59:00Z"
     }
+  ],
+  "study_plans": [
+    {
+      "course_id": 1,
+      "topic_id": 1,
+      "created_by": 1,
+      "title": "Express Fundamentals Review",
+      "content": "Work through routing and middleware, then build a small CRUD API."
+    },
+    {
+      "course_id": 2,
+      "topic_id": 4,
+      "created_by": 2,
+      "title": "Sorting Algorithms Practice",
+      "content": "Implement merge sort and quicksort, then compare their running times."
+    }
   ]
 }
