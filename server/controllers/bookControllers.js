@@ -23,9 +23,9 @@ const addBook = async (req, res) => {
     const { title, author, genre, year, pageCount, coverImage, status } = req.body;
 
     await pool.query(`
-      INSERT INTO Books VALUES (list_id, title, author, genre, year, page_count, cover_image, status)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    `, [listId, title, author, genre, year, pageCount, coverImage, status]);
+      INSERT INTO Books (list_id, title, author, genre, year, page_count, cover_image)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+    `, [listId, title, author, genre, year, pageCount, coverImage]);
 
     res.send(201);
   } catch (error) {
