@@ -1,0 +1,54 @@
+{
+  "users": [
+    { "first_name": "Taylor", "last_name": "Reyes", "role": "ta" },
+    { "first_name": "Morgan", "last_name": "Lee", "role": "ta" },
+    { "first_name": "Sam", "last_name": "Patel", "role": "student" },
+    { "first_name": "Jordan", "last_name": "Kim", "role": "student" }
+  ],
+  "courses": [
+    { "course_name": "Web Development", "ta_id": 1 },
+    { "course_name": "Data Structures", "ta_id": 2 }
+  ],
+  "topics": [
+    { "course_id": 1, "name": "Express" },
+    { "course_id": 1, "name": "React" },
+    { "course_id": 2, "name": "Graphs" },
+    { "course_id": 2, "name": "Sorting" }
+  ],
+  "assignments": [
+    {
+      "course_id": 1,
+      "topic_id": 1,
+      "created_by": 1,
+      "priority": 2,
+      "title": "Build a REST API",
+      "description": "Implement GET and POST routes for a resource.",
+      "due_date": "2026-12-01T23:59:00Z"
+    },
+    {
+      "course_id": 2,
+      "topic_id": 4,
+      "created_by": 2,
+      "priority": 1,
+      "title": "Sorting Benchmarks",
+      "description": "Compare merge sort and quicksort on random input.",
+      "due_date": "2026-12-08T23:59:00Z"
+    }
+  ],
+  "study_plans": [
+    {
+      "course_id": 1,
+      "topic_id": 1,
+      "created_by": 1,
+      "title": "Express Fundamentals Review",
+      "content": "Work through routing and middleware, then build a small CRUD API."
+    },
+    {
+      "course_id": 2,
+      "topic_id": 4,
+      "created_by": 2,
+      "title": "Sorting Algorithms Practice",
+      "content": "Implement merge sort and quicksort, then compare their running times."
+    }
+  ]
+}
