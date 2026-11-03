@@ -26,14 +26,14 @@ Project custom_climbing_route_maker {
   Note: 'Entity Relationship Diagram for Capstone Web 103 Project'
 }
 
-enum Wall_Angles {
+enum wall_angles {
   slab
   vertical
   overhang
   roof
 }
 
-enum Grades {
+enum grades {
   V0
   V1
   V2
@@ -49,7 +49,7 @@ enum Grades {
   V12
 }
 
-enum Hold_Types {
+enum hold_types {
   crimp
   jug
   sloper
@@ -57,23 +57,25 @@ enum Hold_Types {
   pinch
 }
 
-enum Size {
+enum hold_sizes {
   small
   medium
   large
 }
 
-enum Roles {
+enum hold_roles {
   start
   hand
   foot
+  any
   finish
 }
 
 Table wall_types {
   id integer [primary key, increment]
   name Wall_Angles [not null, unique]
-  angle_degrees integer [not null, note: 'e.g. -10, 0, 30, 45']
+  min_angle integer
+  max_angle integer
   description varchar
 }
 
@@ -81,6 +83,7 @@ Table climbing_routes {
   id integer [primary key, increment]
   name varchar [not null]
   grade Grades [not null]
+  angle_degrees integer [not null, note: 'e.g. -10, 0, 30, 45']
   wall_type_id integer [not null]
   created_at timestamptz [not null, default: `now()`]
 }
