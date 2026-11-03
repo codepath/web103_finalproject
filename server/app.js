@@ -1,11 +1,11 @@
 import express from 'express'
 import pool from './db.js'
+import { validateCourse } from './courseValidation.js'
 import assignmentRoutes from './routes/assignments.js'
 
 // Builds the app without starting it.
 // server.js starts listening on a port.
 const app = express()
-app.use(express.json())
 
 // Parse JSON request bodies.
 app.use(express.json())
