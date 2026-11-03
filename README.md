@@ -24,9 +24,9 @@ Backend: Express and PostgreSQL using Render
 
 ## Features
 
-### Log in with GitHub
+### User accounts
 
-Users must log in with a GitHub account in order to use the app.
+Users must register with an account in order to use the app.
 
 [gif goes here]
 
