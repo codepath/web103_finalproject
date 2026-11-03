@@ -53,13 +53,13 @@ const editBookInfo = async (req, res) => {
 const editBookStatus = async (req, res) => {
   try {
     const bookId = parseInt(req.params.bookId);
-    const { status } = req.body;
+    const { status, currentPage } = req.body;
 
     await pool.query(`
       UPDATE Books
-      SET status = $1
-      WHERE id = $2
-    `, [status, bookId]);
+      SET status = $1, current_page = $2
+      WHERE id = $3
+    `, [status, currentPage, bookId]);
 
     res.send(200);
   } catch (error) {
