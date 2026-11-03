@@ -20,6 +20,7 @@ You will need to reference the GitHub Project Management guide in the course por
     6. Write achievements
     7. Create achievement earning feature
     8. Add achievements list view
+    9. Add user login/register feature
 - [x] In your repo, update the status of issues in your project board.
 - [x] In your repo, create a GitHub Milestone for each final project unit, corresponding to each of the 5 milestones in your `milestones/` directory.
   - List the name of each milestone you created:
