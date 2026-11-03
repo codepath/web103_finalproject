@@ -48,8 +48,6 @@ export function validateAssignment(input) {
 
   if (!dueDate || Number.isNaN(dueDate.getTime())) {
     errors.push('Due date must be a valid date')
-  } else if (dueDate <= new Date()) {
-    errors.push('Due date must be in the future')
   }
 
   return {

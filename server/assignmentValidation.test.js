@@ -99,14 +99,13 @@ test('rejects a missing or unparseable due date', () => {
   }
 })
 
-test('rejects a due date in the past', () => {
+test('accepts a due date in the past', () => {
   const result = validateAssignment({
     ...validAssignment(),
     due_date: '2020-01-01T00:00:00Z'
   })
 
-  assert.equal(result.valid, false)
-  assert.deepEqual(result.errors, ['Due date must be in the future'])
+  assert.deepEqual(result, { valid: true, errors: [] })
 })
 
 test('reports every invalid required field', () => {
