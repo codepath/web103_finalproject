@@ -64,6 +64,19 @@ test('POST /api/assignments', async (t) => {
     }
   })
 
+  await t.test('accepts a due date in the past', dbOptions, async () => {
+    const response = await post(BASE_URL, { ...validBody(), due_date: '2020-01-01T00:00:00Z' })
+    const created = await response.json()
+
+    try {
+      assert.equal(response.status, 201)
+    } finally {
+      if (created.id) {
+        await pool.query('DELETE FROM assignments WHERE id = $1', [created.id])
+      }
+    }
+  })
+
   await t.test('returns 400 when the topic belongs to another course', dbOptions, async () => {
     const response = await post(BASE_URL, { ...validBody(), topic_id: 4 })
 
