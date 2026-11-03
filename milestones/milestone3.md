@@ -38,20 +38,20 @@ You will need to reference the GitHub Project Management guide in the course por
 
 ### 1. What went well during this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Writing the code to work on issues went very well because once we got the GitHub side of things figured out, we were able to focus on specific tasks.
 
 ### 2. What were some challenges your group faced in this unit?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Figuring out how GitHub organizations, projects, and issues worked was challenging for us. It was our first time using these features. Since it took most of us a while to get things sorted out, most of the work was done very late.
 
 ### Did you finish all of your tasks in your sprint plan for this week? If you did not finish all of the planned tasks, how would you prioritize the remaining tasks on your list?
 
-[👉🏾👉🏾👉🏾 your answer here]
+We did not finish all of our tasks for this week's sprint plan. For the next milestone, we should be able to get everything under control because now have issues on the project board to work on individually. Since we are learning authentication next, implementing a user account system should be the next priority as authentication will be required to perform all actions related to adding to and editing reading lists. After that, we can finish all the other features.
 
 ### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-[👉🏾👉🏾👉🏾 your answer here]
+Implementing achievements and other reading rewards will be the most difficult. Coming up with a list of achievements is a big task, so the plan is to focus only on those if we get too far behind.
 
 ### 5. What additional support will you need in upcoming units as you continue to work on your final project?
 
-[👉🏾👉🏾👉🏾 your answer here]
+There are more React hooks and other concepts we haven't learned in WEB102 that might be useful for more advanced front-end development. Getting React tips could help a lot on that side of implementation.
