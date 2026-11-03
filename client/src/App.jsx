@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from 'react'
+
 const courses = [
   { id: 1, name: 'Biology 101' },
   { id: 2, name: 'Calculus 200' },
@@ -13,6 +14,15 @@ const assignments = [
 ]
 
 function App() {
+  const [health, setHealth] = useState('checking...')
+
+  useEffect(() => {
+    fetch('/api/health')
+      .then((res) => res.json())
+      .then((data) => setHealth(`${data.status} (db: ${data.db})`))
+      .catch(() => setHealth('unreachable'))
+  }, [])
+
   return (
     <div className="app-shell">
       <header className="site-header">
@@ -102,6 +112,10 @@ function App() {
 
         <p className="demo-note">
           Demo dashboard — sample data shown until the API is connected.
+        </p>
+
+        <p className="api-status" role="status">
+          API status: {health}
         </p>
       </main>
     </div>
