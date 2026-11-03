@@ -48,8 +48,11 @@ const createBooksTable = async () => {
         genre VARCHAR(255),
         year INT,
         page_count INT,
+        current_page INT DEFAULT 0,
         cover_image VARCHAR(255),
-        status ReadingStatus
+        timestamp TIMESTAMPTZ DEFAULT NOW(),
+        last_updated TIMESTAMPTZ DEFAULT NOW(),
+        status ReadingStatus DEFAULT 'UNREAD'
       )
     `);
   } catch (error) {
