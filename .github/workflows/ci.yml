@@ -33,6 +33,7 @@ jobs:
     env:
       NODE_ENV: test
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/studysync_test
+      ALLOW_DB_RESET: 'true'
     steps:
       - uses: actions/checkout@v4
 
@@ -51,7 +52,7 @@ jobs:
         if: hashFiles('server/package-lock.json') != ''
 
       # Expected to create tables and seed the test database
-      - run: npm run db:reset --if-present
+      - run: npm run reset --if-present
         if: hashFiles('server/package-lock.json') != ''
 
       - run: npm test --if-present
