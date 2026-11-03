@@ -28,7 +28,7 @@ function App() {
       <main className="page-shell">
         <Routes>
           <Route path="/" element={<RouteGalleryPage routes={routes} />} />
-          <Route path="/routes/new" element={<RouteBuilderPage onSave={saveRoute} />} />
+          <Route path="/routes/new" element={<RouteBuilderPage routes={routes} onSave={saveRoute} />} />
           <Route path="/routes/:id" element={<RouteDetailsPage routes={routes} onDelete={deleteRoute} />} />
           <Route path="/routes/:id/edit" element={<EditRoutePage routes={routes} onSave={saveRoute} />} />
         </Routes>

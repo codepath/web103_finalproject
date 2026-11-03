@@ -13,6 +13,12 @@ h2 { letter-spacing: -.04em; }
 .button { border: 0; border-radius: 5px; cursor: pointer; display: inline-block; font-weight: 600; padding: 12px 18px; text-decoration: none; }
 .button-primary { background: var(--green); color: white; }
 .button-danger { background: transparent; color: #b43a2e; border: 1px solid #d5aaa2; }
+.button-reset { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.builder-options { align-items: center; display: flex; gap: 20px; margin-bottom: 48px; }
+.builder-option { align-items: start; display: flex; flex-direction: column; gap: 10px; }
+.builder-option-label { color: var(--muted); font-size: .85rem; margin: 0; }
+.builder-option-divider { color: var(--muted); font-size: .85rem; padding: 0 4px; }
+.form-actions { display: flex; gap: 12px; align-items: center; }
 .page-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 56px; }
 .toolbar { align-items: end; border-bottom: 1px solid var(--line); display: flex; gap: 24px; margin-bottom: 28px; padding-bottom: 20px; }
 label { color: var(--muted); display: flex; flex-direction: column; font-size: .82rem; gap: 7px; }
