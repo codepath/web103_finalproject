@@ -1,5 +1,5 @@
 import { pool } from '../config/database.js';
-import { seedDatabase } from '../config/reset.js';
+import { seedAllTables } from '../config/reset.js';
 
 // Each route comes back with its wall type and an array of its placed holds
 const SELECT_ROUTES = `
@@ -7,9 +7,9 @@ const SELECT_ROUTES = `
 		cr.id,
 		cr.name,
 		cr.grade,
+		cr.angle_degrees,
 		cr.wall_type_id,
 		wt.name AS wall_type,
-		wt.angle_degrees,
 		cr.created_at,
 		COALESCE(
 			json_agg(
@@ -39,10 +39,13 @@ const sendError = (res, error) => {
 	res.status(status).json({ error: error.message });
 };
 
-// Save Check: a route needs a name, grade, wall type, and a start and finish hold
-const validateRoute = ({ name, grade, wall_type_id, holds }) => {
+// Save Check: a route needs a name, grade, wall type, angle, and a start and finish hold
+const validateRoute = ({ name, grade, wall_type_id, angle_degrees, holds } = {}) => {
 	if (!name?.trim() || !grade || !wall_type_id) {
 		return 'A route needs a name, grade, and wall type.';
+	}
+	if (!Number.isInteger(angle_degrees)) {
+		return 'A route needs a wall angle in degrees.';
 	}
 	if (!Array.isArray(holds)) {
 		return 'A route needs a holds array.';
@@ -105,14 +108,14 @@ const createRoute = async (req, res) => {
 		return res.status(400).json({ error: message });
 	}
 
-	const { name, grade, wall_type_id, holds } = req.body;
+	const { name, grade, angle_degrees, wall_type_id, holds } = req.body;
 	const client = await pool.connect();
 
 	try {
 		await client.query('BEGIN');
 		const results = await client.query(
-			'INSERT INTO climbing_routes (name, grade, wall_type_id) VALUES ($1, $2, $3) RETURNING id',
-			[name.trim(), grade, wall_type_id]
+			'INSERT INTO climbing_routes (name, grade, angle_degrees, wall_type_id) VALUES ($1, $2, $3, $4) RETURNING id',
+			[name.trim(), grade, angle_degrees, wall_type_id]
 		);
 		const routeId = results.rows[0].id;
 		await insertRouteHolds(client, routeId, holds);
@@ -134,14 +137,14 @@ const updateRoute = async (req, res) => {
 	}
 
 	const { id } = req.params;
-	const { name, grade, wall_type_id, holds } = req.body;
+	const { name, grade, angle_degrees, wall_type_id, holds } = req.body;
 	const client = await pool.connect();
 
 	try {
 		await client.query('BEGIN');
 		const results = await client.query(
-			'UPDATE climbing_routes SET name = $1, grade = $2, wall_type_id = $3 WHERE id = $4',
-			[name.trim(), grade, wall_type_id, id]
+			'UPDATE climbing_routes SET name = $1, grade = $2, angle_degrees = $3, wall_type_id = $4 WHERE id = $5',
+			[name.trim(), grade, angle_degrees, wall_type_id, id]
 		);
 		if (results.rowCount === 0) {
 			await client.query('ROLLBACK');
@@ -180,7 +183,7 @@ const deleteRoute = async (req, res) => {
 
 const resetRoutes = async (req, res) => {
 	try {
-		await seedDatabase();
+		await seedAllTables();
 		res.status(200).json({ message: 'Wall reset to starter routes.' });
 	} catch (error) {
 		sendError(res, error);

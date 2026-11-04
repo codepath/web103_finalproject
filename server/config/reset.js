@@ -1,4 +1,5 @@
 import './dotenv.js';
+import { fileURLToPath } from 'url';
 import { pool } from './database.js';
 
 import WallTypes from '../data/WallTypes.js';
@@ -225,12 +226,17 @@ const seedRouteHoldsTable = async () => {
 };
 
 // Order matters because of foreign keys: wall_types/climbing_holds -> climbing_routes -> route_holds
-const seedAllTables = async () => {
+// Exported so the POST /api/routes/reset endpoint can reuse it
+export const seedAllTables = async () => {
 	await seedWallTypesTable();
 	await seedClimbingHoldsTable();
 	await seedClimbingRoutesTable();
 	await seedRouteHoldsTable();
-	await pool.end();
 };
 
-seedAllTables();
+// Only seed and close the pool when run from the command line (node config/reset.js),
+// not when the server imports this file
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+	await seedAllTables();
+	await pool.end();
+}
