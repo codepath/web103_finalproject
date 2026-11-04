@@ -254,3 +254,120 @@ h1 {
     font-size: 26px;
   }
 }
+
+.study-plan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 720px;
+}
+
+.study-plan-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.study-plan-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #202344;
+}
+
+.study-plan-form input,
+.study-plan-form select,
+.study-plan-form textarea {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d9d9e9;
+  border-radius: 10px;
+  background: #fff;
+  color: #202344;
+  font: inherit;
+  font-size: 14px;
+}
+
+.study-plan-form textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.study-plan-form input:focus,
+.study-plan-form select:focus,
+.study-plan-form textarea:focus {
+  outline: 2px solid #625be5;
+  outline-offset: 2px;
+  border-color: #625be5;
+}
+
+.study-plan-form button[type="submit"] {
+  align-self: flex-start;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #625be5;
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.study-plan-form button[type="submit"]:hover {
+  background: #4f46c9;
+}
+
+.study-plan-form button[type="submit"]:focus-visible {
+  outline: 3px solid #4f46c9;
+  outline-offset: 3px;
+}
+
+.study-plan-form [role="alert"] {
+  padding: 14px 18px;
+  border: 1px solid #f2c4c4;
+  border-radius: 10px;
+  background: #fff3f3;
+  color: #9f2929;
+  font-size: 13px;
+}
+
+.study-plan-form [role="alert"] ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.study-plan-form [role="alert"] li + li {
+  margin-top: 5px;
+}
+
+
+button.nav-link {
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.nav-link.active {
+  background: #e9e7ff;
+  color: #4f46c9;
+}
+
+button.nav-link:focus-visible {
+  outline: 2px solid #625be5;
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .study-plan-form {
+    max-width: 100%;
+  }
+
+  .study-plan-form button[type="submit"] {
+    width: 100%;
+  }
+}
