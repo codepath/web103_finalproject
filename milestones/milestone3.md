@@ -27,11 +27,11 @@ You will need to reference the GitHub Project Management guide in the course por
     3. 3
     4. 4
     5. 5
-  - [ ] Set the completion percentage of each milestone. The GitHub Milestone for this unit (Milestone 3 - Unit 7) should be 100% completed when you submit for full points.
-    - Current progress as of October 31, 2026: 41% complete, with 10 closed and 14 open issues.
+  - [x] Set the completion percentage of each milestone. The GitHub Milestone for this unit (Milestone 3 - Unit 7) should be 100% completed when you submit for full points.
+    - Current progress as of November 3, 2026: 68% complete, with 20 closed and 9 open issues.
     - The team plans to finish priority issues and move unfinished work to later milestones as appropriate.
-- [ ] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of the feature's name.
-  - [ ] Under each feature you have completed, include a GIF showing feature functionality.
+- [x] In `readme.md`, check off the features you have completed in this unit by adding a ✅ emoji in front of the feature's name.
+  - [x] Under each feature you have completed, include a GIF showing feature functionality.
 - [x] In this document, complete all five questions in the **Reflection** section below.
 
 ## Reflection

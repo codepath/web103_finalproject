@@ -30,11 +30,11 @@ Backend:
 
 ## Features
 
-### Assignment Creation
+### Assignment Creation ✅
 
 Addition of assignment objects replete with task, topic, grade, and deliverable data. TA only.
 
-[gif goes here]
+https://imgur.com/a/w9juX9G
 
 ### Course Tracking
 
