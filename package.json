@@ -1,27 +1,11 @@
 {
-	"name": "web103_finalproject",
-	"version": "1.0.0",
-	"description": "CodePath WEB103 Final Project",
-	"main": "index.js",
 	"scripts": {
-		"dev": "concurrently \"cd client && vite\" \"cd server && nodemon server\"",
-		"start": "cd server && node server",
-		"build": "cd client && vite build"
+		"postinstall": "npm install --prefix server && npm install --prefix client",
+		"dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\"",
+		"start": "npm run start --prefix server",
+		"build": "npm run build --prefix client"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Arbaz8888/web103_finalproject.git"
-	},
-	"keywords": [],
-	"type": "module",
-	"bugs": {
-		"url": "https://github.com/Arbaz8888/web103_finalproject/issues"
-	},
-	"homepage": "https://github.com/Arbaz8888/web103_finalproject#readme",
-	"dependencies": {
-		"cors": "^2.8.6",
-		"dotenv": "^18.0.9",
-		"express": "^5.3.0",
-		"pg": "^8.23.1"
+	"devDependencies": {
+		"concurrently": "^9.2.5"
 	}
 }
