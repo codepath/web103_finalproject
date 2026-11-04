@@ -1,0 +1,11 @@
+{
+	"scripts": {
+		"postinstall": "npm install --prefix server && npm install --prefix client",
+		"dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\"",
+		"start": "npm run start --prefix server",
+		"build": "npm run build --prefix client"
+	},
+	"devDependencies": {
+		"concurrently": "^9.2.5"
+	}
+}
