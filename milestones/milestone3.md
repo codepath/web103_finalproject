@@ -18,11 +18,11 @@ You will need to reference the GitHub Project Management guide in the course por
     4. [Frontend] Build Reusable 2D WallComponent (T-Nut Bolt Grid)
     5. [Frontend] Build ClimbingHoldsDrawer Component (Select-to-Bolt Palette)
 - [x] In your repo, update the status of issues in your project board.
-- [ ] In your repo, create a GitHub Milestone for each final project unit, corresponding to each of the 5 milestones in your `milestones/` directory.
+- [x] In your repo, create a GitHub Milestone for each final project unit, corresponding to each of the 5 milestones in your `milestones/` directory.
   - List the name of each milestone you created:
     1. Milestone 2 (Unit 6) - Planning and Documentation (100%)
-    2. Milestone 3 (Unit 7) - Backend and Key Frontend Components (100%)
-    3. Milestone 4 (Unit 8) - Finalizing Frontend
+    2. Milestone 3 (Unit 7) - Backend (100%)
+    3. Milestone 4 (Unit 8) - Frontend
     4. Milestone 5 (Unit 9) - Stretch Features
 
   - [x] Set the completion percentage of each milestone. The GitHub Milestone for this unit (Milestone 3 - Unit 7) should be 100% completed when you submit for full points.
