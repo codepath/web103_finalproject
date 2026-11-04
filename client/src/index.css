@@ -390,6 +390,31 @@ h1 {
   border: 1px solid #d9d9e9;
   border-radius: 10px;
   background: #fff;
+.form-card {
+  margin-top: 24px;
+}
+
+.assignment-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.assignment-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #777a9b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.assignment-form input,
+.assignment-form select,
+.assignment-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ededf5;
+  border-radius: 10px;
   color: #202344;
   font: inherit;
   font-size: 14px;
@@ -451,6 +476,40 @@ h1 {
 }
 
 
+.assignment-form .wide {
+  grid-column: 1 / -1;
+}
+
+.assignment-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #4f46c9;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-errors {
+  margin: 0;
+  padding-left: 18px;
+  color: #b45330;
+  font-size: 13px;
+}
+
+.form-success {
+  margin: 0;
+  color: #2f7a4d;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .assignment-form {
+    grid-template-columns: 1fr;
+  }
+}
+
 button.nav-link {
   border: none;
   background: none;
@@ -477,4 +536,9 @@ button.nav-link:focus-visible {
   .study-plan-form button[type="submit"] {
     width: 100%;
   }
+}
+
+.assignment-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
