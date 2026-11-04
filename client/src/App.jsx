@@ -61,6 +61,15 @@ function App() {
           >
             Study Plans
           </button>
+          <span className="nav-link">Courses</span>
+          <button
+            type="button"
+            className={page === 'assignments' ? 'nav-link active' : 'nav-link'}
+            onClick={() => setPage('assignments')}
+          >
+            Assignments
+          </button>
+          <span className="nav-link">Study Plans</span>
         </nav>
 
         <div className="profile-avatar" aria-label="Demo user">
@@ -77,6 +86,12 @@ function App() {
                 <p>Here is your coursework at a glance.</p>
               </div>
             </section>
+        <section className="welcome-section">
+          <div>
+            <h1>Good morning!</h1>
+            <p>Here is your coursework at a glance.</p>
+          </div>
+        </section>
 
             <section className="summary-grid" aria-label="Dashboard summary">
               <article className="summary-card purple">
@@ -157,6 +172,42 @@ function App() {
                     </button>
                   </div>
                 )}
+                  <span className="item-tag due-tag">
+                    {assignment.due}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </section>
+          </>
+        )}
+
+        {page === 'assignments' && (
+          <>
+        <section className="welcome-section">
+          <div>
+            <h1>Assignments</h1>
+            <p>Every assignment across your courses.</p>
+          </div>
+        </section>
+
+        <section className="content-card">
+          <h2>All assignments</h2>
+          <ul className="item-list">
+            {assignments.map((assignment) => (
+              <li key={assignment.id}>
+                <div className="assignment-info">
+                  <span className="item-name">{assignment.title}</span>
+                  <small>{assignment.course}</small>
+                </div>
+                <span className="item-tag due-tag">{assignment.due}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+          </>
+        )}
 
                 {visibleAssignments.length > 0 ? (
                   <ul className="item-list">
