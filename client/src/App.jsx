@@ -17,6 +17,13 @@ const assignments = [
 function App() {
   const [health, setHealth] = useState('checking...')
   const [page, setPage] = useState('dashboard')
+  const [selectedCourse, setSelectedCourse] = useState(null)
+
+  const visibleAssignments = selectedCourse
+    ? assignments.filter(
+        (assignment) => assignment.course === selectedCourse
+      )
+    : assignments
 
   useEffect(() => {
     fetch('/api/health')
@@ -73,7 +80,9 @@ function App() {
 
             <section className="summary-grid" aria-label="Dashboard summary">
               <article className="summary-card purple">
-                <div className="summary-icon" aria-hidden="true">📚</div>
+                <div className="summary-icon" aria-hidden="true">
+                  📚
+                </div>
                 <div>
                   <p>My courses</p>
                   <strong>{courses.length}</strong>
@@ -81,15 +90,19 @@ function App() {
               </article>
 
               <article className="summary-card peach">
-                <div className="summary-icon" aria-hidden="true">✓</div>
+                <div className="summary-icon" aria-hidden="true">
+                  ✓
+                </div>
                 <div>
                   <p>Upcoming assignments</p>
-                  <strong>{assignments.length}</strong>
+                  <strong>{visibleAssignments.length}</strong>
                 </div>
               </article>
 
               <article className="summary-card green">
-                <div className="summary-icon" aria-hidden="true">📝</div>
+                <div className="summary-icon" aria-hidden="true">
+                  📝
+                </div>
                 <div>
                   <p>Study plans</p>
                   <strong>0</strong>
@@ -100,10 +113,25 @@ function App() {
             <section className="content-grid">
               <article className="content-card">
                 <h2>My courses</h2>
+
                 <ul className="item-list">
                   {courses.map((course) => (
                     <li key={course.id}>
-                      <span className="item-name">{course.name}</span>
+                      <button
+                        type="button"
+                        className="course-button"
+                        aria-pressed={selectedCourse === course.name}
+                        onClick={() =>
+                          setSelectedCourse(
+                            selectedCourse === course.name
+                              ? null
+                              : course.name
+                          )
+                        }
+                      >
+                        {course.name}
+                      </button>
+
                       <span className="item-tag">Course</span>
                     </li>
                   ))}
@@ -112,19 +140,46 @@ function App() {
 
               <article className="content-card">
                 <h2>Due soon</h2>
-                <ul className="item-list">
-                  {assignments.map((assignment) => (
-                    <li key={assignment.id}>
-                      <div className="assignment-info">
-                        <span className="item-name">{assignment.title}</span>
-                        <small>{assignment.course}</small>
-                      </div>
-                      <span className="item-tag due-tag">
-                        {assignment.due}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+
+                {selectedCourse && (
+                  <div className="course-filter">
+                    <p>
+                      Showing assignments for{' '}
+                      <strong>{selectedCourse}</strong>
+                    </p>
+
+                    <button
+                      type="button"
+                      className="reset-filter-button"
+                      onClick={() => setSelectedCourse(null)}
+                    >
+                      Show all courses
+                    </button>
+                  </div>
+                )}
+
+                {visibleAssignments.length > 0 ? (
+                  <ul className="item-list">
+                    {visibleAssignments.map((assignment) => (
+                      <li key={assignment.id}>
+                        <div className="assignment-info">
+                          <span className="item-name">
+                            {assignment.title}
+                          </span>
+                          <small>{assignment.course}</small>
+                        </div>
+
+                        <span className="item-tag due-tag">
+                          {assignment.due}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="empty-message">
+                    No upcoming assignments for this course.
+                  </p>
+                )}
               </article>
             </section>
 
