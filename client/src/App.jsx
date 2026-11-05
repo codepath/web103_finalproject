@@ -51,7 +51,14 @@ function App() {
           </button>
 
           <span className="nav-link">Courses</span>
-          <span className="nav-link">Assignments</span>
+          <button
+            type="button"
+            className={page === 'assignments' ? 'nav-link active' : 'nav-link'}
+            aria-current={page === 'assignments' ? 'page' : undefined}
+            onClick={() => setPage('assignments')}
+          >
+            Assignments
+          </button>
 
           <button
             type="button"
@@ -186,6 +193,34 @@ function App() {
             <p className="demo-note">
               Demo dashboard — sample data shown until the API is connected.
             </p>
+          </>
+        )}
+
+        {page === 'assignments' && (
+          <>
+            <section className="welcome-section">
+              <div>
+                <h1>Assignments</h1>
+                <p>Every assignment across your courses.</p>
+              </div>
+            </section>
+
+            <section className="content-card">
+              <h2>All assignments</h2>
+
+              <ul className="item-list">
+                {assignments.map((assignment) => (
+                  <li key={assignment.id}>
+                    <div className="assignment-info">
+                      <span className="item-name">{assignment.title}</span>
+                      <small>{assignment.course}</small>
+                    </div>
+
+                    <span className="item-tag due-tag">{assignment.due}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </>
         )}
 
