@@ -1,10 +1,17 @@
 import express from 'express';
 import './config/dotenv.js';
 import cors from 'cors';
+import HoldsRouter from './routes/holds.js';
+import WallTypesRouter from './routes/wallTypes.js';
+import ClimbingRoutesRouter from './routes/climbingRoutes.js';
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.use('/api/holds', HoldsRouter);
+app.use('/api/wall-types', WallTypesRouter);
+app.use('/api/routes', ClimbingRoutesRouter);
 
 const PORT = process.env.PORT || 3000;
 
