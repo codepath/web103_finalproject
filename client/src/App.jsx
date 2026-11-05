@@ -24,10 +24,16 @@ function App() {
   const [assignments, setAssignments] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-
-  // Capture time during initialization to avoid calling
-  // an impure function during React rendering.
   const [currentTime] = useState(() => Date.now())
+  const [assignmentCourseFilter, setAssignmentCourseFilter] = useState('all')
+
+  // Assignments page filtering
+  const filteredPageAssignments =
+    assignmentCourseFilter === 'all'
+      ? assignments
+      : assignments.filter(
+          (assignment) => String(assignment.course_id) === assignmentCourseFilter
+        )
 
   useEffect(() => {
     const controller = new AbortController()
@@ -407,33 +413,63 @@ function App() {
               <section className="content-card">
                 <h2>All assignments</h2>
 
-                {assignments.length > 0 ? (
+                <div className="course-filter">
+                  <label htmlFor="assignment-course-filter">
+                    Filter by course
+                  </label>
+                  <select
+                    id="assignment-course-filter"
+                    value={assignmentCourseFilter}
+                    onChange={(event) =>
+                      setAssignmentCourseFilter(event.target.value)
+                    }
+                  >
+                    <option value="all">All Courses</option>
+                    {courses.map((course) => (
+                      <option key={course.id} value={String(course.id)}>
+                        {course.course_name}
+                      </option>
+                    ))}
+                  </select>
+                  {assignmentCourseFilter !== 'all' && (
+                    <button
+                      type="button"
+                      className="reset-filter-button"
+                      onClick={() => setAssignmentCourseFilter('all')}
+                    >
+                      Clear filter
+                    </button>
+                  )}
+                </div>
+
+                <p role="status" aria-live="polite">
+                  Showing {filteredPageAssignments.length}{' '}
+                  {filteredPageAssignments.length === 1
+                    ? 'assignment'
+                    : 'assignments'}
+                </p>
+
+                {filteredPageAssignments.length > 0 ? (
                   <ul className="item-list">
-                    {assignments.map((assignment) => (
+                    {filteredPageAssignments.map((assignment) => (
                       <li key={assignment.id}>
                         <div className="assignment-info">
                           <span className="item-name">
                             {assignment.title}
                           </span>
-
-                          <small>
-                            {courseName(
-                              assignment.course_id
-                            )}
-                          </small>
+                          <small>{courseName(assignment.course_id)}</small>
                         </div>
-
                         <span className="item-tag due-tag">
-                          {formatDue(
-                            assignment.due_date
-                          )}
+                          {formatDue(assignment.due_date)}
                         </span>
                       </li>
                     ))}
                   </ul>
                 ) : (
                   <p className="empty-message">
-                    No assignments available.
+                    {assignmentCourseFilter === 'all'
+                      ? 'No assignments available.'
+                      : 'No assignments found for this course.'}
                   </p>
                 )}
               </section>
