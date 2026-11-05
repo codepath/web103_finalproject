@@ -19,11 +19,23 @@ function App() {
   const [page, setPage] = useState('dashboard')
   const [selectedCourse, setSelectedCourse] = useState(null)
 
+  // Independent filter for the Assignments page
+  const [assignmentCourseFilter, setAssignmentCourseFilter] = useState('all')
+
+  // Existing Dashboard filtering
   const visibleAssignments = selectedCourse
     ? assignments.filter(
         (assignment) => assignment.course === selectedCourse
       )
     : assignments
+
+  // Assignments page filtering
+  const filteredPageAssignments =
+    assignmentCourseFilter === 'all'
+      ? assignments
+      : assignments.filter(
+          (assignment) => assignment.course === assignmentCourseFilter
+        )
 
   useEffect(() => {
     fetch('/api/health')
@@ -51,6 +63,7 @@ function App() {
           </button>
 
           <span className="nav-link">Courses</span>
+
           <button
             type="button"
             className={page === 'assignments' ? 'nav-link active' : 'nav-link'}
@@ -208,18 +221,68 @@ function App() {
             <section className="content-card">
               <h2>All assignments</h2>
 
-              <ul className="item-list">
-                {assignments.map((assignment) => (
-                  <li key={assignment.id}>
-                    <div className="assignment-info">
-                      <span className="item-name">{assignment.title}</span>
-                      <small>{assignment.course}</small>
-                    </div>
+              {/* Course filter controls */}
+              <div className="course-filter">
+                <label htmlFor="assignment-course-filter">
+                  Filter by course
+                </label>
 
-                    <span className="item-tag due-tag">{assignment.due}</span>
-                  </li>
-                ))}
-              </ul>
+                <select
+                  id="assignment-course-filter"
+                  value={assignmentCourseFilter}
+                  onChange={(event) =>
+                    setAssignmentCourseFilter(event.target.value)
+                  }
+                >
+                  <option value="all">All Courses</option>
+
+                  {courses.map((course) => (
+                    <option key={course.id} value={course.name}>
+                      {course.name}
+                    </option>
+                  ))}
+                </select>
+
+                {assignmentCourseFilter !== 'all' && (
+                  <button
+                    type="button"
+                    className="reset-filter-button"
+                    onClick={() => setAssignmentCourseFilter('all')}
+                  >
+                    Clear filter
+                  </button>
+                )}
+              </div>
+
+              <p role="status" aria-live="polite">
+                Showing {filteredPageAssignments.length}{' '}
+                {filteredPageAssignments.length === 1
+                  ? 'assignment'
+                  : 'assignments'}
+              </p>
+
+              {filteredPageAssignments.length > 0 ? (
+                <ul className="item-list">
+                  {filteredPageAssignments.map((assignment) => (
+                    <li key={assignment.id}>
+                      <div className="assignment-info">
+                        <span className="item-name">
+                          {assignment.title}
+                        </span>
+                        <small>{assignment.course}</small>
+                      </div>
+
+                      <span className="item-tag due-tag">
+                        {assignment.due}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="empty-message">
+                  No assignments found for this course.
+                </p>
+              )}
             </section>
           </>
         )}
