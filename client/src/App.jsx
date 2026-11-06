@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import StudyPlanForm from './components/StudyPlanForm.jsx'
 
+const emptyForm = {
+  course_id: '',
+  priority: '',
+  title: '',
+  description: '',
+  due_date: ''
+}
+
 const formatDue = (due) => {
   if (!due) return 'No due date'
 
@@ -19,7 +27,10 @@ function App() {
   const [health, setHealth] = useState('checking...')
   const [page, setPage] = useState('dashboard')
   const [selectedCourse, setSelectedCourse] = useState(null)
-
+  const [form, setForm] = useState(emptyForm)
+  const [formErrors, setFormErrors] = useState([])
+  const [success, setSuccess] = useState('')
+  const [submitting, setSubmitting] = useState(false)
   const [courses, setCourses] = useState([])
   const [assignments, setAssignments] = useState([])
   const [loading, setLoading] = useState(true)
@@ -136,6 +147,55 @@ function App() {
   const courseName = (id) =>
     courses.find((course) => course.id === id)?.course_name ??
     'Unknown course'
+
+    const updateField = (event) =>
+    setForm({ ...form, [event.target.name]: event.target.value })
+
+  const submitAssignment = async (event) => {
+    event.preventDefault()
+    setFormErrors([])
+    setSuccess('')
+
+    if (submitting) return
+    setSubmitting(true)
+
+    // TEMPORARY: no auth yet, so the course's TA stands in as creator.
+    // Replace with the logged-in user's id once auth exists.
+    const course = courses.find((c) => c.id === Number(form.course_id))
+
+    try {
+      const res = await fetch('/api/assignments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          course_id: course ? course.id : null,
+          created_by: course ? course.ta_id : null,
+          priority: form.priority === '' ? null : Number(form.priority),
+          title: form.title,
+          description: form.description === '' ? null : form.description,
+          due_date: form.due_date
+        })
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        setFormErrors(data.errors ?? [data.error ?? 'Could not create assignment'])
+        return
+      }
+
+      setAssignments((prev) =>
+        [...prev, data].sort(
+          (a, b) => new Date(a.due_date) - new Date(b.due_date)
+        )
+      )
+      setForm(emptyForm)
+      setSuccess(`Created "${data.title}"`)
+    } catch {
+      setFormErrors(['Server unreachable'])
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   const upcomingAssignments = assignments.filter((assignment) => {
     if (!assignment.due_date) return false
@@ -394,7 +454,7 @@ function App() {
             <section className="welcome-section">
               <div>
                 <h1>Assignments</h1>
-                <p>Every assignment across your courses.</p>
+                <p>Create assignments and see what is due.</p>
               </div>
             </section>
 
@@ -410,6 +470,7 @@ function App() {
                 {error}
               </p>
             ) : (
+              <>
               <section className="content-card">
                 <h2>All assignments</h2>
 
@@ -473,6 +534,74 @@ function App() {
                   </p>
                 )}
               </section>
+
+              <section className="content-card form-card">
+                <h2>Create assignment</h2>
+                <form className="assignment-form" onSubmit={submitAssignment}>
+                  <label>
+                    Course
+                    <select name="course_id" value={form.course_id} onChange={updateField} required>
+                      <option value="">Select a course</option>
+                      {courses.map((course) => (
+                        <option key={course.id} value={course.id}>
+                          {course.course_name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label>
+                    Title
+                    <input name="title" value={form.title} onChange={updateField} required />
+                  </label>
+
+                  <label>
+                    Due date
+                    <input
+                      type="datetime-local"
+                      name="due_date"
+                      value={form.due_date}
+                      onChange={updateField}
+                      required
+                    />
+                  </label>
+
+                  <label>
+                    Priority
+                    <input
+                      type="number"
+                      min="1"
+                      name="priority"
+                      value={form.priority}
+                      onChange={updateField}
+                    />
+                  </label>
+
+                  <label className="wide">
+                    Description
+                    <textarea
+                      name="description"
+                      rows="3"
+                      value={form.description}
+                      onChange={updateField}
+                    />
+                  </label>
+
+                  {formErrors.length > 0 && (
+                    <ul className="form-errors wide" role="alert">
+                      {formErrors.map((message) => (
+                        <li key={message}>{message}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {success && <p className="form-success wide" role="status">{success}</p>}
+
+                  <button type="submit" className="wide" disabled={submitting}>
+                    {submitting ? 'Creating...' : 'Create assignment'}
+                  </button>
+                </form>
+              </section>
+              </>
             )}
           </>
         )}
