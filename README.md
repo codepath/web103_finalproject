@@ -24,17 +24,24 @@ Backend: Express and PostgreSQL using Render
 
 ## Features
 
-### Log in with GitHub
+### User accounts
 
-Users must log in with a GitHub account in order to use the app.
+Users must register with an account in order to use the app.
 
 [gif goes here]
 
 ### Reading list view
 
-Users can view the current books in their reading list, as well as books from their reading list they have finished reading.
+✅ Users can view the current books in their reading list, as well as books from their reading list they have finished reading.
 
-[gif goes here]
+<div>
+    <a href="https://www.loom.com/share/c281cd24c3c546aabcebec800519cf4d">
+      <p>Reading List View Feat - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/c281cd24c3c546aabcebec800519cf4d">
+      <img style="max-width:300px;" src="https://www.loom.com/v1/videos/c281cd24c3c546aabcebec800519cf4d/thumbnail.gif">
+    </a>
+  </div>
 
 ### Add book
 
