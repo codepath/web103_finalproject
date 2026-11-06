@@ -10,13 +10,15 @@ const createStatusEnum = async () => {
   }
 };
 
-//add columns for OAuth
 const createUsersTable = async () => {
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(50) NOT NULL
+        github_id INTEGER NOT NULL,
+        username VARCHAR(50) NOT NULL,
+        avatar_url VARCHAR(500) NOT NULL,
+        access_token VARCHAR(500) NOT NULL
       )
     `);
   } catch (error) {
@@ -103,6 +105,7 @@ const reset = async () => {
     await createReadingListsTable();
     await createBooksTable();
     await createAchievementsTable();
+    //await seedAchievementsTable();
     await createUserAchievementsTable();
   } catch (error) {
     console.error("Error running reset function", error);
