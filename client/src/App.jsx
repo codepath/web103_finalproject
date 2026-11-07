@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import StudyPlanForm from './components/StudyPlanForm.jsx'
+// NEW: courses page lives in its own file
+import CoursesPage from './components/CoursesPage.jsx'
 
 const emptyForm = {
   course_id: '',
@@ -239,7 +241,16 @@ function App() {
             Dashboard
           </button>
 
-          <span className="nav-link">Courses</span>
+          {/* NEW: courses nav button, used to be a plain span */}
+          {/* same style as the other nav buttons, clicking it opens the courses page */}
+          <button
+            type="button"
+            className={page === 'courses' ? 'nav-link active' : 'nav-link'}
+            aria-current={page === 'courses' ? 'page' : undefined}
+            onClick={() => setPage('courses')}
+          >
+            Courses
+          </button>
 
           <button
             type="button"
@@ -445,6 +456,35 @@ function App() {
                   </article>
                 </section>
               </>
+            )}
+          </>
+        )}
+
+        {/* NEW: courses page, only shows when page is 'courses' */}
+        {page === 'courses' && (
+          <>
+            <section className="welcome-section">
+              <div>
+                <h1>Courses</h1>
+                <p>Browse your courses and jump to their assignments.</p>
+              </div>
+            </section>
+
+            {/* loading + error first, then the real page */}
+            {loading ? (
+              <p role="status">Loading courses...</p>
+            ) : error ? (
+              <p className="empty-message" role="alert">{error}</p>
+            ) : (
+              <CoursesPage
+                courses={courses}
+                assignments={assignments}
+                onViewAssignments={(courseId) => {
+                  // set the assignments filter, then switch pages
+                  setAssignmentCourseFilter(String(courseId))
+                  setPage('assignments')
+                }}
+              />
             )}
           </>
         )}
