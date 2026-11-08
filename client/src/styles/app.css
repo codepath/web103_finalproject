@@ -98,3 +98,8 @@ h3 { font-size: 14px; line-height: 20px; font-weight: 500; margin: 0; }
 .section-head h2 { margin: 0; }
 .form.card { max-width: 720px; margin-top: 0; }
 .activity-card .inline-row { margin-top: 12px; }
+
+.filter { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); }
+.filter select { padding: 6px 10px; background: var(--bg-surface); border: 1px solid var(--line-control); border-radius: var(--radius-control); }
+.day-group { display: flex; flex-direction: column; gap: 8px; }
+.day-heading { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
