@@ -3,6 +3,7 @@ import pool from "../config/database.js";
 import actingUser from "../middleware/actingUser.js";
 import tripRoutes from "./trips.js";
 import activityRoutes from "./activities.js";
+import expenseRoutes from "./expenses.js";
 
 const router = Router();
 
@@ -27,5 +28,6 @@ router.get("/users", async (_req, res, next) => {
 router.use(actingUser);
 router.use("/trips", tripRoutes);
 router.use("/activities", activityRoutes);
+router.use("/expenses", expenseRoutes);
 
 export default router;
