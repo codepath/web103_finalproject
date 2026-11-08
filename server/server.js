@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import pool from "./config/database.js";
+import routes from "./routes/index.js";
 
 const app = express();
 
@@ -8,19 +8,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//simple manual test
-app.get("/trips", async (_req, res) => {
-  try {
-    const result = await pool.query("SELECT * FROM trips");
-    res.json(result.rows);
-  } catch (error) {
-    console.log("Error fetching trips", error);
-    res.status(500).send("Error fetching trips");
-  }
-});
+app.use("/api", routes);
 
 app.use((_req, res) => {
   res.status(404).json({ error: "Route not found" });
+});
+
+app.use((error, _req, res, _next) => {
+  console.error(error);
+  res.status(500).json({ error: "Something went wrong on the server." });
 });
 
 //start server

@@ -5,11 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // The client calls /api/trips. The server route is /trips.
-      '/api': {
-        target: 'http://localhost:3001',
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
+      // The server serves its API under /api, so requests pass through unchanged.
+      '/api': 'http://localhost:3001',
     },
   },
 })
