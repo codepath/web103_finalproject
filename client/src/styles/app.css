@@ -103,3 +103,7 @@ h3 { font-size: 14px; line-height: 20px; font-weight: 500; margin: 0; }
 .filter select { padding: 6px 10px; background: var(--bg-surface); border: 1px solid var(--line-control); border-radius: var(--radius-control); }
 .day-group { display: flex; flex-direction: column; gap: 8px; }
 .day-heading { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+
+.btn-voted { color: #fff; background: var(--data-spent); border-color: var(--data-spent); }
+.btn-voted:hover { background: #174c99; }
+.vote-count { align-self: center; font-size: 12px; color: var(--text-muted); }

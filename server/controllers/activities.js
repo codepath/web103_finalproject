@@ -2,10 +2,12 @@ import pool from "../config/database.js";
 
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
-// Shared SELECT so every response has the same shape (vote data is added with the voting feature).
+// Shared SELECT so every response has the same shape. $1 is always the acting user's id.
 const ACTIVITY_SELECT = `
   SELECT a.id, a.trip_id, a.created_by_id, u.name AS created_by_name, a.title, a.location,
-         a.scheduled_date, a.description, a.estimated_cost, a.created_at, a.updated_at
+         a.scheduled_date, a.description, a.estimated_cost, a.created_at, a.updated_at,
+         (SELECT COUNT(*)::int FROM activity_votes v WHERE v.activity_id = a.id) AS vote_count,
+         EXISTS (SELECT 1 FROM activity_votes v WHERE v.activity_id = a.id AND v.user_id = $1) AS user_voted
   FROM activities a JOIN users u ON u.id = a.created_by_id`;
 
 function validateActivity(body, trip, { partial = false } = {}) {
@@ -51,9 +53,9 @@ async function getTripDates(tripId) {
 export async function listActivities(req, res, next) {
   try {
     const { rows } = await pool.query(
-      `${ACTIVITY_SELECT} WHERE a.trip_id = $1
+      `${ACTIVITY_SELECT} WHERE a.trip_id = $2
        ORDER BY a.scheduled_date NULLS LAST, a.id`,
-      [req.tripId],
+      [req.userId, req.tripId],
     );
     res.json(rows);
   } catch (error) {
@@ -102,7 +104,10 @@ export async function loadActivity(req, res, next) {
 
 export async function getActivity(req, res, next) {
   try {
-    const { rows } = await pool.query(`${ACTIVITY_SELECT} WHERE a.id = $1`, [req.activity.id]);
+    const { rows } = await pool.query(`${ACTIVITY_SELECT} WHERE a.id = $2`, [
+      req.userId,
+      req.activity.id,
+    ]);
     res.json(rows[0]);
   } catch (error) {
     next(error);
