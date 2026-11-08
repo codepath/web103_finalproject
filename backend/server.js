@@ -4,6 +4,7 @@ import "./config/db.js";
 import referenceRoutes from "./routes/referenceRoutes.js";
 import pantryRoutes from "./routes/pantryRoutes.js";
 import recipeRoutes from "./routes/recipeRoutes.js";
+import shoppingRoutes from "./routes/shoppingRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
@@ -16,6 +17,7 @@ app.use("/api", referenceRoutes);
 // Feature routes are mounted here
 app.use("/api/pantry-items", pantryRoutes);
 app.use("/api/recipes", recipeRoutes);
+app.use("/api/shopping-list", shoppingRoutes);
 
 app.use("/api", notFound);
 app.use(errorHandler);
