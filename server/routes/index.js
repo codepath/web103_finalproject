@@ -2,6 +2,7 @@ import { Router } from "express";
 import pool from "../config/database.js";
 import actingUser from "../middleware/actingUser.js";
 import tripRoutes from "./trips.js";
+import activityRoutes from "./activities.js";
 
 const router = Router();
 
@@ -25,5 +26,6 @@ router.get("/users", async (_req, res, next) => {
 
 router.use(actingUser);
 router.use("/trips", tripRoutes);
+router.use("/activities", activityRoutes);
 
 export default router;
