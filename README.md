@@ -75,10 +75,10 @@ Users can open a recipe in a modal without leaving the current page. The modal d
 
 [gif goes here]
 
-### Recipe Filtering and Sorting
+### ✅ Recipe Filtering and Sorting
 Users can filter and sort recipes by preparation time, meal type, dietary preference, or ingredient match.
 
-[gif goes here]
+![Recipe Filtering and Sorting: diet, meal type, and max time filters plus match and time sorting](planning/assets/recipe-filtering.gif)
 
 ### Saved Recipes
 Users can save recipes they like and view them later from a saved recipes page.

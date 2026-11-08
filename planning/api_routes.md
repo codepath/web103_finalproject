@@ -26,6 +26,50 @@ The only accepted units are: `g`, `kg`, `ml`, `l`, `tsp`, `tbsp`, `cup`, `pieces
 
 Status codes: `201` created, `400` invalid quantity/unit/name, `404` item not found, `409` ingredient already in pantry.
 
+## Recipes
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/recipes` | List recipes with `total_minutes`, `total_count` (ingredients needed), and `have_count` (ingredients in the pantry). Optional query: `mealType`, `diet`, `maxTime` (minutes), `sort` (`time` or `availability`) |
+| GET | `/api/recipes/:id` | One recipe plus its `ingredients`, each marked `have: true/false` |
+
+Status codes: `400` invalid `maxTime`, `sort`, or id, `404` recipe not found.
+
+Example `GET /api/recipes?sort=time`:
+
+```json
+[
+  {
+    "id": 2, "title": "Scrambled Eggs", "description": "Quick breakfast",
+    "instructions": "Whisk eggs and cook in a pan.",
+    "prep_minutes": 5, "cook_minutes": 5, "servings": 1,
+    "meal_type": "Breakfast", "dietary_preference": null, "image_url": null,
+    "total_minutes": 10, "total_count": 1, "have_count": 1
+  }
+]
+```
+
+Example `GET /api/recipes/1`:
+
+```json
+{
+  "id": 1, "title": "Chicken Rice Bowl", "description": "Simple chicken and rice meal",
+  "instructions": "Cook rice, prepare chicken, and combine.",
+  "prep_minutes": 10, "cook_minutes": 25, "servings": 2,
+  "meal_type": "Dinner", "dietary_preference": null, "image_url": null,
+  "ingredients": [
+    { "id": 1, "name": "Chicken Breast", "category": "Protein", "quantity": 200, "unit": "g", "have": false },
+    { "id": 2, "name": "Rice", "category": "Grains", "quantity": 150, "unit": "g", "have": true }
+  ]
+}
+```
+
+Example error, `GET /api/recipes/9999` (404):
+
+```json
+{ "error": "Recipe not found." }
+```
+
 ## Planned (not yet built)
 
-`/api/recipes`, `/api/recipes/:id`, `/api/meal-plan`, `/api/shopping-list` — see `feature_requirements.md`.
+`/api/meal-plan`, `/api/shopping-list` — see `feature_requirements.md`.
