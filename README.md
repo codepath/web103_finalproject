@@ -39,9 +39,13 @@ The recording demonstrates the Trips page, shared sidebar, and demo user selecti
 
 ![Demo user switching on the Trips page](docs/gifs/demo-user-switcher.gif)
 
-### 1. Create and Manage Trips
+### ✅ 1. Create and Manage Trips
 
-- [ ] Users can create a trip with a title, destination, start date, end date, and budget. They can view trip details, update the information, and delete a trip they organize.
+- [x] Users can create a trip with a title, destination, start date, end date, and budget. They can view trip details, update the information, and delete a trip they organize.
+
+The recording demonstrates browsing trips, creating a trip, editing its budget in Settings, and deleting it.
+
+![Creating, editing, and deleting a trip](docs/gifs/create-manage-trips.gif)
 
 ### 2. Join Trips and View Members
 
