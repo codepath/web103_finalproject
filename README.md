@@ -55,9 +55,13 @@ The recording demonstrates Arnold joining the Portland trip with its invitation 
 
 ![Joining a trip with an invitation code](docs/gifs/join-trips-members.gif)
 
-### 3. Suggest and Manage Activities
+### ✅ 3. Suggest and Manage Activities
 
-- [ ] Trip participants can add activities with a title, location, scheduled date, description, and estimated cost. They can view activities and edit or delete their own suggestions.
+- [x] Trip participants can add activities with a title, location, scheduled date, description, and estimated cost. They can view activities and edit or delete their own suggestions.
+
+The recording demonstrates adding an activity, editing its cost, and deleting it. Only the person who added an activity can change it, and scheduled dates must fall within the trip dates.
+
+![Adding, editing, and deleting an activity](docs/gifs/activities.gif)
 
 ### 4. View a Daily Itinerary
 
