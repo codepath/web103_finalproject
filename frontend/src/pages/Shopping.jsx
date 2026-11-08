@@ -32,6 +32,15 @@ export default function Shopping() {
   const remove = (item) => run(() => api.del(`/shopping-list/${item.id}`));
   const clearChecked = () => run(() => api.del("/shopping-list/checked"));
 
+  function moveToPantry() {
+    run(async () => {
+      const { moved, skipped } = await api.post("/shopping-list/checked/to-pantry");
+      let text = `Moved ${moved} item${moved === 1 ? "" : "s"} to your pantry.`;
+      if (skipped) text += ` ${skipped} stayed here because the unit doesn't match your pantry.`;
+      setMessage(text);
+    });
+  }
+
   function addMissing() {
     run(async () => {
       const { added } = await api.post(`/shopping-list/from-recipe/${recipeId}`);
@@ -84,7 +93,10 @@ export default function Shopping() {
         <section className="group">
           <div className="group-head">
             <h3 className="group-title">In cart</h3>
-            <button className="btn small" onClick={clearChecked}>Clear checked</button>
+            <div className="actions">
+              <button className="btn small primary" onClick={moveToPantry}>Move to pantry</button>
+              <button className="btn small" onClick={clearChecked}>Clear checked</button>
+            </div>
           </div>
           <div className="card table">{inCart.map(row)}</div>
         </section>

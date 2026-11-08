@@ -1,19 +1,24 @@
 import { pool, USER_ID } from "../config/db.js";
-import { UNITS } from "../config/units.js";
+import { UNITS, convert } from "../config/units.js";
 
 const SELECT = `
   SELECT s.id, s.ingredient_id, i.name, i.category, s.quantity, s.unit, s.is_checked, s.source
   FROM shopping_list_items s JOIN ingredients i ON i.id = s.ingredient_id`;
 
-// Adds to an unchecked row with the same ingredient and unit, or makes a new row
+// Adds to an unchecked row of the same ingredient if the units can be combined
+// (same unit, or g/kg, or ml/l), otherwise makes a new row
 async function addOrCombine(ingredientId, quantity, unit, source) {
-  const upd = await pool.query(
-    `UPDATE shopping_list_items SET quantity = quantity + $1
-     WHERE user_id = $2 AND ingredient_id = $3 AND unit = $4 AND is_checked = FALSE
-     RETURNING id`,
-    [quantity, USER_ID, ingredientId, unit]
+  const { rows } = await pool.query(
+    "SELECT id, unit FROM shopping_list_items WHERE user_id = $1 AND ingredient_id = $2 AND is_checked = FALSE",
+    [USER_ID, ingredientId]
   );
-  if (upd.rows[0]) return upd.rows[0].id;
+  for (const row of rows) {
+    const extra = convert(quantity, unit, row.unit);
+    if (extra !== null) {
+      await pool.query("UPDATE shopping_list_items SET quantity = quantity + $1 WHERE id = $2", [extra, row.id]);
+      return row.id;
+    }
+  }
   const ins = await pool.query(
     `INSERT INTO shopping_list_items (user_id, ingredient_id, quantity, unit, source)
      VALUES ($1, $2, $3, $4, $5) RETURNING id`,
@@ -102,6 +107,40 @@ export async function deleteShoppingItem(req, res, next) {
     );
     if (!del.rows[0]) return res.status(404).json({ error: "Shopping list item not found." });
     res.status(204).end();
+  } catch (e) { next(e); }
+}
+
+// Puts every checked item into the pantry, then takes it off the list
+export async function moveCheckedToPantry(_req, res, next) {
+  try {
+    const { rows: items } = await pool.query(
+      "SELECT id, ingredient_id, quantity, unit FROM shopping_list_items WHERE user_id = $1 AND is_checked = TRUE",
+      [USER_ID]
+    );
+    let moved = 0;
+    for (const item of items) {
+      const { rows } = await pool.query(
+        "SELECT id, unit FROM pantry_items WHERE user_id = $1 AND ingredient_id = $2",
+        [USER_ID, item.ingredient_id]
+      );
+      const pantry = rows[0];
+      if (pantry) {
+        const extra = convert(item.quantity, item.unit, pantry.unit);
+        if (extra === null) continue; // e.g. cup vs g: leave it on the list
+        await pool.query(
+          "UPDATE pantry_items SET quantity = quantity + $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2",
+          [extra, pantry.id]
+        );
+      } else {
+        await pool.query(
+          "INSERT INTO pantry_items (user_id, ingredient_id, quantity, unit) VALUES ($1, $2, $3, $4)",
+          [USER_ID, item.ingredient_id, item.quantity, item.unit]
+        );
+      }
+      await pool.query("DELETE FROM shopping_list_items WHERE id = $1", [item.id]);
+      moved++;
+    }
+    res.json({ moved, skipped: items.length - moved });
   } catch (e) { next(e); }
 }
 
