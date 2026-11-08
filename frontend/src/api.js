@@ -17,3 +17,16 @@ export const api = {
   patch: (p, body) => request(p, { method: "PATCH", body }),
   del: (p) => request(p, { method: "DELETE" }),
 };
+
+// Fetch recipes with optional filters, excluding empty or null values.
+export const getRecipes = (params = {}) => {
+  const query = new URLSearchParams(
+    Object.entries(params).filter(([, v]) => v !== "" && v != null)
+  ).toString();
+
+  const path = query ? `/recipes?${query}` : "/recipes";
+  return api.get(path);
+};
+
+//  Fetch a single recipe by ID
+export const getRecipe = (id) => api.get(`/recipes/${id}`);
