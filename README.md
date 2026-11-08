@@ -50,10 +50,10 @@ In development, Vite forwards `/api` requests to the backend.
 
 ## Features
 
-### Pantry Inventory
+### ✅ Pantry Inventory
 Users can add, view, edit, and delete ingredients in their pantry, including ingredient name, quantity, category, and expiration information.
 
-[gif goes here]
+![Pantry Inventory: add, edit, and delete an ingredient](planning/assets/pantry-inventory.gif)
 
 ### Smart Recipe Suggestions
 Users can view recipe suggestions based on ingredients they currently have in their pantry. Recipes will show which ingredients the user already has and which ingredients are missing.
