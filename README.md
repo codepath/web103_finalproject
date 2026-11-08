@@ -79,9 +79,13 @@ The recording demonstrates voting, removing a vote, and a second participant vot
 
 ![Voting on an activity](docs/gifs/voting.gif)
 
-### 6. Track Shared Expenses
+### ✅ 6. Track Shared Expenses
 
-- [ ] Participants can record an expense’s description, amount, and payer, view the trip’s total spending compared with its budget, and edit or delete their own expense entries. Automatic debt settlement is outside the initial scope.
+- [x] Participants can record an expense’s description, amount, and payer, view the trip’s total spending compared with its budget, and edit or delete their own expense entries. Automatic debt settlement is outside the initial scope.
+
+The recording demonstrates the budget summary, adding an expense paid by another member, editing it past the budget, and deleting it.
+
+![Recording and editing shared expenses](docs/gifs/expenses.gif)
 
 ## Initial Technical Plan
 

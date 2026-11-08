@@ -107,3 +107,10 @@ h3 { font-size: 14px; line-height: 20px; font-weight: 500; margin: 0; }
 .btn-voted { color: #fff; background: var(--data-spent); border-color: var(--data-spent); }
 .btn-voted:hover { background: #174c99; }
 .vote-count { align-self: center; font-size: 12px; color: var(--text-muted); }
+
+.budget-card { max-width: 720px; }
+.budget-line { margin: 0 0 12px; }
+.budget-track { height: 8px; background: var(--data-track); border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.budget-fill { height: 100%; background: var(--data-spent); }
+.budget-fill.over { background: var(--text-negative); }
+.section-gap { margin-top: 16px; }
