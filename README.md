@@ -72,10 +72,10 @@ Users can create a shopping list for ingredients they still need to buy, includi
 
 Done so far: add, check off, and delete items, add a recipe's missing ingredients, combine matching units (g/kg, ml/l), and move bought items into the pantry. Still to do: fill the list from planned recipes once the Weekly Meal Planner is built.
 
-### Recipe Detail Modal
+### ✅ Recipe Detail Modal
 Users can open a recipe in a modal without leaving the current page. The modal displays ingredients, instructions, preparation time, and other recipe details.
 
-[gif goes here]
+![Recipe Detail Modal: open a recipe in a modal without leaving the page. Displays ingredients, instructions, preperation time, and other recipe details](planning/assets/recipe-detail-modal.gif)
 
 ### ✅ Recipe Filtering and Sorting
 Users can filter and sort recipes by preparation time, meal type, dietary preference, or ingredient match.
