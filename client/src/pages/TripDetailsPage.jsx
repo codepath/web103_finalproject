@@ -2,17 +2,24 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { api, formatDate, formatMoney } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
+import MemberList from '../components/MemberList.jsx'
 
 export default function TripDetailsPage() {
   const { tripId } = useParams()
   const { activeUser } = useActiveUser()
   const [trip, setTrip] = useState(null)
+  const [members, setMembers] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
     setTrip(null)
     setError('')
-    api(`/trips/${tripId}`).then(setTrip).catch((err) => setError(err.message))
+    Promise.all([api(`/trips/${tripId}`), api(`/trips/${tripId}/members`)])
+      .then(([tripData, memberData]) => {
+        setTrip(tripData)
+        setMembers(memberData)
+      })
+      .catch((err) => setError(err.message))
   }, [tripId, activeUser.id])
 
   if (error) return <p className="error" role="alert">{error}</p>
@@ -28,6 +35,8 @@ export default function TripDetailsPage() {
       <p>
         Invite code: <code className="code">{trip.invite_code}</code>
       </p>
+      <h2>Members ({members.length})</h2>
+      <MemberList members={members} />
     </section>
   )
 }

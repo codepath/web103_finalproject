@@ -47,9 +47,13 @@ The recording demonstrates browsing trips, creating a trip, editing its budget i
 
 ![Creating, editing, and deleting a trip](docs/gifs/create-manage-trips.gif)
 
-### 2. Join Trips and View Members
+### ✅ 2. Join Trips and View Members
 
-- [ ] Users can join an existing trip using its invitation code and view the trip’s members. Each membership records whether the user is an organizer or a member.
+- [x] Users can join an existing trip using its invitation code and view the trip’s members. Each membership records whether the user is an organizer or a member.
+
+The recording demonstrates Arnold joining the Portland trip with its invitation code and then seeing the member list with roles.
+
+![Joining a trip with an invitation code](docs/gifs/join-trips-members.gif)
 
 ### 3. Suggest and Manage Activities
 
