@@ -45,3 +45,47 @@
 .recipe-tags { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .recipe-grid.is-loading { opacity: .55; transition: opacity .15s; }
 .empty .btn { margin-top: 10px; }
+
+
+/* Recipe Detail Modal */
+.recipe-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.recipe-detail h3 {
+  margin-top: 10px;
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ingredient-list .match-badge {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.recipe-detail .recipe-meta {
+  flex-wrap: wrap;
+}
+
+.recipe-card[role="button"] {
+  cursor: pointer;
+}
+
+.recipe-card[role="button"]:hover {
+  border-color: var(--brand);
+}
