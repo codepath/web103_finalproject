@@ -30,8 +30,10 @@ Status codes: `201` created, `400` invalid quantity/unit/name, `404` item not fo
 
 | Method | Endpoint | Purpose |
 |---|---|---|
-| GET | `/api/recipes` | List recipes with `total_minutes`, `total_count` (ingredients needed), and `have_count` (ingredients in the pantry). Optional query: `mealType`, `diet`, `maxTime` (minutes), `sort` (`time` or `availability`) |
-| GET | `/api/recipes/:id` | One recipe plus its `ingredients`, each marked `have: true/false` |
+| GET | `/api/recipes` | List recipes with `total_minutes`, `total_count` (ingredients needed), and `have_count` (ingredients in the pantry), and `is_saved`. Optional query: `mealType`, `diet`, `maxTime` (minutes), `sort` (`time` or `availability`) |
+| GET | `/api/recipes/:id` | One recipe plus `is_saved` and its `ingredients`, each marked `have: true/false` |
+
+`is_saved` is `true` when the demo user has saved the recipe (see [Saved recipes](#saved-recipes)).
 
 Status codes: `400` invalid `maxTime`, `sort`, or id, `404` recipe not found.
 
@@ -44,7 +46,7 @@ Example `GET /api/recipes?sort=time`:
     "instructions": "Whisk eggs and cook in a pan.",
     "prep_minutes": 5, "cook_minutes": 5, "servings": 1,
     "meal_type": "Breakfast", "dietary_preference": null, "image_url": null,
-    "total_minutes": 10, "total_count": 1, "have_count": 1
+    "total_minutes": 10, "total_count": 1, "have_count": 1, "is_saved": true
   }
 ]
 ```
@@ -57,6 +59,7 @@ Example `GET /api/recipes/1`:
   "instructions": "Cook rice, prepare chicken, and combine.",
   "prep_minutes": 10, "cook_minutes": 25, "servings": 2,
   "meal_type": "Dinner", "dietary_preference": null, "image_url": null,
+  "is_saved": false,
   "ingredients": [
     { "id": 1, "name": "Chicken Breast", "category": "Protein", "quantity": 200, "unit": "g", "have": false },
     { "id": 2, "name": "Rice", "category": "Grains", "quantity": 150, "unit": "g", "have": true }
@@ -114,4 +117,33 @@ Example error, `POST /api/meal-plan` with `"meal_type": "brunch"` (400):
 
 ```json
 { "error": "meal_type must be one of: breakfast, lunch, dinner, snack." }
+```
+
+## Saved recipes
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/saved-recipes` | List saved recipes, joined with the recipe's `title`, `image_url`, and `prep_minutes`. Newest saved first |
+| POST | `/api/saved-recipes` | Save a recipe. Body: `{ "recipe_id": 1 }`. Saving a recipe that is already saved does nothing and returns `200` with the existing row |
+| DELETE | `/api/saved-recipes/:recipeId` | Unsave a recipe by its **recipe id** (204) |
+
+Status codes: `201` saved, `200` already saved, `400` invalid `recipe_id`, `404` recipe not found or not saved.
+
+Example `GET /api/saved-recipes`:
+
+```json
+[
+  {
+    "recipe_id": 2, "saved_at": "2026-11-08T19:58:21.154Z",
+    "title": "Scrambled Eggs", "image_url": null, "prep_minutes": 5
+  }
+]
+```
+
+`POST` returns a single saved recipe in the same shape.
+
+Example error, `POST /api/saved-recipes` with `"recipe_id": 9999` (404):
+
+```json
+{ "error": "Recipe not found." }
 ```

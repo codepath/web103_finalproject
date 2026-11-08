@@ -29,7 +29,8 @@ export async function listRecipes(req, res, next) {
               COUNT(p.ingredient_id)::int AS have_count,
               COUNT(p.ingredient_id)::int AS matched_count,
               (COUNT(ri.ingredient_id) - COUNT(p.ingredient_id))::int AS missing_count,
-              COALESCE(ARRAY_AGG(i.name ORDER BY i.name) FILTER (WHERE p.ingredient_id IS NULL AND ri.ingredient_id IS NOT NULL), '{}') AS missing_ingredients
+              COALESCE(ARRAY_AGG(i.name ORDER BY i.name) FILTER (WHERE p.ingredient_id IS NULL AND ri.ingredient_id IS NOT NULL), '{}') AS missing_ingredients,
+              EXISTS (SELECT 1 FROM saved_recipes s WHERE s.recipe_id = r.id AND s.user_id = $1) AS is_saved
        FROM recipes r
        LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
        LEFT JOIN ingredients i ON i.id = ri.ingredient_id
@@ -50,7 +51,12 @@ export async function getRecipe(req, res, next) {
     const id = Number(req.params.id);
     if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ error: "Recipe id must be a positive whole number." });
 
-    const recipe = await pool.query("SELECT * FROM recipes WHERE id = $1", [id]);
+    const recipe = await pool.query(
+      `SELECT r.*,
+              EXISTS (SELECT 1 FROM saved_recipes s WHERE s.recipe_id = r.id AND s.user_id = $2) AS is_saved
+       FROM recipes r WHERE r.id = $1`,
+      [id, USER_ID]
+    );
     if (!recipe.rows[0]) return res.status(404).json({ error: "Recipe not found." });
 
     // have = the user's pantry holds this ingredient with quantity above 0
