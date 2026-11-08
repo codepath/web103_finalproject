@@ -75,10 +75,11 @@ Example error, `GET /api/recipes/9999` (404):
 | Method | Endpoint | Purpose |
 |---|---|---|
 | GET | `/api/shopping-list` | List items with ingredient `name`, `category`, `is_checked`, and `source` (`manual` or `recipe`), unchecked first |
-| POST | `/api/shopping-list` | Add an item. Body: `ingredient_id` **or** `name` (+ optional `category`), `quantity`, `unit`. If the same ingredient and unit is already unchecked on the list, the quantity is added to it |
+| POST | `/api/shopping-list` | Add an item. Body: `ingredient_id` **or** `name` (+ optional `category`), `quantity`, `unit`. If the same ingredient is already unchecked on the list with a unit that can be combined (same unit, g/kg, or ml/l), the quantity is added to that row |
 | POST | `/api/shopping-list/from-recipe/:recipeId` | Add the recipe's ingredients that are not in the pantry. Returns `{ "added": 2 }` |
 | PATCH | `/api/shopping-list/:id` | Check or uncheck an item. Body: `{ "is_checked": true }` |
 | DELETE | `/api/shopping-list/:id` | Remove an item (204) |
+| POST | `/api/shopping-list/checked/to-pantry` | Add every checked item to the pantry (adds to an existing pantry item when the units can be combined), then remove it from the list. Items whose unit can't be combined with the pantry's stay on the list. Returns `{ "moved": 2, "skipped": 0 }` |
 | DELETE | `/api/shopping-list/checked` | Remove all checked items (204) |
 
 Status codes: `201` created, `400` invalid quantity/unit/name or `is_checked`, `404` item or recipe not found.
