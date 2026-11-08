@@ -28,12 +28,12 @@ Deployment: Render.
 
 ## Features
 
-The six core features below are planned. Checkboxes will be checked and demonstration GIFs added as features are implemented.
+All six core features below are implemented. Each has a demonstration GIF.
 
 ### ✅ App Layout and Demo User Switching
 
 - [x] Users can access the shared sidebar and switch between seeded demo users (Yingshu, Yugant, and Arnold). The selected demo user is stored locally between visits. This development feature does not provide authentication.
-- React Router provides page routes for trips, creating a trip, trip details, expenses, and settings. These pages are scaffolding for the core features below.
+- React Router provides page routes for trips, creating a trip, trip details, expenses, and settings. These pages host the core features below.
 
 The recording demonstrates the Trips page, shared sidebar, and demo user selection.
 
