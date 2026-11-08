@@ -41,3 +41,7 @@
 .match-badge.full { background: var(--green-soft); color: #2f5f2e; }
 .match-badge.partial { background: var(--amber-soft); color: #8a5a0a; }
 .match-badge.none { background: var(--red-soft); color: var(--red); }
+
+.recipe-tags { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.recipe-grid.is-loading { opacity: .55; transition: opacity .15s; }
+.empty .btn { margin-top: 10px; }

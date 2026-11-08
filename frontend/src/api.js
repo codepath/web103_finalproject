@@ -19,7 +19,7 @@ export const api = {
 };
 
 // Fetch recipes with optional filters, excluding empty or null values.
-export const getRecipes = (params = {}) => {  
+export const getRecipes = (params = {}) => {
   const query = new URLSearchParams(
     Object.entries(params).filter(([, v]) => v !== "" && v != null)
   ).toString();
@@ -30,13 +30,3 @@ export const getRecipes = (params = {}) => {
 
 //  Fetch a single recipe by ID
 export const getRecipe = (id) => api.get(`/recipes/${id}`);
-
-
-
-
-
-
-
-
-
-

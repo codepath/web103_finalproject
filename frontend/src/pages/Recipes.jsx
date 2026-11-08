@@ -1,67 +1,84 @@
-import { useEffect, useMemo,useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PageHeader from "../components/PageHeader.jsx";
 import RecipeCard from "../components/RecipeCard.jsx";
-import { api } from "../api.js";
+import { getRecipes } from "../api.js";
 import "../styles/pantry.css";
 import "../styles/recipes.css";
 
+// Sort dropdown value -> `sort` query param for GET /api/recipes (name is the API default)
+const SORT_PARAMS = { name: undefined, time: "time", match: "availability" };
+const MAX_TIME_OPTIONS = [10, 15, 30, 45];
+
 export default function Recipes() {
-  // null = still loading, [] = loaded but empty, [...] = recipes to show
+  // null = first load not finished, [] = loaded but empty, [...] = recipes to show
   const [recipes, setRecipes] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [reloadKey, setReloadKey] = useState(0);
+
   const [search, setSearch] = useState("");
   const [mealType, setMealType] = useState("All");
-  const [sortBy, setSortBy] = useState("name"); 
-  const [error, setError] = useState(null);
+  const [diet, setDiet] = useState("All");
+  const [maxTime, setMaxTime] = useState("");
+  const [sortBy, setSortBy] = useState("name");
 
+  // Filter choices come from the unfiltered list, so picking one option doesn't hide the others
+  const [options, setOptions] = useState({ mealTypes: [], diets: [] });
+
+  // Meal type, diet, max time and sort are applied by the API; search stays on the client
   useEffect(() => {
-    // Recipes come from GET /api/recipes, with pantry match counts for the demo user
-    api.get("/recipes")
-      .then(setRecipes)
-      .catch((e) => { setError(e.message); setRecipes([]); });
-  }, []);
+    let ignore = false;
+    const unfiltered = mealType === "All" && diet === "All" && !maxTime;
+    setLoading(true);
+    setError(null);
 
-  const mealTypes = useMemo(() => {
-    return [
-      "All",
-      ...new Set((recipes || []).map((recipe) => recipe.meal_type))
-    ];
-  }, [recipes]);
+    getRecipes({
+      mealType: mealType === "All" ? "" : mealType,
+      diet: diet === "All" ? "" : diet,
+      maxTime,
+      sort: SORT_PARAMS[sortBy],
+    })
+      .then((rows) => {
+        if (ignore) return;
+        setRecipes(rows);
+        if (unfiltered) {
+          const unique = (key) => [...new Set(rows.map((r) => r[key]).filter(Boolean))].sort();
+          setOptions({ mealTypes: unique("meal_type"), diets: unique("dietary_preference") });
+        }
+      })
+      .catch((e) => !ignore && setError(e.message))
+      .finally(() => !ignore && setLoading(false));
+
+    return () => { ignore = true; };
+  }, [mealType, diet, maxTime, sortBy, reloadKey]);
 
   const shownRecipes = useMemo(() => {
-    const filtered = (recipes || []).filter((recipe) => {
-      const matchesSearch = recipe.title.toLowerCase().includes(search.trim().toLowerCase());
-      const matchesMealType = mealType === "All" || recipe.meal_type === mealType; 
-      return matchesSearch && matchesMealType; 
-    }); 
+    const term = search.trim().toLowerCase();
+    return (recipes || []).filter((recipe) => recipe.title.toLowerCase().includes(term));
+  }, [recipes, search]);
 
-    return filtered.sort((a, b) => {
-      if (sortBy === "time") {
-        const timeA = (a.prep_minutes || 0) + (a.cook_minutes || 0); 
-        const timeB = (b.prep_minutes || 0) + (b.cook_minutes || 0); 
-        return timeA - timeB;
-      }
+  const retry = () => setReloadKey((k) => k + 1);
 
-      if (sortBy === "match") {
-        const matchA = a.total_count > 0 ? a.have_count / a.total_count : 0; 
-        const matchB = b.total_count > 0 ? b.have_count / b.total_count : 0; 
-        return matchB - matchA;
-      }
-      // Default sort by title
-      return a.title.localeCompare(b.title);
-    }); 
-  }, [recipes, search, mealType, sortBy]); 
-
-
-  // Loading state
-  if (recipes === null) return <p className="muted">Loading recipes…</p>;
-  if (error) return <div className="empty card pad">Couldn't load recipes: {error}</div>;
+  // First load: nothing to show yet
+  if (recipes === null && loading) return <p className="muted">Loading recipes…</p>;
+  if (recipes === null && error) {
+    return (
+      <div className="empty card pad">
+        <p>Couldn't load recipes: {error}</p>
+        <button className="btn" onClick={retry}>Try again</button>
+      </div>
+    );
+  }
 
   return (
     <>
-      <PageHeader title="Discover Recipes" subtitle={`${shownRecipes.length} recipes to try`} />
+      <PageHeader
+        title="Discover Recipes"
+        subtitle={loading ? "Updating…" : `${shownRecipes.length} recipes to try`}
+      />
 
       <div className="toolbar">
-        <input 
+        <input
           type="search"
           placeholder="Search recipes..."
           value={search}
@@ -69,7 +86,7 @@ export default function Recipes() {
         />
 
         <div className="tabs">
-          {mealTypes.map((type) => (
+          {["All", ...options.mealTypes].map((type) => (
             <button
               key={type}
               className={`tab ${mealType === type ? "on" : ""}`}
@@ -79,6 +96,16 @@ export default function Recipes() {
             </button>
           ))}
         </div>
+
+        <select value={diet} onChange={(e) => setDiet(e.target.value)} aria-label="Filter by diet">
+          <option value="All">Any diet</option>
+          {options.diets.map((d) => <option key={d} value={d}>{d}</option>)}
+        </select>
+
+        <select value={maxTime} onChange={(e) => setMaxTime(e.target.value)} aria-label="Filter by total time">
+          <option value="">Any time</option>
+          {MAX_TIME_OPTIONS.map((m) => <option key={m} value={m}>{m} min or less</option>)}
+        </select>
 
         <select
           value={sortBy}
@@ -91,13 +118,17 @@ export default function Recipes() {
         </select>
       </div>
 
-      {/* Shown recipes */}
-      {shownRecipes.length === 0 ? (
+      {error ? (
         <div className="empty card pad">
-          No recipes match your search or filters. 
+          <p>Couldn't update recipes: {error}</p>
+          <button className="btn" onClick={retry}>Try again</button>
+        </div>
+      ) : shownRecipes.length === 0 ? (
+        <div className="empty card pad">
+          No recipes match your search or filters.
         </div>
       ) : (
-        <div className="recipe-grid">
+        <div className={`recipe-grid ${loading ? "is-loading" : ""}`} aria-busy={loading}>
           {shownRecipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}
