@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import PageHeader from "../components/PageHeader.jsx";
 import RecipeCard from "../components/RecipeCard.jsx";
-import { getRecipes } from "../api.js";
+import { getRecipes, getRecipe } from "../api.js";
+import RecipeDetail from "../components/RecipeDetail.jsx";
+import Modal from "../components/Modal.jsx";
 import "../styles/pantry.css";
 import "../styles/recipes.css";
 
@@ -24,6 +26,12 @@ export default function Recipes() {
 
   // Filter choices come from the unfiltered list, so picking one option doesn't hide the others
   const [options, setOptions] = useState({ mealTypes: [], diets: [] });
+
+  // Recipe detail modal state
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [recipeDetails, setRecipeDetails] = useState(null);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [detailError, setDetailError] = useState(null);
 
   // Meal type, diet, max time and sort are applied by the API; search stays on the client
   useEffect(() => {
@@ -58,6 +66,29 @@ export default function Recipes() {
   }, [recipes, search]);
 
   const retry = () => setReloadKey((k) => k + 1);
+
+  // Load full recipe details when a card is selected
+  useEffect(() => {
+    if (!selectedRecipe) return;
+    let ignore = false;
+
+    setRecipeDetails(null);
+    setDetailError(null); 
+    setDetailLoading(true); 
+
+    getRecipe(selectedRecipe.id)
+      .then((data) => {
+        if (!ignore) setRecipeDetails(data); 
+      })
+      .catch((e) => {
+        if (!ignore) setDetailError(e.message);
+      })
+      .finally(() => {
+        if (!ignore) setDetailLoading(false);
+      });
+
+      return () => { ignore = true; };
+      }, [selectedRecipe]); 
 
   // First load: nothing to show yet
   if (recipes === null && loading) return <p className="muted">Loading recipes…</p>;
@@ -130,9 +161,28 @@ export default function Recipes() {
       ) : (
         <div className={`recipe-grid ${loading ? "is-loading" : ""}`} aria-busy={loading}>
           {shownRecipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <RecipeCard key={recipe.id} recipe={recipe} onClick={() => setSelectedRecipe(recipe)}/>
           ))}
         </div>
+      )}
+
+      {/* Recipe detail modal */}
+      {selectedRecipe && (
+        <Modal 
+          title={selectedRecipe.title}
+          onClose={() => setSelectedRecipe(null)}
+          wide
+        >
+          {detailLoading ? (
+            <p className="muted">Loading recipe details...</p>
+          ) : detailError ? (
+            <p className="error">Couldn't load recipe: {detailError}</p>
+          ) : recipeDetails ? (
+            <RecipeDetail recipe={recipeDetails}/>
+          ) : (
+            <p className="muted">Loading recipe details...</p>
+          )}
+        </Modal>
       )}
     </>
   );

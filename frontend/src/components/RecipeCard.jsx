@@ -1,5 +1,5 @@
 // One recipe shown as a card in the grid.
-export default function RecipeCard({ recipe }) {
+export default function RecipeCard({ recipe, onClick }) {
   // The API sends total_minutes; prep/cook can be null, so fall back to 0 for each
   const totalMinutes = recipe.total_minutes ?? (recipe.prep_minutes || 0) + (recipe.cook_minutes || 0);
   const haveAll = recipe.have_count === recipe.total_count;
@@ -11,7 +11,18 @@ export default function RecipeCard({ recipe }) {
   if (haveNone) badgeClass = "match-badge none";
 
   return (
-    <article className="recipe-card card">
+    <article 
+      className="recipe-card card"
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      >
       <div className="recipe-tags">
         <span className="meal-type">{recipe.meal_type}</span>
         {recipe.dietary_preference && <span className="pill">{recipe.dietary_preference}</span>}
