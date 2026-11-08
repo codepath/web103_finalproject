@@ -18,17 +18,24 @@ export async function listRecipes(req, res, next) {
     if (maxTime) { params.push(Number(maxTime)); where.push(`COALESCE(r.prep_minutes,0) + COALESCE(r.cook_minutes,0) <= $${params.length}`); }
 
     const orderBy = sort === "availability"
-      ? "COUNT(p.id)::float / NULLIF(COUNT(ri.ingredient_id), 0) DESC NULLS LAST, total_minutes"
+      ? "COUNT(p.ingredient_id)::float / NULLIF(COUNT(ri.ingredient_id), 0) DESC NULLS LAST, total_minutes"
       : sort === "time" ? "total_minutes, r.title" : "r.title";
 
+    // The DISTINCT subquery keeps duplicate pantry rows from inflating the counts.
     const { rows } = await pool.query(
       `SELECT r.*,
               COALESCE(r.prep_minutes,0) + COALESCE(r.cook_minutes,0) AS total_minutes,
               COUNT(ri.ingredient_id)::int AS total_count,
-              COUNT(p.id)::int AS have_count
+              COUNT(p.ingredient_id)::int AS have_count,
+              COUNT(p.ingredient_id)::int AS matched_count,
+              (COUNT(ri.ingredient_id) - COUNT(p.ingredient_id))::int AS missing_count,
+              COALESCE(ARRAY_AGG(i.name ORDER BY i.name) FILTER (WHERE p.ingredient_id IS NULL AND ri.ingredient_id IS NOT NULL), '{}') AS missing_ingredients
        FROM recipes r
        LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
-       LEFT JOIN pantry_items p ON p.ingredient_id = ri.ingredient_id AND p.user_id = $1 AND p.quantity > 0
+       LEFT JOIN ingredients i ON i.id = ri.ingredient_id
+       LEFT JOIN (
+         SELECT DISTINCT ingredient_id FROM pantry_items WHERE user_id = $1 AND quantity > 0
+       ) p ON p.ingredient_id = ri.ingredient_id
        ${where.length ? `WHERE ${where.join(" AND ")}` : ""}
        GROUP BY r.id
        ORDER BY ${orderBy}`,
@@ -49,10 +56,12 @@ export async function getRecipe(req, res, next) {
     // have = the user's pantry holds this ingredient with quantity above 0
     const { rows: ingredients } = await pool.query(
       `SELECT i.id, i.name, i.category, ri.quantity, ri.unit,
-              (p.id IS NOT NULL) AS have
+              (p.ingredient_id IS NOT NULL) AS have
        FROM recipe_ingredients ri
        JOIN ingredients i ON i.id = ri.ingredient_id
-       LEFT JOIN pantry_items p ON p.ingredient_id = ri.ingredient_id AND p.user_id = $2 AND p.quantity > 0
+       LEFT JOIN (
+         SELECT DISTINCT ingredient_id FROM pantry_items WHERE user_id = $2 AND quantity > 0
+       ) p ON p.ingredient_id = ri.ingredient_id
        WHERE ri.recipe_id = $1
        ORDER BY i.name`,
       [id, USER_ID]
