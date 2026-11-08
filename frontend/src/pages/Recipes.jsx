@@ -1,7 +1,7 @@
 import { useEffect, useMemo,useState } from "react";
 import PageHeader from "../components/PageHeader.jsx";
 import RecipeCard from "../components/RecipeCard.jsx";
-import { SAMPLE_RECIPES } from "../data/sampleRecipes.js";
+import { api } from "../api.js";
 import "../styles/pantry.css";
 import "../styles/recipes.css";
 
@@ -11,12 +11,13 @@ export default function Recipes() {
   const [search, setSearch] = useState("");
   const [mealType, setMealType] = useState("All");
   const [sortBy, setSortBy] = useState("name"); 
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Pretend to load for a moment so the loading state is visible.
-    // Later: api.get("/recipes").then(setRecipes)
-    const timer = setTimeout(() => setRecipes(SAMPLE_RECIPES), 500);
-    return () => clearTimeout(timer);
+    // Recipes come from GET /api/recipes, with pantry match counts for the demo user
+    api.get("/recipes")
+      .then(setRecipes)
+      .catch((e) => { setError(e.message); setRecipes([]); });
   }, []);
 
   const mealTypes = useMemo(() => {
@@ -53,6 +54,7 @@ export default function Recipes() {
 
   // Loading state
   if (recipes === null) return <p className="muted">Loading recipes…</p>;
+  if (error) return <div className="empty card pad">Couldn't load recipes: {error}</div>;
 
   return (
     <>
