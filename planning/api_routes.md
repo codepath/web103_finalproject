@@ -70,6 +70,19 @@ Example error, `GET /api/recipes/9999` (404):
 { "error": "Recipe not found." }
 ```
 
+## Shopping list
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/shopping-list` | List items with ingredient `name`, `category`, `is_checked`, and `source` (`manual` or `recipe`), unchecked first |
+| POST | `/api/shopping-list` | Add an item. Body: `ingredient_id` **or** `name` (+ optional `category`), `quantity`, `unit`. If the same ingredient and unit is already unchecked on the list, the quantity is added to it |
+| POST | `/api/shopping-list/from-recipe/:recipeId` | Add the recipe's ingredients that are not in the pantry. Returns `{ "added": 2 }` |
+| PATCH | `/api/shopping-list/:id` | Check or uncheck an item. Body: `{ "is_checked": true }` |
+| DELETE | `/api/shopping-list/:id` | Remove an item (204) |
+| DELETE | `/api/shopping-list/checked` | Remove all checked items (204) |
+
+Status codes: `201` created, `400` invalid quantity/unit/name or `is_checked`, `404` item or recipe not found.
+
 ## Planned (not yet built)
 
-`/api/meal-plan`, `/api/shopping-list` — see `feature_requirements.md`.
+`/api/meal-plan` — see `feature_requirements.md`.

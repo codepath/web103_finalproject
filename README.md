@@ -68,7 +68,9 @@ Users can add recipes to a weekly meal plan and organize meals by day.
 ### Smart Shopping List
 Users can create a shopping list for ingredients they still need to buy, including ingredients missing from planned recipes.
 
-[gif goes here]
+![Smart Shopping List: add missing ingredients from a recipe, add an item, check off, and clear checked items](planning/assets/shopping-list.gif)
+
+Done so far: add, check off, and delete items, and add a recipe's missing ingredients. Still to do: fill the list from planned recipes once the Weekly Meal Planner is built.
 
 ### Recipe Detail Modal
 Users can open a recipe in a modal without leaving the current page. The modal displays ingredients, instructions, preparation time, and other recipe details.
