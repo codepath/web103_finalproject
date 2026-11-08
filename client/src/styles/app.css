@@ -86,3 +86,9 @@ input, textarea, select { font: inherit; color: var(--text-primary); }
 .btn:disabled { opacity: 0.6; cursor: default; }
 .btn-small { padding: 4px 10px; font-size: 12px; }
 .error { color: var(--text-negative); margin: 0; }
+
+.inline-row { display: flex; gap: 8px; }
+.inline-row input { flex: 1; padding: 8px 12px; background: var(--bg-surface); border: 1px solid var(--line-control); border-radius: var(--radius-control); }
+.join-form label { display: block; margin-bottom: 8px; font-size: 12px; color: var(--text-muted); }
+.member-list { list-style: none; margin: 8px 0 0; padding: 0; max-width: 420px; }
+.member-list li { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line-rule); }

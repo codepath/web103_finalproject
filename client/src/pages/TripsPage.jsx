@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { api } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
 import TripCard from '../components/TripCard.jsx'
+import JoinTripForm from '../components/JoinTripForm.jsx'
 
 export default function TripsPage() {
   const { activeUser } = useActiveUser()
@@ -29,6 +30,7 @@ export default function TripsPage() {
       {trips && (
         <div className="stack">
           {trips.map((trip) => <TripCard key={trip.id} trip={trip} />)}
+          <JoinTripForm />
         </div>
       )}
     </section>
