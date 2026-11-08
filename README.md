@@ -63,9 +63,13 @@ The recording demonstrates adding an activity, editing its cost, and deleting it
 
 ![Adding, editing, and deleting an activity](docs/gifs/activities.gif)
 
-### 4. View a Daily Itinerary
+### ✅ 4. View a Daily Itinerary
 
-- [ ] Participants can view activities grouped by day and filter the itinerary by date to find the plans for a specific day.
+- [x] Participants can view activities grouped by day and filter the itinerary by date to find the plans for a specific day.
+
+The recording demonstrates activities grouped by day and the date filter, including a day with nothing planned and the group of unscheduled activities.
+
+![Filtering the itinerary by day](docs/gifs/itinerary.gif)
 
 ### 5. Vote on Activities
 
