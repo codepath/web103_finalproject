@@ -84,6 +84,34 @@ Example error, `GET /api/recipes/9999` (404):
 
 Status codes: `201` created, `400` invalid quantity/unit/name or `is_checked`, `404` item or recipe not found.
 
-## Planned (not yet built)
+## Meal plan
 
-`/api/meal-plan` — see `feature_requirements.md`.
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/meal-plan?start=YYYY-MM-DD` | One week of entries (`start` through `start` + 6 days), joined with the recipe's `title`, `image_url`, and `prep_minutes`. Sorted by date, then breakfast → lunch → dinner → snack |
+| POST | `/api/meal-plan` | Schedule a meal. Body: `recipe_id`, `planned_date` (`YYYY-MM-DD`), `meal_type` |
+| PATCH | `/api/meal-plan/:id` | Move a meal to another day and/or meal type. Body: `planned_date` and/or `meal_type` (fields left out stay the same) |
+| DELETE | `/api/meal-plan/:id` | Remove a planned meal (204) |
+
+`meal_type` must be `breakfast`, `lunch`, `dinner`, or `snack` (case-insensitive, always returned lowercase). Dates are sent and returned as `YYYY-MM-DD` strings.
+
+Status codes: `201` created, `400` missing/invalid `start`, `planned_date`, `meal_type`, or `recipe_id`, `404` entry or recipe not found.
+
+Example `GET /api/meal-plan?start=2026-11-08`:
+
+```json
+[
+  {
+    "id": 1, "recipe_id": 1, "planned_date": "2026-11-08", "meal_type": "dinner",
+    "title": "Chicken Rice Bowl", "image_url": null, "prep_minutes": 10
+  }
+]
+```
+
+`POST` and `PATCH` return a single entry in the same shape.
+
+Example error, `POST /api/meal-plan` with `"meal_type": "brunch"` (400):
+
+```json
+{ "error": "meal_type must be one of: breakfast, lunch, dinner, snack." }
+```
