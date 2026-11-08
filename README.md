@@ -71,9 +71,13 @@ The recording demonstrates activities grouped by day and the date filter, includ
 
 ![Filtering the itinerary by day](docs/gifs/itinerary.gif)
 
-### 5. Vote on Activities
+### ✅ 5. Vote on Activities
 
-- [ ] Participants can vote for activities they want to include and remove their votes. Each activity displays its vote count, with one vote per participant per activity.
+- [x] Participants can vote for activities they want to include and remove their votes. Each activity displays its vote count, with one vote per participant per activity.
+
+The recording demonstrates voting, removing a vote, and a second participant voting, with the count updating each time.
+
+![Voting on an activity](docs/gifs/voting.gif)
 
 ### 6. Track Shared Expenses
 

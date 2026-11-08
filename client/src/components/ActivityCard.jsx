@@ -15,6 +15,16 @@ export default function ActivityCard({ activity, trip, onChanged }) {
     onChanged()
   }
 
+  async function toggleVote() {
+    setError('')
+    try {
+      await api(`/activities/${activity.id}/votes`, { method: activity.user_voted ? 'DELETE' : 'POST' })
+      onChanged()
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
   async function remove() {
     if (!window.confirm(`Delete "${activity.title}"?`)) return
     try {
@@ -56,12 +66,24 @@ export default function ActivityCard({ activity, trip, onChanged }) {
         {activity.created_by_name}
       </p>
       {error && <p className="error" role="alert">{error}</p>}
-      {mine && (
-        <div className="inline-row">
-          <button className="btn btn-small" onClick={() => setEditing(true)}>Edit</button>
-          <button className="btn btn-small btn-danger" onClick={remove}>Delete</button>
-        </div>
-      )}
+      <div className="inline-row">
+        <button
+          className={`btn btn-small${activity.user_voted ? ' btn-voted' : ''}`}
+          onClick={toggleVote}
+          aria-pressed={activity.user_voted}
+        >
+          {activity.user_voted ? 'Remove vote' : 'Vote'}
+        </button>
+        <span className="vote-count" aria-label={`${activity.vote_count} votes`}>
+          {activity.vote_count} {activity.vote_count === 1 ? 'vote' : 'votes'}
+        </span>
+        {mine && (
+          <>
+            <button className="btn btn-small" onClick={() => setEditing(true)}>Edit</button>
+            <button className="btn btn-small btn-danger" onClick={remove}>Delete</button>
+          </>
+        )}
+      </div>
     </article>
   )
 }
