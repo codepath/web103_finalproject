@@ -2,7 +2,7 @@
 
 CodePath WEB103 Final Project
 
-Designed and developed by: Mithun Venkatesh Gowda
+Designed and developed by: Mithun Venkatesh Gowda, Bailey Perillo
 
 🔗 Link to deployed app:
 
@@ -79,7 +79,7 @@ Planned feature; a walkthrough will be added after implementation.
 
 ### Habit & Task CRUD Management:
 
-Full create, read, update, and delete capabilities for managing daily habits, recurring tasks, and completion logs.
+Full create, read, update, edit, and delete capabilities for managing daily habits, recurring tasks, and completion logs.
 
 Planned feature; a walkthrough will be added after implementation.
 
