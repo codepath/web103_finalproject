@@ -4,6 +4,8 @@ import { useRoutes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import AchievementsPage from "./pages/AchievementsPage";
+import AddBookPage from "./pages/AddBookPage";
+import ManageBooksPage from "./pages/ManageBooksPage";
 
 const API_URL = "http://localhost:3001";
 
@@ -23,8 +25,9 @@ function App() {
 
   const logout = async () => {
     const url = `${API_URL}/auth/logout`;
-    const response = await fetch(url, { credentials: 'include' });
-    const json = await response.json();
+    await fetch(url, { credentials: "include" })
+    // const response = await fetch(url, { credentials: 'include' });
+    // const json = await response.json();
     window.location.href = "/";
   };
 
@@ -36,11 +39,20 @@ function App() {
     {
       path: "/Achievements",
       element: user && user.id ? (<AchievementsPage user={user} api_url={API_URL} />) : (<LoginPage api_url={API_URL} />),
+    }, 
+    {
+      path: "/books/new",
+      element: user && user.id ? <AddBookPage /> : <LoginPage api_url={API_URL} />,
+    },
+    {
+      path: "/books/manage",
+      element: user && user.id ? <ManageBooksPage /> : <LoginPage api_url={API_URL} />,
     },
   ]);
 
   return (
     <div className="App">
+      {element}
       {user && user.id ? (
         <div className="header">
           <button onClick={logout} className='header-button'>Logout</button>
@@ -48,7 +60,7 @@ function App() {
       ) : (
         <></>
       )}
-      {element}
+      
     </div>
   );
 }
