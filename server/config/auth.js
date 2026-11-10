@@ -21,8 +21,8 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
   try {
     const results = await pool.query(`
       SELECT * FROM Users
-      WHERE username = $1
-    `, [userData.username]);
+      WHERE github_id = $1
+    `, [userData.githubId]);
     const user = results.rows[0];
 
     //create new user and reading list if registering an account
@@ -39,7 +39,17 @@ const verify = async (accessToken, refreshToken, profile, callback) => {
       await pool.query("INSERT INTO ReadingLists (user_id) VALUES ($1)", [userId]);
       return callback(null, newUser);
     }
-    return callback(null, user);
+
+    //update everytime they login again in case they updated profile pic, username. also update access_token
+    const updated = await pool.query(`
+      UPDATE users
+      SET username = $1, avatar_url = $2, access_token = $3
+      WHERE id = $4
+      RETURNING *
+    `, [userData.username, userData.avatarUrl, accessToken, user.id]);
+
+    return callback(null, updated.rows[0]);
+
   } catch (error) {
     return callback(error);
   }

@@ -19,7 +19,7 @@ function App() {
       setUser(json.user);
     };
     getUser();
-  });
+  }, []);
 
   const logout = async () => {
     const url = `${API_URL}/auth/logout`;

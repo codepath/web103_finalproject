@@ -17,6 +17,6 @@ const request = async (url, options = {}) => {
     return data
 }
 
-const getBooks = async (id) => request(`http://localhost:3002/api/books/${id}`)
+const getBooks = async (id) => request(`http://localhost:3001/api/books/${id}`)
 
 export default { getBooks };
