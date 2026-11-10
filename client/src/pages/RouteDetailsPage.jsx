@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import ClimbingWall from '../components/ClimbingWall'
+import WallComponent from '../components/WallComponent'
 import HoldLegend from '../components/Hold'
 
 function RouteDetailsPage({ routes, onDelete }) {
@@ -26,7 +26,7 @@ function RouteDetailsPage({ routes, onDelete }) {
           <div className="details-actions"><Link className="button button-primary" to={`/routes/${route.id}/edit`}>Edit route</Link><button className="button button-danger" onClick={handleDelete} type="button">Delete</button></div>
           <p className="share-hint">Share this route: <code>{window.location.href}</code></p>
         </div>
-        <ClimbingWall holds={route.holds} />
+        <WallComponent holds={route.holds} size="lg" wallType={route.wallType} angle={route.angle} />
       </div>
       <HoldLegend />
     </section>

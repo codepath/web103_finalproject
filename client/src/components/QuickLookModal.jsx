@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import ClimbingWall from './ClimbingWall'
+import WallComponent from './WallComponent'
 
 function QuickLookModal({ route, onClose }) {
   return (
@@ -9,7 +9,7 @@ function QuickLookModal({ route, onClose }) {
         <p className="eyebrow">QUICK LOOK</p>
         <h2>{route.name}</h2>
         <p>{route.grade} · {route.wallType} wall</p>
-        <ClimbingWall holds={route.holds} compact />
+        <WallComponent holds={route.holds} size="sm" wallType={route.wallType} angle={route.angle} />
         <Link className="button button-primary" to={`/routes/${route.id}`} onClick={onClose}>Open full route</Link>
       </section>
     </div>

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import ClimbingWall from './ClimbingWall'
+import WallComponent from './WallComponent'
 
 function RouteCard({ route, onQuickLook }) {
   return (
     <article className="route-card">
       <button className="preview-button" onClick={() => onQuickLook(route)} type="button">
-        <ClimbingWall holds={route.holds} compact />
+        <WallComponent holds={route.holds} size="sm" wallType={route.wallType} angle={route.angle} />
         <span className="preview-label">Quick look</span>
       </button>
       <div className="route-card-content">
