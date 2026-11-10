@@ -5,7 +5,6 @@ import session from "express-session";
 import { GitHub } from "./config/auth.js";
 
 import authRoutes from "./routes/authRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 
 const app = express();
@@ -45,7 +44,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.use("/api/auth/", authRoutes);
+app.use("/auth", authRoutes);
 app.use("/api/books/", bookRoutes);
 
 const PORT = process.env.PORT || 3001;
