@@ -41,6 +41,13 @@ function App() {
 
   return (
     <div className="App">
+      {user && user.id ? (
+        <div className="header">
+          <button onClick={logout} className='header-button'>Logout</button>
+        </div>
+      ) : (
+        <></>
+      )}
       {element}
     </div>
   );
