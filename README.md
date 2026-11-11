@@ -37,6 +37,35 @@ The initial backend vertical slice is complete:
 - `GET /api/health` returns the backend health status.
 - `GET /api/tasks` returns seeded tasks with their related categories.
 
+### Task API Reference (backend only)
+
+| Method | Route | Success | Notes |
+| --- | --- | --- | --- |
+| `GET` | `/api/health` | `200` | Health check |
+| `GET` | `/api/tasks` | `200` | Supports filters and sorting below |
+| `GET` | `/api/tasks/:id` | `200` | Includes related `categories` |
+| `POST` | `/api/tasks` | `201` | Requires `title` and an existing `user_id` |
+| `PATCH` | `/api/tasks/:id` | `200` | Partial update; `due_date: null` clears the date |
+| `DELETE` | `/api/tasks/:id` | `204` | No response body |
+
+Task fields: `title` (non-empty string), `description` (string),
+`priority` (`low`, `medium`, `high`), `due_date` (`YYYY-MM-DD` or `null`),
+`completed` (`true`/`false`), and `user_id` (create only).
+
+List query parameters:
+
+```text
+GET /api/tasks?completed=false
+GET /api/tasks?priority=high
+GET /api/tasks?category=Learning
+GET /api/tasks?sort=due_date            # due_date | priority | created_at | title
+GET /api/tasks?sort=title&order=desc    # order is optional: asc | desc
+```
+
+Error responses use the shape `{ "error": "message" }`: `400` for invalid IDs,
+fields, query parameters, or malformed JSON; `404` for missing tasks; and `500`
+only for unexpected server failures.
+
 The remaining CRUD, frontend, validation, filtering, and insights features are
 planned for the next milestone and are not marked as completed below.
 

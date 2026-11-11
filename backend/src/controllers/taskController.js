@@ -1,69 +1,98 @@
-import { getAllTasks } from "../models/taskModel.js";
 import {
+  getAllTasks,
   getTaskById,
+  userExists,
   createTask as insertTask,
   updateTask as modifyTask,
   deleteTask as removeTask,
 } from "../models/taskModel.js";
+import {
+  ValidationError,
+  parseTaskId,
+  validateCreateTaskInput,
+  validateTaskListQuery,
+  validateUpdateTaskInput,
+} from "../validators/taskValidation.js";
 
-export async function listTasks(_request, response, next) {
+const TASK_NOT_FOUND = { error: "Task not found." };
+
+// Validation failures become 400 responses; anything else is passed to the
+// app-level error handler and becomes a 500.
+function handleError(error, response, next) {
+  if (error instanceof ValidationError) {
+    return response.status(400).json({ error: error.message });
+  }
+
+  return next(error);
+}
+
+export async function listTasks(request, response, next) {
   try {
-    const tasks = await getAllTasks();
+    const options = validateTaskListQuery(request.query);
+    const tasks = await getAllTasks(options);
     response.json(tasks);
   } catch (error) {
-    next(error);
+    handleError(error, response, next);
   }
 }
-//finds existing task by id and returns it, if not found returns 404 error
+
 export async function getTask(request, response, next) {
   try {
-    const task = await getTaskById(request.params.id);
+    const taskId = parseTaskId(request.params.id);
+    const task = await getTaskById(taskId);
+
     if (!task) {
-      return response.status(404).json({ error: "Task not found" });
+      return response.status(404).json(TASK_NOT_FOUND);
     }
+
     response.json(task);
   } catch (error) {
-    next(error);
+    handleError(error, response, next);
   }
-  
 }
-//creates a new task, if title or user_id is missing returns 400 error
+
 export async function createTask(request, response, next) {
   try {
-    const { title, user_id } = request.body;
-    if(!title|| !user_id){
-      return response.status(400).json({ error: "Title and user_id are required" });
+    const taskInput = validateCreateTaskInput(request.body);
+
+    if (!(await userExists(taskInput.user_id))) {
+      throw new ValidationError("Task user_id does not match an existing user.");
     }
 
-    const task = await insertTask(request.body);
+    const task = await insertTask(taskInput);
     response.status(201).json(task);
   } catch (error) {
-    next(error);
+    handleError(error, response, next);
   }
 }
 
-//not technically needed, but added for completeness. 
-// Updates an existing task, if not found returns 404 error
 export async function updateTask(request, response, next) {
   try {
-    const task = await modifyTask(request.params.id, request.body);
+    const taskId = parseTaskId(request.params.id);
+    const updates = validateUpdateTaskInput(request.body);
+    const task = await modifyTask(taskId, updates);
+
     if (!task) {
-      return response.status(404).json({ error: "Task not found" });
+      return response.status(404).json(TASK_NOT_FOUND);
     }
+
     response.json(task);
   } catch (error) {
-    next(error);
+    handleError(error, response, next);
   }
 }
 
 export async function deleteTask(request, response, next) {
   try {
-    const task = await removeTask(request.params.id);
-    if (!task) {
-      return response.status(404).json({ error: "Task not found" });
+    const taskId = parseTaskId(request.params.id);
+    const deleted = await removeTask(taskId);
+
+    if (!deleted) {
+      return response.status(404).json(TASK_NOT_FOUND);
     }
+
     response.status(204).send();
   } catch (error) {
-    next(error);
+    handleError(error, response, next);
   }
 }

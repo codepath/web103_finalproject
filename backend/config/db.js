@@ -1,7 +1,12 @@
 import "dotenv/config";
 import pg from "pg";
 
-const { Pool } = pg;
+const { Pool, types } = pg;
+
+// Return DATE columns as "YYYY-MM-DD" strings instead of JS Dates, which
+// would be shifted by the server's local timezone when serialized to JSON.
+const POSTGRES_DATE_OID = 1082;
+types.setTypeParser(POSTGRES_DATE_OID, (value) => value);
 
 const requiredEnvironmentVariables = [
   "PGUSER",
