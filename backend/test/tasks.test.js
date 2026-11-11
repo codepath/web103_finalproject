@@ -495,3 +495,106 @@ describe("DELETE /api/tasks/:id", () => {
     assert.equal(response.status, 400);
   });
 });
+
+describe("task categories (category_ids)", () => {
+  async function categoryIdsByName(...names) {
+    const result = await pool.query(
+      "SELECT id FROM categories WHERE name = ANY($1::text[]) ORDER BY name",
+      [names],
+    );
+    return result.rows.map((row) => row.id);
+  }
+
+  function categoryNamesOf(task) {
+    return task.categories.map((category) => category.name);
+  }
+
+  it("creates a task linked to the given categories", async () => {
+    const categoryIds = await categoryIdsByName("Health", "Finance");
+    const response = await request("POST", "/api/tasks", {
+      body: { title: "Budget gym costs", user_id: demoUserId, category_ids: categoryIds },
+    });
+
+    assert.equal(response.status, 201);
+    assert.deepEqual(categoryNamesOf(response.body), ["Finance", "Health"]);
+  });
+
+  it("replaces a task's categories on PATCH", async () => {
+    const taskId = await getTaskIdByTitle("Review reading notes");
+    const categoryIds = await categoryIdsByName("Career");
+    const response = await request("PATCH", `/api/tasks/${taskId}`, {
+      body: { category_ids: categoryIds },
+    });
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(categoryNamesOf(response.body), ["Career"]);
+  });
+
+  it("removes all categories when category_ids is empty", async () => {
+    const taskId = await getTaskIdByTitle("Review reading notes");
+    const response = await request("PATCH", `/api/tasks/${taskId}`, {
+      body: { category_ids: [] },
+    });
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(response.body.categories, []);
+  });
+
+  it("leaves categories alone when category_ids is not sent", async () => {
+    const taskId = await getTaskIdByTitle("Review reading notes");
+    const response = await request("PATCH", `/api/tasks/${taskId}`, {
+      body: { priority: "low" },
+    });
+
+    assert.deepEqual(categoryNamesOf(response.body), ["Learning", "Personal"]);
+  });
+
+  for (const [description, categoryIds] of [
+    ["a non-array", "Health"],
+    ["a non-integer id", ["x"]],
+    ["a zero id", [0]],
+  ]) {
+    it(`rejects ${description} with 400`, async () => {
+      const response = await request("POST", "/api/tasks", {
+        body: { title: "Task", user_id: demoUserId, category_ids: categoryIds },
+      });
+
+      assert.equal(response.status, 400);
+      assert.equal(
+        response.body.error,
+        "Task category_ids must be an array of positive integer ids.",
+      );
+    });
+  }
+
+  it("rejects a category that does not exist and saves nothing", async () => {
+    const response = await request("POST", "/api/tasks", {
+      body: { title: "Ghost category", user_id: demoUserId, category_ids: [999999] },
+    });
+    const tasks = await request("GET", "/api/tasks");
+
+    assert.equal(response.status, 400);
+    assert.equal(response.body.error, "Task category_ids must all match existing categories.");
+    assert.ok(!tasks.body.some((task) => task.title === "Ghost category"));
+  });
+
+  it("rejects an unknown category on PATCH and leaves the task unchanged", async () => {
+    const taskId = await getTaskIdByTitle("Review reading notes");
+    const before = await request("GET", `/api/tasks/${taskId}`);
+    const response = await request("PATCH", `/api/tasks/${taskId}`, {
+      body: { title: "Changed", category_ids: [999999] },
+    });
+    const after = await request("GET", `/api/tasks/${taskId}`);
+
+    assert.equal(response.status, 400);
+    assert.deepEqual(after.body, before.body);
+  });
+
+  it("returns 404 when setting categories on a missing task", async () => {
+    const response = await request("PATCH", "/api/tasks/999999", {
+      body: { category_ids: [] },
+    });
+
+    assert.equal(response.status, 404);
+  });
+});

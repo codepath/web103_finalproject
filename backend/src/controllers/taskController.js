@@ -2,6 +2,7 @@ import {
   getAllTasks,
   getTaskById,
   userExists,
+  allCategoriesExist,
   createTask as insertTask,
   updateTask as modifyTask,
   deleteTask as removeTask,
@@ -15,6 +16,12 @@ import {
 } from "../validators/taskValidation.js";
 
 const TASK_NOT_FOUND = { error: "Task not found." };
+
+async function assertCategoriesExist(categoryIds) {
+  if (categoryIds !== undefined && !(await allCategoriesExist(categoryIds))) {
+    throw new ValidationError("Task category_ids must all match existing categories.");
+  }
+}
 
 // Validation failures become 400 responses; anything else is passed to the
 // app-level error handler and becomes a 500.
@@ -58,6 +65,7 @@ export async function createTask(request, response, next) {
     if (!(await userExists(taskInput.user_id))) {
       throw new ValidationError("Task user_id does not match an existing user.");
     }
+    await assertCategoriesExist(taskInput.category_ids);
 
     const task = await insertTask(taskInput);
     response.status(201).json(task);
@@ -70,6 +78,7 @@ export async function updateTask(request, response, next) {
   try {
     const taskId = parseTaskId(request.params.id);
     const updates = validateUpdateTaskInput(request.body);
+    await assertCategoriesExist(updates.category_ids);
     const task = await modifyTask(taskId, updates);
 
     if (!task) {

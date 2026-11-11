@@ -18,3 +18,16 @@ export function formatDueDate(dueDate) {
     year: "numeric",
   });
 }
+
+// Today's date as "YYYY-MM-DD" in the user's local timezone.
+export function todayDateString() {
+  const now = new Date();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${now.getFullYear()}-${month}-${day}`;
+}
+
+// "YYYY-MM-DD" strings compare correctly as plain strings.
+export function isOverdue(task, today = todayDateString()) {
+  return !task.completed && task.due_date !== null && task.due_date < today;
+}

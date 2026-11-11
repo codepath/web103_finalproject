@@ -10,6 +10,7 @@ const CREATABLE_FIELDS = [
   "due_date",
   "completed",
   "user_id",
+  "category_ids",
 ];
 const UPDATABLE_FIELDS = [
   "title",
@@ -17,6 +18,7 @@ const UPDATABLE_FIELDS = [
   "priority",
   "due_date",
   "completed",
+  "category_ids",
 ];
 const LIST_QUERY_PARAMETERS = ["completed", "priority", "category", "sort", "order"];
 
@@ -127,12 +129,25 @@ function validateCompleted(completed) {
   return completed;
 }
 
+// category_ids replaces the task's whole category set; [] removes them all.
+// Whether each id exists is checked against the database by the controller.
+function validateCategoryIds(categoryIds) {
+  if (!Array.isArray(categoryIds) || !categoryIds.every(isValidId)) {
+    throw new ValidationError(
+      "Task category_ids must be an array of positive integer ids.",
+    );
+  }
+
+  return [...new Set(categoryIds.map(Number))];
+}
+
 const FIELD_VALIDATORS = {
   title: validateTitle,
   description: validateDescription,
   priority: validatePriority,
   due_date: validateDueDate,
   completed: validateCompleted,
+  category_ids: validateCategoryIds,
 };
 
 export function validateCreateTaskInput(body) {
@@ -153,9 +168,10 @@ export function validateCreateTaskInput(body) {
     due_date: null,
     completed: false,
     user_id: Number(body.user_id),
+    category_ids: [],
   };
 
-  for (const field of ["description", "priority", "due_date", "completed"]) {
+  for (const field of ["description", "priority", "due_date", "completed", "category_ids"]) {
     if (body[field] !== undefined) {
       task[field] = FIELD_VALIDATORS[field](body[field]);
     }

@@ -1,4 +1,5 @@
 import express from "express";
+import categoryRouter from "./routes/categoryRoutes.js";
 import taskRouter from "./routes/taskRoutes.js";
 
 const app = express();
@@ -10,6 +11,7 @@ app.get("/api/health", (_request, response) => {
 });
 
 app.use("/api/tasks", taskRouter);
+app.use("/api/categories", categoryRouter);
 
 app.use("/api", (_request, response) => {
   response.status(404).json({ error: "Route not found." });
