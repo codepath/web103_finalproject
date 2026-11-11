@@ -29,8 +29,9 @@ export default function TaskCard({ task, isBusy = false, onToggleComplete, onEdi
       <p className="task-card-meta">
         {task.completed ? "Completed" : "Not completed"} ·{" "}
         <span className={overdue ? "overdue" : undefined}>
-          {overdue ? "Overdue: " : "Due "}
-          {formatDueDate(task.due_date)}
+          {task.due_date === null
+            ? "No due date"
+            : `${overdue ? "Overdue: " : "Due "}${formatDueDate(task.due_date)}`}
         </span>
       </p>
       <CategoryTags categories={task.categories} />
