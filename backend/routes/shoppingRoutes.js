@@ -1,7 +1,14 @@
 import { Router } from "express";
+
 import {
-  listShopping, addShoppingItem, addMissingFromRecipe,
-  updateShoppingItem, deleteShoppingItem, clearChecked, moveCheckedToPantry,
+  listShopping,
+  addShoppingItem,
+  addMissingFromRecipe,
+  generateShoppingList,
+  updateShoppingItem,
+  deleteShoppingItem,
+  clearChecked,
+  moveCheckedToPantry
 } from "../controllers/shoppingController.js";
 
 const router = Router();
@@ -13,5 +20,6 @@ router.post("/checked/to-pantry", moveCheckedToPantry);
 router.delete("/checked", clearChecked);
 router.patch("/:id", updateShoppingItem);
 router.delete("/:id", deleteShoppingItem);
+router.post("/generate", generateShoppingList);
 
 export default router;

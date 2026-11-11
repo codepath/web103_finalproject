@@ -99,13 +99,25 @@ VALUES
 (1, 13, 3, 'pieces'),    -- Banana
 (1, 8, 2, 'pieces');     -- Tomato
 
--- Weekly meal plan
-INSERT INTO meal_plan_entries (user_id, recipe_id, planned_date, meal_type)
-VALUES (1, 1, CURRENT_DATE, 'Dinner');
 
--- Saved recipe
+-- Weekly meal plan
+INSERT INTO meal_plan_entries
+(user_id, recipe_id, planned_date, meal_type)
+VALUES
+(1, 1, CURRENT_DATE, 'dinner'),
+(1, 5, CURRENT_DATE + 1, 'breakfast'),
+(1, 3, CURRENT_DATE + 2, 'lunch'),
+(1, 10, CURRENT_DATE + 3, 'dinner');
+
+
+
+-- Saved recipes
 INSERT INTO saved_recipes (user_id, recipe_id)
-VALUES (1, 2);
+VALUES
+(1, 2),
+(1, 3),
+(1, 9);
+
 
 -- Shopping list
 INSERT INTO shopping_list_items (user_id, ingredient_id, quantity, unit)

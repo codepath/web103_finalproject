@@ -8,6 +8,7 @@ import shoppingRoutes from "./routes/shoppingRoutes.js";
 import mealPlanRoutes from "./routes/mealPlanRoutes.js";
 import savedRecipesRoutes from "./routes/savedRecipesRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
+import resetRoutes from "./routes/resetRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ app.use("/api/shopping-list", shoppingRoutes);
 app.use("/api/meal-plan", mealPlanRoutes);
 app.use("/api/saved-recipes", savedRecipesRoutes);
 
+app.use("/api/reset", resetRoutes);
 app.use("/api", notFound);
 app.use(errorHandler);
 
