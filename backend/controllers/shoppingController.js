@@ -85,19 +85,71 @@ export async function addMissingFromRecipe(req, res, next) {
   } catch (e) { next(e); }
 }
 
+
 export async function updateShoppingItem(req, res, next) {
   try {
-    const { is_checked } = req.body;
-    if (typeof is_checked !== "boolean") return res.status(400).json({ error: "is_checked must be true or false." });
-    const upd = await pool.query(
-      "UPDATE shopping_list_items SET is_checked = $1 WHERE id = $2 AND user_id = $3 RETURNING id",
-      [is_checked, req.params.id, USER_ID]
+    const { is_checked, quantity } = req.body;
+    const updates = [];
+    const values = [];
+
+    if (is_checked !== undefined) {
+      if (typeof is_checked !== "boolean") {
+        return res.status(400).json({
+          error: "is_checked must be true or false."
+        });
+      }
+
+      values.push(is_checked);
+      updates.push(`is_checked = $${values.length}`);
+    }
+
+    if (quantity !== undefined) {
+      if (typeof quantity !== "number" ||
+          !Number.isFinite(quantity) ||
+          quantity <= 0) {
+        return res.status(400).json({
+          error: "Quantity must be a positive number."
+        });
+      }
+
+      values.push(quantity);
+      updates.push(`quantity = $${values.length}`);
+    }
+
+    if (updates.length === 0) {
+      return res.status(400).json({
+        error: "Provide quantity or is_checked."
+      });
+    }
+
+    values.push(req.params.id, USER_ID);
+
+    const result = await pool.query(
+      `UPDATE shopping_list_items
+       SET ${updates.join(", ")}
+       WHERE id = $${values.length - 1}
+         AND user_id = $${values.length}
+       RETURNING id`,
+      values
     );
-    if (!upd.rows[0]) return res.status(404).json({ error: "Shopping list item not found." });
-    const { rows } = await pool.query(`${SELECT} WHERE s.id = $1`, [req.params.id]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({
+        error: "Shopping list item not found."
+      });
+    }
+
+    const { rows } = await pool.query(
+      `${SELECT} WHERE s.id = $1`,
+      [req.params.id]
+    );
+
     res.json(rows[0]);
-  } catch (e) { next(e); }
+  } catch (error) {
+    next(error);
+  }
 }
+
 
 export async function deleteShoppingItem(req, res, next) {
   try {
@@ -149,4 +201,150 @@ export async function clearChecked(_req, res, next) {
     await pool.query("DELETE FROM shopping_list_items WHERE user_id = $1 AND is_checked = TRUE", [USER_ID]);
     res.status(204).end();
   } catch (e) { next(e); }
+}
+
+
+
+export async function generateShoppingList(req, res, next) {
+  const start = req.body?.start;
+
+  if (start && !/^\d{4}-\d{2}-\d{2}$/.test(start)) {
+    return res.status(400).json({
+      error: "Start date must use YYYY-MM-DD."
+    });
+  }
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    // Prevent two simultaneous generations for this user
+    await client.query(
+      "SELECT pg_advisory_xact_lock(19, $1::integer)",
+      [USER_ID]
+    );
+
+    // Default to Monday of the current week
+    const dateResult = await client.query(
+      `SELECT COALESCE(
+        $1::date,
+        CURRENT_DATE - (EXTRACT(ISODOW FROM CURRENT_DATE)::integer - 1)
+      )::text AS week_start`,
+      [start || null]
+    );
+
+    const weekStart = dateResult.rows[0].week_start;
+
+    // Collect ingredients for all planned meals this week
+    const { rows: requirements } = await client.query(
+      `SELECT ri.ingredient_id, ri.unit,
+              SUM(ri.quantity)::float AS quantity
+       FROM meal_plan_entries m
+       JOIN recipe_ingredients ri ON ri.recipe_id = m.recipe_id
+       WHERE m.user_id = $1
+         AND m.planned_date >= $2::date
+         AND m.planned_date < $2::date + 7
+       GROUP BY ri.ingredient_id, ri.unit`,
+      [USER_ID, weekStart]
+    );
+
+    // Combine matching or convertible units
+    const needed = [];
+
+    for (const item of requirements) {
+      const amount = Number(item.quantity);
+
+      const existing = needed.find(
+        row =>
+          row.ingredient_id === item.ingredient_id &&
+          convert(amount, item.unit, row.unit) !== null
+      );
+
+      if (existing) {
+        existing.quantity += convert(
+          amount,
+          item.unit,
+          existing.unit
+        );
+      } else {
+        needed.push({
+          ingredient_id: item.ingredient_id,
+          quantity: amount,
+          unit: item.unit
+        });
+      }
+    }
+
+    // Read available pantry quantities
+    const { rows: pantry } = await client.query(
+      `SELECT ingredient_id, quantity::float AS quantity, unit
+       FROM pantry_items
+       WHERE user_id = $1 AND quantity > 0`,
+      [USER_ID]
+    );
+
+    // Replace generated items, never manual items
+    await client.query(
+      `DELETE FROM shopping_list_items
+       WHERE user_id = $1 AND source = 'generated'`,
+      [USER_ID]
+    );
+
+    let generated = 0;
+
+    for (const item of needed) {
+      let missing = item.quantity;
+
+      for (const stock of pantry) {
+        if (stock.ingredient_id !== item.ingredient_id) continue;
+
+        const available = convert(
+          stock.quantity,
+          stock.unit,
+          item.unit
+        );
+
+        if (available === null || available <= 0) continue;
+
+        const used = Math.min(missing, available);
+
+        stock.quantity -= convert(
+          used,
+          item.unit,
+          stock.unit
+        );
+
+        missing -= used;
+
+        if (missing <= 0.000001) break;
+      }
+
+      const quantity = Number(Math.max(0, missing).toFixed(2));
+
+      if (quantity > 0) {
+        await client.query(
+          `INSERT INTO shopping_list_items
+           (user_id, ingredient_id, quantity, unit, source)
+           VALUES ($1, $2, $3, $4, 'generated')`,
+          [USER_ID, item.ingredient_id, quantity, item.unit]
+        );
+
+        generated++;
+      }
+    }
+
+    await client.query("COMMIT");
+
+    res.json({
+      message: "Shopping list generated successfully.",
+      week_start: weekStart,
+      generated
+    });
+  } catch (error) {
+    await client.query("ROLLBACK");
+    next(error);
+  } finally {
+    client.release();
+  }
 }
