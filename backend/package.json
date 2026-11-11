@@ -7,11 +7,15 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "db:schema": "node scripts/runSql.js schema.sql",
-    "db:seed": "node scripts/runSql.js seed.sql"
+    "db:seed": "node scripts/runSql.js seed.sql",
+    "test": "node --test --test-concurrency=1 \"test/**/*.test.js\""
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "pg": "^8.13.1"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

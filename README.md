@@ -156,3 +156,20 @@ PORT=3000
 ```
 
 Do not commit `.env` or database credentials.
+
+### Backend Tests
+
+The task API tests use Node's built-in test runner (Node 22 or newer) against
+a dedicated local PostgreSQL database. The tests drop and recreate every table
+on each run, so they refuse to start unless the database name ends in `_test`
+and the host is not on Render.
+
+```bash
+createdb habitflow_test
+cd backend
+cp .env.test.example .env.test   # fill in local credentials; ignored by Git
+npm test
+```
+
+Values in `backend/.env.test` take priority over `backend/.env` during tests,
+so the development and Render databases are never touched.

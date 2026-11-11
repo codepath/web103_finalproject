@@ -1,6 +1,7 @@
 .env
 .env.*
 !.env.example
+!.env.test.example
 
 node_modules/
 npm-debug.log*
