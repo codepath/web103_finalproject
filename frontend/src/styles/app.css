@@ -92,3 +92,155 @@ a {
 .page-placeholder {
   color: var(--color-muted);
 }
+
+/* Shared states */
+
+.loading-state,
+.empty-state {
+  color: var(--color-muted);
+}
+
+.error-message {
+  padding: 0.75rem 1rem;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.error-message p {
+  margin: 0 0 0.5rem;
+}
+
+.error-message p:last-child {
+  margin-bottom: 0;
+}
+
+.button {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Tasks */
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.task-card,
+.task-details {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.task-card.completed .task-card-title a {
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+.task-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.task-card-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.task-card-title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.task-card-title a:hover {
+  color: var(--color-accent);
+}
+
+.task-card-meta {
+  margin: 0.25rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.priority-badge {
+  flex-shrink: 0;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.priority-high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.priority-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-low {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.category-tags {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.task-details-fields .category-tags {
+  margin: 0;
+}
+
+.category-tag {
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--category-color);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--color-text);
+}
+
+.task-details h1 {
+  margin: 0;
+}
+
+.task-details-fields {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1.5rem;
+  margin: 1rem 0 0;
+}
+
+.task-details-fields dt {
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.task-details-fields dd {
+  margin: 0;
+}

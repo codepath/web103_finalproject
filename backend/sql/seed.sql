@@ -28,6 +28,22 @@ WHERE u.email = 'demo@habitflow.local'
       AND existing_task.title = seed.title
   );
 
+-- Link the demo tasks to categories. ON CONFLICT keeps re-seeding safe.
+INSERT INTO task_categories (task_id, category_id)
+SELECT t.id, c.id
+FROM tasks AS t
+JOIN users AS u ON u.id = t.user_id
+JOIN (
+  VALUES
+    ('Finish project outline', 'Career'),
+    ('Review reading notes', 'Learning'),
+    ('Review reading notes', 'Personal'),
+    ('Plan workout', 'Health')
+) AS seed(task_title, category_name) ON seed.task_title = t.title
+JOIN categories AS c ON c.name = seed.category_name
+WHERE u.email = 'demo@habitflow.local'
+ON CONFLICT (task_id, category_id) DO NOTHING;
+
 INSERT INTO habits (user_id, name, description, frequency)
 SELECT u.id, seed.name, seed.description, seed.frequency
 FROM users AS u

@@ -14,7 +14,8 @@ const [schemaSql, seedSql] = await Promise.all([
 ]);
 
 // Extra rows on top of seed.sql so filters and sorting have something to
-// distinguish: a completed task with no due date and task-category links.
+// distinguish: a completed task with no due date, linked to a category.
+// (seed.sql already links the three demo tasks to their categories.)
 const fixturesSql = `
   INSERT INTO tasks (user_id, title, description, priority, due_date, completed)
   SELECT id, 'Update resume', 'Add the latest project.', 'low', NULL, TRUE
@@ -24,11 +25,8 @@ const fixturesSql = `
   INSERT INTO task_categories (task_id, category_id)
   SELECT t.id, c.id
   FROM tasks AS t
-  JOIN categories AS c ON (
-    (t.title = 'Review reading notes' AND c.name IN ('Learning', 'Personal')) OR
-    (t.title = 'Plan workout' AND c.name = 'Health') OR
-    (t.title = 'Update resume' AND c.name = 'Career')
-  );
+  JOIN categories AS c ON c.name = 'Career'
+  WHERE t.title = 'Update resume';
 `;
 
 // Rebuilds the test database from scratch. setup.js guarantees this only
