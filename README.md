@@ -1,8 +1,6 @@
-# MomentumAI / HabitFlow
+# HabitFlow
 
-CodePath WEB103 Final Project
-
-Designed and developed by: Mithun Venkatesh Gowda, Bailey Perillo
+Designed and developed by: Mithun Venkatesh Gowda, Bailey Perillo, Anurag Bheemapp
 
 🔗 Link to deployed app:
 
