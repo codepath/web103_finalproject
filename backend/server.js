@@ -6,6 +6,7 @@ import pantryRoutes from "./routes/pantryRoutes.js";
 import recipeRoutes from "./routes/recipeRoutes.js";
 import shoppingRoutes from "./routes/shoppingRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
+import resetRoutes from "./routes/resetRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -18,8 +19,9 @@ app.use("/api", referenceRoutes);
 app.use("/api/pantry-items", pantryRoutes);
 app.use("/api/recipes", recipeRoutes);
 app.use("/api/shopping-list", shoppingRoutes);
-
+app.use("/api/reset", resetRoutes);
 app.use("/api", notFound);
+app.use("/api/reset", resetRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;

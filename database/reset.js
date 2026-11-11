@@ -1,63 +1,48 @@
 
-const { Client } = require("pg");
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
-async function resetDatabase() {
-  if (process.env.CONFIRM_RESET !== "YES") {
-    console.log("Reset blocked. Confirmation required.");
-    return;
+async function resetDatabase(client) {
+  // Only permit resets of the dedicated test database
+  const result = await client.query(
+    "SELECT current_database() AS name"
+  );
+
+  if (result.rows[0].name !== "prepwise_test") {
+    throw new Error(
+      "Reset blocked: only prepwise_test can be reset."
+    );
   }
 
-  if (process.env.NODE_ENV === "production") {
-    throw new Error("Cannot reset a production database.");
-  }
+  const schema = fs.readFileSync(
+    path.join(__dirname, "schema.sql"),
+    "utf8"
+  );
 
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is missing.");
-  }
+  const seed = fs.readFileSync(
+    path.join(__dirname, "seed.sql"),
+    "utf8"
+  );
 
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-  });
-
-  await client.connect();
+  await client.query("BEGIN");
 
   try {
-    const result = await client.query(
-      "SELECT current_database() AS name"
-    );
-
-    if (result.rows[0].name !== "prepwise_qt3o") {
-      throw new Error("Unexpected database. Reset cancelled.");
-    }
-
-    await client.query("BEGIN");
+    await client.query(schema);
 
     await client.query(`
       TRUNCATE TABLE users, ingredients, recipes
       RESTART IDENTITY CASCADE
     `);
 
-    const seed = fs.readFileSync(
-      path.join(__dirname, "seed.sql"),
-      "utf8"
-    );
-
     await client.query(seed);
     await client.query("COMMIT");
 
-    console.log("PrepWise sample data reset successfully!");
+    console.log("Test database reset successfully.");
   } catch (error) {
     await client.query("ROLLBACK");
     throw error;
-  } finally {
-    await client.end();
   }
 }
 
-resetDatabase().catch((error) => {
-  console.error("Reset failed:", error.message);
-  process.exitCode = 1;
-});
+module.exports = { resetDatabase };
+
