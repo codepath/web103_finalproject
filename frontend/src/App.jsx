@@ -5,12 +5,13 @@ import Pantry from "./pages/Pantry.jsx";
 import PantryNew from "./pages/PantryNew.jsx";
 import Recipes from "./pages/Recipes.jsx";
 import Shopping from "./pages/Shopping.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<Placeholder title="Dashboard" />} />
+        <Route index element={<Dashboard />} />
         <Route path="pantry" element={<Pantry />} />
         <Route path="pantry/new" element={<PantryNew />} />
         <Route path="recipes" element={<Recipes />} />
