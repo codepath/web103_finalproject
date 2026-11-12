@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS recipes (
     servings INTEGER CHECK (servings > 0),
     meal_type VARCHAR(30),
     dietary_preference VARCHAR(50),
-    image_url TEXT
+    image_url TEXT,
+    mealdb_id TEXT UNIQUE
 );
 
 -- 4. Pantry Inventory
