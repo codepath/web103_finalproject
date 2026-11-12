@@ -1,6 +1,20 @@
+import AddToMealPlan from "./AddToMealPlan.jsx";
+
 export default function RecipeDetail({ recipe }) {
     return (
         <div className="recipe-detail">
+            {recipe.image_url && (
+  <img
+    src={recipe.image_url}
+    alt={recipe.title}
+    style={{
+      width: "100%",
+      height: "300px",
+      objectFit: "cover",
+      borderRadius: "12px",
+    }}
+  />
+)}
             <h2>{recipe.title}</h2>
             <p className="muted">{recipe.description}</p>
 
@@ -29,6 +43,7 @@ export default function RecipeDetail({ recipe }) {
             {/* Add cooking instructions */}
             <h3>Instructions</h3>
             <p>{recipe.instructions}</p>
+            <AddToMealPlan recipe={recipe} />
         </div>
     ); 
 }
