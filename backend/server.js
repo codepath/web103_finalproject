@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-
+import chatRoutes from "./routes/chatRoutes.js";
 import referenceRoutes from "./routes/referenceRoutes.js";
 import pantryRoutes from "./routes/pantryRoutes.js";
 import recipeRoutes from "./routes/recipeRoutes.js";
@@ -30,7 +30,7 @@ app.use("/api/saved-recipes", savedRecipesRoutes);
 app.use("/api/mealdb", mealdbRoutes);
 
 app.use("/api/reset", resetRoutes);
-
+app.use("/api/chat", chatRoutes);
 app.use("/api", notFound);
 app.use(errorHandler);
 

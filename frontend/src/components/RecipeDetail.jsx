@@ -1,4 +1,5 @@
 import AddToMealPlan from "./AddToMealPlan.jsx";
+import SaveRecipeButton from "./SaveRecipeButton.jsx";
 
 export default function RecipeDetail({ recipe }) {
     return (
@@ -43,6 +44,7 @@ export default function RecipeDetail({ recipe }) {
             {/* Add cooking instructions */}
             <h3>Instructions</h3>
             <p>{recipe.instructions}</p>
+            <SaveRecipeButton key={recipe.id} recipe={recipe} />
             <AddToMealPlan recipe={recipe} />
         </div>
     ); 

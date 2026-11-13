@@ -1,0 +1,391 @@
+
+/* =========================================
+   THEME SWITCH
+========================================= */
+
+.theme-section {
+  margin-top: 30px;
+  padding: 18px 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.theme-label {
+  display: block;
+  color: #c5b39e;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: #f4e7d3;
+
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.theme-switch {
+  width: 32px;
+  height: 18px;
+  margin-left: auto;
+  flex-shrink: 0;
+
+  border-radius: 20px;
+  background: #887365;
+  padding: 2px;
+
+  transition: background 0.2s ease;
+}
+
+.theme-switch-knob {
+  display: block;
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+  background: white;
+
+  transition: transform 0.2s ease;
+}
+
+.theme-switch.active {
+  background: #c8553d;
+}
+
+.theme-switch.active .theme-switch-knob {
+  transform: translateX(14px);
+}
+
+/* =========================================
+   DARK MODE VARIABLES
+========================================= */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #1b1916;
+  --ink: #f4e7d3;
+  --muted: #b9a999;
+
+  --card: #29241f;
+  --surface: #29241f;
+  --paper: #29241f;
+  --line: #493d32;
+
+  --brand: #d66b4e;
+  --brand-dark: #ee9277;
+
+  --green-soft: #293d2b;
+  --amber-soft: #49391f;
+  --red-soft: #4b2926;
+  --red: #f28b7a;
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+[data-theme="dark"] body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .shell {
+  background: var(--bg);
+}
+
+[data-theme="dark"] .sidebar {
+  background: #211a15;
+  color: #f4e7d3;
+  border-right: 1px solid #493d32;
+}
+
+[data-theme="dark"] .brand {
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #d6c5b0;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  background: #372b23;
+}
+
+[data-theme="dark"] .nav-link.active {
+  color: white;
+  background: #b85339;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] .muted {
+  color: #b9a999;
+}
+
+/* =========================================
+   CARDS, TABLES, MODALS
+========================================= */
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .recipe-card,
+[data-theme="dark"] .modal,
+[data-theme="dark"] .planner-day,
+[data-theme="dark"] .planner-meal {
+  background: #29241f;
+  border-color: #493d32;
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] .card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .recipe-card:hover {
+  border-color: #d66b4e;
+}
+
+[data-theme="dark"] .planner-today {
+  border-color: #d66b4e;
+}
+
+[data-theme="dark"] .planner-meal {
+  background: #352b23;
+}
+
+[data-theme="dark"] .planner-day-header {
+  border-color: #493d32;
+}
+
+[data-theme="dark"] .planner-toolbar strong,
+[data-theme="dark"] .planner-day-header span {
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+  color: #f4e7d3;
+  border-color: #493d32;
+}
+
+[data-theme="dark"] th {
+  background: #352b23;
+}
+
+[data-theme="dark"] hr,
+[data-theme="dark"] .ingredient-list li {
+  border-color: #493d32;
+}
+
+[data-theme="dark"] .modal-close {
+  background: #3b3027;
+  color: #f4e7d3;
+}
+
+/* =========================================
+   FORMS AND BUTTONS
+========================================= */
+
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background: #211d19;
+  color: #f4e7d3;
+  border-color: #5b493b;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #a59483;
+}
+
+[data-theme="dark"] .btn:not(.primary):not(.btn-primary) {
+  background: #352b23;
+  border-color: #5b493b;
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] .btn:hover {
+  border-color: #d66b4e;
+}
+
+[data-theme="dark"] .btn.primary,
+[data-theme="dark"] .btn-primary {
+  background: #b85339;
+  border-color: #b85339;
+  color: white;
+}
+
+[data-theme="dark"] .pill {
+  background: #49382c;
+  color: #e8c9aa;
+}
+
+[data-theme="dark"] .match-badge.full {
+  background: #293d2b;
+  color: #a6dba4;
+}
+
+[data-theme="dark"] .match-badge.partial {
+  background: #49391f;
+  color: #f1cd84;
+}
+
+[data-theme="dark"] .match-badge.none {
+  background: #4b2926;
+  color: #f5a79b;
+}
+
+[data-theme="dark"] .planner-remove {
+  color: #f28b7a;
+}
+
+/* =========================================
+   DARK MODE AI CHATBOT
+========================================= */
+
+[data-theme="dark"] .prepwise-chat-panel {
+  background: #211d19;
+  border-color: #493d32;
+  color: #f4e7d3;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .chat-header,
+[data-theme="dark"] .prepwise-chat-launcher {
+  background: #b85339;
+  color: white;
+}
+
+[data-theme="dark"] .chat-header h3 {
+  color: white;
+}
+
+[data-theme="dark"] .chat-toolbar,
+[data-theme="dark"] .chat-input-form,
+[data-theme="dark"] .chat-footer {
+  background: #29241f;
+  border-color: #493d32;
+  color: #b9a999;
+}
+
+[data-theme="dark"] .chat-toolbar button {
+  color: #ee9277;
+}
+
+[data-theme="dark"] .chat-messages {
+  background: #211d19;
+}
+
+[data-theme="dark"] .chat-message.assistant .chat-bubble {
+  background: #352b23;
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] .chat-message.user .chat-bubble {
+  background: #b85339;
+  color: white;
+}
+
+[data-theme="dark"] .chat-recipe-card,
+[data-theme="dark"] .chat-weekly-plan,
+[data-theme="dark"] .chat-external-details,
+[data-theme="dark"] .chat-shopping-review,
+[data-theme="dark"] .chat-preferences,
+[data-theme="dark"] .chat-allergy-option {
+  background: #29241f;
+  color: #f4e7d3;
+  border-color: #493d32;
+}
+
+[data-theme="dark"] .chat-shopping-btn,
+[data-theme="dark"] .chat-suggestions button {
+  background: #352b23;
+  color: #ee9277;
+  border-color: #654535;
+}
+
+[data-theme="dark"] .chat-shopping-confirm {
+  background: #b85339;
+  color: white;
+}
+
+[data-theme="dark"] .chat-preference-help,
+[data-theme="dark"] .chat-recipe-meta,
+[data-theme="dark"] .chat-external-source,
+[data-theme="dark"] .chat-weekly-note,
+[data-theme="dark"] .chat-preferences label,
+[data-theme="dark"] .chat-external-instructions,
+[data-theme="dark"] .chat-external-details ul,
+[data-theme="dark"] .chat-measurement-row label {
+  color: #d1c0ae;
+}
+
+[data-theme="dark"] .chat-shopping-success {
+  color: #a6dba4;
+}
+
+[data-theme="dark"] .chat-shopping-error {
+  color: #f5a79b;
+}
+
+[data-theme="dark"] .chat-active-preferences {
+  background: #29241f;
+  border-color: #493d32;
+}
+
+[data-theme="dark"] .chat-active-preferences span {
+  background: #293d2b;
+  color: #a6dba4;
+}
+
+[data-theme="dark"] .chat-allergy-warning {
+  background: #49391f;
+  border-color: #745632;
+  color: #f1cd84;
+}
+
+[data-theme="dark"] .chat-preference-notice {
+  background: #293d2b;
+  color: #a6dba4;
+  border-color: #49654a;
+}
+
+/* Smooth theme transitions */
+
+body,
+.sidebar,
+.content,
+.card,
+.recipe-card,
+.btn,
+.prepwise-chat-panel {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
