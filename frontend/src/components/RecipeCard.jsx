@@ -23,6 +23,20 @@ export default function RecipeCard({ recipe, onClick }) {
       role="button"
       tabIndex={0}
       >
+        {recipe.image_url && (
+  <img
+    src={recipe.image_url}
+    alt={recipe.title}
+    loading="lazy"
+    style={{
+      width: "100%",
+      height: "200px",
+      objectFit: "cover",
+      borderRadius: "12px",
+      display: "block",
+    }}
+  />
+)}
       <div className="recipe-tags">
         <span className="meal-type">{recipe.meal_type}</span>
         {recipe.dietary_preference && <span className="pill">{recipe.dietary_preference}</span>}
