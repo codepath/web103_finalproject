@@ -1,0 +1,812 @@
+
+/* Weekly Meal Planner */
+.planner-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 230px);
+    gap: 14px;
+    width: max-content;
+    min-width: 0;
+    overflow: visible;
+}
+
+
+
+.planner-day {
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.planner-day h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.planner-day > p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.planner-meals {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.planner-meal-slot {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.planner-meal-slot h3 {
+    font-size: 0.85rem;
+    color: var(--brand-dark);
+    margin-bottom: 10px;
+}
+
+
+/* Planned meal cards */
+.planner-planned-meal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.planner-planned-meal > button:first-child {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--brand-dark);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.planner-planned-meal > button:first-child:hover {
+    text-decoration: underline;
+}
+
+.planner-planned-meal label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.planner-planned-meal input,
+.planner-planned-meal select {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 6px;
+}
+
+/* Planner buttons */
+.planner-meal-slot > button,
+.planner-planned-meal > button:last-child,
+.planner-recipe-option button {
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.planner-meal-slot > button:hover,
+.planner-recipe-option button:hover {
+    background: var(--brand-soft);
+}
+
+.planner-planned-meal > button:last-child {
+    color: var(--red);
+}
+
+.planner-planned-meal > button:last-child:hover {
+    background: var(--red-soft);
+}
+
+/* Recipe selection modal */
+.planner-recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.planner-recipe-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+
+/* Responsive planner layout */
+@media (max-width: 1200px) {
+    .planner-grid {
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .planner-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .planner-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-recipe-option {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+
+/* Planner header */
+.planner-header {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 28px;
+}
+
+.planner-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.planner-header-top p {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.planner-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Week navigation */
+.planner-navigation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+}
+
+.planner-week-range {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+}
+
+.planner-arrow {
+    width: 38px;
+    height: 38px;
+    justify-content: center;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+.planner-today {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 9px 14px;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.planner-today:hover {
+    background: var(--brand-soft);
+}
+
+
+/* Calendar day headings */
+.planner-day-heading {
+    margin-bottom: 14px;
+}
+
+.planner-day-heading h2 {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.planner-day-date {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.planner-day-number {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: var(--ink);
+}
+
+.planner-day-month {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+
+/* Allow the calendar to scroll horizontally */
+.planner-grid {
+    overflow-x: auto;
+    padding-bottom: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: #a67c63 #f0e4d5;
+}
+
+/* Brown scrollbar for Chrome and Edge */
+.planner-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.planner-grid::-webkit-scrollbar-track {
+    background: #f0e4d5;
+    border-radius: 10px;
+}
+
+.planner-grid::-webkit-scrollbar-thumb {
+    background: #a67c63;
+    border-radius: 10px;
+}
+
+/* Scrollable weekly calendar */
+.planner-scroll {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 14px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #a67c63 #e9ddcd;
+}
+
+.planner-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.planner-scroll::-webkit-scrollbar-track {
+    background: #e9ddcd;
+    border-radius: 10px;
+}
+
+.planner-scroll::-webkit-scrollbar-thumb {
+    background: #a67c63;
+    border-radius: 10px;
+}
+
+
+
+/* Empty meal slots */
+.planner-meal-slot {
+    background: rgba(255, 253, 248, 0.55);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 12px;
+    min-height: 115px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.planner-meal-slot h3 {
+    font-family: inherit;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0;
+}
+
+.planner-meal-slot > button {
+    align-self: flex-start;
+    margin-top: auto;
+    border: none;
+    background: transparent;
+    padding: 4px 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.planner-meal-slot > button:hover {
+    background: transparent;
+    color: var(--brand-dark);
+}
+
+
+/* Color-coded occupied meal slots */
+.planner-meal-slot.has-meal {
+    border-style: solid;
+}
+
+.planner-meal-slot.has-meal.breakfast {
+    background: #f3e3cb;
+    border-color: #e8d1ae;
+}
+
+.planner-meal-slot.has-meal.lunch {
+    background: #e3ebd9;
+    border-color: #cbdabf;
+}
+
+.planner-meal-slot.has-meal.dinner {
+    background: #f1dfd9;
+    border-color: #e6c9c0;
+}
+
+.planner-meal-slot.has-meal.snack {
+    background: #eae3f3;
+    border-color: #d9cbe8;
+}
+
+.planner-meal-slot.has-meal h3 {
+    color: var(--ink);
+}
+
+
+/* Compact planned recipe cards */
+.planner-planned-meal {
+    position: relative;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.planner-planned-meal > button {
+    border: none;
+    background: transparent;
+    padding: 0;
+    color: var(--ink);
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+/* Three-dot menu */
+.planner-meal-menu {
+    position: absolute;
+    top: -31px;
+    right: 0;
+    margin: 0;
+    z-index: 5;
+}
+
+
+.planner-meal-menu summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--muted);
+    width: 26px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.planner-meal-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.planner-meal-menu summary:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.planner-meal-menu-content {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    left: auto;
+    z-index: 20;
+    width: 185px;
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(60, 40, 25, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.planner-meal-menu-content label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.planner-meal-menu-content input,
+.planner-meal-menu-content select {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.75rem;
+}
+
+.planner-meal-menu-content button {
+    font-size: 0.75rem;
+    color: #b83e2e;
+    cursor: pointer;
+}
+
+/* Make room for the three-dot menu */
+.planner-planned-meal {
+    position: relative;
+    padding-right: 24px;
+}
+
+.planner-meal-menu summary {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+
+/* Recipe prep time */
+.planner-meal-time {
+    margin: 6px 0 0;
+    font-size: 0.72rem;
+    color: #806d5e;
+    line-height: 1.4;
+}
+
+/* Taller, more square meal cards */
+.planner-meal-slot {
+    min-height: 190px;
+    padding: 16px;
+    gap: 14px;
+}
+
+/* Slightly wider than tall meal cards */
+.planner-meal-slot {
+    min-height: 200px;
+    padding: 16px;
+}
+
+@media (max-width: 1200px) {
+    .planner-grid {
+        grid-template-columns: repeat(7, 230px);
+    }
+}
+
+@media (max-width: 768px) {
+    .planner-grid {
+        grid-template-columns: repeat(7, 230px);
+    }
+}
+
+@media (max-width: 480px) {
+    .planner-grid {
+        grid-template-columns: repeat(7, 230px);
+    }
+}
+
+/* Prevent the calendar from stretching the whole page */
+main:has(.planner-scroll) {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Calendar scroll toolbar */
+.planner-scroll-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 18px 0 14px;
+}
+
+.planner-scroll-hint {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #987661;
+}
+
+.planner-scroll-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.planner-visible-days {
+    font-size: 0.72rem;
+    color: #987661;
+    margin-right: 18px;
+    white-space: nowrap;
+}
+
+.planner-scroll-arrow {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5d5c2;
+    border-radius: 8px;
+    background: #76543d;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.planner-scroll-arrow:hover:not(:disabled) {
+    background: #5e412f;
+}
+
+.planner-scroll-arrow:disabled {
+    background: #eee4d6;
+    color: #c7b5a3;
+    border-color: #eee4d6;
+    cursor: default;
+}
+
+/* Fade indicating more calendar content */
+.planner-scroll-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* Right-edge fade, only when more days are available */
+.planner-scroll-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 14px;
+    width: 36px;
+    pointer-events: none;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        #faf3e7
+    );
+
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.planner-scroll-container.has-more-right::after {
+    opacity: 1;
+}
+
+
+/* Calendar scroll footer */
+.planner-scroll-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0 20px;
+    color: #a08b79;
+    font-size: 0.72rem;
+}
+
+@media (max-width: 600px) {
+    .planner-visible-days {
+        display: none;
+    }
+
+    .planner-scroll-footer {
+        flex-wrap: wrap;
+    }
+
+    .planner-scroll-toolbar {
+        gap: 8px;
+    }
+}
+
+/* Cleaner meal action menu */
+.planner-meal-menu-content {
+    width: 210px;
+    padding: 6px;
+    gap: 0;
+    background: #fffcf7;
+    border-radius: 12px;
+    border: 1px solid #e9d9c6;
+    box-shadow: 0 10px 25px rgba(60, 40, 25, 0.13);
+}
+
+.planner-menu-action {
+    border-bottom: 1px solid #f0e6da;
+}
+
+.planner-menu-action summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 10px;
+    font-size: 0.8rem;
+    color: #493729;
+    cursor: pointer;
+    text-align: left;
+}
+
+.planner-menu-action summary:hover {
+    background: #f8efe4;
+}
+
+.planner-menu-action summary span {
+    width: 18px;
+    font-size: 1rem;
+    color: #76543d;
+}
+
+.planner-menu-action input,
+.planner-menu-action select {
+    width: calc(100% - 20px);
+    margin: 0 10px 10px;
+    padding: 8px;
+    border: 1px solid #e9d9c6;
+    border-radius: 8px;
+    background: white;
+}
+
+.planner-menu-delete {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 10px;
+    border: none;
+    background: transparent;
+    color: #b43e2c;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.planner-menu-delete:hover {
+    background: #f9e9e5;
+    border-radius: 7px;
+}
+
+.planner-menu-delete span {
+    width: 18px;
+    font-size: 1.1rem;
+}
+
+/* Feedback while a meal is being saved */
+.planner-saving {
+    margin: 8px 0 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #76543d;
+}
+
+/* Meal planner error notification */
+.planner-error {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    background: #fff1ec;
+    border: 1px solid #e9b9a9;
+    border-radius: 10px;
+    color: #873b2c;
+}
+
+.planner-error-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.planner-error-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #b94d39;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.planner-error-content strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+}
+
+.planner-error-content p {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.planner-error-close {
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: #873b2c;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.planner-menu-trigger {
+    appearance: none;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 4px;
+    width: 26px;
+    color: var(--muted);
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.planner-meal-menu {
+    z-index: 50;
+}
+
+.planner-meal-menu-content {
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+

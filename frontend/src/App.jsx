@@ -5,6 +5,8 @@ import Pantry from "./pages/Pantry.jsx";
 import PantryNew from "./pages/PantryNew.jsx";
 import Recipes from "./pages/Recipes.jsx";
 import Shopping from "./pages/Shopping.jsx";
+import Planner from "./pages/Planner.jsx";
+
 
 export default function App() {
   return (
@@ -14,7 +16,7 @@ export default function App() {
         <Route path="pantry" element={<Pantry />} />
         <Route path="pantry/new" element={<PantryNew />} />
         <Route path="recipes" element={<Recipes />} />
-        <Route path="planner" element={<Placeholder title="Weekly Meal Planner" />} />
+        <Route path="planner" element={<Planner />} />
         <Route path="shopping" element={<Shopping />} />
         <Route path="saved" element={<Placeholder title="Saved Recipes" />} />
         <Route path="*" element={<Navigate to="/" replace />} />

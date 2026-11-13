@@ -30,3 +30,21 @@ export const getRecipes = (params = {}) => {
 
 //  Fetch a single recipe by ID
 export const getRecipe = (id) => api.get(`/recipes/${id}`);
+
+// Meal Planner API 
+
+// Fetch planned meals 
+export const getMealPlan = (start) => 
+  api.get(`/meal-plan?start=${start}`); 
+
+// add a recipe to meal plan 
+export const addMealPlanEntry = (entry) => 
+  api.post("/meal-plan", entry); 
+
+// Change a planned meal's date/ meal type
+export const updateMealPlanEntry = (id, changes) => 
+  api.patch(`/meal-plan/${id}`, changes); 
+
+// Remove a planned meal 
+export const deleteMealPlanEntry = (id) => 
+  api.del(`/meal-plan/${id}`); 
