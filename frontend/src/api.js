@@ -1,50 +1,144 @@
-// Small fetch wrapper for the Express API (proxied to /api in development)
+
+export function chefEvent(type, detail = {}) {
+  window.dispatchEvent(
+    new CustomEvent("prepwise:chef", {
+      detail: { type, ...detail },
+    })
+  );
+}
+
 async function request(path, options = {}) {
+  const method = options.method || "GET";
+
   const res = await fetch(`/api${path}`, {
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     ...options,
-    body: options.body ? JSON.stringify(options.body) : undefined,
+    body: options.body
+      ? JSON.stringify(options.body)
+      : undefined,
   });
-  if (res.status === 204) return null;
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || "Request failed");
+
+  const data =
+    res.status === 204
+      ? null
+      : await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    throw new Error(
+      data?.error || "Request failed"
+    );
+  }
+
+  // Notify the mascot only after a successful request.
+
+  if (method !== "GET") {
+    if (path.startsWith("/pantry-items")) {
+      chefEvent("pantry-updated");
+    }
+
+    if (
+      method === "POST" &&
+      path === "/saved-recipes"
+    ) {
+      chefEvent("celebrate", {
+        message: "Recipe saved!",
+      });
+    }
+
+    if (
+      method === "POST" &&
+      path === "/meal-plan"
+    ) {
+      chefEvent("celebrate", {
+        message: "Meal planned!",
+      });
+    }
+
+    if (
+      method === "POST" &&
+      path === "/chat/weekly-plan" &&
+      Number(data?.added) > 0
+    ) {
+      chefEvent("celebrate", {
+        message: "Weekly plan saved!",
+      });
+    }
+
+    if (
+      method === "POST" &&
+      path === "/shopping-list/generate"
+    ) {
+      chefEvent("celebrate", {
+        message: "Shopping list ready!",
+      });
+    }
+  }
+
   return data;
 }
 
 export const api = {
   get: (p) => request(p),
-  post: (p, body) => request(p, { method: "POST", body: body ?? {} }),
-  patch: (p, body) => request(p, { method: "PATCH", body }),
-  del: (p) => request(p, { method: "DELETE" }),
+
+  post: (p, body) =>
+    request(p, {
+      method: "POST",
+      body: body ?? {},
+    }),
+
+  patch: (p, body) =>
+    request(p, {
+      method: "PATCH",
+      body,
+    }),
+
+  del: (p) =>
+    request(p, {
+      method: "DELETE",
+    }),
 };
 
-// Fetch recipes with optional filters, excluding empty or null values.
 export const getRecipes = (params = {}) => {
   const query = new URLSearchParams(
-    Object.entries(params).filter(([, v]) => v !== "" && v != null)
+    Object.entries(params).filter(
+      ([, value]) =>
+        value !== "" && value != null
+    )
   ).toString();
 
-  const path = query ? `/recipes?${query}` : "/recipes";
+  const path = query
+    ? `/recipes?${query}`
+    : "/recipes";
+
   return api.get(path);
 };
 
-//  Fetch a single recipe by ID
-export const getRecipe = (id) => api.get(`/recipes/${id}`);
 
-// Meal Planner API 
+export const getRecipe = async (id) => {
+  const recipe = await api.get(`/recipes/${id}`);
 
-// Fetch planned meals 
-export const getMealPlan = (start) => 
-  api.get(`/meal-plan?start=${start}`); 
+  // The chef reacts to the actual recipe being viewed.
+  chefEvent("recipe-viewed", { recipe });
 
-// add a recipe to meal plan 
-export const addMealPlanEntry = (entry) => 
-  api.post("/meal-plan", entry); 
+  return recipe;
+};
 
-// Change a planned meal's date/ meal type
-export const updateMealPlanEntry = (id, changes) => 
-  api.patch(`/meal-plan/${id}`, changes); 
+// Meal Planner API
 
-// Remove a planned meal 
-export const deleteMealPlanEntry = (id) => 
-  api.del(`/meal-plan/${id}`); 
+// Fetch planned meals
+export const getMealPlan = (start) =>
+  api.get(`/meal-plan?start=${start}`);
+
+// Add a recipe to meal plan
+export const addMealPlanEntry = (entry) =>
+  api.post("/meal-plan", entry);
+
+// Change a planned meal's date or meal type
+export const updateMealPlanEntry = (id, changes) =>
+  api.patch(`/meal-plan/${id}`, changes);
+
+// Remove a planned meal
+export const deleteMealPlanEntry = (id) =>
+  api.del(`/meal-plan/${id}`);

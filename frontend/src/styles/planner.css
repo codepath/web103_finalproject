@@ -1,4 +1,3 @@
-
 /* Weekly Meal Planner */
 .planner-grid {
     display: grid;
@@ -801,12 +800,3 @@ main:has(.planner-scroll) {
 .planner-meal-menu-content {
     z-index: 100;
 }
-
-
-
-
-
-
-
-
-
