@@ -90,7 +90,8 @@ const createUsersController = ({ pool = defaultPool, loadRules = createRulesLoad
         }
     }
 
-    // the groups a person belongs to (the ones they organize included), each tagged with whether they organize it
+    // the groups a person belongs to (the ones they organize included), each tagged with their role;
+    // when viewing their own profile, also includes groups they have saved but not joined
     const getUserGroups = async (req, res) => {
         try {
             const userId = req.params.userId
@@ -99,18 +100,41 @@ const createUsersController = ({ pool = defaultPool, loadRules = createRulesLoad
             const person = await pool.query('SELECT 1 FROM users WHERE user_id = $1', [userId])
             if (person.rows.length === 0) return sendNotFound(res, 'User')
 
+            const isSelf = isLoggedIn(req) && String(req.user.user_id) === String(userId)
+
+            const memberQuery = `
+                SELECT groups.*,
+                       organizers.full_name AS organizer_name,
+                       COUNT(everyone.membership_id)::int AS member_count,
+                       CASE WHEN groups.organizer_id = $1 THEN 'organizer' ELSE 'member' END AS role
+                FROM members AS mine
+                JOIN groups ON groups.group_id = mine.group_id
+                JOIN users AS organizers ON organizers.user_id = groups.organizer_id
+                LEFT JOIN members AS everyone ON everyone.group_id = groups.group_id
+                WHERE mine.user_id = $1
+                GROUP BY groups.group_id, organizers.user_id, mine.user_id`
+
+            if (!isSelf) {
+                const results = await pool.query(memberQuery + ' ORDER BY groups.group_name ASC', [userId])
+                return res.status(200).json(results.rows)
+            }
+
+            // for self: member groups + saved groups not already joined
             const results = await pool.query(
-                `SELECT groups.*,
-                        organizers.full_name AS organizer_name,
-                        COUNT(everyone.membership_id)::int AS member_count,
-                        (groups.organizer_id = mine.user_id) AS is_organizer
-                 FROM members AS mine
-                 JOIN groups ON groups.group_id = mine.group_id
-                 JOIN users AS organizers ON organizers.user_id = groups.organizer_id
-                 LEFT JOIN members AS everyone ON everyone.group_id = groups.group_id
-                 WHERE mine.user_id = $1
-                 GROUP BY groups.group_id, organizers.user_id, mine.user_id
-                 ORDER BY groups.group_name ASC`,
+                `(${memberQuery})
+                 UNION ALL
+                 (SELECT groups.*,
+                         organizers.full_name AS organizer_name,
+                         COUNT(everyone.membership_id)::int AS member_count,
+                         'saved' AS role
+                  FROM group_saves AS saves
+                  JOIN groups ON groups.group_id = saves.group_id
+                  JOIN users AS organizers ON organizers.user_id = groups.organizer_id
+                  LEFT JOIN members AS everyone ON everyone.group_id = groups.group_id
+                  WHERE saves.user_id = $1
+                    AND NOT EXISTS (SELECT 1 FROM members WHERE members.user_id = $1 AND members.group_id = groups.group_id)
+                  GROUP BY groups.group_id, organizers.user_id)
+                 ORDER BY group_name ASC`,
                 [userId]
             )
 

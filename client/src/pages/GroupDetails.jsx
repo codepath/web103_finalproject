@@ -45,9 +45,12 @@ const GroupView = ({ group }) => {
   const [problem, setProblem] = useState(null)
   const [confirmingDelete, setConfirmingDelete] = useState(false)
   const [confirmingLeave, setConfirmingLeave] = useState(false)
+  const [saved, setSaved] = useState(null)
+  const [saveBusy, setSaveBusy] = useState(false)
 
   const isMember = joined ?? Boolean(group.is_member)
   const isOrganizer = Boolean(user) && user.user_id === group.organizer_id
+  const isSaved = saved ?? Boolean(group.is_saved)
 
   // everyone else's count stays as the server gave it; only the person's own choice changes it
   const memberCount = group.member_count - (group.is_member ? 1 : 0) + (isMember ? 1 : 0)
@@ -80,6 +83,24 @@ const GroupView = ({ group }) => {
   const leave = async () => {
     setConfirmingLeave(false)
     if (await changeMembership(false, () => GroupsAPI.leaveGroup(group.group_id))) notify(`You left ${group.group_name}.`)
+  }
+
+  const toggleSave = async () => {
+    const before = saved
+    const next = !isSaved
+    setSaved(next)
+    setSaveBusy(true)
+    try {
+      if (next) {
+        await GroupsAPI.saveGroup(group.group_id)
+      } else {
+        await GroupsAPI.unsaveGroup(group.group_id)
+      }
+    } catch {
+      setSaved(before)
+    } finally {
+      setSaveBusy(false)
+    }
   }
 
   // delete the group after the organizer confirmed, then go back to the list
@@ -125,6 +146,18 @@ const GroupView = ({ group }) => {
       {user && !isOrganizer && isMember && (
         <button type="button" className="secondary" disabled={busy} onClick={() => setConfirmingLeave(true)}>
           Leave
+        </button>
+      )}
+
+      {user && !isOrganizer && (
+        <button
+          type="button"
+          className={`save-button${isSaved ? ' saved' : ''}`}
+          disabled={saveBusy}
+          onClick={toggleSave}
+          aria-label={isSaved ? 'Unsave group' : 'Save group'}
+        >
+          {isSaved ? '♥ Saved' : '♡ Save'}
         </button>
       )}
 

@@ -4,6 +4,7 @@ import BackButton from '../components/BackButton'
 import ConfirmModal from '../components/ConfirmModal'
 import Countdown from '../components/Countdown'
 import ErrorMessage from '../components/ErrorMessage'
+import EventComments from '../components/EventComments'
 import RsvpButton from '../components/RsvpButton'
 import Spinner from '../components/Spinner'
 import { useSession } from '../context/SessionContext'
@@ -171,6 +172,8 @@ const EventView = ({ event, statuses }) => {
         onConfirm={deleteEvent}
         onCancel={() => setConfirmingDelete(false)}
       />
+
+      <EventComments eventId={event.event_id} />
     </article>
   )
 }

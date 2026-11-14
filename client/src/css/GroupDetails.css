@@ -11,3 +11,28 @@
   border-radius: 12px;
   object-fit: cover;
 }
+
+.save-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: none;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.save-button:hover {
+  border-color: #e91e8c;
+  color: #e91e8c;
+}
+
+.save-button.saved {
+  border-color: #e91e8c;
+  color: #e91e8c;
+  background: rgba(233, 30, 140, 0.08);
+}

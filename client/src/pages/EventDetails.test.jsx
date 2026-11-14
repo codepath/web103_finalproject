@@ -12,9 +12,11 @@ vi.mock('../services/EventsAPI', () => ({ default: { getEvent: vi.fn(), deleteEv
 vi.mock('../services/RsvpsAPI', () => ({
   default: { joinEvent: vi.fn(), changeRsvp: vi.fn(), getEventRsvps: vi.fn(), getRsvpStatuses: vi.fn() },
 }))
+vi.mock('../services/CommentsAPI', () => ({ default: { getComments: vi.fn() } }))
 
 const { default: EventsAPI } = await import('../services/EventsAPI')
 const { default: RsvpsAPI } = await import('../services/RsvpsAPI')
+const { default: CommentsAPI } = await import('../services/CommentsAPI')
 const { default: EventDetails } = await import('./EventDetails')
 
 // the pop-up messages the page asks for
@@ -63,11 +65,12 @@ const renderDetails = (user = null) =>
 
 beforeEach(() => {
   notify.mockReset()
-  for (const service of [EventsAPI, RsvpsAPI]) for (const fn of Object.values(service)) fn.mockReset()
+  for (const service of [EventsAPI, RsvpsAPI, CommentsAPI]) for (const fn of Object.values(service)) fn.mockReset()
   EventsAPI.getEvent.mockResolvedValue(event)
   RsvpsAPI.getRsvpStatuses.mockResolvedValue(statuses)
   RsvpsAPI.joinEvent.mockResolvedValue({})
   RsvpsAPI.changeRsvp.mockResolvedValue({})
+  CommentsAPI.getComments.mockResolvedValue([])
 })
 
 describe('EventDetails', () => {

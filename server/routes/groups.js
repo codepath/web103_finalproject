@@ -28,4 +28,8 @@ router.get('/:groupId/members', GroupsController.getGroupMembers)
 router.post('/:groupId/members', requireUser, GroupsController.joinGroup)
 router.delete('/:groupId/members/me', requireUser, GroupsController.leaveGroup)
 
+// Define routes for a logged-in person to save and unsave a group
+router.post('/:groupId/saves', requireUser, GroupsController.saveGroup)
+router.delete('/:groupId/saves/me', requireUser, GroupsController.unsaveGroup)
+
 export default router

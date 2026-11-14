@@ -99,10 +99,14 @@ const createGroupsController = ({ pool = defaultPool, loadRules = createRulesLoa
 
             const group = results.rows[0]
 
-            // tell a logged-in visitor whether they have already joined
+            // tell a logged-in visitor whether they have already joined or saved the group
             if (isLoggedIn(req)) {
-                const membership = await pool.query('SELECT 1 FROM members WHERE group_id = $1 AND user_id = $2', [groupId, req.user.user_id])
+                const [membership, save] = await Promise.all([
+                    pool.query('SELECT 1 FROM members WHERE group_id = $1 AND user_id = $2', [groupId, req.user.user_id]),
+                    pool.query('SELECT 1 FROM group_saves WHERE group_id = $1 AND user_id = $2', [groupId, req.user.user_id])
+                ])
                 group.is_member = membership.rowCount > 0
+                group.is_saved = save.rowCount > 0
             }
 
             res.status(200).json(group)
@@ -253,6 +257,36 @@ const createGroupsController = ({ pool = defaultPool, loadRules = createRulesLoa
     }
 
     // tells the access check who organizes the group in the request, or null if there is no such group
+    const saveGroup = async (req, res) => {
+        try {
+            const { groupId } = req.params
+            if (!isValidId(groupId)) return sendNotFound(res, 'Group')
+
+            const group = await pool.query('SELECT group_id FROM groups WHERE group_id = $1', [groupId])
+            if (group.rows.length === 0) return sendNotFound(res, 'Group')
+
+            await pool.query(
+                'INSERT INTO group_saves (group_id, user_id) VALUES ($1, $2) ON CONFLICT DO NOTHING',
+                [groupId, req.user.user_id]
+            )
+            res.status(204).send()
+        } catch (error) {
+            sendDatabaseError(res, 'save the group', error)
+        }
+    }
+
+    const unsaveGroup = async (req, res) => {
+        try {
+            const { groupId } = req.params
+            if (!isValidId(groupId)) return sendNotFound(res, 'Group')
+
+            await pool.query('DELETE FROM group_saves WHERE group_id = $1 AND user_id = $2', [groupId, req.user.user_id])
+            res.status(204).send()
+        } catch (error) {
+            sendDatabaseError(res, 'unsave the group', error)
+        }
+    }
+
     const getGroupOrganizerId = async (req) => {
         if (!isValidId(req.params.groupId)) return null
 
@@ -260,7 +294,7 @@ const createGroupsController = ({ pool = defaultPool, loadRules = createRulesLoa
         return results.rows[0]?.organizer_id ?? null
     }
 
-    return { getGroups, getGroupById, createGroup, updateGroup, deleteGroup, joinGroup, leaveGroup, getGroupMembers, getGroupOrganizerId }
+    return { getGroups, getGroupById, createGroup, updateGroup, deleteGroup, joinGroup, leaveGroup, getGroupMembers, saveGroup, unsaveGroup, getGroupOrganizerId }
 }
 
 export { createGroupsController }

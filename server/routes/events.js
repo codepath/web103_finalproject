@@ -1,4 +1,5 @@
 import express from 'express'
+import CommentsController from '../controllers/comments.js'
 import EventsController from '../controllers/events.js'
 import RsvpsController from '../controllers/rsvps.js'
 import { requireHost, requireOrganizer, requireUser } from '../utils/access.js'
@@ -35,5 +36,11 @@ router.get('/:eventId/rsvps', requireEventOrganizer, RsvpsController.getEventRsv
 router.post('/:eventId/rsvps', requireUser, RsvpsController.createRsvp)
 router.patch('/:eventId/rsvps/me', requireUser, RsvpsController.updateRsvp)
 router.delete('/:eventId/rsvps/me', requireUser, RsvpsController.deleteRsvp)
+
+// Comments: public read, logged-in users post; likes require login
+router.get('/:eventId/comments', CommentsController.getComments)
+router.post('/:eventId/comments', requireUser, CommentsController.createComment)
+router.post('/:eventId/comments/:commentId/likes', requireUser, CommentsController.likeComment)
+router.delete('/:eventId/comments/:commentId/likes', requireUser, CommentsController.unlikeComment)
 
 export default router

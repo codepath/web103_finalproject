@@ -103,8 +103,8 @@ describe('Welcome for a visitor', () => {
 
 const attendingEvent = { event_id: 31, event_title: 'Jazz Night', group_name: 'Jazz Club', start_time: '2099-01-19T20:30:00', end_time: '2099-01-19T22:00:00', city: 'Austin', state: 'TX', rsvp_count: 3, role: 'attending' }
 const hostedEvent = { ...attendingEvent, event_id: 32, event_title: 'Code Day', role: 'created' }
-const joinedGroup = { group_id: 10, group_name: 'Jazz Club', category: 'Music', member_count: 3, is_organizer: false }
-const organizedGroup = { group_id: 11, group_name: 'Code & Coffee', category: 'Technology', member_count: 8, is_organizer: true }
+const joinedGroup = { group_id: 10, group_name: 'Jazz Club', category: 'Music', member_count: 3, role: 'member' }
+const organizedGroup = { group_id: 11, group_name: 'Code & Coffee', category: 'Technology', member_count: 8, role: 'organizer' }
 const person = { user_id: 1, is_host: true }
 
 describe('Welcome for a logged-in person', () => {

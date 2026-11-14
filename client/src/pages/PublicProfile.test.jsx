@@ -14,7 +14,7 @@ const { default: PublicProfile } = await import('./PublicProfile')
 
 const person = { user_id: 5, full_name: 'Hank Cole', city: 'Austin', state: 'TX', user_image_url: null, user_type: 'x' }
 const event = (id, title, role) => ({ event_id: id, event_title: title, group_name: 'Group', start_time: '2099-01-19T20:30:00', city: 'Austin', state: 'TX', rsvp_count: 1, role })
-const group = (id, name, isOrganizer) => ({ group_id: id, group_name: name, category: 'Food', member_count: 3, is_organizer: isOrganizer })
+const group = (id, name, role) => ({ group_id: id, group_name: name, category: 'Food', member_count: 3, role })
 
 // draw the page for a visitor, or for the person given
 const renderProfile = (user = null) =>
@@ -33,7 +33,7 @@ beforeEach(() => {
   for (const fn of Object.values(UsersAPI)) fn.mockReset()
   UsersAPI.getUser.mockResolvedValue(person)
   UsersAPI.getUserEvents.mockResolvedValue([event(1, 'Jazz Night', 'attending'), event(2, 'Code Day', 'created')])
-  UsersAPI.getUserGroups.mockResolvedValue([group(10, 'Jazz Club', false), group(11, 'Code & Coffee', true)])
+  UsersAPI.getUserGroups.mockResolvedValue([group(10, 'Jazz Club', 'member'), group(11, 'Code & Coffee', 'organizer')])
 })
 
 describe('PublicProfile', () => {
@@ -106,7 +106,7 @@ describe('PublicProfile', () => {
   })
 
   it('still shows the Organized button, with nothing in it, for someone who organizes no group', async () => {
-    UsersAPI.getUserGroups.mockResolvedValue([group(10, 'Jazz Club', false)])
+    UsersAPI.getUserGroups.mockResolvedValue([group(10, 'Jazz Club', 'member')])
     renderProfile()
     await screen.findByText('Jazz Club')
 
@@ -115,7 +115,7 @@ describe('PublicProfile', () => {
   })
 
   it('opens on Organized for a person who organizes a group but joined none', async () => {
-    UsersAPI.getUserGroups.mockResolvedValue([group(11, 'Code & Coffee', true)])
+    UsersAPI.getUserGroups.mockResolvedValue([group(11, 'Code & Coffee', 'organizer')])
     renderProfile()
 
     expect(await screen.findByText('Code & Coffee')).toBeInTheDocument()

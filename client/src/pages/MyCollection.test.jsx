@@ -12,7 +12,7 @@ const { default: UsersAPI } = await import('../services/UsersAPI')
 const { default: MyCollection } = await import('./MyCollection')
 
 const event = (id, title, role) => ({ event_id: id, event_title: title, group_name: 'Group', start_time: '2099-01-19T20:30:00', city: 'Austin', state: 'TX', rsvp_count: 1, role })
-const group = (id, name, isOrganizer) => ({ group_id: id, group_name: name, category: 'Food', member_count: 3, is_organizer: isOrganizer })
+const group = (id, name, role) => ({ group_id: id, group_name: name, category: 'Food', member_count: 3, role })
 
 const renderCollection = () =>
   render(
@@ -26,7 +26,7 @@ const renderCollection = () =>
 beforeEach(() => {
   for (const fn of Object.values(UsersAPI)) fn.mockReset()
   UsersAPI.getUserEvents.mockResolvedValue([event(1, 'Jazz Night', 'attending'), event(2, 'Code Day', 'created')])
-  UsersAPI.getUserGroups.mockResolvedValue([group(10, 'Jazz Club', false), group(11, 'Code & Coffee', true)])
+  UsersAPI.getUserGroups.mockResolvedValue([group(10, 'Jazz Club', 'member'), group(11, 'Code & Coffee', 'organizer')])
 })
 
 describe('MyCollection', () => {

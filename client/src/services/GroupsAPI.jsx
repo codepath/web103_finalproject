@@ -18,4 +18,8 @@ const getGroupMembers = (groupId) => request(`/api/groups/${groupId}/members`)
 const joinGroup = (groupId) => request(`/api/groups/${groupId}/members`, { method: 'POST' })
 const leaveGroup = (groupId) => request(`/api/groups/${groupId}/members/me`, { method: 'DELETE' })
 
-export default { getGroups, getGroup, createGroup, updateGroup, deleteGroup, getGroupMembers, joinGroup, leaveGroup }
+// save and unsave a group as the logged-in person
+const saveGroup = (groupId) => request(`/api/groups/${groupId}/saves`, { method: 'POST' })
+const unsaveGroup = (groupId) => request(`/api/groups/${groupId}/saves/me`, { method: 'DELETE' })
+
+export default { getGroups, getGroup, createGroup, updateGroup, deleteGroup, getGroupMembers, joinGroup, leaveGroup, saveGroup, unsaveGroup }

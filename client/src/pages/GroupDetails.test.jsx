@@ -9,7 +9,7 @@ import { ApiError } from '../utils/request'
 
 // replace the services with ones the test controls
 vi.mock('../services/EventsAPI', () => ({ default: { getEvents: vi.fn() } }))
-vi.mock('../services/GroupsAPI', () => ({ default: { getGroup: vi.fn(), joinGroup: vi.fn(), leaveGroup: vi.fn(), deleteGroup: vi.fn() } }))
+vi.mock('../services/GroupsAPI', () => ({ default: { getGroup: vi.fn(), joinGroup: vi.fn(), leaveGroup: vi.fn(), deleteGroup: vi.fn(), saveGroup: vi.fn(), unsaveGroup: vi.fn() } }))
 
 const { default: EventsAPI } = await import('../services/EventsAPI')
 const { default: GroupsAPI } = await import('../services/GroupsAPI')

@@ -8,8 +8,8 @@ import GroupCard from './GroupCard'
 import Spinner from './Spinner'
 import '../css/Profile.css'
 
-// pick which list to show: the first choice is shown unless it is empty and the second has something
-const pickTab = (chosen, first, second) => chosen ?? (first.items.length === 0 && second.items.length > 0 ? second.key : first.key)
+// pick which list to show: the first non-empty choice, or the first choice if all are empty
+const pickTab = (chosen, ...choices) => chosen ?? (choices.find((c) => c.items.length > 0)?.key ?? choices[0].key)
 
 // a row of choice buttons, each with how many items it holds; every choice is always there, even with nothing in it
 const Tabs = ({ choices, active, onChoose }) => (
@@ -40,12 +40,15 @@ const ProfileActivity = ({ userId, isSelf }) => {
 
   const attending = { key: 'attending', label: 'Attending', items: data.events.filter((event) => event.role === 'attending') }
   const hosted = { key: 'hosted', label: 'Hosted', items: data.events.filter((event) => event.role === 'created') }
-  const joined = { key: 'joined', label: 'Joined', items: data.groups.filter((group) => !group.is_organizer) }
-  const organized = { key: 'organized', label: 'Organized', items: data.groups.filter((group) => group.is_organizer) }
+  const joined = { key: 'joined', label: 'Joined', items: data.groups.filter((group) => group.role === 'member') }
+  const organized = { key: 'organized', label: 'Organized', items: data.groups.filter((group) => group.role === 'organizer') }
+  const saved = { key: 'saved', label: 'Saved', items: data.groups.filter((group) => group.role === 'saved') }
 
   // a person who hosts sees what they host and organize first, since that is what they mostly care about
   const eventChoices = hosted.items.length > 0 ? [hosted, attending] : [attending, hosted]
-  const groupChoices = organized.items.length > 0 ? [organized, joined] : [joined, organized]
+  const groupChoices = isSelf
+    ? (organized.items.length > 0 ? [organized, joined, saved] : [joined, organized, saved])
+    : (organized.items.length > 0 ? [organized, joined] : [joined, organized])
 
   const activeEvents = pickTab(eventTab, ...eventChoices)
   const activeGroups = pickTab(groupTab, ...groupChoices)
