@@ -1,0 +1,7 @@
+/* Shopping List page styles */
+.trow.checked strong,
+.trow.checked .qty { text-decoration: line-through; color: var(--muted); }
+
+.trow input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--brand); }
+
+.group-head { display: flex; align-items: center; justify-content: space-between; }

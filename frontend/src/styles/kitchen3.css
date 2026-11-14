@@ -1,0 +1,696 @@
+
+/* ==========================================
+   KITCHEN STUDIO MAIN LAYOUT
+========================================== */
+
+.pw-kitchen {
+  max-width: 1240px;
+
+  margin: auto;
+
+  padding-bottom: 100px;
+}
+
+/* ==========================================
+   KITCHEN STUDIO TABS
+========================================== */
+
+.pw-kitchen-tabs {
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  margin: 18px 0;
+}
+
+.pw-kitchen-tabs button,
+.pw-kitchen .btn {
+  border: 1px solid #dfcbb4;
+
+  border-radius: 9px;
+
+  padding: 9px 12px;
+
+  background: var(--bg, #fffdf8);
+
+  color: var(--ink, #39291d);
+
+  cursor: pointer;
+}
+
+.pw-kitchen-tabs button:hover {
+  border-color: #b85339;
+}
+
+.pw-kitchen-tabs button.active {
+  background: #b85339;
+
+  color: white;
+
+  border-color: #b85339;
+
+  font-weight: 700;
+}
+
+/* ==========================================
+   KITCHEN CARDS
+========================================== */
+
+.pw-kitchen-card {
+  background: var(--card, #fffdf8);
+
+  color: var(--ink, #39291d);
+
+  border: 1px solid #e2d2bd;
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  margin: 14px 0;
+
+  box-shadow: 0 4px 14px #39291d0a;
+}
+
+.pw-kitchen-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+}
+
+.pw-kitchen-card p {
+  line-height: 1.55;
+}
+
+.pw-kitchen-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.pw-kitchen-grid .pw-kitchen-card {
+  margin: 0;
+}
+
+/* ==========================================
+   INPUT FIELDS
+========================================== */
+
+.pw-field {
+  display: grid;
+
+  gap: 5px;
+
+  margin: 10px 0;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  min-width: 0;
+}
+
+.pw-field input,
+.pw-field select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  border: 1px solid #dfcbb4;
+
+  border-radius: 8px;
+
+  background: var(--bg, #fffdf8);
+
+  color: var(--ink, #39291d);
+
+  min-width: 0;
+}
+
+.pw-field input:focus-visible,
+.pw-field select:focus-visible {
+  outline: 2px solid #b85339;
+
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   BUTTONS AND ACTIONS
+========================================== */
+
+.pw-primary {
+  padding: 11px 15px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background: #b85339;
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.pw-primary:hover {
+  background: #9e422c;
+}
+
+.pw-kitchen button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+.pw-actions {
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  margin-top: 12px;
+}
+
+/* ==========================================
+   CONFIRMATION CHECKBOXES
+========================================== */
+
+.pw-check {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 8px;
+
+  margin: 14px 0;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.pw-check input {
+  margin-top: 3px;
+
+  flex-shrink: 0;
+
+  accent-color: #b85339;
+}
+
+/* ==========================================
+   SUCCESS AND ERROR MESSAGES
+========================================== */
+
+.pw-notice {
+  padding: 12px 15px;
+
+  background: #e9f1e5;
+
+  color: #345837;
+
+  border: 1px solid #bdd4b6;
+
+  border-radius: 10px;
+}
+
+.pw-error {
+  background: #fce6df;
+
+  color: #9e422c;
+
+  border-color: #efb5a6;
+}
+
+/* ==========================================
+   COOK & CONSUME
+========================================== */
+
+.pw-ingredient-row {
+  display: grid;
+
+  grid-template-columns:
+    1fr 140px 1fr;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border-bottom: 1px solid #dfcbb4;
+
+  padding: 6px 0;
+}
+
+/* ==========================================
+   AI GROCERY SCANNER
+========================================== */
+
+.pw-scan-row {
+  display: grid;
+
+  grid-template-columns:
+    1.5fr
+    0.75fr
+    0.75fr
+    1fr
+    1fr
+    auto;
+
+  align-items: end;
+
+  gap: 8px;
+
+  border-bottom: 1px solid #dfcbb4;
+
+  padding: 10px 0;
+}
+
+.pw-row-status {
+  grid-column: 1 / -1;
+
+  font-size: 12px;
+}
+
+/* ==========================================
+   RECORD LISTS
+========================================== */
+
+.pw-list {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #e6d6c3;
+
+  font-size: 13px;
+}
+
+.pw-list:last-child {
+  border-bottom: 0;
+}
+
+.pw-list small,
+.pw-achievements small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--muted, #8a7566);
+}
+
+/* ==========================================
+   NUTRITION DASHBOARD
+========================================== */
+
+.pw-macro-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin: 12px 0;
+}
+
+.pw-macro-grid > div {
+  display: grid;
+
+  gap: 6px;
+
+  padding: 12px;
+
+  background: var(--bg, #f9f2e7);
+
+  border-radius: 10px;
+}
+
+.pw-macro-grid span,
+.pw-macro-grid small {
+  font-size: 11px;
+
+  color: var(--muted, #8a7566);
+}
+
+.pw-macro-grid strong {
+  font-size: 20px;
+}
+
+/* Nutrition and budget progress bars */
+
+.pw-kitchen progress {
+  width: 100%;
+
+  accent-color: #b85339;
+
+  height: 10px;
+}
+
+/* ==========================================
+   ACHIEVEMENTS
+========================================== */
+
+.pw-achievements {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.pw-achievements > div {
+  border: 1px dashed #d7c5b4;
+
+  border-radius: 12px;
+
+  padding: 15px;
+
+  opacity: 0.65;
+}
+
+.pw-achievements > div.earned {
+  background: #f3e7c9;
+
+  border: 1px solid #dbb978;
+
+  opacity: 1;
+
+  color: #624622;
+}
+
+/* ==========================================
+   DRAG-AND-DROP MEAL PLANNER
+========================================== */
+
+.pw-drop {
+  padding: 8px;
+
+  margin: 8px 0;
+
+  min-height: 80px;
+
+  border: 1px dashed #d7bda2;
+
+  border-radius: 9px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.pw-drop h4 {
+  font-size: 11px;
+
+  text-transform: capitalize;
+
+  margin: 0 0 6px;
+}
+
+.pw-drop-active {
+  background: #f4dfd0;
+
+  border-color: #b85339;
+}
+
+.pw-drop label {
+  display: block;
+
+  font-size: 10px;
+
+  margin: 5px 0;
+}
+
+.pw-drop select {
+  display: block;
+
+  width: 100%;
+
+  padding: 5px;
+
+  font-size: 11px;
+
+  color: var(--ink, #39291d);
+
+  background: var(--bg, #fffdf8);
+
+  border: 1px solid #dfcbb4;
+
+  border-radius: 6px;
+}
+
+.planner-meal[draggable="true"] {
+  cursor: grab;
+}
+
+.planner-meal[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* ==========================================
+   AI CHEF MICROPHONE
+========================================== */
+
+.pw-mic-wrap {
+  position: relative;
+
+  display: flex;
+
+  flex-shrink: 0;
+
+  align-items: center;
+}
+
+.pw-mic-wrap .pw-mic {
+  background: #f4dfd0;
+
+  color: #b85339;
+
+  border: 1px solid #d8ad94;
+
+  border-radius: 9px;
+
+  width: 36px;
+
+  height: 36px;
+
+  cursor: pointer;
+}
+
+.pw-mic-wrap .pw-mic:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.pw-mic-wrap .pw-listening {
+  background: #b85339;
+
+  color: white;
+
+  animation: pwPulse 1s infinite;
+}
+
+.pw-mic-status {
+  position: absolute;
+
+  bottom: 44px;
+
+  left: 0;
+
+  z-index: 5;
+
+  width: max-content;
+
+  max-width: 170px;
+
+  background: #39291d;
+
+  color: white;
+
+  padding: 7px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+}
+
+@keyframes pwPulse {
+
+  0%, 100% {
+    box-shadow: 0 0 0 0 #c8553d55;
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px #c8553d11;
+  }
+}
+
+/* ==========================================
+   DARK MODE — KITCHEN STUDIO
+========================================== */
+
+[data-theme="dark"] .pw-kitchen-card {
+  background: #29241f;
+
+  color: #f4e7d3;
+
+  border-color: #654535;
+}
+
+[data-theme="dark"] .pw-field input,
+[data-theme="dark"] .pw-field select,
+[data-theme="dark"] .pw-kitchen-tabs button:not(.active),
+[data-theme="dark"] .pw-kitchen .btn,
+[data-theme="dark"] .pw-macro-grid > div {
+  background: #352b23;
+
+  color: #f4e7d3;
+
+  border-color: #654535;
+}
+
+[data-theme="dark"] .pw-list,
+[data-theme="dark"] .pw-ingredient-row,
+[data-theme="dark"] .pw-scan-row,
+[data-theme="dark"] .pw-drop {
+  border-color: #654535;
+}
+
+[data-theme="dark"] .pw-drop-active {
+  background: #654535;
+
+  border-color: #ee9277;
+}
+
+[data-theme="dark"] .pw-drop select {
+  background: #352b23;
+
+  color: #f4e7d3;
+
+  border-color: #654535;
+}
+
+/* Dark mode messages */
+
+[data-theme="dark"] .pw-notice {
+  background: #293d2b;
+
+  color: #a6dba4;
+
+  border-color: #426044;
+}
+
+[data-theme="dark"] .pw-error {
+  background: #4d2e28;
+
+  color: #f4ad95;
+
+  border-color: #7f4b3c;
+}
+
+/* Dark mode achievements */
+
+[data-theme="dark"] .pw-achievements > div.earned {
+  background: #49391f;
+
+  color: #f1cd84;
+
+  border-color: #745632;
+}
+
+/* Dark mode microphone */
+
+[data-theme="dark"] .pw-mic-wrap .pw-mic {
+  background: #352b23;
+
+  color: #ee9277;
+
+  border-color: #654535;
+}
+
+[data-theme="dark"] .pw-mic-wrap .pw-listening {
+  background: #b85339;
+
+  color: white;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 900px) {
+
+  .pw-scan-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .pw-ingredient-row {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .pw-ingredient-row > .muted {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 650px) {
+
+  .pw-kitchen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pw-macro-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .pw-achievements {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .pw-kitchen-card {
+    padding: 15px;
+  }
+
+  .pw-kitchen-tabs button {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .pw-listening {
+    animation: none !important;
+  }
+
+  .pw-drop {
+    transition: none;
+  }
+}

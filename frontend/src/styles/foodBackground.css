@@ -1,0 +1,104 @@
+
+.content {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #fff8e7 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #faf4e7,
+      #f4ead9
+    );
+}
+
+/* Animated food layer */
+
+.food-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.floating-food {
+  position: absolute;
+  display: block;
+  opacity: 0.20;
+  user-select: none;
+
+  animation-name: floatFood;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  will-change: transform;
+}
+
+@keyframes floatFood {
+  0%, 100% {
+    transform:
+      translate(0, 0)
+      rotate(-12deg);
+  }
+
+  25% {
+    transform:
+      translate(15px, -25px)
+      rotate(5deg);
+  }
+
+  50% {
+    transform:
+      translate(-10px, -45px)
+      rotate(18deg);
+  }
+
+  75% {
+    transform:
+      translate(-20px, -15px)
+      rotate(-5deg);
+  }
+}
+
+/* Dark mode food background */
+
+[data-theme="dark"] .content {
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #392d23 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #1b1916,
+      #242019
+    );
+}
+
+[data-theme="dark"] .floating-food {
+  opacity: 0.16;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .floating-food {
+    opacity: 0.10;
+    font-size: 28px !important;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-food {
+    animation: none;
+    will-change: auto;
+  }
+}

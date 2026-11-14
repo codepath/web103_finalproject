@@ -1,0 +1,236 @@
+/* ==========================================
+   PREPWISE VOICE OUTPUT
+========================================== */
+
+.pw-voice-controls {
+  padding: 9px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border-bottom: 1px solid #e4d3b8;
+  background: #fffdf8;
+  flex-shrink: 0;
+}
+
+.pw-voice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pw-voice-actions button {
+  flex: 1;
+  min-width: 78px;
+  padding: 8px 9px;
+  border-radius: 9px;
+  border: 1px solid #dfc9b2;
+  background: #f8f1e6;
+  color: #72503a;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pw-voice-actions button:hover {
+  background: #f0e1cd;
+}
+
+.pw-voice-actions button.pw-voice-active {
+  background: #e2eedc;
+  color: #35612c;
+  border-color: #a8c79a;
+}
+
+.pw-voice-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pw-voice-settings {
+  display: flex;
+  gap: 6px;
+}
+
+.pw-voice-settings select {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 9px;
+  background: white;
+  border: 1px solid #e4d3b8;
+  color: #39291d;
+  border-radius: 8px;
+  font-size: 11px;
+}
+
+.pw-voice-settings select:first-child {
+  flex: 1;
+}
+
+.pw-voice-settings select:last-child {
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.pw-voice-status {
+  color: #72503a;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.pw-voice-unavailable {
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #72503a;
+}
+
+/* ==========================================
+   DARK MODE: VOICE CONTROLS
+========================================== */
+
+html[data-theme="dark"] .pw-voice-controls {
+  background: #202b32;
+  border-color: #42505a;
+}
+
+html[data-theme="dark"] .pw-voice-actions button {
+  background: #293943;
+  border-color: #52636d;
+  color: #f3f5f6;
+}
+
+html[data-theme="dark"] .pw-voice-actions button:hover {
+  background: #3a4d58;
+}
+
+html[data-theme="dark"] .pw-voice-actions button.pw-voice-active {
+  background: #244b36;
+  color: #d1f5d8;
+  border-color: #529468;
+}
+
+html[data-theme="dark"] .pw-voice-settings select {
+  background: #182329;
+  border-color: #52636d;
+  color: #f3f5f6;
+}
+
+html[data-theme="dark"] .pw-voice-status,
+html[data-theme="dark"] .pw-voice-unavailable {
+  color: #d3dce2;
+}
+
+/* ==========================================
+   DARK MODE: AI CHAT TEXT
+========================================== */
+
+html[data-theme="dark"] .prepwise-chat-panel {
+  color: #f0f3f5;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-heading h3,
+html[data-theme="dark"] .prepwise-chat-panel .chat-heading span {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-toolbar span {
+  color: #b9dfb0;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-toolbar button {
+  color: #ffc9ae;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-message.assistant .chat-bubble {
+  background: #25343d;
+  color: #f3f5f6;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-message.assistant .chat-error-bubble {
+  background: #482c2c;
+  color: #ffc9c2;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-recipe-list > h4,
+html[data-theme="dark"] .prepwise-chat-panel .chat-recipe-body h4,
+html[data-theme="dark"] .prepwise-chat-panel .chat-preferences h3,
+html[data-theme="dark"] .prepwise-chat-panel .chat-preferences h4,
+html[data-theme="dark"] .prepwise-chat-panel .chat-measurement-row strong {
+  color: #f3f5f6;
+}
+
+/* ==========================================
+   DARK MODE: WEEKLY MEAL PLAN
+========================================== */
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-plan {
+  background: #202b32;
+  border-color: #42505a;
+  color: #eaf0f4;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-plan > h4 {
+  color: #f1f5f8;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-meal {
+  border-color: #42505a;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-meal strong {
+  color: #f5f7f9;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-date {
+  color: #ffbf9f;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-missing {
+  color: #ffb59f;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-recipe-meta,
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-note,
+html[data-theme="dark"] .prepwise-chat-panel .chat-preference-help,
+html[data-theme="dark"] .prepwise-chat-panel .chat-external-source,
+html[data-theme="dark"] .prepwise-chat-panel .chat-footer {
+  color: #c1ced7;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-notice {
+  background: #2b3c46;
+  color: #e6edf2;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-weekly-notice strong {
+  color: #dcf4d5;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-shopping-success {
+  color: #b9e6ae;
+}
+
+html[data-theme="dark"] .prepwise-chat-panel .chat-shopping-error {
+  color: #ffb4a9;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .pw-voice-controls {
+    padding: 8px 10px;
+    gap: 5px;
+  }
+
+  .pw-voice-actions button {
+    min-width: 65px;
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+
+  .pw-voice-settings select {
+    font-size: 11px;
+    padding: 7px;
+  }
+}

@@ -1,0 +1,12 @@
+/* Base layout only — feature styling is added with each feature. */
+:root { --bg: #fbf4e6; --ink: #3b2a1e; --muted: #8a7566; --brand: #c8553d; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+.muted { color: var(--muted); }
+.shell { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+.sidebar { background: var(--ink); color: #f4e7d3; padding: 24px 16px; }
+.brand { font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; }
+.nav-link { display: block; padding: 10px 12px; border-radius: 8px; color: #e8d7bd; text-decoration: none; }
+.nav-link.active { background: var(--brand); color: #fff; }
+.content { padding: 32px 40px; }
+@media (max-width: 800px) { .shell { grid-template-columns: 1fr; } }

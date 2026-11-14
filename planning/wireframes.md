@@ -1,21 +1,29 @@
-# Wireframes
-
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
+# PrepWise — Wireframes
 
 ## List of Pages
 
-[👉🏾👉🏾👉🏾 List the pages you expect to have in your app, with a ⭐ next to pages you have wireframed]
+- ⭐ Dashboard
+- My Pantry
+- ⭐ Discover Recipes
+- ⭐ Weekly Meal Planner
+- Shopping List
+- Saved Recipes
 
-## Wireframe 1: [page title]
+⭐ = Pages with completed wireframes.
 
-[👉🏾👉🏾👉🏾 include wireframe 1]
+## Wireframe 1: Dashboard
 
-## Wireframe 2: [page title]
+The Dashboard provides an overview of pantry ingredients, upcoming meals, expiring ingredients, and recommended recipes.
 
-[👉🏾👉🏾👉🏾 include wireframe 2]
+![Dashboard Wireframe](assets/wireframe-dashboard.svg)
 
-## Wireframe 3: [page title]
+## Wireframe 2: Discover Recipes
 
-[👉🏾👉🏾👉🏾 include wireframe 3]
+Users can search, filter, and sort recipes based on available ingredients, preparation time, and dietary preferences. A recipe detail modal displays ingredients and cooking instructions.
 
-[👉🏾👉🏾👉🏾 include more wireframes as desired]
+![Discover Recipes Wireframe](assets/wireframe-recipes.svg)
+
+## Wireframe 3: Weekly Meal Planner
+
+Users can organize their meals throughout the week, assign recipes to specific days, and generate shopping lists based on missing ingredients.
+![Meal Planner Wireframe](assets/wireframe-meal-planner.svg)

@@ -1,0 +1,90 @@
+// PrepWise — PostgreSQL entity relationship schema
+// Paste into https://dbdiagram.io to regenerate and edit the ERD.
+
+Table users {
+  id serial [pk]
+  name varchar(100) [not null]
+  email varchar(255) [unique]
+  created_at timestamptz [default: `CURRENT_TIMESTAMP`]
+}
+
+Table ingredients {
+  id serial [pk]
+  name varchar(150) [not null, unique]
+  category varchar(50)
+  created_at timestamptz [default: `CURRENT_TIMESTAMP`]
+}
+
+Table recipes {
+  id serial [pk]
+  title varchar(150) [not null]
+  description text
+  instructions text [not null]
+  prep_minutes integer
+  cook_minutes integer
+  servings integer
+  meal_type varchar(30)
+  dietary_preference varchar(50)
+  image_url text
+}
+
+Table pantry_items {
+  id serial [pk]
+  user_id integer [not null]
+  ingredient_id integer [not null]
+  quantity decimal(10,2) [not null]
+  unit varchar(30) [not null]
+  expiration_date date
+  updated_at timestamptz [default: `CURRENT_TIMESTAMP`]
+}
+
+Table recipe_ingredients {
+  recipe_id integer [not null]
+  ingredient_id integer [not null]
+  quantity decimal(10,2) [not null]
+  unit varchar(30) [not null]
+
+  indexes {
+    (recipe_id, ingredient_id) [pk]
+  }
+}
+
+Table meal_plan_entries {
+  id serial [pk]
+  user_id integer [not null]
+  recipe_id integer [not null]
+  planned_date date [not null]
+  meal_type varchar(30) [not null]
+  created_at timestamptz [default: `CURRENT_TIMESTAMP`]
+}
+
+Table saved_recipes {
+  user_id integer [not null]
+  recipe_id integer [not null]
+  saved_at timestamptz [default: `CURRENT_TIMESTAMP`]
+
+  indexes {
+    (user_id, recipe_id) [pk]
+  }
+}
+
+Table shopping_list_items {
+  id serial [pk]
+  user_id integer [not null]
+  ingredient_id integer [not null]
+  quantity decimal(10,2) [not null]
+  unit varchar(30) [not null]
+  is_checked boolean [default: false]
+  source varchar(20) [default: 'manual']
+}
+
+Ref: pantry_items.user_id > users.id
+Ref: pantry_items.ingredient_id > ingredients.id
+Ref: recipe_ingredients.recipe_id > recipes.id
+Ref: recipe_ingredients.ingredient_id > ingredients.id
+Ref: meal_plan_entries.user_id > users.id
+Ref: meal_plan_entries.recipe_id > recipes.id
+Ref: saved_recipes.user_id > users.id
+Ref: saved_recipes.recipe_id > recipes.id
+Ref: shopping_list_items.user_id > users.id
+Ref: shopping_list_items.ingredient_id > ingredients.id

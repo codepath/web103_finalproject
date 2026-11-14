@@ -1,0 +1,1680 @@
+
+/* ==========================================
+   DASHBOARD 3.0 — DESIGN SYSTEM
+========================================== */
+
+.d3-dashboard {
+  --d3-surface: #fffdf8;
+  --d3-soft: #f8f1e5;
+  --d3-border: #e4d3be;
+  --d3-text: #39291d;
+  --d3-muted: #8a7566;
+  --d3-brand: #b85339;
+  --d3-track: #eee4d8;
+
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+  padding-bottom: 110px;
+
+  color: var(--d3-text);
+}
+
+.d3-dashboard *,
+.d3-dashboard *::before,
+.d3-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.d3-dashboard a {
+  text-decoration: none;
+}
+
+.d3-dashboard button {
+  font-family: inherit;
+}
+
+.d3-dashboard h1,
+.d3-dashboard h2,
+.d3-dashboard p {
+  margin-top: 0;
+}
+
+.d3-dashboard button:focus-visible,
+.d3-dashboard a:focus-visible {
+  outline: 2px solid var(--d3-brand);
+  outline-offset: 4px;
+}
+
+.d3-muted {
+  color: var(--d3-muted);
+}
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+.d3-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+.d3-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  color: var(--d3-brand);
+}
+
+.d3-header h1 {
+  margin: 4px 0;
+
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 4vw, 42px);
+
+  color: var(--d3-text);
+}
+
+.d3-header p {
+  margin: 5px 0 0;
+
+  color: var(--d3-muted);
+
+  font-size: 13px;
+}
+
+.d3-refresh {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.d3-refresh span {
+  font-size: 19px;
+}
+
+.d3-refresh:disabled span {
+  animation: d3Spin 1.5s linear infinite;
+}
+
+@keyframes d3Spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   WELCOME HERO
+========================================== */
+
+.d3-hero {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 250px;
+
+  padding: 32px;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: linear-gradient(
+    125deg,
+    #cb684b 0%,
+    #ad4c33 65%,
+    #913922 100%
+  );
+
+  color: #fffaf0;
+
+  border-radius: 23px;
+
+  box-shadow: 0 12px 30px #9e422c26;
+
+  animation: d3Entrance 0.55s ease-out both;
+}
+
+.d3-hero-copy {
+  position: relative;
+  z-index: 2;
+
+  max-width: 540px;
+  width: 65%;
+}
+
+.d3-hero-copy > span {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+
+  color: #fff1db;
+}
+
+.d3-hero h2 {
+  font-family: Georgia, serif;
+
+  font-size: clamp(27px, 3.5vw, 43px);
+  line-height: 1.2;
+
+  margin: 0 0 13px;
+
+  color: white;
+}
+
+.d3-hero p {
+  max-width: 450px;
+
+  margin: 0 0 22px;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  color: #ffe6d5;
+}
+
+.d3-hero-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.d3-hero-button,
+.d3-hero-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 11px 15px;
+
+  border: 1px solid #fff8ed;
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.d3-hero-button {
+  background: #fff8ed;
+  color: #a3442e;
+}
+
+.d3-hero-outline {
+  background: #ffffff15;
+  color: white;
+}
+
+.d3-hero-button:hover,
+.d3-hero-outline:hover {
+  transform: translateY(-2px);
+}
+
+.d3-hero-outline:hover {
+  background: #ffffff30;
+}
+
+/* ==========================================
+   FLOATING FOOD HERO ANIMATION
+========================================== */
+
+.d3-hero-art {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 40%;
+
+  display: grid;
+  place-items: center;
+
+  pointer-events: none;
+}
+
+.d3-hero-art::before,
+.d3-hero-art::after {
+  content: "";
+
+  position: absolute;
+
+  width: 210px;
+  height: 210px;
+
+  border: 1px solid #ffffff26;
+  border-radius: 50%;
+}
+
+.d3-hero-art::after {
+  width: 165px;
+  height: 165px;
+}
+
+.d3-main-food {
+  position: relative;
+
+  font-size: clamp(80px, 11vw, 145px);
+
+  filter: drop-shadow(
+    0 10px 12px #6c281a4d
+  );
+
+  animation: d3Float 4s ease-in-out infinite;
+}
+
+.d3-food {
+  position: absolute;
+
+  font-size: 36px;
+
+  opacity: 0.9;
+
+  animation: d3Float 4.5s ease-in-out infinite;
+}
+
+.d3-food.food-one {
+  top: 16%;
+  left: 13%;
+}
+
+.d3-food.food-two {
+  top: 15%;
+  right: 16%;
+
+  animation-delay: 0.8s;
+}
+
+.d3-food.food-three {
+  bottom: 13%;
+  left: 10%;
+
+  animation-delay: 1.5s;
+}
+
+.d3-food.food-four {
+  bottom: 14%;
+  right: 12%;
+
+  animation-delay: 0.4s;
+}
+
+.d3-food.food-five {
+  top: 45%;
+  right: 3%;
+
+  font-size: 29px;
+
+  animation-delay: 2s;
+}
+
+@keyframes d3Float {
+  0%, 100% {
+    transform:
+      translateY(0)
+      rotate(-4deg);
+  }
+
+  50% {
+    transform:
+      translateY(-10px)
+      rotate(4deg);
+  }
+}
+
+/* ==========================================
+   ENTRANCE ANIMATION
+========================================== */
+
+@keyframes d3Entrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   SHARED BUTTONS AND LINKS
+========================================== */
+
+.d3-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 13px;
+
+  border: 1px solid var(--d3-border);
+  border-radius: 9px;
+
+  background: var(--d3-surface);
+  color: var(--d3-brand);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.d3-button:hover {
+  border-color: var(--d3-brand);
+  background: var(--d3-soft);
+}
+
+.d3-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.d3-link {
+  display: inline-block;
+
+  color: var(--d3-brand);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  line-height: 1.5;
+
+  flex-shrink: 0;
+}
+
+.d3-link:hover {
+  text-decoration: underline;
+}
+
+.d3-small-button {
+  font-size: 11px;
+  padding: 7px 10px;
+}
+
+.d3-full-button {
+  width: 100%;
+  margin-top: 14px;
+}
+
+/* ==========================================
+   LOADING AND ERROR STATES
+========================================== */
+
+.d3-status {
+  margin: 12px 0;
+
+  color: var(--d3-muted);
+
+  font-size: 12px;
+}
+
+.d3-error {
+  margin: 16px 0;
+
+  padding: 14px;
+
+  background: #fce8e0;
+  color: #a43e29;
+
+  border: 1px solid #ecc0b3;
+  border-radius: 12px;
+
+  font-size: 13px;
+}
+
+.d3-error p {
+  margin: 6px 0 12px;
+}
+
+/* ==========================================
+   STATISTICS CARDS
+========================================== */
+
+.d3-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin: 20px 0;
+}
+
+.d3-stat {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 11px;
+
+  padding: 17px 14px;
+
+  background: var(--d3-surface);
+  color: var(--d3-text);
+
+  border: 1px solid var(--d3-border);
+  border-radius: 15px;
+
+  box-shadow: 0 3px 12px #39291d09;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  animation: d3Entrance 0.5s ease-out both;
+}
+
+.d3-stat:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--stat-color);
+
+  box-shadow: 0 8px 20px #39291d12;
+}
+
+.d3-stat:nth-child(2) {
+  animation-delay: 0.07s;
+}
+
+.d3-stat:nth-child(3) {
+  animation-delay: 0.14s;
+}
+
+.d3-stat:nth-child(4) {
+  animation-delay: 0.21s;
+}
+
+.d3-stat-icon {
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  background: var(--d3-soft);
+
+  border-radius: 12px;
+
+  font-size: 23px;
+}
+
+.d3-stat-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.d3-stat-info > span {
+  font-size: 11px;
+
+  color: var(--d3-muted);
+}
+
+.d3-stat-info > strong {
+  font-size: 29px;
+
+  line-height: 1;
+
+  font-variant-numeric: tabular-nums;
+
+  color: var(--stat-color);
+}
+
+.d3-stat-arrow {
+  position: absolute;
+
+  right: 10px;
+  top: 9px;
+
+  color: var(--d3-muted);
+
+  font-size: 12px;
+}
+
+/* ==========================================
+   DASHBOARD PANELS
+========================================== */
+
+.d3-overview {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.8fr)
+    minmax(0, 1fr);
+
+  gap: 16px;
+
+  margin-bottom: 16px;
+}
+
+.d3-columns {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 16px;
+}
+
+.d3-panel {
+  min-width: 0;
+
+  background: var(--d3-surface);
+
+  padding: 20px;
+
+  border: 1px solid var(--d3-border);
+  border-radius: 17px;
+
+  box-shadow: 0 4px 16px #39291d08;
+
+  animation: d3Entrance 0.55s ease-out both;
+}
+
+.d3-dashboard > .d3-panel {
+  margin-bottom: 16px;
+}
+
+.d3-panel-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+.d3-panel-header h2 {
+  margin: 0;
+
+  color: var(--d3-text);
+
+  font-size: 19px;
+  font-family: Georgia, serif;
+}
+
+.d3-panel-header p {
+  margin: 5px 0 0;
+
+  font-size: 11px;
+
+  color: var(--d3-muted);
+}
+
+/* ==========================================
+   ANIMATED NUTRITION RINGS
+========================================== */
+
+.d3-nutrition-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  padding: 8px 0 16px;
+}
+
+.d3-nutrition-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 5px;
+
+  text-align: center;
+}
+
+.d3-ring {
+  position: relative;
+
+  width: 100%;
+  max-width: 112px;
+
+  aspect-ratio: 1;
+}
+
+.d3-ring svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+.d3-ring-track {
+  stroke: var(--d3-track);
+}
+
+.d3-ring-progress {
+  transition:
+    stroke-dashoffset 0.8s ease;
+
+  animation: d3RingFill 1.1s ease-out both;
+}
+
+@keyframes d3RingFill {
+  from {
+    stroke-dashoffset: var(--ring-length);
+  }
+
+  to {
+    stroke-dashoffset: var(--ring-offset);
+  }
+}
+
+.d3-ring-center {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  overflow: hidden;
+}
+
+.d3-ring-center strong {
+  max-width: 100%;
+
+  font-size: clamp(13px, 1.6vw, 22px);
+
+  font-weight: 800;
+
+  letter-spacing: -0.6px;
+
+  font-variant-numeric: tabular-nums;
+
+  color: var(--ring-color);
+}
+
+.d3-ring-center small {
+  font-size: 10px;
+
+  color: var(--d3-muted);
+}
+
+.d3-macro-label {
+  font-size: 12px;
+}
+
+.d3-macro-goal {
+  font-size: 10px;
+
+  color: var(--d3-muted);
+}
+
+.d3-macro-percent {
+  padding: 4px 7px;
+
+  border-radius: 6px;
+
+  background: var(--d3-soft);
+
+  color: var(--d3-muted);
+
+  font-size: 9px;
+}
+
+.d3-nutrition-footer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid var(--d3-border);
+
+  font-size: 11px;
+
+  color: var(--d3-muted);
+}
+
+/* ==========================================
+   WEEKLY GROCERY BUDGET
+========================================== */
+
+.d3-budget {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.d3-budget-icon {
+  position: absolute;
+
+  right: 6px;
+  top: 0;
+
+  font-size: 35px;
+
+  animation: d3Float 4s ease-in-out infinite;
+}
+
+.d3-budget > .d3-muted {
+  font-size: 11px;
+}
+
+.d3-budget-total {
+  font-size: 32px;
+
+  font-weight: 800;
+
+  color: var(--d3-text);
+
+  letter-spacing: -1px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.d3-budget p {
+  margin: 0;
+
+  color: var(--d3-muted);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.d3-progress {
+  position: relative;
+
+  height: 12px;
+
+  margin: 8px 0;
+
+  overflow: hidden;
+
+  background: var(--d3-track);
+
+  border-radius: 20px;
+}
+
+.d3-progress > span {
+  display: block;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #7fa770,
+    #4e804f
+  );
+
+  border-radius: 20px;
+
+  transform-origin: left;
+
+  animation: d3BudgetFill 1s ease-out both;
+
+  transition: width 0.6s ease;
+}
+
+.d3-progress.over-budget > span {
+  background: linear-gradient(
+    90deg,
+    #db9b58,
+    #c8553d
+  );
+}
+
+@keyframes d3BudgetFill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.d3-budget-bottom {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 12px;
+}
+
+.d3-budget-bottom > span {
+  color: var(--d3-muted);
+}
+
+.d3-budget-bottom strong {
+  color: var(--d3-text);
+}
+
+/* ==========================================
+   EMPTY STATES
+========================================== */
+
+.d3-empty {
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+
+  min-height: 145px;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 16px;
+}
+
+.d3-empty-icon {
+  font-size: 35px;
+
+  animation: d3Float 4.5s ease-in-out infinite;
+}
+
+.d3-empty > strong {
+  font-size: 13px;
+
+  color: var(--d3-text);
+}
+
+.d3-empty p {
+  max-width: 260px;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+
+  color: var(--d3-muted);
+
+  margin: 0;
+}
+
+.d3-empty .d3-link {
+  margin-top: 4px;
+}
+
+/* ==========================================
+   MEALS, ALERTS AND ACTIVITY LISTS
+========================================== */
+
+.d3-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.d3-meal-row,
+.d3-alert-row,
+.d3-activity-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--d3-border);
+}
+
+.d3-meal-row:first-child,
+.d3-alert-row:first-child,
+.d3-activity-row:first-child {
+  padding-top: 0;
+}
+
+.d3-meal-row:last-child,
+.d3-alert-row:last-child,
+.d3-activity-row:last-child {
+  border-bottom: none;
+}
+
+.d3-row-content {
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.d3-row-content > strong {
+  color: var(--d3-text);
+
+  font-size: 13px;
+
+  overflow-wrap: anywhere;
+}
+
+.d3-row-content > small {
+  color: var(--d3-muted);
+
+  font-size: 11px;
+}
+
+.d3-meal-row .d3-row-content > small {
+  text-transform: capitalize;
+}
+
+.d3-meal-image,
+.d3-meal-placeholder {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 10px;
+
+  flex-shrink: 0;
+
+  object-fit: cover;
+}
+
+.d3-meal-placeholder {
+  display: grid;
+
+  place-items: center;
+
+  font-size: 27px;
+
+  background: var(--d3-soft);
+}
+
+/* Pantry alerts */
+
+.d3-alert-icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  background: #faedcf;
+
+  border-radius: 10px;
+
+  font-size: 20px;
+}
+
+.d3-expiry {
+  padding: 6px 9px;
+
+  border-radius: 8px;
+
+  background: #f9efd6;
+  color: #91621c;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.d3-expiry.urgent {
+  background: #fce5dc;
+  color: #a43e29;
+}
+
+/* Recent cooking activity */
+
+.d3-activity-icon {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  background: var(--d3-soft);
+
+  border-radius: 11px;
+
+  font-size: 24px;
+}
+
+.d3-activity-row > small {
+  color: var(--d3-muted);
+
+  font-size: 10px;
+}
+
+.d3-list > .d3-link {
+  margin-top: 12px;
+}
+
+/* ==========================================
+   QUICK ACTION CARDS
+========================================== */
+
+.d3-actions {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 11px;
+}
+
+.d3-action {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 10px;
+
+  min-height: 80px;
+
+  padding: 12px;
+
+  border: 1px solid var(--d3-border);
+  border-radius: 12px;
+
+  background: var(--d3-soft);
+
+  color: var(--d3-text);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.d3-action:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--d3-brand);
+}
+
+.d3-action-icon {
+  display: grid;
+  place-items: center;
+
+  width: 39px;
+  height: 39px;
+
+  flex-shrink: 0;
+
+  background: var(--d3-surface);
+
+  border-radius: 10px;
+
+  font-size: 22px;
+}
+
+.d3-action > div {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.d3-action strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 12px;
+}
+
+.d3-action small {
+  display: block;
+
+  color: var(--d3-muted);
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+.d3-action-arrow {
+  color: var(--d3-brand);
+
+  font-size: 15px;
+}
+
+/* ==========================================
+   ACHIEVEMENTS
+========================================== */
+
+.d3-achievements {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 9px;
+}
+
+.d3-achievement {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  min-width: 0;
+
+  min-height: 145px;
+
+  padding: 14px 8px;
+
+  gap: 7px;
+
+  background: var(--d3-soft);
+
+  border: 1px dashed var(--d3-border);
+  border-radius: 13px;
+}
+
+.d3-achievement-icon {
+  font-size: 31px;
+}
+
+.d3-achievement strong {
+  font-size: 11px;
+}
+
+.d3-achievement small {
+  color: var(--d3-muted);
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+.d3-achievement-progress {
+  display: inline-block;
+
+  margin-top: auto;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  color: var(--d3-muted);
+}
+
+.d3-achievement.earned {
+  background: #faf0d4;
+
+  border: 1px solid #dbb978;
+
+  color: #805a24;
+}
+
+.d3-achievement.earned .d3-achievement-icon {
+  animation: d3Badge 0.7s ease-out both;
+}
+
+.d3-achievement.earned small {
+  color: #805a24;
+}
+
+@keyframes d3Badge {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  65% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   UPCOMING MEAL CARDS
+========================================== */
+
+.d3-upcoming {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.d3-upcoming-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: var(--d3-soft);
+  color: var(--d3-text);
+
+  border: 1px solid var(--d3-border);
+  border-radius: 12px;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.d3-upcoming-card:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--d3-brand);
+}
+
+.d3-upcoming-card img,
+.d3-upcoming-placeholder {
+  display: block;
+
+  width: 100%;
+  height: 115px;
+
+  object-fit: cover;
+}
+
+.d3-upcoming-placeholder {
+  display: grid;
+
+  place-items: center;
+
+  font-size: 40px;
+}
+
+.d3-upcoming-card > div:not(
+  .d3-upcoming-placeholder
+) {
+  display: grid;
+
+  gap: 6px;
+
+  padding: 12px;
+}
+
+.d3-upcoming-card strong {
+  font-size: 13px;
+}
+
+.d3-upcoming-card small {
+  color: var(--d3-muted);
+
+  font-size: 10px;
+
+  text-transform: capitalize;
+}
+
+/* ==========================================
+   DASHBOARD FOOTER
+========================================== */
+
+.d3-footer {
+  margin-top: 25px;
+
+  text-align: center;
+
+  color: var(--d3-muted);
+
+  font-size: 12px;
+
+  letter-spacing: 0.3px;
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+[data-theme="dark"] .d3-dashboard {
+  --d3-surface: #29241f;
+  --d3-soft: #352b23;
+  --d3-border: #654535;
+  --d3-text: #f4e7d3;
+  --d3-muted: #b9a999;
+  --d3-brand: #ee9277;
+  --d3-track: #493b30;
+}
+
+[data-theme="dark"] .d3-stat,
+[data-theme="dark"] .d3-panel {
+  box-shadow: 0 4px 16px #00000015;
+}
+
+[data-theme="dark"] .d3-hero {
+  background: linear-gradient(
+    125deg,
+    #b85a3e,
+    #8e3927
+  );
+}
+
+[data-theme="dark"] .d3-alert-icon,
+[data-theme="dark"] .d3-expiry {
+  background: #49391f;
+
+  color: #f1cd84;
+}
+
+[data-theme="dark"] .d3-expiry.urgent {
+  background: #4d2e28;
+
+  color: #f4ad95;
+}
+
+[data-theme="dark"] .d3-achievement.earned {
+  background: #49391f;
+
+  border-color: #745632;
+
+  color: #f1cd84;
+}
+
+[data-theme="dark"] .d3-achievement.earned small {
+  color: #f1cd84;
+}
+
+[data-theme="dark"] .d3-error {
+  background: #4d2e28;
+
+  color: #f4ad95;
+
+  border-color: #7f4b3c;
+}
+
+/* ==========================================
+   RESPONSIVE — SMALL DESKTOP
+========================================== */
+
+@media (max-width: 1200px) {
+  .d3-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .d3-nutrition-grid {
+    max-width: 650px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .d3-budget {
+    max-width: 100%;
+  }
+
+  .d3-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .d3-actions {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================
+   RESPONSIVE — TABLET
+========================================== */
+
+@media (max-width: 950px) {
+  .d3-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .d3-upcoming {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .d3-hero {
+    min-height: 220px;
+
+    padding: 26px;
+  }
+
+  .d3-hero-copy {
+    width: 70%;
+  }
+
+  .d3-food {
+    font-size: 28px;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE — MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+  .d3-dashboard {
+    padding-bottom: 230px;
+  }
+
+  .d3-header {
+    align-items: flex-start;
+  }
+
+  .d3-header h1 {
+    font-size: 30px;
+  }
+
+  .d3-header p {
+    font-size: 11px;
+  }
+
+  .d3-refresh {
+    font-size: 10px;
+
+    padding: 7px 9px;
+  }
+
+  .d3-hero {
+    min-height: 290px;
+
+    padding: 22px;
+
+    align-items: flex-start;
+  }
+
+  .d3-hero-copy {
+    width: 100%;
+  }
+
+  .d3-hero-copy > span {
+    font-size: 9px;
+  }
+
+  .d3-hero h2 {
+    max-width: 90%;
+
+    font-size: 29px;
+  }
+
+  .d3-hero p {
+    max-width: 85%;
+
+    font-size: 12px;
+  }
+
+  .d3-hero-art {
+    top: auto;
+
+    right: -5px;
+    bottom: 0;
+
+    width: 120px;
+    height: 120px;
+
+    opacity: 0.45;
+  }
+
+  .d3-hero-art::before,
+  .d3-hero-art::after,
+  .d3-food {
+    display: none;
+  }
+
+  .d3-main-food {
+    font-size: 75px;
+  }
+
+  .d3-stats {
+    gap: 9px;
+  }
+
+  .d3-stat {
+    padding: 12px 9px;
+
+    gap: 7px;
+  }
+
+  .d3-stat-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 18px;
+  }
+
+  .d3-stat-info > span {
+    font-size: 10px;
+  }
+
+  .d3-stat-info > strong {
+    font-size: 22px;
+  }
+
+  .d3-panel {
+    padding: 15px;
+  }
+
+  .d3-panel-header h2 {
+    font-size: 17px;
+  }
+
+  .d3-panel-header p {
+    font-size: 10px;
+  }
+
+  .d3-panel-header .d3-link {
+    max-width: 90px;
+
+    white-space: normal;
+
+    text-align: right;
+  }
+
+  .d3-nutrition-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+  }
+
+  .d3-ring-center strong {
+    font-size: 20px;
+  }
+
+  .d3-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .d3-action {
+    min-height: 70px;
+  }
+
+  .d3-achievements {
+    gap: 6px;
+  }
+
+  .d3-achievement {
+    padding: 10px 6px;
+  }
+
+  .d3-upcoming-card img,
+  .d3-upcoming-placeholder {
+    height: 95px;
+  }
+
+  .d3-expiry {
+    max-width: 95px;
+
+    font-size: 9px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .d3-dashboard *,
+  .d3-dashboard *::before,
+  .d3-dashboard *::after {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}
