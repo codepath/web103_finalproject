@@ -1,8 +1,17 @@
+import { useState } from 'react'
 import { NavLink, Link, useMatch } from 'react-router-dom'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
 
 export default function Sidebar() {
-  const { users, activeUser, setActiveUserId } = useActiveUser()
+  const { activeUser, logout } = useActiveUser()
+  const [logoutError, setLogoutError] = useState('')
+  const [signingOut, setSigningOut] = useState(false)
+  async function handleLogout() {
+    setSigningOut(true)
+    setLogoutError('')
+    try { await logout() } catch (error) { setLogoutError(error.message) }
+    finally { setSigningOut(false) }
+  }
   const tripMatch = useMatch('/trips/:tripId/*')
   const tripId = tripMatch && tripMatch.params.tripId !== 'new' ? tripMatch.params.tripId : null
 
@@ -26,16 +35,11 @@ export default function Sidebar() {
       <div className="sidebar-spacer" />
 
       <div className="user-switcher">
-        <label htmlFor="active-user">Acting as (demo user)</label>
-        <select
-          id="active-user"
-          value={activeUser.id}
-          onChange={(event) => setActiveUserId(Number(event.target.value))}
-        >
-          {users.map((user) => (
-            <option key={user.id} value={user.id}>{user.name}</option>
-          ))}
-        </select>
+        <span>{activeUser.name}</span>
+        <button type="button" disabled={signingOut} onClick={handleLogout}>
+          {signingOut ? 'Signing out…' : 'Sign out'}
+        </button>
+        {logoutError && <p role="alert">{logoutError}</p>}
       </div>
     </aside>
   )

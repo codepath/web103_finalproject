@@ -1,11 +1,19 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+import passport, { configurePassport } from "./config/passport.js";
+import { clientOrigin } from "./config/auth.js";
+import { requireTrustedOrigin } from "./middleware/auth.js";
 import routes from "./routes/index.js";
 
 const app = express();
 
 //middleware
-app.use(cors());
+configurePassport();
+app.use(cors({ origin: clientOrigin, credentials: true }));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use("/api", requireTrustedOrigin);
 app.use(express.json());
 
 app.use("/api", routes);

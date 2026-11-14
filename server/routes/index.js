@@ -1,6 +1,7 @@
 import { Router } from "express";
 import pool from "../config/database.js";
-import actingUser from "../middleware/actingUser.js";
+import { requireAuth } from "../middleware/auth.js";
+import authRoutes from "./auth.js";
 import tripRoutes from "./trips.js";
 import activityRoutes from "./activities.js";
 import expenseRoutes from "./expenses.js";
@@ -16,16 +17,9 @@ router.get("/health", async (_req, res) => {
   }
 });
 
-router.get("/users", async (_req, res, next) => {
-  try {
-    const { rows } = await pool.query("SELECT id, name FROM users ORDER BY id");
-    res.json(rows);
-  } catch (error) {
-    next(error);
-  }
-});
+router.use("/auth", authRoutes);
+router.use(requireAuth);
 
-router.use(actingUser);
 router.use("/trips", tripRoutes);
 router.use("/activities", activityRoutes);
 router.use("/expenses", expenseRoutes);

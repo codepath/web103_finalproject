@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  google_id VARCHAR(255) UNIQUE,
   name VARCHAR(100) NOT NULL CHECK (length(trim(name)) > 0),
   email VARCHAR(255) NOT NULL UNIQUE CHECK (length(trim(email)) > 0),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()

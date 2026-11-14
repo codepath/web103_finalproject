@@ -30,14 +30,9 @@ Deployment: Render.
 
 All six core features below are implemented. Each has a demonstration GIF.
 
-### ✅ App Layout and Demo User Switching
+### ✅ Google Sign-in
 
-- [x] Users can access the shared sidebar and switch between seeded demo users (Yingshu, Yugant, and Arnold). The selected demo user is stored locally between visits. This development feature does not provide authentication.
-- React Router provides page routes for trips, creating a trip, trip details, expenses, and settings. These pages host the core features below.
-
-The recording demonstrates the Trips page, shared sidebar, and demo user selection.
-
-![Demo user switching on the Trips page](docs/gifs/demo-user-switcher.gif)
+Users sign in with Google through Passport. The server issues a 15-minute JWT in an HTTP-only cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
 
 ### ✅ 1. Create and Manage Trips
 
@@ -117,9 +112,27 @@ The recording demonstrates the budget summary, adding an expense paid by another
 
 ### Scope Notes
 
-The initial version focuses on trip planning, voting, and expense records. User accounts are represented in the database; secure authentication and protected routes are optional stretch work. During development, a seeded demo-user selector can provide the active user context for demonstrating organizer and member workflows. This selector is for demonstration and does not provide secure access control.
+The app supports Google authentication. Seeded demo accounts remain sample data and cannot be selected as an authenticated identity.
 
 ## Installation Instructions
 
 - Server: cd server, npm install, copy .env.example to .env and fill in the PostgreSQL values for your local database, npm run reset, npm run dev (http://localhost:3001)
 - Client: cd client, npm install, npm run dev (http://localhost:5173). The client sends /api requests to the server on port 3001.
+
+### Google authentication setup
+
+1. In `server/.env`, set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from a Google OAuth **Web application** client. Configure its consent screen and add your account as a test user while the application is in testing.
+2. Register `http://localhost:3001/api/auth/google/callback` as an authorized redirect URI. Set `GOOGLE_CALLBACK_URL` to that exact URI and `CLIENT_URL=http://localhost:5173`.
+3. Generate a secret with `openssl rand -hex 32` and put it in `JWT_SECRET`. Keep credentials and secrets out of Git.
+4. Run `cd server` then `npm run migrate` to add Google identities to an existing database **without deleting data**. For a fresh development database, `npm run reset` includes the new column but deletes existing app data.
+5. Start server and client, open `http://localhost:5173`, and select **Continue with Google**. Restart the server after changing environment variables. Missing OAuth configuration or a short JWT secret prevents startup.
+
+Google identities are matched by Google ID. Existing users with the same email are not automatically linked; a collision fails login. New Google users can join seeded trips using their invitation codes.
+
+Authentication endpoints: `GET /api/auth/google`, `GET /api/auth/google/callback`, `GET /api/auth/me`, and `POST /api/auth/logout`. The demo `x-user-id` header and public `/api/users` listing have been removed. All mutation requests, including logout, must carry an `Origin` header matching `CLIENT_URL`.
+
+For production, set `NODE_ENV=production`, use HTTPS, and set the real callback and client URLs. Serve `/api` through the frontend origin (a reverse proxy), preserving the browser's Origin header; the client uses relative API URLs. Cookies use `Secure` in production and `SameSite=Lax`, so unrelated frontend/backend sites are not supported by this configuration. No proxy trust setting is needed because cookies are explicitly secure in production.
+
+JWTs expire after 15 minutes; users then sign in again. Logout clears the browser cookie, but a copied JWT remains valid until expiration. There are no sessions, refresh tokens, or stored Google access tokens.
+
+Run `cd client && npm run lint && npm run build` for client validation. Manually verify Google consent, cancelled login, page refresh, logout, and joining a trip with two different Google accounts to confirm organizer/member permissions.

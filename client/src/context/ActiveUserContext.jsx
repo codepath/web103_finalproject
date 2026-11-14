@@ -1,42 +1,45 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from "react";
+import { api } from "../api.js";
 
-// Matches server/db/seed.sql. Swap this for a GET /users call once the server has that route.
-const DEMO_USERS = [
-  { id: 1, name: 'Yingshu' },
-  { id: 2, name: 'Yugant' },
-  { id: 3, name: 'Arnold' },
-]
-
-const ActiveUserContext = createContext(null)
-
-function readSavedUserId() {
-  try {
-    return Number(localStorage.getItem('activeUserId')) || DEMO_USERS[0].id
-  } catch {
-    return DEMO_USERS[0].id
-  }
-}
+const ActiveUserContext = createContext(null);
 
 export function ActiveUserProvider({ children }) {
-  const [activeUserId, setActiveUserId] = useState(readSavedUserId)
+  const [activeUser, setActiveUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    try {
-      localStorage.setItem('activeUserId', String(activeUserId))
-    } catch {
-      // Storage can be blocked in private windows. The selector still works for this visit.
-    }
-  }, [activeUserId])
+    let cancelled = false;
+    api("/auth/me")
+      .then((user) => {
+        if (!cancelled) setActiveUser(user);
+      })
+      .catch((err) => {
+        if (!cancelled && err.status !== 401) setError(err.message);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    const expire = () => setActiveUser(null);
+    window.addEventListener("auth-expired", expire);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("auth-expired", expire);
+    };
+  }, []);
 
-  const activeUser = DEMO_USERS.find((user) => user.id === activeUserId) || DEMO_USERS[0]
+  async function logout() {
+    await api("/auth/logout", { method: "POST" });
+    setActiveUser(null);
+  }
 
   return (
-    <ActiveUserContext.Provider value={{ users: DEMO_USERS, activeUser, setActiveUserId }}>
+    <ActiveUserContext.Provider value={{ activeUser, loading, error, logout }}>
       {children}
     </ActiveUserContext.Provider>
-  )
+  );
 }
 
 export function useActiveUser() {
-  return useContext(ActiveUserContext)
+  return useContext(ActiveUserContext);
 }
