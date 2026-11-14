@@ -1,0 +1,415 @@
+
+/* =========================================
+   MASCOT POSITION
+========================================= */
+
+.chef-mascot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  z-index: 1100;
+}
+
+.chef-mascot-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 140px;
+
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chef-mascot-button:focus-visible {
+  outline: 2px solid #c8553d;
+  outline-offset: 6px;
+  border-radius: 20px;
+}
+
+/* =========================================
+   CHARACTER
+========================================= */
+
+.chef-character {
+  display: block;
+  width: 140px;
+  height: 158px;
+
+  overflow: visible;
+
+  filter: drop-shadow(
+    0 7px 8px rgba(57, 41, 29, 0.18)
+  );
+
+  transition: transform 0.3s ease;
+}
+
+.chef-mascot-button:hover .chef-character {
+  transform: translateY(-5px) scale(1.06);
+}
+
+/* =========================================
+   SPEECH BUBBLE
+========================================= */
+
+.chef-speech {
+  position: absolute;
+
+  top: 6px;
+  right: 112px;
+
+  min-width: 110px;
+  padding: 11px 15px;
+
+  border: 1px solid #e4d3b8;
+  border-radius: 18px 18px 4px 18px;
+
+  background: #fffdf8;
+  color: #39291d;
+
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 18px rgba(57, 41, 29, 0.1);
+
+  animation: chefBubbleFloat 3s ease-in-out infinite;
+}
+
+.chef-action-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 92px;
+  padding: 11px 20px;
+  margin-top: -4px;
+
+  background: linear-gradient(
+    135deg,
+    #d46b4e,
+    #b34b30
+  );
+
+  color: white;
+  border-radius: 30px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow:
+    0 6px 15px rgba(189, 83, 57, 0.25);
+
+  transition: transform 0.2s ease;
+}
+
+.chef-mascot-button:hover .chef-action-label {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   LIVING CHARACTER ANIMATIONS
+========================================= */
+
+/* Breathing */
+
+.chef-body {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+
+  animation: chefBreathe 3s ease-in-out infinite;
+}
+
+@keyframes chefBreathe {
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.015, 1.025);
+  }
+}
+
+/* Waving */
+
+.chef-wave-arm {
+  transform-origin: 106px 112px;
+
+  animation: chefWave 5s ease-in-out infinite;
+}
+
+@keyframes chefWave {
+  0%, 55%, 100% {
+    transform: rotate(0deg);
+  }
+
+  60% {
+    transform: rotate(-13deg);
+  }
+
+  70% {
+    transform: rotate(13deg);
+  }
+
+  80% {
+    transform: rotate(-13deg);
+  }
+
+  90% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Blinking */
+
+.chef-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: chefBlink 5.5s infinite;
+}
+
+@keyframes chefBlink {
+  0%, 43%, 47%, 85%, 89%, 100% {
+    transform: scaleY(1);
+  }
+
+  45%, 87% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* Speech bubble bounce */
+
+@keyframes chefBubbleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================
+   EMOTIONS
+========================================= */
+
+.happy .chef-head {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+
+  animation: chefHappy 1.2s ease-in-out;
+}
+
+@keyframes chefHappy {
+  0%, 100% {
+    transform: rotate(0);
+  }
+
+  40% {
+    transform: rotate(-6deg);
+  }
+
+  70% {
+    transform: rotate(3deg);
+  }
+}
+
+.thinking .chef-head {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+
+  animation: chefThinking 2s ease-in-out infinite;
+}
+
+@keyframes chefThinking {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.thinking .chef-wave-arm {
+  animation: none;
+}
+
+.thinking .chef-pupils {
+  transform: translateY(-2px);
+}
+
+.excited .chef-body {
+  animation: chefExcited 0.7s ease-in-out infinite;
+}
+
+@keyframes chefExcited {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.chef-sparkles {
+  animation: chefSparkle 1s ease-in-out infinite;
+}
+
+@keyframes chefSparkle {
+  0%, 100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   THINKING DOTS
+========================================= */
+
+.chef-thinking-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  margin-left: 5px;
+}
+
+.chef-thinking-dots i {
+  width: 4px;
+  height: 4px;
+  background: #c8553d;
+  border-radius: 50%;
+
+  animation: chefDot 1s infinite;
+}
+
+.chef-thinking-dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.chef-thinking-dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes chefDot {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* =========================================
+   COMPACT WHEN CHAT IS OPEN
+========================================= */
+
+.chef-compact {
+  bottom: 15px;
+}
+
+.chef-compact .chef-mascot-button {
+  width: 72px;
+  height: 70px;
+}
+
+.chef-compact .chef-character {
+  width: 62px;
+  height: 70px;
+}
+
+.chef-compact .chef-speech {
+  top: 15px;
+  right: 78px;
+  min-width: auto;
+
+  padding: 8px 12px;
+  font-size: 11px;
+}
+
+.chef-compact .chef-action-label {
+  position: absolute;
+  bottom: 0;
+  right: -7px;
+
+  width: 27px;
+  height: 27px;
+  min-width: 0;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+[data-theme="dark"] .chef-speech {
+  background: #352b23;
+  color: #f4e7d3;
+  border-color: #654535;
+
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .chef-character {
+  filter: drop-shadow(
+    0 5px 10px rgba(0, 0, 0, 0.35)
+  );
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .chef-mascot-container {
+    right: 14px;
+    bottom: 15px;
+  }
+
+  .chef-mascot-button {
+    width: 105px;
+  }
+
+  .chef-character {
+    width: 105px;
+    height: 118px;
+  }
+
+  .chef-speech {
+    right: 86px;
+    padding: 8px 11px;
+    min-width: auto;
+    font-size: 11px;
+  }
+}
+
+/* Respect accessibility preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .chef-mascot-container *,
+  .chef-mascot-container *::before,
+  .chef-mascot-container *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
