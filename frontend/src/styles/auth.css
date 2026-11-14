@@ -1,0 +1,342 @@
+
+/* ==========================================
+   AUTHENTICATION PAGE
+========================================== */
+
+.pw-auth {
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #f3d6b5,
+      transparent 45%
+    ),
+    #fff7eb;
+
+  color: #39291d;
+
+  font-family: system-ui, sans-serif;
+}
+
+.pw-auth-card {
+  width: min(900px, 100%);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: #fffdf8;
+
+  border: 1px solid #eadac4;
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow: 0 24px 75px #54351d24;
+}
+
+/* ==========================================
+   BRANDING PANEL
+========================================== */
+
+.pw-auth-brand {
+  padding: 42px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: linear-gradient(
+    145deg,
+    #d16b4d,
+    #9e422c
+  );
+
+  color: #fff8ed;
+}
+
+.pw-auth-brand > span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.pw-auth-brand h1 {
+  font-size: 44px;
+
+  margin: 6px 0;
+
+  color: inherit;
+}
+
+.pw-auth-brand p {
+  margin: 8px 0;
+
+  color: inherit;
+
+  font-size: 14px;
+}
+
+/* ==========================================
+   ANIMATED CHEF
+========================================== */
+
+.pw-auth-chef {
+  font-size: 76px;
+
+  animation: pwFloat 3s infinite ease-in-out;
+}
+
+@keyframes pwFloat {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ==========================================
+   LOGIN AND SIGN-UP FORM
+========================================== */
+
+.pw-auth-form {
+  padding: 40px;
+
+  color: #39291d;
+}
+
+.pw-auth-form h2 {
+  margin: 0;
+
+  color: #39291d;
+}
+
+.pw-auth-form form {
+  display: grid;
+
+  gap: 14px;
+
+  margin-top: 24px;
+}
+
+.pw-auth-form label {
+  display: grid;
+
+  gap: 6px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #604b3b;
+}
+
+.pw-auth-form input:not([type="checkbox"]) {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #e6d6bf;
+  border-radius: 9px;
+
+  background: white;
+
+  color: #39291d;
+
+  box-sizing: border-box;
+}
+
+.pw-auth-form input:focus-visible {
+  outline: 2px solid #c8553d;
+
+  outline-offset: 2px;
+}
+
+/* Show password checkbox */
+
+.pw-auth-form .pw-auth-check {
+  display: flex;
+
+  align-items: center;
+}
+
+.pw-auth-check input {
+  accent-color: #b85339;
+}
+
+/* ==========================================
+   AUTHENTICATION BUTTONS
+========================================== */
+
+.pw-auth-submit {
+  background: #b85339;
+
+  color: white;
+
+  border: 0;
+  border-radius: 10px;
+
+  padding: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.pw-auth-submit:hover {
+  background: #9e422c;
+}
+
+.pw-auth-switch {
+  background: transparent;
+
+  color: #b85339;
+
+  border: 0;
+
+  padding: 12px 0;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.pw-auth-error {
+  padding: 10px;
+
+  background: #fce8e0;
+
+  color: #a43e29;
+
+  border-radius: 8px;
+}
+
+.pw-auth button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   ACCOUNT DETAILS IN SIDEBAR
+========================================== */
+
+.account-summary {
+  display: grid;
+
+  gap: 5px;
+
+  padding: 12px;
+
+  margin: 14px 0;
+
+  border: 1px solid #dfc9b1;
+  border-radius: 12px;
+
+  background: #f8ecdb;
+}
+
+.account-summary strong,
+.account-summary small {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.account-summary strong {
+  font-size: 13px;
+}
+
+.account-summary small {
+  font-size: 11px;
+
+  color: #8a7566;
+}
+
+.account-logout {
+  padding: 7px;
+
+  background: transparent;
+
+  border: 1px solid #c8553d;
+  border-radius: 7px;
+
+  color: #b85339;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.account-logout:hover {
+  background: #f4dfd0;
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+[data-theme="dark"] .account-summary {
+  background: #352b23;
+
+  border-color: #654535;
+
+  color: #f4e7d3;
+}
+
+[data-theme="dark"] .account-summary small {
+  color: #b9a999;
+}
+
+[data-theme="dark"] .account-logout {
+  color: #f1a68d;
+}
+
+[data-theme="dark"] .account-logout:hover {
+  background: #654535;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 700px) {
+
+  .pw-auth-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pw-auth-brand,
+  .pw-auth-form {
+    padding: 25px;
+  }
+
+  .pw-auth-chef {
+    font-size: 45px;
+  }
+
+  .pw-auth-brand h1 {
+    font-size: 32px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .pw-auth-chef {
+    animation: none;
+  }
+}

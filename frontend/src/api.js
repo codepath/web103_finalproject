@@ -1,77 +1,135 @@
 
+// ==========================================
+// ANIMATED CHEF EVENTS
+// ==========================================
+
 export function chefEvent(type, detail = {}) {
   window.dispatchEvent(
     new CustomEvent("prepwise:chef", {
-      detail: { type, ...detail },
+      detail: {
+        type,
+        ...detail,
+      },
     })
   );
 }
 
+// ==========================================
+// API REQUEST HELPER
+// ==========================================
+
 async function request(path, options = {}) {
   const method = options.method || "GET";
 
-  const res = await fetch(`/api${path}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-    body: options.body
-      ? JSON.stringify(options.body)
-      : undefined,
-  });
+  const response = await fetch(
+    `/api${path}`,
+
+    {
+      ...options,
+
+      credentials: "same-origin",
+
+      headers: {
+        "Content-Type": "application/json",
+
+        "X-PrepWise-Request": "1",
+
+        ...options.headers,
+      },
+
+      body:
+        options.body === undefined
+
+          ? undefined
+
+          : JSON.stringify(options.body),
+    }
+  );
 
   const data =
-    res.status === 204
-      ? null
-      : await res.json().catch(() => ({}));
+    response.status === 204
 
-  if (!res.ok) {
+      ? null
+
+      : await response.json().catch(() => ({}));
+
+  // Handle expired login sessions.
+
+  if (!response.ok) {
+    if (
+      response.status === 401 &&
+      !path.startsWith("/auth/")
+    ) {
+      window.dispatchEvent(
+        new Event("prepwise:session-expired")
+      );
+    }
+
     throw new Error(
-      data?.error || "Request failed"
+      data?.error ||
+      `Request failed (${response.status})`
     );
   }
 
-  // Notify the mascot only after a successful request.
+  // ========================================
+  // NOTIFY THE CHEF ABOUT PANTRY CHANGES
+  // ========================================
 
   if (method !== "GET") {
-    if (path.startsWith("/pantry-items")) {
+
+    if (
+      path.startsWith("/pantry-items") ||
+
+      [
+        "/kitchen/cook",
+
+        "/kitchen/waste",
+
+        "/shopping-list/checked/to-pantry",
+
+      ].includes(path)
+    ) {
       chefEvent("pantry-updated");
     }
 
+    // Celebrate successful application actions.
+
+    const celebrations = {
+
+      "/saved-recipes":
+        "Recipe saved!",
+
+      "/meal-plan":
+        "Meal planned!",
+
+      "/shopping-list/generate":
+        "Shopping list ready!",
+
+      "/kitchen/cook":
+        "Meal cooked! Great job, Chef!",
+    };
+
     if (
       method === "POST" &&
-      path === "/saved-recipes"
+
+      celebrations[path] &&
+
+      !data?.alreadyRecorded
     ) {
       chefEvent("celebrate", {
-        message: "Recipe saved!",
+        message: celebrations[path],
       });
     }
 
     if (
       method === "POST" &&
-      path === "/meal-plan"
-    ) {
-      chefEvent("celebrate", {
-        message: "Meal planned!",
-      });
-    }
 
-    if (
-      method === "POST" &&
       path === "/chat/weekly-plan" &&
+
       Number(data?.added) > 0
     ) {
       chefEvent("celebrate", {
         message: "Weekly plan saved!",
-      });
-    }
-
-    if (
-      method === "POST" &&
-      path === "/shopping-list/generate"
-    ) {
-      chefEvent("celebrate", {
-        message: "Shopping list ready!",
       });
     }
   }
@@ -79,47 +137,75 @@ async function request(path, options = {}) {
   return data;
 }
 
+// ==========================================
+// API METHODS
+// ==========================================
+
 export const api = {
-  get: (p) => request(p),
 
-  post: (p, body) =>
-    request(p, {
+  get(path) {
+    return request(path);
+  },
+
+  post(path, body) {
+    return request(path, {
       method: "POST",
+
       body: body ?? {},
-    }),
+    });
+  },
 
-  patch: (p, body) =>
-    request(p, {
+  patch(path, body) {
+    return request(path, {
       method: "PATCH",
-      body,
-    }),
 
-  del: (p) =>
-    request(p, {
+      body,
+    });
+  },
+
+  del(path) {
+    return request(path, {
       method: "DELETE",
-    }),
+    });
+  },
 };
 
-export const getRecipes = (params = {}) => {
+// ==========================================
+// GET RECIPES
+// ==========================================
+
+export function getRecipes(params = {}) {
+
   const query = new URLSearchParams(
     Object.entries(params).filter(
       ([, value]) =>
-        value !== "" && value != null
+        value !== "" &&
+        value != null
     )
   ).toString();
 
-  const path = query
-    ? `/recipes?${query}`
-    : "/recipes";
+  return api.get(
+    query
 
-  return api.get(path);
-};
+      ? `/recipes?${query}`
 
-export const getRecipe = async (id) => {
-  const recipe = await api.get(`/recipes/${id}`);
+      : "/recipes"
+  );
+}
 
-  // The chef reacts to the actual recipe being viewed.
-  chefEvent("recipe-viewed", { recipe });
+// ==========================================
+// GET A RECIPE AND NOTIFY THE CHEF
+// ==========================================
+
+export async function getRecipe(id) {
+
+  const recipe = await api.get(
+    `/recipes/${id}`
+  );
+
+  chefEvent("recipe-viewed", {
+    recipe,
+  });
 
   return recipe;
-};
+}

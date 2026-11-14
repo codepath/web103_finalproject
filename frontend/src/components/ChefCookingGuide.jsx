@@ -2,14 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 import { getRecipes, getRecipe } from "../api.js";
 
+// Split the recipe's original instructions into steps.
+
 function splitInstructions(instructions) {
   const text = String(instructions || "").trim();
 
   if (!text) return [];
-
-  // Keep the original recipe instructions.
-  // Split them into paragraphs, numbered steps,
-  // or sentences without inventing new instructions.
 
   const paragraphs = text
     .split(/\r?\n+/)
@@ -29,9 +27,7 @@ function splitInstructions(instructions) {
     return numbered;
   }
 
-  return (
-    text.match(/[^.!?]+[.!?]*/g) || [text]
-  )
+  return (text.match(/[^.!?]+[.!?]*/g) || [text])
     .map((step) => step.trim())
     .filter(Boolean);
 }
@@ -46,34 +42,36 @@ export default function ChefCookingGuide({
   preferences,
 }) {
   const [recipes, setRecipes] = useState([]);
-  const [recipe, setRecipe] = useState(
-    initialRecipe || null
-  );
+
+  const [recipe, setRecipe] =
+    useState(initialRecipe || null);
 
   const [step, setStep] = useState(0);
+
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
   const [minutes, setMinutes] = useState("5");
 
   const [deadline, setDeadline] = useState(null);
+
   const [now, setNow] = useState(Date.now());
+
   const [timerFinished, setTimerFinished] =
     useState(false);
 
   const requestId = useRef(0);
+
   const mounted = useRef(true);
 
-  const steps = splitInstructions(
-    recipe?.instructions
-  );
+  const steps = splitInstructions(recipe?.instructions);
 
   const remaining = deadline
-    ? Math.max(
-        0,
-        Math.ceil((deadline - now) / 1000)
-      )
+    ? Math.max(0, Math.ceil((deadline - now) / 1000))
     : 0;
+
+  // Load the recipe catalog.
 
   useEffect(() => {
     mounted.current = true;
@@ -95,11 +93,14 @@ export default function ChefCookingGuide({
     };
   }, []);
 
+  // Update the cooking countdown.
+
   useEffect(() => {
     if (!deadline) return;
 
     const interval = setInterval(() => {
       const time = Date.now();
+
       setNow(time);
 
       if (time >= deadline) {
@@ -110,6 +111,8 @@ export default function ChefCookingGuide({
 
     return () => clearInterval(interval);
   }, [deadline]);
+
+  // Select a recipe.
 
   async function chooseRecipe(id) {
     if (deadline) {
@@ -126,6 +129,7 @@ export default function ChefCookingGuide({
     setTimerFinished(false);
     setStep(0);
     setError("");
+
     onStopSpeaking?.();
 
     if (!id) {
@@ -162,17 +166,20 @@ export default function ChefCookingGuide({
     }
   }
 
+  // Start a cooking timer.
+
   function startTimer() {
     const duration = Number(minutes);
 
     if (
       !Number.isFinite(duration) ||
-      duration <= 0 ||
+      duration < 0.1 ||
       duration > 180
     ) {
       setError(
         "Enter a timer between 0.1 and 180 minutes."
       );
+
       return;
     }
 
@@ -201,10 +208,15 @@ export default function ChefCookingGuide({
     }
 
     onStopSpeaking?.();
+
     onClose();
   }
 
+  // Open Kitchen Studio after completing the recipe.
+
   function finishCooking() {
+    if (!recipe?.id) return;
+
     if (
       deadline &&
       !window.confirm(
@@ -215,8 +227,19 @@ export default function ChefCookingGuide({
     }
 
     onStopSpeaking?.();
+
+    window.dispatchEvent(
+      new CustomEvent("prepwise:open-cook", {
+        detail: {
+          recipeId: recipe.id,
+        },
+      })
+    );
+
     onComplete();
   }
+
+  // Render the cooking guide.
 
   return (
     <section
@@ -225,22 +248,31 @@ export default function ChefCookingGuide({
       aria-label="PrepWise guided cooking"
     >
       <header className="chef-guide-header">
+
         <div className="chef-guide-pot">
+
           <span className="chef-steam steam-one">
             ~
           </span>
+
           <span className="chef-steam steam-two">
             ~
           </span>
+
           <span className="chef-stirring-spoon">
             🥄
           </span>
+
           <span>🍲</span>
+
         </div>
 
         <div>
           <h3>Chef's Cooking Mode</h3>
-          <small>One step at a time</small>
+
+          <small>
+            One step at a time
+          </small>
         </div>
 
         <button
@@ -251,9 +283,11 @@ export default function ChefCookingGuide({
         >
           ×
         </button>
+
       </header>
 
       <div className="chef-guide-body">
+
         <label htmlFor="chef-recipe">
           Choose a recipe
         </label>
@@ -262,8 +296,8 @@ export default function ChefCookingGuide({
           id="chef-recipe"
           value={recipe?.id || ""}
           disabled={loading}
-          onChange={(e) =>
-            chooseRecipe(e.target.value)
+          onChange={(event) =>
+            chooseRecipe(event.target.value)
           }
         >
           <option value="">
@@ -281,12 +315,17 @@ export default function ChefCookingGuide({
         </select>
 
         {error && (
-          <p className="chef-guide-error" role="alert">
+          <p
+            className="chef-guide-error"
+            role="alert"
+          >
             {error}
           </p>
         )}
 
-        {loading && <p>Loading recipe...</p>}
+        {loading && (
+          <p>Loading recipe...</p>
+        )}
 
         {recipe && !loading && (
           <>
@@ -301,7 +340,10 @@ export default function ChefCookingGuide({
             <h3>{recipe.title}</h3>
 
             <details className="chef-guide-ingredients">
-              <summary>Review ingredients</summary>
+
+              <summary>
+                Review ingredients
+              </summary>
 
               <ul>
                 {recipe.ingredients?.map(
@@ -313,12 +355,12 @@ export default function ChefCookingGuide({
                   )
                 )}
               </ul>
+
             </details>
 
             {preferences?.allergies?.length > 0 && (
               <p className="chef-guide-warning">
-                Your saved ingredient restrictions:
-                {" "}
+                Your saved ingredient restrictions:{" "}
                 {preferences.allergies.join(", ")}.
                 Verify every ingredient before cooking.
                 This guide does not certify allergy safety.
@@ -353,13 +395,14 @@ export default function ChefCookingGuide({
                 )}
 
                 <div className="chef-guide-navigation">
+
                   <button
                     type="button"
                     className="chef-secondary-btn"
                     disabled={step === 0}
                     onClick={() => {
                       onStopSpeaking?.();
-                      setStep((n) => n - 1);
+                      setStep((previous) => previous - 1);
                     }}
                   >
                     Previous
@@ -371,7 +414,7 @@ export default function ChefCookingGuide({
                       className="chef-primary-btn"
                       onClick={() => {
                         onStopSpeaking?.();
-                        setStep((n) => n + 1);
+                        setStep((previous) => previous + 1);
                       }}
                     >
                       Next Step →
@@ -385,6 +428,7 @@ export default function ChefCookingGuide({
                       Finish Cooking ✓
                     </button>
                   )}
+
                 </div>
               </>
             ) : (
@@ -394,19 +438,26 @@ export default function ChefCookingGuide({
               </p>
             )}
 
+            {/* Cooking timer */}
+
             <div className="chef-timer">
+
               <h4>⏱ Cooking Timer</h4>
 
               {deadline ? (
                 <>
                   <div className="chef-timer-clock">
+
                     {String(
                       Math.floor(remaining / 60)
                     ).padStart(2, "0")}
+
                     :
+
                     {String(
                       remaining % 60
                     ).padStart(2, "0")}
+
                   </div>
 
                   <button
@@ -419,6 +470,7 @@ export default function ChefCookingGuide({
                 </>
               ) : (
                 <div className="chef-timer-controls">
+
                   <label htmlFor="chef-minutes">
                     Minutes
                   </label>
@@ -430,8 +482,8 @@ export default function ChefCookingGuide({
                     max="180"
                     step="0.1"
                     value={minutes}
-                    onChange={(e) =>
-                      setMinutes(e.target.value)
+                    onChange={(event) =>
+                      setMinutes(event.target.value)
                     }
                   />
 
@@ -442,6 +494,7 @@ export default function ChefCookingGuide({
                   >
                     Start
                   </button>
+
                 </div>
               )}
 
@@ -459,10 +512,13 @@ export default function ChefCookingGuide({
                 Check actual food doneness.
                 Keep this page open.
               </small>
+
             </div>
           </>
         )}
+
       </div>
+
     </section>
   );
 }

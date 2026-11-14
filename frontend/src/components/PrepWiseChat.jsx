@@ -1,11 +1,13 @@
 
 import { useEffect, useRef, useState } from "react";
+
 import { api } from "../api.js";
 
 import ChatRecipeCard from "./ChatRecipeCard.jsx";
 import ChatWeeklyPlan from "./ChatWeeklyPlan.jsx";
 import ChatMealDBRecipes from "./ChatMealDBRecipes.jsx";
 import ChefMascot from "./ChefMascot.jsx";
+import VoiceInput from "./VoiceInput.jsx";
 
 import "../styles/chat.css";
 
@@ -69,6 +71,7 @@ function readStorage(key, fallback) {
     return value
       ? JSON.parse(value)
       : fallback;
+
   } catch {
     return fallback;
   }
@@ -80,6 +83,7 @@ function writeStorage(key, value) {
       key,
       JSON.stringify(value)
     );
+
   } catch (error) {
     console.warn(
       "Unable to save chatbot data:",
@@ -89,12 +93,12 @@ function writeStorage(key, value) {
 }
 
 // ============================================
-// LOAD SAVED PREFERENCES
+// LOAD USER PREFERENCES
 // ============================================
 
-function loadPreferences() {
+function loadPreferences(userId) {
   const saved = readStorage(
-    PREFERENCES_KEY,
+    `${PREFERENCES_KEY}:${userId}`,
     {}
   );
 
@@ -112,12 +116,12 @@ function loadPreferences() {
 }
 
 // ============================================
-// LOAD SAVED CHAT HISTORY
+// LOAD USER CHAT HISTORY
 // ============================================
 
-function loadMessages() {
+function loadMessages(userId) {
   const saved = readStorage(
-    CHAT_KEY,
+    `${CHAT_KEY}:${userId}`,
     []
   );
 
@@ -129,9 +133,7 @@ function loadMessages() {
     .filter(
       (item) =>
         item &&
-        ["user", "assistant"].includes(
-          item.role
-        ) &&
+        ["user", "assistant"].includes(item.role) &&
         typeof item.text === "string"
     )
     .slice(-50)
@@ -151,9 +153,6 @@ function loadMessages() {
 // ============================================
 
 function ChatText({ text }) {
-  // Display basic bold text without installing
-  // another package or rendering unsafe HTML.
-
   const parts = String(text || "").split(
     /(\*\*[^*]+\*\*)/g
   );
@@ -177,29 +176,26 @@ function ChatText({ text }) {
 }
 
 // ============================================
-// MAIN PREPWISE AI COMPONENT
+// MAIN AI CHAT COMPONENT
 // ============================================
 
-export default function PrepWiseChat() {
-  const [open, setOpen] =
-    useState(false);
+export default function PrepWiseChat({
+  userId,
+}) {
+  const [open, setOpen] = useState(false);
 
-  const [input, setInput] =
-    useState("");
+  const [input, setInput] = useState("");
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [messages, setMessages] =
-    useState(loadMessages);
+    useState(() => loadMessages(userId));
 
   const [preferences, setPreferences] =
-    useState(loadPreferences);
+    useState(() => loadPreferences(userId));
 
-  const [
-    showPreferences,
-    setShowPreferences,
-  ] = useState(false);
+  const [showPreferences, setShowPreferences] =
+    useState(false);
 
   const [draft, setDraft] =
     useState(preferences);
@@ -215,15 +211,13 @@ export default function PrepWiseChat() {
   const requestRef = useRef(false);
 
   // ==========================================
-  // SAVE CONVERSATION MEMORY
+  // SAVE CONVERSATION HISTORY
   // ==========================================
 
   useEffect(() => {
     const history = messages
       .slice(1)
-      .filter(
-        (item) => !item.isError
-      )
+      .filter((item) => !item.isError)
       .slice(-50)
       .map((item) => ({
         role: item.role,
@@ -231,24 +225,26 @@ export default function PrepWiseChat() {
       }));
 
     writeStorage(
-      CHAT_KEY,
+      `${CHAT_KEY}:${userId}`,
       history
     );
-  }, [messages]);
+
+  }, [messages, userId]);
 
   // ==========================================
-  // SAVE USER PREFERENCES
+  // SAVE FOOD PREFERENCES
   // ==========================================
 
   useEffect(() => {
     writeStorage(
-      PREFERENCES_KEY,
+      `${PREFERENCES_KEY}:${userId}`,
       preferences
     );
-  }, [preferences]);
+
+  }, [preferences, userId]);
 
   // ==========================================
-  // SCROLL TO LATEST MESSAGE
+  // AUTO-SCROLL CHAT
   // ==========================================
 
   useEffect(() => {
@@ -256,11 +252,8 @@ export default function PrepWiseChat() {
       messagesRef.current.scrollTop =
         messagesRef.current.scrollHeight;
     }
-  }, [
-    messages,
-    loading,
-    open,
-  ]);
+
+  }, [messages, loading, open]);
 
   // ==========================================
   // SEND AI MESSAGE
@@ -281,9 +274,7 @@ export default function PrepWiseChat() {
 
     const history = messages
       .slice(1)
-      .filter(
-        (item) => !item.isError
-      )
+      .filter((item) => !item.isError)
       .slice(-10)
       .map((item) => ({
         role: item.role,
@@ -292,6 +283,7 @@ export default function PrepWiseChat() {
 
     setMessages((previous) => [
       ...previous,
+
       {
         role: "user",
         text: message,
@@ -299,9 +291,7 @@ export default function PrepWiseChat() {
     ]);
 
     setInput("");
-
     setNotice("");
-
     setLoading(true);
 
     try {
@@ -332,6 +322,7 @@ export default function PrepWiseChat() {
             result.weeklyPlan || null,
         },
       ]);
+
     } catch (error) {
       setMessages((previous) => [
         ...previous,
@@ -346,6 +337,7 @@ export default function PrepWiseChat() {
             "Something went wrong. Please try again.",
         },
       ]);
+
     } finally {
       requestRef.current = false;
 
@@ -354,24 +346,22 @@ export default function PrepWiseChat() {
   }
 
   // ==========================================
-  // NEW CHAT
+  // CLEAR CHAT
   // ==========================================
 
   function clearChat() {
     if (loading) return;
 
-    setMessages([
-      welcomeMessage,
-    ]);
+    setMessages([welcomeMessage]);
 
     setInput("");
-
     setNotice("");
 
     try {
       localStorage.removeItem(
-        CHAT_KEY
+        `${CHAT_KEY}:${userId}`
       );
+
     } catch {
       // Local storage may be disabled.
     }
@@ -405,9 +395,11 @@ export default function PrepWiseChat() {
 
       allergies:
         previous.allergies.includes(value)
+
           ? previous.allergies.filter(
               (item) => item !== value
             )
+
           : [
               ...previous.allergies,
               value,
@@ -416,7 +408,7 @@ export default function PrepWiseChat() {
   }
 
   // ==========================================
-  // ADD CUSTOM ALLERGIES
+  // ADD CUSTOM INGREDIENT RESTRICTION
   // ==========================================
 
   function addCustomAllergy() {
@@ -461,32 +453,30 @@ export default function PrepWiseChat() {
       "✓ Preferences saved! New recommendations will use them."
     );
 
-    // Remove old interactive recommendations
-    // because the dietary preferences changed.
+    // Remove old interactive recipe recommendations.
 
     setMessages((previous) =>
       previous.map((item) => ({
         role: item.role,
-
         text: item.text,
-
         isError: item.isError,
       }))
     );
   }
 
   // ==========================================
-  // CHEF 2.0 — REPLY AND ERROR STATE
+  // ANIMATED CHEF STATES
   // ==========================================
 
-  const latestMessage =
-    messages.at(-1);
+  const latestMessage = messages.at(-1);
 
   const latestReply =
     messages.length > 1 &&
     latestMessage?.role === "assistant" &&
     !latestMessage?.isError
+
       ? latestMessage.text
+
       : "";
 
   const hasError = Boolean(
@@ -494,7 +484,7 @@ export default function PrepWiseChat() {
   );
 
   // ==========================================
-  // RENDER CHAT INTERFACE
+  // CHAT INTERFACE
   // ==========================================
 
   return (
@@ -505,9 +495,7 @@ export default function PrepWiseChat() {
           aria-label="PrepWise AI assistant"
         >
 
-          {/* ==============================
-              CHAT HEADER
-          ============================== */}
+          {/* CHAT HEADER */}
 
           <header className="chat-header">
 
@@ -516,17 +504,20 @@ export default function PrepWiseChat() {
             </div>
 
             <div className="chat-heading">
+
               <h3>PrepWise AI</h3>
 
               <span>
                 Your personal cooking assistant
               </span>
+
             </div>
 
             <button
               type="button"
               className="chat-close"
               aria-label="Close chat"
+
               onClick={() =>
                 setOpen(false)
               }
@@ -536,9 +527,7 @@ export default function PrepWiseChat() {
 
           </header>
 
-          {/* ==============================
-              CHAT TOOLBAR
-          ============================== */}
+          {/* CHAT TOOLBAR */}
 
           <div className="chat-toolbar">
 
@@ -550,11 +539,13 @@ export default function PrepWiseChat() {
 
               <button
                 type="button"
+
                 onClick={() =>
                   showPreferences
                     ? setShowPreferences(false)
                     : openPreferences()
                 }
+
                 disabled={loading}
               >
                 ⚙ Preferences
@@ -572,9 +563,7 @@ export default function PrepWiseChat() {
 
           </div>
 
-          {/* ==============================
-              PREFERENCES PANEL
-          ============================== */}
+          {/* PREFERENCES PANEL */}
 
           {showPreferences && (
             <form
@@ -587,8 +576,7 @@ export default function PrepWiseChat() {
               </h3>
 
               <p className="chat-preference-help">
-                Personalize your recipe
-                recommendations.
+                Personalize your recipe recommendations.
               </p>
 
               <label htmlFor="chat-diet">
@@ -597,7 +585,9 @@ export default function PrepWiseChat() {
 
               <select
                 id="chat-diet"
+
                 value={draft.diet}
+
                 onChange={(event) =>
                   setDraft((previous) => ({
                     ...previous,
@@ -622,9 +612,7 @@ export default function PrepWiseChat() {
 
               {/* FOOD ALLERGIES */}
 
-              <h4>
-                Food Allergies
-              </h4>
+              <h4>Food Allergies</h4>
 
               <div className="chat-allergy-grid">
 
@@ -644,9 +632,7 @@ export default function PrepWiseChat() {
                       }
 
                       onChange={() =>
-                        toggleAllergy(
-                          allergy.value
-                        )
+                        toggleAllergy(allergy.value)
                       }
                     />
 
@@ -659,7 +645,7 @@ export default function PrepWiseChat() {
 
               </div>
 
-              {/* CUSTOM INGREDIENT RESTRICTIONS */}
+              {/* CUSTOM RESTRICTIONS */}
 
               <label htmlFor="custom-allergy">
                 Other ingredient to avoid
@@ -669,8 +655,11 @@ export default function PrepWiseChat() {
 
                 <input
                   id="custom-allergy"
+
                   placeholder="Example: shrimp"
+
                   value={customAllergy}
+
                   maxLength={60}
 
                   onChange={(event) =>
@@ -693,7 +682,9 @@ export default function PrepWiseChat() {
 
                 <button
                   type="button"
+
                   onClick={addCustomAllergy}
+
                   disabled={
                     !customAllergy.trim()
                   }
@@ -711,15 +702,14 @@ export default function PrepWiseChat() {
                   {draft.allergies.map((allergy) => (
                     <button
                       key={allergy}
+
                       type="button"
 
                       onClick={() =>
                         toggleAllergy(allergy)
                       }
 
-                      aria-label={
-                        `Remove ${allergy}`
-                      }
+                      aria-label={`Remove ${allergy}`}
                     >
                       {allergy} ×
                     </button>
@@ -757,9 +747,7 @@ export default function PrepWiseChat() {
             </form>
           )}
 
-          {/* ==============================
-              ACTIVE USER PREFERENCES
-          ============================== */}
+          {/* ACTIVE USER PREFERENCES */}
 
           {!showPreferences &&
             (
@@ -789,9 +777,7 @@ export default function PrepWiseChat() {
               </div>
             )}
 
-          {/* ==============================
-              STATUS NOTICE
-          ============================== */}
+          {/* STATUS NOTICE */}
 
           {notice && (
             <div
@@ -802,9 +788,7 @@ export default function PrepWiseChat() {
             </div>
           )}
 
-          {/* ==============================
-              CHAT MESSAGES
-          ============================== */}
+          {/* CHAT MESSAGES */}
 
           <div
             className="chat-messages"
@@ -812,92 +796,73 @@ export default function PrepWiseChat() {
             aria-live="polite"
           >
 
-            {messages.map(
-              (message, index) => (
-                <div
-                  key={index}
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`chat-message ${message.role}`}
+              >
 
-                  className={
-                    `chat-message ${message.role}`
-                  }
-                >
+                {message.role === "assistant" && (
+                  <div className="message-avatar">
+                    👨‍🍳
+                  </div>
+                )}
 
-                  {message.role === "assistant" && (
-                    <div className="message-avatar">
-                      👨‍🍳
+                <div className="chat-message-content">
+
+                  <div
+                    className={`chat-bubble ${
+                      message.isError
+                        ? "chat-error-bubble"
+                        : ""
+                    }`}
+                  >
+                    <ChatText
+                      text={message.text}
+                    />
+                  </div>
+
+                  {/* LOCAL RECIPE CARDS */}
+
+                  {message.recipes?.length > 0 && (
+                    <div className="chat-recipe-list">
+
+                      <h4>
+                        Matching PrepWise Recipes
+                      </h4>
+
+                      {message.recipes.map((recipe) => (
+                        <ChatRecipeCard
+                          key={recipe.id}
+                          recipe={recipe}
+                        />
+                      ))}
+
                     </div>
                   )}
 
-                  <div className="chat-message-content">
+                  {/* EXTERNAL RECIPES */}
 
-                    {/* TEXT RESPONSE */}
+                  {message.externalRecipes?.length > 0 && (
+                    <ChatMealDBRecipes
+                      recipes={message.externalRecipes}
+                    />
+                  )}
 
-                    <div
-                      className={`chat-bubble ${
-                        message.isError
-                          ? "chat-error-bubble"
-                          : ""
-                      }`}
-                    >
-                      <ChatText
-                        text={message.text}
-                      />
-                    </div>
+                  {/* WEEKLY MEAL PLANNER */}
 
-                    {/* ======================
-                        LOCAL RECIPE CARDS
-                    ====================== */}
-
-                    {message.recipes?.length > 0 && (
-                      <div className="chat-recipe-list">
-
-                        <h4>
-                          Matching PrepWise Recipes
-                        </h4>
-
-                        {message.recipes.map(
-                          (recipe) => (
-                            <ChatRecipeCard
-                              key={recipe.id}
-                              recipe={recipe}
-                            />
-                          )
-                        )}
-
-                      </div>
-                    )}
-
-                    {/* ======================
-                        LIVE MEALDB RECIPES
-                    ====================== */}
-
-                    {message.externalRecipes?.length > 0 && (
-                      <ChatMealDBRecipes
-                        recipes={
-                          message.externalRecipes
-                        }
-                      />
-                    )}
-
-                    {/* ======================
-                        WEEKLY MEAL PLANNER
-                    ====================== */}
-
-                    {message.weeklyPlan && (
-                      <ChatWeeklyPlan
-                        plan={message.weeklyPlan}
-                      />
-                    )}
-
-                  </div>
+                  {message.weeklyPlan && (
+                    <ChatWeeklyPlan
+                      plan={message.weeklyPlan}
+                    />
+                  )}
 
                 </div>
-              )
-            )}
 
-            {/* ==============================
-                QUICK QUESTIONS
-            ============================== */}
+              </div>
+            ))}
+
+            {/* SUGGESTED QUESTIONS */}
 
             {messages.length === 1 && !loading && (
               <div className="chat-suggestions">
@@ -909,6 +874,7 @@ export default function PrepWiseChat() {
                 {suggestions.map((question) => (
                   <button
                     key={question}
+
                     type="button"
 
                     onClick={() =>
@@ -922,9 +888,7 @@ export default function PrepWiseChat() {
               </div>
             )}
 
-            {/* ==============================
-                AI THINKING INDICATOR
-            ============================== */}
+            {/* AI THINKING INDICATOR */}
 
             {loading && (
               <div className="chat-message assistant">
@@ -944,9 +908,7 @@ export default function PrepWiseChat() {
 
           </div>
 
-          {/* ==============================
-              MESSAGE INPUT
-          ============================== */}
+          {/* MESSAGE INPUT */}
 
           <form
             className="chat-input-form"
@@ -958,12 +920,25 @@ export default function PrepWiseChat() {
             }}
           >
 
+            {/* NEW MICROPHONE BUTTON */}
+
+            <VoiceInput
+              disabled={loading}
+
+              onTranscript={setInput}
+            />
+
             <input
               type="text"
+
               placeholder="Ask PrepWise AI..."
+
               aria-label="Chat message"
+
               value={input}
+
               maxLength={2000}
+
               disabled={loading}
 
               onChange={(event) =>
@@ -986,10 +961,6 @@ export default function PrepWiseChat() {
 
           </form>
 
-          {/* ==============================
-              FOOTER
-          ============================== */}
-
           <footer className="chat-footer">
             AI can make mistakes.
             Verify ingredients and cooking advice.
@@ -998,12 +969,9 @@ export default function PrepWiseChat() {
         </section>
       )}
 
-      {/* ==================================
-          CHEF 2.0 — ALL 12 FEATURES
-      ================================== */}
+      {/* ANIMATED CHEF 2.0 */}
 
       <ChefMascot
-
         open={open}
 
         loading={loading}
@@ -1017,7 +985,6 @@ export default function PrepWiseChat() {
         onToggle={() =>
           setOpen((previous) => !previous)
         }
-
       />
 
     </>

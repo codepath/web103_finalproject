@@ -1,13 +1,36 @@
+
 import pg from "pg";
 import dotenv from "dotenv";
+import { AsyncLocalStorage } from "node:async_hooks";
+
 dotenv.config();
 
-// Return DATE columns as plain YYYY-MM-DD strings (avoids timezone shifts)
-pg.types.setTypeParser(1082, (v) => v);
-// Return NUMERIC columns as numbers
-pg.types.setTypeParser(1700, (v) => parseFloat(v));
+// Return PostgreSQL dates as YYYY-MM-DD strings.
+pg.types.setTypeParser(1082, (value) => value);
 
-export const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+// Return numeric values as JavaScript numbers.
+pg.types.setTypeParser(1700, (value) =>
+  parseFloat(value)
+);
 
-// Seeded demo user; authentication is not part of the baseline features
-export const USER_ID = 1;
+// Connect to PostgreSQL.
+export const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+// Store the authenticated user for each request.
+export const requestContext =
+  new AsyncLocalStorage();
+
+// Get the current logged-in user's ID.
+export function getUserId() {
+  const id = requestContext.getStore()?.userId;
+
+  if (!Number.isInteger(id) || id < 1) {
+    throw new Error(
+      "Authenticated user required."
+    );
+  }
+
+  return id;
+}

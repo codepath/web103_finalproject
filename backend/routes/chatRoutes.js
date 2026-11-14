@@ -1,10 +1,15 @@
 
 import express from "express";
-import { pool, USER_ID } from "../config/db.js";
+
+import {
+  pool,
+  getUserId,
+} from "../config/db.js";
 
 const router = express.Router();
 
-const MEALDB = "https://www.themealdb.com/api/json/v1/1";
+const MEALDB =
+  "https://www.themealdb.com/api/json/v1/1";
 
 const DIETS = [
   "Any",
@@ -21,60 +26,105 @@ const DIETS = [
 
 const ALLERGEN_GROUPS = {
   milk: [
-    "milk", "cheese", "cream", "butter",
-    "yogurt", "yoghurt", "whey", "casein",
-    "ghee", "dairy", "mozzarella", "cheddar",
-    "parmesan", "feta",
+    "milk",
+    "cheese",
+    "cream",
+    "butter",
+    "yogurt",
+    "yoghurt",
+    "whey",
+    "casein",
+    "ghee",
+    "dairy",
+    "mozzarella",
+    "cheddar",
+    "parmesan",
+    "feta",
   ],
 
   eggs: [
-    "egg", "eggs", "mayonnaise", "albumen",
+    "egg",
+    "eggs",
+    "mayonnaise",
+    "albumen",
   ],
 
   peanuts: [
-    "peanut", "peanuts", "peanut butter",
-    "groundnut", "groundnuts",
+    "peanut",
+    "peanuts",
+    "peanut butter",
+    "groundnut",
+    "groundnuts",
   ],
 
   "tree nuts": [
-    "almond", "cashew", "walnut", "pecan",
-    "pistachio", "hazelnut", "macadamia",
+    "almond",
+    "cashew",
+    "walnut",
+    "pecan",
+    "pistachio",
+    "hazelnut",
+    "macadamia",
     "brazil nut",
   ],
 
   soy: [
-    "soy", "soya", "tofu", "edamame",
-    "miso", "tempeh",
+    "soy",
+    "soya",
+    "tofu",
+    "edamame",
+    "miso",
+    "tempeh",
   ],
 
   wheat: [
-    "wheat", "flour", "bread", "pasta",
-    "seitan", "semolina",
+    "wheat",
+    "flour",
+    "bread",
+    "pasta",
+    "seitan",
+    "semolina",
   ],
 
   fish: [
-    "fish", "salmon", "tuna", "cod",
-    "tilapia", "anchovy", "sardine",
-    "mackerel", "trout",
+    "fish",
+    "salmon",
+    "tuna",
+    "cod",
+    "tilapia",
+    "anchovy",
+    "sardine",
+    "mackerel",
+    "trout",
   ],
 
   shellfish: [
-    "shrimp", "prawn", "crab", "lobster",
-    "oyster", "clam", "mussel", "scallop",
+    "shrimp",
+    "prawn",
+    "crab",
+    "lobster",
+    "oyster",
+    "clam",
+    "mussel",
+    "scallop",
     "crayfish",
   ],
 
   shrimp: [
-    "shrimp", "prawn",
+    "shrimp",
+    "prawn",
   ],
 
   lentils: [
-    "lentil", "lentils",
-    "masoor dal", "masoor dhal",
+    "lentil",
+    "lentils",
+    "masoor dal",
+    "masoor dhal",
   ],
 
   sesame: [
-    "sesame", "tahini",
+    "sesame",
+    "tahini",
   ],
 };
 
@@ -99,22 +149,38 @@ function getPreferences(value = {}) {
     ? [
         ...new Set(
           value.allergies
-            .filter((item) => typeof item === "string")
-            .map((item) => normalize(item).slice(0, 60))
+            .filter(
+              (item) => typeof item === "string"
+            )
+            .map(
+              (item) =>
+                normalize(item).slice(0, 60)
+            )
             .filter(Boolean)
         ),
       ].slice(0, 15)
+
     : [];
 
-  return { diet, allergies };
+  return {
+    diet,
+    allergies,
+  };
 }
 
 // ============================================
 // CHECK INGREDIENT ALLERGIES
 // ============================================
 
-function containsAllergen(recipe, preferences) {
-  const ingredients = recipe.ingredients || [];
+function containsAllergen(
+  recipe,
+  preferences
+) {
+  const ingredients =
+    recipe.ingredients || [];
+
+  // A recipe without ingredient information
+  // cannot be meaningfully screened.
 
   if (
     preferences.allergies.length > 0 &&
@@ -126,7 +192,9 @@ function containsAllergen(recipe, preferences) {
   const text = normalize(
     [
       recipe.title,
+
       recipe.description,
+
       ...ingredients.map((ingredient) =>
         typeof ingredient === "string"
           ? ingredient
@@ -137,21 +205,31 @@ function containsAllergen(recipe, preferences) {
       .join(" ")
   );
 
-  return preferences.allergies.some((allergy) => {
-    const aliases =
-      ALLERGEN_GROUPS[allergy] || [allergy];
+  return preferences.allergies.some(
+    (allergy) => {
+      const aliases = Object.hasOwn(
+        ALLERGEN_GROUPS,
+        allergy
+      )
+        ? ALLERGEN_GROUPS[allergy]
+        : [allergy];
 
-    return aliases.some((term) =>
-      text.includes(normalize(term))
-    );
-  });
+      return aliases.some((term) =>
+        text.includes(normalize(term))
+      );
+    }
+  );
 }
 
 // ============================================
 // CHECK DIETARY PREFERENCES
 // ============================================
 
-function matchesDiet(recipe, diet, external = false) {
+function matchesDiet(
+  recipe,
+  diet,
+  external = false
+) {
   if (diet === "Any") {
     return true;
   }
@@ -168,7 +246,10 @@ function matchesDiet(recipe, diet, external = false) {
     }
 
     if (diet === "Vegetarian") {
-      return ["vegetarian", "vegan"].includes(tag);
+      return [
+        "vegetarian",
+        "vegan",
+      ].includes(tag);
     }
 
     if (diet === "Pescatarian") {
@@ -179,12 +260,17 @@ function matchesDiet(recipe, diet, external = false) {
       ].includes(tag);
     }
 
-    // MealDB does not reliably classify these diets.
+    // TheMealDB does not reliably classify
+    // gluten-free and high-protein meals.
+
     return false;
   }
 
   if (diet === "Vegetarian") {
-    return ["vegetarian", "vegan"].includes(tag);
+    return [
+      "vegetarian",
+      "vegan",
+    ].includes(tag);
   }
 
   if (diet === "Pescatarian") {
@@ -204,18 +290,27 @@ function matchesPreferences(
   external = false
 ) {
   return (
-    matchesDiet(recipe, preferences.diet, external) &&
-    !containsAllergen(recipe, preferences)
+    matchesDiet(
+      recipe,
+      preferences.diet,
+      external
+    ) &&
+
+    !containsAllergen(
+      recipe,
+      preferences
+    )
   );
 }
 
 // ============================================
-// AI TOOLS
+// GEMINI AI TOOL DEFINITIONS
 // ============================================
 
 const tools = [
   {
     functionDeclarations: [
+
       {
         name: "get_preferences",
 
@@ -224,6 +319,7 @@ const tools = [
 
         parameters: {
           type: "OBJECT",
+
           properties: {},
         },
       },
@@ -236,6 +332,7 @@ const tools = [
 
         parameters: {
           type: "OBJECT",
+
           properties: {},
         },
       },
@@ -301,40 +398,54 @@ const tools = [
           },
         },
       },
+
     ],
   },
 ];
 
 // ============================================
-// GET PANTRY
+// GET THE AUTHENTICATED USER'S PANTRY
 // ============================================
 
 async function getPantry() {
+  const userId = getUserId();
+
   const { rows } = await pool.query(
-    `SELECT
-       i.name,
-       p.quantity,
-       p.unit,
-       p.expiration_date,
+    `
+      SELECT
+        i.name,
 
-       CASE
-         WHEN p.expiration_date IS NULL THEN NULL
-         ELSE p.expiration_date - CURRENT_DATE
-       END AS days_until_expiry
+        p.quantity,
 
-     FROM pantry_items p
+        p.unit,
 
-     JOIN ingredients i
-       ON i.id = p.ingredient_id
+        p.expiration_date,
 
-     WHERE p.user_id = $1
-       AND p.quantity > 0
+        CASE
+          WHEN p.expiration_date IS NULL
+            THEN NULL
 
-     ORDER BY
-       p.expiration_date ASC NULLS LAST
+          ELSE
+            p.expiration_date - CURRENT_DATE
 
-     LIMIT 100`,
-    [USER_ID]
+        END AS days_until_expiry
+
+      FROM pantry_items p
+
+      JOIN ingredients i
+        ON i.id = p.ingredient_id
+
+      WHERE p.user_id = $1
+
+        AND p.quantity > 0
+
+      ORDER BY
+        p.expiration_date ASC NULLS LAST
+
+      LIMIT 100
+    `,
+
+    [userId]
   );
 
   return {
@@ -350,103 +461,144 @@ async function findRecipes(
   search = "",
   preferences
 ) {
+  const userId = getUserId();
+
   const { rows } = await pool.query(
-    `WITH pantry AS (
-       SELECT DISTINCT ingredient_id
+    `
+      WITH pantry AS (
 
-       FROM pantry_items
+        SELECT DISTINCT ingredient_id
 
-       WHERE user_id = $1
-         AND quantity > 0
-         AND (
-           expiration_date IS NULL
-           OR expiration_date >= CURRENT_DATE
-         )
-     ),
+        FROM pantry_items
 
-     matches AS (
-       SELECT
-         r.id,
-         r.title,
-         r.description,
-         r.meal_type,
-         r.dietary_preference,
-         r.prep_minutes,
-         r.cook_minutes,
-         r.servings,
-         r.image_url,
+        WHERE user_id = $1
 
-         EXISTS (
-           SELECT 1
+          AND quantity > 0
 
-           FROM saved_recipes s
+          AND (
+            expiration_date IS NULL
 
-           WHERE s.recipe_id = r.id
-             AND s.user_id = $1
-         ) AS is_saved,
+            OR expiration_date >= CURRENT_DATE
+          )
+      ),
 
-         COUNT(ri.ingredient_id)::int
-           AS total_count,
+      matches AS (
 
-         COUNT(p.ingredient_id)::int
-           AS have_count,
+        SELECT
+          r.id,
 
-         (
-           COUNT(ri.ingredient_id)
-           - COUNT(p.ingredient_id)
-         )::int AS missing_count,
+          r.title,
 
-         COALESCE(
-           jsonb_agg(
-             jsonb_build_object(
-               'name', i.name,
-               'quantity', ri.quantity,
-               'unit', ri.unit,
-               'in_pantry',
-                 p.ingredient_id IS NOT NULL
-             )
-           ) FILTER (WHERE i.id IS NOT NULL),
+          r.description,
 
-           '[]'::jsonb
-         ) AS ingredients
+          r.meal_type,
 
-       FROM recipes r
+          r.dietary_preference,
 
-       LEFT JOIN recipe_ingredients ri
-         ON ri.recipe_id = r.id
+          r.prep_minutes,
 
-       LEFT JOIN ingredients i
-         ON i.id = ri.ingredient_id
+          r.cook_minutes,
 
-       LEFT JOIN pantry p
-         ON p.ingredient_id = ri.ingredient_id
+          r.servings,
 
-       WHERE r.title ILIKE '%' || $2 || '%'
+          r.image_url,
 
-       GROUP BY r.id
-     )
+          EXISTS (
+            SELECT 1
 
-     SELECT *
+            FROM saved_recipes s
 
-     FROM matches
+            WHERE s.recipe_id = r.id
 
-     ORDER BY
-       CASE
-         WHEN total_count = 0 THEN -1
-         ELSE have_count::float / total_count
-       END DESC,
+              AND s.user_id = $1
 
-       missing_count ASC,
-       title ASC
+          ) AS is_saved,
 
-     LIMIT 500`,
+          COUNT(ri.ingredient_id)::int
+            AS total_count,
 
-    [USER_ID, search.slice(0, 100)]
+          COUNT(p.ingredient_id)::int
+            AS have_count,
+
+          (
+            COUNT(ri.ingredient_id)
+
+            - COUNT(p.ingredient_id)
+
+          )::int AS missing_count,
+
+          COALESCE(
+
+            jsonb_agg(
+              jsonb_build_object(
+                'name', i.name,
+
+                'quantity', ri.quantity,
+
+                'unit', ri.unit,
+
+                'in_pantry',
+                  p.ingredient_id IS NOT NULL
+              )
+            ) FILTER (
+              WHERE i.id IS NOT NULL
+            ),
+
+            '[]'::jsonb
+
+          ) AS ingredients
+
+        FROM recipes r
+
+        LEFT JOIN recipe_ingredients ri
+          ON ri.recipe_id = r.id
+
+        LEFT JOIN ingredients i
+          ON i.id = ri.ingredient_id
+
+        LEFT JOIN pantry p
+          ON p.ingredient_id = ri.ingredient_id
+
+        WHERE r.title ILIKE '%' || $2 || '%'
+
+        GROUP BY r.id
+
+      )
+
+      SELECT *
+
+      FROM matches
+
+      ORDER BY
+
+        CASE
+
+          WHEN total_count = 0 THEN -1
+
+          ELSE have_count::float / total_count
+
+        END DESC,
+
+        missing_count ASC,
+
+        title ASC
+
+      LIMIT 500
+    `,
+
+    [
+      userId,
+
+      search.slice(0, 100),
+    ]
   );
 
   const recipes = rows
     .filter((recipe) =>
-      matchesPreferences(recipe, preferences)
+      matchesPreferences(
+        recipe,
+        preferences
+      )
     )
     .slice(0, 12);
 
@@ -461,21 +613,28 @@ async function findRecipes(
 }
 
 // ============================================
-// LIVE MEALDB SEARCH
+// SEARCH RECIPES FROM THEMEALDB
 // ============================================
 
-async function searchMealDB(search, preferences) {
+async function searchMealDB(
+  search,
+  preferences
+) {
   if (
     typeof search !== "string" ||
+
     !search.trim()
   ) {
     return {
       recipes: [],
+
       error: "Enter a recipe name.",
     };
   }
 
-  const query = search.trim().slice(0, 100);
+  const query = search
+    .trim()
+    .slice(0, 100);
 
   const response = await fetch(
     `${MEALDB}/search.php?s=${encodeURIComponent(query)}`,
@@ -486,41 +645,52 @@ async function searchMealDB(search, preferences) {
   );
 
   if (!response.ok) {
-    throw new Error("TheMealDB search failed.");
+    throw new Error(
+      "TheMealDB search failed."
+    );
   }
 
   const data = await response.json();
 
-  const meals = (data.meals || []).map((meal) => ({
-    id: meal.idMeal,
+  const meals = (data.meals || []).map(
+    (meal) => ({
+      id: meal.idMeal,
 
-    title: meal.strMeal,
+      title: meal.strMeal,
 
-    image_url: meal.strMealThumb,
+      image_url: meal.strMealThumb,
 
-    category: meal.strCategory,
+      category: meal.strCategory,
 
-    instructions: meal.strInstructions,
+      instructions: meal.strInstructions,
 
-    ingredients: Array.from(
-      { length: 20 },
+      ingredients: Array.from(
+        { length: 20 },
 
-      (_, index) => ({
-        name:
-          meal[`strIngredient${index + 1}`]?.trim(),
+        (_, index) => ({
+          name:
+            meal[
+              `strIngredient${index + 1}`
+            ]?.trim(),
 
-        measure:
-          meal[`strMeasure${index + 1}`]?.trim() ||
-          "",
-      })
-    ).filter((item) => item.name),
-  }));
+          measure:
+            meal[
+              `strMeasure${index + 1}`
+            ]?.trim() || "",
+        })
+      ).filter(
+        (item) => item.name
+      ),
+    })
+  );
 
   const recipes = meals
     .filter((recipe) =>
       matchesPreferences(
         recipe,
+
         preferences,
+
         true
       )
     )
@@ -539,12 +709,13 @@ async function searchMealDB(search, preferences) {
 }
 
 // ============================================
-// VALIDATE DATE
+// VALIDATE DATES
 // ============================================
 
 function isDate(value) {
   if (
     typeof value !== "string" ||
+
     !/^\d{4}-\d{2}-\d{2}$/.test(value)
   ) {
     return false;
@@ -556,60 +727,96 @@ function isDate(value) {
 
   return (
     !Number.isNaN(date.getTime()) &&
+
     date.toISOString().slice(0, 10) === value
   );
 }
 
 // ============================================
-// WEEKLY MEAL PLAN PREVIEW
+// GENERATE WEEKLY MEAL PLAN PREVIEW
 // ============================================
 
 async function planWeek(
   start = null,
   preferences
 ) {
-  if (start !== null && !isDate(start)) {
+  const userId = getUserId();
+
+  if (
+    start !== null &&
+
+    !isDate(start)
+  ) {
     return {
-      error: "Use a valid YYYY-MM-DD date.",
+      error:
+        "Use a valid YYYY-MM-DD date.",
     };
   }
 
   const { rows: days } = await pool.query(
-    `SELECT
-       TO_CHAR(d.day, 'YYYY-MM-DD') AS date,
+    `
+      SELECT
 
-       EXISTS (
-         SELECT 1
+        TO_CHAR(
+          d.day,
+          'YYYY-MM-DD'
+        ) AS date,
 
-         FROM meal_plan_entries m
+        EXISTS (
+          SELECT 1
 
-         WHERE m.user_id = $1
-           AND m.planned_date = d.day::date
-           AND LOWER(m.meal_type) = 'dinner'
-       ) AS occupied
+          FROM meal_plan_entries m
 
-     FROM generate_series(
-       COALESCE($2::date, CURRENT_DATE),
+          WHERE m.user_id = $1
 
-       COALESCE($2::date, CURRENT_DATE) + 6,
+            AND m.planned_date = d.day::date
 
-       INTERVAL '1 day'
-     ) AS d(day)
+            AND LOWER(m.meal_type) = 'dinner'
 
-     ORDER BY d.day`,
+        ) AS occupied
 
-    [USER_ID, start]
+      FROM generate_series(
+
+        COALESCE(
+          $2::date,
+          CURRENT_DATE
+        ),
+
+        COALESCE(
+          $2::date,
+          CURRENT_DATE
+        ) + 6,
+
+        INTERVAL '1 day'
+
+      ) AS d(day)
+
+      ORDER BY d.day
+    `,
+
+    [
+      userId,
+
+      start,
+    ]
   );
 
   const { recipes } = await findRecipes(
     "",
+
     preferences
   );
 
-  const suitable = recipes.filter((recipe) =>
-    ["dinner", "lunch", ""].includes(
-      (recipe.meal_type || "").toLowerCase()
-    )
+  const suitable = recipes.filter(
+    (recipe) =>
+      [
+        "dinner",
+        "lunch",
+        "",
+      ].includes(
+        (recipe.meal_type || "")
+          .toLowerCase()
+      )
   );
 
   const candidates = suitable.length
@@ -618,6 +825,7 @@ async function planWeek(
 
   if (
     !candidates.length &&
+
     days.some((day) => !day.occupied)
   ) {
     return {
@@ -629,11 +837,16 @@ async function planWeek(
   let index = 0;
 
   const entries = days
-    .filter((day) => !day.occupied)
+
+    .filter(
+      (day) => !day.occupied
+    )
 
     .map((day) => {
       const recipe =
-        candidates[index++ % candidates.length];
+        candidates[
+          index++ % candidates.length
+        ];
 
       return {
         recipe_id: recipe.id,
@@ -650,7 +863,8 @@ async function planWeek(
 
         total_count: recipe.total_count,
 
-        missing_count: recipe.missing_count,
+        missing_count:
+          recipe.missing_count,
       };
     });
 
@@ -661,6 +875,7 @@ async function planWeek(
 
     skippedDates: days
       .filter((day) => day.occupied)
+
       .map((day) => day.date),
 
     preferences,
@@ -668,16 +883,20 @@ async function planWeek(
 }
 
 // ============================================
-// EXECUTE AI TOOLS
+// EXECUTE GEMINI FUNCTION CALLS
 // ============================================
 
 async function executeTool(
   name,
+
   args = {},
+
   preferences
 ) {
   switch (name) {
+
     case "get_preferences":
+
       return {
         diet: preferences.diet,
 
@@ -694,9 +913,11 @@ async function executeTool(
       };
 
     case "get_pantry":
+
       return getPantry();
 
     case "find_recipes":
+
       return findRecipes(
         typeof args.search === "string"
           ? args.search
@@ -706,26 +927,32 @@ async function executeTool(
       );
 
     case "search_mealdb":
+
       return searchMealDB(
         args.search,
+
         preferences
       );
 
     case "plan_week":
+
       return planWeek(
         args.start ?? null,
+
         preferences
       );
 
     default:
+
       return {
-        error: "Unknown AI tool.",
+        error:
+          "Unknown AI tool.",
       };
   }
 }
 
 // ============================================
-// AI SYSTEM INSTRUCTIONS
+// GEMINI SYSTEM INSTRUCTIONS
 // ============================================
 
 const SYSTEM_PROMPT = `
@@ -833,6 +1060,7 @@ async function askGemini(
 ) {
   const model =
     process.env.GEMINI_MODEL ||
+
     "gemini-3.5-flash-lite";
 
   const profileText = `
@@ -844,9 +1072,11 @@ Number of saved allergies:
 ${preferences.allergies.length}
 
 Saved allergies:
-${preferences.allergies.length
-  ? preferences.allergies.join(", ")
-  : "No allergies have been specified"}
+${
+  preferences.allergies.length
+    ? preferences.allergies.join(", ")
+    : "No allergies have been specified"
+}
 
 Profile data:
 ${JSON.stringify(preferences)}
@@ -856,25 +1086,30 @@ answering questions about the user's preferences.
 `;
 
   const response = await fetch(
+
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
 
     {
       method: "POST",
 
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type":
+          "application/json",
 
         "x-goog-api-key":
           process.env.GEMINI_API_KEY,
       },
 
       body: JSON.stringify({
+
         systemInstruction: {
           parts: [
             {
               text:
                 SYSTEM_PROMPT +
+
                 "\n" +
+
                 profileText,
             },
           ],
@@ -885,13 +1120,16 @@ answering questions about the user's preferences.
         tools,
 
         generationConfig: {
+
           temperature: 0.5,
 
           maxOutputTokens: 2048,
         },
+
       }),
 
-      signal: AbortSignal.timeout(30000),
+      signal:
+        AbortSignal.timeout(30000),
     }
   );
 
@@ -900,6 +1138,7 @@ answering questions about the user's preferences.
   if (!response.ok) {
     const error = new Error(
       data.error?.message ||
+
       "Gemini request failed."
     );
 
@@ -912,22 +1151,35 @@ answering questions about the user's preferences.
 }
 
 // ============================================
-// MAIN CHAT ENDPOINT
+// MAIN AI CHAT ENDPOINT
 // ============================================
 
 router.post("/", async (req, res) => {
   try {
+
+    // Validate the authenticated user.
+
+    getUserId();
+
+    // Validate the user's message.
+
     const message =
       typeof req.body?.message === "string"
         ? req.body.message.trim()
         : "";
 
-    if (!message || message.length > 2000) {
+    if (
+      !message ||
+
+      message.length > 2000
+    ) {
       return res.status(400).json({
         error:
           "Enter a message between 1 and 2000 characters.",
       });
     }
+
+    // Check Gemini configuration.
 
     if (!process.env.GEMINI_API_KEY) {
       return res.status(503).json({
@@ -936,32 +1188,41 @@ router.post("/", async (req, res) => {
       });
     }
 
-    // READ USER PREFERENCES FROM FRONTEND
+    // Read saved preferences.
 
     const preferences = getPreferences(
       req.body.preferences
     );
 
-    // CONFIRM PREFERENCES REACHED BACKEND
+    console.log(
+      "AI Preferences:",
 
-    console.log("AI Preferences:", {
-      diet: preferences.diet,
-      allergyCount: preferences.allergies.length,
-    });
+      {
+        diet: preferences.diet,
 
-    // LOAD PREVIOUS CHAT MESSAGES
+        allergyCount:
+          preferences.allergies.length,
+      }
+    );
+
+    // Load the user's recent conversation.
 
     const history = Array.isArray(
       req.body.history
     )
+
       ? req.body.history
+
           .filter(
             (item) =>
+
               item &&
-              ["user", "assistant"].includes(
-                item.role
-              ) &&
+
+              ["user", "assistant"]
+                .includes(item.role) &&
+
               typeof item.text === "string" &&
+
               item.text.trim()
           )
 
@@ -975,14 +1236,20 @@ router.post("/", async (req, res) => {
 
             parts: [
               {
-                text: item.text.slice(0, 2000),
+                text:
+                  item.text.slice(0, 2000),
               },
             ],
           }))
+
       : [];
+
+    // Gemini conversations should start with
+    // a user message.
 
     while (
       history.length &&
+
       history[0].role !== "user"
     ) {
       history.shift();
@@ -1010,15 +1277,21 @@ router.post("/", async (req, res) => {
 
     let weeklyPlan = null;
 
-    // AI FUNCTION CALLING LOOP
+    // ==========================================
+    // GEMINI FUNCTION CALLING LOOP
+    // ==========================================
 
     for (
       let round = 0;
+
       round < 5;
+
       round++
     ) {
+
       const data = await askGemini(
         contents,
+
         preferences
       );
 
@@ -1037,18 +1310,24 @@ router.post("/", async (req, res) => {
           (part) => part.functionCall
         );
 
+      // ========================================
       // FINAL AI ANSWER
+      // ========================================
 
       if (functionCalls.length === 0) {
+
         const reply = content.parts
 
           .filter(
             (part) =>
               !part.thought &&
+
               part.text
           )
 
-          .map((part) => part.text)
+          .map(
+            (part) => part.text
+          )
 
           .join("\n");
 
@@ -1075,26 +1354,36 @@ router.post("/", async (req, res) => {
         });
       }
 
-      // PRESERVE GEMINI FUNCTION SIGNATURES
+      // Preserve Gemini's function call content,
+      // including model signatures.
 
       contents.push(content);
 
       const results = [];
 
+      // ========================================
+      // EXECUTE EACH REQUESTED TOOL
+      // ========================================
+
       for (const part of functionCalls) {
-        const call = part.functionCall;
+
+        const call =
+          part.functionCall;
 
         toolsUsed.push(call.name);
 
         console.log(
           "AI tool requested:",
+
           call.name
         );
 
         let result;
 
         try {
+
           result = await executeTool(
+
             call.name,
 
             call.args || {},
@@ -1102,31 +1391,43 @@ router.post("/", async (req, res) => {
             preferences
           );
 
+          // Store matching recipe cards.
+
           if (
             call.name === "find_recipes" &&
+
             Array.isArray(result.recipes)
           ) {
             recommendations =
               result.recipes.slice(0, 3);
           }
 
+          // Store external recipe cards.
+
           if (
             call.name === "search_mealdb" &&
+
             Array.isArray(result.recipes)
           ) {
             externalRecipes =
               result.recipes;
           }
 
+          // Store weekly meal plan preview.
+
           if (
             call.name === "plan_week" &&
+
             Array.isArray(result.entries)
           ) {
             weeklyPlan = result;
           }
+
         } catch (error) {
+
           console.error(
             "AI tool error:",
+
             error.message
           );
 
@@ -1145,7 +1446,8 @@ router.post("/", async (req, res) => {
         };
 
         if (call.id) {
-          functionResponse.id = call.id;
+          functionResponse.id =
+            call.id;
         }
 
         results.push({
@@ -1160,13 +1462,18 @@ router.post("/", async (req, res) => {
       });
     }
 
+    // Prevent endless AI tool requests.
+
     return res.status(502).json({
       error:
         "AI tool limit reached. Try a simpler question.",
     });
+
   } catch (error) {
+
     console.error(
       "PrepWise AI error:",
+
       error.message
     );
 
@@ -1190,14 +1497,25 @@ router.post("/", async (req, res) => {
 
 router.post(
   "/weekly-plan",
+
   async (req, res) => {
-    const { start, entries } =
-      req.body || {};
+
+    const userId = getUserId();
+
+    const {
+      start,
+      entries,
+    } = req.body || {};
+
+    // Validate the requested plan.
 
     if (
       !isDate(start) ||
+
       !Array.isArray(entries) ||
+
       entries.length < 1 ||
+
       entries.length > 7
     ) {
       return res.status(400).json({
@@ -1206,20 +1524,28 @@ router.post(
       });
     }
 
-    const startTime = Date.parse(start);
+    const startTime =
+      Date.parse(start);
 
-    const dates = new Set();
+    const dates =
+      new Set();
+
+    // Validate every entry before saving.
 
     for (const entry of entries) {
+
       const validId =
         Number.isInteger(
           entry?.recipe_id
         ) &&
+
         entry.recipe_id > 0 &&
+
         entry.recipe_id <= 2147483647;
 
       if (
         !validId ||
+
         !isDate(entry?.planned_date)
       ) {
         return res.status(400).json({
@@ -1234,8 +1560,10 @@ router.post(
 
       if (
         day < startTime ||
+
         day >=
           startTime + 7 * 86400000 ||
+
         dates.has(entry.planned_date)
       ) {
         return res.status(400).json({
@@ -1244,38 +1572,65 @@ router.post(
         });
       }
 
-      dates.add(entry.planned_date);
+      dates.add(
+        entry.planned_date
+      );
     }
 
     let client;
 
     try {
-      client = await pool.connect();
 
-      await client.query("BEGIN");
+      client =
+        await pool.connect();
+
+      // Begin a database transaction.
+
+      await client.query(
+        "BEGIN"
+      );
+
+      // Prevent concurrent weekly-plan saves
+      // for the same authenticated user.
 
       await client.query(
         "SELECT pg_advisory_xact_lock(19, $1::integer)",
 
-        [USER_ID]
+        [userId]
       );
 
       let added = 0;
 
       let skipped = 0;
 
+      // ========================================
+      // SAVE EACH CONFIRMED MEAL
+      // ========================================
+
       for (const entry of entries) {
+
         const recipe =
           await client.query(
-            `SELECT id
-             FROM recipes
-             WHERE id = $1`,
+            `
+              SELECT id
 
-            [entry.recipe_id]
+              FROM recipes
+
+              WHERE id = $1
+            `,
+
+            [
+              entry.recipe_id,
+            ]
           );
 
+        // Do not save a nonexistent recipe.
+
         if (!recipe.rowCount) {
-          await client.query("ROLLBACK");
+
+          await client.query(
+            "ROLLBACK"
+          );
 
           return res.status(404).json({
             error:
@@ -1283,48 +1638,73 @@ router.post(
           });
         }
 
+        // Save only if the dinner slot is empty.
+
         const result =
           await client.query(
-            `INSERT INTO meal_plan_entries (
-               user_id,
-               recipe_id,
-               planned_date,
-               meal_type
-             )
+            `
+              INSERT INTO meal_plan_entries (
+                user_id,
 
-             SELECT
-               $1,
-               $2,
-               $3::date,
-               'dinner'
+                recipe_id,
 
-             WHERE NOT EXISTS (
-               SELECT 1
+                planned_date,
 
-               FROM meal_plan_entries
+                meal_type
+              )
 
-               WHERE user_id = $1
-                 AND planned_date = $3::date
-                 AND LOWER(meal_type) = 'dinner'
-             )
+              SELECT
 
-             RETURNING id`,
+                $1,
+
+                $2,
+
+                $3::date,
+
+                'dinner'
+
+              WHERE NOT EXISTS (
+
+                SELECT 1
+
+                FROM meal_plan_entries
+
+                WHERE user_id = $1
+
+                  AND planned_date = $3::date
+
+                  AND LOWER(meal_type) = 'dinner'
+
+              )
+
+              RETURNING id
+            `,
 
             [
-              USER_ID,
+              userId,
+
               entry.recipe_id,
+
               entry.planned_date,
             ]
           );
 
         if (result.rowCount) {
+
           added++;
+
         } else {
+
           skipped++;
+
         }
       }
 
-      await client.query("COMMIT");
+      // Commit all successfully saved meals.
+
+      await client.query(
+        "COMMIT"
+      );
 
       return res.json({
         message:
@@ -1336,15 +1716,22 @@ router.post(
 
         start,
       });
+
     } catch (error) {
+
+      // Roll back changes if an error occurs.
+
       if (client) {
         await client
+
           .query("ROLLBACK")
+
           .catch(() => {});
       }
 
       console.error(
         "Weekly plan error:",
+
         error.message
       );
 
@@ -1352,7 +1739,9 @@ router.post(
         error:
           "Unable to save weekly meal plan.",
       });
+
     } finally {
+
       client?.release();
     }
   }
