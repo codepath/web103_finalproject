@@ -1,4 +1,6 @@
-.card {
+/* old card styles + consolidate between cards.css and index.css styles */
+
+/* .card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -41,4 +43,208 @@
 
 .card-grid > div > .card {
   flex: 1;
+} */
+
+
+
+
+/* card styles to share across all pages like events and groups and my collection */
+
+/* Card grid */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(240px, 100%), 1fr)
+  );
+  gap: var(--grid-gap);
+  width: 100%;
+}
+
+/* Individual card */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  color: var(--text-heading);
+  text-align: left;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  background: var(--surface);
+  color: var(--text-heading);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card images */
+
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--surface-alt);
+}
+
+/* Card body */
+
+.card-body {
+  padding: 18px 20px;
+}
+
+.card-body h3 {
+  margin: 0 0 8px;
+  color: var(--text-heading);
+  font-family: var(--heading);
+  font-size: var(--font-size-lg);
+}
+
+.card-body p {
+  margin: 4px 0;
+  color: var(--text);
+  font-size: var(--font-size-sm);
+}
+
+/* Card metadata */
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Card links */
+
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card a:hover {
+  color: inherit;
+}
+
+/* Card buttons */
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: auto;
+  padding: 0 20px 20px;
+}
+
+/* Make cards inside grid stretch evenly */
+
+/* .card-grid > div {
+  display: flex;
+  min-width: 0;
+}
+
+.card-grid > div > .card {
+  flex: 1;
+} */
+
+/* Optional card image wrapper */
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.02);
+}
+
+/* Tags / pills */
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 4px 10px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+
+  background: var(--surface-alt);
+  color: var(--text-muted);
+
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+/* Empty card state */
+
+.card-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--card-radius);
+
+  background: var(--surface);
+  color: var(--text-muted);
+
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(220px, 100%), 1fr)
+    );
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .card-actions {
+    padding: 0 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    border-radius: var(--radius-md);
+  }
 }

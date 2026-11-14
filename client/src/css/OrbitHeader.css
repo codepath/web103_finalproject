@@ -138,24 +138,19 @@
     box-shadow 0.2s ease;
 }
 
+
 .orbit-create:hover,
 .orbit-create-link:hover {
-  background: #fbb550;
-  border-color: #fbb550;
+  background: var(--accent);
+  border-color: var(--accent);
   color: #4b006e;
   transform: translateY(-2px);
-  box-shadow:
-    0 4px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
-/* Keyboard focus */
-.orbit-create:focus-visible,
-.orbit-create-link:focus-visible {
-  outline: 3px solid #fbb550;
-  outline-offset: 3px;
-}
 
-/* light and dark mode theme toggle button styles */
+/* light and dark mode theme toggle button styles to match create link style*/
+
 
 .orbit-theme-toggle {
   display: inline-flex;
@@ -169,7 +164,6 @@
   border-radius: 50%;
   background: #fff;
   color: #4b006e;
-  font-family: var(--sans);
   font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
@@ -181,16 +175,20 @@
     box-shadow 0.2s ease;
 }
 
-.orbit-theme-toggle:hover {
-  background: #fbb550;
-  border-color: #fbb550;
-  color: #4b006e;
+
+/* Yellow hover */
+.orbit-actions .orbit-theme-toggle:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color:  #4b006e;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
+
+/* Keyboard focus */
 .orbit-theme-toggle:focus-visible {
-  outline: 3px solid #fbb550;
+  outline: 3px solid var(--focus-outline);
   outline-offset: 3px;
 }
 
@@ -202,29 +200,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 40px;
   height: 40px;
   padding: 0;
   margin: 0;
-
   box-sizing: border-box;
   overflow: hidden;
-
   border: 2px solid #fff;
   border-radius: 50%;
-
   background: #fbb550;
   color: #4b006e;
-
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 700;
-
   cursor: pointer;
-
   vertical-align: middle;
-
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease,
@@ -235,7 +225,6 @@
 .orbit-avatar:hover {
   border-color: #fbb550;
   background: #fff;
-  color: #4b006e;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
@@ -254,19 +243,14 @@
   right: 0;
   top: 48px;
   z-index: 1000;
-
   display: flex;
   flex-direction: column;
   gap: 6px;
-
   min-width: 170px;
   padding: 8px;
-
   border: 1px solid #e5e4e7;
   border-radius: 12px;
-
   background: #fff;
-
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.12),
     0 4px 6px -2px rgba(0, 0, 0, 0.06);
@@ -275,24 +259,18 @@
 .orbit-menu-list a,
 .orbit-menu-list button {
   display: block;
-
   width: 100%;
   padding: 9px 12px;
   box-sizing: border-box;
-
   border: none;
   border-radius: 8px;
-
   background: transparent;
   color: #2b1633;
-
   font-family: var(--sans);
   font-size: 0.9rem;
   font-weight: 600;
-
   text-align: left;
   text-decoration: none;
-
   cursor: pointer;
 
   transition:
@@ -306,7 +284,47 @@
   color: #4b006e;
 }
 
-/* keyboard focus styles */
+
+
+/*CreateButton link style to match buttons*/
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  color: var(--text-on-primary);
+  font-family: var(--sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.button-link:hover {
+  background: var(--primary-hover);
+  color: var(--text-on-primary);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.button-link:active {
+  transform: translateY(0);
+}
+
+/* keyboard focus styles for accessibility */
 
 .orbit-login:focus-visible,
 .orbit-create-link:focus-visible,
@@ -315,4 +333,20 @@
 .orbit-nav-link:focus-visible {
   outline: 3px solid #fbb550;
   outline-offset: 3px;
+}
+
+.orbit-theme-toggle:focus-visible {
+  outline: 3px solid #fbb550;
+  outline-offset: 3px;
+}
+
+.orbit-create:focus-visible,
+.orbit-create-link:focus-visible {
+  outline: 3px solid #fbb550;
+  outline-offset: 3px;
+}
+
+.button-link:focus-visible {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px;
 }

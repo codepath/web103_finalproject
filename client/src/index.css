@@ -1,303 +1,557 @@
+/* consolidated global styles */
+
 /*  inter font for everything */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Font for Logo */
+/* Font import for logo options*/
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 :root {
-  /* Typography */
-  --sans: 'Inter', sans-serif;
-  --heading: 'Inter', sans-serif;
-  --logo: 'Gugi', sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* default layout for pages */
 
-  /* Light mode */
-  --text: #5f5863;
-  --text-h: #2b1633;
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --border: #e5e4e7;
+  --page-max-width: 1200px;
+  --content-max-width: 760px;
+  --page-padding-x: 24px;
+  --page-padding-y: 32px;
+  --section-spacing: 40px;
+  --grid-gap: 20px;
 
-  /* Orbit brand colors */
+  /* default borders and radius to share */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --card-radius: var(--radius-lg);
+  --border-width: 1px;
+
+  /* text sizes */
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* orbit app color scheme */
+
   --primary: #4b006e;
-  --secondary: #5f0f4e;
-  --accent: #fbb550;
-  --magenta: #d81b68;
-  --blue: #3f7f9f;
-
-  /* Form / code backgrounds */
-  --code-bg: #f4f3ec;
-  --accent-bg: rgba(75, 0, 110, 0.08);
-  --accent-border: rgba(75, 0, 110, 0.35);
-
-  /* Shadows */
-  --shadow:
-    rgba(0, 0, 0, 0.08) 0 10px 15px -3px,
-    rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
-
-  /* Browser UI */
-  color-scheme: light;
-
-  /* Base typography */
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color: var(--text);
-  background: var(--bg);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-
-}
-
-
-/* dark theme style */
-:root[data-theme='dark'] {
-  /* Dark backgrounds */
-  --bg: #17121a;
-  --surface: #241b28;
-
-  /* Text */
-  --text: #d8d0dc;
-  --text-h: #ffffff;
-
-  /* border */
-  --border: #44374a;
-
-  /* Orbit brand colors to use throughout app*/
-  --primary: #c084d8;
+  --primary-hover: #5f0f4e;
   --secondary: #d81b68;
+  --secondary-hover: #b91557;
   --accent: #fbb550;
-  --magenta: #e0528a;
-  --blue: #67aeca;
+  --success: #247a4d;
+  --danger: #a0184e;
+  --warning: #9a6b16;
+  --info: #3f7f9f;
 
-  /* Form / code backgrounds */
-  --code-bg: #2c2330;
-  --accent-bg: rgba(192, 132, 216, 0.12);
-  --accent-border: rgba(192, 132, 216, 0.45);
+  /* surface*/
 
-  /* Shadows */
+  --background: #f7f5f8;
+  --surface: #ffffff;
+  --surface-alt: #faf9fb;
+  --surface-hover: #f3eff5;
+
+  /* default style */
+
+  --text-heading: #2b1633;
+  --text: #5f5863;
+  --text-muted: #716b75;
+  --text-subtle: #8a838e;
+  --text-on-primary: #ffffff;
+  --border: #e5e4e7;
+  --border-strong: #b9b3bd;
+  --border-hover: #7a7180;
+
+  --shadow-sm:
+    0 2px 4px rgba(0, 0, 0, 0.05);
+
   --shadow:
-    rgba(0, 0, 0, 0.35) 0 10px 15px -3px,
-    rgba(0, 0, 0, 0.2) 0 4px 6px -2px;
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -2px rgba(0, 0, 0, 0.04);
 
-  color-scheme: dark;
+  --shadow-lg:
+    0 20px 30px -8px rgba(0, 0, 0, 0.12),
+    0 8px 12px -4px rgba(0, 0, 0, 0.06);
+
+  --focus-ring: rgba(75, 0, 110, 0.16);
+  --focus-outline: #fbb550;
+
+  /* font implementation */
+
+  --sans: 'Inter', sans-serif;
+  --logo: "Gugi", sans-serif;
+
+
+  /* shared transitions to use when changing themes*/
+
+  --transition-fast: 0.15s ease;
+  --transition: 0.2s ease;
+  --transition-slow: 0.3s ease;
 }
 
 
-/* font size */
-@media (max-width: 1024px) {
-  :root {
-    font-size: 16px;
-  }
+/* dark mode color scheme */
+
+html[data-theme="dark"] {
+  --background: #17121a;
+  --surface: #211a24;
+  --surface-alt: #291f2d;
+  --surface-hover: #322638;
+  --text-heading: #f7eef9;
+  --text: #d1c5d5;
+  --text-muted: #b3a6b7;
+  --text-subtle: #948798;
+  --border: #3b3040;
+  --border-strong: #65576a;
+  --border-hover: #8b7b91;
+  --primary: #c27adf;
+  --primary-hover: #d18bea;
+  --secondary: #ed4b91;
+  --secondary-hover: #f36ba6;
+  --accent: #fbb550;
+  --success: #6fc794;
+  --danger: #ed6b98;
+  --warning: #e4b95d;
+  --info: #6ba8c7;
+  --text-on-primary: #1c1020;
+  --focus-ring: rgba(194, 122, 223, 0.22);
+  --focus-outline: #fbb550;
+  --shadow-sm:
+    0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.28),
+    0 4px 6px -2px rgba(0, 0, 0, 0.18);
+  --shadow-lg:
+    0 20px 30px -8px rgba(0, 0, 0, 0.38),
+    0 8px 12px -4px rgba(0, 0, 0, 0.25);
 }
 
 
-/* updated body styles */
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
-}
+/* reset for dark and light mode */
 
-
-/* root app container */
-#root {
-  width: 100%;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  background: var(--background);
+  color-scheme: light;
+}
 
-/* headings*/
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  background: var(--background);
+  color: var(--text);
+
+  font-family: var(--sans);
+  font-size: var(--font-size-md);
+  font-weight: 400;
+  line-height: 1.5;
+
+  transition:
+    background-color var(--transition-slow),
+    color var(--transition-slow);
+}
+
+
+/* minheight */
+
+#root {
+  min-height: 100vh;
+}
+
+
+/* headings and text */
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  margin-top: 0;
+  color: var(--text-heading);
   font-family: var(--heading);
-  color: var(--text-h);
-}
-
-h1,
-h2 {
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 56px;
-  line-height: 1.1;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  font-family: var(--logo)
+  font-size: var(--font-size-2xl);
+  font-family: var(--logo);
 }
 
-
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  /* font-family: var(--logo) */
+  font-size: var(--font-size-xl);
 }
 
 h3 {
-  font-size: 20px;
-  line-height: 1.25;
+  font-size: var(--font-size-lg);
 }
 
-
-/* responsive headings for mobile , configure better later*/
-@media (max-width: 1024px) {
-  h1 {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-}
-
-
-/* other styles */
 p {
-  margin: 0;
+  color: var(--text);
 }
 
 a {
   color: var(--primary);
+  text-decoration: none;
+
+  transition:
+    color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--secondary);
+  color: var(--primary-hover);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 3px;
 }
 
 
-/* form font */
-button,
+/* shared button styles */
+
+button {
+  min-height: 40px;
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  color: var(--text-on-primary);
+  font-family: var(--sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* secondary button */
+
+button.secondary {
+  border-color: var(--border-strong);
+  background: transparent;
+  color: var(--text-heading);
+}
+
+button.secondary:hover:not(:disabled) {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+  color: var(--text-heading);
+}
+
+
+/* danger buttons */
+
+button.danger {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+button.danger:hover:not(:disabled) {
+  background: #86143f;
+}
+
+
+/* form/input */
+
 input,
 select,
 textarea {
   font-family: var(--sans);
 }
 
-
-/* orbit-button for most buttons on the pages (not including forms or headers*/
-
-.orbit-button {
-  text-decoration: none;
-  min-height: 40px;
-  padding: 9px 20px;
-  border: none;
-  border-radius: 999px;
-  background: #4b006e;
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+input,
+select,
+textarea {
+  border-color: var(--border-strong);
+  background: var(--surface);
+  color: var(--text-heading);
 }
 
-.orbit-button:hover:not(:disabled) {
-  background: #d81b68;
-  transform: translateY(-1px);
-  box-shadow:
-    0 4px 8px rgba(75, 0, 110, 0.18);
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
 }
 
-.orbit-button:focus-visible {
-  outline: 3px solid #fbb550;
-  outline-offset: 2px;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
-.orbit-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
 
-/* button-style for links */
+/* page and heading for main pages */
 
-.button-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 9px 20px;
+.page-shell {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--page-padding-y) var(--page-padding-x) 56px;
   box-sizing: border-box;
-  border: none;
-  border-radius: 999px;
-  background: var(--primary);
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
+}
+
+
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.page-heading h1 {
+  margin: 0;
+}
+
+.page-heading p {
+  margin: 6px 0 0;
+  color: var(--text-muted);
+}
+
+
+/* page margins */
+
+.page-section {
+  margin-top: var(--section-spacing);
+}
+
+.page-section:first-child {
+  margin-top: 0;
+}
+
+
+/* shared card section REMOVE AND LEAVE IN CARDS.CSS */
+
+/* .card {
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  color: var(--text-heading);
+  box-shadow: var(--shadow);
+
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
 }
 
-.button-link:hover {
-  background: #d81b68;
-  color: #fff;
-  transform: translateY(-1px);
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+} */
 
-  box-shadow:
-    0 4px 8px rgba(75, 0, 110, 0.18);
+
+/* shared card grid */
+
+/* .card-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(min(240px, 100%), 1fr)
+    );
+
+  gap: var(--grid-gap);
+} */
+
+
+
+
+/* panel style */
+
+.panel {
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
-.button-link:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
+
+/* results on pages after searching like events or groups */
+
+.result-count {
+  margin: 0 0 16px;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
 }
 
 
+/* empty */
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.empty-state {
+  padding: 48px 24px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--card-radius);
+  background: var(--surface);
+  text-align: center;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.empty-state h2,
+.empty-state h3 {
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  max-width: 500px;
+  margin: 0 auto 20px;
+  color: var(--text-muted);
 }
 
 
-/* accessibility focus*/
-:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
+/* added shared error message to match them*/
+
+.error-message {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-md);
+  background: color-mix(
+    in srgb,
+    var(--danger) 10%,
+    var(--surface)
+  );
+
+  color: var(--danger);
+  font-size: var(--font-size-sm);
 }
 
+
+/* image width */
+
+img {
+  max-width: 100%;
+}
+
+img:not([src]),
+img[src=""] {
+  display: none;
+}
+
+
+/* selection */
+
+::selection {
+  background: var(--accent);
+  color: var(--text-heading);
+}
+
+
+/* added scrollbar color depending on dark/light mode*/
+
+html {
+  scrollbar-color: var(--border-strong) var(--background);
+}
+
+
+/* initial responsive styles */
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding-x: 18px;
+    --page-padding-y: 24px;
+
+    --grid-gap: 16px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-heading button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 480px) {
+  :root {
+    --page-padding-x: 14px;
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .panel {
+    border-radius: var(--radius-md);
+  }
+
+  .empty-state {
+    padding: 36px 18px;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+/* @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+} */
