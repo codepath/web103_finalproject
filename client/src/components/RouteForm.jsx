@@ -2,29 +2,31 @@ import { useState } from 'react'
 import WallComponent from './WallComponent'
 import HoldLegend from './Hold'
 import { grades } from '../data/starterRoutes'
+import ClimbingHoldsDrawer from './ClimbingHoldsDrawer'
 import { findOverlappingHold, getHoldSize, SIZES } from '../utils/holdFootprint'
-
-// TODO(#12): replace these with the hold picked in ClimbingHoldsDrawer (its image_url and size).
-// Until then, each size bolts on a jug of that size from public/holds.
-const DEFAULT_HOLD_IMAGES = {
-  small: '/holds/jug-babyblue-small.png',
-  medium: '/holds/jug-orange-medium.png',
-  large: '/holds/jug-green-large.png',
-}
 
 function RouteForm({ existing, onSave }) {
   const [name, setName] = useState(existing?.name ?? '')
   const [grade, setGrade] = useState(existing?.grade ?? 'V0')
   const [wallType, setWallType] = useState(existing?.wallType ?? 'Vertical')
   const [role, setRole] = useState('hand')
-  const [holdSize, setHoldSize] = useState('medium')
+  const [rotation, setRotation] = useState(0)
+  const [catalogHold, setCatalogHold] = useState(null)
   const [holds, setHolds] = useState(existing?.holds ?? [])
   const [error, setError] = useState('')
   const [selectedCell, setSelectedCell] = useState(null)
   const selectedHold = selectedCell && holds.find((hold) => hold.row === selectedCell.row && hold.col === selectedCell.col)
 
   function handleCellClick(row, col) {
-    setHolds((current) => [...current, { row, col, role, imageUrl: DEFAULT_HOLD_IMAGES[holdSize], size: holdSize, rotation: 0 }])
+    if (!catalogHold) {
+      setError('Pick a hold from the drawer first.')
+      return
+    }
+    setError('')
+    setHolds((current) => [
+      ...current,
+      { row, col, role, holdId: catalogHold.id, imageUrl: catalogHold.imageUrl, size: catalogHold.size, rotation },
+    ])
     setSelectedCell(null)
   }
 
@@ -52,7 +54,7 @@ function RouteForm({ existing, onSave }) {
   }
 
   function resizeHold(size) {
-    updateSelectedHold({ size, imageUrl: DEFAULT_HOLD_IMAGES[size] })
+    updateSelectedHold({ size })
   }
 
   function removeHold() {
@@ -75,14 +77,14 @@ function RouteForm({ existing, onSave }) {
         <label>Route name<input value={name} onChange={(event) => setName(event.target.value)} placeholder="e.g. Moonwalk" /></label>
         <label>Grade<select value={grade} onChange={(event) => setGrade(event.target.value)}>{grades.map((item) => <option key={item}>{item}</option>)}</select></label>
         <label>Wall type<select value={wallType} onChange={(event) => setWallType(event.target.value)}><option>Vertical</option><option>Slab</option><option>Overhang</option><option>Roof</option></select></label>
-        <fieldset>
-          <legend>Next hold role</legend>
-          <div className="role-picker">{['start', 'hand', 'foot', 'finish'].map((item) => <button type="button" className={role === item ? 'selected' : ''} key={item} onClick={() => setRole(item)}>{item}</button>)}</div>
-        </fieldset>
-        <fieldset>
-          <legend>Next hold size</legend>
-          <div className="role-picker">{SIZES.map((item) => <button type="button" className={holdSize === item ? 'selected' : ''} key={item} onClick={() => setHoldSize(item)}>{item}</button>)}</div>
-        </fieldset>
+        <ClimbingHoldsDrawer
+          selectedHold={catalogHold}
+          onSelectHold={(hold) => { setCatalogHold(hold); setError('') }}
+          role={role}
+          onRoleChange={setRole}
+          rotation={rotation}
+          onRotationChange={setRotation}
+        />
         {error && <p className="form-error" role="alert">{error}</p>}
         <div className="form-actions">
           <button className="button button-reset" onClick={() => { setHolds([]); setSelectedCell(null) }} type="button">Reset Wall</button>
@@ -90,7 +92,11 @@ function RouteForm({ existing, onSave }) {
         </div>
       </div>
       <div>
-        <p className="wall-instruction">Click a bolt to place a <strong>{holdSize} {role}</strong> hold. Click a placed hold to edit it.</p>
+        <p className="wall-instruction">
+          {catalogHold
+            ? <>Click a bolt to place a <strong>{catalogHold.name}</strong> as a <strong>{role}</strong> hold at {rotation}°. Click a placed hold to edit it.</>
+            : 'Pick a hold from the drawer, then click a bolt to place it. Click a placed hold to edit it.'}
+        </p>
         {selectedHold && (
           <div className="hold-actions">
             <span>
@@ -120,7 +126,7 @@ function RouteForm({ existing, onSave }) {
             <button className="button button-reset" onClick={() => setSelectedCell(null)} type="button">Done</button>
           </div>
         )}
-        <WallComponent holds={holds} wallType={wallType} placingSize={holdSize} editable onCellClick={handleCellClick} onPlacedHoldClick={handlePlacedHoldClick} />
+        <WallComponent holds={holds} wallType={wallType} placingSize={catalogHold?.size ?? 'medium'} editable onCellClick={handleCellClick} onPlacedHoldClick={handlePlacedHoldClick} />
         <HoldLegend />
       </div>
     </form>

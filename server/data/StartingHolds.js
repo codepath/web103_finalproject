@@ -21,7 +21,7 @@ const StartingHolds = [
 		hold_type: 'crimp',
 		size: 'medium',
 		color: 'pink',
-		image_url: '/holds/crimp-medium-pimk.png',
+		image_url: '/holds/crimp-medium-pink.png',
 	},
 	{
 		id: 4,

@@ -3,6 +3,7 @@
 		"postinstall": "npm install --prefix server && npm install --prefix client",
 		"dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\"",
 		"start": "npm run start --prefix server",
+		"reset": "npm run reset --prefix server",
 		"build": "npm run build --prefix client"
 	},
 	"devDependencies": {

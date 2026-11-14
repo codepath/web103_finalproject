@@ -59,6 +59,20 @@ legend { color: var(--muted); font-size: .82rem; margin-bottom: 8px; }
 .hold-size-buttons .button.selected { background: var(--green); border-color: var(--green); color: white; }
 .hold-size-buttons .button:disabled { cursor: not-allowed; opacity: .4; }
 .wall-instruction { color: var(--muted); font-size: .85rem; }
+/* ClimbingHoldsDrawer */
+.holds-drawer { background: var(--paper); border: 1px solid var(--line); border-radius: 3px; display: flex; flex-direction: column; gap: 16px; padding: 16px; }
+.holds-drawer-title { color: var(--ink); font-size: .8rem; font-weight: 600; letter-spacing: .12em; margin: 0; text-transform: uppercase; }
+.holds-drawer-note { color: var(--muted); font-size: .85rem; margin: 0; }
+.holds-drawer-retry { background: none; border: 0; color: var(--orange); cursor: pointer; font: inherit; padding: 0; text-decoration: underline; }
+.holds-drawer-tabs { display: flex; flex-wrap: wrap; gap: 7px; }
+.holds-drawer-tabs button { background: transparent; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); cursor: pointer; padding: 7px 10px; text-transform: capitalize; }
+.holds-drawer-tabs button.selected { background: var(--green); border-color: var(--green); color: white; }
+.holds-drawer-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); max-height: 220px; overflow-y: auto; }
+.hold-card { align-items: center; background: white; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); cursor: pointer; display: flex; flex-direction: column; font-size: .75rem; gap: 4px; padding: 8px 4px; text-transform: capitalize; }
+.hold-card img { aspect-ratio: 1; object-fit: contain; width: 100%; }
+.hold-card:hover { border-color: var(--green); }
+.hold-card.selected { border-color: var(--green); box-shadow: 0 0 0 2px var(--green); color: var(--ink); }
+.rotation-picker { flex-wrap: wrap; }
 /* WallComponent: 12 x 16 T-nut bolt grid */
 .wall { aspect-ratio: 3 / 4; background-color: #c4c0b5; background-image: radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.5px), linear-gradient(110deg, #aaa69b 0%, #d2cec3 50%, #a7a399 100%); background-size: 5px 5px, 100% 100%; border: 8px solid #7d776d; border-radius: 3px; box-shadow: inset 0 0 35px #777268; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(16, 1fr); padding: 6px; width: 100%; }
 .wall-sm { border-width: 5px; padding: 3px; }

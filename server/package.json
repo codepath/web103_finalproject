@@ -3,7 +3,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "nodemon server.js",
-		"start": "node server.js"
+		"start": "node server.js",
+		"reset": "node config/reset.js"
 	},
 	"dependencies": {
 		"cors": "^2.8.6",
