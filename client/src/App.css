@@ -405,12 +405,6 @@ main.home {
   padding: 24px;
   background: var(--tile-bg);
   color: var(--tile-text);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.tile:hover .tile-info,
-.tile:focus-visible .tile-info {
-  opacity: 1;
 }
 .tile:hover img,
 .tile:focus-visible img {
@@ -470,7 +464,6 @@ main.home {
 /* Touch screens can't hover: show a slim caption at the bottom instead */
 @media (hover: none) {
   .tile-info {
-    opacity: 1;
     inset: auto 0 0;
     padding: 32px 14px 12px;
     background: linear-gradient(transparent, var(--tile-bg) 40%);
