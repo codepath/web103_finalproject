@@ -375,3 +375,94 @@ h3 {
 .login-card { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px; padding: 32px 24px; }
 .login-card h1, .login-card p { margin: 0; }
 .login-button { text-align: center; padding: 10px 14px; }
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+fieldset:disabled input,
+fieldset:disabled select,
+fieldset:disabled textarea,
+input:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.btn:disabled { cursor: wait; }
+.loading-state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 0;
+  color: var(--text-muted);
+}
+.spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-turn 0.75s linear infinite;
+}
+.spinner-small {
+  width: 13px;
+  height: 13px;
+  margin-right: 7px;
+  vertical-align: -2px;
+}
+@keyframes spinner-turn { to { transform: rotate(360deg); } }
+
+.toast-stack {
+  position: fixed;
+  z-index: 100;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(380px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-border);
+  border-left: 3px solid #257347;
+  border-radius: var(--radius-card);
+  box-shadow: 0 6px 24px rgba(10, 10, 10, 0.12);
+  overflow-wrap: anywhere;
+  pointer-events: auto;
+}
+.toast-error { border-left-color: var(--text-negative); }
+.toast p { flex: 1; margin: 0; }
+.toast-mark { color: #257347; font-weight: 700; }
+.toast-error .toast-mark { color: var(--text-negative); }
+.toast-dismiss {
+  flex-shrink: 0;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+.toast-dismiss:hover { color: var(--text-primary); background: var(--bg-raised); }
+.toast-dismiss:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+@media (max-width: 768px) {
+  .toast-stack { top: 12px; right: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; border-style: dotted; }
+}

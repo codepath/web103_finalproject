@@ -1,30 +1,45 @@
 import { useState } from 'react'
 import { api, formatDate, formatMoney } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
+import { useAsyncAction, useFeedback } from '../context/useFeedback.js'
+import Spinner from './Spinner.jsx'
 
 export default function ActivityCard({ activity, onChanged, onEdit }) {
   const { activeUser } = useActiveUser()
   const [error, setError] = useState('')
+  const [action, setAction] = useState('')
+  const { busy, pending, run } = useAsyncAction()
+  const { notify } = useFeedback()
   const mine = activity.created_by_id === activeUser.id
 
   async function toggleVote() {
-    setError('')
-    try {
-      await api(`/activities/${activity.id}/votes`, { method: activity.user_voted ? 'DELETE' : 'POST' })
-      onChanged()
-    } catch (err) {
-      setError(err.message)
-    }
+    return run(async () => {
+      setAction('vote')
+      setError('')
+      try {
+        await api(`/activities/${activity.id}/votes`, { method: activity.user_voted ? 'DELETE' : 'POST' })
+        notify(activity.user_voted ? 'Vote removed.' : 'Vote added.')
+        await onChanged()
+      } catch (err) {
+        setError(err.message)
+      }
+    })
   }
 
   async function remove() {
+    if (busy) return
     if (!window.confirm(`Delete "${activity.title}"?`)) return
-    try {
-      await api(`/activities/${activity.id}`, { method: 'DELETE' })
-      onChanged()
-    } catch (err) {
-      setError(err.message)
-    }
+    return run(async () => {
+      setAction('delete')
+      setError('')
+      try {
+        await api(`/activities/${activity.id}`, { method: 'DELETE' })
+        notify('Activity deleted.')
+        await onChanged()
+      } catch (err) {
+        setError(err.message)
+      }
+    })
   }
 
   return (
@@ -44,17 +59,22 @@ export default function ActivityCard({ activity, onChanged, onEdit }) {
         <button
           className={`btn btn-small${activity.user_voted ? ' btn-voted' : ''}`}
           onClick={toggleVote}
+          disabled={busy}
+          aria-busy={pending && action === 'vote'}
           aria-pressed={activity.user_voted}
         >
-          {activity.user_voted ? 'Remove vote' : 'Vote'}
+          {pending && action === 'vote' && <Spinner inline />}
+          {pending && action === 'vote' ? 'Updating…' : activity.user_voted ? 'Remove vote' : 'Vote'}
         </button>
         <span className="vote-count" aria-label={`${activity.vote_count} votes`}>
           {activity.vote_count} {activity.vote_count === 1 ? 'vote' : 'votes'}
         </span>
         {mine && (
           <>
-            <button className="btn btn-small" onClick={() => onEdit(activity)}>Edit</button>
-            <button className="btn btn-small btn-danger" onClick={remove}>Delete</button>
+            <button className="btn btn-small" disabled={busy} onClick={() => onEdit(activity)}>Edit</button>
+            <button className="btn btn-small btn-danger" disabled={busy} onClick={remove}>
+              {pending && action === 'delete' && <Spinner inline />}{pending && action === 'delete' ? 'Deleting…' : 'Delete'}
+            </button>
           </>
         )}
       </div>

@@ -9,7 +9,7 @@
     "dev:server": "npm run dev --prefix server",
     "dev:client": "npm run dev --prefix client -- --port 5173 --strictPort",
     "pretest": "npm run build",
-    "test": "node --test server/tests/*.test.js"
+    "test": "npm test --prefix client && node --test server/tests/*.test.js"
   },
   "engines": {
     "node": ">=20.19.0"

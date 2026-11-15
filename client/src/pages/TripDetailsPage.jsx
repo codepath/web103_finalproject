@@ -1,3 +1,4 @@
+import Spinner from '../components/Spinner.jsx'
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { api, formatDate, formatMoney } from '../api.js'
@@ -6,10 +7,12 @@ import MemberList from '../components/MemberList.jsx'
 import ActivityList from '../components/ActivityList.jsx'
 import ActivityForm from '../components/ActivityForm.jsx'
 import SlideOver from '../components/SlideOver.jsx'
+import { useFeedback } from '../context/useFeedback.js'
 
 export default function TripDetailsPage() {
   const { tripId } = useParams()
   const { activeUser } = useActiveUser()
+  const { busy, notify } = useFeedback()
   const [trip, setTrip] = useState(null)
   const [members, setMembers] = useState([])
   const [activities, setActivities] = useState([])
@@ -35,21 +38,24 @@ export default function TripDetailsPage() {
   }, [tripId, activeUser.id])
 
   async function saveActivity(values) {
+    const editing = Boolean(panel.activity)
     if (panel.activity) {
       await api(`/activities/${panel.activity.id}`, { method: 'PATCH', body: values })
     } else {
       await api(`/trips/${tripId}/activities`, { method: 'POST', body: values })
     }
+    notify(editing ? 'Activity updated.' : 'Activity added.')
     setPanel(null)
     await loadActivities()
   }
 
-  if (error) return <p className="error" role="alert">{error}</p>
-  if (!trip) return <p className="page-note">Loading trip…</p>
+  if (error && !trip) return <p className="error" role="alert">{error}</p>
+  if (!trip) return <Spinner label="Loading trip…" />
 
   return (
     <section>
       <h1>{trip.title}</h1>
+      {error && <p className="error" role="alert">{error}</p>}
       <p className="page-note">
         {trip.destination} · {formatDate(trip.start_date)} – {formatDate(trip.end_date)} ·{' '}
         {formatMoney(trip.budget)} budget
@@ -63,7 +69,7 @@ export default function TripDetailsPage() {
 
       <div className="page-head section-head">
         <h2>Activities</h2>
-        <button className="btn" onClick={() => setPanel({ activity: null })}>Add activity</button>
+        <button className="btn" disabled={busy || Boolean(panel)} onClick={() => setPanel({ activity: null })}>Add activity</button>
       </div>
       <ActivityList
         activities={activities}

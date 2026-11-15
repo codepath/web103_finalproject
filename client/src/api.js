@@ -1,18 +1,26 @@
 export async function api(path, { method = 'GET', body } = {}) {
-  const response = await fetch(`/api${path}`, {
-    method,
-    credentials: 'include',
-    headers: {
-      ...(body ? { 'Content-Type': 'application/json' } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  })
+  let response
+  try {
+    response = await fetch(`/api${path}`, {
+      method,
+      credentials: 'include',
+      headers: {
+        ...(body ? { 'Content-Type': 'application/json' } : {}),
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    })
+  } catch {
+    const message = 'Could not reach the server. Check your connection and try again.'
+    window.dispatchEvent(new CustomEvent('api-error', { detail: message }))
+    throw new Error(message)
+  }
   if (response.status === 204) return null
   const data = await response.json().catch(() => ({}))
   if (!response.ok) {
     if (response.status === 401) window.dispatchEvent(new Event('auth-expired'))
     const error = new Error(data.error || 'Something went wrong. Try again.')
     error.status = response.status
+    if (response.status !== 401) window.dispatchEvent(new CustomEvent('api-error', { detail: error.message }))
     throw error
   }
   return data

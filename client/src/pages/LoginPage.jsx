@@ -1,3 +1,4 @@
+import Spinner from '../components/Spinner.jsx'
 import { Navigate, useSearchParams } from "react-router-dom";
 import { useActiveUser } from "../context/ActiveUserContext.jsx";
 
@@ -14,7 +15,7 @@ export default function LoginPage() {
   if (loading)
     return (
       <main className="login-page">
-        <p className="page-note" role="status">Checking sign-in…</p>
+        <Spinner label="Checking sign-in…" />
       </main>
     );
   const requested = params.get("returnTo");

@@ -34,6 +34,21 @@ All six core features below are implemented. Each has a demonstration GIF.
 
 Users sign in with GitHub through Passport. Sessions are stored in PostgreSQL with an HTTP-only session cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
 
+### Request feedback and loading states
+
+Trip, activity, and expense create/update/delete actions show success toasts;
+joining, voting, and logout also show feedback. API and connection errors show
+an error toast, with form errors retained beside the inputs. Notifications
+survive page navigation, can be dismissed, and pause their timeout on hover or
+keyboard focus.
+
+Page loading and active requests use accessible spinners, with reduced-motion
+support. Request buttons and form inputs are disabled until the request and
+refresh finish; a synchronous mutation guard also prevents repeated submissions.
+Other mutation controls and activity-pane dismissal are locked during a pending
+request. Non-request controls such as notification dismissal remain available.
+The new feedback features still need a demonstration GIF for final submission.
+
 ### ✅ 1. Create and Manage Trips
 
 - [x] Users can create a trip with a title, destination, start date, end date, and budget. They can view trip details, update the information, and delete a trip they organize.
@@ -156,4 +171,9 @@ Sessions are stored in PostgreSQL, with a seven-day cookie containing only a sig
 
 ### Validation
 
-From the repository root, run `npm test`, `npm run lint --prefix client`, and `npm run build`. Manually verify real GitHub authorization, cancelled login, page refresh, logout, return to a protected page, and two users joining/voting with separate accounts.
+From the repository root, run `npm test` and `npm run lint --prefix client`.
+`npm test` builds the frontend, runs the React feedback tests, and runs the server
+authentication/production routing tests. Manually verify real GitHub authorization,
+cancelled login, page refresh, logout, return to a protected page, and two users
+joining/voting with separate accounts. To demonstrate pending controls and spinners,
+throttle the network in browser developer tools, submit once, and try clicking again.

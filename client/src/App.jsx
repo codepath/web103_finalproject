@@ -1,3 +1,5 @@
+import Spinner from './components/Spinner.jsx'
+import { useState } from 'react'
 import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom'
 import TripsPage from './pages/TripsPage.jsx'
 import CreateTripPage from './pages/CreateTripPage.jsx'
@@ -11,10 +13,11 @@ import LoginPage from './pages/LoginPage.jsx'
 import { useActiveUser } from './context/ActiveUserContext.jsx'
 
 function RequireAuth() {
+  const [retrying, setRetrying] = useState(false)
   const location = useLocation()
   const { activeUser, loading, error } = useActiveUser()
-  if (loading) return <main className="main-content"><p role="status">Checking sign-in…</p></main>
-  if (error) return <main className="main-content"><p role="alert">{error}</p><button onClick={() => window.location.reload()}>Try again</button></main>
+  if (loading) return <main className="main-content"><Spinner label="Checking sign-in…" /></main>
+  if (error) return <main className="main-content"><p role="alert">{error}</p><button className="btn" disabled={retrying} onClick={() => { setRetrying(true); window.location.reload() }}>{retrying ? 'Retrying…' : 'Try again'}</button></main>
   return activeUser ? <Outlet /> : <Navigate to={`/login?returnTo=${encodeURIComponent(location.pathname + location.search)}`} replace />
 }
 

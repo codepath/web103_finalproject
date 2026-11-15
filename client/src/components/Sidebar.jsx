@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import { NavLink, Link, useMatch } from 'react-router-dom'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
+import { useAsyncAction, useFeedback } from '../context/useFeedback.js'
+import Spinner from './Spinner.jsx'
 
 export default function Sidebar() {
   const { activeUser, logout } = useActiveUser()
   const [logoutError, setLogoutError] = useState('')
-  const [signingOut, setSigningOut] = useState(false)
+  const { busy, pending: signingOut, run } = useAsyncAction()
+  const { notify } = useFeedback()
   async function handleLogout() {
-    setSigningOut(true)
-    setLogoutError('')
-    try { await logout() } catch (error) { setLogoutError(error.message) }
-    finally { setSigningOut(false) }
+    return run(async () => {
+      setLogoutError('')
+      try {
+        await logout()
+        notify('You have logged out.')
+      } catch (error) { setLogoutError(error.message) }
+    })
   }
   const tripMatch = useMatch('/trips/:tripId/*')
   const tripId = tripMatch && tripMatch.params.tripId !== 'new' ? tripMatch.params.tripId : null
@@ -45,8 +51,8 @@ export default function Sidebar() {
           )}
           <span className="account-name">{activeUser.name}</span>
         </div>
-        <button type="button" className="btn btn-small" disabled={signingOut} onClick={handleLogout}>
-          {signingOut ? 'Logging out…' : 'Log out'}
+        <button type="button" className="btn btn-small" disabled={busy} onClick={handleLogout}>
+          {signingOut && <Spinner inline />}{signingOut ? 'Logging out…' : 'Log out'}
         </button>
         {logoutError && <p className="error" role="alert">{logoutError}</p>}
       </div>

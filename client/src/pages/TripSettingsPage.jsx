@@ -1,8 +1,10 @@
+import Spinner from '../components/Spinner.jsx'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { api } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
 import TripForm from '../components/TripForm.jsx'
+import { useAsyncAction, useFeedback } from '../context/useFeedback.js'
 
 export default function TripSettingsPage() {
   const { tripId } = useParams()
@@ -10,7 +12,8 @@ export default function TripSettingsPage() {
   const navigate = useNavigate()
   const [trip, setTrip] = useState(null)
   const [error, setError] = useState('')
-  const [saved, setSaved] = useState(false)
+  const { busy, pending: deleting, run } = useAsyncAction()
+  const { notify } = useFeedback()
 
   useEffect(() => {
     setTrip(null)
@@ -20,21 +23,27 @@ export default function TripSettingsPage() {
 
   async function save(values) {
     await api(`/trips/${tripId}`, { method: 'PATCH', body: values })
-    setSaved(true)
+    setTrip((previous) => ({ ...previous, ...values }))
+    notify('Trip updated.')
   }
 
   async function remove() {
+    if (busy) return
     if (!window.confirm(`Delete "${trip.title}" and everything in it? This cannot be undone.`)) return
-    try {
-      await api(`/trips/${tripId}`, { method: 'DELETE' })
-      navigate('/trips')
-    } catch (err) {
-      setError(err.message)
-    }
+    return run(async () => {
+      setError('')
+      try {
+        await api(`/trips/${tripId}`, { method: 'DELETE' })
+        notify('Trip deleted.')
+        navigate('/trips')
+      } catch (err) {
+        setError(err.message)
+      }
+    })
   }
 
-  if (error) return <p className="error" role="alert">{error}</p>
-  if (!trip) return <p className="page-note">Loading settings…</p>
+  if (error && !trip) return <p className="error" role="alert">{error}</p>
+  if (!trip) return <Spinner label="Loading settings…" />
   if (trip.role !== 'organizer') {
     return (
       <section>
@@ -47,6 +56,7 @@ export default function TripSettingsPage() {
   return (
     <section>
       <h1>Settings</h1>
+      {error && <p className="error" role="alert">{error}</p>}
       <TripForm
         initial={{
           title: trip.title,
@@ -58,10 +68,11 @@ export default function TripSettingsPage() {
         submitLabel="Save changes"
         onSubmit={save}
       />
-      {saved && <p role="status">Trip updated.</p>}
       <h2>Delete trip</h2>
       <p className="page-note">Removes the trip, its activities, votes, and expenses.</p>
-      <button className="btn btn-danger" onClick={remove}>Delete trip</button>
+      <button className="btn btn-danger" disabled={busy} onClick={remove}>
+        {deleting && <Spinner inline />}{deleting ? 'Deleting…' : 'Delete trip'}
+      </button>
     </section>
   )
 }

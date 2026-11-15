@@ -1,13 +1,16 @@
+import Spinner from '../components/Spinner.jsx'
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { api, formatMoney } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
 import ExpenseForm from '../components/ExpenseForm.jsx'
 import ExpenseRow from '../components/ExpenseRow.jsx'
+import { useFeedback } from '../context/useFeedback.js'
 
 export default function ExpensesPage() {
   const { tripId } = useParams()
   const { activeUser } = useActiveUser()
+  const { busy, notify } = useFeedback()
   const [data, setData] = useState(null)
   const [members, setMembers] = useState([])
   const [adding, setAdding] = useState(false)
@@ -27,12 +30,13 @@ export default function ExpensesPage() {
 
   async function addExpense(values) {
     await api(`/trips/${tripId}/expenses`, { method: 'POST', body: values })
+    notify('Expense added.')
     setAdding(false)
     await load()
   }
 
-  if (error) return <p className="error" role="alert">{error}</p>
-  if (!data) return <p className="page-note">Loading expenses…</p>
+  if (error && !data) return <p className="error" role="alert">{error}</p>
+  if (!data) return <Spinner label="Loading expenses…" />
 
   const over = data.total > data.budget
   const percent = data.budget > 0 ? Math.min(100, (data.total / data.budget) * 100) : data.total > 0 ? 100 : 0
@@ -41,8 +45,10 @@ export default function ExpensesPage() {
     <section>
       <div className="page-head">
         <h1>Expenses</h1>
-        {!adding && <button className="btn btn-primary" onClick={() => setAdding(true)}>Add expense</button>}
+        {!adding && <button className="btn btn-primary" disabled={busy} onClick={() => setAdding(true)}>Add expense</button>}
       </div>
+
+      {error && <p className="error" role="alert">{error}</p>}
 
       <div className="card budget-card">
         <p className="budget-line">

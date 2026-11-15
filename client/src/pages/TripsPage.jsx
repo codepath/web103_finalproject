@@ -1,3 +1,4 @@
+import Spinner from '../components/Spinner.jsx'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api.js'
@@ -23,7 +24,7 @@ export default function TripsPage() {
         <Link to="/trips/new" className="btn btn-primary">New trip</Link>
       </div>
       {error && <p className="error" role="alert">{error}</p>}
-      {!error && trips === null && <p className="page-note">Loading trips…</p>}
+      {!error && trips === null && <Spinner label="Loading trips…" />}
       {trips && trips.length === 0 && (
         <p className="page-note">No trips yet. Create one to start planning.</p>
       )}
