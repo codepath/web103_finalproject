@@ -5,7 +5,7 @@ const dataFile = fileURLToPath(new URL('./data.json', import.meta.url))
 const data = JSON.parse(fs.readFileSync(dataFile, 'utf8'))
 
 const schema = `
-  DROP TABLE IF EXISTS event_images, event_tags, events, tags, activity_types, venues, users CASCADE;
+  DROP TABLE IF EXISTS event_images, event_tags, events, tags, activity_types, venues, profiles, users CASCADE;
 
   CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -15,6 +15,15 @@ const schema = `
     username TEXT,
     avatar_url TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
+  );
+
+  -- One-to-one with users: UNIQUE user_id means each user has at most one profile
+  CREATE TABLE profiles (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+    bio TEXT,
+    city TEXT,
+    website_url TEXT
   );
 
   CREATE TABLE venues (
@@ -217,6 +226,19 @@ async function seedDatabase(client) {
       ['id', 'name', 'email'],
       [user.id, user.name, user.email],
     )
+    if (user.profile) {
+      await insertRow(
+        client,
+        'profiles',
+        ['user_id', 'bio', 'city', 'website_url'],
+        [
+          user.id,
+          user.profile.bio,
+          user.profile.city,
+          user.profile.website_url,
+        ],
+      )
+    }
   }
 
   for (const venue of data.venues) {

@@ -5,6 +5,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 ## Create the List of Tables
 
 - **users**: business owners and event organizers who log in to manage listings
+- **profiles**: each user's public profile (bio, city, website), one-to-one with users
 - **venues**: independent creative spaces (studios, shops, cafes, bookstores) owned by a user
 - **events**: workshops and gatherings hosted at a venue
 - **activity_types**: the single activity type for each event (Workshop, Open Mic, Class, ...), which powers the "All activity types" filter
@@ -16,6 +17,7 @@ Reference the Creating an Entity Relationship Diagram final project guide in the
 
 ```mermaid
 erDiagram
+    users ||--o| profiles : has
     users ||--o{ venues : owns
     users ||--o{ events : creates
     venues ||--o{ events : hosts
@@ -32,6 +34,13 @@ erDiagram
         text username
         text avatar_url
         timestamp created_at
+    }
+    profiles {
+        int id PK
+        int user_id FK, UK
+        text bio
+        text city
+        text website_url
     }
     venues {
         int id PK
@@ -87,6 +96,16 @@ erDiagram
 | username | text | GitHub username |
 | avatar_url | text | GitHub profile picture |
 | created_at | timestamp | account creation time |
+
+### profiles
+
+| Column Name | Type | Description |
+|-------------|------|-------------|
+| id | integer | primary key |
+| user_id | integer | foreign key → users.id; UNIQUE, so each user has at most one profile (one-to-one) |
+| bio | text | short "about me" |
+| city | text | where the user is based |
+| website_url | text | personal or business site |
 
 ### venues
 

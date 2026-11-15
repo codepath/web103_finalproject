@@ -3,17 +3,32 @@
     {
       "id": 1,
       "name": "Maya Lin",
-      "email": "maya@clayandcoffee.com"
+      "email": "maya@clayandcoffee.com",
+      "profile": {
+        "bio": "Potter and studio owner. Teaches wheel throwing to first-timers.",
+        "city": "San Francisco",
+        "website_url": "https://www.clayroomsf.com/"
+      }
     },
     {
       "id": 2,
       "name": "Jordan Reyes",
-      "email": "jordan@pageturner.com"
+      "email": "jordan@pageturner.com",
+      "profile": {
+        "bio": "Bookseller who hosts open mics and poetry nights.",
+        "city": "Oakland",
+        "website_url": "https://bookshop.org/shop/waldenpondbooks"
+      }
     },
     {
       "id": 3,
       "name": "Sam Okafor",
-      "email": "sam@fiberloft.com"
+      "email": "sam@fiberloft.com",
+      "profile": {
+        "bio": "Fiber artist running knitting circles and weaving classes.",
+        "city": "Oakland",
+        "website_url": "https://www.averbforkeepingwarm.com/"
+      }
     }
   ],
   "venues": [
@@ -149,7 +164,7 @@
       "id": 2,
       "venue_id": 1,
       "activity_type_id": 5,
-      "title": "Sip \u0026 Sketch Morning",
+      "title": "Sip & Sketch Morning",
       "description": "(sample) Casual drawing meetup over pour-over coffee.",
       "what_to_bring": "A sketchbook and pencils",
       "start_time": "2026-11-09 09:30",
@@ -185,8 +200,8 @@
       "id": 4,
       "venue_id": 2,
       "activity_type_id": 5,
-      "title": "Zine Swap \u0026 Book Club",
-      "description": "(sample) Trade zines and discuss this month\u0027s indie pick.",
+      "title": "Zine Swap & Book Club",
+      "description": "(sample) Trade zines and discuss this month's indie pick.",
       "what_to_bring": "Zines to swap (optional)",
       "start_time": "2026-11-15 14:00",
       "end_time": "2026-11-15 16:00",
