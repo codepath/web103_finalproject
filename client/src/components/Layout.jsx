@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Link,
   NavLink,
@@ -27,6 +27,22 @@ export function Layout() {
   const signIn = useCallback(() => {
     window.location.href = `/auth/github?returnTo=${encodeURIComponent(pathname + search.replace(/([?&])authError=[^&]*&?/, "$1").replace(/[?&]$/, "") + hash)}`;
   }, [pathname, search, hash]);
+  // GitHub sends people back with ?authError=… when sign-in is cancelled or
+  // fails. The parameter stays in the URL so the dashboard does not redirect
+  // straight back to GitHub; the toast offers a retry instead.
+  const authFailed = new URLSearchParams(search).has("authError");
+  const signInRef = useRef(signIn);
+  useEffect(() => {
+    signInRef.current = signIn;
+  }, [signIn]);
+  useEffect(() => {
+    if (!authFailed) return;
+    toast.error("Nothing was changed. You can try again.", {
+      title: "GitHub sign-in didn’t finish",
+      key: "auth-error",
+      action: { label: "Try again", onClick: () => signInRef.current() },
+    });
+  }, [authFailed, toast]);
   useEffect(() => {
     const controller = new AbortController();
     api("/auth/me", { signal: controller.signal })
@@ -112,9 +128,9 @@ export function Layout() {
         </div>
       </header>
       <main id="main" className="main-shell" tabIndex={-1}>
-        {(accountError || new URLSearchParams(search).has("authError")) && (
+        {accountError && (
           <div className="inline-error" role="alert">
-            {accountError || "GitHub sign-in did not finish. Please try again."}{" "}
+            {accountError}{" "}
             <button className="text-button" onClick={signIn}>
               Retry sign-in
             </button>

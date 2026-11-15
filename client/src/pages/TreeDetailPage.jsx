@@ -11,6 +11,7 @@ import { treeTheme } from "../lib/treeTheme.js";
 import { ProgressBar } from "../components/ProgressBar.jsx";
 import { QuestRow } from "../components/QuestRow.jsx";
 import { useToast } from "../hooks/useToast.js";
+import { QUEST_SAVE } from "../lib/toastKeys.js";
 import { QuestForm } from "../components/QuestForm.jsx";
 import { QuestDetails } from "../components/QuestDetails.jsx";
 import { QuestFilters } from "../components/QuestFilters.jsx";
@@ -36,7 +37,7 @@ export function TreeDetailPage() {
   });
   function saved(message, title, variant) {
     closePane();
-    toast.success(message, { title, variant });
+    toast.success(message, { title, variant, key: QUEST_SAVE });
     invalidate();
   }
   function closePane() {

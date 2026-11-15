@@ -2,7 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ToastContext } from "../hooks/useToast.js";
 
-const DURATION = { success: 3500, error: 6000, xp: 4000 };
+// Loading toasts stay until a result toast with the same key replaces them.
+const DURATION = { success: 3500, error: 6000, xp: 4000, loading: Infinity };
 const EXIT_MS = 220;
 const MAX_VISIBLE = 3;
 
@@ -27,8 +28,9 @@ export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
   const [hosts, setHosts] = useState([]);
   const nextId = useRef(0);
-  // Time left per toast survives a toast moving between page and dialog.
-  const remaining = useRef(new Map());
+  // Time left per toast, by id: { rev, ms }. Kept outside the toast so it
+  // survives a toast moving between page and dialog.
+  const clock = useRef(new Map());
 
   const dismiss = useCallback((id) => {
     setToasts((current) =>
@@ -37,28 +39,53 @@ export function ToastProvider({ children }) {
       ),
     );
     setTimeout(() => {
-      remaining.current.delete(id);
+      clock.current.delete(id);
       setToasts((current) => current.filter((toast) => toast.id !== id));
     }, EXIT_MS);
   }, []);
 
-  // A toast with the same `key` as a visible one replaces it, so repeated
-  // updates to one thing (e.g. a quest's status) show only the latest.
+  // A toast with the same `key` as a visible one updates it in place, so a
+  // "Saving…" toast turns into its result and repeated updates to one quest
+  // show only the latest.
   const show = useCallback((type, message, options = {}) => {
-    const { title, xp, key } = options;
-    const variant = options.variant ?? (type === "error" ? "error" : "success");
-    const id = ++nextId.current;
-    remaining.current.set(id, DURATION[type]);
+    const { title, xp, key, action } = options;
+    const variant =
+      options.variant ??
+      (type === "error" ? "error" : type === "loading" ? "loading" : "success");
+    const rev = ++nextId.current;
+    const fields = { type, variant, title, message, xp, action, rev };
     setToasts((current) => {
-      const kept = current.filter((toast) => {
-        const replaced = key !== undefined && toast.key === key;
-        if (replaced) remaining.current.delete(toast.id);
-        return !replaced;
-      });
-      return [...kept, { id, key, type, variant, title, message, xp }].slice(
-        -MAX_VISIBLE,
-      );
+      const match =
+        key === undefined
+          ? undefined
+          : current.find((toast) => toast.key === key && !toast.leaving);
+      if (match) {
+        clock.current.set(match.id, { rev, ms: DURATION[type] });
+        return current.map((toast) =>
+          toast === match ? { ...toast, ...fields } : toast,
+        );
+      }
+      clock.current.set(rev, { rev, ms: DURATION[type] });
+      return [...current, { id: rev, key, ...fields }].slice(-MAX_VISIBLE);
     });
+  }, []);
+
+  // Removes the toast with this key, e.g. a "Saving…" toast whose save failed
+  // with an error that is shown inline instead.
+  const dismissKey = useCallback((key) => {
+    const matches = (toast) => toast.key === key;
+    setToasts((current) =>
+      current.map((toast) =>
+        matches(toast) ? { ...toast, leaving: true } : toast,
+      ),
+    );
+    setTimeout(
+      () =>
+        setToasts((current) =>
+          current.filter((toast) => !(matches(toast) && toast.leaving)),
+        ),
+      EXIT_MS,
+    );
   }, []);
 
   const registerHost = useCallback((element) => {
@@ -72,13 +99,15 @@ export function ToastProvider({ children }) {
       success: (message, options) => show("success", message, options),
       error: (message, options) => show("error", message, options),
       xp: (xp, message, options) => show("xp", message, { ...options, xp }),
+      loading: (message, options) => show("loading", message, options),
+      dismiss: dismissKey,
     }),
-    [show],
+    [show, dismissKey],
   );
   const value = useMemo(() => ({ toast, registerHost }), [toast, registerHost]);
   const host = hosts.at(-1);
   const region = (items) => (
-    <ToastRegion toasts={items} remaining={remaining} onDismiss={dismiss} />
+    <ToastRegion toasts={items} clock={clock} onDismiss={dismiss} />
   );
 
   return (
@@ -90,19 +119,19 @@ export function ToastProvider({ children }) {
   );
 }
 
-function ToastRegion({ toasts, remaining, onDismiss }) {
+function ToastRegion({ toasts, clock, onDismiss }) {
   return (
     <section
       className="toast-region"
       aria-label="Notifications"
       aria-live="polite"
-      aria-relevant="additions"
+      aria-relevant="additions text"
     >
       {toasts.map((toast) => (
         <ToastItem
           key={toast.id}
           toast={toast}
-          remaining={remaining}
+          clock={clock}
           onDismiss={onDismiss}
         />
       ))}
@@ -110,23 +139,26 @@ function ToastRegion({ toasts, remaining, onDismiss }) {
   );
 }
 
-function ToastItem({ toast, remaining, onDismiss }) {
-  const { id, type, variant, title, message, xp, leaving } = toast;
+function ToastItem({ toast, clock, onDismiss }) {
+  const { id, rev, type, variant, title, message, xp, action, leaving } =
+    toast;
   const [paused, setPaused] = useState(false);
-  const total = DURATION[type];
 
   // Auto-dismiss, pausing while the pointer or keyboard focus is on the toast.
+  // `rev` restarts the countdown when the toast is updated in place.
   useEffect(() => {
-    if (paused || leaving) return;
-    const clock = remaining.current;
+    const times = clock.current;
+    const entry = times.get(id);
+    if (paused || leaving || !entry || !Number.isFinite(entry.ms)) return;
     const started = Date.now();
-    const timer = setTimeout(() => onDismiss(id), clock.get(id) ?? total);
+    const timer = setTimeout(() => onDismiss(id), entry.ms);
     return () => {
       clearTimeout(timer);
-      if (clock.has(id))
-        clock.set(id, Math.max(0, clock.get(id) - (Date.now() - started)));
+      const latest = times.get(id);
+      if (latest?.rev === entry.rev)
+        latest.ms = Math.max(0, latest.ms - (Date.now() - started));
     };
-  }, [paused, leaving, id, total, remaining, onDismiss]);
+  }, [paused, leaving, id, rev, clock, onDismiss]);
 
   const pause = () => setPaused(true);
   const resume = () => setPaused(false);
@@ -138,7 +170,7 @@ function ToastItem({ toast, remaining, onDismiss }) {
       onFocus={pause}
       onBlur={resume}
     >
-      <ToastMark variant={variant} />
+      <ToastMark key={variant} variant={variant} />
       <div className="toast-body">
         {(title || type === "xp") && (
           <div className="toast-heading">
@@ -148,6 +180,17 @@ function ToastItem({ toast, remaining, onDismiss }) {
         )}
         <p>{message}</p>
       </div>
+      {action && (
+        <button
+          className="toast-action"
+          onClick={() => {
+            onDismiss(id);
+            action.onClick();
+          }}
+        >
+          {action.label}
+        </button>
+      )}
       <button
         className="toast-close"
         aria-label="Dismiss notification"
@@ -159,8 +202,20 @@ function ToastItem({ toast, remaining, onDismiss }) {
   );
 }
 
-// A circle that fills in, then the variant's icon draws itself.
+// A circle that fills in, then the variant's icon draws itself. While loading,
+// an arc spins around the circle instead.
 function ToastMark({ variant }) {
+  if (variant === "loading")
+    return (
+      <svg
+        className="toast-mark toast-spinner"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <circle className="toast-spinner-track" cx="12" cy="12" r="9" />
+        <circle className="toast-spinner-arc" cx="12" cy="12" r="9" />
+      </svg>
+    );
   return (
     <svg className="toast-mark" viewBox="0 0 24 24" aria-hidden="true">
       <circle className="toast-mark-circle" cx="12" cy="12" r="11" />

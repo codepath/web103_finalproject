@@ -9,10 +9,13 @@ const labels = {
   completed: "Completed",
 };
 
+// One toast per quest: "Saving…" turns into the result, and a newer update
+// replaces an older one.
+export const progressKey = (quest) => `progress-${quest.id}`;
+
 // Shows the right toast after a successful progress save: the heading says
 // what happened and the detail line names the quest. `fallbackTitle` is used
 // when the status did not change (for example, only notes were edited).
-// Toasts share a key per quest, so a newer update replaces the older toast.
 export function toastProgress(
   toast,
   quest,
@@ -21,7 +24,7 @@ export function toastProgress(
   fallbackTitle,
 ) {
   const options = {
-    key: `progress-${quest.id}`,
+    key: progressKey(quest),
     variant: variants[progress.status],
   };
   if (progress.status === previousStatus && fallbackTitle)

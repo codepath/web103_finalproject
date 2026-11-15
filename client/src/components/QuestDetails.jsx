@@ -4,7 +4,8 @@ import { api } from "../lib/api.js";
 import { useApiResource } from "../hooks/useApiResource.js";
 import { QuestDialog } from "./QuestDialog.jsx";
 import { useToast } from "../hooks/useToast.js";
-import { toastProgress } from "../lib/toastProgress.js";
+import { progressKey, toastProgress } from "../lib/toastProgress.js";
+import { QUEST_SAVE } from "../lib/toastKeys.js";
 
 function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
   const fieldId = useId();
@@ -26,6 +27,10 @@ function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
     setPending(true);
     onPending(true);
     setError(null);
+    toast.loading(quest.title, {
+      title: "Saving progress…",
+      key: progressKey(quest),
+    });
     try {
       const { progress: saved } = await api(
         `/api/quests/${quest.id}/progress`,
@@ -42,6 +47,7 @@ function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
       setSavedStatus(saved.status);
       onSaved();
     } catch (failure) {
+      toast.dismiss(progressKey(quest));
       setError(failure);
     } finally {
       setPending(false);
@@ -115,6 +121,7 @@ export function QuestDetails({
   restoreFocusTo,
 }) {
   const { user, signIn, invalidate } = useOutletContext();
+  const toast = useToast();
   const { data, error, retry } = useApiResource(`/api/quests/${questId}`);
   const [confirming, setConfirming] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -137,10 +144,12 @@ export function QuestDetails({
   async function remove() {
     setDeleting(true);
     setDeleteError("");
+    toast.loading(quest.title, { title: "Deleting quest…", key: QUEST_SAVE });
     try {
       await api(`/api/quests/${quest.id}`, { method: "DELETE" });
       onSaved(quest.title, "Quest deleted", "delete");
     } catch (failure) {
+      toast.dismiss(QUEST_SAVE);
       setDeleteError(failure.message);
     } finally {
       setDeleting(false);

@@ -3,6 +3,8 @@ import { useOutletContext } from "react-router-dom";
 import { useApiResource } from "../hooks/useApiResource.js";
 import { api } from "../lib/api.js";
 import { QuestDialog } from "./QuestDialog.jsx";
+import { useToast } from "../hooks/useToast.js";
+import { QUEST_SAVE } from "../lib/toastKeys.js";
 
 function initialForm(quest, treeId) {
   return {
@@ -20,6 +22,7 @@ function initialForm(quest, treeId) {
 }
 export function QuestForm({ quest, treeId, onClose, onSaved, restoreFocusTo }) {
   const { signIn } = useOutletContext();
+  const toast = useToast();
   const { data, error: treesError, retry } = useApiResource("/api/trees");
   const [initial] = useState(() => initialForm(quest, treeId));
   const [form, setForm] = useState(initial);
@@ -93,6 +96,10 @@ export function QuestForm({ quest, treeId, onClose, onSaved, restoreFocusTo }) {
     setError("");
     setErrors({});
     setSessionExpired(false);
+    toast.loading(payload.title, {
+      title: quest ? "Saving changes…" : "Forging quest…",
+      key: QUEST_SAVE,
+    });
     try {
       await api(quest ? `/api/quests/${quest.id}` : "/api/quests", {
         method: quest ? "PATCH" : "POST",
@@ -104,6 +111,8 @@ export function QuestForm({ quest, treeId, onClose, onSaved, restoreFocusTo }) {
         quest ? "edit" : "forge",
       );
     } catch (failure) {
+      // Field errors and the retry message appear inline in the form.
+      toast.dismiss(QUEST_SAVE);
       setError(failure.message);
       setErrors(failure.fields ?? {});
       if (failure.status === 401) {
