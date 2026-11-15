@@ -317,6 +317,14 @@ Both calendar views:
 - Support automatic navigation from AI-generated plans.
 - Provide weekly meal organization.
 
+<div align="center">
+
+![Meal Planner](planning/assets/meal-planner.gif)
+
+**Meal Planner**
+
+</div>
+
 ---
 
 <a id="prepwise-ai-assistant"></a>
