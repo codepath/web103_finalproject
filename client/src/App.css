@@ -37,6 +37,32 @@
   color: var(--text-h);
   font-weight: 600;
 }
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.profile-link:hover .username {
+  text-decoration: underline;
+}
+
+/* /profile page (layout comes from .event-page) */
+.profile-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.profile-events {
+  padding-left: 20px;
+  line-height: 1.8;
+}
 @media (max-width: 600px) {
   .username {
     display: none;
