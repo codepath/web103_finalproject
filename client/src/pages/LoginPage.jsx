@@ -13,29 +13,31 @@ export default function LoginPage() {
   const [params] = useSearchParams();
   if (loading)
     return (
-      <main className="main-content">
-        <p role="status">Checking sign-in…</p>
+      <main className="login-page">
+        <p className="page-note" role="status">Checking sign-in…</p>
       </main>
     );
   const requested = params.get("returnTo");
   const returnTo = requested && /^\/trips(?:[/?#]|$)/.test(requested) && !requested.includes("\\") ? requested : "/trips";
   if (activeUser) return <Navigate to={returnTo} replace />;
   return (
-    <main className="main-content">
-      <h1>Welcome to TripTogether</h1>
-      <p>
-        Sign in to plan trips, share activities, and track expenses with
-        friends.
-      </p>
-      {error && <p role="alert">{error} Refresh the page to try again.</p>}
-      {params.has("error") && (
-        <p role="alert">
-          {loginErrors[params.get("error")] || loginErrors.github}
+    <main className="login-page">
+      <div className="card login-card">
+        <h1>Welcome to TripTogether</h1>
+        <p className="page-note">
+          Log in to plan trips, share activities, and track expenses with
+          friends.
         </p>
-      )}
-      <a className="nav-link" href={`/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`}>
-        Continue with GitHub
-      </a>
+        {error && <p className="error" role="alert">{error} Refresh the page to try again.</p>}
+        {params.has("error") && (
+          <p className="error" role="alert">
+            {loginErrors[params.get("error")] || loginErrors.github}
+          </p>
+        )}
+        <a className="btn btn-primary login-button" href={`/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`}>
+          Log in with GitHub
+        </a>
+      </div>
     </main>
   );
 }
