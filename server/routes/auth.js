@@ -5,7 +5,24 @@ import { pool } from '../config/database.js'
 
 const userColumns = 'id, username, name, avatar_url'
 
-// First login creates the user; later logins refresh their GitHub username/avatar
+// Upserts the user and, on first login only, generates their profile from GitHub data.
+// One statement, so the user and profile are created together or not at all.
+// ON CONFLICT DO NOTHING keeps any edits the user later makes to their profile.
+const loginQuery = `
+  WITH u AS (
+    INSERT INTO users (github_id, username, name, avatar_url) VALUES ($1, $2, $3, $4)
+    ON CONFLICT (github_id) DO UPDATE SET username = EXCLUDED.username, avatar_url = EXCLUDED.avatar_url
+    RETURNING ${userColumns}
+  ), p AS (
+    INSERT INTO profiles (user_id, bio, city, website_url)
+    SELECT id, $5, $6, $7 FROM u
+    ON CONFLICT (user_id) DO NOTHING
+  )
+  SELECT * FROM u`
+
+// GitHub returns '' for blank fields; store those as NULL
+const orNull = (value) => value || null
+
 passport.use(
   new GitHubStrategy(
     {
@@ -17,17 +34,15 @@ passport.use(
       try {
         const {
           rows: [user],
-        } = await pool.query(
-          `INSERT INTO users (github_id, username, name, avatar_url) VALUES ($1, $2, $3, $4)
-       ON CONFLICT (github_id) DO UPDATE SET username = EXCLUDED.username, avatar_url = EXCLUDED.avatar_url
-       RETURNING ${userColumns}`,
-          [
-            profile.id,
-            profile.username,
-            profile.displayName || profile.username,
-            profile.photos?.[0]?.value ?? null,
-          ],
-        )
+        } = await pool.query(loginQuery, [
+          profile.id,
+          profile.username,
+          profile.displayName || profile.username,
+          profile.photos?.[0]?.value ?? null,
+          orNull(profile._json?.bio),
+          orNull(profile._json?.location),
+          orNull(profile._json?.blog),
+        ])
         done(null, user)
       } catch (err) {
         done(err)
