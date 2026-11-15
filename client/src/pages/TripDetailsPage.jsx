@@ -5,6 +5,7 @@ import { useActiveUser } from '../context/ActiveUserContext.jsx'
 import MemberList from '../components/MemberList.jsx'
 import ActivityList from '../components/ActivityList.jsx'
 import ActivityForm from '../components/ActivityForm.jsx'
+import SlideOver from '../components/SlideOver.jsx'
 
 export default function TripDetailsPage() {
   const { tripId } = useParams()
@@ -12,7 +13,8 @@ export default function TripDetailsPage() {
   const [trip, setTrip] = useState(null)
   const [members, setMembers] = useState([])
   const [activities, setActivities] = useState([])
-  const [adding, setAdding] = useState(false)
+  // null when closed, otherwise { activity } where activity is null for a new one.
+  const [panel, setPanel] = useState(null)
   const [error, setError] = useState('')
 
   const loadActivities = useCallback(
@@ -32,9 +34,13 @@ export default function TripDetailsPage() {
       .catch((err) => setError(err.message))
   }, [tripId, activeUser.id])
 
-  async function addActivity(values) {
-    await api(`/trips/${tripId}/activities`, { method: 'POST', body: values })
-    setAdding(false)
+  async function saveActivity(values) {
+    if (panel.activity) {
+      await api(`/activities/${panel.activity.id}`, { method: 'PATCH', body: values })
+    } else {
+      await api(`/trips/${tripId}/activities`, { method: 'POST', body: values })
+    }
+    setPanel(null)
     await loadActivities()
   }
 
@@ -57,14 +63,33 @@ export default function TripDetailsPage() {
 
       <div className="page-head section-head">
         <h2>Activities</h2>
-        {!adding && <button className="btn" onClick={() => setAdding(true)}>Add activity</button>}
+        <button className="btn" onClick={() => setPanel({ activity: null })}>Add activity</button>
       </div>
-      {adding && (
-        <div className="stack">
-          <ActivityForm trip={trip} submitLabel="Add activity" onSubmit={addActivity} onCancel={() => setAdding(false)} />
-        </div>
+      <ActivityList
+        activities={activities}
+        trip={trip}
+        onChanged={loadActivities}
+        onEdit={(activity) => setPanel({ activity })}
+      />
+      {panel && (
+        <SlideOver title={panel.activity ? 'Edit activity' : 'Add activity'} onClose={() => setPanel(null)}>
+          <ActivityForm
+            trip={trip}
+            initial={
+              panel.activity && {
+                title: panel.activity.title,
+                location: panel.activity.location || '',
+                scheduled_date: panel.activity.scheduled_date || '',
+                description: panel.activity.description || '',
+                estimated_cost: panel.activity.estimated_cost,
+              }
+            }
+            submitLabel={panel.activity ? 'Save activity' : 'Add activity'}
+            onSubmit={saveActivity}
+            onCancel={() => setPanel(null)}
+          />
+        </SlideOver>
       )}
-      <ActivityList activities={activities} trip={trip} onChanged={loadActivities} />
     </section>
   )
 }

@@ -1,19 +1,11 @@
 import { useState } from 'react'
 import { api, formatDate, formatMoney } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
-import ActivityForm from './ActivityForm.jsx'
 
-export default function ActivityCard({ activity, trip, onChanged }) {
+export default function ActivityCard({ activity, onChanged, onEdit }) {
   const { activeUser } = useActiveUser()
-  const [editing, setEditing] = useState(false)
   const [error, setError] = useState('')
   const mine = activity.created_by_id === activeUser.id
-
-  async function save(values) {
-    await api(`/activities/${activity.id}`, { method: 'PATCH', body: values })
-    setEditing(false)
-    onChanged()
-  }
 
   async function toggleVote() {
     setError('')
@@ -33,24 +25,6 @@ export default function ActivityCard({ activity, trip, onChanged }) {
     } catch (err) {
       setError(err.message)
     }
-  }
-
-  if (editing) {
-    return (
-      <ActivityForm
-        trip={trip}
-        initial={{
-          title: activity.title,
-          location: activity.location || '',
-          scheduled_date: activity.scheduled_date || '',
-          description: activity.description || '',
-          estimated_cost: activity.estimated_cost,
-        }}
-        submitLabel="Save activity"
-        onSubmit={save}
-        onCancel={() => setEditing(false)}
-      />
-    )
   }
 
   return (
@@ -79,7 +53,7 @@ export default function ActivityCard({ activity, trip, onChanged }) {
         </span>
         {mine && (
           <>
-            <button className="btn btn-small" onClick={() => setEditing(true)}>Edit</button>
+            <button className="btn btn-small" onClick={() => onEdit(activity)}>Edit</button>
             <button className="btn btn-small btn-danger" onClick={remove}>Delete</button>
           </>
         )}
