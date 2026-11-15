@@ -14,7 +14,7 @@ function tripDays(trip) {
   return days
 }
 
-export default function ActivityList({ activities, trip, onChanged }) {
+export default function ActivityList({ activities, trip, onChanged, onEdit }) {
   const [filter, setFilter] = useState('all')
 
   if (activities.length === 0) {
@@ -48,7 +48,7 @@ export default function ActivityList({ activities, trip, onChanged }) {
           <h3 className="day-heading">{group.label}</h3>
           <div className="stack">
             {group.items.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity} trip={trip} onChanged={onChanged} />
+              <ActivityCard key={activity.id} activity={activity} onChanged={onChanged} onEdit={onEdit} />
             ))}
           </div>
         </div>
