@@ -364,3 +364,14 @@ h3 {
 .section-gap {
   margin-top: 16px;
 }
+
+.account-card { display: flex; flex-direction: column; gap: 10px; padding: 12px; background: var(--bg-surface); border: 1px solid var(--line-border); border-radius: var(--radius-card); }
+.account-id { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.account-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+.avatar { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.avatar-fallback { display: inline-flex; align-items: center; justify-content: center; font-weight: 500; background: var(--bg-secondary); }
+
+.login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.login-card { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px; padding: 32px 24px; }
+.login-card h1, .login-card p { margin: 0; }
+.login-button { text-align: center; padding: 10px 14px; }

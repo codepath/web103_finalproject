@@ -34,13 +34,21 @@ export default function Sidebar() {
 
       <div className="sidebar-spacer" />
 
-      <div className="user-switcher">
-        {activeUser.avatarUrl && <img src={activeUser.avatarUrl} alt="" width="40" height="40" style={{ borderRadius: '50%' }} />}
-        <span>{activeUser.name}</span>
-        <button type="button" disabled={signingOut} onClick={handleLogout}>
-          {signingOut ? 'Signing out…' : 'Sign out'}
+      <div className="account-card">
+        <div className="account-id">
+          {activeUser.avatarUrl ? (
+            <img className="avatar" src={activeUser.avatarUrl} alt="" width="36" height="36" />
+          ) : (
+            <span className="avatar avatar-fallback" aria-hidden="true">
+              {activeUser.name.trim().charAt(0).toUpperCase()}
+            </span>
+          )}
+          <span className="account-name">{activeUser.name}</span>
+        </div>
+        <button type="button" className="btn btn-small" disabled={signingOut} onClick={handleLogout}>
+          {signingOut ? 'Logging out…' : 'Log out'}
         </button>
-        {logoutError && <p role="alert">{logoutError}</p>}
+        {logoutError && <p className="error" role="alert">{logoutError}</p>}
       </div>
     </aside>
   )
