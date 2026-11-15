@@ -3,6 +3,7 @@ import Dashboard from './pages/Dashboard.jsx'
 import EventPage from './pages/EventPage.jsx'
 import EventForm from './pages/EventForm.jsx'
 import VenuesPage from './pages/VenuesPage.jsx'
+import ProfilePage from './pages/ProfilePage.jsx'
 import Filters from './components/Filters.jsx'
 import ResetButton from './components/ResetButton.jsx'
 import { LOGIN_URL, RequireAuth, useAuth } from './AuthContext.jsx'
@@ -41,10 +42,16 @@ function App() {
             (user ? (
               <>
                 <ResetButton />
-                {user.avatar_url && (
-                  <img className="avatar" src={user.avatar_url} alt="" />
-                )}
-                <span className="username">{user.username}</span>
+                <Link
+                  to="/profile"
+                  className="profile-link"
+                  aria-label="My profile"
+                >
+                  {user.avatar_url && (
+                    <img className="avatar" src={user.avatar_url} alt="" />
+                  )}
+                  <span className="username">{user.username}</span>
+                </Link>
                 <button
                   type="button"
                   className="secondary-button"
@@ -64,6 +71,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/venues" element={<VenuesPage />} />
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <ProfilePage />
+              </RequireAuth>
+            }
+          />
           {/* Keys stop React reusing form state when switching between create and edit */}
           <Route
             path="/events/new"

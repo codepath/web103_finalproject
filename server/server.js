@@ -7,6 +7,7 @@ import { pool } from './config/database.js'
 import authRouter from './routes/auth.js'
 import eventsRouter from './routes/events.js'
 import lookupsRouter from './routes/lookups.js'
+import profileRouter from './routes/profile.js'
 import { requireAuth } from './middleware/auth.js'
 import { resetDemoData } from './config/reset.js'
 
@@ -41,6 +42,7 @@ app.use(passport.session())
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }))
 app.use('/auth', authRouter)
 app.use('/api/events', eventsRouter)
+app.use('/api/profile', profileRouter)
 app.use('/api', lookupsRouter)
 
 // Custom non-RESTful action: put the demo events/venues/tags back to their seeded state
