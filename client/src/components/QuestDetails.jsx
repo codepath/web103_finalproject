@@ -3,6 +3,8 @@ import { useOutletContext } from "react-router-dom";
 import { api } from "../lib/api.js";
 import { useApiResource } from "../hooks/useApiResource.js";
 import { QuestDialog } from "./QuestDialog.jsx";
+import { useToast } from "../hooks/useToast.js";
+import { toastProgress } from "../lib/toastProgress.js";
 
 function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
   const fieldId = useId();
@@ -13,7 +15,8 @@ function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
   });
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
-  const [message, setMessage] = useState("");
+  const [savedStatus, setSavedStatus] = useState(form.status);
+  const toast = useToast();
   function change(name, value) {
     setForm({ ...form, [name]: value });
     onDirty(true);
@@ -23,14 +26,20 @@ function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
     setPending(true);
     onPending(true);
     setError(null);
-    setMessage("");
     try {
-      await api(`/api/quests/${quest.id}/progress`, {
-        method: "PUT",
-        body: JSON.stringify(form),
-      });
+      const { progress: saved } = await api(
+        `/api/quests/${quest.id}/progress`,
+        { method: "PUT", body: JSON.stringify(form) },
+      );
       onDirty(false);
-      setMessage("Your progress is saved.");
+      toastProgress(
+        toast,
+        quest,
+        savedStatus,
+        saved,
+        "Progress saved",
+      );
+      setSavedStatus(saved.status);
       onSaved();
     } catch (failure) {
       setError(failure);
@@ -95,11 +104,6 @@ function PersonalProgress({ quest, progress, onSaved, onDirty, onPending }) {
           {error.message} Your input is kept; try saving again.
         </p>
       )}
-      {message && (
-        <p role="status" className="inline-success">
-          {message}
-        </p>
-      )}
     </form>
   );
 }
@@ -135,7 +139,7 @@ export function QuestDetails({
     setDeleteError("");
     try {
       await api(`/api/quests/${quest.id}`, { method: "DELETE" });
-      onSaved("Quest deleted.");
+      onSaved(quest.title, "Quest deleted", "delete");
     } catch (failure) {
       setDeleteError(failure.message);
     } finally {

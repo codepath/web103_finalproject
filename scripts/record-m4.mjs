@@ -109,7 +109,7 @@ try {
   await page
     .getByRole("button", { name: "Save my progress", exact: true })
     .click();
-  await page.getByText("Your progress is saved.", { exact: true }).waitFor();
+  await page.locator(".toast-title", { hasText: "Progress saved" }).waitFor();
   await frame(["panes"], "saved-personal-progress");
   await page.getByRole("button", { name: "Edit quest", exact: true }).click();
   await page.getByLabel("Title *", { exact: true }).fill(updatedTitle);

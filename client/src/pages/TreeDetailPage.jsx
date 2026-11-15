@@ -10,6 +10,7 @@ import { Icon } from "../components/Icon.jsx";
 import { treeTheme } from "../lib/treeTheme.js";
 import { ProgressBar } from "../components/ProgressBar.jsx";
 import { QuestRow } from "../components/QuestRow.jsx";
+import { useToast } from "../hooks/useToast.js";
 import { QuestForm } from "../components/QuestForm.jsx";
 import { QuestDetails } from "../components/QuestDetails.jsx";
 import { QuestFilters } from "../components/QuestFilters.jsx";
@@ -29,13 +30,13 @@ export function TreeDetailPage() {
   const [filters, setFilters] = useState(defaults);
   const [linkError, setLinkError] = useState("");
   const [pane, setPane] = useState(null);
-  const [message, setMessage] = useState("");
+  const toast = useToast();
   const progress = useApiResource("/api/me/progress", {
     enabled: Boolean(user),
   });
-  function saved(text) {
+  function saved(message, title, variant) {
     closePane();
-    setMessage(text);
+    toast.success(message, { title, variant });
     invalidate();
   }
   function closePane() {
@@ -111,11 +112,6 @@ export function TreeDetailPage() {
           >
             Dismiss
           </button>
-        </p>
-      )}
-      {message && (
-        <p className="inline-success" role="status">
-          {message}
         </p>
       )}
       {error && <ErrorState error={error} retry={retry} />}

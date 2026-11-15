@@ -176,7 +176,7 @@ try {
     .getByLabel("Repository URL", { exact: true })
     .fill("https://github.com/bbdevelops/web103_finalproject");
   await button("Save my progress").click();
-  await page.getByText("Your progress is saved.", { exact: true }).waitFor();
+  await page.locator(".toast-title", { hasText: "Progress saved" }).waitFor();
   await frame([], "personal-progress-saved");
   await button("Edit quest").click();
   await page.getByLabel("Title *", { exact: true }).fill(edited);

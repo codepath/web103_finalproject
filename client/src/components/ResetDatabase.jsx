@@ -2,24 +2,25 @@ import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { api } from "../lib/api.js";
 import { QuestDialog } from "./QuestDialog.jsx";
+import { useToast } from "../hooks/useToast.js";
 
 export function ResetDatabase() {
   const { user, invalidate } = useOutletContext();
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
+  const toast = useToast();
   if (user?.role !== "admin") return null;
   async function reset() {
     setPending(true);
     setError("");
-    setMessage("");
     try {
       await api("/api/reset", { method: "POST" });
       invalidate({ reset: true });
       setOpen(false);
-      setMessage(
+      toast.success(
         "Database restored to defaults. Accounts and roles were preserved.",
+        { title: "Database reset", variant: "reset" },
       );
     } catch (failure) {
       setError(failure.message);
@@ -43,11 +44,6 @@ export function ResetDatabase() {
       >
         Reset database
       </button>
-      {message && (
-        <p className="inline-success" role="status">
-          {message}
-        </p>
-      )}
       {open && (
         <QuestDialog
           title="Reset the shared database?"

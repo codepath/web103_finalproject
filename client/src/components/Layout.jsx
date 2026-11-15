@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Icon } from "./Icon.jsx";
 import { api } from "../lib/api.js";
+import { useToast } from "../hooks/useToast.js";
 
 export function Layout() {
   const [user, setUser] = useState(null);
@@ -18,6 +19,7 @@ export function Layout() {
   const [loggingOut, setLoggingOut] = useState(false);
   const { pathname, search, hash } = useLocation();
   const navigate = useNavigate();
+  const toast = useToast();
   const invalidate = useCallback(({ reset = false } = {}) => {
     setRevision((value) => value + 1);
     if (reset) setResetRevision((value) => value + 1);
@@ -44,6 +46,10 @@ export function Layout() {
       await api("/auth/logout", { method: "POST" });
       setUser(null);
       invalidate();
+      toast.success("See you next quest.", {
+        title: "Signed out",
+        variant: "signout",
+      });
       if (pathname === "/dashboard") navigate("/");
     } catch (error) {
       setAccountError(error.message);

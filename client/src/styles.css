@@ -167,9 +167,6 @@
   font-size: 13px;
   line-height: 1.7;
 }
-.admin-panel > .inline-success {
-  width: 100%;
-}
 .reset-warning {
   margin: 22px 0;
   border-left: 3px solid #c99077;
@@ -1929,5 +1926,175 @@ textarea:focus-visible {
   }
   .account {
     flex-wrap: wrap;
+  }
+}
+
+/* Toast notifications: rendered at page level, or inside the open modal dialog. */
+.toast-region {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(340px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.toast {
+  --tone: var(--accent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  overflow: hidden;
+  padding: 10px 8px 10px 12px;
+  border: 1px solid #3a4535;
+  border-radius: 10px;
+  background: #1c221b;
+  color: #e7ece5;
+  box-shadow: 0 14px 36px #0009;
+  pointer-events: auto;
+  animation: toast-in 0.28s ease-out both;
+}
+.toast.is-leaving {
+  animation: toast-out 0.2s ease-in forwards;
+}
+/* Every toast uses the accent green; the icon says what happened. Errors stay
+   red so failures stand out. */
+.tone-error {
+  --tone: #ff9a9a;
+  border-color: #5a3a3a;
+  background: #251c1c;
+}
+.tone-success .toast-mark-symbol,
+.tone-completed .toast-mark-symbol {
+  stroke-width: 2.6;
+}
+
+/* Animated mark: the circle fills, then the tick draws itself. */
+.toast-mark {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.toast-mark-circle {
+  fill: var(--tone);
+  r: 10.3;
+  transform-origin: center;
+  animation: toast-mark-fill 0.3s 0.08s ease-out both;
+}
+.toast-mark-symbol {
+  stroke: var(--bg);
+  stroke-width: 2.1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: toast-mark-draw 0.35s 0.3s ease-out forwards;
+}
+
+.toast-body {
+  flex: 1;
+  min-width: 0;
+}
+.toast-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+.toast-title {
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.toast-xp-badge {
+  border: 1px solid #526944;
+  border-radius: 999px;
+  padding: 0 7px;
+  background: #2a3a20;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.toast p {
+  margin: 1px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.toast-close {
+  flex: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 0 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+/* The close button appears on hover or keyboard focus; touch screens without
+   hover always show it. */
+.toast:hover .toast-close,
+.toast:focus-within .toast-close {
+  opacity: 1;
+}
+@media (hover: none) {
+  .toast-close {
+    opacity: 1;
+  }
+}
+.toast-close:hover {
+  color: #e7ece5;
+  background: #ffffff12;
+}
+.toast-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes toast-mark-fill {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+@keyframes toast-mark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast-mark-symbol {
+    stroke-dashoffset: 0;
+  }
+}
+@media (max-width: 767px) {
+  .toast-region {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    width: auto;
   }
 }

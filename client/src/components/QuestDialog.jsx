@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from "react";
+import { useToastHost } from "../hooks/useToast.js";
 
 export function QuestDialog({
   title,
@@ -10,6 +11,7 @@ export function QuestDialog({
   const dialog = useRef(null);
   const close = useRef(onClose);
   const titleId = useId();
+  useToastHost(dialog);
   useEffect(() => {
     close.current = onClose;
   }, [onClose]);

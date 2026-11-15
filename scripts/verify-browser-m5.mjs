@@ -283,7 +283,7 @@ try {
   await page
     .getByRole("button", { name: "Save my progress", exact: true })
     .click();
-  await page.getByText("Your progress is saved.", { exact: true }).waitFor();
+  await page.locator(".toast-title", { hasText: "Progress saved" }).waitFor();
   await page.getByRole("button", { name: "Close pane" }).click();
   await row("Edited browser quest")
     .getByRole("button", { name: "View quest" })

@@ -98,7 +98,11 @@ export function QuestForm({ quest, treeId, onClose, onSaved, restoreFocusTo }) {
         method: quest ? "PATCH" : "POST",
         body: JSON.stringify(payload),
       });
-      onSaved(quest ? "Quest updated." : "Quest created.");
+      onSaved(
+        payload.title,
+        quest ? "Quest updated" : "Quest forged",
+        quest ? "edit" : "forge",
+      );
     } catch (failure) {
       setError(failure.message);
       setErrors(failure.fields ?? {});
