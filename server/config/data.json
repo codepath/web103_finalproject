@@ -1,0 +1,290 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Maya Lin",
+      "email": "maya@clayandcoffee.com",
+      "profile": {
+        "bio": "Potter and studio owner. Teaches wheel throwing to first-timers.",
+        "city": "San Francisco",
+        "website_url": "https://www.clayroomsf.com/"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jordan Reyes",
+      "email": "jordan@pageturner.com",
+      "profile": {
+        "bio": "Bookseller who hosts open mics and poetry nights.",
+        "city": "Oakland",
+        "website_url": "https://bookshop.org/shop/waldenpondbooks"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Sam Okafor",
+      "email": "sam@fiberloft.com",
+      "profile": {
+        "bio": "Fiber artist running knitting circles and weaving classes.",
+        "city": "Oakland",
+        "website_url": "https://www.averbforkeepingwarm.com/"
+      }
+    }
+  ],
+  "venues": [
+    {
+      "id": 1,
+      "owner_id": 1,
+      "name": "Clayroom Potrero",
+      "address": "1431 17th Street",
+      "city": "San Francisco",
+      "latitude": 37.7652,
+      "longitude": -122.4219,
+      "website_url": "https://www.clayroomsf.com/",
+      "hours": "Mon-Sat 10am-9pm; Sun 10am-7:30pm"
+    },
+    {
+      "id": 2,
+      "owner_id": 2,
+      "name": "Walden Pond Books",
+      "address": "3316 Grand Avenue",
+      "city": "Oakland",
+      "latitude": 37.8085,
+      "longitude": -122.27,
+      "website_url": "https://bookshop.org/shop/waldenpondbooks",
+      "hours": "Sun-Thu 10am-8pm; Fri-Sat 10am-9pm"
+    },
+    {
+      "id": 3,
+      "owner_id": 3,
+      "name": "A Verb for Keeping Warm",
+      "address": "6328 San Pablo Avenue",
+      "city": "Oakland",
+      "latitude": 37.8716,
+      "longitude": -122.2727,
+      "website_url": "https://www.averbforkeepingwarm.com/",
+      "hours": "In-store Fri-Sat 11am-3pm"
+    },
+    {
+      "id": 4,
+      "owner_id": 1,
+      "name": "Case for Making",
+      "address": "4037 Judah Street",
+      "city": "San Francisco",
+      "latitude": 37.7721,
+      "longitude": -122.4374,
+      "website_url": "https://caseformaking.com/",
+      "hours": "Daily 11am-6pm"
+    }
+  ],
+  "activity_types": [
+    {
+      "id": 1,
+      "name": "Workshop"
+    },
+    {
+      "id": 2,
+      "name": "Class"
+    },
+    {
+      "id": 3,
+      "name": "Open Mic"
+    },
+    {
+      "id": 4,
+      "name": "Market"
+    },
+    {
+      "id": 5,
+      "name": "Meetup"
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "pottery"
+    },
+    {
+      "id": 2,
+      "name": "beginner-friendly"
+    },
+    {
+      "id": 3,
+      "name": "kid-friendly"
+    },
+    {
+      "id": 4,
+      "name": "poetry"
+    },
+    {
+      "id": 5,
+      "name": "knitting"
+    },
+    {
+      "id": 6,
+      "name": "painting"
+    },
+    {
+      "id": 7,
+      "name": "materials included"
+    },
+    {
+      "id": 8,
+      "name": "outdoor"
+    },
+    {
+      "id": 9,
+      "name": "coffee"
+    },
+    {
+      "id": 10,
+      "name": "books"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "venue_id": 1,
+      "activity_type_id": 1,
+      "title": "Intro to Wheel Throwing",
+      "description": "(sample) Learn to center clay and throw your first bowl on the wheel.",
+      "what_to_bring": "Clothes that can get messy",
+      "start_time": "2026-11-08 18:00",
+      "end_time": "2026-11-08 20:00",
+      "price": 45,
+      "tag_ids": [1, 2, 7],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-1/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "venue_id": 1,
+      "activity_type_id": 5,
+      "title": "Sip & Sketch Morning",
+      "description": "(sample) Casual drawing meetup over pour-over coffee.",
+      "what_to_bring": "A sketchbook and pencils",
+      "start_time": "2026-11-09 09:30",
+      "end_time": "2026-11-09 11:00",
+      "price": 0,
+      "tag_ids": [6, 9, 2],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-2/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "venue_id": 2,
+      "activity_type_id": 3,
+      "title": "Poetry Open Mic Night",
+      "description": "(sample) Sign up at the door and share up to five minutes of your work.",
+      "what_to_bring": "Your poems",
+      "start_time": "2026-11-12 19:00",
+      "end_time": "2026-11-12 21:30",
+      "price": 5,
+      "tag_ids": [4, 10],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-3/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "venue_id": 2,
+      "activity_type_id": 5,
+      "title": "Zine Swap & Book Club",
+      "description": "(sample) Trade zines and discuss this month's indie pick.",
+      "what_to_bring": "Zines to swap (optional)",
+      "start_time": "2026-11-15 14:00",
+      "end_time": "2026-11-15 16:00",
+      "price": 0,
+      "tag_ids": [10],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-4/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "venue_id": 3,
+      "activity_type_id": 2,
+      "title": "Knitting for Absolute Beginners",
+      "description": "(sample) Cast on, knit, purl, and bind off a small swatch.",
+      "what_to_bring": "Nothing — needles and yarn provided",
+      "start_time": "2026-11-10 17:30",
+      "end_time": "2026-11-10 19:30",
+      "price": 30,
+      "tag_ids": [5, 2, 7],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-5/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "venue_id": 3,
+      "activity_type_id": 4,
+      "title": "Handmade Holiday Market",
+      "description": "(sample) Local makers sell ceramics, prints, and knitwear.",
+      "what_to_bring": "A tote bag",
+      "start_time": "2026-12-06 10:00",
+      "end_time": "2026-12-06 16:00",
+      "price": 0,
+      "tag_ids": [1, 5, 8],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-6/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "venue_id": 4,
+      "activity_type_id": 1,
+      "title": "Watercolor Landscapes",
+      "description": "(sample) A guided four-hour watercolor session with a pro illustrator.",
+      "what_to_bring": "Nothing — paper and paints provided",
+      "start_time": "2026-11-14 12:00",
+      "end_time": "2026-11-14 16:00",
+      "price": 85,
+      "tag_ids": [6, 7],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-7/800/500",
+          "position": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "venue_id": 4,
+      "activity_type_id": 2,
+      "title": "Kids Painting Hour",
+      "description": "(sample) Bright, messy painting fun for ages 5–10.",
+      "what_to_bring": "A smock or old t-shirt",
+      "start_time": "2026-11-16 10:00",
+      "end_time": "2026-11-16 11:00",
+      "price": 15,
+      "tag_ids": [6, 3, 2],
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/localbloom-8/800/500",
+          "position": 0
+        }
+      ]
+    }
+  ]
+}
