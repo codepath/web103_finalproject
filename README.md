@@ -4,7 +4,7 @@ CodePath WEB103 Final Project
 
 Designed and developed by: Yugant Nagralawala, Arnold Waigwa, and Yingshu Wang
 
-🔗 Link to deployed app: Coming soon — planned deployment on Render.
+🔗 Link to deployed app: [TripTogether](https://triptogether-web103-yingshu.onrender.com)
 
 ## About
 
@@ -116,8 +116,31 @@ The app supports GitHub authentication. Seeded demo accounts remain sample data 
 
 ## Installation Instructions
 
-- Server: cd server, npm install, copy .env.example to .env and fill in the PostgreSQL values for your local database, npm run reset, npm run dev (http://localhost:3001)
-- Client: cd client, npm install, npm run dev (http://localhost:5173). The client sends /api requests to the server on port 3001.
+Use Node 22 (the version in `.node-version`); Node 20.19+ is also supported locally.
+Run all commands below from the repository root.
+
+1. Install both apps with `npm run setup`.
+2. Configure `server/.env` using the GitHub authentication steps below. Keep an existing `.env`; do not overwrite it with the example.
+3. For the existing shared database, run `npm run migrate --prefix server`. Do not reset the shared database.
+4. In one terminal run `npm run dev:server`; in another run `npm run dev:client`.
+5. Open `http://localhost:5173`. The frontend forwards `/api` to the backend on port 3001. The client command fails if 5173 is occupied instead of silently changing the OAuth callback port.
+
+### Setup for each teammate
+
+- Pull the latest code and run `npm run setup` when dependencies change.
+- Configure a local `server/.env` with a valid `DATABASE_URL`, GitHub client ID/secret, and your own random `SESSION_SECRET`. You can share a development OAuth App's credentials privately or each register a local OAuth App. GitHub account passwords are never shared.
+- Keep local `CLIENT_URL=http://localhost:5173` and `GITHUB_CALLBACK_URL=http://localhost:5173/api/auth/github/callback` and register that callback in your chosen OAuth App.
+- If using the shared Render database from your computer, its external connection URL and an allowed current public IP are required. Each teammate's IP must be allowed independently; using the same database URL does not bypass the database's network rules.
+- Migrations are repeatable and preserve data. Only use `npm run reset --prefix server` for a fresh, dedicated development database whose application data can be deleted.
+- Each teammate signs in using their own GitHub account. New users have separate trip memberships; create a trip or join with an invitation code to collaborate.
+
+For the deployed website, teammates only need the live link and their own GitHub account. They do not need `.env`, database access, or client secrets to use the website.
+
+### Render deployment
+
+See [the deployment guide](docs/deployment.md) for the single Web Service settings,
+production OAuth configuration, environment variables, and verification steps.
+Express serves the built client and `/api` from the same URL in production.
 
 ### GitHub authentication setup
 
@@ -133,4 +156,4 @@ Sessions are stored in PostgreSQL, with a seven-day cookie containing only a sig
 
 ### Validation
 
-Run `cd server && node --test tests/auth.test.js`, then `cd client && npm run lint && npm run build`. Manually verify real GitHub authorization, cancelled login, page refresh, logout, return to a protected page, and two users joining/voting with separate accounts.
+From the repository root, run `npm test`, `npm run lint --prefix client`, and `npm run build`. Manually verify real GitHub authorization, cancelled login, page refresh, logout, return to a protected page, and two users joining/voting with separate accounts.

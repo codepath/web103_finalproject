@@ -1,0 +1,17 @@
+{
+  "name": "triptogether",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "npm ci --prefix server && npm ci --prefix client --include=dev",
+    "build": "npm run build --prefix client",
+    "start": "npm run migrate --prefix server && npm start --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client -- --port 5173 --strictPort",
+    "pretest": "npm run build",
+    "test": "node --test server/tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
