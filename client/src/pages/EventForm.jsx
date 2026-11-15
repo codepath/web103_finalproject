@@ -314,7 +314,7 @@ function EventForm() {
             {venueMode === 'existing' ? (
               <label>
                 <div className="venue-management-link">
-                  <Link to="/venues">Delete Venues</Link>
+                  <Link to="/venues">Manage venues</Link>
                 </div>
                 Venue
                 <select

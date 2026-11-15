@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../AuthContext.jsx'
 
 function VenuesPage() {
-  const { user } = useAuth()
   const [venues, setVenues] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -15,7 +13,7 @@ function VenuesPage() {
 
     async function loadVenues() {
       try {
-        const response = await fetch('/api/venues')
+        const response = await fetch('/api/venues/mine')
 
         if (!response.ok) {
           throw new Error(`Unable to load venues (HTTP ${response.status}).`)
@@ -91,14 +89,13 @@ function VenuesPage() {
 
   return (
     <section className="venues-page">
-      <Link to="/events/new" className="back">
-        Back to event form
-      </Link>
-
-      <h1>Manage Venues</h1>
-      <p className="muted">
-        Delete unused venues. Venues associated with events are protected.
-      </p>
+      <div className="venues-header">
+        <h1>My venues</h1>
+        <Link to="/venues/new" className="button">
+          + Add venue
+        </Link>
+      </div>
+      <p className="muted">Venues with events can be edited but not deleted.</p>
 
       {error && (
         <p className="form-error" role="alert">
@@ -110,7 +107,7 @@ function VenuesPage() {
       {loading ? (
         <p>Loading venues...</p>
       ) : venues.length === 0 ? (
-        <p>No venues available.</p>
+        <p>You haven't added any venues yet.</p>
       ) : (
         <ul className="venue-list">
           {venues.map((venue) => (
@@ -118,11 +115,21 @@ function VenuesPage() {
               <div>
                 <strong>{venue.name}</strong>
                 <p className="muted">
-                  {venue.city} · Venue ID {venue.id}
+                  {venue.address}, {venue.city} ·{' '}
+                  {venue.event_count === 1
+                    ? '1 event'
+                    : `${venue.event_count} events`}
                 </p>
               </div>
 
-              {user?.id === venue.owner_id && (
+              <div className="event-actions">
+                <Link
+                  to={`/venues/${venue.id}/edit`}
+                  className="secondary-button"
+                  aria-label={`Edit ${venue.name}`}
+                >
+                  Edit
+                </Link>
                 <button
                   type="button"
                   className="secondary-button danger"
@@ -132,7 +139,7 @@ function VenuesPage() {
                 >
                   {deletingId === venue.id ? 'Deleting...' : 'Delete'}
                 </button>
-              )}
+              </div>
             </li>
           ))}
         </ul>

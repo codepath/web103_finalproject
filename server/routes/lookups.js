@@ -25,6 +25,158 @@ router.get('/tags', async (req, res) => {
   }
 })
 
+const VENUE_COLUMNS =
+  'id, owner_id, name, address, city, latitude, longitude, website_url, hours'
+
+// Returns an error message, or null when the venue body is valid.
+// latitude/longitude/website_url/hours are optional; send null or '' to clear them.
+export function validateVenue(body) {
+  if (!body || typeof body !== 'object' || Array.isArray(body))
+    return 'Venue details are required'
+  const { name, address, city, latitude, longitude, website_url, hours } = body
+
+  for (const [field, value, max] of [
+    ['name', name, 120],
+    ['address', address, 200],
+    ['city', city, 100],
+  ]) {
+    if (typeof value !== 'string' || !value.trim())
+      return `${field} is required`
+    if (value.trim().length > max)
+      return `${field} must be ${max} characters or fewer`
+  }
+
+  const blank = (v) => v === undefined || v === null || v === ''
+  if (blank(latitude) !== blank(longitude))
+    return 'Provide both latitude and longitude, or neither'
+  if (!blank(latitude)) {
+    const lat = Number(latitude)
+    const lng = Number(longitude)
+    if (!Number.isFinite(lat) || lat < -90 || lat > 90)
+      return 'latitude must be a number between -90 and 90'
+    if (!Number.isFinite(lng) || lng < -180 || lng > 180)
+      return 'longitude must be a number between -180 and 180'
+  }
+
+  if (!blank(website_url)) {
+    if (typeof website_url !== 'string') return 'website_url must be a string'
+    try {
+      const url = new URL(website_url.trim())
+      if (url.protocol !== 'https:' && url.protocol !== 'http:')
+        return 'website_url must start with https:// or http://'
+    } catch {
+      return 'website_url must be a valid URL'
+    }
+  }
+
+  if (!blank(hours) && (typeof hours !== 'string' || hours.trim().length > 200))
+    return 'hours must be text of 200 characters or fewer'
+
+  return null
+}
+
+// Normalized values in column order: name, address, city, latitude, longitude, website_url, hours
+function venueValues(body) {
+  const text = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
+  const num = (v) =>
+    v === undefined || v === null || v === '' ? null : Number(v)
+  return [
+    body.name.trim(),
+    body.address.trim(),
+    body.city.trim(),
+    num(body.latitude),
+    num(body.longitude),
+    text(body.website_url),
+    text(body.hours),
+  ]
+}
+
+const parseVenueId = (raw) => {
+  const id = Number(raw)
+  return Number.isSafeInteger(id) && id > 0 ? id : null
+}
+
+// GET /api/venues/mine  venues owned by the logged-in user, for the management page
+router.get('/venues/mine', requireAuth, async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      `SELECT ${VENUE_COLUMNS},
+         (SELECT COUNT(*)::integer FROM events e WHERE e.venue_id = venues.id) AS event_count
+       FROM venues WHERE owner_id = $1 ORDER BY name`,
+      [req.user.id],
+    )
+    res.json(rows)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
+router.get('/venues/:id', async (req, res) => {
+  const id = parseVenueId(req.params.id)
+  if (!id) return res.status(400).json({ error: 'Invalid venue ID' })
+  try {
+    const { rows } = await pool.query(
+      `SELECT ${VENUE_COLUMNS} FROM venues WHERE id = $1`,
+      [id],
+    )
+    if (!rows.length) return res.status(404).json({ error: 'Venue not found' })
+    res.json(rows[0])
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// POST /api/venues  the logged-in user becomes the owner
+router.post('/venues', requireAuth, async (req, res) => {
+  const error = validateVenue(req.body)
+  if (error) return res.status(400).json({ error })
+  try {
+    const { rows } = await pool.query(
+      `INSERT INTO venues (owner_id, name, address, city, latitude, longitude, website_url, hours)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+       RETURNING ${VENUE_COLUMNS}`,
+      [req.user.id, ...venueValues(req.body)],
+    )
+    res.status(201).json(rows[0])
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// PUT /api/venues/:id  full replace, owner only. The id never changes, so linked events keep their venue.
+router.put('/venues/:id', requireAuth, async (req, res) => {
+  const id = parseVenueId(req.params.id)
+  if (!id) return res.status(400).json({ error: 'Invalid venue ID' })
+  const error = validateVenue(req.body)
+  if (error) return res.status(400).json({ error })
+
+  try {
+    const existing = await pool.query(
+      'SELECT owner_id FROM venues WHERE id = $1',
+      [id],
+    )
+    const denied = ownershipError(
+      existing.rows[0]?.owner_id,
+      req.user.id,
+      'Venue',
+    )
+    if (denied) return res.status(denied.status).json({ error: denied.error })
+
+    // owner_id in the WHERE too, so ownership can't change between the check and the update
+    const { rows } = await pool.query(
+      `UPDATE venues SET name = $3, address = $4, city = $5, latitude = $6,
+         longitude = $7, website_url = $8, hours = $9
+       WHERE id = $1 AND owner_id = $2
+       RETURNING ${VENUE_COLUMNS}`,
+      [id, req.user.id, ...venueValues(req.body)],
+    )
+    if (!rows.length) return res.status(404).json({ error: 'Venue not found' })
+    res.json(rows[0])
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
 router.get('/venues', async (req, res) => {
   try {
     const { rows } = await pool.query(

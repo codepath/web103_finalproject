@@ -3,6 +3,7 @@ import Dashboard from './pages/Dashboard.jsx'
 import EventPage from './pages/EventPage.jsx'
 import EventForm from './pages/EventForm.jsx'
 import VenuesPage from './pages/VenuesPage.jsx'
+import VenueForm from './pages/VenueForm.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
 import Filters from './components/Filters.jsx'
 import ResetButton from './components/ResetButton.jsx'
@@ -41,6 +42,9 @@ function App() {
           {!loading &&
             (user ? (
               <>
+                <Link to="/venues" className="secondary-button">
+                  Manage venues
+                </Link>
                 <ResetButton />
                 <Link
                   to="/profile"
@@ -70,7 +74,30 @@ function App() {
       <main className={isHome ? 'home' : undefined}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/venues" element={<VenuesPage />} />
+          <Route
+            path="/venues"
+            element={
+              <RequireAuth>
+                <VenuesPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/venues/new"
+            element={
+              <RequireAuth>
+                <VenueForm key="new" />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/venues/:id/edit"
+            element={
+              <RequireAuth>
+                <VenueForm key="edit" />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/profile"
             element={

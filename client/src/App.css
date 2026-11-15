@@ -608,6 +608,17 @@ main.home {
   margin-bottom: 8px;
 }
 
+.venues-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 16px;
+}
+.venues-header .button {
+  margin-top: 0;
+}
+
 .venue-list {
   list-style: none;
   padding: 0;
