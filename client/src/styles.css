@@ -1787,9 +1787,33 @@ textarea:focus-visible {
   color: #e7ece5;
   border-radius: 50%;
   font-size: 25px;
+  line-height: 1;
   width: 36px;
   height: 36px;
   flex-shrink: 0;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
+}
+/* The × turns a quarter and lights up in the accent on hover or focus. */
+.pane-close:hover:not(:disabled),
+.pane-close:focus-visible {
+  transform: rotate(90deg);
+  background: #2f3d24;
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(197, 241, 107, 0.12);
+}
+.pane-close:active:not(:disabled) {
+  transform: rotate(90deg) scale(0.9);
+}
+.pane-close:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 .pane-body {
   padding: 25px 30px 32px;
@@ -1995,6 +2019,21 @@ textarea:focus-visible {
   animation: toast-mark-draw 0.35s 0.3s ease-out forwards;
 }
 
+/* Loading: a ring with a spinning arc, replaced by the result's icon. */
+.toast-spinner {
+  stroke-width: 2.6;
+}
+.toast-spinner-track {
+  stroke: var(--tone);
+  opacity: 0.22;
+}
+.toast-spinner-arc {
+  stroke: var(--tone);
+  stroke-dasharray: 16 100;
+  transform-origin: center;
+  animation: spin 0.8s linear infinite;
+}
+
 .toast-body {
   flex: 1;
   min-width: 0;
@@ -2028,6 +2067,25 @@ textarea:focus-visible {
   font-size: 12.5px;
   line-height: 1.4;
   overflow-wrap: anywhere;
+}
+.toast-action {
+  flex: none;
+  border: 1px solid #ff9a9a66;
+  border-radius: 7px;
+  padding: 5px 10px;
+  background: transparent;
+  color: #ffd0d0;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.toast-action:hover {
+  background: #ff9a9a1f;
+}
+.toast-action:focus-visible {
+  outline: 2px solid var(--tone);
+  outline-offset: 2px;
 }
 .toast-close {
   flex: none;
