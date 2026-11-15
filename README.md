@@ -30,9 +30,9 @@ Deployment: Render.
 
 All six core features below are implemented. Each has a demonstration GIF.
 
-### ✅ Google Sign-in
+### ✅ GitHub Sign-in
 
-Users sign in with Google through Passport. The server issues a 15-minute JWT in an HTTP-only cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
+Users sign in with GitHub through Passport. Sessions are stored in PostgreSQL with an HTTP-only session cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
 
 ### ✅ 1. Create and Manage Trips
 
@@ -112,27 +112,25 @@ The recording demonstrates the budget summary, adding an expense paid by another
 
 ### Scope Notes
 
-The app supports Google authentication. Seeded demo accounts remain sample data and cannot be selected as an authenticated identity.
+The app supports GitHub authentication. Seeded demo accounts remain sample data and cannot be selected as an authenticated identity.
 
 ## Installation Instructions
 
 - Server: cd server, npm install, copy .env.example to .env and fill in the PostgreSQL values for your local database, npm run reset, npm run dev (http://localhost:3001)
 - Client: cd client, npm install, npm run dev (http://localhost:5173). The client sends /api requests to the server on port 3001.
 
-### Google authentication setup
+### GitHub authentication setup
 
-1. In `server/.env`, set `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from a Google OAuth **Web application** client. Configure its consent screen and add your account as a test user while the application is in testing.
-2. Register `http://localhost:3001/api/auth/google/callback` as an authorized redirect URI. Set `GOOGLE_CALLBACK_URL` to that exact URI and `CLIENT_URL=http://localhost:5173`.
-3. Generate a secret with `openssl rand -hex 32` and put it in `JWT_SECRET`. Keep credentials and secrets out of Git.
-4. Run `cd server` then `npm run migrate` to add Google identities to an existing database **without deleting data**. For a fresh development database, `npm run reset` includes the new column but deletes existing app data.
-5. Start server and client, open `http://localhost:5173`, and select **Continue with Google**. Restart the server after changing environment variables. Missing OAuth configuration or a short JWT secret prevents startup.
+1. Register a GitHub OAuth App with homepage `http://localhost:5173` and callback `http://localhost:5173/api/auth/github/callback`.
+2. Copy `server/.env.example` to `server/.env` only if you do not already have a local configuration. Set `DATABASE_URL` to your database's external connection URL for local development, and fill in `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+3. Generate `SESSION_SECRET` with `openssl rand -hex 32`. Set `CLIENT_URL=http://localhost:5173`. Keep all secrets out of Git.
+4. Run `cd server` then `npm run migrate`. This adds the one-to-one `user_github_accounts` table and PostgreSQL session storage, allows users without email, and preserves existing application data. A fresh development database can use `npm run reset`, which deletes existing application data.
+5. Start server and client, then open `http://localhost:5173` and choose **Continue with GitHub**. Use port 5173 consistently; Vite forwards `/api` requests to the backend on 3001.
 
-Google identities are matched by Google ID. Existing users with the same email are not automatically linked; a collision fails login. New Google users can join seeded trips using their invitation codes.
+Each GitHub identity creates a separate user. Existing demo users are not automatically linked by email. New users can create trips or join seeded trips with `SEATTLE26` or `PORTLAND26`.
 
-Authentication endpoints: `GET /api/auth/google`, `GET /api/auth/google/callback`, `GET /api/auth/me`, and `POST /api/auth/logout`. The demo `x-user-id` header and public `/api/users` listing have been removed. All mutation requests, including logout, must carry an `Origin` header matching `CLIENT_URL`.
+Sessions are stored in PostgreSQL, with a seven-day cookie containing only a signed session ID. Logout deletes the server session. GitHub access and refresh tokens are not stored. Production requires HTTPS, `NODE_ENV=production`, a production `CLIENT_URL` and matching registered callback URL. The server trusts one reverse proxy and uses secure cookies in production.
 
-For production, set `NODE_ENV=production`, use HTTPS, and set the real callback and client URLs. Serve `/api` through the frontend origin (a reverse proxy), preserving the browser's Origin header; the client uses relative API URLs. Cookies use `Secure` in production and `SameSite=Lax`, so unrelated frontend/backend sites are not supported by this configuration. No proxy trust setting is needed because cookies are explicitly secure in production.
+### Validation
 
-JWTs expire after 15 minutes; users then sign in again. Logout clears the browser cookie, but a copied JWT remains valid until expiration. There are no sessions, refresh tokens, or stored Google access tokens.
-
-Run `cd client && npm run lint && npm run build` for client validation. Manually verify Google consent, cancelled login, page refresh, logout, and joining a trip with two different Google accounts to confirm organizer/member permissions.
+Run `cd server && node --test tests/auth.test.js`, then `cd client && npm run lint && npm run build`. Manually verify real GitHub authorization, cancelled login, page refresh, logout, return to a protected page, and two users joining/voting with separate accounts.

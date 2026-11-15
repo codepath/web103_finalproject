@@ -22,3 +22,9 @@ validation. Future PATCH handlers must explicitly update `updated_at`.
 Run `npm run test:db` to validate the SQL using the configured PostgreSQL
 connection. Tests use a unique schema inside a transaction and roll back all
 test objects and data; they do not reset the application tables.
+
+## GitHub authentication
+
+Run `npm run migrate` to add `user_github_accounts` (one identity per user),
+`user_sessions`, and nullable user emails without resetting existing data.
+The current migration does not remove any legacy Google ID columns.

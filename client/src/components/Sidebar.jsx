@@ -35,6 +35,7 @@ export default function Sidebar() {
       <div className="sidebar-spacer" />
 
       <div className="user-switcher">
+        {activeUser.avatarUrl && <img src={activeUser.avatarUrl} alt="" width="40" height="40" style={{ borderRadius: '50%' }} />}
         <span>{activeUser.name}</span>
         <button type="button" disabled={signingOut} onClick={handleLogout}>
           {signingOut ? 'Signing out…' : 'Sign out'}

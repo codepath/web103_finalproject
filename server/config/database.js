@@ -6,14 +6,23 @@ pg.types.setTypeParser(20, (value) => Number(value));
 pg.types.setTypeParser(1082, (value) => value);
 pg.types.setTypeParser(1700, (value) => Number(value));
 
-const isLocal = ["localhost", "127.0.0.1", "::1"].includes(process.env.PGHOST);
+const connectionString = process.env.DATABASE_URL?.trim();
+const host = connectionString
+  ? new URL(connectionString).hostname
+  : process.env.PGHOST;
+const isLocal = ["localhost", "127.0.0.1", "[::1]", "::1"].includes(host);
 
 const config = {
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  host: process.env.PGHOST,
-  port: process.env.PGPORT,
-  database: process.env.PGDATABASE,
+  ...(connectionString
+    ? { connectionString }
+    : {
+        user: process.env.PGUSER,
+        password: process.env.PGPASSWORD,
+        host: process.env.PGHOST,
+        port: process.env.PGPORT,
+        database: process.env.PGDATABASE,
+      }),
+  connectionTimeoutMillis: 10000,
   // Hosted databases (such as Render) require TLS; a local database usually does not.
   ssl: isLocal ? false : { rejectUnauthorized: false },
 };

@@ -5,13 +5,14 @@ DROP TABLE IF EXISTS expenses;
 DROP TABLE IF EXISTS activities;
 DROP TABLE IF EXISTS trip_members;
 DROP TABLE IF EXISTS trips;
+DROP TABLE IF EXISTS user_github_accounts;
+DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  google_id VARCHAR(255) UNIQUE,
   name VARCHAR(100) NOT NULL CHECK (length(trim(name)) > 0),
-  email VARCHAR(255) NOT NULL UNIQUE CHECK (length(trim(email)) > 0),
+  email VARCHAR(255) UNIQUE CHECK (length(trim(email)) > 0),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -78,3 +79,17 @@ CREATE INDEX activity_votes_user_id_idx ON activity_votes(user_id);
 CREATE INDEX expenses_trip_id_idx ON expenses(trip_id);
 CREATE INDEX expenses_payer_id_idx ON expenses(payer_id);
 CREATE INDEX expenses_created_by_id_idx ON expenses(created_by_id);
+
+CREATE TABLE IF NOT EXISTS user_github_accounts (
+  user_id BIGINT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  github_id VARCHAR(255) NOT NULL UNIQUE,
+  username VARCHAR(255),
+  avatar_url TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS user_sessions (
+  sid VARCHAR NOT NULL PRIMARY KEY,
+  sess JSON NOT NULL,
+  expire TIMESTAMP(6) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS user_sessions_expire_idx ON user_sessions (expire);

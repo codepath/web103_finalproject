@@ -1,8 +1,10 @@
 import express from "express";
 import cors from "cors";
-import cookieParser from "cookie-parser";
+import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
+import pool from "./config/database.js";
 import passport, { configurePassport } from "./config/passport.js";
-import { clientOrigin } from "./config/auth.js";
+import { clientOrigin, authCookie, cookieOptions } from "./config/auth.js";
 import { requireTrustedOrigin } from "./middleware/auth.js";
 import routes from "./routes/index.js";
 
@@ -11,9 +13,19 @@ const app = express();
 //middleware
 configurePassport();
 app.use(cors({ origin: clientOrigin, credentials: true }));
-app.use(cookieParser());
-app.use(passport.initialize());
+if (process.env.NODE_ENV === "production") app.set("trust proxy", 1);
 app.use("/api", requireTrustedOrigin);
+const PgStore = connectPgSimple(session);
+app.use(session({
+  name: authCookie,
+  store: new PgStore({ pool, tableName: "user_sessions" }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { ...cookieOptions, maxAge: 7 * 24 * 60 * 60 * 1000 },
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 
 app.use("/api", routes);

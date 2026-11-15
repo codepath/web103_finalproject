@@ -2,12 +2,10 @@ import { Navigate, useSearchParams } from "react-router-dom";
 import { useActiveUser } from "../context/ActiveUserContext.jsx";
 
 const loginErrors = {
-  state: 'Your sign-in attempt expired or its cookie was blocked. Start again using Continue with Google, and use localhost throughout.',
-  email: 'Google did not provide a verified email address. Please try another Google account.',
-  account: 'An account with this email already exists. It must be linked separately before you can sign in with Google.',
+  state: 'Your sign-in attempt expired or its cookie was blocked. Start again using Continue with GitHub, and use localhost throughout.',
   migration: 'Sign-in is temporarily unavailable. The server database needs an update.',
   server: 'Sign-in could not be completed because of a server or provider error. Please try again.',
-  google: 'Google sign-in was cancelled or could not be completed. Please try again.',
+  github: 'GitHub sign-in was cancelled or could not be completed. Please try again.',
 };
 
 export default function LoginPage() {
@@ -19,7 +17,9 @@ export default function LoginPage() {
         <p role="status">Checking sign-in…</p>
       </main>
     );
-  if (activeUser) return <Navigate to="/trips" replace />;
+  const requested = params.get("returnTo");
+  const returnTo = requested && /^\/trips(?:[/?#]|$)/.test(requested) && !requested.includes("\\") ? requested : "/trips";
+  if (activeUser) return <Navigate to={returnTo} replace />;
   return (
     <main className="main-content">
       <h1>Welcome to TripTogether</h1>
@@ -30,11 +30,11 @@ export default function LoginPage() {
       {error && <p role="alert">{error} Refresh the page to try again.</p>}
       {params.has("error") && (
         <p role="alert">
-          {loginErrors[params.get("error")] || loginErrors.google}
+          {loginErrors[params.get("error")] || loginErrors.github}
         </p>
       )}
-      <a className="nav-link" href="/api/auth/google">
-        Continue with Google
+      <a className="nav-link" href={`/api/auth/github?returnTo=${encodeURIComponent(returnTo)}`}>
+        Continue with GitHub
       </a>
     </main>
   );
