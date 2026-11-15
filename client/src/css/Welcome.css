@@ -1,38 +1,15 @@
-/* .welcome {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px 16px;
-  text-align: left;
-}
-
-.welcome-hero {
-  padding: 48px 16px;
-  text-align: center;
-}
-
-.welcome-hero h1 {
-  margin-bottom: 8px;
-  letter-spacing: 0.1em;
-} */
-
-
-
-/* ========================================
-   WELCOME PAGE
-======================================== */
-
+/* page */
 .welcome {
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 56px;
   box-sizing: border-box;
   text-align: left;
 }
 
 
-/* welcome hero section */
-
+/* hero */
 .welcome-hero {
   position: relative;
   overflow: hidden;
@@ -51,8 +28,7 @@
 }
 
 
-/* banner image styles */
-
+/* banner image */
 .welcome-hero::before {
   content: '';
   position: absolute;
@@ -65,8 +41,7 @@
 }
 
 
-/* image overlay*/
-
+/* image overlay */
 .welcome-hero::after {
   content: '';
   position: absolute;
@@ -76,8 +51,7 @@
 }
 
 
-/* welcome hero styles */
-
+/* welcome hero content */
 .welcome-hero > * {
   position: relative;
   z-index: 2;
@@ -85,39 +59,72 @@
 
 .welcome-hero h1 {
   margin: 0 0 8px;
-  color: var(--text-h);
+  color: var(--text-heading);
   letter-spacing: 0.1em;
 }
 
 .welcome-hero p {
   margin: 0 0 20px;
-  color: var(--text);
+  color: var(--text-heading);
   font-size: 1rem;
 }
 
 
 /* dark mode overlay */
-
 :root[data-theme='dark'] .welcome-hero::after {
   background: rgba(23, 18, 26, 0.65);
 }
 
 
-/* event div styles */
-
 .welcome > h2,
 .welcome > .filter-bar,
 .welcome > .pins-map,
 .welcome > *:not(.welcome-hero) {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 1100px;
+  width: calc(100% - (var(--page-padding-x) * 2));
+  max-width: var(--page-max-width);
   margin-left: auto;
   margin-right: auto;
+  box-sizing: border-box;
 }
 
+
+/* section heading */
 .welcome > h2 {
   margin-top: 40px;
   margin-bottom: 16px;
-  padding: 0 16px;
+  padding: 0;
+  color: var(--text-heading);
+  font-family: var(--logo);
+  font-size: var(--font-size-xl);
+  line-height: 1.2;
+}
+
+
+/* filter bar */
+.welcome > .filter-bar {
+  margin-bottom: 16px;
+}
+
+
+/* event map */
+.welcome > .pins-map {
+  width: calc(100% - (var(--page-padding-x) * 2));
+  max-width: var(--page-max-width);
+}
+
+
+/* responsive styles */
+
+@media (max-width: 640px) {
+  .welcome > h2,
+  .welcome > .filter-bar,
+  .welcome > .pins-map,
+  .welcome > *:not(.welcome-hero) {
+    width: calc(100% - (var(--page-padding-x) * 2));
+  }
+
+  .welcome-hero {
+    min-height: 360px;
+    padding: 72px 20px;
+  }
 }

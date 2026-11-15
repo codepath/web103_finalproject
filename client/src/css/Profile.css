@@ -1,120 +1,12 @@
-/* Old profile styles */
-/* .profile-page {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 56px;
-  box-sizing: border-box;
-  color: #2b1633;
-  font-family: var(--sans);
-  text-align: left;
-}
-
-
-
-.profile-header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 28px;
-  padding: 24px;
-  background: #fff;
-  border: 1px solid #e5e4e7;
-  border-radius: 16px;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.08),
-    0 4px 6px -2px rgba(0, 0, 0, 0.04);
-}
-
-.profile-header h1 {
-  margin: 0 0 5px;
-  color: #4b006e;
-  font-family: var(--heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  line-height: 1.2;
-}
-
-.profile-header p {
-  margin: 3px 0;
-  color: #5f5863;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-
-.profile-header .avatar {
-  flex: none;
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.profile-header .avatar-letter {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  background: #fbb550;
-  color: #4b006e;
-  font-size: 1.75rem;
-  font-weight: 700;
-}
-
-
-
-.profile-prompt {
-  margin: 0 0 24px;
-  padding: 12px 14px;
-  border: 1px solid #e8c98c;
-  border-radius: 10px;
-  background: #fffaf0;
-  color: #654b18;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-
-.profile-page > h2 {
-  margin: 0;
-  padding: 24px 24px 0;
-  background: #fff;
-  border-left: 1px solid #e5e4e7;
-  border-right: 1px solid #e5e4e7;
-  border-top: 1px solid #e5e4e7;
-  border-radius: 16px 16px 0 0;
-  color: #4b006e;
-  font-family: var(--heading);
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
-
-.profile-page > h2 + form {
-  padding: 20px 24px 24px;
-  background: #fff;
-  border: 1px solid #e5e4e7;
-  border-top: none;
-  border-radius: 0 0 16px 16px;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.08),
-    0 4px 6px -2px rgba(0, 0, 0, 0.04);
-} */
-
-
-
-/* page  */
+/*
+   edited so profile, my collection and public profile span similarly in width to the other pages
+*/
 
 .profile-page {
   width: 100%;
-  max-width: 760px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 40px 24px 56px;
+  padding: var(--page-padding-y) var(--page-padding-x) 56px;
   box-sizing: border-box;
   color: var(--text-heading);
   font-family: var(--sans);
@@ -128,10 +20,11 @@
   display: flex;
   align-items: center;
   gap: 18px;
+  width: 100%;
   margin-bottom: 28px;
   padding: 24px;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow);
 }
@@ -154,7 +47,7 @@
 }
 
 
-/* avatar style*/
+/* shared avatar styles */
 
 .profile-header .avatar {
   flex: none;
@@ -180,9 +73,10 @@
 }
 
 
-/* prmpt */
+/* profile prompt */
 
 .profile-prompt {
+  width: 100%;
   margin: 0 0 24px;
   padding: 12px 14px;
   border: 1px solid var(--warning);
@@ -192,23 +86,24 @@
     var(--warning) 10%,
     var(--surface)
   );
+
   color: var(--warning);
   font-size: 0.875rem;
   line-height: 1.5;
 }
 
 
-/* heading style */
 
+/* update profile form styles ONLY FOR THE EDIT PROFILE FORM */
 .profile-page > h2 {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
   margin: 0;
   padding: 24px 24px 0;
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-bottom: none;
-  border-radius: 16px 16px 0 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   background: var(--surface);
   color: var(--primary);
   font-family: var(--sans);
@@ -217,44 +112,162 @@
 }
 
 
-/* ========================================
-   EDIT PROFILE FORM CARD
-   ======================================== */
-
+/* form container */
 .profile-page > h2 + form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 14px;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0;
   padding: 20px 24px 24px;
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-top: none;
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
 
-/* form spacing for profile edit form */
-
-/*
-   ProfileForm uses the shared FormField
-   component, so keep the fields compact
-   rather than using the larger form layout
-   used by event/group creation.
-*/
-
-.profile-page .form-field {
-  margin-bottom: 12px;
+/* fields*/
+.profile-page > h2 + form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 240px;
+  margin: 0;
 }
 
-.profile-page .form-field label {
+
+/* first row */
+.profile-page > h2 + form .form-field:nth-child(1),
+.profile-page > h2 + form .form-field:nth-child(2),
+.profile-page > h2 + form .form-field:nth-child(3) {
+  grid-column: span 1;
+}
+/* second row*/
+.profile-page > h2 + form .form-field:nth-child(4),
+.profile-page > h2 + form .form-field:nth-child(5) {
+  grid-column: span 1;
+}
+/* third row for photo*/
+.profile-page > h2 + form .form-field:nth-child(6) {
+  grid-column: 1 / -1;
+  max-width: 360px;
+}
+
+
+/* label styles */
+.profile-page > h2 + form .form-field label {
   color: var(--text-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+
+/* inputs */
+
+.profile-page > h2 + form .form-field input,
+.profile-page > h2 + form .form-field select,
+.profile-page > h2 + form .form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* image preview */
+
+.profile-page > h2 + form .form-preview {
+  grid-column: 1 / -1;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/* actions for the form */
+
+.profile-page > h2 + form .form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+
+  margin: 0;
+}
+
+
+/* respsonsive form styles */
+
+@media (max-width: 768px) {
+  .profile-page > h2 + form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-page > h2 + form .form-field:nth-child(1),
+  .profile-page > h2 + form .form-field:nth-child(2),
+  .profile-page > h2 + form .form-field:nth-child(3) {
+    grid-column: span 1;
+  }
+}
+
+
+@media (max-width: 560px) {
+  .profile-page > h2 {
+    padding: 20px 20px 0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .profile-page > h2 + form {
+    grid-template-columns: 1fr;
+    padding: 18px 20px 20px;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+
+  .profile-page > h2 + form .form-field,
+  .profile-page > h2 + form .form-field:nth-child(6) {
+    grid-column: 1;
+    max-width: 100%;
+  }
 }
 
 
 
-/* profile image preview, same as forms*/
-.form-preview {
+
+/* spacing for headers */
+
+.profile-section {
+  width: 100%;
+  margin-top: var(--section-spacing);
+}
+
+.profile-section:first-child {
+  margin-top: 0;
+}
+
+.profile-section h2 {
+  margin: 0 0 20px;
+  color: var(--text-heading);
+  font-family: var(--sans);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+/* profle image preview, same as forms */
+
+.profile-page .form-preview {
   display: block;
   width: 100px;
   height: 100px;
@@ -264,14 +277,21 @@
   object-fit: cover;
 }
 
+
 /* form actions */
 
 .profile-page .form-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-
   margin-top: 18px;
+}
+
+/*
+   use full width card grid */
+
+.profile-page .card-grid {
+  width: 100%;
 }
 
 
@@ -279,12 +299,17 @@
 
 @media (max-width: 768px) {
   .profile-page {
-    padding: 28px 18px 48px;
+    padding: var(--page-padding-y) var(--page-padding-x) 48px;
   }
 
   .profile-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .profile-page > h2,
+  .profile-page > h2 + form {
+    max-width: 100%;
   }
 }
 
@@ -296,27 +321,16 @@
 
   .profile-header {
     padding: 20px;
-
     border-radius: var(--radius-md);
   }
 
   .profile-page > h2 {
     padding: 20px 20px 0;
-
-    border-radius:
-      var(--radius-md)
-      var(--radius-md)
-      0
-      0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
 
   .profile-page > h2 + form {
     padding: 18px 20px 20px;
-
-    border-radius:
-      0
-      0
-      var(--radius-md)
-      var(--radius-md);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
   }
 }

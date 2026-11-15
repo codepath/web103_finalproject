@@ -1,4 +1,4 @@
-.modal-backdrop {
+/* .modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 2000;
@@ -20,4 +20,97 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+} */
+
+/* confirmation modal styles */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+
+.modal {
+  width: min(420px, calc(100% - 32px));
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  box-shadow: var(--shadow-lg);
+}
+
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+
+/* text */
+
+.modal h2 {
+  margin: 0 0 10px;
+  color: var(--text-heading);
+  font-family: var(--sans);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.modal p {
+  margin: 0 0 20px;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+
+/* Make the cancel button clearly secondary */
+
+.modal-actions .secondary {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text-heading);
+}
+
+.modal-actions .secondary:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  color: var(--text-heading);
+}
+
+
+/* responsive pop up*/
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding: 16px;
+  }
+
+  .modal {
+    width: 100%;
+    padding: 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-actions {
+    justify-content: stretch;
+  }
+
+  .modal-actions button {
+    flex: 1;
+  }
 }

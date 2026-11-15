@@ -4,6 +4,10 @@
   border-top: 1px solid var(--border);
 }
 
+.event-comments > h2 {
+  font-family: var(--logo);
+}
+
 .event-comments h2 {
   margin-bottom: 16px;
 }

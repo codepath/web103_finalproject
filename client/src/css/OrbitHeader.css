@@ -139,7 +139,7 @@
 }
 
 
-.orbit-create:hover,
+.orbit-actions .orbit-create:hover,
 .orbit-create-link:hover {
   background: var(--accent);
   border-color: var(--accent);
@@ -147,6 +147,7 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
+
 
 
 /* light and dark mode theme toggle button styles to match create link style*/

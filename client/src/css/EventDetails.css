@@ -5,20 +5,42 @@
   text-align: left;
 }
 
+.event-details > h1 {
+  margin-bottom: 0;
+  font-family: var(--logo);
+}
+
+.event-details > h2 {
+  margin-top: 24px;
+  font-family: var(--logo);
+}
+
 .event-cover {
   width: 100%;
   max-height: 360px;
   border-radius: 12px;
   object-fit: cover;
+  margin-bottom: 24px;
 }
+
 
 .badge {
   display: inline-block;
-  padding: 2px 10px;
-  border-radius: 999px;
-  background: #eee;
+  padding: 3px 10px;
+  border: 2px solid color-mix(in srgb, var(--primary) 35%, var(--border));
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  color: var(--text-heading);
+  font-family: var(--sans);
   font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
 }
+
 
 .host-tools {
   display: flex;

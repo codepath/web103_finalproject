@@ -16,7 +16,7 @@
   --content-max-width: 760px;
   --page-padding-x: 24px;
   --page-padding-y: 32px;
-  --section-spacing: 40px;
+  --section-spacing: 30px;
   --grid-gap: 20px;
 
   /* default borders and radius to share */
@@ -541,9 +541,7 @@ html {
 }
 
 
-/* ========================================
-   REDUCED MOTION
-   ======================================== */
+/* reduced motion */
 
 /* @media (prefers-reduced-motion: reduce) {
   *,

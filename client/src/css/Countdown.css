@@ -1,16 +1,28 @@
 .countdown {
   display: inline-block;
   padding: 4px 12px;
-  border-radius: 999px;
-  background: #eef4ff;
+  border: 2px solid color-mix(in srgb, var(--primary) 45%, var(--border));
+  border-radius: var(--radius-pill);
+  background: var(--surface-alt);
+  color: var(--text-heading);
+  font-family: var(--sans);
+  font-size: var(--font-size-sm);
   font-weight: 600;
+  line-height: 1.4;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
 }
 
 .countdown.live {
-  background: #e6f6ea;
+  background: color-mix(in srgb, var(--success) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--success) 50%, var(--border));
+  color: var(--success);
 }
 
 .countdown.ended {
-  background: #eee;
-  color: #666;
+  background: var(--surface-alt);
+  border-color: color-mix(in srgb, var(--text-muted) 55%, var(--border));
+  color: var(--text-muted);
 }

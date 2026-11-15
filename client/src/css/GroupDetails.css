@@ -5,11 +5,23 @@
   text-align: left;
 }
 
+.group-details > h1 {
+  margin-bottom: 0;
+  font-family: var(--logo);
+}
+
+.group-details > h2 {
+  margin-top: 24px;
+  font-family: var(--logo);
+}
+
+
 .group-cover {
   width: 100%;
   max-height: 320px;
   border-radius: 12px;
   object-fit: cover;
+  margin-bottom: 24px;
 }
 
 .save-button {
@@ -36,3 +48,4 @@
   color: #e91e8c;
   background: rgba(233, 30, 140, 0.08);
 }
+
