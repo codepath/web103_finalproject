@@ -1,0 +1,25 @@
+{
+  "name": "triptogether-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "reset": "node scripts/reset.js",
+    "migrate": "node scripts/migrate.js"
+  },
+  "dependencies": {
+    "connect-pg-simple": "^10.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "pg": "^8.23.1"
+  }
+}
