@@ -28,13 +28,25 @@ Connect the `codepath-12/web103_finalproject` GitHub repository and use:
 | Compute plan | Free |
 | Build command | `npm run setup && npm test` |
 | Start command | `npm start` |
-| Health check path | `/api/health` |
+| Health check path (recommended) | `/api/health` |
 
 The `.node-version` file selects Node 22. The build installs Vite's development
 dependencies explicitly, even when `NODE_ENV=production`. `npm test` builds the
 client first through its `pretest` script. The start command runs
 the repeatable, data-preserving GitHub/session migration before starting Express.
 It never runs the destructive database reset.
+
+The current service uses Render's default TCP check unless the HTTP health-check
+path is set in Settings. `/api/health` has been verified directly after releases;
+configure it in Render to make database readiness part of the platform check.
+
+## Updating a release
+
+The service tracks `main`. Confirm the deployed commit and wait for a **Live**
+status after each release. In the current setup, merges have not consistently
+started a deploy automatically. If no deploy is queued or running, use
+**Manual Deploy → Deploy latest commit** once, then check the resulting commit
+and `/api/health`. Do not start a duplicate deploy if one is already in progress.
 
 ## Production environment variables
 

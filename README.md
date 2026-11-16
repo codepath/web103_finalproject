@@ -34,7 +34,7 @@ All six core features below are implemented. Each has a demonstration GIF.
 
 Users sign in with GitHub through Passport. Sessions are stored in PostgreSQL with an HTTP-only session cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
 
-### First-login starter trip
+### ✅ First-login starter trip
 
 When a new GitHub user signs in for the first time, the app creates **Your first
 trip**, a three-day Seattle sample trip starting seven days later, with a $300
@@ -50,7 +50,7 @@ Demonstrate it with a GitHub account that has never signed into this database;
 clearing cookies or signing out of an existing account does not make it a new user.
 This feature still needs a demonstration GIF for final submission.
 
-### Request feedback and loading states
+### ✅ Request feedback and loading states
 
 Trip, activity, and expense create/update/delete actions show success toasts;
 joining, voting, and logout also show feedback. API and connection errors show
@@ -64,6 +64,22 @@ refresh finish; a synchronous mutation guard also prevents repeated submissions.
 Other mutation controls and activity-pane dismissal are locked during a pending
 request. Non-request controls such as notification dismissal remain available.
 The new feedback features still need a demonstration GIF for final submission.
+
+### ✅ Activity slide-out
+
+Add and edit activities in a side panel without leaving the itinerary. The panel
+supports keyboard focus management and Escape/close/backdrop dismissal; closing
+is temporarily blocked while a save is pending.
+
+![Adding and editing an activity in the slide-out](docs/gifs/activity-slideout.gif)
+
+### ✅ Travel-journal interface
+
+The final UI uses warm ivory, forest green and terracotta accents, locally bundled
+original travel artwork, destination cards, a daily itinerary timeline, travel-crew
+and invite-code panels, expense summaries and responsive layouts. This is a visual
+refresh of the existing workflows; it does not add user image uploads. Existing
+core-feature GIFs below show the earlier UI; updated final recordings are pending.
 
 ### ✅ 1. Create and Manage Trips
 
@@ -113,7 +129,7 @@ The recording demonstrates the budget summary, adding an expense paid by another
 
 ![Recording and editing shared expenses](docs/gifs/expenses.gif)
 
-## Initial Technical Plan
+## Technical Implementation
 
 ### Database Relationships
 
@@ -123,18 +139,18 @@ The recording demonstrates the budget summary, adding an expense paid by another
 
 ### Backend and API
 
-- Use Express routes and controllers to expose a RESTful API backed by PostgreSQL.
-- Support complete activity CRUD with `GET /api/trips/:tripId/activities`, `GET /api/activities/:activityId`, `POST /api/trips/:tripId/activities`, `PATCH /api/activities/:activityId`, and `DELETE /api/activities/:activityId`.
-- Add routes for trips, memberships, votes, and expenses as needed for the planned features.
-- Include a development database reset/seed script that restores sample users, trips, memberships, activities, votes, and expenses.
+- Express routes and controllers expose a RESTful API backed by PostgreSQL.
+- Complete activity CRUD uses `GET /api/trips/:tripId/activities`, `GET /api/activities/:activityId`, `POST /api/trips/:tripId/activities`, `PATCH /api/activities/:activityId`, and `DELETE /api/activities/:activityId`.
+- Additional routes support trips, memberships, votes, expenses and GitHub authentication.
+- A development database reset/seed script restores sample users, trips, memberships, activities, votes, and expenses.
 
 ### Frontend Structure and Interactions
 
-- Use React Router for a trip list page (`/trips`), a trip details page (`/trips/:tripId`), and an expenses page (`/trips/:tripId/expenses`).
-- Redirect users to the new trip’s details page after creating a trip.
-- Allow voting and date filtering on the trip details page without navigating away.
-- Organize page components such as `TripsPage`, `TripDetailsPage`, and `ExpensesPage`, with reusable components such as `TripCard`, `ActivityList`, `ActivityCard`, and `ExpenseForm`. Page/container components manage data and pass it to presentation components through props.
-- Deploy the React frontend and Express backend on Render with a PostgreSQL database. Verify all visible pages, links, forms, and buttons before submission.
+- React Router provides a trip list page (`/trips`), a trip details page (`/trips/:tripId`), and an expenses page (`/trips/:tripId/expenses`).
+- Creating a trip redirects to its details page.
+- Voting and date filtering work on the trip details page without navigating away.
+- Page components include `TripsPage`, `TripDetailsPage`, and `ExpensesPage`, with reusable components such as `TripCard`, `ActivityList`, `ActivityCard`, and `ExpenseForm`. Page/container components manage data and pass it to presentation components through props.
+- A single Render web service serves the React build and Express API, backed by Render PostgreSQL. Final live acceptance and recordings are tracked in the submission guide below.
 
 ### Selected Custom Features
 
@@ -179,9 +195,9 @@ Express serves the built client and `/api` from the same URL in production.
 2. Copy `server/.env.example` to `server/.env` only if you do not already have a local configuration. Set `DATABASE_URL` to your database's external connection URL for local development, and fill in `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
 3. Generate `SESSION_SECRET` with `openssl rand -hex 32`. Set `CLIENT_URL=http://localhost:5173`. Keep all secrets out of Git.
 4. Run `cd server` then `npm run migrate`. This adds the one-to-one `user_github_accounts` table and PostgreSQL session storage, allows users without email, and preserves existing application data. A fresh development database can use `npm run reset`, which deletes existing application data.
-5. Start server and client, then open `http://localhost:5173` and choose **Continue with GitHub**. Use port 5173 consistently; Vite forwards `/api` requests to the backend on 3001.
+5. Start server and client, then open `http://localhost:5173` and choose **Log in with GitHub**. Use port 5173 consistently; Vite forwards `/api` requests to the backend on 3001.
 
-Each GitHub identity creates a separate user. Existing demo users are not automatically linked by email. New users can create trips or join seeded trips with `SEATTLE26` or `PORTLAND26`.
+Each GitHub identity creates a separate user. Existing demo users are not automatically linked by email. New GitHub users receive their own starter trip. They can also create trips or join seeded trips with `SEATTLE26` or `PORTLAND26`.
 
 Sessions are stored in PostgreSQL, with a seven-day cookie containing only a signed session ID. Logout deletes the server session. GitHub access and refresh tokens are not stored. Production requires HTTPS, `NODE_ENV=production`, a production `CLIENT_URL` and matching registered callback URL. The server trusts one reverse proxy and uses secure cookies in production.
 
@@ -200,3 +216,15 @@ It uses a disposable schema on the configured database and removes it afterward;
 it does not reset or modify the application's public tables. The database user
 must have permission to create a schema. This integration test is skipped during
 ordinary builds so Render builds do not depend on access to a live database.
+
+## Final submission status
+
+See [Milestone 5](milestones/milestone5.md) for the feature checklist, implementation
+evidence, Reflection draft and remaining submission items. The [live acceptance
+and recording guide](docs/final-validation.md) gives a two-account test sequence
+and a final walkthrough outline.
+
+New GitHub login, starter-trip and polish recordings and the final walkthrough
+have not yet been added. The [final walkthrough issue](https://github.com/codepath-12/web103_finalproject/issues/32)
+is assigned to Yugant. Review the Reflection draft and project-board statuses,
+finish live acceptance, and add actual GIF files before final submission.
