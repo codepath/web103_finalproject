@@ -4,7 +4,7 @@ CodePath WEB103 Final Project
 
 Designed and developed by: Yugant Nagralawala, Arnold Waigwa, and Yingshu Wang
 
-🔗 Link to deployed app: [TripTogether](https://triptogether-web103-yingshu.onrender.com)
+🔗 Link to deployed app: [TripTogether](https://triptogether-planner.onrender.com)
 
 ## About
 

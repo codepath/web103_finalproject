@@ -6,9 +6,9 @@ no separate frontend service or production Vite proxy.
 
 ## Current service
 
-- Live URL: https://triptogether-web103-yingshu.onrender.com
-- Dashboard: https://dashboard.render.com/web/srv-dbt3l7mk1f9s73aoljeg
-- Initial deployed branch: `yingshu/render-deploy`; move to `main` after review and merge.
+- Live URL: https://triptogether-planner.onrender.com
+- Dashboard: https://dashboard.render.com/web/srv-dbt4kj9srm7s73a7cf00
+- Deployment branch: `main`.
 - Uses the existing `triptogether-db` in Oregon.
 - The initial service reuses the development OAuth App with a separate production
   session secret. Add the live callback as an additional redirect URI in that
@@ -21,7 +21,7 @@ Connect the `codepath-12/web103_finalproject` GitHub repository and use:
 
 | Setting | Value |
 | --- | --- |
-| Branch | `main` after the deployment changes are merged |
+| Branch | `main` |
 | Runtime | Node |
 | Root directory | Leave empty (repository root) |
 | Region | Oregon, matching the existing database |
