@@ -14,10 +14,13 @@ export default function CreateTripPage() {
   }
 
   return (
-    <section>
-      <h1>New trip</h1>
-      <p className="page-note">You will be the organizer and get an invite code to share.</p>
+    <section className="form-page">
+      <span className="eyebrow">A NEW CHAPTER</span>
+      <h1>Start with a destination.</h1>
+      <p className="page-note">Make a little plan. Invite your favorite people. See where it takes you.</p>
+      <div className="card form-panel"><h2>The trip details</h2><p className="page-note">You’ll be the organizer, with an invite code to share.</p>
       <TripForm submitLabel="Create trip" onSubmit={createTrip} />
+      </div>
     </section>
   )
 }

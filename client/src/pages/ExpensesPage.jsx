@@ -6,6 +6,7 @@ import { useActiveUser } from '../context/ActiveUserContext.jsx'
 import ExpenseForm from '../components/ExpenseForm.jsx'
 import ExpenseRow from '../components/ExpenseRow.jsx'
 import { useFeedback } from '../context/useFeedback.js'
+import Icon from '../components/Icon.jsx'
 
 export default function ExpensesPage() {
   const { tripId } = useParams()
@@ -42,18 +43,21 @@ export default function ExpensesPage() {
   const percent = data.budget > 0 ? Math.min(100, (data.total / data.budget) * 100) : data.total > 0 ? 100 : 0
 
   return (
-    <section>
+    <section className="expenses-page">
       <div className="page-head">
-        <h1>Expenses</h1>
-        {!adding && <button className="btn btn-primary" disabled={busy} onClick={() => setAdding(true)}>Add expense</button>}
+        <div><span className="eyebrow">LESS MATH. MORE MEMORIES.</span><h1>Shared expenses</h1><p className="page-note">Keep the good times on budget.</p></div>
+        {!adding && <button className="btn btn-primary" disabled={busy} onClick={() => setAdding(true)}><Icon name="plus" />Add expense</button>}
       </div>
 
       {error && <p className="error" role="alert">{error}</p>}
 
+      <div className="expense-summary-grid">
+        <div className="expense-summary summary-dark"><Icon name="wallet" /><span>Total spent</span><strong>{formatMoney(data.total)}</strong><small>{data.expenses.length} {data.expenses.length === 1 ? 'expense recorded' : 'expenses recorded'}</small></div>
+        <div className={`expense-summary${over ? ' summary-over' : ''}`}><Icon name="compass" /><span>{over ? 'Over budget' : 'Still to enjoy'}</span><strong>{formatMoney(Math.abs(data.budget - data.total))}</strong><small>{over ? 'Time to review the plan' : 'Room for the next adventure'}</small></div>
+        <div className="expense-summary summary-paper"><Icon name="map" /><span>Trip budget</span><strong>{formatMoney(data.budget)}</strong><small>Your shared spending plan</small></div>
+      </div>
       <div className="card budget-card">
-        <p className="budget-line">
-          <strong>{formatMoney(data.total)}</strong> spent of {formatMoney(data.budget)} budget
-        </p>
+        <div className="budget-line"><strong>Budget overview</strong><span>{formatMoney(data.total)} of {formatMoney(data.budget)}</span></div>
         <div className="budget-track" role="img" aria-label={`${Math.round(percent)} percent of budget spent`}>
           <div className={`budget-fill${over ? ' over' : ''}`} style={{ width: `${percent}%` }} />
         </div>
@@ -70,8 +74,9 @@ export default function ExpensesPage() {
         </div>
       )}
 
-      {data.expenses.length === 0 && <p className="page-note">No expenses yet.</p>}
-      <div className="stack section-gap">
+      <div className="page-head expense-list-heading"><div><span className="eyebrow">THE LITTLE DETAILS</span><h2>Expense journal</h2></div><span className="collection-count">{data.expenses.length} {data.expenses.length === 1 ? 'entry' : 'entries'}</span></div>
+      {data.expenses.length === 0 && <div className="empty-state"><Icon name="wallet" /><h3>A fresh start.</h3><p>No expenses yet. Record your first shared expense when you’re ready.</p></div>}
+      <div className="stack expense-list">
         {data.expenses.map((expense) => (
           <ExpenseRow key={expense.id} expense={expense} members={members} onChanged={load} />
         ))}

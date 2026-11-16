@@ -3,6 +3,7 @@ import { api, formatDate, formatMoney } from '../api.js'
 import { useActiveUser } from '../context/ActiveUserContext.jsx'
 import { useAsyncAction, useFeedback } from '../context/useFeedback.js'
 import Spinner from './Spinner.jsx'
+import Icon from './Icon.jsx'
 
 export default function ActivityCard({ activity, onChanged, onEdit }) {
   const { activeUser } = useActiveUser()
@@ -45,12 +46,12 @@ export default function ActivityCard({ activity, onChanged, onEdit }) {
   return (
     <article className="card activity-card">
       <div className="trip-card-head">
-        <h3>{activity.title}</h3>
-        <span className="page-note">{formatMoney(activity.estimated_cost)}</span>
+        <div className="activity-heading"><span className="activity-marker"><Icon name="pin" /></span><div><h3>{activity.title}</h3>{activity.location && <p className="activity-location">{activity.location}</p>}</div></div>
+        <span className="activity-cost">{formatMoney(activity.estimated_cost)}<small>estimated</small></span>
       </div>
-      {activity.location && <p>{activity.location}</p>}
       {activity.description && <p className="page-note">{activity.description}</p>}
-      <p className="page-note">
+      <p className="page-note activity-meta">
+        <Icon name="calendar" />
         {activity.scheduled_date ? formatDate(activity.scheduled_date) : 'Not scheduled'} · added by{' '}
         {activity.created_by_name}
       </p>
@@ -63,7 +64,7 @@ export default function ActivityCard({ activity, onChanged, onEdit }) {
           aria-busy={pending && action === 'vote'}
           aria-pressed={activity.user_voted}
         >
-          {pending && action === 'vote' && <Spinner inline />}
+          {pending && action === 'vote' ? <Spinner inline /> : <Icon name="heart" />}
           {pending && action === 'vote' ? 'Updating…' : activity.user_voted ? 'Remove vote' : 'Vote'}
         </button>
         <span className="vote-count" aria-label={`${activity.vote_count} votes`}>

@@ -1,24 +1,23 @@
-/* Design tokens from the Figma file (TripTogether collection) */
 :root {
-  --bg-ground: #f8f8f8;
+  --bg-ground: #f8f7f2;
   --bg-surface: #ffffff;
-  --bg-raised: #eeeeee;
-  --bg-secondary: #e5e5e5;
-  --line-border: #e6e6e6;
-  --line-rule: #f0f0f0;
-  --line-control: #d4d4d4;
-  --text-primary: #0a0a0a;
-  --text-muted: #6b6b6b;
-  --text-negative: #c4242a;
-  --accent-ink: #141414;
-  --data-spent: #1d5fbf;
-  --data-planned: #bdbdbd;
-  --data-track: #e6e6e6;
-
-  --radius-card: 8px;
-  --radius-control: 6px;
-  --sidebar-width: 256px;
-
-  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --bg-raised: #edf1e9;
+  --bg-secondary: #dce6d9;
+  --line-border: #e4e7dc;
+  --line-rule: #eff0e8;
+  --line-control: #cbd3c6;
+  --text-primary: #243b33;
+  --text-muted: #6c7970;
+  --text-negative: #b34835;
+  --accent-ink: #234c3d;
+  --accent-orange: #cf6c45;
+  --data-spent: #527d60;
+  --data-planned: #a9b99f;
+  --data-track: #e8ecdf;
+  --radius-card: 18px;
+  --radius-control: 9px;
+  --sidebar-width: 236px;
+  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 }

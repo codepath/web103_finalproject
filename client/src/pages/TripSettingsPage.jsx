@@ -54,9 +54,12 @@ export default function TripSettingsPage() {
   }
 
   return (
-    <section>
-      <h1>Settings</h1>
+    <section className="form-page">
+      <span className="eyebrow">MAKE IT YOURS</span>
+      <h1>Trip settings</h1>
+      <p className="page-note">A few little details for your next big adventure.</p>
       {error && <p className="error" role="alert">{error}</p>}
+      <div className="card form-panel"><h2>The trip details</h2>
       <TripForm
         initial={{
           title: trip.title,
@@ -68,11 +71,14 @@ export default function TripSettingsPage() {
         submitLabel="Save changes"
         onSubmit={save}
       />
+      </div>
+      <div className="card danger-zone">
       <h2>Delete trip</h2>
       <p className="page-note">Removes the trip, its activities, votes, and expenses.</p>
       <button className="btn btn-danger" disabled={busy} onClick={remove}>
         {deleting && <Spinner inline />}{deleting ? 'Deleting…' : 'Delete trip'}
       </button>
+      </div>
     </section>
   )
 }

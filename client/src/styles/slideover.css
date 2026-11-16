@@ -7,15 +7,15 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  width: min(480px, 100%);
+  width: min(520px, 100%);
   background: var(--bg-surface);
   border-left: 1px solid var(--line-border);
   box-shadow: -8px 0 24px rgba(10, 10, 10, 0.08);
   animation: slideover-in 200ms ease-out;
 }
-.slideover-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line-rule); }
-.slideover-head h2 { margin: 0; }
-.slideover-body { flex: 1; overflow-y: auto; padding: 20px; }
+.slideover-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 25px 28px; background: #eff2e7; border-bottom: 1px solid var(--line-border); }
+.slideover-head h2 { margin: 0; font-size: 29px; }
+.slideover-body { flex: 1; overflow-y: auto; padding: 28px; }
 /* The activity form is a card on the page; inside the pane it fills the pane instead. */
 .slideover .form.card { max-width: none; margin: 0; padding: 0; border: 0; background: transparent; }
 
