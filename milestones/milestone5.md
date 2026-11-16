@@ -148,8 +148,8 @@ Toasts, a server-rejected invalid end date and correction, and organizer restric
 
 Still missing: genuinely first-time signup/starter trip, another account joining
 and collaborating, deletion, and visible spinner/disabled pending controls.
-[Issue #32](https://github.com/codepath-12/web103_finalproject/issues/32) remains
-open until the full requirements are covered. The demo trip `Coastal weekend demo`
+[Issue #32](https://github.com/codepath-12/web103_finalproject/issues/32) was closed
+at the owner's request; the recording gaps above remain outstanding. The demo trip `Coastal weekend demo`
 was retained in the live account for follow-up testing; existing trips were not edited.
 
 See [the validation and recording guide](../docs/final-validation.md) for the remaining checks.
