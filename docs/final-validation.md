@@ -3,8 +3,8 @@
 Live app: https://triptogether-planner.onrender.com
 
 Use the live site for final evidence. Existing GIFs demonstrate the six core
-features but predate the final design and GitHub authentication. Do not mark the
-checks below complete until someone actually performs them.
+features but predate the final design and GitHub authentication. The new single-account recording is described below. Do not mark the remaining
+checks complete until someone actually performs them.
 
 ## Test preparation
 
@@ -77,12 +77,13 @@ reset the shared live database while recording.
 
 ## Recording files to add
 
-These are proposed filenames, not existing artifacts. Add them only after the
-actual recordings are produced and reviewed.
+The login recording now exists. Starter-trip, pending-state polish and a complete
+acceptance walkthrough remain to be recorded. The current partial walkthrough
+and validation recording are linked in the evidence section below.
 
 | Evidence | Proposed file |
 | --- | --- |
-| GitHub login/logout | `docs/gifs/github-login.gif` |
+| GitHub login/logout (added) | `docs/gifs/github-login.gif` |
 | New-user starter trip | `docs/gifs/starter-trip.gif` |
 | Toasts, spinner and pending controls | `docs/gifs/polish.gif` |
 | Complete live walkthrough | `docs/gifs/final-walkthrough.gif` |
@@ -91,3 +92,20 @@ The existing `docs/gifs/activity-slideout.gif` can already be linked. Prefer
 recording the final walkthrough using the current UI so the submitted evidence
 matches the live app. Add actual image links to README and `milestone5.md` only
 when the files exist.
+
+## Current recording evidence — November 15, 2026
+
+- [Current UI walkthrough](gifs/current-ui-walkthrough.gif): single existing account;
+  trip creation/settings, activity creation/editing, voting, date filtering,
+  expense creation/editing, invalid dates/recovery, invalid invite, logout/login
+  and non-organizer settings restriction.
+- [GitHub login/logout](gifs/github-login.gif): existing GitHub session returns
+  through OAuth; this is not first-time account authorization or registration.
+- [Validation and Toasts](gifs/validation-feedback.gif): rejected end date,
+  corrected save, invalid invite and preserved input.
+
+These are sampled real UI screenshots assembled into GIFs, cropped to remove
+browser tabs/bookmarks. They are not continuous screen recordings. Spinner and
+pending-control states were not clearly captured. No first-login, two-account,
+deletion, mobile or complete keyboard acceptance is claimed. The live demo trip
+`Coastal weekend demo` (trip 4) is retained for follow-up; no existing trip data was changed.

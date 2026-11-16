@@ -32,7 +32,9 @@ All six core features below are implemented. Each has a demonstration GIF.
 
 ### ✅ GitHub Sign-in
 
-Users sign in with GitHub through Passport. Sessions are stored in PostgreSQL with an HTTP-only session cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
+Users sign in with GitHub through Passport. Sessions are stored in PostgreSQL with an HTTP-only session cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The core-feature recordings below were made with the previous demo selector. The current login recording uses the live GitHub flow.
+
+![GitHub login and logout on the deployed app](docs/gifs/github-login.gif)
 
 ### ✅ First-login starter trip
 
@@ -63,7 +65,10 @@ support. Request buttons and form inputs are disabled until the request and
 refresh finish; a synchronous mutation guard also prevents repeated submissions.
 Other mutation controls and activity-pane dismissal are locked during a pending
 request. Non-request controls such as notification dismissal remain available.
-The new feedback features still need a demonstration GIF for final submission.
+The recording below demonstrates server validation, error recovery and Toasts.
+Spinner and disabled pending-control recordings are still outstanding.
+
+![Server validation and error feedback](docs/gifs/validation-feedback.gif)
 
 ### ✅ Activity slide-out
 
@@ -79,7 +84,15 @@ The final UI uses warm ivory, forest green and terracotta accents, locally bundl
 original travel artwork, destination cards, a daily itinerary timeline, travel-crew
 and invite-code panels, expense summaries and responsive layouts. This is a visual
 refresh of the existing workflows; it does not add user image uploads. Existing
-core-feature GIFs below show the earlier UI; updated final recordings are pending.
+core-feature GIFs below show the earlier UI.
+
+![Current deployed interface walkthrough](docs/gifs/current-ui-walkthrough.gif)
+
+This GIF assembles sampled screenshots from actual live interactions, with reading
+time between states. It covers a single existing account, trip creation/settings,
+activity creation/editing, voting, date filtering, expense creation/editing, Toasts,
+invalid input, login/logout and member restrictions. It does not demonstrate
+first-time registration, multi-account collaboration, deletion, or pending controls.
 
 ### ✅ 1. Create and Manage Trips
 
@@ -224,7 +237,8 @@ evidence, Reflection draft and remaining submission items. The [live acceptance
 and recording guide](docs/final-validation.md) gives a two-account test sequence
 and a final walkthrough outline.
 
-New GitHub login, starter-trip and polish recordings and the final walkthrough
-have not yet been added. The [final walkthrough issue](https://github.com/codepath-12/web103_finalproject/issues/32)
+Current GitHub login, validation-feedback and single-account walkthrough GIFs
+are included above. Starter-trip, multi-account, deletion and pending-state
+evidence still need to be added. The [final walkthrough issue](https://github.com/codepath-12/web103_finalproject/issues/32)
 is assigned to Yugant. Review the Reflection draft and project-board statuses,
 finish live acceptance, and add actual GIF files before final submission.

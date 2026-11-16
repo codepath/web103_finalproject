@@ -4,8 +4,9 @@ This document should be completed and submitted during **Unit 9** of this course
 
 Live project: [TripTogether](https://triptogether-planner.onrender.com).
 
-Implementation evidence is listed below. The final live walkthrough, full
-multi-account acceptance pass, and new feature recordings are still pending.
+Implementation evidence and a current single-account walkthrough are included
+below. Full multi-account acceptance, first-login and pending-state recordings
+are still pending.
 Existing core-feature GIFs predate the final UI and authentication. Reflection
 answers are a draft for the team's review before submission.
 
@@ -21,7 +22,7 @@ This unit, be sure to complete all tasks listed below. To complete a task, place
 - [x] In this document, complete the **Reflection** section below
 - [x] 🚩🚩🚩**Complete the Final Project Feature Checklist section below**, detailing each feature you completed in the project (ONLY include features you implemented, not features you planned)
 - [ ] 🚩🚩🚩**Record a GIF showing a complete run-through of your app** that displays all the components included in the **Final Project Feature Checklist** below
-  - [ ] Include this GIF in the **Final Demo GIF** section below
+  - [x] Include this GIF in the **Final Demo GIF** section below (single-account coverage; remaining gaps listed below)
 
 ## Final Project Feature Checklist
 
@@ -62,7 +63,7 @@ Complete the checklist below detailing each baseline, custom, and stretch featur
 - [x] The user can filter or sort items based on particular criteria as appropriate for your use case
 - [x] Data is automatically generated in response to a certain event or user action. Examples include generating a default inventory for a new user starting a game or creating a starter set of tasks for a user creating a new task app account
 - [x] Data submitted via a POST or PATCH request is validated before the database is updated (e.g. validating that an event is in the future before allowing a new event to be created)
-  - [ ] *To receive full credit, please be sure to demonstrate in your walkthrough that for certain inputs, the item will NOT be successfully created or updated.*
+  - [x] *To receive full credit, please be sure to demonstrate in your walkthrough that for certain inputs, the item will NOT be successfully created or updated.*
 
 ### Stretch Features
 
@@ -119,24 +120,39 @@ Validation already performed: production builds, six frontend feedback tests and
 six server authentication/routing tests; six isolated PostgreSQL starter-trip
 scenarios cover first/repeated/concurrent login, existing users, deletion, separate
 ownership and rollback/retry. The database integration suite is opt-in and skips
-during normal builds. Browser visual acceptance of the latest UI was not performed.
+during normal builds. A live single-account pass also verified trip creation and
+settings updates, activity creation/editing, voting, date filtering, expense
+creation/editing, invalid-date rejection and recovery, invalid invite codes,
+login/logout and the non-organizer settings restriction. This is not full visual,
+mobile, keyboard or multi-account acceptance.
 
 ### Evidence still to add
 
 - [ ] Complete the live multi-account acceptance checklist.
 - [ ] Capture first-login starter-trip behavior with a genuinely new GitHub account.
-- [ ] Add actual GitHub login, starter-trip and polish GIFs to README.
-- [ ] Add the final live walkthrough GIF and show a server-rejected invalid date submission.
+- [x] Add actual GitHub login and validation/Toast GIFs to README.
+- [x] Add a current single-account walkthrough and show a server-rejected invalid date submission.
+- [ ] Supplement it with starter-trip, multi-account, deletion and visible pending-control evidence.
 - [ ] Review the Reflection draft as a team and confirm project-board statuses.
 
 ## Final Demo GIF
 
-Pending: Yugant is tracking the final live walkthrough in
-[Issue #32](https://github.com/codepath-12/web103_finalproject/issues/32).
-The final GIF has not yet been added; no placeholder image link is claimed as evidence.
+![Current live single-account walkthrough](../docs/gifs/current-ui-walkthrough.gif)
 
-Use [the final validation and recording guide](../docs/final-validation.md) to cover
-all checked features, including server validation failure and two-account workflows.
+Recorded from actual interactions on the deployed app on November 15, 2026;
+assembled from sampled screenshots, cropped to app content, with reading time
+between states. This is a single-account walkthrough, not a continuous full
+acceptance recording. It includes login/logout, trip creation/settings, activity
+creation/editing, voting, date filtering, expense creation/editing, success/error
+Toasts, a server-rejected invalid end date and correction, and organizer restrictions.
+
+Still missing: genuinely first-time signup/starter trip, another account joining
+and collaborating, deletion, and visible spinner/disabled pending controls.
+[Issue #32](https://github.com/codepath-12/web103_finalproject/issues/32) remains
+open until the full requirements are covered. The demo trip `Coastal weekend demo`
+was retained in the live account for follow-up testing; existing trips were not edited.
+
+See [the validation and recording guide](../docs/final-validation.md) for the remaining checks.
 
 ## Reflection
 
