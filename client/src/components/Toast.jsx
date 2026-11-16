@@ -1,0 +1,8 @@
+export default function Toast({ message, type, onDismiss }) {
+  return (
+    <div className={`lb-toast lb-toast--${type}`} role={type === 'error' ? 'alert' : 'status'}>
+      <span>{message}</span>
+      <button type="button" className="lb-toast-close" onClick={onDismiss} aria-label="Dismiss notification">&times;</button>
+    </div>
+  )
+}

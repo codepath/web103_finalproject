@@ -1,3 +1,4 @@
+import LoadingSpinner from './components/LoadingSpinner.jsx'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext(null)
@@ -8,6 +9,7 @@ export const LOGIN_URL = '/auth/github'
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [loggingOut, setLoggingOut] = useState(false)
 
   useEffect(() => {
     fetch('/auth/me')
@@ -18,12 +20,27 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function logout() {
-    await fetch('/auth/logout', { method: 'POST' })
-    setUser(null)
+    if (loggingOut) return
+
+    setLoggingOut(true)
+
+    try {
+      const response = await fetch('/auth/logout', { method: 'POST' })
+
+      if (!response.ok) {
+        throw new Error(`Logout failed (HTTP ${response.status}).`)
+      }
+
+      setUser(null)
+    } catch (error) {
+      window.alert(error.message || 'Unable to log out. Please try again.')
+    } finally {
+      setLoggingOut(false)
+    }
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, logout }}>
+    <AuthContext.Provider value={{ user, loading, logout, loggingOut }}>
       {children}
     </AuthContext.Provider>
   )
@@ -42,7 +59,7 @@ export function RequireAuth({ children }) {
     if (!loading && !user) window.location.assign(LOGIN_URL)
   }, [loading, user])
 
-  if (loading) return <p className="status">Checking login…</p>
+  if (loading) return <LoadingSpinner label="Checking login..." />
   if (!user) return <p className="status">Redirecting to GitHub login…</p>
   return children
 }

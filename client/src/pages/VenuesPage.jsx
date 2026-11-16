@@ -1,10 +1,14 @@
+import { useToast } from '../context/ToastContext.jsx'
+import LoadingSpinner from '../components/LoadingSpinner.jsx'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../AuthContext.jsx'
 
 function VenuesPage() {
   const { user } = useAuth()
+  const toast = useToast()
   const [venues, setVenues] = useState([])
+  const myVenues = venues
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
@@ -15,7 +19,7 @@ function VenuesPage() {
 
     async function loadVenues() {
       try {
-        const response = await fetch('/api/venues')
+        const response = await fetch('/api/venues/mine')
 
         if (!response.ok) {
           throw new Error(`Unable to load venues (HTTP ${response.status}).`)
@@ -82,8 +86,10 @@ function VenuesPage() {
 
       setVenues((current) => current.filter((item) => item.id !== venue.id))
       setMessage(`Deleted "${venue.name}" (ID ${venue.id}).`)
+      toast.success('Venue deleted successfully.')
     } catch (err) {
       setError(err.message)
+      toast.error(err.message)
     } finally {
       setDeletingId(null)
     }
@@ -91,13 +97,16 @@ function VenuesPage() {
 
   return (
     <section className="venues-page">
-      <Link to="/events/new" className="back">
-        Back to event form
+      <Link to="/" className="back">
+        Back to homepage
       </Link>
 
       <h1>Manage Venues</h1>
+      <Link to="/venues/new" className="secondary-button">
+        Create Venue
+      </Link>
       <p className="muted">
-        Delete unused venues. Venues associated with events are protected.
+        View and manage venues you created. Venues associated with events cannot be deleted.
       </p>
 
       {error && (
@@ -108,20 +117,27 @@ function VenuesPage() {
       {message && <p role="status">{message}</p>}
 
       {loading ? (
-        <p>Loading venues...</p>
-      ) : venues.length === 0 ? (
-        <p>No venues available.</p>
+        <LoadingSpinner label="Loading venues..." />
+      ) : myVenues.length === 0 ? (
+        <p>You have not created any venues yet.</p>
       ) : (
         <ul className="venue-list">
-          {venues.map((venue) => (
+          {myVenues.map((venue) => (
             <li className="venue-item" key={venue.id}>
               <div>
                 <strong>{venue.name}</strong>
                 <p className="muted">
-                  {venue.city} · Venue ID {venue.id}
+                  {venue.city} &middot; Venue ID {venue.id}
                 </p>
               </div>
 
+              <Link
+                to={`/venues/${venue.id}/edit`}
+                className="secondary-button"
+                aria-label={`Edit ${venue.name}, venue ID ${venue.id}`}
+              >
+                Edit
+              </Link>
               {user?.id === venue.owner_id && (
                 <button
                   type="button"

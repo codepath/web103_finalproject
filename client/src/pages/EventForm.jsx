@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useToast } from '../context/ToastContext.jsx'
+import LoadingSpinner from '../components/LoadingSpinner.jsx'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import TagPicker from '../components/TagPicker.jsx'
+import VenueFields from '../components/VenueFields.jsx'
 
 const getJson = (url) =>
   fetch(url).then((res) =>
@@ -9,59 +12,6 @@ const getJson = (url) =>
       : Promise.reject(new Error(`Request failed (${res.status})`)),
   )
 
-const US_STATES = [
-  ['AL', 'Alabama'],
-  ['AK', 'Alaska'],
-  ['AZ', 'Arizona'],
-  ['AR', 'Arkansas'],
-  ['CA', 'California'],
-  ['CO', 'Colorado'],
-  ['CT', 'Connecticut'],
-  ['DE', 'Delaware'],
-  ['FL', 'Florida'],
-  ['GA', 'Georgia'],
-  ['HI', 'Hawaii'],
-  ['ID', 'Idaho'],
-  ['IL', 'Illinois'],
-  ['IN', 'Indiana'],
-  ['IA', 'Iowa'],
-  ['KS', 'Kansas'],
-  ['KY', 'Kentucky'],
-  ['LA', 'Louisiana'],
-  ['ME', 'Maine'],
-  ['MD', 'Maryland'],
-  ['MA', 'Massachusetts'],
-  ['MI', 'Michigan'],
-  ['MN', 'Minnesota'],
-  ['MS', 'Mississippi'],
-  ['MO', 'Missouri'],
-  ['MT', 'Montana'],
-  ['NE', 'Nebraska'],
-  ['NV', 'Nevada'],
-  ['NH', 'New Hampshire'],
-  ['NJ', 'New Jersey'],
-  ['NM', 'New Mexico'],
-  ['NY', 'New York'],
-  ['NC', 'North Carolina'],
-  ['ND', 'North Dakota'],
-  ['OH', 'Ohio'],
-  ['OK', 'Oklahoma'],
-  ['OR', 'Oregon'],
-  ['PA', 'Pennsylvania'],
-  ['RI', 'Rhode Island'],
-  ['SC', 'South Carolina'],
-  ['SD', 'South Dakota'],
-  ['TN', 'Tennessee'],
-  ['TX', 'Texas'],
-  ['UT', 'Utah'],
-  ['VT', 'Vermont'],
-  ['VA', 'Virginia'],
-  ['WA', 'Washington'],
-  ['WV', 'West Virginia'],
-  ['WI', 'Wisconsin'],
-  ['WY', 'Wyoming'],
-  ['DC', 'Washington, DC'],
-]
 const emptyEvent = {
   title: '',
   venue_id: '',
@@ -102,11 +52,13 @@ function EventForm() {
   const { id } = useParams()
   const isEdit = id !== undefined
   const navigate = useNavigate()
+  const toast = useToast()
   const [form, setForm] = useState(emptyEvent)
   const [options, setOptions] = useState(null) // { venues, activityTypes, tags }
   const [loadError, setLoadError] = useState(null)
   const [submitError, setSubmitError] = useState(null)
   const [saving, setSaving] = useState(false)
+  const submissionLock = useRef(false)
 
   useEffect(() => {
     Promise.all([
@@ -199,9 +151,11 @@ function EventForm() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (submissionLock.current) return
     if (form.end_time <= form.start_time)
       return setSubmitError('End time must be after start time.')
 
+    submissionLock.current = true
     setSaving(true)
     setSubmitError(null)
     try {
@@ -237,9 +191,12 @@ function EventForm() {
       const body = await res.json()
       if (!res.ok)
         throw new Error(body.error || `Request failed (${res.status})`)
+      toast.success(isEdit ? 'Event updated successfully.' : 'Event created successfully.')
       navigate(`/events/${body.id}`)
     } catch (err) {
       setSubmitError(err.message)
+      toast.error(err.message)
+      submissionLock.current = false
       setSaving(false)
     }
   }
@@ -250,7 +207,7 @@ function EventForm() {
         Couldn't load the form: {loadError}. <Link to="/">Back to events</Link>
       </p>
     )
-  if (!options) return <p className="status">Loading form…</p>
+  if (!options) return <LoadingSpinner label="Loading form..." />
 
   return (
     <form className="event-form" onSubmit={handleSubmit}>
@@ -265,6 +222,7 @@ function EventForm() {
       )}
       <h1>{isEdit ? 'Edit event' : 'Post a new event'}</h1>
 
+      <fieldset className="submission-fieldset" disabled={saving}>
       <div className="form-row">
         <label>
           Title
@@ -314,7 +272,7 @@ function EventForm() {
             {venueMode === 'existing' ? (
               <label>
                 <div className="venue-management-link">
-                  <Link to="/venues">Delete Venues</Link>
+                  <Link to="/manage?tab=venues">Manage Venues</Link>
                 </div>
                 Venue
                 <select
@@ -333,102 +291,13 @@ function EventForm() {
                 </select>
               </label>
             ) : (
-              <div>
-                <label>
-                  Venue name
-                  <input
-                    required
-                    value={newVenue.name}
-                    onChange={updateVenue('name')}
-                  />
-                </label>
-                <label>
-                  Street address
-                  <input
-                    required
-                    value={newVenue.address}
-                    onChange={updateVenue('address')}
-                  />
-                </label>
-                <label>
-                  City
-                  <input
-                    required
-                    value={newVenue.city}
-                    onChange={updateVenue('city')}
-                  />
-                </label>
-                <label>
-                  State
-                  <select
-                    required
-                    value={newVenue.state}
-                    onChange={updateVenue('state')}
-                  >
-                    <option value="" disabled>
-                      Choose a state
-                    </option>
-                    {US_STATES.map(([code, name]) => (
-                      <option key={code} value={code}>
-                        {name}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  ZIP code (optional)
-                  <input
-                    value={newVenue.zip_code}
-                    onChange={updateVenue('zip_code')}
-                    inputMode="numeric"
-                    pattern="[0-9]{5}(-[0-9]{4})?"
-                    placeholder="33312"
-                  />
-                </label>
-                <label>
-                  Website (optional)
-                  <input
-                    type="url"
-                    value={newVenue.website_url}
-                    onChange={updateVenue('website_url')}
-                  />
-                </label>
-                <button
-                  type="button"
-                  onClick={findCoordinates}
-                  disabled={
-                    geoLoading ||
-                    !newVenue.address.trim() ||
-                    !newVenue.city.trim() ||
-                    !newVenue.state
-                  }
-                >
-                  {geoLoading ? 'Finding coordinates...' : 'Find coordinates'}
-                </button>
-                {geoStatus && <p role="status">{geoStatus}</p>}
-                <label>
-                  Latitude
-                  <input
-                    type="number"
-                    step="any"
-                    min="-90"
-                    max="90"
-                    value={newVenue.latitude}
-                    onChange={updateVenue('latitude')}
-                  />
-                </label>
-                <label>
-                  Longitude
-                  <input
-                    type="number"
-                    step="any"
-                    min="-180"
-                    max="180"
-                    value={newVenue.longitude}
-                    onChange={updateVenue('longitude')}
-                  />
-                </label>
-              </div>
+              <VenueFields
+                newVenue={newVenue}
+                updateVenue={updateVenue}
+                findCoordinates={findCoordinates}
+                geoLoading={geoLoading}
+                geoStatus={geoStatus}
+              />
             )}
           </fieldset>
         </div>
@@ -518,6 +387,7 @@ function EventForm() {
       <button type="submit" className="button" disabled={saving}>
         {saving ? 'Saving…' : isEdit ? 'Save changes' : 'Post event'}
       </button>
+      </fieldset>
     </form>
   )
 }

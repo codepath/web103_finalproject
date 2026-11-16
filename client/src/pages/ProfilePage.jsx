@@ -1,3 +1,4 @@
+import LoadingSpinner from '../components/LoadingSpinner.jsx'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { formatShortDate } from '../format.js'
@@ -19,7 +20,7 @@ function ProfilePage() {
   }, [])
 
   if (error) return <p className="status">Couldn't load profile: {error}</p>
-  if (!profile) return <p className="status">Loading profile…</p>
+  if (!profile) return <LoadingSpinner label="Loading profile..." />
 
   return (
     <article className="event-page profile-page">

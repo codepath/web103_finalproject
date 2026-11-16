@@ -19,9 +19,10 @@ function PinIcon() {
 }
 
 // Presenter: one tile in the home grid. distance is in miles, or null when unknown.
-function EventCard({ event, distance }) {
+function EventCard({ event, distance, onQuickView }) {
   return (
-    <Link to={`/events/${event.id}`} className="tile">
+    <div className="lb-tile-shell">
+      <Link to={`/events/${event.id}`} className="tile">
       {event.images[0] ? (
         <img src={event.images[0]} alt="" loading="lazy" />
       ) : (
@@ -33,17 +34,26 @@ function EventCard({ event, distance }) {
         <h2>{event.title}</h2>
         <p className="tile-type">{event.activity_type}</p>
         <p className="tile-meta">
-          {distance !== null && (
-            <span>
-              <PinIcon />{' '}
-              {distance < 10 ? distance.toFixed(1) : Math.round(distance)} mi
-            </span>
-          )}
+          <span>
+            <PinIcon />{' '}
+            {distance == null || !Number.isFinite(distance)
+              ? 'Distance unavailable'
+              : `${distance < 10 ? distance.toFixed(1) : Math.round(distance)} mi away`}
+          </span>
           <span>{priceTier(event.price)}</span>
           <span>{formatShortDate(event.start_time)}</span>
         </p>
       </div>
-    </Link>
+      </Link>
+      <button
+        type="button"
+        className="lb-quick-view-trigger"
+        onClick={(e) => onQuickView(event, e.currentTarget)}
+        aria-label={`Quick view: ${event.title}`}
+      >
+        Quick View
+      </button>
+    </div>
   )
 }
 
