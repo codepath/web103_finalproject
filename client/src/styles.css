@@ -1961,8 +1961,8 @@ textarea:focus-visible {
   z-index: 20;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: min(340px, calc(100vw - 32px));
+  gap: 10px;
+  width: min(380px, calc(100vw - 32px));
   pointer-events: none;
 }
 .toast {
@@ -1970,14 +1970,20 @@ textarea:focus-visible {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 14px;
   overflow: hidden;
-  padding: 10px 8px 10px 12px;
-  border: 1px solid #3a4535;
-  border-radius: 10px;
-  background: #1c221b;
+  padding: 14px 12px 14px 16px;
+  border: 1px solid #ffffff14;
+  border-radius: 14px;
+  background: rgba(30, 37, 29, 0.9);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
   color: #e7ece5;
-  box-shadow: 0 14px 36px #0009;
+  /* Top-edge highlight, a tight contact shadow and a soft long shadow. */
+  box-shadow:
+    inset 0 1px 0 #ffffff0d,
+    0 2px 6px #0005,
+    0 22px 48px -14px #000d;
   pointer-events: auto;
   animation: toast-in 0.28s ease-out both;
 }
@@ -1988,8 +1994,8 @@ textarea:focus-visible {
    red so failures stand out. */
 .tone-error {
   --tone: #ff9a9a;
-  border-color: #5a3a3a;
-  background: #251c1c;
+  border-color: #ff9a9a2e;
+  background: rgba(42, 29, 29, 0.92);
 }
 .tone-success .toast-mark-symbol,
 .tone-completed .toast-mark-symbol {
@@ -1999,8 +2005,11 @@ textarea:focus-visible {
 /* Animated mark: the circle fills, then the tick draws itself. */
 .toast-mark {
   flex: none;
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
+  overflow: visible;
+  /* A soft glow in the icon's own color. */
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--tone) 35%, transparent));
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -2046,8 +2055,9 @@ textarea:focus-visible {
 }
 .toast-title {
   font-family: var(--heading);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.15px;
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
@@ -2062,10 +2072,10 @@ textarea:focus-visible {
   line-height: 1.5;
 }
 .toast p {
-  margin: 1px 0 0;
+  margin: 3px 0 0;
   color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.4;
+  font-size: 13px;
+  line-height: 1.45;
   overflow-wrap: anywhere;
 }
 .toast-action {
@@ -2088,16 +2098,24 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 .toast-close {
+  display: grid;
   flex: none;
+  place-items: center;
+  align-self: start;
+  width: 26px;
+  height: 26px;
   border: 0;
-  border-radius: 6px;
-  padding: 0 7px;
+  border-radius: 50%;
+  padding: 0;
   background: transparent;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.3;
+  font-size: 17px;
+  line-height: 1;
   opacity: 0;
-  transition: opacity 0.15s;
+  transition:
+    opacity 0.15s,
+    background-color 0.15s,
+    color 0.15s;
   cursor: pointer;
 }
 /* The close button appears on hover or keyboard focus; touch screens without
@@ -2113,7 +2131,7 @@ textarea:focus-visible {
 }
 .toast-close:hover {
   color: #e7ece5;
-  background: #ffffff12;
+  background: #ffffff14;
 }
 .toast-close:focus-visible {
   outline: 2px solid var(--accent);

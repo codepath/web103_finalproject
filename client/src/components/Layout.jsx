@@ -25,8 +25,24 @@ export function Layout() {
     if (reset) setResetRevision((value) => value + 1);
   }, []);
   const signIn = useCallback(() => {
-    window.location.href = `/auth/github?returnTo=${encodeURIComponent(pathname + search.replace(/([?&])authError=[^&]*&?/, "$1").replace(/[?&]$/, "") + hash)}`;
-  }, [pathname, search, hash]);
+    const url = `/auth/github?returnTo=${encodeURIComponent(pathname + search.replace(/([?&])authError=[^&]*&?/, "$1").replace(/[?&]$/, "") + hash)}`;
+    // The current page stays on screen until GitHub responds, so the toast
+    // renders and spins while the redirect is in flight.
+    toast.loading("Taking you to GitHub…", {
+      title: "Signing in",
+      key: "sign-in",
+    });
+    window.location.assign(url);
+  }, [pathname, search, hash, toast]);
+  // Coming back with the browser's Back button restores this page from
+  // cache, so clear the "Signing in" toast instead of leaving it spinning.
+  useEffect(() => {
+    const restored = (event) => {
+      if (event.persisted) toast.dismiss("sign-in");
+    };
+    window.addEventListener("pageshow", restored);
+    return () => window.removeEventListener("pageshow", restored);
+  }, [toast]);
   // GitHub sends people back with ?authError=… when sign-in is cancelled or
   // fails. The parameter stays in the URL so the dashboard does not redirect
   // straight back to GitHub; the toast offers a retry instead.
