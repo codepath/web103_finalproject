@@ -1,0 +1,6 @@
+**/dist
+**/package-lock.json
+documents
+milestones
+planning
+*.md

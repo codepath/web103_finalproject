@@ -1,0 +1,61 @@
+:root {
+  /* Palette: Old Lace #FFF8E9, Grapefruit #FE6D73, Apricot #FFCB77, Turquoise #24E5D2, Cerulean #2584A7 */
+  --text: #2b4a57;
+  --text-h: #123847;
+  --muted: #5d7480;
+  --bg: #fff8e9;
+  --card: #ffffff;
+  --border: #f0e2c6;
+  --accent: #1d6f8d;
+  --accent-bg: #ffe9c4;
+  --on-accent: #ffffff;
+  --danger: #b3261e;
+  --filter-hover-bg: #165a74;
+  --filter-hover-text: #ffcb77;
+  --menu-shadow: rgba(37, 132, 167, 0.28);
+  --post-bg: #fe6d73; /* Grapefruit Pink */
+  --post-ledge: #d9474e;
+
+  --font-display: 'Jua', system-ui, sans-serif;
+  --font-body: 'National Park', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font: 16px/1.5 var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e6dccb;
+    --text-h: #fff8e9;
+    --muted: #a9b7bd;
+    --bg: #0f2a35;
+    --card: #163845;
+    --border: #24505f;
+    --accent: #24e5d2;
+    --accent-bg: #1d4a58;
+    --on-accent: #0f2a35;
+    --danger: #ff8a80;
+    --menu-shadow: rgba(36, 229, 210, 0.22);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+/* Jua has a single weight, so keep headings at 400 to avoid faux bold */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--text-h);
+  line-height: 1.2;
+}
+a {
+  color: var(--accent);
+}
