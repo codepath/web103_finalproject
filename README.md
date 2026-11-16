@@ -34,6 +34,22 @@ All six core features below are implemented. Each has a demonstration GIF.
 
 Users sign in with GitHub through Passport. Sessions are stored in PostgreSQL with an HTTP-only session cookie. Trip pages and APIs require authentication; membership and organizer permissions still apply. The recordings below were made with the previous demo selector.
 
+### First-login starter trip
+
+When a new GitHub user signs in for the first time, the app creates **Your first
+trip**, a three-day Seattle sample trip starting seven days later, with a $300
+budget and three sample activities. The new user is its organizer and owns the
+activities, so they can edit or delete the sample content and invite friends.
+Activities are labeled as samples in their descriptions.
+
+The user, identity, trip, membership and activities are created in one transaction.
+Repeated or simultaneous sign-ins do not create duplicate starter trips. Existing
+GitHub users are left unchanged; deleting the starter trip does not recreate it
+on the next login. No new database migration or reset is needed for this feature.
+Demonstrate it with a GitHub account that has never signed into this database;
+clearing cookies or signing out of an existing account does not make it a new user.
+This feature still needs a demonstration GIF for final submission.
+
 ### Request feedback and loading states
 
 Trip, activity, and expense create/update/delete actions show success toasts;
@@ -177,3 +193,10 @@ authentication/production routing tests. Manually verify real GitHub authorizati
 cancelled login, page refresh, logout, return to a protected page, and two users
 joining/voting with separate accounts. To demonstrate pending controls and spinners,
 throttle the network in browser developer tools, submit once, and try clicking again.
+
+To test starter-trip signup and concurrency against PostgreSQL, run
+`RUN_DATABASE_TESTS=1 node --test server/tests/starter-trip.test.js` from the root.
+It uses a disposable schema on the configured database and removes it afterward;
+it does not reset or modify the application's public tables. The database user
+must have permission to create a schema. This integration test is skipped during
+ordinary builds so Render builds do not depend on access to a live database.

@@ -28,3 +28,14 @@ test objects and data; they do not reset the application tables.
 Run `npm run migrate` to add `user_github_accounts` (one identity per user),
 `user_sessions`, and nullable user emails without resetting existing data.
 The current migration does not remove any legacy Google ID columns.
+
+## Starter trips
+
+New GitHub identities receive one starter trip with organizer membership and three
+sample activities in the same transaction as user/identity creation. Existing
+GitHub users are not backfilled. No schema change or reset is required.
+
+From the repository root, `RUN_DATABASE_TESTS=1 node --test server/tests/starter-trip.test.js`
+checks initial/repeated/concurrent signup, separate ownership, deletion, and rollback
+using an isolated schema that is cleaned up afterward. Ordinary `npm test` skips
+this database-dependent test.
