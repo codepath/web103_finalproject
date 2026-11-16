@@ -83,9 +83,13 @@ A dedicated reset feature that restores the PostgreSQL database to its clean def
 
 ![Owner-confirmed global reset restores defaults while preserving accounts, roles, and sessions](docs/gifs/m5-database-reset.gif)
 
-### 7. Action Feedback & Toast Notification System (Stretch Feature)
+### ✅ 7. Action Feedback & Toast Notification System (Stretch Feature)
 Delivers immediate feedback via toast alerts when quests are created, edited, or completed, accompanied by loading spinners and dynamic button disabling during async submissions.
 - **Stretch Feature:** Polished UX states & toast alerts.
+(docs/gifs/toaster-notifications.gif)
+
+(docs/gifs/loading-toasters.gif)
+
 
 ---
 
