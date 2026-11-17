@@ -1,5 +1,6 @@
 import express from 'express';
 import { deleteEvent, findEvent, insertEvent, listCategories, listEvents, updateEvent } from './events.js';
+import { RSVP_STATUSES, findDemoStudent, findRsvp, saveRsvp, studentExists } from './students.js';
 import { validateEvent } from './validate.js';
 
 export const app = express();
@@ -80,6 +81,55 @@ app.delete('/api/events/:eventId', async (req, res) => {
   const id = parseId(req.params.eventId);
   if (!id || !(await deleteEvent(id))) return res.status(404).json({ error: 'Event not found.' });
   res.status(204).end();
+});
+
+// RSVP (issue #5). Student ids come from GET /api/students/demo; see server/students.js.
+function parseStudentId(value) {
+  if (typeof value === 'number') value = String(value);
+  return typeof value === 'string' ? parseId(value) : null;
+}
+
+app.get('/api/students/demo', async (req, res) => {
+  const student = await findDemoStudent();
+  if (!student) return res.status(404).json({ error: 'The demo student has not been set up.' });
+  res.json(student);
+});
+
+app.get('/api/events/:eventId/rsvp', async (req, res) => {
+  const eventId = parseId(req.params.eventId);
+  if (!eventId) return res.status(404).json({ error: 'Event not found.' });
+  const studentId = parseStudentId(req.query.student_id);
+  if (!studentId) return res.status(400).json({ error: 'Provide a valid student_id.' });
+  if (!(await findEvent(eventId))) return res.status(404).json({ error: 'Event not found.' });
+  if (!(await studentExists(studentId))) return res.status(404).json({ error: 'Student not found.' });
+  res.json({ rsvp: await findRsvp(eventId, studentId) });
+});
+
+app.post('/api/events/:eventId/rsvp', async (req, res) => {
+  const eventId = parseId(req.params.eventId);
+  if (!eventId) return res.status(404).json({ error: 'Event not found.' });
+  const body = req.body;
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return res.status(400).json({ error: 'Submit the RSVP as JSON.' });
+  }
+  const studentId = parseStudentId(body.student_id);
+  if (!studentId) return res.status(400).json({ error: 'Provide a valid student_id.' });
+  if (body.status === undefined || body.status === null || body.status === '') {
+    return res.status(400).json({ error: 'Choose Going or Interested.' });
+  }
+  if (!RSVP_STATUSES.includes(body.status)) {
+    return res.status(400).json({ error: 'RSVP status must be Going or Interested.' });
+  }
+  if (!(await findEvent(eventId))) return res.status(404).json({ error: 'Event not found.' });
+  if (!(await studentExists(studentId))) return res.status(404).json({ error: 'Student not found.' });
+  try {
+    const { rsvp, created } = await saveRsvp(eventId, studentId, body.status);
+    res.status(created ? 201 : 200).json({ rsvp });
+  } catch (error) {
+    // The event or student was deleted between the checks above and the write.
+    if (error.code === '23503') return res.status(404).json({ error: 'Event or student not found.' });
+    throw error;
+  }
 });
 
 app.use('/api', (req, res) => {

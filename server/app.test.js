@@ -206,6 +206,77 @@ describe('School.Event API', { concurrency: false }, () => {
     await resetDatabase();
   });
 
+  function rsvp(eventId, body) {
+    return request(`/api/events/${eventId}/rsvp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  }
+
+  test('the seeded demo student identifies RSVPs', async () => {
+    const { status, body } = await request('/api/students/demo');
+    assert.equal(status, 200);
+    assert.equal(Number.isInteger(body.id), true);
+    assert.equal(body.email, 'demo.student@school.event');
+  });
+
+  test('RSVP saves, updates in place, and survives a later read', async () => {
+    const { body: student } = await request('/api/students/demo');
+    const { body: [event] } = await request('/api/events');
+    const empty = await request(`/api/events/${event.id}/rsvp?student_id=${student.id}`);
+    assert.equal(empty.status, 200);
+    assert.deepEqual(empty.body, { rsvp: null });
+
+    const created = await rsvp(event.id, { student_id: student.id, status: 'Going' });
+    assert.equal(created.status, 201);
+    assert.deepEqual(created.body.rsvp, { id: created.body.rsvp.id, studentId: student.id, eventId: event.id, status: 'Going' });
+
+    const changed = await rsvp(event.id, { student_id: student.id, status: 'Interested' });
+    assert.equal(changed.status, 200);
+    assert.equal(changed.body.rsvp.id, created.body.rsvp.id);
+    assert.equal(changed.body.rsvp.status, 'Interested');
+
+    await closePool();
+    const read = await request(`/api/events/${event.id}/rsvp?student_id=${student.id}`);
+    assert.deepEqual(read.body.rsvp, changed.body.rsvp);
+    await resetDatabase();
+  });
+
+  test('RSVP rejects bad input and missing records without saving', async () => {
+    const { body: student } = await request('/api/students/demo');
+    const { body: [event] } = await request('/api/events');
+    const cases = [
+      [event.id, { student_id: student.id }, 400, 'Choose Going or Interested.'],
+      [event.id, { student_id: student.id, status: 'going' }, 400, 'RSVP status must be Going or Interested.'],
+      [event.id, { student_id: 'abc', status: 'Going' }, 400, 'Provide a valid student_id.'],
+      [event.id, { status: 'Going' }, 400, 'Provide a valid student_id.'],
+      [event.id, { student_id: 999999, status: 'Going' }, 404, 'Student not found.'],
+      [999999, { student_id: student.id, status: 'Going' }, 404, 'Event not found.'],
+      ['abc', { student_id: student.id, status: 'Going' }, 404, 'Event not found.'],
+    ];
+    for (const [eventId, body, status, error] of cases) {
+      const result = await rsvp(eventId, body);
+      assert.equal(result.status, status, JSON.stringify(body));
+      assert.deepEqual(result.body, { error });
+    }
+    const badQuery = await request(`/api/events/${event.id}/rsvp?student_id=abc`);
+    assert.equal(badQuery.status, 400);
+    const stored = await request(`/api/events/${event.id}/rsvp?student_id=${student.id}`);
+    assert.deepEqual(stored.body, { rsvp: null });
+  });
+
+  test('deleting an event removes its RSVPs', async () => {
+    const { body: student } = await request('/api/students/demo');
+    const { body: [event] } = await request('/api/events');
+    await rsvp(event.id, { student_id: student.id, status: 'Going' });
+    const removed = await request(`/api/events/${event.id}`, { method: 'DELETE' });
+    assert.equal(removed.status, 204);
+    const gone = await request(`/api/events/${event.id}/rsvp?student_id=${student.id}`);
+    assert.equal(gone.status, 404);
+    await resetDatabase();
+  });
+
   test('delete removes a persisted event and missing events stay 404', async () => {
     const { body: events } = await request('/api/events');
     const removed = await request(`/api/events/${events[0].id}`, { method: 'DELETE' });

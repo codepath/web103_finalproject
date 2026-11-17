@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { closePool, getPool } from './db.js';
+import { DEMO_STUDENT } from './students.js';
 
 const categories = [
   ['clubs', 'Clubs'],
@@ -34,7 +35,7 @@ export async function resetDatabase() {
   const client = await getPool().connect();
   try {
     await client.query('BEGIN');
-    await client.query('DROP TABLE IF EXISTS events, categories CASCADE');
+    await client.query('DROP TABLE IF EXISTS rsvps, students, events, categories CASCADE');
     await client.query(schema);
     for (const [slug, name] of categories) {
       await client.query('INSERT INTO categories (slug, name) VALUES ($1, $2)', [slug, name]);
@@ -46,6 +47,7 @@ export async function resetDatabase() {
         [slug, title, description, location, host, imageUrl, upcoming(startDay, ...startClock), upcoming(endDay, ...endClock)],
       );
     }
+    await client.query('INSERT INTO students (name, email) VALUES ($1, $2)', [DEMO_STUDENT.name, DEMO_STUDENT.email]);
     await client.query('COMMIT');
   } catch (error) {
     await client.query('ROLLBACK');

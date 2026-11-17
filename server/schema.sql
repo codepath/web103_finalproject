@@ -16,3 +16,18 @@ CREATE TABLE events (
   ends_at timestamptz NOT NULL,
   CONSTRAINT events_end_after_start CHECK (ends_at > starts_at)
 );
+
+CREATE TABLE students (
+  id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name text NOT NULL,
+  email text NOT NULL UNIQUE
+);
+
+CREATE TABLE rsvps (
+  id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  student_id integer NOT NULL REFERENCES students (id) ON DELETE CASCADE,
+  event_id integer NOT NULL REFERENCES events (id) ON DELETE CASCADE,
+  status text NOT NULL,
+  CONSTRAINT rsvps_status_valid CHECK (status IN ('Going', 'Interested')),
+  CONSTRAINT rsvps_student_event_unique UNIQUE (student_id, event_id)
+);
